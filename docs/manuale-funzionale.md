@@ -1,6 +1,6 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.7 — 2026-09-16 — Stato: in sviluppo (M1 chiusa)
+Versione 0.8 — 2026-09-16 — Stato: in sviluppo (M1 chiusa; prossimo passo: identità visiva, §16.2)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -265,7 +265,7 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 | M   | Contenuto                                                                             | Fatto quando                                                    | Stato                                   |
 | --- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------- |
-| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `71edb52` |
+| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf` |
 | M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | prossima, dopo l'identità visiva        |
 | M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano |                                         |
 | M4  | Pagina Metodo, analytics, deploy Vercel                                               | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  |                                         |
@@ -331,12 +331,19 @@ In parallelo a M2-M4 perché tocca solo `src/content/`. Ordine: 04-08 e 10, 13, 
 
 ### 16.7 Decisioni prese durante M1
 
-| Data       | Decisione                                                               | Motivo                                                                              |
-| ---------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 2026-09-16 | Zod 4 invece di 3                                                       | La sintassi di §15.1 è nativa in v4; nessun beneficio a restare su v3               |
-| 2026-09-16 | Vite pinnato a 6.x, Vitest 3, plugin-react 5                            | Coerenza con il documento; Vitest 5 richiede Vite 7+                                |
-| 2026-09-16 | pnpm 12 con `pnpm-workspace.yaml` → `allowBuilds: esbuild`              | pnpm 12 blocca gli script postinstall; senza, Vite non parte in CI                  |
-| 2026-09-16 | Prettier esclude `src/content` e `CLAUDE.md`                            | Il primo `--write` aveva riformattato scenario_001.json; i contenuti non si toccano |
-| 2026-09-16 | CI e `vercel.json` anticipati a M1                                      | Costo minimo, protezione di `main` immediata                                        |
-| 2026-09-16 | Regole "2 scelte neofita / 3-4 studente" nello script, non nello schema | Lo schema resta identico a §15.1; il vincolo è editoriale                           |
-| 2026-09-16 | Repository pubblico                                                     | Coerente con app gratuita; Vercel e Plausible/Umami senza limiti                    |
+| Data       | Decisione                                                               | Motivo                                                                                                                                                                                     |
+| ---------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2026-09-16 | Zod 4 invece di 3                                                       | La sintassi di §15.1 è nativa in v4; nessun beneficio a restare su v3                                                                                                                      |
+| 2026-09-16 | Vite pinnato a 6.x, Vitest 3, plugin-react 5                            | Coerenza con il documento; Vitest 5 richiede Vite 7+                                                                                                                                       |
+| 2026-09-16 | pnpm 12 con `pnpm-workspace.yaml` → `allowBuilds: esbuild`              | pnpm 12 blocca gli script postinstall; senza, Vite non parte in CI                                                                                                                         |
+| 2026-09-16 | Prettier esclude `src/content` e `CLAUDE.md`                            | Il primo `--write` aveva riformattato scenario_001.json; i contenuti non si toccano                                                                                                        |
+| 2026-09-16 | CI e `vercel.json` anticipati a M1                                      | Costo minimo, protezione di `main` immediata                                                                                                                                               |
+| 2026-09-16 | Regole "2 scelte neofita / 3-4 studente" nello script, non nello schema | Lo schema resta identico a §15.1; il vincolo è editoriale                                                                                                                                  |
+| 2026-09-16 | Repository pubblico                                                     | Coerente con app gratuita; Vercel e Plausible/Umami senza limiti                                                                                                                           |
+| 2026-09-16 | Repository GitHub ricreato e riallineato alla storia locale (`659dfab`) | Il primo repo era stato ripopolato via upload web (CRLF, senza `.github/workflows/ci.yml`); la storia locale è quella di riferimento, gli hash precedenti alla ricreazione non valgono più |
+
+### 16.8 Regola di sincronizzazione dei documenti
+
+- `docs/manuale-funzionale.md` è l'unica versione viva. Si aggiorna con commit `docs:` a ogni decisione, cambio di scope o chiusura di milestone.
+- L'artifact claude.ai (https://claude.ai/artifact/3dS9h1xLJ5ao77aNN2jBAC) è una copia leggibile del manuale, rigenerata a ogni bump di versione; non si modifica direttamente.
+- `CLAUDE.md` riassume le regole vincolanti per chi scrive codice e contenuti; deriva dal manuale e non lo sostituisce.

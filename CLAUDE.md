@@ -55,6 +55,7 @@ scripts          validate-content.ts
 ## Convenzioni
 
 - Conventional Commits: `feat:`, `fix:`, `content:`, `docs:`, `chore:`.
+- **Unico contributor su GitHub: AlbeAli.** Nessun trailer `Co-Authored-By` (né Claude né altri) nei messaggi di commit e nelle PR, in nessun caso.
 - `main` sempre rilasciabile. Una branch per milestone o per scenario.
 - Nessun commento nel codice salvo vincolo non ovvio.
 - Nessuna dipendenza aggiunta senza motivazione nel messaggio di commit.
