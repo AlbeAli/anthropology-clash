@@ -16,5 +16,8 @@ export default tseslint.config(
       ecmaVersion: 2022,
       globals: { ...globals.browser, ...globals.node },
     },
+    rules: {
+      "id-denylist": ["error", "correct", "wrong", "score", "isCorrect", "isWrong"],
+    },
   },
 );

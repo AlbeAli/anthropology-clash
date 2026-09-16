@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { Concept, Lang, Scenario } from "../src/schema/scenario.schema";
+import { Concept, Lang, Level, Scenario } from "../src/schema/scenario.schema";
 
 const CONTENT_DIR = fileURLToPath(new URL("../src/content", import.meta.url));
 const STUDENTE_SOURCE = /\p{Lu}\p{L}+.*\b(1[5-9]|20)\d{2}\b/u;
@@ -71,6 +71,33 @@ export function validateLang(lang: Lang, dir: string): { issues: Issue[]; count:
     seenIds.add(s.id);
     if (!conceptIds.has(s.concept)) {
       issues.push({ file: label, message: `concept "${s.concept}" assente in concepts.json` });
+    }
+    for (const level of Level.options) {
+      const lvl = s.levels[level];
+      const choiceIds = lvl.choices.map((c) => c.id);
+      if (new Set(choiceIds).size !== choiceIds.length) {
+        issues.push({ file: label, message: `levels.${level}.choices: id duplicati` });
+      }
+      for (const key of Object.keys(lvl.feedback)) {
+        if (!choiceIds.includes(key)) {
+          issues.push({
+            file: label,
+            message: `levels.${level}.feedback.${key}: nessuna scelta corrispondente`,
+          });
+        }
+      }
+    }
+    if (s.levels.neofita.choices.length !== 2) {
+      issues.push({
+        file: label,
+        message: "levels.neofita.choices: il livello neofita ha esattamente 2 scelte",
+      });
+    }
+    if (s.levels.studente.choices.length < 3) {
+      issues.push({
+        file: label,
+        message: "levels.studente.choices: il livello studente ha 3-4 scelte",
+      });
     }
     if (!STUDENTE_SOURCE.test(s.levels.studente.source)) {
       issues.push({
