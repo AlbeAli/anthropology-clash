@@ -1,0 +1,43 @@
+{
+  "id": "scenario_002",
+  "lang": "it",
+  "title": "La carne è troppo magra",
+  "concept": "reciprocita",
+  "concept_label": "Reciprocità e dono",
+  "levels": {
+    "neofita": {
+      "setup": "Sei un ricercatore e vivi da più di un anno con i Ju/'hoansi (!Kung), cacciatori-raccoglitori del deserto del Kalahari, in Botswana. È dicembre. Per ringraziare tutti, compri il bue più grosso della zona e annunci che lo offrirai per la festa di Natale. Ti aspetti entusiasmo. Invece, uno dopo l'altro, vengono a dirti che il bue è vecchio, magro, 'un sacco d'ossa', che non basterà per nessuno e che la gente litigherà per la carne. Cosa fai?",
+      "choices": [
+        { "id": "a", "text": "Ti offendi: cerchi un altro bue o rinunci alla festa" },
+        { "id": "b", "text": "Vai avanti con la festa, poi chiedi a un anziano perché hanno parlato così" }
+      ],
+      "feedback": {
+        "a": "Il bue era grasso: alla macellazione lo vedi con i tuoi occhi. Le critiche non riguardavano l'animale. Rinunciando, resti fuori da un gioco che tutti conoscono tranne te. È la reazione più comune di chi legge un'altra cultura con le proprie regole: prendere alla lettera qualcosa che in quel contesto ha un altro senso.",
+        "b": "La festa va bene e la carne basta per tutti. Dopo, un anziano ti spiega: quando un uomo porta molta carne, gli altri la sminuiscono sempre. Chi si vanta di una grande preda finisce per credersi superiore, e un giorno la sua superbia può fargli fare del male. Per questo 'raffreddano il suo cuore' con le parole. In una società dove nessuno comanda, l'umiltà si insegna così. Il bue non era il problema: lo era il tuo orgoglio di donatore."
+      },
+      "source": "Lee, 'Eating Christmas in the Kalahari', Natural History, 1969"
+    },
+    "studente": {
+      "setup": "Dobe, Botswana nord-occidentale, dicembre, anni Sessanta. Sei Richard Lee: da oltre un anno studi l'ecologia della sussistenza dei Ju/'hoansi (!Kung) e, per non alterare i loro pattern alimentari, non hai mai condiviso cibo con loro. Per Natale decidi di ricambiare l'ospitalità: compri da un allevatore un bue di circa 550 chili, il più grosso disponibile. Nei giorni seguenti ogni persona che incontri ti dice che è vecchio, magro, 'un sacco d'ossa', che farà arrabbiare tutti. Alla macellazione lo strato di grasso è spesso. La festa riesce. Cosa fai di quello che è successo?",
+      "choices": [
+        { "id": "a", "text": "Lo consideri un malinteso e lo lasci fuori dalle note di campo" },
+        { "id": "b", "text": "Lo interpreti come ostilità verso di te, l'estraneo che si è tenuto il cibo per un anno" },
+        { "id": "c", "text": "Interroghi i tuoi interlocutori sul senso della derisione e la colleghi ad altre pratiche osservate" },
+        { "id": "d", "text": "Concludi che il dono era stato letto come un tentativo di comprare status, e rivedi il tuo ruolo di donatore" }
+      ],
+      "feedback": {
+        "a": "Perderesti il dato più ricco dell'anno. Lee lo racconta come esempio di ciò che l'etnografia spesso produce: l'antropologo scopre le regole del gioco nel momento in cui le viola. Ignorare l'episodio significa anche non interrogare il proprio disagio, che in quel caso era il segnale che il tuo modello della situazione non tornava.",
+        "b": "L'ipotesi è verosimile ma i dati la smentiscono: gli stessi commenti vengono rivolti a qualsiasi cacciatore che porti una grande preda. Lee registra la spiegazione di un anziano: quando un giovane uccide molta carne arriva a pensarsi un capo, e a considerare gli altri suoi inferiori; non possono accettarlo, e per questo parlano sempre male della sua carne, così 'raffreddano il suo cuore e lo rendono gentile'. Non è ostilità personale ma una pratica generalizzata.",
+        "c": "È il percorso che segue Lee. La derisione della carne ('insulting the meat') è un meccanismo di livellamento tipico delle società egualitarie a ritorno immediato (Woodburn, 1982): la ricchezza non si accumula, il prestigio non si consolida, chi ha successo viene ridimensionato a parole. Si collega ad altre pratiche osservate: la modestia obbligatoria del cacciatore, la regola per cui la preda 'appartiene' al proprietario della freccia e non a chi l'ha scagliata, la condivisione sistematica. Lee ne ricava che l'egualitarismo non è assenza di regole ma lavoro sociale continuo.",
+        "d": "È la seconda conclusione di Lee, quella su se stesso. Un anno senza condividere cibo lo aveva reso, agli occhi dei Ju/'hoansi, un avaro; il bue era il tentativo di riscattarsi con un gesto di generosità che avrebbe conferito status. Il commento che chiude l'articolo è che non esistono atti totalmente generosi: ogni dono implica una relazione di potere. È una lettura maussiana del dono applicata al donatore-antropologo, e mette in questione la posizione dell'etnografo che si crede esterno allo scambio."
+      },
+      "source": "Lee, 'Eating Christmas in the Kalahari', Natural History 78(10), 1969; Woodburn, 'Egalitarian Societies', Man 17(3), 1982; Mauss, Essai sur le don, 1925",
+      "deepen": [
+        { "ref": "Lee, 'Eating Christmas in the Kalahari', 1969", "why": "Testo integrale, breve: da rileggere annotando chi dice cosa e in quale momento della vicenda", "access": "OA" },
+        { "ref": "Lee, The !Kung San: Men, Women and Work in a Foraging Society, 1979", "why": "La monografia da cui l'episodio proviene: dati su condivisione, caccia e proprietà della preda", "access": "NON-OA" },
+        { "ref": "Woodburn, 'Egalitarian Societies', Man 17(3), 1982", "why": "Il quadro teorico: società a ritorno immediato e meccanismi di livellamento", "access": "NON-OA" },
+        { "ref": "Wilmsen, Land Filled with Flies, 1989 e la replica di Lee & Guenther, Current Anthropology 32(5), 1991", "why": "Il 'dibattito sul Kalahari': quanto i Ju/'hoansi fossero davvero isolati cacciatori-raccoglitori; ridimensiona ogni lettura idealizzante", "access": "NON-OA" }
+      ]
+    }
+  }
+}

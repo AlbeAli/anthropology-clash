@@ -1,0 +1,42 @@
+{
+  "id": "scenario_003",
+  "lang": "it",
+  "title": "I riti del corpo dei Nacirema",
+  "concept": "relativismo",
+  "concept_label": "Relativismo ed etnocentrismo",
+  "levels": {
+    "neofita": {
+      "setup": "Leggi la descrizione di un popolo del Nord America. I Nacirema dedicano gran parte della giornata a riti sul corpo, che considerano brutto e soggetto a malattie. Ogni casa ha una piccola stanza-santuario con una cassetta di amuleti e pozioni ottenute da guaritori. Ogni mattina compiono un rito della bocca: inseriscono un fascio di setole con polveri magiche e lo muovono con gesti precisi. Una o due volte l'anno vanno da un 'uomo della bocca sacra', che allarga le cavità dei denti con strumenti appuntiti e vi inserisce sostanze magiche. Che idea ti sei fatto?",
+      "choices": [
+        { "id": "a", "text": "Un popolo dominato da superstizioni e paure sul corpo" },
+        { "id": "b", "text": "Mi ricorda qualcosa di molto familiare" }
+      ],
+      "feedback": {
+        "a": "È la reazione che il testo vuole provocare. 'Nacirema' è 'American' letto al contrario: la stanza-santuario è il bagno, la cassetta è l'armadietto dei medicinali, il rito della bocca è lavarsi i denti, l'uomo della bocca sacra è il dentista. L'autore, Horace Miner, ha descritto la propria società con il linguaggio che gli antropologi usavano per le altre. Se ti è sembrata strana, il problema non era la cultura ma le parole: chiamare 'rito' un'abitudine e 'magia' una cura le rende esotiche.",
+        "b": "Hai riconosciuto il trucco. 'Nacirema' è 'American' al contrario: bagno, armadietto dei medicinali, spazzolino, dentista. Miner ha applicato alla propria società lo sguardo che l'antropologia rivolgeva alle altre, e ha mostrato che quello sguardo produce esotismo. Ogni cultura, descritta dall'esterno con parole come 'rito', 'magia', 'guaritore', sembra strana. Il primo passo dell'antropologia è accorgersi che le proprie abitudini sono altrettanto 'strane', viste da fuori."
+      },
+      "source": "Miner, 'Body Ritual among the Nacirema', American Anthropologist, 1956"
+    },
+    "studente": {
+      "setup": "Un articolo su American Anthropologist (1956) descrive i Nacirema, popolo nordamericano 'poco compreso'. L'autore riporta: il corpo è ritenuto brutto e incline a decadere; ogni casa ha un santuario con una cassetta di amuleti prescritti da 'uomini della medicina' e preparati da erboristi; il rito quotidiano della bocca prevede un fascio di setole e polveri magiche; gli 'uomini della bocca sacra' allargano le cavità dentali con strumenti appuntiti; esiste un tempio (latipso) dove i malati subiscono cerimonie dolorose e versano un dono prima di entrare; un 'ascoltatore' esorcizza i demoni dei genitori dalle menti dei bambini. L'autore chiude citando Malinowski sul potere della magia. Come classifichi il caso?",
+      "choices": [
+        { "id": "a", "text": "Un esempio di pensiero magico: le pratiche vanno analizzate con le categorie di Frazer e Malinowski" },
+        { "id": "b", "text": "Una società ossessionata dal corpo, da confrontare con altri sistemi di purificazione" },
+        { "id": "c", "text": "Il vocabolario ('rito', 'magia', 'santuario') sta producendo l'esotismo: in altri termini sarebbero igiene e medicina" },
+        { "id": "d", "text": "È la mia cultura: l'articolo è una satira dell'etnografia" }
+      ],
+      "feedback": {
+        "a": "Le categorie reggono, ed è il punto. Miner scrive un articolo formalmente impeccabile, con richiami a Linton, Murdock e Malinowski, e la rivista lo pubblica. Il testo dimostra che il linguaggio etnografico classico, applicato a qualsiasi società, produce un oggetto 'primitivo'. Frazer e Malinowski non sono sbagliati; è la loro applicazione a senso unico (agli altri, mai a noi) che l'articolo mette in discussione.",
+        "b": "Il confronto è legittimo, ma prima va sciolta la descrizione. Latipso è 'hospital' rovesciato, l'ascoltatore è lo psicoanalista, l'uomo della bocca sacra il dentista, e i Nacirema (American, al contrario) vivono tra Canada e Messico, con l'eroe fondatore Notgnihsaw. Confrontare i Nacirema con altri sistemi di purezza prima di riconoscerli significa trattare la propria cultura come caso etnografico senza saperlo: esattamente l'effetto che Miner costruisce, presentando i Nacirema con le coordinate geografiche di Murdock e attribuendone la 'scoperta' a Linton.",
+        "c": "È la lettura metodologica. Miner mostra che etnocentrismo ed esotismo sono prodotti del linguaggio descrittivo, non della realtà osservata: 'rito' invece di 'abitudine', 'amuleto' invece di 'farmaco', 'santuario' invece di 'bagno'. Il testo è un esercizio di straniamento (rendere estraneo il familiare) che rovescia il compito classico dell'antropologia, rendere familiare l'estraneo. Ne segue una domanda di metodo: quali criteri distinguono un rito da una pratica igienica, se non la posizione di chi descrive?",
+        "d": "Corretto sul piano fattuale: è una satira dell'etnografia americana degli anni Cinquanta. Ma fermarsi al riconoscimento perde il resto. L'articolo è tra i testi introduttivi più usati nei corsi di antropologia statunitensi, e proprio per questo discusso: Leathem (2023), tornando sul caso, ne interroga l'uso didattico, cioè il rischio di insegnare il relativismo come rivelazione a effetto senza mostrare il lavoro etnografico che lo sostiene. La domanda utile non è 'ho capito il trucco?' ma 'cosa cambia nel mio modo di descrivere, adesso che lo so?'"
+      },
+      "source": "Miner, 'Body Ritual among the Nacirema', American Anthropologist 58(3), 1956, DOI 10.1525/aa.1956.58.3.02a00080; Leathem, 'Comments on a found text: Return to Acirema', American Anthropologist, 2023, DOI 10.1111/aman.13871",
+      "deepen": [
+        { "ref": "Miner, 'Body Ritual among the Nacirema', 1956", "why": "Testo integrale, 5 pagine: da rileggere cercando ogni riferimento accademico reale (Linton, Murdock, Malinowski) e chiedendosi cosa fa in una satira", "access": "OA" },
+        { "ref": "Leathem, 'Comments on a found text: Return to Acirema', American Anthropologist, 2023", "why": "Ripresa contemporanea del dispositivo e discussione del suo uso in aula", "access": "verificare" },
+        { "ref": "Miner, 'The Folk-Urban Continuum', American Sociological Review 17(5), 1952", "why": "Il Miner 'serio' quattro anni prima: utile per capire da quale tradizione (Redfield, comunità folk) viene la parodia", "access": "NON-OA" }
+      ]
+    }
+  }
+}

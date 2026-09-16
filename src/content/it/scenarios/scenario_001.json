@@ -1,0 +1,43 @@
+{
+  "id": "scenario_001",
+  "lang": "it",
+  "title": "La collana che non si può tenere",
+  "concept": "reciprocita",
+  "concept_label": "Reciprocità e dono",
+  "levels": {
+    "neofita": {
+      "setup": "Sei ospite nelle isole Trobriand, nel Pacifico, negli anni Venti. Un uomo arriva in canoa da un'isola vicina e ti porge una lunga collana di conchiglie rosse. È un oggetto famoso: ha un nome proprio, e tutti sanno chi l'ha avuta prima di te. Non è in vendita e non è un regalo qualsiasi. Cosa fai?",
+      "choices": [
+        { "id": "a", "text": "La accetti e gli dai subito qualcosa di pari valore in cambio" },
+        { "id": "b", "text": "La accetti, la tieni per un po', poi la passi a qualcun altro" }
+      ],
+      "feedback": {
+        "a": "Restituire subito qualcosa di equivalente trasforma il dono in uno scambio commerciale. Nelle Trobriand questo tipo di scambio si chiama gimwali e si fa con il cibo e gli oggetti d'uso, non con le collane. Dire a qualcuno che 'fa il Kula come se fosse gimwali' è un insulto: significa che non capisce la differenza tra un legame e un affare. Il tuo partner ricambierà, ma con i suoi tempi e con un oggetto diverso: un bracciale di conchiglie bianche.",
+        "b": "È quello che fanno i partner del Kula. La collana resta con te il tempo necessario a mostrarla, poi riparte verso un'altra isola, in un giro che non finisce mai. Tenerla per sempre ti farebbe considerare avido; farla circolare ti dà prestigio. Il tuo partner, con i suoi tempi, ti manderà un bracciale di conchiglie bianche. Il valore non sta nell'oggetto ma nel legame che crea."
+      },
+      "source": "Malinowski, Argonauti del Pacifico occidentale, 1922"
+    },
+    "studente": {
+      "setup": "Isole Trobriand, arcipelago del Massim, Nuova Guinea orientale, primi anni Venti. Sei a Sinaketa, sull'isola di Kiriwina. Un partner di Kula arriva da Dobu con una spedizione di canoe e ti consegna un soulava, una lunga collana di dischi di spondilo rosso. Ha un nome proprio e una storia nota. I soulava circolano tra le isole in senso orario, i mwali (bracciali di conchiglia bianca) in senso antiorario. Il partner non ti chiede nulla in cambio, adesso. Sai che la relazione con lui è di lunga durata, forse ereditata dal tuo predecessore. Come rispondi?",
+      "choices": [
+        { "id": "a", "text": "Ricambi seduta stante con un mwali di valore equivalente, chiudendo la transazione" },
+        { "id": "b", "text": "Tieni il soulava come proprietà permanente: è un oggetto di grande valore" },
+        { "id": "c", "text": "Tieni il soulava per qualche tempo, lo esibisci, poi lo passi a un altro partner" },
+        { "id": "d", "text": "Lo scambi con un altro villaggio contro cibo e strumenti" }
+      ],
+      "feedback": {
+        "a": "Il Kula esclude la contrattazione e la simultaneità. Malinowski distingue il dono d'apertura (vaga) dal dono di ritorno (yotile), separati nel tempo; chi non può ricambiare adeguatamente offre un dono intermedio (basi) come pegno. Restituire subito un equivalente assimila il Kula al gimwali, il baratto di beni d'uso, e 'fare il Kula come fosse gimwali' è una delle offese più gravi tra partner. Mauss (1925) leggerà proprio questo intervallo temporale come ciò che distingue il dono dallo scambio mercantile: il tempo del debito è il tempo del legame.",
+        "b": "Nel Kula il possesso è temporaneo per definizione. Malinowski riporta il principio 'una volta nel Kula, sempre nel Kula': gli oggetti di valore (vaygu'a) non escono dal circuito. Trattenerli a lungo espone all'accusa di essere 'lenti' o 'duri' nel Kula e fa perdere partner. Il prestigio deriva dall'aver posseduto oggetti celebri e dall'averli fatti circolare, non dall'accumularli: è la logica che Mauss chiamerà obbligo di ricambiare.",
+        "c": "È la condotta del partner affidabile. Il soulava sosta, viene mostrato, poi riparte verso l'isola successiva in senso orario; dal partner arriverà, con i suoi tempi, un mwali in senso inverso. Malinowski descrive il Kula come scambio cerimoniale intertribale in cui la circolazione produce fama, alleanze e sicurezza nei viaggi, mentre lo scambio utilitario (gimwali) avviene in parallelo ma resta distinto. Le tre obbligazioni di Mauss (dare, ricevere, ricambiare) sono qui tutte in gioco.",
+        "d": "I vaygu'a non sono convertibili in beni d'uso: appartengono a una sfera di scambio separata. Bohannan (1955), studiando i Tiv della Nigeria, chiamerà 'sfere di scambio' questa non convertibilità tra categorie di beni. Scambiare un soulava contro cibo lo degrada di sfera e rompe la relazione con il partner che te lo ha affidato. Sarebbe letto come gimwali fatto con il bene sbagliato."
+      },
+      "source": "Malinowski, Argonauts of the Western Pacific, 1922, cap. III e XIV (Project Gutenberg #55822); Mauss, Essai sur le don, 1925; Bohannan, 'Some Principles of Exchange and Investment among the Tiv', American Anthropologist 57(1), 1955",
+      "deepen": [
+        { "ref": "Malinowski, Argonauts of the Western Pacific, 1922, cap. III 'The Essentials of the Kula'", "why": "Il capitolo che definisce il Kula: regole, direzioni, partner, distinzione da gimwali", "access": "PD" },
+        { "ref": "Mauss, Essai sur le don, 1925, cap. I e II", "why": "Rilettura del Kula come caso di 'prestazione totale'; da confrontare con ciò che Malinowski dice davvero", "access": "PD (fr)" },
+        { "ref": "Weiner, Inalienable Possessions, 1992", "why": "Critica alla lettura di Mauss dal campo trobriandese: cosa si dà e cosa si trattiene ('keeping-while-giving')", "access": "NON-OA" },
+        { "ref": "Leach & Leach (a cura di), The Kula: New Perspectives on Massim Exchange, 1983", "why": "Ripresa collettiva del Kula sessant'anni dopo: i dati di Malinowski riletti da più isole", "access": "NON-OA" }
+      ]
+    }
+  }
+}

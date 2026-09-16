@@ -1,0 +1,26 @@
+[
+  {
+    "id": "reciprocita",
+    "lang": "it",
+    "label": "Reciprocità e dono",
+    "definition": "Il dono non è mai gratuito: crea un legame e un obbligo di ricambiare, con tempi e forme che ogni società regola. Mauss (1925) ne individua tre obbligazioni, dare, ricevere, ricambiare; Malinowski (1922) ne descrive il caso del Kula; Sahlins (1972) distingue reciprocità generalizzata, bilanciata e negativa secondo la distanza sociale tra chi scambia."
+  },
+  {
+    "id": "parentela",
+    "lang": "it",
+    "label": "Parentela",
+    "definition": "Chi è parente di chi non è un fatto biologico ma una classificazione sociale: ogni società decide quali legami contano, come si chiamano e cosa comportano (eredità, autorità, matrimonio). Morgan (1871) confronta i sistemi terminologici; Malinowski, Evans-Pritchard e Lévi-Strauss ne fanno il centro dell'antropologia sociale del Novecento."
+  },
+  {
+    "id": "rituale",
+    "lang": "it",
+    "label": "Rituale",
+    "definition": "Azioni formalizzate, ripetute, cariche di significato per chi le compie. Van Gennep (1909) descrive i riti di passaggio in tre fasi (separazione, margine, aggregazione); Turner (1969) sviluppa la fase liminale; Douglas (1966) lega rito, purezza e classificazione."
+  },
+  {
+    "id": "relativismo",
+    "lang": "it",
+    "label": "Relativismo ed etnocentrismo",
+    "definition": "Etnocentrismo: giudicare le altre culture con i criteri della propria. Relativismo culturale: comprendere ogni pratica nel suo contesto prima di valutarla. Boas (1887) lo pone come principio di metodo; Miner (1956) mostra che lo sguardo etnografico produce esotismo anche applicato a noi stessi. Il relativismo metodologico non implica che ogni pratica sia moralmente equivalente."
+  }
+]
