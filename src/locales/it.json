@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Anthropology Clash",
+    "tagline": "Scenari a bivio ispirati a casi etnografici reali"
+  },
+  "nav": {
+    "home": "Home",
+    "concepts": "Concetti",
+    "method": "Metodo e fonti"
+  },
+  "level": {
+    "label": "Livello",
+    "neofita": "Neofita",
+    "studente": "Studente"
+  },
+  "home": {
+    "start": "Inizia dal primo scenario"
+  },
+  "scenario": {
+    "concept": "Concetto",
+    "choices": "Cosa fai?",
+    "source": "Fonte",
+    "notFound": "Scenario non trovato"
+  }
+}
