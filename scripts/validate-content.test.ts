@@ -43,7 +43,7 @@ describe("validate-content", () => {
 describe("validate-content: vincoli sui livelli", () => {
   it("segnala feedback senza scelta corrispondente e numero scelte fuori regola", () => {
     const broken = structuredClone(scenario001);
-    broken.levels.neofita.feedback = { ...broken.levels.neofita.feedback, c: "orfano" };
+    (broken.levels.neofita.feedback as Record<string, string>).c = "orfano";
     broken.levels.studente.choices = broken.levels.studente.choices.slice(0, 2);
     const messages = validateAll(fixture(broken)).issues.map((i) => i.message);
     expect(messages).toContainEqual(expect.stringContaining("feedback.c"));
