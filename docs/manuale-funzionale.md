@@ -1,6 +1,6 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.8 — 2026-09-16 — Stato: in sviluppo (M1 chiusa; prossimo passo: identità visiva, §16.2)
+Versione 0.9 — 2026-09-18 — Stato: in sviluppo (M1 e M2 chiuse, identità visiva applicata; prossimo passo: M3, §16.4)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -184,7 +184,7 @@ Italiano attivo. Inglese predisposto: chiave `lang` nei JSON, cartella `src/cont
 | Dominio, licenza contenuti, monetizzazione           | Da decidere, non bloccanti                                    |
 | Licenza del codice                                   | Da decidere prima di promuovere il repo pubblico              |
 | Pre-commit hook (lint + validate)                    | Da valutare: aggiunge una dipendenza; la CI copre già il caso |
-| Identità visiva (font, palette, tono)                | Prossima fase: vedi §16.2                                     |
+| Identità visiva (font, palette, tono)                | Applicata (§16.2); copy del kicker in Home ancora provvisorio |
 
 ## 12. Nome
 
@@ -231,7 +231,7 @@ Implementato in `src/schema/scenario.schema.ts`, identico alla v0.6 con l'aggiun
 | Vista             | Percorso    | Contenuto                                                                                                                                                                                  | Stato                                                             |
 | ----------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
 | Home / onboarding | `/`         | Nome, frase di presentazione, selettore livello con una riga di spiegazione, streak, pulsanti "Continua la sequenza" e "Scegli un tema"                                                    | M1 minima (nome, tagline, link al primo scenario); completa in M3 |
-| Scenario          | `/s/:id`    | Etichetta concetto, setup, 2-4 scelte. Dopo la scelta: feedback della scelta in evidenza, alternative sotto, fonte (collassata per neofita, aperta per studente), `deepen` (solo studente) | M1 renderizza setup, scelte, fonte; loop completo in M2           |
+| Scenario          | `/s/:id`    | Etichetta concetto, setup, 2-4 scelte. Dopo la scelta: feedback della scelta in evidenza, alternative sotto, fonte (collassata per neofita, aperta per studente), `deepen` (solo studente) | **M2**: loop completo                                             |
 | Libreria concetti | `/concetti` | Griglia dei 4 concetti con definizione; per ciascuno gli scenari con stato e livello di completamento                                                                                      | M3                                                                |
 | Metodo e fonti    | `/metodo`   | Provenienza, criteri, limiti, nota etica, bibliografia                                                                                                                                     | M4                                                                |
 
@@ -266,14 +266,14 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 | M   | Contenuto                                                                             | Fatto quando                                                    | Stato                                   |
 | --- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------- |
 | M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf` |
-| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | prossima, dopo l'identità visiva        |
+| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`  |
 | M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano |                                         |
 | M4  | Pagina Metodo, analytics, deploy Vercel                                               | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  |                                         |
 | M5  | Scenari 04-15 scritti e validati                                                      | `pnpm validate` passa su 15 file                                | in parallelo a M2-M4                    |
 
 ## 16. Stato di avanzamento e piano operativo
 
-### 16.1 Cosa esiste al 2026-09-16
+### 16.1 Cosa esiste al 2026-09-18
 
 Fatto in M1, oltre a quanto previsto dalla v0.6:
 
@@ -285,11 +285,17 @@ Fatto in M1, oltre a quanto previsto dalla v0.6:
 - Test sul caricatore contenuti (`src/engine/content.test.ts`).
 - README e questo documento.
 
-Non fatto, e volutamente: pagine ConceptLibrary e Method (M3/M4), FeedbackPanel (M2), persistenza (M3), analytics (M4), pre-commit hook (aperto), licenza (aperta).
+Fatto dopo M1 (2026-09-18):
 
-### 16.2 Prossimo passo: identità visiva
+- Identità visiva secondo §16.2 (commit `89d36a5`, `7c65a18`): token in `@theme`, Source Serif 4 / IBM Plex Sans / IBM Plex Mono da Google Fonts, tema chiaro e scuro.
+- Toggle manuale del tema (`a77be13`): parte dal sistema, la scelta è salvata in `anthropology-clash.v1` tramite `src/engine/storage.ts` (lettura e scrittura in try/catch, base per la persistenza di M3) e applicata prima del primo render da uno script inline in `index.html`.
+- M2, loop di gioco (`9285cd6`, merge `62fedef`): `FeedbackPanel`, `engine/sequence.ts` con test, navigazione tra scenari.
 
-Prima di M2 si interviene sulla grafica. Vincoli da rispettare nel farlo:
+Non fatto, e volutamente: pagine ConceptLibrary e Method (M3/M4), persistenza di livello e progressi (M3), analytics (M4), pre-commit hook (aperto), licenza (aperta).
+
+### 16.2 Identità visiva (applicata)
+
+Vincoli rispettati nell'implementazione e validi per ogni intervento grafico futuro:
 
 - Tailwind 4: i token (colori, font) si dichiarano in `@theme` dentro `src/index.css`, non in un file di configurazione. Palette del documento v0.6 come punto di partenza: fondo `#F1EFE4`, inchiostro `#26241F`, accento `#1F5C56`, argilla `#9A5A34`, con varianti scure.
 - Font caricati da Google Fonts o self-hosted; nessun font che richieda licenza a pagamento.
@@ -298,16 +304,23 @@ Prima di M2 si interviene sulla grafica. Vincoli da rispettare nel farlo:
 - Nessuna stringa nei componenti: ogni nuova etichetta passa da `src/locales/it.json`.
 - Il colore non deve mai suggerire un giudizio sulle scelte (niente verde/rosso per gli esiti).
 
-Output atteso: componenti esistenti restilizzati, `index.css` con i token, nessuna modifica a schema, engine o contenuti. Commit `feat: identità visiva`.
+Scelte effettive:
 
-### 16.3 Piano M2 — loop di gioco
+- Palette: fondo `#F1EFE4`, inchiostro `#26241F`, accento `#1F5C56` (con `accent-strong` `#174842` per gli hover), argilla `#A3532A` (più calda della v0.6, limite oltre il quale il testo piccolo perde l'AA sull'avorio). Varianti scure: fondo `#1B1A16`, accento `#5FBBAE`, argilla `#E69A5C`.
+- Ruoli: argilla = orientamento (riga sotto la barra, etichetta concetto, titoli di sezione, kicker); accento = azione (scelte, livello, bottoni). Nessun colore lega un esito a un giudizio.
+- Font: Source Serif 4 per titoli e testo narrativo (setup, feedback), IBM Plex Sans per la UI, IBM Plex Mono per etichette e livelli.
+- Contrasti minimi verificati: 4.61:1 (argilla su avorio), tutto il resto sopra 6:1. Nessuno scroll orizzontale a 375px. Focus visibile con outline accento.
+
+### 16.3 M2 — loop di gioco (chiusa)
+
+Implementato come da piano; note sull'esito:
 
 1. `FeedbackPanel`: feedback della scelta in evidenza, alternative sotto, fonte collassabile (chiusa per neofita, aperta per studente), blocco `deepen` con `ref`, `why`, `access` (solo studente).
 2. Stato di pagina: scelta corrente, `onSelect` in `ScenarioPage`; le scelte si disattivano dopo la selezione.
-3. Navigazione: "Prossimo scenario" (ordine per `id`) e "Torna ai concetti" (link inattivo fino a M3, o nascosto).
-4. Engine: `nextScenario(lang, currentId)` in `src/engine/` con test.
+3. Navigazione: "Prossimo scenario" (ordine per `id`); dopo l'ultimo scenario "Torna all'inizio". Il link ai concetti arriva con la libreria in M3.
+4. Engine: `nextScenarioId(lang, currentId)` in `src/engine/sequence.ts` con test.
 5. Locales: tutte le nuove etichette in `it.json`.
-6. Chiusura: i 3 scenari giocabili in entrambi i livelli; verifica manuale nel browser; commit e merge su `main`.
+6. Chiusura: i 3 scenari giocabili in entrambi i livelli, verificato nel browser il 2026-09-18; merge `62fedef`. Dopo la scelta il focus va al titolo "Cosa succede" (accessibilità); cambiare livello o scenario azzera la scelta. Le etichette di accesso (`PD`, `OA`, ...) sono tradotte in `it.json` sotto `access`.
 
 ### 16.4 Piano M3 — persistenza e libreria
 
@@ -340,6 +353,8 @@ In parallelo a M2-M4 perché tocca solo `src/content/`. Ordine: 04-08 e 10, 13, 
 | 2026-09-16 | CI e `vercel.json` anticipati a M1                                      | Costo minimo, protezione di `main` immediata                                                                                                                                               |
 | 2026-09-16 | Regole "2 scelte neofita / 3-4 studente" nello script, non nello schema | Lo schema resta identico a §15.1; il vincolo è editoriale                                                                                                                                  |
 | 2026-09-16 | Repository pubblico                                                     | Coerente con app gratuita; Vercel e Plausible/Umami senza limiti                                                                                                                           |
+| 2026-09-18 | Tema chiaro/scuro con toggle manuale, persistito da subito              | Richiesta esplicita; senza persistenza il toggle si azzererebbe a ogni apertura. `storage.ts` nasce ora e M3 lo estende                                                                    |
+| 2026-09-18 | Argilla `#A3532A` invece di un terracotta più acceso                    | Sotto 4.5:1 sull'avorio per il testo piccolo; il colore resta caldo ma leggibile                                                                                                           |
 | 2026-09-16 | Repository GitHub ricreato e riallineato alla storia locale (`659dfab`) | Il primo repo era stato ripopolato via upload web (CRLF, senza `.github/workflows/ci.yml`); la storia locale è quella di riferimento, gli hash precedenti alla ricreazione non valgono più |
 
 ### 16.8 Regola di sincronizzazione dei documenti
