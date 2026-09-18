@@ -21,7 +21,7 @@ export default function Home() {
       {first && (
         <Link
           to={`/s/${first.id}`}
-          className="inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 font-medium text-surface transition-colors hover:bg-ink"
+          className="inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 font-medium text-surface transition-colors hover:bg-accent-strong"
         >
           {t("home.start")}
           <span aria-hidden="true">→</span>

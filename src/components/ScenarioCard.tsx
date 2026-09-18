@@ -15,7 +15,7 @@ export default function ScenarioCard({ scenario, level, onSelect }: Props) {
   return (
     <article className="space-y-8">
       <header className="space-y-3">
-        <p className="font-mono text-xs uppercase tracking-widest text-accent">
+        <p className="font-mono text-xs uppercase tracking-widest text-clay">
           <span className="text-ink-soft">{t("scenario.concept")}</span> · {scenario.concept_label}
         </p>
         <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl">
@@ -26,10 +26,7 @@ export default function ScenarioCard({ scenario, level, onSelect }: Props) {
       <p className="font-serif text-lg leading-relaxed text-pretty sm:text-xl">{content.setup}</p>
 
       <section aria-labelledby="choices-heading" className="space-y-3">
-        <h2
-          id="choices-heading"
-          className="font-mono text-xs uppercase tracking-widest text-ink-soft"
-        >
+        <h2 id="choices-heading" className="font-mono text-xs uppercase tracking-widest text-clay">
           {t("scenario.choices")}
         </h2>
         <ul className="space-y-2">

@@ -8,8 +8,9 @@
   --line: #d8d2c0;
   --accent: #1f5c56;
   --accent-soft: #dceae7;
-  --clay: #9a5a34;
-  --clay-soft: #f1dfd1;
+  --clay: #a3532a;
+  --clay-soft: #f3ddc9;
+  --accent-strong: #174842;
   color-scheme: light;
 }
 
@@ -22,8 +23,9 @@
     --line: #3b382c;
     --accent: #5fbbae;
     --accent-soft: #22322f;
-    --clay: #d98a5a;
-    --clay-soft: #3a2a1e;
+    --clay: #e69a5c;
+    --clay-soft: #3d2a1c;
+    --accent-strong: #7ccfc3;
     color-scheme: dark;
   }
 }
@@ -36,8 +38,9 @@
   --line: #3b382c;
   --accent: #5fbbae;
   --accent-soft: #22322f;
-  --clay: #d98a5a;
-  --clay-soft: #3a2a1e;
+  --clay: #e69a5c;
+  --clay-soft: #3d2a1c;
+  --accent-strong: #7ccfc3;
   color-scheme: dark;
 }
 
@@ -49,6 +52,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-strong: var(--accent-strong);
   --color-clay: var(--clay);
   --color-clay-soft: var(--clay-soft);
 

@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">
-      <header className="border-b-2 border-ink">
+      <header className="border-b-2 border-clay">
         <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4">
           <Link
             to="/"
