@@ -1,0 +1,43 @@
+{
+  "id": "scenario_005",
+  "lang": "it",
+  "title": "Lo spirito della cosa donata",
+  "concept": "reciprocita",
+  "concept_label": "Reciprocità e dono",
+  "levels": {
+    "neofita": {
+      "setup": "Nuova Zelanda, primi del Novecento, in una comunità maori. Anni fa un amico ti ha dato un taonga, un oggetto di pregio come una mantella intrecciata, senza chiedere nulla in cambio e senza fissare un prezzo. Tempo dopo tu lo hai dato a una terza persona. Oggi quella persona torna e ti porta un dono 'in cambio' del taonga che le avevi dato. È tuo?",
+      "choices": [
+        { "id": "a", "text": "Sì: me lo ha dato a me, me lo tengo" },
+        { "id": "b", "text": "No: lo porto a chi mi diede il taonga all'inizio" }
+      ],
+      "feedback": {
+        "a": "Un anziano maori, Tamati Ranaipiri, spiegò nel 1909 all'etnografo Elsdon Best proprio questo caso: 'non sarebbe giusto (tika) da parte mia tenere questi taonga per me... se conservassi questo secondo taonga potrebbe venirmene del male, seriamente, perfino la morte'. Il dono che ti arriva dalla terza persona non è un premio per te: è ciò che il primo taonga ha prodotto, il suo hau, e il hau appartiene a chi lo ha messo in moto. Tenerlo non è avarizia ma qualcosa di più serio: trattieni una parte di chi ti ha donato per primo. Mauss (1925) parte da qui per dire che la cosa ricevuta 'non è inerte': anche dopo che il donatore l'ha lasciata, resta qualcosa di lui.",
+        "b": "È esattamente ciò che dice Tamati Ranaipiri, l'anziano maori da cui Mauss (1925) prende questo esempio: 'devo darteli perché sono il hau del taonga che mi hai dato'. Il dono che ti è tornato dalla terza persona è ciò che il primo taonga ha generato, e va a chi lo ha messo in moto. Così la catena si chiude e il legame con il primo donatore è rispettato. Mauss ne trae l'idea centrale del suo saggio: dare qualcosa a qualcuno è dare qualcosa di sé, e per questo ricevere obbliga a rendere. Non tutti gli antropologi hanno accettato la sua lettura 'spirituale' del hau; ma la regola pratica che Ranaipiri descrive resta la stessa: quello che guadagni grazie al dono di qualcuno non è tuo da tenere."
+      },
+      "source": "Mauss, Saggio sul dono, 1925, cap. I; Best, Maori Forest Lore, 1909"
+    },
+    "studente": {
+      "setup": "Aotearoa, Nuova Zelanda, primo Novecento. Elsdon Best raccoglie da Tamati Ranaipiri, uno dei suoi informatori maori, una spiegazione del hau, la forza o 'spirito' che abita le cose e la foresta. Mauss (1925) farà di quel testo la chiave dell'obbligo di rendere. Sei nella posizione dell'uomo di mezzo dell'esempio di Ranaipiri: anni fa A ti ha dato un taonga, un bene di pregio come una mantella o un ornamento di pounamu, 'senza prezzo fissato, senza fare mercato'. Tu lo hai dato a C. Ora C, 'trascorso un certo tempo', decide di restituire qualcosa in pagamento (utu) e ti porta un taonga. Cosa ne fai?",
+      "choices": [
+        { "id": "a", "text": "Lo tieni: C lo ha dato a te, e A non ha mai chiesto nulla" },
+        { "id": "b", "text": "Lo porti ad A: è il hau del taonga che A ti aveva dato" },
+        { "id": "c", "text": "Tieni il taonga di C e mandi ad A qualcosa di tuo, di pari valore" },
+        { "id": "d", "text": "Lo rimetti in circolo: lo dai a D, per allargare la catena" }
+      ],
+      "feedback": {
+        "a": "Ranaipiri è netto: 'non sarebbe giusto (tika) da parte mia tenere questi taonga per me, siano essi desiderabili (rawe) o sgradevoli (kino)... se conservassi questo secondo taonga potrebbe venirmene del male, seriamente, perfino la morte'. Mauss ne ricava che la cosa ricevuta 'non è inerte': anche abbandonata dal donatore 'è ancora qualcosa di lui', e 'il hau insegue ogni detentore'. Tenere il ritorno di C significa trattenere ciò che il taonga di A ha generato, cioè una parte di A. Firth (1929), che conosceva la lingua e il contesto, contesterà la lettura di Mauss: la sanzione che Ranaipiri teme è sociale e magica, stregoneria e perdita di faccia, non uno spirito della cosa. Ma sul punto pratico i due concordano: quel taonga non resta con te.",
+        "b": "È la condotta che Ranaipiri descrive come tika, giusta: 'devo darteli perché sono il hau del taonga che mi hai dato'. Mauss vi legge la soluzione del problema del dono: 'presentare qualcosa a qualcuno è presentare qualcosa di sé', e il hau 'vuole tornare al luogo della sua nascita'. L'unica oscurità, dice Mauss, è la terza persona: perché serve C? Sahlins (1972) risponde leggendo il hau come 'rendimento': il dono di A ha fruttato qualcosa passando per C, e quel frutto appartiene ad A. Serve un terzo perché solo così il taonga produce qualcosa da restituire: il dono di un uomo non deve diventare il capitale di un altro. Portando il taonga di C ad A chiudi il cerchio e resti in credito di fiducia con entrambi.",
+        "c": "Nei termini di Ranaipiri non è la stessa cosa: ciò che deve tornare ad A è quel taonga, perché quello 'è il hau del taonga' di A; un oggetto tuo, per quanto di pari valore, non porta con sé lo stesso hau. Da un altro punto di vista, però, la tua mossa regge. Lévi-Strauss (1950) rimprovera a Mauss di essersi lasciato 'mistificare' dalla teoria indigena: il hau è la spiegazione che i maori danno dello scambio, non la sua causa; ciò che conta è che il ciclo dare-ricevere-rendere si chiuda, e con il tuo invio ad A si chiude. Resta una domanda che Sahlins (1972) porrebbe: tenendo il taonga di C ti sei tenuto il frutto del dono di A. Nel diritto maori descritto da Best, il valore non è tutto: conta da dove viene la cosa.",
+        "d": "Allargare la catena sembra generoso, ma sposta il problema. Mauss, commentando Ranaipiri, scrive che il hau insegue 'non solo il primo donatario, eventualmente anche un terzo, ma ogni individuo a cui il taonga sia semplicemente trasmesso': D entra nell'obbligo, e il ritorno resta dovuto ad A. Il testo maori non descrive un anello aperto come il Kula, ma un movimento di ritorno all'origine: 'è il hau che vuole tornare al luogo della sua nascita'. Weiner (1992) aggiunge una lettura dai taonga stessi: gli oggetti di pregio maori portano con sé l'identità del gruppo da cui vengono e non diventano mai del tutto di chi li detiene. Puoi far viaggiare il taonga, ma il debito verso A non viaggia con lui: resta tuo."
+      },
+      "source": "Mauss, Essai sur le don, 1925, cap. I §II 'L'esprit de la chose donnée (Maori)'; Best, 'Maori Forest Lore', Transactions of the New Zealand Institute 42, 1909, pp. 433-481; Sahlins, Stone Age Economics, 1972, cap. 4 'The Spirit of the Gift'; Lévi-Strauss, Introduction à l'œuvre de Marcel Mauss, 1950; Firth, Primitive Economics of the New Zealand Maori, 1929; Weiner, Inalienable Possessions, 1992",
+      "deepen": [
+        { "ref": "Mauss, Essai sur le don, 1925, cap. I §II 'L'esprit de la chose donnée (Maori)'", "why": "Il passo di Ranaipiri citato per intero e il commento in cui Mauss lo trasforma nella chiave dell'obbligo di rendere", "access": "PD (fr)", "url": "http://classiques.uqac.ca/classiques/mauss_marcel/socio_et_anthropo/2_essai_sur_le_don/essai_sur_le_don.html" },
+        { "ref": "Best, 'Maori Forest Lore', Transactions of the New Zealand Institute 42, 1909, pp. 433-481", "why": "Il testo originale, in maori e nella traduzione inglese di Best, da cui Mauss cita: da confrontare con la sua glossa", "access": "OA" },
+        { "ref": "Sahlins, Stone Age Economics, 1972, cap. 4 'The Spirit of the Gift'", "why": "Rilegge il hau come rendimento del dono e spiega perché serve una terza persona: ciò che un dono produce deve tornare a chi lo ha dato", "access": "NON-OA" },
+        { "ref": "Lévi-Strauss, Introduction à l'œuvre de Marcel Mauss, 1950", "why": "La critica classica: Mauss si è lasciato 'mistificare' dalla teoria indigena del hau; lo scambio viene prima delle spiegazioni che se ne danno", "access": "NON-OA" }
+      ]
+    }
+  }
+}
