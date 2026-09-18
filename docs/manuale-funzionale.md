@@ -1,6 +1,6 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.13 — 2026-09-18 — Stato: pubblicato (M1-M4 chiuse; M5 in corso: 6 scenari su 15, §16.6)
+Versione 0.14 — 2026-09-18 — Stato: pubblicato (M1-M4 chiuse; M5 in corso: 7 scenari su 15, §16.6)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -193,23 +193,23 @@ Italiano attivo. Inglese predisposto: chiave `lang` nei JSON, cartella `src/cont
 
 ## 13. Backlog scenari MVP
 
-| #   | Titolo di lavoro                 | Concetto            | Fonte primaria                                             | Accesso   | Stato        |
-| --- | -------------------------------- | ------------------- | ---------------------------------------------------------- | --------- | ------------ |
-| 01  | La collana che non si può tenere | Reciprocità         | Malinowski, Argonauts, 1922                                | PD        | **validato** |
-| 02  | La carne è troppo magra          | Reciprocità         | Lee, Eating Christmas in the Kalahari, 1969                | OA        | **validato** |
-| 03  | I riti del corpo dei Nacirema    | Relativismo         | Miner, American Anthropologist, 1956                       | OA        | **validato** |
-| 04  | Bruciare la ricchezza            | Reciprocità         | Boas, 1897; Mauss, 1925                                    | PD        | scritto      |
-| 05  | Lo spirito della cosa donata     | Reciprocità         | Mauss, Essai sur le don, 1925                              | PD (fr)   | scritto      |
-| 06  | Cugino o fratello?               | Parentela           | Morgan, Systems of Consanguinity, 1871                     | PD        | scritto      |
-| 07  | L'eredità va al nipote           | Parentela           | Malinowski, 1922 e 1929                                    | PD (1922) | da scrivere  |
-| 08  | Amleto tra i Tiv                 | Parentela           | Bohannan, Shakespeare in the Bush, 1966                    | OA        | da scrivere  |
-| 09  | Sposare un fantasma              | Parentela           | Evans-Pritchard, Kinship and Marriage among the Nuer, 1951 | NON-OA    | da validare  |
-| 10  | La soglia                        | Rituale             | van Gennep, Les rites de passage, 1909                     | PD (fr)   | da scrivere  |
-| 11  | Il combattimento di galli        | Rituale             | Geertz, Deep Play, 1972                                    | NON-OA    | da validare  |
-| 12  | L'animale abominevole            | Rituale             | Douglas, Purity and Danger, 1966                           | NON-OA    | da validare  |
-| 13  | Ordinare il museo                | Relativismo         | Boas, Science, 1887                                        | PD        | da scrivere  |
-| 14  | Non pubblicarlo                  | Relativismo / etica | AAA, Principles of Professional Responsibility, 2012       | OA        | da scrivere  |
-| 15  | Il tempo delle mucche            | Relativismo         | Evans-Pritchard, The Nuer, 1940                            | NON-OA    | da validare  |
+| #   | Titolo di lavoro                 | Concetto            | Fonte primaria                                             | Accesso | Stato        |
+| --- | -------------------------------- | ------------------- | ---------------------------------------------------------- | ------- | ------------ |
+| 01  | La collana che non si può tenere | Reciprocità         | Malinowski, Argonauts, 1922                                | PD      | **validato** |
+| 02  | La carne è troppo magra          | Reciprocità         | Lee, Eating Christmas in the Kalahari, 1969                | OA      | **validato** |
+| 03  | I riti del corpo dei Nacirema    | Relativismo         | Miner, American Anthropologist, 1956                       | OA      | **validato** |
+| 04  | Bruciare la ricchezza            | Reciprocità         | Boas, 1897; Mauss, 1925                                    | PD      | scritto      |
+| 05  | Lo spirito della cosa donata     | Reciprocità         | Mauss, Essai sur le don, 1925                              | PD (fr) | scritto      |
+| 06  | Cugino o fratello?               | Parentela           | Morgan, Systems of Consanguinity, 1871                     | PD      | scritto      |
+| 07  | L'eredità va al nipote           | Parentela           | Malinowski, 1922, 1926 e 1929                              | PD      | scritto      |
+| 08  | Amleto tra i Tiv                 | Parentela           | Bohannan, Shakespeare in the Bush, 1966                    | OA      | da scrivere  |
+| 09  | Sposare un fantasma              | Parentela           | Evans-Pritchard, Kinship and Marriage among the Nuer, 1951 | NON-OA  | da validare  |
+| 10  | La soglia                        | Rituale             | van Gennep, Les rites de passage, 1909                     | PD (fr) | da scrivere  |
+| 11  | Il combattimento di galli        | Rituale             | Geertz, Deep Play, 1972                                    | NON-OA  | da validare  |
+| 12  | L'animale abominevole            | Rituale             | Douglas, Purity and Danger, 1966                           | NON-OA  | da validare  |
+| 13  | Ordinare il museo                | Relativismo         | Boas, Science, 1887                                        | PD      | da scrivere  |
+| 14  | Non pubblicarlo                  | Relativismo / etica | AAA, Principles of Professional Responsibility, 2012       | OA      | da scrivere  |
+| 15  | Il tempo delle mucche            | Relativismo         | Evans-Pritchard, The Nuer, 1940                            | NON-OA  | da validare  |
 
 Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura: reciprocità 4, parentela 4, rituale 3, relativismo/etica 4.
 
@@ -217,7 +217,7 @@ Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su
 
 Repertori: DOAJ (riviste OA: Cultural Anthropology, Social Anthropology, JASO, Kinship), Open Anthropological Research (archivio OA), JSTOR (gratis American Anthropologist 1888-1930 e pre-1930), AnthroSource (solo articoli marcati OA; Miner 1956 e Codice etico AAA liberi), Open Encyclopedia of Anthropology (Cambridge, voci "Gifts", "Kinship", "Ritual").
 
-Fonti primarie aperte individuate: Malinowski 1922 (Gutenberg #55822), Miner 1956 (DOI 10.1525/aa.1956.58.3.02a00080), Bohannan 1966 e Lee 1969 (Natural History), Mauss 1925 (Classiques UQAC), Morgan 1871 (Internet Archive), van Gennep 1909, Boas 1887, AAA 2012.
+Fonti primarie aperte individuate: Malinowski 1922 (Gutenberg #55822; Internet Archive), Malinowski 1926 e 1929 (Internet Archive; pubblico dominio in UE dal 2013, autore morto nel 1942, e negli USA dal 2022 e 2025), Miner 1956 (DOI 10.1525/aa.1956.58.3.02a00080), Bohannan 1966 e Lee 1969 (Natural History), Mauss 1925 (Classiques UQAC), Morgan 1871 (Internet Archive), van Gennep 1909, Boas 1887, AAA 2012.
 
 Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. Alla data, per gli scenari 01-03 e i concetti: Malinowski 1922; Mauss 1925; Bohannan 1955 e 1966; Weiner 1992; Leach & Leach 1983; Lee 1969 e 1979; Woodburn 1982; Wilmsen 1989; Lee & Guenther 1991; Miner 1956 e 1952; Leathem 2023 (accesso da verificare); Sahlins 1972; Morgan 1871; van Gennep 1909; Turner 1969; Douglas 1966; Boas 1887. In M4 la pagina Metodo va generata o allineata a questo elenco.
 
@@ -363,7 +363,7 @@ Procedura seguita per ogni scenario, da mantenere:
 4. Verificare nel browser: entrambi i livelli, pagina Concetti, pagina Metodo (nessuna voce doppia in bibliografia).
 5. Nel riepilogo al termine, elencare separatamente ciò che è verificato sul testo e ciò che è citato a memoria da fonti NON-OA.
 
-Scritti al 2026-09-18: 04 potlatch (Boas 1897 e Mauss 1925 verificati; Codere 1950, Drucker & Heizer 1967, Cole & Chaikin 1990 da confermare), 05 hau (Mauss 1925 verificato; Sahlins 1972, Lévi-Strauss 1950, Firth 1929 da confermare; manca l'URL di Best 1909 su Papers Past), 06 terminologia seneca (Morgan 1871 verificato; Kroeber 1909, Murdock 1949, Lounsbury 1964, Trautmann 1987 da confermare). Prossimo: 07 "L'eredità va al nipote" (Malinowski 1922 e 1929).
+Scritti al 2026-09-18: 04 potlatch (Boas 1897 e Mauss 1925 verificati; Codere 1950, Drucker & Heizer 1967, Cole & Chaikin 1990 da confermare), 05 hau (Mauss 1925 verificato; Sahlins 1972, Lévi-Strauss 1950, Firth 1929 da confermare; manca l'URL di Best 1909 su Papers Past), 06 terminologia seneca (Morgan 1871 verificato; Kroeber 1909, Murdock 1949, Lounsbury 1964, Trautmann 1987 da confermare), 07 eredità trobriandese (Malinowski 1922, 1926 e 1929 verificati sul testo: caso di Namwana Guya'u, pokala, matrimonio tra cugini incrociati; Lévi-Strauss 1945 e Weiner 1988 da confermare; Gutenberg non raggiungibile dalla sessione, testi letti su Internet Archive; DOI di Lévi-Strauss 1945 verificato su Crossref, accesso da verificare). Prossimo: 08 "Amleto tra i Tiv" (Bohannan 1966).
 
 ### 16.7 Decisioni prese durante M1
 
