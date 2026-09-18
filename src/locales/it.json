@@ -6,6 +6,7 @@
   },
   "nav": {
     "label": "Navigazione",
+    "skipToContent": "Salta al contenuto principale",
     "concepts": "Concetti",
     "method": "Metodo e fonti",
     "methodShort": "Metodo"
