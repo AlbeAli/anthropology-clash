@@ -8,15 +8,23 @@ export default function Home() {
   const first = getScenarios(DEFAULT_LANG)[0];
 
   return (
-    <div className="space-y-6">
-      <h1 className="font-serif text-4xl font-semibold">{t("app.name")}</h1>
-      <p className="text-lg text-stone-700">{t("app.tagline")}</p>
+    <div className="space-y-8">
+      <div className="space-y-4">
+        <p className="font-mono text-xs uppercase tracking-widest text-clay">{t("home.kicker")}</p>
+        <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
+          {t("app.name")}
+        </h1>
+        <p className="max-w-prose font-serif text-lg leading-relaxed text-ink-soft sm:text-xl">
+          {t("app.tagline")}
+        </p>
+      </div>
       {first && (
         <Link
           to={`/s/${first.id}`}
-          className="inline-block rounded bg-teal-800 px-5 py-3 text-white hover:bg-teal-900"
+          className="inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 font-medium text-surface transition-colors hover:bg-ink"
         >
           {t("home.start")}
+          <span aria-hidden="true">→</span>
         </Link>
       )}
     </div>

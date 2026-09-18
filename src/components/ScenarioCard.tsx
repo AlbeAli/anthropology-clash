@@ -13,24 +13,37 @@ export default function ScenarioCard({ scenario, level, onSelect }: Props) {
   const content = scenario.levels[level];
 
   return (
-    <article className="space-y-6">
-      <header className="space-y-2">
-        <p className="font-mono text-xs uppercase tracking-wide text-teal-800">
-          {t("scenario.concept")}: {scenario.concept_label}
+    <article className="space-y-8">
+      <header className="space-y-3">
+        <p className="font-mono text-xs uppercase tracking-widest text-accent">
+          <span className="text-ink-soft">{t("scenario.concept")}</span> · {scenario.concept_label}
         </p>
-        <h1 className="font-serif text-3xl font-semibold">{scenario.title}</h1>
+        <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl">
+          {scenario.title}
+        </h1>
       </header>
-      <p className="text-lg leading-relaxed">{content.setup}</p>
-      <section aria-label={t("scenario.choices")} className="space-y-2">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-600">
+
+      <p className="font-serif text-lg leading-relaxed text-pretty sm:text-xl">{content.setup}</p>
+
+      <section aria-labelledby="choices-heading" className="space-y-3">
+        <h2
+          id="choices-heading"
+          className="font-mono text-xs uppercase tracking-widest text-ink-soft"
+        >
           {t("scenario.choices")}
         </h2>
-        {content.choices.map((choice) => (
-          <ChoiceButton key={choice.id} id={choice.id} text={choice.text} onSelect={onSelect} />
-        ))}
+        <ul className="space-y-2">
+          {content.choices.map((choice) => (
+            <li key={choice.id}>
+              <ChoiceButton id={choice.id} text={choice.text} onSelect={onSelect} />
+            </li>
+          ))}
+        </ul>
       </section>
-      <footer className="border-t border-stone-300 pt-3 text-sm text-stone-600">
-        <span className="font-semibold">{t("scenario.source")}:</span> {content.source}
+
+      <footer className="border-t border-line pt-4 text-sm leading-relaxed text-ink-soft">
+        <span className="font-mono text-xs uppercase tracking-widest">{t("scenario.source")}</span>
+        <p className="mt-1">{content.source}</p>
       </footer>
     </article>
   );

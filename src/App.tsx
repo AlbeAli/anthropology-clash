@@ -11,21 +11,29 @@ export default function App() {
   const [level, setLevel] = useState<Level>("neofita");
 
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-900">
-      <header className="border-b border-stone-300 bg-white">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3">
-          <Link to="/" className="font-serif text-lg font-semibold">
+    <div className="flex min-h-dvh flex-col bg-bg text-ink">
+      <header className="border-b-2 border-ink">
+        <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4">
+          <Link
+            to="/"
+            className="font-serif text-xl font-semibold tracking-tight text-ink hover:text-accent"
+          >
             {t("app.name")}
           </Link>
           <LevelToggle level={level} onChange={setLevel} />
         </div>
       </header>
-      <main className="mx-auto max-w-3xl px-4 py-8">
+      <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:py-12">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/s/:id" element={<ScenarioPage level={level} />} />
         </Routes>
       </main>
+      <footer className="border-t border-line">
+        <p className="mx-auto max-w-2xl px-4 py-4 font-mono text-xs text-ink-soft">
+          {t("app.footer")}
+        </p>
+      </footer>
     </div>
   );
 }

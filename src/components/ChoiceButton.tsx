@@ -9,10 +9,15 @@ export default function ChoiceButton({ id, text, onSelect }: Props) {
     <button
       type="button"
       onClick={() => onSelect(id)}
-      className="w-full rounded border border-stone-300 bg-white px-4 py-3 text-left hover:border-teal-800 focus-visible:outline-2 focus-visible:outline-teal-800"
+      className="group flex w-full items-start gap-4 rounded-sm border border-line bg-surface px-4 py-4 text-left text-base leading-snug text-ink transition-colors hover:border-accent hover:bg-accent-soft active:bg-accent-soft"
     >
-      <span className="mr-2 font-mono text-sm uppercase text-teal-800">{id}</span>
-      {text}
+      <span
+        aria-hidden="true"
+        className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-sm border border-accent font-mono text-xs font-medium uppercase text-accent transition-colors group-hover:bg-accent group-hover:text-surface"
+      >
+        {id}
+      </span>
+      <span>{text}</span>
     </button>
   );
 }

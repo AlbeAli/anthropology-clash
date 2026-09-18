@@ -12,22 +12,27 @@ export default function LevelToggle({ level, onChange }: Props) {
     <div
       role="group"
       aria-label={t("level.label")}
-      className="flex gap-1 rounded border border-stone-300 p-1"
+      className="flex items-center gap-1 rounded-sm border border-line bg-surface p-1"
     >
-      {Level.options.map((option) => (
-        <button
-          key={option}
-          type="button"
-          aria-pressed={level === option}
-          onClick={() => onChange(option)}
-          className={
-            "rounded px-3 py-1 text-sm " +
-            (level === option ? "bg-teal-800 text-white" : "text-stone-700 hover:bg-stone-100")
-          }
-        >
-          {t(`level.${option}`)}
-        </button>
-      ))}
+      {Level.options.map((option) => {
+        const active = level === option;
+        return (
+          <button
+            key={option}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onChange(option)}
+            className={
+              "rounded-sm px-3 py-1.5 font-mono text-xs uppercase tracking-wide transition-colors " +
+              (active
+                ? "bg-accent text-surface"
+                : "text-ink-soft hover:bg-accent-soft hover:text-accent")
+            }
+          >
+            {t(`level.${option}`)}
+          </button>
+        );
+      })}
     </div>
   );
 }

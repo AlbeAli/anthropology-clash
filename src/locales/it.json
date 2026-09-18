@@ -1,7 +1,8 @@
 {
   "app": {
     "name": "Anthropology Clash",
-    "tagline": "Scenari a bivio ispirati a casi etnografici reali"
+    "tagline": "Scenari a bivio ispirati a casi etnografici reali",
+    "footer": "Nome provvisorio. Nessun account e nessun cookie: i progressi restano nel tuo browser."
   },
   "nav": {
     "home": "Home",
@@ -14,6 +15,7 @@
     "studente": "Studente"
   },
   "home": {
+    "kicker": "Un dilemma etnografico alla volta",
     "start": "Inizia dal primo scenario"
   },
   "scenario": {
