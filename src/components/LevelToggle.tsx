@@ -23,7 +23,7 @@ export default function LevelToggle({ level, onChange }: Props) {
             aria-pressed={active}
             onClick={() => onChange(option)}
             className={
-              "rounded-sm px-3 py-1.5 font-mono text-xs uppercase tracking-wide transition-colors " +
+              "rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wide transition-colors " +
               (active
                 ? "bg-accent text-surface"
                 : "text-ink-soft hover:bg-accent-soft hover:text-accent")

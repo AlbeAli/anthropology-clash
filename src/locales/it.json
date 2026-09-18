@@ -16,7 +16,17 @@
   },
   "home": {
     "kicker": "Un dilemma etnografico alla volta",
-    "start": "Inizia dal primo scenario"
+    "start": "Inizia dal primo scenario",
+    "levelHeading": "Scegli il livello",
+    "levels": {
+      "neofita": "Linguaggio comune, due scelte, spiegazione breve. Per chi parte da zero.",
+      "studente": "Contesto etnografico, tre o quattro scelte, riferimenti teorici e letture per approfondire."
+    },
+    "progressHeading": "Il tuo percorso",
+    "progress": "Completati: {{done}} di {{total}}",
+    "continue": "Continua la sequenza",
+    "replay": "Rigioca dall'inizio",
+    "pickTheme": "Scegli un tema"
   },
   "scenario": {
     "concept": "Concetto",
@@ -28,7 +38,8 @@
     "deepen": "Per approfondire",
     "next": "Prossimo scenario",
     "restart": "Torna all'inizio",
-    "newTab": "si apre in una nuova scheda"
+    "newTab": "si apre in una nuova scheda",
+    "backToConcepts": "Torna ai concetti"
   },
   "theme": {
     "switchTo": {
@@ -42,5 +53,21 @@
     "OA": "Accesso aperto",
     "NON-OA": "Sotto diritti d'autore",
     "verificare": "Accesso da verificare"
+  },
+  "lang": {
+    "label": "Lingua",
+    "it": "Italiano"
+  },
+  "streak": {
+    "title": "Giorni consecutivi con almeno uno scenario completato",
+    "days_one": "{{count}} giorno di serie",
+    "days_other": "{{count}} giorni di serie"
+  },
+  "concepts": {
+    "title": "Libreria dei concetti",
+    "intro": "Quattro concetti, ciascuno con gli scenari che lo mettono alla prova. Puoi aprire qualsiasi scenario, in qualsiasi ordine, con il livello che preferisci.",
+    "noScenarios": "Nessuno scenario ancora disponibile",
+    "todo": "Da fare",
+    "done": "Completato · {{level}}"
   }
 }
