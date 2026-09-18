@@ -33,8 +33,8 @@
       },
       "source": "Malinowski, Argonauts of the Western Pacific, 1922, cap. III e XIV (Project Gutenberg #55822); Mauss, Essai sur le don, 1925; Bohannan, 'Some Principles of Exchange and Investment among the Tiv', American Anthropologist 57(1), 1955",
       "deepen": [
-        { "ref": "Malinowski, Argonauts of the Western Pacific, 1922, cap. III 'The Essentials of the Kula'", "why": "Il capitolo che definisce il Kula: regole, direzioni, partner, distinzione da gimwali", "access": "PD" },
-        { "ref": "Mauss, Essai sur le don, 1925, cap. I e II", "why": "Rilettura del Kula come caso di 'prestazione totale'; da confrontare con ciò che Malinowski dice davvero", "access": "PD (fr)" },
+        { "ref": "Malinowski, Argonauts of the Western Pacific, 1922, cap. III 'The Essentials of the Kula'", "why": "Il capitolo che definisce il Kula: regole, direzioni, partner, distinzione da gimwali", "access": "PD", "url": "https://www.gutenberg.org/ebooks/55822" },
+        { "ref": "Mauss, Essai sur le don, 1925, cap. I e II", "why": "Rilettura del Kula come caso di 'prestazione totale'; da confrontare con ciò che Malinowski dice davvero", "access": "PD (fr)", "url": "http://classiques.uqac.ca/classiques/mauss_marcel/socio_et_anthropo/2_essai_sur_le_don/essai_sur_le_don.html" },
         { "ref": "Weiner, Inalienable Possessions, 1992", "why": "Critica alla lettura di Mauss dal campo trobriandese: cosa si dà e cosa si trattiene ('keeping-while-giving')", "access": "NON-OA" },
         { "ref": "Leach & Leach (a cura di), The Kula: New Perspectives on Massim Exchange, 1983", "why": "Ripresa collettiva del Kula sessant'anni dopo: i dati di Malinowski riletti da più isole", "access": "NON-OA" }
       ]

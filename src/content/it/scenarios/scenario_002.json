@@ -35,8 +35,8 @@
       "deepen": [
         { "ref": "Lee, 'Eating Christmas in the Kalahari', 1969", "why": "Testo integrale, breve: da rileggere annotando chi dice cosa e in quale momento della vicenda", "access": "OA" },
         { "ref": "Lee, The !Kung San: Men, Women and Work in a Foraging Society, 1979", "why": "La monografia da cui l'episodio proviene: dati su condivisione, caccia e proprietà della preda", "access": "NON-OA" },
-        { "ref": "Woodburn, 'Egalitarian Societies', Man 17(3), 1982", "why": "Il quadro teorico: società a ritorno immediato e meccanismi di livellamento", "access": "NON-OA" },
-        { "ref": "Wilmsen, Land Filled with Flies, 1989 e la replica di Lee & Guenther, Current Anthropology 32(5), 1991", "why": "Il 'dibattito sul Kalahari': quanto i Ju/'hoansi fossero davvero isolati cacciatori-raccoglitori; ridimensiona ogni lettura idealizzante", "access": "NON-OA" }
+        { "ref": "Woodburn, 'Egalitarian Societies', Man 17(3), 1982", "why": "Il quadro teorico: società a ritorno immediato e meccanismi di livellamento", "access": "NON-OA", "url": "https://doi.org/10.2307/2801707" },
+        { "ref": "Wilmsen, Land Filled with Flies, 1989 e la replica di Lee & Guenther, Current Anthropology 32(5), 1991", "why": "Il 'dibattito sul Kalahari': quanto i Ju/'hoansi fossero davvero isolati cacciatori-raccoglitori; ridimensiona ogni lettura idealizzante", "access": "NON-OA", "url": "https://doi.org/10.1086/204006" }
       ]
     }
   }

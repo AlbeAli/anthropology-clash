@@ -33,9 +33,9 @@
       },
       "source": "Miner, 'Body Ritual among the Nacirema', American Anthropologist 58(3), 1956, DOI 10.1525/aa.1956.58.3.02a00080; Leathem, 'Comments on a found text: Return to Acirema', American Anthropologist, 2023, DOI 10.1111/aman.13871",
       "deepen": [
-        { "ref": "Miner, 'Body Ritual among the Nacirema', 1956", "why": "Testo integrale, 5 pagine: da rileggere cercando ogni riferimento accademico reale (Linton, Murdock, Malinowski) e chiedendosi cosa fa in una satira", "access": "OA" },
-        { "ref": "Leathem, 'Comments on a found text: Return to Acirema', American Anthropologist, 2023", "why": "Ripresa contemporanea del dispositivo e discussione del suo uso in aula", "access": "verificare" },
-        { "ref": "Miner, 'The Folk-Urban Continuum', American Sociological Review 17(5), 1952", "why": "Il Miner 'serio' quattro anni prima: utile per capire da quale tradizione (Redfield, comunità folk) viene la parodia", "access": "NON-OA" }
+        { "ref": "Miner, 'Body Ritual among the Nacirema', 1956", "why": "Testo integrale, 5 pagine: da rileggere cercando ogni riferimento accademico reale (Linton, Murdock, Malinowski) e chiedendosi cosa fa in una satira", "access": "OA", "url": "https://doi.org/10.1525/aa.1956.58.3.02a00080" },
+        { "ref": "Leathem, 'Comments on a found text: Return to Acirema', American Anthropologist, 2023", "why": "Ripresa contemporanea del dispositivo e discussione del suo uso in aula", "access": "verificare", "url": "https://doi.org/10.1111/aman.13871" },
+        { "ref": "Miner, 'The Folk-Urban Continuum', American Sociological Review 17(5), 1952", "why": "Il Miner 'serio' quattro anni prima: utile per capire da quale tradizione (Redfield, comunità folk) viene la parodia", "access": "NON-OA", "url": "https://doi.org/10.2307/2088218" }
       ]
     }
   }
