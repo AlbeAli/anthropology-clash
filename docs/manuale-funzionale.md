@@ -1,6 +1,6 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.14 — 2026-09-18 — Stato: pubblicato (M1-M4 chiuse; M5 in corso: 7 scenari su 15, §16.6)
+Versione 0.15 — 2026-09-18 — Stato: pubblicato (M1-M4 chiuse; M5 in corso: 8 scenari su 15, §16.6)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -202,7 +202,7 @@ Italiano attivo. Inglese predisposto: chiave `lang` nei JSON, cartella `src/cont
 | 05  | Lo spirito della cosa donata     | Reciprocità         | Mauss, Essai sur le don, 1925                              | PD (fr) | scritto      |
 | 06  | Cugino o fratello?               | Parentela           | Morgan, Systems of Consanguinity, 1871                     | PD      | scritto      |
 | 07  | L'eredità va al nipote           | Parentela           | Malinowski, 1922, 1926 e 1929                              | PD      | scritto      |
-| 08  | Amleto tra i Tiv                 | Parentela           | Bohannan, Shakespeare in the Bush, 1966                    | OA      | da scrivere  |
+| 08  | Amleto tra i Tiv                 | Parentela           | Bohannan, Shakespeare in the Bush, 1966                    | OA      | scritto      |
 | 09  | Sposare un fantasma              | Parentela           | Evans-Pritchard, Kinship and Marriage among the Nuer, 1951 | NON-OA  | da validare  |
 | 10  | La soglia                        | Rituale             | van Gennep, Les rites de passage, 1909                     | PD (fr) | da scrivere  |
 | 11  | Il combattimento di galli        | Rituale             | Geertz, Deep Play, 1972                                    | NON-OA  | da validare  |
@@ -363,7 +363,7 @@ Procedura seguita per ogni scenario, da mantenere:
 4. Verificare nel browser: entrambi i livelli, pagina Concetti, pagina Metodo (nessuna voce doppia in bibliografia).
 5. Nel riepilogo al termine, elencare separatamente ciò che è verificato sul testo e ciò che è citato a memoria da fonti NON-OA.
 
-Scritti al 2026-09-18: 04 potlatch (Boas 1897 e Mauss 1925 verificati; Codere 1950, Drucker & Heizer 1967, Cole & Chaikin 1990 da confermare), 05 hau (Mauss 1925 verificato; Sahlins 1972, Lévi-Strauss 1950, Firth 1929 da confermare; manca l'URL di Best 1909 su Papers Past), 06 terminologia seneca (Morgan 1871 verificato; Kroeber 1909, Murdock 1949, Lounsbury 1964, Trautmann 1987 da confermare), 07 eredità trobriandese (Malinowski 1922, 1926 e 1929 verificati sul testo: caso di Namwana Guya'u, pokala, matrimonio tra cugini incrociati; Lévi-Strauss 1945 e Weiner 1988 da confermare; Gutenberg non raggiungibile dalla sessione, testi letti su Internet Archive; DOI di Lévi-Strauss 1945 verificato su Crossref, accesso da verificare). Prossimo: 08 "Amleto tra i Tiv" (Bohannan 1966).
+Scritti al 2026-09-18: 04 potlatch (Boas 1897 e Mauss 1925 verificati; Codere 1950, Drucker & Heizer 1967, Cole & Chaikin 1990 da confermare), 05 hau (Mauss 1925 verificato; Sahlins 1972, Lévi-Strauss 1950, Firth 1929 da confermare; manca l'URL di Best 1909 su Papers Past), 06 terminologia seneca (Morgan 1871 verificato; Kroeber 1909, Murdock 1949, Lounsbury 1964, Trautmann 1987 da confermare), 07 eredità trobriandese (Malinowski 1922, 1926 e 1929 verificati sul testo: caso di Namwana Guya'u, pokala, matrimonio tra cugini incrociati; Lévi-Strauss 1945 e Weiner 1988 da confermare; Gutenberg non raggiungibile dalla sessione, testi letti su Internet Archive; DOI di Lévi-Strauss 1945 verificato su Crossref, accesso da verificare). 08 Amleto tra i Tiv (Bohannan 1966 verificato sul testo integrale del sito di Natural History, URL ufficiale in bibliografia; Bohannan 1952 e Sahlins 1961 con DOI verificati su Crossref ma contenuto citato a memoria; Bohannan & Bohannan 1953, Bohannan 1958, Radcliffe-Brown 1950 da confermare). Prossimo: 10 "La soglia" (van Gennep 1909), poi 13 e 14; 09, 11, 12, 15 dopo la validazione sulle fonti NON-OA.
 
 ### 16.7 Decisioni prese durante M1
 
