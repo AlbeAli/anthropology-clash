@@ -30,6 +30,7 @@ src/content      it/scenarios/*.json, it/concepts.json, en/...
 src/locales      it.json (fonte di verità), en.json
 src/schema       scenario.schema.ts
 src/pages        Home, Scenario, ConceptLibrary, Method
+src/state        AppState.tsx (context React: livello, tema, progressi, streak)
 scripts          validate-content.ts
 ```
 

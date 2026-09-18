@@ -1,6 +1,6 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.9 — 2026-09-18 — Stato: in sviluppo (M1 e M2 chiuse, identità visiva applicata; prossimo passo: M3, §16.4)
+Versione 0.10 — 2026-09-18 — Stato: in sviluppo (M1, M2 e M3 chiuse; prossimo passo: M4, §16.5)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -228,12 +228,12 @@ Implementato in `src/schema/scenario.schema.ts`. Differenze rispetto alla v0.6: 
 
 ### 15.2 Viste
 
-| Vista             | Percorso    | Contenuto                                                                                                                                                                                  | Stato                                                             |
-| ----------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| Home / onboarding | `/`         | Nome, frase di presentazione, selettore livello con una riga di spiegazione, streak, pulsanti "Continua la sequenza" e "Scegli un tema"                                                    | M1 minima (nome, tagline, link al primo scenario); completa in M3 |
-| Scenario          | `/s/:id`    | Etichetta concetto, setup, 2-4 scelte. Dopo la scelta: feedback della scelta in evidenza, alternative sotto, fonte (collassata per neofita, aperta per studente), `deepen` (solo studente) | **M2**: loop completo                                             |
-| Libreria concetti | `/concetti` | Griglia dei 4 concetti con definizione; per ciascuno gli scenari con stato e livello di completamento                                                                                      | M3                                                                |
-| Metodo e fonti    | `/metodo`   | Provenienza, criteri, limiti, nota etica, bibliografia                                                                                                                                     | M4                                                                |
+| Vista             | Percorso    | Contenuto                                                                                                                                                                                  | Stato                 |
+| ----------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| Home / onboarding | `/`         | Nome, frase di presentazione, selettore livello con una riga di spiegazione, streak, pulsanti "Continua la sequenza" e "Scegli un tema"                                                    | **M3**: completa      |
+| Scenario          | `/s/:id`    | Etichetta concetto, setup, 2-4 scelte. Dopo la scelta: feedback della scelta in evidenza, alternative sotto, fonte (collassata per neofita, aperta per studente), `deepen` (solo studente) | **M2**: loop completo |
+| Libreria concetti | `/concetti` | Griglia dei 4 concetti con definizione; per ciascuno gli scenari con stato e livello di completamento                                                                                      | **M3**: fatta         |
+| Metodo e fonti    | `/metodo`   | Provenienza, criteri, limiti, nota etica, bibliografia                                                                                                                                     | M4                    |
 
 Barra persistente: nome app, toggle livello, streak, link a concetti e metodo, selettore lingua (solo `it`). Nessun modale nell'MVP.
 
@@ -267,7 +267,7 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 | --- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------- |
 | M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf` |
 | M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`  |
-| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano |                                         |
+| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`  |
 | M4  | Pagina Metodo, analytics, deploy Vercel                                               | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  |                                         |
 | M5  | Scenari 04-15 scritti e validati                                                      | `pnpm validate` passa su 15 file                                | in parallelo a M2-M4                    |
 
@@ -290,8 +290,10 @@ Fatto dopo M1 (2026-09-18):
 - Identità visiva secondo §16.2 (commit `89d36a5`, `7c65a18`): token in `@theme`, Source Serif 4 / IBM Plex Sans / IBM Plex Mono da Google Fonts, tema chiaro e scuro.
 - Toggle manuale del tema (`a77be13`): parte dal sistema, la scelta è salvata in `anthropology-clash.v1` tramite `src/engine/storage.ts` (lettura e scrittura in try/catch, base per la persistenza di M3) e applicata prima del primo render da uno script inline in `index.html`.
 - M2, loop di gioco (`9285cd6`, merge `62fedef`): `FeedbackPanel`, `engine/sequence.ts` con test, navigazione tra scenari.
+- Link ufficiali nei `deepen` e campo `url` nello schema (`965b16b`, `1e840bf`).
+- M3, persistenza e libreria (`ab3eee1`, merge `44213eb`): stato locale completo, streak, `/concetti`, Home completa, barra con link, badge streak e selettore lingua.
 
-Non fatto, e volutamente: pagine ConceptLibrary e Method (M3/M4), persistenza di livello e progressi (M3), analytics (M4), pre-commit hook (aperto), licenza (aperta).
+Non fatto, e volutamente: pagina Method e analytics (M4), pre-commit hook (aperto), licenza (aperta).
 
 ### 16.2 Identità visiva (applicata)
 
@@ -322,14 +324,18 @@ Implementato come da piano; note sull'esito:
 5. Locales: tutte le nuove etichette in `it.json`.
 6. Chiusura: i 3 scenari giocabili in entrambi i livelli, verificato nel browser il 2026-09-18; merge `62fedef`. Dopo la scelta il focus va al titolo "Cosa succede" (accessibilità); cambiare livello o scenario azzera la scelta. Le etichette di accesso (`PD`, `OA`, ...) sono tradotte in `it.json` sotto `access`.
 
-### 16.4 Piano M3 — persistenza e libreria
+### 16.4 M3 — persistenza e libreria (chiusa)
 
-1. `src/engine/progress.ts`: lettura/scrittura di `anthropology-clash.v1` in `try/catch`, migrazione per `version`, funzioni pure per streak e copertura concetti; test Vitest sulle funzioni pure (date iniettate).
-2. Context React per livello, progressi, streak; `LevelToggle` collegato.
-3. Pagina `/concetti` con i 4 concetti, definizione, scenari collegati con stato e livello di completamento.
-4. Home completa: spiegazione dei livelli, streak, "Continua la sequenza" e "Scegli un tema".
-5. Barra persistente con selettore lingua (solo `it`).
-6. Chiusura: chiudere e riaprire il browser conserva livello, progressi e streak.
+Implementato come da piano; note sull'esito:
+
+1. `src/engine/storage.ts`: lettura e scrittura di `anthropology-clash.v1` in `try/catch`, con sanificazione campo per campo e azzeramento se `version` è diversa. `src/engine/progress.ts`: `dayKey`, `bumpStreak`, `currentStreak`, `markCompleted`, `nextInSequence`, funzioni pure testate con date iniettate (anche a cavallo di mese e anno).
+2. `src/state/AppState.tsx`: un solo context React per livello, tema, progressi e streak; nessuna libreria di stato. `level` resta `null` finché l'utente non sceglie (la UI usa `neofita` come predefinito).
+3. Ogni scelta in uno scenario registra `{ level, choice, at }`, aggiorna la streak e aggiunge il concetto a `seenConcepts`. Rigiocare uno scenario sovrascrive la voce.
+4. Pagina `/concetti`: quattro concetti con definizione e scenari collegati, stato "Da fare" o "Completato · livello"; concetti senza scenari mostrano un avviso (parentela e rituale fino a M5).
+5. Home: selettore livello con una riga di spiegazione, contatore "Completati: n di N", streak, "Continua la sequenza" (primo scenario non completato; "Rigioca dall'inizio" se tutti fatti) e "Scegli un tema".
+6. Barra: nome, link Concetti, badge streak (solo numero, testo completo in `title` e `aria-label`), toggle livello, selettore lingua con la sola voce italiano, toggle tema. Una riga a 672px, due righe a 375px.
+7. Streak in lettura: vale `count` se `lastDay` è oggi o ieri, altrimenti 0; in scrittura +1 se ieri, invariata se oggi, riparte da 1 altrimenti.
+8. Chiusura verificata nel browser il 2026-09-18: dopo il ricaricamento restano livello, progressi e streak; merge `44213eb`.
 
 ### 16.5 Piano M4 — pubblicazione
 
@@ -353,6 +359,7 @@ In parallelo a M2-M4 perché tocca solo `src/content/`. Ordine: 04-08 e 10, 13, 
 | 2026-09-16 | CI e `vercel.json` anticipati a M1                                                                       | Costo minimo, protezione di `main` immediata                                                                                                                                                  |
 | 2026-09-16 | Regole "2 scelte neofita / 3-4 studente" nello script, non nello schema                                  | Lo schema resta identico a §15.1; il vincolo è editoriale                                                                                                                                     |
 | 2026-09-16 | Repository pubblico                                                                                      | Coerente con app gratuita; Vercel e Plausible/Umami senza limiti                                                                                                                              |
+| 2026-09-18 | Stato applicativo in `src/state/` (context React), fuori da `engine/`                                    | `engine/` resta logica pura e testabile senza React; il context è l'unico punto che tocca lo storage                                                                                          |
 | 2026-09-18 | `url` opzionale nei `deepen`; etichette di accesso uniformi, `NON-OA` reso come "Sotto diritti d'autore" | Richiesta esplicita. Link inseriti solo dopo verifica (Crossref per i DOI: due DOI ricordati a memoria erano sbagliati). Lee 1969 resta senza link: nessun URL ufficiale dell'editore trovato |
 | 2026-09-18 | Tema chiaro/scuro con toggle manuale, persistito da subito                                               | Richiesta esplicita; senza persistenza il toggle si azzererebbe a ogni apertura. `storage.ts` nasce ora e M3 lo estende                                                                       |
 | 2026-09-18 | Argilla `#A3532A` invece di un terracotta più acceso                                                     | Sotto 4.5:1 sull'avorio per il testo piccolo; il colore resta caldo ma leggibile                                                                                                              |
