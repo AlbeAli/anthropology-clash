@@ -46,7 +46,7 @@ scripts          validate-content.ts
 ## Contenuti
 
 - Un file per scenario: `src/content/it/scenarios/scenario_NNN.json`, nome file uguale all'`id`.
-- Stesso scenario in due livelli: `neofita` (linguaggio comune, 2 scelte, spiegazione breve) e `studente` (contesto etnografico, 3-4 scelte, riferimento teorico esplicito, blocco `deepen` con 3-4 riferimenti per approfondire: `ref`, `why`, `access`).
+- Stesso scenario in due livelli: `neofita` (linguaggio comune, 2 scelte, spiegazione breve) e `studente` (contesto etnografico, 3-4 scelte, riferimento teorico esplicito, blocco `deepen` con 3-4 riferimenti per approfondire: `ref`, `why`, `access`, `url` opzionale solo se verificato e ufficiale: editore, DOI, Gutenberg, archivio istituzionale; mai copie su siti terzi).
 - Il livello `studente` serve anche a laureati che riprendono un tema: la libreria concetti dà accesso libero a qualsiasi scenario, non solo in sequenza.
 - Ogni esempio attribuito a un autore deve trovarsi davvero nell'opera citata. Nessuna affermazione quantitativa ("il più usato", "la maggioranza") senza fonte: attenuare o citare.
 - Concetti ammessi: `reciprocita`, `parentela`, `rituale`, `relativismo`. Aggiungerne uno richiede modifica a `ConceptId` nello schema e voce in `concepts.json`.

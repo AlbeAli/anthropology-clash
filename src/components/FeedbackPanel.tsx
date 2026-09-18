@@ -96,14 +96,29 @@ export default function FeedbackPanel({ content, level, choiceId }: Props) {
           </h2>
           <ol className="divide-y divide-line rounded-sm border border-line bg-surface">
             {content.deepen.map((d) => (
-              <li key={d.ref} className="space-y-1 px-5 py-4">
-                <p className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <span className="font-medium">{d.ref}</span>
-                  <span className="rounded-sm border border-line px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
+              <li key={d.ref} className="space-y-2 px-5 py-4">
+                <p className="font-medium">
+                  {d.url ? (
+                    <a
+                      href={d.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent underline decoration-line underline-offset-4 hover:decoration-accent"
+                    >
+                      {d.ref}
+                      <span aria-hidden="true"> ↗</span>
+                      <span className="sr-only"> ({t("scenario.newTab")})</span>
+                    </a>
+                  ) : (
+                    d.ref
+                  )}
+                </p>
+                <p className="text-sm leading-relaxed text-ink-soft">{d.why}</p>
+                <p>
+                  <span className="inline-block rounded-sm border border-line bg-bg px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
                     {t(`access.${d.access}`)}
                   </span>
                 </p>
-                <p className="text-sm leading-relaxed text-ink-soft">{d.why}</p>
               </li>
             ))}
           </ol>

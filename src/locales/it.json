@@ -27,7 +27,8 @@
     "alternatives": "Le altre strade",
     "deepen": "Per approfondire",
     "next": "Prossimo scenario",
-    "restart": "Torna all'inizio"
+    "restart": "Torna all'inizio",
+    "newTab": "si apre in una nuova scheda"
   },
   "theme": {
     "switchTo": {
@@ -37,9 +38,9 @@
   },
   "access": {
     "PD": "Pubblico dominio",
-    "PD (fr)": "Pubblico dominio (francese)",
+    "PD (fr)": "Pubblico dominio, testo francese",
     "OA": "Accesso aperto",
-    "NON-OA": "Accesso a pagamento",
+    "NON-OA": "Sotto diritti d'autore",
     "verificare": "Accesso da verificare"
   }
 }

@@ -57,7 +57,7 @@ Schema di riferimento: `src/schema/scenario.schema.ts` (Zod). Struttura:
 
 ```
 Scenario { id, lang, title, concept, concept_label, levels: { neofita, studente } }
-LevelContent { setup, choices[2-4]{id a-d, text}, feedback{<choiceId>: string}, source, deepen?[1-5]{ref, why, access} }
+LevelContent { setup, choices[2-4]{id a-d, text}, feedback{<choiceId>: string}, source, deepen?[1-5]{ref, why, access, url?} }
 Concept { id, lang, label, definition }
 ```
 
@@ -224,7 +224,7 @@ Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, 
 
 ### 15.1 Schema contenuti
 
-Implementato in `src/schema/scenario.schema.ts`, identico alla v0.6 con l'aggiunta dei soli export di tipo `Lang`, `Level`, `ConceptId`. Non modificare lo schema per aggirare un vincolo di contenuto: correggere il contenuto.
+Implementato in `src/schema/scenario.schema.ts`. Differenze rispetto alla v0.6: export di tipo `Lang`, `Level`, `ConceptId`; campo `url` opzionale in `Deepen` (2026-09-18), ammesso solo per URL ufficiali e verificati (editore, DOI, Project Gutenberg, archivio istituzionale come Classiques UQAC), mai copie su siti terzi. Non modificare lo schema per aggirare un vincolo di contenuto: correggere il contenuto.
 
 ### 15.2 Viste
 
@@ -344,18 +344,19 @@ In parallelo a M2-M4 perché tocca solo `src/content/`. Ordine: 04-08 e 10, 13, 
 
 ### 16.7 Decisioni prese durante M1
 
-| Data       | Decisione                                                               | Motivo                                                                                                                                                                                     |
-| ---------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 2026-09-16 | Zod 4 invece di 3                                                       | La sintassi di §15.1 è nativa in v4; nessun beneficio a restare su v3                                                                                                                      |
-| 2026-09-16 | Vite pinnato a 6.x, Vitest 3, plugin-react 5                            | Coerenza con il documento; Vitest 5 richiede Vite 7+                                                                                                                                       |
-| 2026-09-16 | pnpm 12 con `pnpm-workspace.yaml` → `allowBuilds: esbuild`              | pnpm 12 blocca gli script postinstall; senza, Vite non parte in CI                                                                                                                         |
-| 2026-09-16 | Prettier esclude `src/content` e `CLAUDE.md`                            | Il primo `--write` aveva riformattato scenario_001.json; i contenuti non si toccano                                                                                                        |
-| 2026-09-16 | CI e `vercel.json` anticipati a M1                                      | Costo minimo, protezione di `main` immediata                                                                                                                                               |
-| 2026-09-16 | Regole "2 scelte neofita / 3-4 studente" nello script, non nello schema | Lo schema resta identico a §15.1; il vincolo è editoriale                                                                                                                                  |
-| 2026-09-16 | Repository pubblico                                                     | Coerente con app gratuita; Vercel e Plausible/Umami senza limiti                                                                                                                           |
-| 2026-09-18 | Tema chiaro/scuro con toggle manuale, persistito da subito              | Richiesta esplicita; senza persistenza il toggle si azzererebbe a ogni apertura. `storage.ts` nasce ora e M3 lo estende                                                                    |
-| 2026-09-18 | Argilla `#A3532A` invece di un terracotta più acceso                    | Sotto 4.5:1 sull'avorio per il testo piccolo; il colore resta caldo ma leggibile                                                                                                           |
-| 2026-09-16 | Repository GitHub ricreato e riallineato alla storia locale (`659dfab`) | Il primo repo era stato ripopolato via upload web (CRLF, senza `.github/workflows/ci.yml`); la storia locale è quella di riferimento, gli hash precedenti alla ricreazione non valgono più |
+| Data       | Decisione                                                                                                | Motivo                                                                                                                                                                                        |
+| ---------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-09-16 | Zod 4 invece di 3                                                                                        | La sintassi di §15.1 è nativa in v4; nessun beneficio a restare su v3                                                                                                                         |
+| 2026-09-16 | Vite pinnato a 6.x, Vitest 3, plugin-react 5                                                             | Coerenza con il documento; Vitest 5 richiede Vite 7+                                                                                                                                          |
+| 2026-09-16 | pnpm 12 con `pnpm-workspace.yaml` → `allowBuilds: esbuild`                                               | pnpm 12 blocca gli script postinstall; senza, Vite non parte in CI                                                                                                                            |
+| 2026-09-16 | Prettier esclude `src/content` e `CLAUDE.md`                                                             | Il primo `--write` aveva riformattato scenario_001.json; i contenuti non si toccano                                                                                                           |
+| 2026-09-16 | CI e `vercel.json` anticipati a M1                                                                       | Costo minimo, protezione di `main` immediata                                                                                                                                                  |
+| 2026-09-16 | Regole "2 scelte neofita / 3-4 studente" nello script, non nello schema                                  | Lo schema resta identico a §15.1; il vincolo è editoriale                                                                                                                                     |
+| 2026-09-16 | Repository pubblico                                                                                      | Coerente con app gratuita; Vercel e Plausible/Umami senza limiti                                                                                                                              |
+| 2026-09-18 | `url` opzionale nei `deepen`; etichette di accesso uniformi, `NON-OA` reso come "Sotto diritti d'autore" | Richiesta esplicita. Link inseriti solo dopo verifica (Crossref per i DOI: due DOI ricordati a memoria erano sbagliati). Lee 1969 resta senza link: nessun URL ufficiale dell'editore trovato |
+| 2026-09-18 | Tema chiaro/scuro con toggle manuale, persistito da subito                                               | Richiesta esplicita; senza persistenza il toggle si azzererebbe a ogni apertura. `storage.ts` nasce ora e M3 lo estende                                                                       |
+| 2026-09-18 | Argilla `#A3532A` invece di un terracotta più acceso                                                     | Sotto 4.5:1 sull'avorio per il testo piccolo; il colore resta caldo ma leggibile                                                                                                              |
+| 2026-09-16 | Repository GitHub ricreato e riallineato alla storia locale (`659dfab`)                                  | Il primo repo era stato ripopolato via upload web (CRLF, senza `.github/workflows/ci.yml`); la storia locale è quella di riferimento, gli hash precedenti alla ricreazione non valgono più    |
 
 ### 16.8 Regola di sincronizzazione dei documenti
 

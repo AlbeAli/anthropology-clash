@@ -13,6 +13,7 @@ const Deepen = z.object({
   ref: z.string().min(1).max(200),
   why: z.string().min(1).max(300),
   access: z.enum(["PD", "PD (fr)", "OA", "NON-OA", "verificare"]),
+  url: z.url().optional(),
 });
 
 const LevelContent = z
