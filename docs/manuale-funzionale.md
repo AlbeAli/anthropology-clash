@@ -1,6 +1,6 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.10 — 2026-09-18 — Stato: in sviluppo (M1, M2 e M3 chiuse; prossimo passo: M4, §16.5)
+Versione 0.11 — 2026-09-18 — Stato: in sviluppo (M1-M3 chiuse; M4 codice pronto, in attesa di collegamento Vercel e Umami, §16.5)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -83,7 +83,7 @@ Aggiungere un concetto richiede modifica a `ConceptId` nello schema e voce in `c
 | Tracciamento progressi       | Scenari completati, streak, concetti coperti                | Alta     | M3                            |
 | Libreria concetti            | Indice dei concetti con definizione e stato degli scenari   | Media    | M3                            |
 | Pagina "Metodo e fonti"      | Provenienza dei contenuti, criteri, limiti, bibliografia    | Alta     | M4                            |
-| Analytics privacy-first      | Plausible o Umami, senza cookie                             | Alta     | M4                            |
+| Analytics privacy-first      | Umami (deciso 2026-09-18), senza cookie                     | Alta     | M4                            |
 | Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                         |
 | Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                            |
 | Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Bassa    | post-M5                       |
@@ -233,7 +233,7 @@ Implementato in `src/schema/scenario.schema.ts`. Differenze rispetto alla v0.6: 
 | Home / onboarding | `/`         | Nome, frase di presentazione, selettore livello con una riga di spiegazione, streak, pulsanti "Continua la sequenza" e "Scegli un tema"                                                    | **M3**: completa      |
 | Scenario          | `/s/:id`    | Etichetta concetto, setup, 2-4 scelte. Dopo la scelta: feedback della scelta in evidenza, alternative sotto, fonte (collassata per neofita, aperta per studente), `deepen` (solo studente) | **M2**: loop completo |
 | Libreria concetti | `/concetti` | Griglia dei 4 concetti con definizione; per ciascuno gli scenari con stato e livello di completamento                                                                                      | **M3**: fatta         |
-| Metodo e fonti    | `/metodo`   | Provenienza, criteri, limiti, nota etica, bibliografia                                                                                                                                     | M4                    |
+| Metodo e fonti    | `/metodo`   | Provenienza, criteri, limiti, nota etica, dati e privacy, bibliografia generata dai contenuti                                                                                              | **M4**: fatta         |
 
 Barra persistente: nome app, toggle livello, streak, link a concetti e metodo, selettore lingua (solo `it`). Nessun modale nell'MVP.
 
@@ -263,13 +263,13 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 ### 15.5 Milestone
 
-| M   | Contenuto                                                                             | Fatto quando                                                    | Stato                                   |
-| --- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------- |
-| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf` |
-| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`  |
-| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`  |
-| M4  | Pagina Metodo, analytics, deploy Vercel                                               | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  |                                         |
-| M5  | Scenari 04-15 scritti e validati                                                      | `pnpm validate` passa su 15 file                                | in parallelo a M2-M4                    |
+| M   | Contenuto                                                                             | Fatto quando                                                    | Stato                                                            |
+| --- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------- |
+| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf`                          |
+| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`                           |
+| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`                           |
+| M4  | Pagina Metodo, analytics, deploy Vercel                                               | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  | codice su `main` (`419342c`); manca il collegamento Vercel/Umami |
+| M5  | Scenari 04-15 scritti e validati                                                      | `pnpm validate` passa su 15 file                                | in parallelo a M2-M4                                             |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -292,8 +292,9 @@ Fatto dopo M1 (2026-09-18):
 - M2, loop di gioco (`9285cd6`, merge `62fedef`): `FeedbackPanel`, `engine/sequence.ts` con test, navigazione tra scenari.
 - Link ufficiali nei `deepen` e campo `url` nello schema (`965b16b`, `1e840bf`).
 - M3, persistenza e libreria (`ab3eee1`, merge `44213eb`): stato locale completo, streak, `/concetti`, Home completa, barra con link, badge streak e selettore lingua.
+- M4, codice (`13e2e70`, merge `419342c`): pagina `/metodo` con bibliografia generata, analytics Umami condizionale, `vercel.json` completo.
 
-Non fatto, e volutamente: pagina Method e analytics (M4), pre-commit hook (aperto), licenza (aperta).
+Non fatto, e volutamente: pre-commit hook (aperto), licenza (aperta). In attesa di azioni manuali: collegamento Vercel e creazione del sito su Umami Cloud (§16.5).
 
 ### 16.2 Identità visiva (applicata)
 
@@ -337,12 +338,22 @@ Implementato come da piano; note sull'esito:
 7. Streak in lettura: vale `count` se `lastDay` è oggi o ieri, altrimenti 0; in scrittura +1 se ieri, invariata se oggi, riparte da 1 altrimenti.
 8. Chiusura verificata nel browser il 2026-09-18: dopo il ricaricamento restano livello, progressi e streak; merge `44213eb`.
 
-### 16.5 Piano M4 — pubblicazione
+### 16.5 M4 — pubblicazione (codice pronto, collegamento in corso)
 
-1. Pagina `/metodo`: provenienza, criteri, limiti, nota etica, bibliografia da §14; valutare se generarla dai campi `source` e `deepen` per non mantenerla a mano.
-2. Progetto Vercel collegato al repo, anteprime per branch, dominio da decidere.
-3. Plausible o Umami: script senza cookie, eventi di §8.5; nessun banner.
-4. Chiusura: URL pubblico, eventi in dashboard, CI verde.
+Fatto:
+
+1. Pagina `/metodo`: provenienza, criteri di selezione, limiti dichiarati, nota etica, dati e privacy (testi in `it.json` sotto `method`). La bibliografia è generata da `src/engine/bibliography.ts`: unisce le voci di `source` (separate da "; ") e i `deepen` del livello studente, deduplica per autore + anno + prime tre parole del titolo, tiene la forma più completa, eredita accesso e link dai `deepen`, e collega ogni opera agli scenari che la citano. Con i contenuti attuali: 12 opere, 7 con link. Le opere citate solo nelle definizioni dei concetti (Sahlins 1972, Morgan 1871, van Gennep 1909, Turner 1969, Douglas 1966, Boas 1887) non compaiono finché uno scenario non le cita: la regola di §14 è applicata alla lettera.
+2. Analytics: **Umami** (deciso il 2026-09-18, gratuito in cloud). `src/engine/analytics.ts` carica lo script solo se `VITE_UMAMI_SRC` e `VITE_UMAMI_WEBSITE_ID` sono definite in build: in locale e in CI non parte nulla. Eventi: `level_chosen` (livello), `scenario_started` (scenario, livello), `scenario_completed` (scenario, livello, scelta); apertura e ritorno sono le pageview standard. `track` è in try/catch: l'analytics non può rompere l'app.
+3. `vercel.json`: framework `vite`, `pnpm install --frozen-lockfile`, `pnpm build` (che esegue `pnpm validate` in `prebuild`), output `dist`, rewrite SPA. La versione di pnpm arriva dal campo `packageManager`.
+
+Da fare a mano (una volta):
+
+1. Vercel → Add New Project → Import `AlbeAli/anthropology-clash`. Preset Vite già impostato dal file; in Settings → General → Node.js Version scegliere 24.x.
+2. Umami Cloud (cloud.umami.is) → Add website con il dominio Vercel → copiare il Website ID.
+3. Vercel → Settings → Environment Variables: `VITE_UMAMI_SRC` = `https://cloud.umami.is/script.js`, `VITE_UMAMI_WEBSITE_ID` = id copiato. Redeploy.
+4. Chiusura: URL pubblico raggiungibile, un giro completo di uno scenario, eventi visibili nella dashboard Umami. Poi aggiornare qui l'URL e chiudere M4.
+
+Nota su Umami Cloud: piano gratuito con limite mensile di eventi; oltre, i dati del mese non vengono più raccolti. Sufficiente per l'MVP; da rivalutare se il traffico cresce.
 
 ### 16.6 Piano M5 — contenuti
 
@@ -359,6 +370,9 @@ In parallelo a M2-M4 perché tocca solo `src/content/`. Ordine: 04-08 e 10, 13, 
 | 2026-09-16 | CI e `vercel.json` anticipati a M1                                                                       | Costo minimo, protezione di `main` immediata                                                                                                                                                  |
 | 2026-09-16 | Regole "2 scelte neofita / 3-4 studente" nello script, non nello schema                                  | Lo schema resta identico a §15.1; il vincolo è editoriale                                                                                                                                     |
 | 2026-09-16 | Repository pubblico                                                                                      | Coerente con app gratuita; Vercel e Plausible/Umami senza limiti                                                                                                                              |
+| 2026-09-18 | Umami invece di Plausible                                                                                | Gratuito in cloud per l'MVP, senza cookie come richiesto; Plausible resta possibile cambiando due variabili d'ambiente                                                                        |
+| 2026-09-18 | Bibliografia generata dai contenuti, non mantenuta a mano                                                | Un'opera compare solo se uno scenario la cita (§14); nessun rischio di elenco disallineato con i JSON                                                                                         |
+| 2026-09-18 | Barra su due righe (nome e controlli; navigazione e streak)                                              | Con Concetti, Metodo, streak, livello, lingua e tema una riga sola non entra in 640px                                                                                                         |
 | 2026-09-18 | Stato applicativo in `src/state/` (context React), fuori da `engine/`                                    | `engine/` resta logica pura e testabile senza React; il context è l'unico punto che tocca lo storage                                                                                          |
 | 2026-09-18 | `url` opzionale nei `deepen`; etichette di accesso uniformi, `NON-OA` reso come "Sotto diritti d'autore" | Richiesta esplicita. Link inseriti solo dopo verifica (Crossref per i DOI: due DOI ricordati a memoria erano sbagliati). Lee 1969 resta senza link: nessun URL ufficiale dell'editore trovato |
 | 2026-09-18 | Tema chiaro/scuro con toggle manuale, persistito da subito                                               | Richiesta esplicita; senza persistenza il toggle si azzererebbe a ogni apertura. `storage.ts` nasce ora e M3 lo estende                                                                       |
