@@ -5,43 +5,51 @@ import LevelToggle from "./LevelToggle";
 import ThemeToggle from "./ThemeToggle";
 import StreakBadge from "./StreakBadge";
 
+const navClass = ({ isActive }: { isActive: boolean }) =>
+  "font-mono text-xs uppercase tracking-widest hover:text-accent " +
+  (isActive ? "text-accent" : "text-ink-soft");
+
 export default function AppBar() {
   const { t, i18n } = useTranslation();
   const { level, setLevel, theme, setTheme, streak } = useAppState();
 
   return (
     <header className="border-b-2 border-clay">
-      <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-x-4 gap-y-3 px-4 py-4 sm:flex-nowrap">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <div className="mx-auto max-w-2xl space-y-3 px-4 py-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
           <Link
             to="/"
             className="font-serif text-lg font-semibold tracking-tight text-ink hover:text-accent"
           >
             {t("app.name")}
           </Link>
-          <NavLink
-            to="/concetti"
-            className={({ isActive }) =>
-              "font-mono text-xs uppercase tracking-widest hover:text-accent " +
-              (isActive ? "text-accent" : "text-ink-soft")
-            }
-          >
-            {t("nav.concepts")}
-          </NavLink>
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <LevelToggle level={level} onChange={setLevel} />
+            <select
+              aria-label={t("lang.label")}
+              value={i18n.language}
+              onChange={() => {}}
+              className="h-9 rounded-sm border border-line bg-surface px-1.5 font-mono text-[11px] uppercase text-ink-soft"
+            >
+              <option value="it">{t("lang.it")}</option>
+            </select>
+            <ThemeToggle theme={theme} onChange={setTheme} />
+          </div>
+        </div>
+        <nav
+          aria-label={t("nav.label")}
+          className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2"
+        >
+          <div className="flex items-center gap-4">
+            <NavLink to="/concetti" className={navClass}>
+              {t("nav.concepts")}
+            </NavLink>
+            <NavLink to="/metodo" className={navClass}>
+              {t("nav.methodShort")}
+            </NavLink>
+          </div>
           <StreakBadge count={streak} />
-        </div>
-        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-          <LevelToggle level={level} onChange={setLevel} />
-          <select
-            aria-label={t("lang.label")}
-            value={i18n.language}
-            onChange={() => {}}
-            className="h-9 rounded-sm border border-line bg-surface px-1.5 font-mono text-[11px] uppercase text-ink-soft"
-          >
-            <option value="it">{t("lang.it")}</option>
-          </select>
-          <ThemeToggle theme={theme} onChange={setTheme} />
-        </div>
+        </nav>
       </div>
     </header>
   );

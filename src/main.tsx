@@ -4,6 +4,9 @@ import { BrowserRouter } from "react-router";
 import "./i18n";
 import "./index.css";
 import App from "./App";
+import { loadAnalytics } from "./engine/analytics";
+
+loadAnalytics();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

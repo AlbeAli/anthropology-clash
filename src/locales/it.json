@@ -5,9 +5,10 @@
     "footer": "Nome provvisorio. Nessun account e nessun cookie: i progressi restano nel tuo browser."
   },
   "nav": {
-    "home": "Home",
+    "label": "Navigazione",
     "concepts": "Concetti",
-    "method": "Metodo e fonti"
+    "method": "Metodo e fonti",
+    "methodShort": "Metodo"
   },
   "level": {
     "label": "Livello",
@@ -69,5 +70,53 @@
     "noScenarios": "Nessuno scenario ancora disponibile",
     "todo": "Da fare",
     "done": "Completato · {{level}}"
+  },
+  "method": {
+    "title": "Da dove vengono gli scenari",
+    "lead": "Ogni scenario nasce da un caso etnografico documentato. Qui trovi come sono scelti, cosa non pretendono di essere e l'elenco completo delle opere citate.",
+    "origin": {
+      "title": "Provenienza",
+      "body": [
+        "Ogni scenario riprende una situazione descritta in un'opera antropologica identificabile: una monografia, un articolo, un saggio. Il campo \"Fonte\" di ogni scenario riporta autore, titolo e anno; nel livello Studente indica anche capitoli o identificatori (DOI, numero Project Gutenberg) quando esistono.",
+        "Le scelte proposte e i loro esiti sono ricostruiti a partire da ciò che la fonte descrive: cosa fanno le persone in quel contesto, come reagiscono, cosa comporta un comportamento invece di un altro. Dove la letteratura successiva ha discusso o corretto la fonte originale, il livello Studente lo segnala e rimanda alle letture in \"Per approfondire\"."
+      ]
+    },
+    "criteria": {
+      "title": "Criteri di selezione",
+      "items": [
+        "Fonte primaria reale e verificabile. Nessuno scenario è inventato, nemmeno a scopo didattico.",
+        "Contesto sempre esplicito: popolazione, luogo, periodo e opera di riferimento. Mai una pratica attribuita genericamente a un continente o a \"una cultura\".",
+        "Ogni esempio attribuito a un autore si trova davvero nell'opera citata. Le affermazioni quantitative non documentate vengono attenuate o rimosse.",
+        "Preferenza per opere in pubblico dominio o ad accesso aperto, così che chi vuole possa leggere il testo originale. Le opere sotto diritti sono citate ma non riprodotte.",
+        "I link rimandano solo a edizioni ufficiali: editore, DOI, Project Gutenberg, archivi istituzionali."
+      ]
+    },
+    "limits": {
+      "title": "Limiti dichiarati",
+      "body": [
+        "Uno scenario è una semplificazione. Riduce a due o quattro scelte una situazione che nella realtà ha molte più sfumature, e compatta in poche righe il contesto che un'etnografia sviluppa in centinaia di pagine. Il livello Studente aggiunge profondità, ma resta un punto di partenza, non un sostituto della lettura.",
+        "Le fonti hanno la loro data. Molte descrivono società di cinquanta o cento anni fa, viste da ricercatori con i limiti del loro tempo e della loro posizione. Il livello Studente segnala le riletture critiche dove esistono.",
+        "I concetti sono per ora quattro: reciprocità, parentela, rituale, relativismo. Il catalogo cresce nel tempo; i concetti senza scenari sono visibili nella libreria ma non ancora giocabili."
+      ]
+    },
+    "ethics": {
+      "title": "Nota etica sulla rappresentazione",
+      "body": [
+        "Le persone e i gruppi descritti negli scenari sono reali. Parlarne senza contesto produce stereotipi; per questo ogni pratica è sempre collocata nel suo dove, quando e secondo chi. Gli scenari non chiedono di giudicare una cultura, ma di capire cosa significa un'azione al suo interno.",
+        "Nessuna scelta è \"sbagliata\". Il riscontro descrive la conseguenza di un comportamento in quel contesto, non un verdetto. Il relativismo di metodo che guida l'app non implica che ogni pratica sia moralmente equivalente: è uno strumento per comprendere prima di valutare."
+      ]
+    },
+    "privacy": {
+      "title": "Dati e privacy",
+      "body": [
+        "L'app non ha account e non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi, e non si sincronizzano tra dispositivi.",
+        "Le statistiche d'uso aggregate (quante persone aprono l'app, quanti scenari vengono completati) sono raccolte con Umami, uno strumento senza cookie e senza identificatori personali. Per questo non c'è alcun banner da accettare."
+      ]
+    },
+    "bibliography": {
+      "title": "Bibliografia",
+      "note_one": "{{count}} opera citata nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita.",
+      "note_other": "{{count}} opere citate nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita."
+    }
   }
 }
