@@ -5,10 +5,11 @@ import ChoiceButton from "./ChoiceButton";
 type Props = {
   scenario: Scenario;
   level: Level;
+  choiceId: string | null;
   onSelect: (choiceId: string) => void;
 };
 
-export default function ScenarioCard({ scenario, level, onSelect }: Props) {
+export default function ScenarioCard({ scenario, level, choiceId, onSelect }: Props) {
   const { t } = useTranslation();
   const content = scenario.levels[level];
 
@@ -32,16 +33,16 @@ export default function ScenarioCard({ scenario, level, onSelect }: Props) {
         <ul className="space-y-2">
           {content.choices.map((choice) => (
             <li key={choice.id}>
-              <ChoiceButton id={choice.id} text={choice.text} onSelect={onSelect} />
+              <ChoiceButton
+                id={choice.id}
+                text={choice.text}
+                onSelect={onSelect}
+                state={choiceId === null ? "open" : choiceId === choice.id ? "chosen" : "other"}
+              />
             </li>
           ))}
         </ul>
       </section>
-
-      <footer className="border-t border-line pt-4 text-sm leading-relaxed text-ink-soft">
-        <span className="font-mono text-xs uppercase tracking-widest">{t("scenario.source")}</span>
-        <p className="mt-1">{content.source}</p>
-      </footer>
     </article>
   );
 }
