@@ -20,7 +20,7 @@ export function splitSource(source: string): string[] {
 export function refKey(ref: string): string {
   const lower = ref.toLowerCase();
   const author = lower.split(",")[0].trim();
-  const year = lower.match(/\b(1[5-9]|20)\d{2}\b/)?.[0] ?? "";
+  const year = lower.match(/\b(?:1[5-9]|20)\d{2}\b/g)?.at(-1) ?? "";
   const title = lower
     .slice(author.length + 1)
     .replace(/[^\p{L}\p{N}\s]/gu, " ")

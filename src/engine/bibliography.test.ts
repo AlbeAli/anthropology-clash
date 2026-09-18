@@ -28,6 +28,11 @@ describe("bibliography", () => {
     expect(refKey("Lee, 'Eating Christmas in the Kalahari', 1969")).toBe(
       refKey("Lee, 'Eating Christmas in the Kalahari', Natural History 78(10), 1969"),
     );
+    expect(refKey("Codere, Fighting with Property, 1950")).toBe(
+      refKey(
+        "Codere, Fighting with Property: A Study of Kwakiutl Potlatching and Warfare, 1792-1930, 1950",
+      ),
+    );
     expect(refKey("Miner, 'Body Ritual among the Nacirema', 1956")).not.toBe(
       refKey("Miner, 'The Folk-Urban Continuum', American Sociological Review 17(5), 1952"),
     );
