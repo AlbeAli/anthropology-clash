@@ -2,6 +2,8 @@
 
 Web app che insegna concetti antropologici tramite scenari a bivio ispirati a casi etnografici reali. Nome provvisorio.
 
+Online: https://anthropology-clash.vercel.app
+
 Ogni scenario esiste in due livelli, `neofita` e `studente`, sullo stesso caso. Nessuna risposta è "sbagliata": il feedback descrive la conseguenza di una scelta nel suo contesto culturale, con la fonte.
 
 - Documento funzionale e piano operativo: [docs/manuale-funzionale.md](docs/manuale-funzionale.md)

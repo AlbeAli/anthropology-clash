@@ -1,10 +1,10 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.11 — 2026-09-18 — Stato: in sviluppo (M1-M3 chiuse; M4 codice pronto, in attesa di collegamento Vercel e Umami, §16.5)
+Versione 0.12 — 2026-09-18 — Stato: pubblicato (M1-M4 chiuse; prossimo passo: M5, §16.6)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
-Repository: https://github.com/AlbeAli/anthropology-clash
+Repository: https://github.com/AlbeAli/anthropology-clash · App: https://anthropology-clash.vercel.app
 
 ---
 
@@ -144,6 +144,7 @@ Limite accettato e dichiarato nella UI: i progressi non si sincronizzano tra dis
 ### 8.4 Hosting e rilascio
 
 - Repository GitHub `AlbeAli/anthropology-clash`, pubblico, `main` sempre rilasciabile.
+- App pubblica: https://anthropology-clash.vercel.app (Vercel, deploy automatico a ogni push su `main`, anteprima per ogni branch).
 - CI GitHub Actions su push e pull request: `pnpm lint → validate → test → build` (Node da `.nvmrc`, `pnpm install --frozen-lockfile`).
 - Deploy: Vercel, build statica, anteprima per ogni branch. `vercel.json` già presente per il rewrite SPA. Collegamento del progetto Vercel: M4.
 - Dominio: da decidere.
@@ -263,13 +264,13 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 ### 15.5 Milestone
 
-| M   | Contenuto                                                                             | Fatto quando                                                    | Stato                                                            |
-| --- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------- |
-| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf`                          |
-| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`                           |
-| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`                           |
-| M4  | Pagina Metodo, analytics, deploy Vercel                                               | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  | codice su `main` (`419342c`); manca il collegamento Vercel/Umami |
-| M5  | Scenari 04-15 scritti e validati                                                      | `pnpm validate` passa su 15 file                                | in parallelo a M2-M4                                             |
+| M   | Contenuto                                                                             | Fatto quando                                                    | Stato                                                        |
+| --- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------ |
+| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                   | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf`                      |
+| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo               | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`                       |
+| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`                       |
+| M4  | Pagina Metodo, analytics, deploy Vercel                                               | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app |
+| M5  | Scenari 04-15 scritti e validati                                                      | `pnpm validate` passa su 15 file                                | in parallelo a M2-M4                                         |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -294,7 +295,7 @@ Fatto dopo M1 (2026-09-18):
 - M3, persistenza e libreria (`ab3eee1`, merge `44213eb`): stato locale completo, streak, `/concetti`, Home completa, barra con link, badge streak e selettore lingua.
 - M4, codice (`13e2e70`, merge `419342c`): pagina `/metodo` con bibliografia generata, analytics Umami condizionale, `vercel.json` completo.
 
-Non fatto, e volutamente: pre-commit hook (aperto), licenza (aperta). In attesa di azioni manuali: collegamento Vercel e creazione del sito su Umami Cloud (§16.5).
+Non fatto, e volutamente: pre-commit hook (aperto), licenza (aperta).
 
 ### 16.2 Identità visiva (applicata)
 
@@ -338,20 +339,15 @@ Implementato come da piano; note sull'esito:
 7. Streak in lettura: vale `count` se `lastDay` è oggi o ieri, altrimenti 0; in scrittura +1 se ieri, invariata se oggi, riparte da 1 altrimenti.
 8. Chiusura verificata nel browser il 2026-09-18: dopo il ricaricamento restano livello, progressi e streak; merge `44213eb`.
 
-### 16.5 M4 — pubblicazione (codice pronto, collegamento in corso)
+### 16.5 M4 — pubblicazione (chiusa)
 
 Fatto:
 
 1. Pagina `/metodo`: provenienza, criteri di selezione, limiti dichiarati, nota etica, dati e privacy (testi in `it.json` sotto `method`). La bibliografia è generata da `src/engine/bibliography.ts`: unisce le voci di `source` (separate da "; ") e i `deepen` del livello studente, deduplica per autore + anno + prime tre parole del titolo, tiene la forma più completa, eredita accesso e link dai `deepen`, e collega ogni opera agli scenari che la citano. Con i contenuti attuali: 12 opere, 7 con link. Le opere citate solo nelle definizioni dei concetti (Sahlins 1972, Morgan 1871, van Gennep 1909, Turner 1969, Douglas 1966, Boas 1887) non compaiono finché uno scenario non le cita: la regola di §14 è applicata alla lettera.
-2. Analytics: **Umami** (deciso il 2026-09-18, gratuito in cloud). `src/engine/analytics.ts` carica lo script solo se `VITE_UMAMI_SRC` e `VITE_UMAMI_WEBSITE_ID` sono definite in build: in locale e in CI non parte nulla. Eventi: `level_chosen` (livello), `scenario_started` (scenario, livello), `scenario_completed` (scenario, livello, scelta); apertura e ritorno sono le pageview standard. `track` è in try/catch: l'analytics non può rompere l'app.
+2. Analytics: **Umami** (deciso il 2026-09-18, gratuito in cloud). `src/engine/analytics.ts` carica lo script solo se `VITE_UMAMI_SRC` e `VITE_UMAMI_WEBSITE_ID` sono definite in build. I valori vivono in `.env.production` nel repo (il Website ID è pubblico per natura: compare nell'HTML servito); Vite legge quel file solo in `pnpm build`, quindi in locale e in CI non parte nulla. Eventi: `level_chosen` (livello), `scenario_started` (scenario, livello), `scenario_completed` (scenario, livello, scelta); apertura e ritorno sono le pageview standard. `track` è in try/catch: l'analytics non può rompere l'app.
 3. `vercel.json`: framework `vite`, `pnpm install --frozen-lockfile`, `pnpm build` (che esegue `pnpm validate` in `prebuild`), output `dist`, rewrite SPA. La versione di pnpm arriva dal campo `packageManager`.
 
-Da fare a mano (una volta):
-
-1. Vercel → Add New Project → Import `AlbeAli/anthropology-clash`. Preset Vite già impostato dal file; in Settings → General → Node.js Version scegliere 24.x.
-2. Umami Cloud (cloud.umami.is) → Add website con il dominio Vercel → copiare il Website ID.
-3. Vercel → Settings → Environment Variables: `VITE_UMAMI_SRC` = `https://cloud.umami.is/script.js`, `VITE_UMAMI_WEBSITE_ID` = id copiato. Redeploy.
-4. Chiusura: URL pubblico raggiungibile, un giro completo di uno scenario, eventi visibili nella dashboard Umami. Poi aggiornare qui l'URL e chiudere M4.
+Collegamento fatto il 2026-09-18: progetto Vercel importato dal repo, sito creato su Umami Cloud, id in `.env.production` (`e27e4db`). Verifica sull'URL pubblico: deep link `/s/scenario_002` ricaricato correttamente (rewrite SPA), scenario giocato in livello studente, progressi salvati, sette richieste a `gateway.umami.is/api/send` accettate (pageview, `level_chosen`, `scenario_started`, `scenario_completed`). Nessun errore in console.
 
 Nota su Umami Cloud: piano gratuito con limite mensile di eventi; oltre, i dati del mese non vengono più raccolti. Sufficiente per l'MVP; da rivalutare se il traffico cresce.
 
