@@ -23,5 +23,11 @@
     "choices": "Cosa fai?",
     "source": "Fonte",
     "notFound": "Scenario non trovato"
+  },
+  "theme": {
+    "switchTo": {
+      "light": "Passa al tema chiaro",
+      "dark": "Passa al tema scuro"
+    }
   }
 }

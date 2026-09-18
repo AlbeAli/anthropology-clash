@@ -2,13 +2,22 @@ import { useState } from "react";
 import { Route, Routes, Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { Level } from "./schema/scenario.schema";
+import type { Theme } from "./engine/storage";
+import { applyTheme, initialTheme } from "./engine/theme";
 import LevelToggle from "./components/LevelToggle";
+import ThemeToggle from "./components/ThemeToggle";
 import Home from "./pages/Home";
 import ScenarioPage from "./pages/Scenario";
 
 export default function App() {
   const { t } = useTranslation();
   const [level, setLevel] = useState<Level>("neofita");
+  const [theme, setTheme] = useState<Theme>(initialTheme);
+
+  function changeTheme(next: Theme) {
+    applyTheme(next);
+    setTheme(next);
+  }
 
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">
@@ -20,7 +29,10 @@ export default function App() {
           >
             {t("app.name")}
           </Link>
-          <LevelToggle level={level} onChange={setLevel} />
+          <div className="flex items-center gap-2">
+            <LevelToggle level={level} onChange={setLevel} />
+            <ThemeToggle theme={theme} onChange={changeTheme} />
+          </div>
         </div>
       </header>
       <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:py-12">
