@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { Level, Scenario } from "../schema/scenario.schema";
@@ -6,6 +6,7 @@ import { getScenario } from "../engine/content";
 import { nextScenarioId } from "../engine/sequence";
 import { DEFAULT_LANG } from "../i18n";
 import { useAppState } from "../state/AppState";
+import { track } from "../engine/analytics";
 import ScenarioCard from "../components/ScenarioCard";
 import FeedbackPanel from "../components/FeedbackPanel";
 
@@ -27,6 +28,10 @@ function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level })
   const { complete } = useAppState();
   const [choiceId, setChoiceId] = useState<string | null>(null);
   const nextId = nextScenarioId(DEFAULT_LANG, scenario.id);
+
+  useEffect(() => {
+    track("scenario_started", { scenario: scenario.id, level });
+  }, [scenario.id, level]);
 
   function select(choice: string) {
     setChoiceId(choice);

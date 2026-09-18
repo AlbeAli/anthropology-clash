@@ -3,6 +3,7 @@ import type { ConceptId, Level } from "../schema/scenario.schema";
 import { readState, writeState, type StoredState, type Theme } from "../engine/storage";
 import { currentStreak, dayKey, markCompleted } from "../engine/progress";
 import { applyTheme, systemTheme } from "../engine/theme";
+import { track } from "../engine/analytics";
 
 type AppState = {
   state: StoredState;
@@ -35,15 +36,20 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       levelChosen: state.level !== null,
       theme,
       streak: currentStreak(state.streak, dayKey(new Date())),
-      setLevel: (next) => update({ ...state, level: next }),
+      setLevel: (next) => {
+        track("level_chosen", { level: next });
+        update({ ...state, level: next });
+      },
       setTheme: (next) => {
         applyTheme(next);
         update({ ...state, theme: next });
       },
-      complete: ({ scenarioId, concept, choice }) =>
+      complete: ({ scenarioId, concept, choice }) => {
+        track("scenario_completed", { scenario: scenarioId, level, choice });
         update(
           markCompleted(state, { scenarioId, concept, level, choice, today: dayKey(new Date()) }),
-        ),
+        );
+      },
     }),
     [state, level, theme, update],
   );
