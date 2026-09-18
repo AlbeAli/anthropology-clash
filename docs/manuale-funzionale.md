@@ -1,6 +1,6 @@
 # Anthropology Clash — Manuale funzionale e piano operativo
 
-Versione 0.12 — 2026-09-18 — Stato: pubblicato (M1-M4 chiuse; prossimo passo: M5, §16.6)
+Versione 0.13 — 2026-09-18 — Stato: pubblicato (M1-M4 chiuse; M5 in corso: 6 scenari su 15, §16.6)
 
 Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -198,9 +198,9 @@ Italiano attivo. Inglese predisposto: chiave `lang` nei JSON, cartella `src/cont
 | 01  | La collana che non si può tenere | Reciprocità         | Malinowski, Argonauts, 1922                                | PD        | **validato** |
 | 02  | La carne è troppo magra          | Reciprocità         | Lee, Eating Christmas in the Kalahari, 1969                | OA        | **validato** |
 | 03  | I riti del corpo dei Nacirema    | Relativismo         | Miner, American Anthropologist, 1956                       | OA        | **validato** |
-| 04  | Bruciare la ricchezza            | Reciprocità         | Boas, 1897; Mauss, 1925                                    | PD        | da scrivere  |
-| 05  | Lo spirito della cosa donata     | Reciprocità         | Mauss, Essai sur le don, 1925                              | PD (fr)   | da scrivere  |
-| 06  | Cugino o fratello?               | Parentela           | Morgan, Systems of Consanguinity, 1871                     | PD        | da scrivere  |
+| 04  | Bruciare la ricchezza            | Reciprocità         | Boas, 1897; Mauss, 1925                                    | PD        | scritto      |
+| 05  | Lo spirito della cosa donata     | Reciprocità         | Mauss, Essai sur le don, 1925                              | PD (fr)   | scritto      |
+| 06  | Cugino o fratello?               | Parentela           | Morgan, Systems of Consanguinity, 1871                     | PD        | scritto      |
 | 07  | L'eredità va al nipote           | Parentela           | Malinowski, 1922 e 1929                                    | PD (1922) | da scrivere  |
 | 08  | Amleto tra i Tiv                 | Parentela           | Bohannan, Shakespeare in the Bush, 1966                    | OA        | da scrivere  |
 | 09  | Sposare un fantasma              | Parentela           | Evans-Pritchard, Kinship and Marriage among the Nuer, 1951 | NON-OA    | da validare  |
@@ -351,9 +351,19 @@ Collegamento fatto il 2026-09-18: progetto Vercel importato dal repo, sito creat
 
 Nota su Umami Cloud: piano gratuito con limite mensile di eventi; oltre, i dati del mese non vengono più raccolti. Sufficiente per l'MVP; da rivalutare se il traffico cresce.
 
-### 16.6 Piano M5 — contenuti
+### 16.6 M5 — contenuti (in corso)
 
-In parallelo a M2-M4 perché tocca solo `src/content/`. Ordine: 04-08 e 10, 13, 14 (fonti PD/OA) prima; 09, 11, 12, 15 dopo la validazione congiunta sulle fonti NON-OA. Una branch per scenario, commit `content:`, `pnpm validate` verde prima del merge.
+Ordine: 04-08 e 10, 13, 14 (fonti PD/OA) prima; 09, 11, 12, 15 dopo la validazione congiunta sulle fonti NON-OA. Una branch per scenario, commit `content: aggiunge scenario_NNN (titolo)`, merge su `main`, `pnpm validate` verde. Stato "scritto" nella tabella di §13 significa: pubblicato, con le affermazioni tratte da fonti PD/OA verificate sul testo; le affermazioni tratte da fonti NON-OA (citate a memoria) restano da confermare insieme prima di considerare lo scenario definitivo. "Validato" arriva dopo quella conferma.
+
+Procedura seguita per ogni scenario, da mantenere:
+
+1. Scaricare o consultare il testo della fonte primaria (Internet Archive, Classiques UQAC, Papers Past, DOI) e verificare ogni citazione e ogni affermazione attribuita all'autore. Se una fonte non è raggiungibile, non attribuirle frasi testuali.
+2. Neofita: 2 scelte, setup 300-600 caratteri, feedback fino a 800, fonte breve. Studente: 4 scelte, setup fino a 1200, feedback fino a 800 con autori e anni, `source` con tutte le opere citate nei feedback (così entrano in bibliografia), `deepen` con 4 letture, `url` solo ufficiale e verificato.
+3. Non usare la stessa data due volte nello stesso riferimento (per esempio "Report for 1895, 1897"): la bibliografia deduplica sull'ultimo anno citato.
+4. Verificare nel browser: entrambi i livelli, pagina Concetti, pagina Metodo (nessuna voce doppia in bibliografia).
+5. Nel riepilogo al termine, elencare separatamente ciò che è verificato sul testo e ciò che è citato a memoria da fonti NON-OA.
+
+Scritti al 2026-09-18: 04 potlatch (Boas 1897 e Mauss 1925 verificati; Codere 1950, Drucker & Heizer 1967, Cole & Chaikin 1990 da confermare), 05 hau (Mauss 1925 verificato; Sahlins 1972, Lévi-Strauss 1950, Firth 1929 da confermare; manca l'URL di Best 1909 su Papers Past), 06 terminologia seneca (Morgan 1871 verificato; Kroeber 1909, Murdock 1949, Lounsbury 1964, Trautmann 1987 da confermare). Prossimo: 07 "L'eredità va al nipote" (Malinowski 1922 e 1929).
 
 ### 16.7 Decisioni prese durante M1
 
