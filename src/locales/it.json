@@ -22,12 +22,24 @@
     "concept": "Concetto",
     "choices": "Cosa fai?",
     "source": "Fonte",
-    "notFound": "Scenario non trovato"
+    "notFound": "Scenario non trovato",
+    "outcome": "Cosa succede",
+    "alternatives": "Le altre strade",
+    "deepen": "Per approfondire",
+    "next": "Prossimo scenario",
+    "restart": "Torna all'inizio"
   },
   "theme": {
     "switchTo": {
       "light": "Passa al tema chiaro",
       "dark": "Passa al tema scuro"
     }
+  },
+  "access": {
+    "PD": "Pubblico dominio",
+    "PD (fr)": "Pubblico dominio (francese)",
+    "OA": "Accesso aperto",
+    "NON-OA": "Accesso a pagamento",
+    "verificare": "Accesso da verificare"
   }
 }
