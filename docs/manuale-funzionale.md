@@ -2,9 +2,9 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.21 — 2026-09-19 — Stato: pubblicato (M1-M4 chiuse; M5: 15 scenari scritti, validazione finale in corso, §16.6)
+Versione 0.22 — 2026-09-19 — Stato: pubblicato (M1-M4 chiuse; M5: 15 scenari scritti, validazione finale in corso, §16.6)
 
-Questo file è la versione viva del documento funzionale. Nasce dalla v0.6 (artifact claude.ai, 2026-09-16) e da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
+Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
 Repository: https://github.com/AlbeAli/anthropology-clash · App: https://anthropology-clash.vercel.app
 
@@ -395,5 +395,4 @@ Scritti al 2026-09-19 (fonti NON-OA): 09 Sposare un fantasma (Evans-Pritchard 19
 ### 16.8 Regola di sincronizzazione dei documenti
 
 - `docs/manuale-funzionale.md` è l'unica versione viva. Si aggiorna con commit `docs:` a ogni decisione, cambio di scope o chiusura di milestone.
-- L'artifact claude.ai (https://claude.ai/artifact/3dS9h1xLJ5ao77aNN2jBAC) è una copia leggibile del manuale, rigenerata a ogni bump di versione; non si modifica direttamente.
 - `CLAUDE.md` riassume le regole vincolanti per chi scrive codice e contenuti; deriva dal manuale e non lo sostituisce.

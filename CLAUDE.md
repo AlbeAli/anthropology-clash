@@ -1,6 +1,6 @@
 # Anthropology Clash
 
-Web app che insegna concetti antropologici tramite scenari a bivio ispirati a casi etnografici reali. Nome provvisorio. Documento funzionale e piano operativo di riferimento: `docs/manuale-funzionale.md` (versione viva, aggiornare con commit `docs:` a ogni decisione o milestone; origine v0.6: https://claude.ai/artifact/3dS9h1xLJ5ao77aNN2jBAC). Repository: https://github.com/AlbeAli/anthropology-clash
+Web app che insegna concetti antropologici tramite scenari a bivio ispirati a casi etnografici reali. Nome provvisorio. Documento funzionale e piano operativo di riferimento: `docs/manuale-funzionale.md` (versione viva, aggiornare con commit `docs:` a ogni decisione o milestone). Repository: https://github.com/AlbeAli/anthropology-clash
 
 ## Stack
 
