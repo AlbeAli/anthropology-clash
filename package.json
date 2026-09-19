@@ -1,6 +1,7 @@
 {
   "name": "anthropology-clash",
   "private": true,
+  "author": "Alberto Alioto (AlbeAli)",
   "version": "0.1.0",
   "type": "module",
   "packageManager": "pnpm@12.4.2",
