@@ -56,6 +56,7 @@ scripts          validate-content.ts
 ## Convenzioni
 
 - Conventional Commits: `feat:`, `fix:`, `content:`, `docs:`, `chore:`.
+- **Autore del progetto: Alberto Alioto (AlbeAli).** Ogni documento (README, manuale, `package.json`, `index.html`, footer dell'app) lo indica come autore.
 - **Unico contributor su GitHub: AlbeAli.** Nessun trailer `Co-Authored-By` (né Claude né altri) nei messaggi di commit e nelle PR, in nessun caso.
 - `main` sempre rilasciabile. Una branch per milestone o per scenario.
 - Nessun commento nel codice salvo vincolo non ovvio.
