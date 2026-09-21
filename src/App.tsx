@@ -1,8 +1,10 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Link, Route, Routes } from "react-router";
+import { Link, Route, Routes, useLocation, useMatch } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppStateProvider, useAppState } from "./state/AppState";
 import { applyTheme } from "./engine/theme";
+import { getScenario } from "./engine/content";
+import { DEFAULT_LANG } from "./i18n";
 import AppBar from "./components/AppBar";
 import Home from "./pages/Home";
 
@@ -13,10 +15,27 @@ const Method = lazy(() => import("./pages/Method"));
 function Shell() {
   const { t } = useTranslation();
   const { theme } = useAppState();
+  const { pathname } = useLocation();
+  const scenarioMatch = useMatch("/s/:id");
 
   useEffect(() => {
     applyTheme(theme);
   }, [theme]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
+    const pageTitle = scenarioMatch
+      ? getScenario(DEFAULT_LANG, scenarioMatch.params.id ?? "")?.title
+      : pathname === "/concetti"
+        ? t("concepts.title")
+        : pathname === "/metodo"
+          ? t("method.title")
+          : undefined;
+    document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
+  }, [pathname, scenarioMatch, t]);
 
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">

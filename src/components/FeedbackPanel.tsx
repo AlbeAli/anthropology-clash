@@ -26,7 +26,7 @@ export default function FeedbackPanel({ content, level, choiceId }: Props) {
           id="outcome-heading"
           ref={heading}
           tabIndex={-1}
-          className="scroll-mt-6 font-mono text-xs uppercase tracking-widest text-clay outline-none"
+          className="scroll-mt-6 font-mono text-xs uppercase tracking-widest text-clay"
         >
           {t("scenario.outcome")}
         </h2>
