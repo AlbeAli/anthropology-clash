@@ -8,8 +8,14 @@
     "neofita": {
       "setup": "Vivi da qualche mese in una comunità seneca, una delle nazioni irochesi, nello Stato di New York, a metà Ottocento, e stai imparando la lingua. Un ragazzo della tua età, figlio del fratello di tuo padre, ti chiede scherzando come lo chiami. A casa tua sarebbe 'cugino'. Qui però hai notato che nessuno usa quella parola per lui, e che suo padre viene chiamato con la stessa parola che si usa per il tuo. Come lo chiami?",
       "choices": [
-        { "id": "a", "text": "'Cugino', come faresti a casa tua" },
-        { "id": "b", "text": "'Fratello', come fanno tutti qui" }
+        {
+          "id": "a",
+          "text": "'Cugino', come faresti a casa tua"
+        },
+        {
+          "id": "b",
+          "text": "'Fratello', come fanno tutti qui"
+        }
       ],
       "feedback": {
         "a": "In seneca la parola per cugino esiste, Ah-gare'-seh, ma vale solo per i figli della sorella di tuo padre e del fratello di tua madre. Usarla per il figlio del fratello di tuo padre suona strano a tutti: quel ragazzo per loro è tuo fratello, Hä'-je se è più grande, Ha'-ga se è più piccolo, e suo padre è tuo padre, Hä'-nih, con la stessa parola che usi per il tuo. Morgan (1871), che raccolse questi termini facendo le domande direttamente ai Seneca, lo scrive così: 'il fratello di mio padre è mio padre... i figli del fratello di mio padre sono miei fratelli'. Non è che non sappiano chi ha generato chi: è una mappa diversa di chi ti sta vicino. Il ragazzo ti risponderà ridendo che no, lui è tuo fratello.",
@@ -18,28 +24,55 @@
       "source": "Morgan, Systems of Consanguinity and Affinity of the Human Family, 1871"
     },
     "studente": {
-      "setup": "Stato di New York, riserva seneca, metà Ottocento. Lewis Henry Morgan sta raccogliendo i termini di parentela con un questionario che fa compilare direttamente a parlanti nativi: 'Come chiamo il fratello di mio padre quando gli parlo?', 'Come chiamo il figlio del fratello di mio padre se è più grande di me?'. Sei tu a rispondere. Sai che i Seneca sono divisi in otto clan (Lupo, Orso, Castoro, Tartaruga, Cervo, Beccaccino, Airone, Falco), che non ci si sposa dentro il proprio clan e che il clan si eredita dalla madre. Il ragazzo di cui Morgan ti chiede è figlio del fratello di tuo padre, più grande di te di due anni. Cosa rispondi?",
+      "setup": "Stato di New York, riserva seneca, metà Ottocento. Lewis Henry Morgan sta raccogliendo i termini di parentela con un questionario che fa compilare direttamente a parlanti nativi: 'Come chiamo il fratello di mio padre quando gli parlo?', 'Come chiamo il figlio del fratello di mio padre se è più grande di me?'. Sei tu a rispondere. Sai che i Seneca sono divisi in otto gruppi di discendenza che Morgan chiama tribù e che oggi si chiamerebbero clan (Lupo, Orso, Castoro, Tartaruga, Cervo, Beccaccino, Airone, Falco), che non ci si sposa dentro il proprio gruppo e che lo si eredita dalla madre. Il ragazzo di cui Morgan ti chiede è figlio del fratello di tuo padre, più grande di te di due anni. Cosa rispondi?",
       "choices": [
-        { "id": "a", "text": "'Hä'-je, mio fratello maggiore: suo padre è mio padre'" },
-        { "id": "b", "text": "'Ah-gare'-seh, mio cugino: è figlio di uno zio'" },
+        {
+          "id": "a",
+          "text": "'Hä'-je, mio fratello maggiore: suo padre è mio padre'"
+        },
+        {
+          "id": "b",
+          "text": "'Ah-gare'-seh, mio cugino: è figlio di uno zio'"
+        },
         {
           "id": "c",
           "text": "'Fratello, perché è figlio di un fratello di mio padre; cugino sarebbe solo il figlio di una sorella di mio padre o di un fratello di mia madre'"
         },
-        { "id": "d", "text": "'Il nome conta poco: lui è del clan di sua madre, io di mia madre. Siamo di clan diversi'" }
+        {
+          "id": "d",
+          "text": "'Il nome conta poco: lui è del clan di sua madre, io di mia madre. Siamo di clan diversi'"
+        }
       ],
       "feedback": {
         "a": "È la risposta che Morgan registra nelle sue tavole: alla domanda sul fratello del padre 'un Seneca risponderà Hä'-nih, mio padre'; sul figlio di lui, se maggiore, 'Hä'-je, mio fratello maggiore'. Morgan li chiama 'fratelli collaterali': entrano 'a tutti gli effetti' nello stesso rapporto dei fratelli propri, e i loro figli sono tuoi figli, Ha-ah'-wuk. La risposta è esatta ma non dice la regola, e Morgan cercava quella: perché il fratello del padre è 'padre' mentre il fratello della madre è zio, Hoc-no'-seh, termine 'ristretto' a lui solo? Morgan ne dedusse una storia della famiglia in stadi, a partire da una 'famiglia comunale' in cui più fratelli condividevano le mogli: ipotesi abbandonata, ma il sistema di termini che descrisse resta il modello del 'tipo irochese' (Murdock, 1949).",
-        "b": "Morgan annota che la parola per cugino esiste, Ah-gare'-seh, ma è 'ristretta ai figli di un fratello e di una sorella': vale per i figli della sorella di tuo padre e del fratello di tua madre. Chiamare così il figlio del fratello di tuo padre lo sposta dalla parte sbagliata della mappa: da fratello a parente più lontano. Nelle tavole di Morgan la risposta seneca è un'altra, e lui lo avrebbe notato subito, perché faceva ripetere ogni termine più volte 'per fissarne ortografia, pronuncia e accento'. Morgan osserva anche che la parola cugino sembra un'aggiunta tarda del sistema, 'per rimediare a un'irregolarità': i figli di un fratello e di una sorella stavano già più lontani tra loro dei figli di due fratelli.",
-        "c": "È la risposta che Morgan sperava di sentire, perché contiene la regola. Nelle sue parole: 'i figli del fratello di mio padre e della sorella di mia madre sono miei fratelli... i figli della sorella di mio padre e del fratello di mia madre sono miei cugini'. Alla generazione sopra vale lo stesso: fratello del padre e sorella della madre sono 'padre' (Hä'-nih) e 'madre' (E'-nah); sorella del padre e fratello della madre sono zia (Ah-ga'-huc) e zio (Hoc-no'-seh). Kroeber (1909) leggerà in questi termini categorie di lingua e di pensiero (generazione, lato, sesso, età) più che istituzioni sociali; Lounsbury (1964) ne darà un'analisi formale con poche regole di riduzione. Trautmann (1987) mostra che con queste tavole Morgan ha inventato la parentela come oggetto di studio.",
-        "d": "Hai messo il dito su qualcosa che Morgan stesso descrive: i Seneca hanno otto clan, 'nessun membro del clan Lupo o degli altri può sposarsi nel proprio clan' e 'la madre trasmette ai figli la nazionalità e il nome del clan'. Il figlio del fratello di tuo padre appartiene al clan di sua madre, tu a quello della tua: probabilmente due clan diversi. Eppure, nella lingua, lui è tuo fratello: la terminologia e il clan seguono due logiche che non coincidono, e Morgan lo sapeva. Aggiunge un dettaglio decisivo: 'lo zio materno è, in pratica, più il capo della famiglia di sua sorella che il marito di lei'. Nel clan conta la linea femminile; nei termini di parentela conta il lato. Morgan avrebbe annotato la tua risposta come una divagazione: la domanda era sul nome."
+        "b": "Morgan annota che la parola per cugino esiste, Ah-gare'-seh, ma è 'ristretta ai figli di un fratello e di una sorella': vale per i figli della sorella di tuo padre e del fratello di tua madre. Chiamare così il figlio del fratello di tuo padre lo sposta in un'altra casella della mappa: da fratello a parente più lontano. Nelle tavole di Morgan la risposta seneca è un'altra, e lui lo avrebbe notato subito, perché faceva ripetere ogni termine più volte 'per fissarne ortografia, pronuncia e accento'. Morgan osserva anche che il termine per cugino non esisteva nella forma originaria del sistema e fu sviluppato più tardi 'per rimuovere un'irregolarità che era un difetto': una volta inventato, poteva solo restare 'ristretto ai figli di un fratello e di una sorella'.",
+        "c": "È la risposta che Morgan sperava di sentire, perché contiene la regola. Nelle sue parole: 'i figli del fratello di mio padre e della sorella di mia madre sono miei fratelli... i figli della sorella di mio padre e del fratello di mia madre sono miei cugini'. Sopra vale lo stesso: fratello del padre e sorella della madre sono 'padre' (Hä'-nih) e 'madre' (E'-nah); sorella del padre e fratello della madre sono zia (Ah-ga'-huc) e zio (Hoc-no'-seh). Kroeber (1909) leggerà in questi termini otto categorie di lingua e di pensiero, fra cui generazione, linea diretta o collaterale ed età: le cause dei termini di parentela, scrive, 'sono in primo luogo linguistiche'. Trautmann (1987) mostra che con queste tavole Morgan ha inventato la parentela come oggetto di studio.",
+        "d": "Morgan lo descrive: i Seneca sono divisi in otto gruppi, 'nessun membro della tribù del Lupo o delle altre poteva sposarsi nella propria' e 'la madre trasmette ai figli la nazionalità e il nome della tribù'. Il figlio del fratello di tuo padre appartiene al gruppo di sua madre, tu a quello della tua: probabilmente due gruppi diversi. Eppure, nella lingua, lui è tuo fratello: la terminologia e il clan seguono due logiche che non coincidono, e Morgan lo sapeva. Aggiunge un dettaglio decisivo: 'lo zio materno è, in pratica, più il capo della famiglia di sua sorella che il marito di lei'. Nel gruppo di discendenza conta la linea femminile; nei termini di parentela conta il lato. Morgan però l'avrebbe annotata come una divagazione: la domanda era sul nome."
       },
-      "source": "Morgan, Systems of Consanguinity and Affinity of the Human Family, 1871, pp. 13, 154-158, 480 (Internet Archive); Murdock, Social Structure, 1949; Kroeber, 'Classificatory Systems of Relationship', Journal of the Royal Anthropological Institute 39, 1909; Lounsbury, 'The Structural Analysis of Kinship Semantics', 1964; Trautmann, Lewis Henry Morgan and the Invention of Kinship, 1987",
+      "source": "Morgan, Systems of Consanguinity and Affinity of the Human Family, 1871, pp. 13, 154-158, 480 (Internet Archive); Murdock, Social Structure, 1949; Kroeber, 'Classificatory Systems of Relationship', Journal of the Royal Anthropological Institute 39, 1909; Trautmann, Lewis Henry Morgan and the Invention of Kinship, 1987",
       "deepen": [
-        { "ref": "Morgan, Systems of Consanguinity and Affinity of the Human Family, 1871, Parte II, cap. II 'Seneca-Iroquois'", "why": "Le pagine sul sistema seneca con tutti i termini, il metodo del questionario e la definizione di sistema 'classificatorio' contro 'descrittivo'", "access": "PD", "url": "https://archive.org/details/systemsofconsang00morgrich" },
-        { "ref": "Kroeber, 'Classificatory Systems of Relationship', Journal of the Royal Anthropological Institute 39, 1909", "why": "La prima critica a Morgan: i termini di parentela riflettono categorie linguistiche e psicologiche, non istituzioni; da leggere con la replica di Rivers (1914)", "access": "verificare" },
-        { "ref": "Murdock, Social Structure, 1949", "why": "Dove nasce l'etichetta 'tipo irochese' per i sistemi che chiamano fratelli i cugini paralleli e distinguono i cugini incrociati", "access": "NON-OA" },
-        { "ref": "Trautmann, Lewis Henry Morgan and the Invention of Kinship, 1987", "why": "Come Morgan, partendo dai Seneca, ha costruito la parentela come oggetto dell'antropologia, e cosa della sua teoria evolutiva è caduto", "access": "NON-OA" }
+        {
+          "ref": "Morgan, Systems of Consanguinity and Affinity of the Human Family, 1871, Parte II, cap. II 'Seneca-Iroquois'",
+          "why": "Le pagine sul sistema seneca con tutti i termini, il metodo del questionario e la definizione di sistema 'classificatorio' contro 'descrittivo'",
+          "access": "PD",
+          "url": "https://archive.org/details/systemsofconsang00morgrich"
+        },
+        {
+          "ref": "Kroeber, 'Classificatory Systems of Relationship', Journal of the Royal Anthropological Institute 39, 1909",
+          "why": "La prima critica a Morgan: i termini di parentela esprimono otto categorie linguistiche e psicologiche e le loro cause 'sono in primo luogo linguistiche', non le istituzioni",
+          "access": "PD",
+          "url": "https://archive.org/details/sim_royal-anthropological-institute-of-great-britain-ireland_the-journal-of-the-royal_1909-01-26_"
+        },
+        {
+          "ref": "Murdock, Social Structure, 1949",
+          "why": "La tipologia dei termini per i cugini in cui compare il 'tipo irochese', accanto a Crow, Omaha, Eskimo, Hawaiian e Sudanese",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Trautmann, Lewis Henry Morgan and the Invention of Kinship, 1987",
+          "why": "Come Morgan, partendo dai Seneca, ha costruito la parentela come oggetto dell'antropologia, e cosa della sua teoria evolutiva è caduto",
+          "access": "NON-OA"
+        }
       ]
     }
   }

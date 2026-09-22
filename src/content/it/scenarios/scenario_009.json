@@ -8,22 +8,40 @@
     "neofita": {
       "setup": "Sudan meridionale, tra i Nuer, anni Trenta. Tuo fratello maggiore, figlio di tuo padre e di tua madre, è morto prima di sposarsi, e il bestiame che era suo è passato a te. Gli anziani ti dicono che devi 'prendere una moglie al suo nome': pagare con quel bestiame il prezzo della sposa e fare i riti di nozze per lui, il morto. I figli che nasceranno saranno suoi, non tuoi. Tu, però, volevi sposarti per conto tuo. Cosa fai?",
       "choices": [
-        { "id": "a", "text": "Sposi una donna a nome di tuo fratello, come ti chiedono" },
-        { "id": "b", "text": "Usi il bestiame per sposarti tu, a tuo nome" }
+        {
+          "id": "a",
+          "text": "Sposi una donna a nome di tuo fratello, come ti chiedono"
+        },
+        {
+          "id": "b",
+          "text": "Usi il bestiame per sposarti tu, a tuo nome"
+        }
       ],
       "feedback": {
         "a": "È il 'matrimonio con il fantasma', per Evans-Pritchard (1951) 'un tratto molto comune della vita sociale nuer': se un uomo muore senza eredi maschi, un parente 'deve prendere una moglie al suo nome'. Paghi e fai i riti, ma 'il marito legale è il fantasma nel cui nome è stato pagato il prezzo della sposa': lei è ciekjooka, moglie di un fantasma, i figli gaatjooka. Tu li generi e fai loro da padre; il padre legale è tuo fratello. Ed è 'molto comune' che chi lo fa 'non riesca più tardi a sposare una moglie in proprio', perché i fratelli minori devono sposarsi prima: 'muore così legalmente senza figli', e uno dei figli che ha cresciuto dovrà prendere una moglie al suo nome. Questi matrimoni, stima Evans-Pritchard, 'devono essere quasi altrettanto numerosi di quelli semplici'.",
         "b": "Puoi, ma non è bestiame come un altro. 'Il nome di un uomo deve continuare nel suo lignaggio', scrive Evans-Pritchard (1951), e i Nuer 'considerano molto sbagliato' che a un morto senza figli maschi nessun parente sposi una moglie: è 'un obbligo elementarissimo della parentela', e se è trascurato 'il fantasma del morto può perseguitare i suoi parenti'. Il bestiame ereditato da un morto è ghok jookni, 'bestiame dei fantasmi': è 'sacro' e 'non dovrebbe essere usato per nessun altro scopo che sposare una moglie al nome del suo proprietario morto'. Da un fratellastro i Nuer temono proprio questo, che voglia 'cancellare' il nome del morto; e i parenti della madre possono far sposare una moglie al suo nome dalla sorella. Ti sei dato una famiglia e hai tolto al tuo lignaggio un nome."
       },
-      "source": "Evans-Pritchard, Parentela e matrimonio tra i Nuer, 1951"
+      "source": "Evans-Pritchard, Kinship and Marriage among the Nuer, 1951"
     },
     "studente": {
       "setup": "Nuerland, Sudan anglo-egiziano, 1936. Sei nei panni di un giovane nuer di un villaggio della tribù Leek. Tuo fratello maggiore, figlio di tuo padre e di tua madre, è morto prima di sposarsi: 'molti giovani muoiono prima del matrimonio', e il suo bestiame, ghok jookni, 'bestiame dei fantasmi', è passato a te con la mandria di famiglia. Qui la discendenza è agnatica, ma il padre legale di un figlio, il pater, è chi ha pagato il prezzo della sposa, non chi lo ha generato, il genitor: 'una figlia è una persona non imparentata', dicono i Nuer, ma il nome di un uomo 'deve continuare nel suo lignaggio'. Gli anziani si aspettano che tu prenda una moglie al nome del morto. Hai anche una sorella non sposata, e un desiderio: sposarti in proprio, con quel bestiame. Come regoli la cosa?",
       "choices": [
-        { "id": "a", "text": "Prendi una moglie al nome di tuo fratello: matrimonio con il fantasma" },
-        { "id": "b", "text": "Ti sposi tu, a tuo nome, con il bestiame del morto" },
-        { "id": "c", "text": "Proponi che sia tua sorella a prendere una moglie al nome del fratello" },
-        { "id": "d", "text": "Chiedi agli anziani perché i figli che genererai non sarebbero tuoi" }
+        {
+          "id": "a",
+          "text": "Prendi una moglie al nome di tuo fratello: matrimonio con il fantasma"
+        },
+        {
+          "id": "b",
+          "text": "Ti sposi tu, a tuo nome, con il bestiame del morto"
+        },
+        {
+          "id": "c",
+          "text": "Proponi che sia tua sorella a prendere una moglie al nome del fratello"
+        },
+        {
+          "id": "d",
+          "text": "Chiedi agli anziani perché i figli che genererai non sarebbero tuoi"
+        }
       ],
       "feedback": {
         "a": "Evans-Pritchard (1951): 'se un uomo muore senza eredi maschi legali, un parente suo o della generazione successiva, fratello, figlio naturale, nipote paterno o, dove ha ereditato bestiame dal fratello della madre, figlio della sorella, deve prendere una moglie al suo nome'. Paghi e compi i riti, ma 'i partner legali dell'unione non sono l'uomo e la donna che vivono insieme': il marito è il fantasma, la donna ciekjooka, i figli gaatjooka. Nasce una 'famiglia-fantasma': 'un fantasma, sua moglie, i suoi figli nati nel matrimonio e il parente che li ha generati e fa loro da padre'. Il costo è tuo: chi lo fa 'non riesce più tardi a sposare una moglie in proprio', i fratelli minori vengono prima; 'muore legalmente senza figli', e uno dei figli cresciuti dovrà sposare una moglie al suo nome.",
@@ -33,10 +51,26 @@
       },
       "source": "Evans-Pritchard, Kinship and Marriage among the Nuer, 1951, cap. III 'The Family', pp. 108-124 e 148-154; Evans-Pritchard, The Nuer, 1940",
       "deepen": [
-        { "ref": "Evans-Pritchard, Kinship and Marriage among the Nuer, 1951, cap. III 'The Family'", "why": "Matrimonio con il fantasma, levirato, matrimonio tra donne, concubinato: tutte le forme di unione nuer e la distinzione tra pater e genitor", "access": "NON-OA" },
-        { "ref": "Evans-Pritchard, The Nuer, 1940", "why": "Il sistema dei lignaggi e il 'linguaggio bovino' in cui i Nuer definiscono ogni rapporto sociale: il contesto senza cui il bestiame dei fantasmi non si capisce", "access": "NON-OA" },
-        { "ref": "Gough, 'Nuer Kinship: A Re-examination', in Beidelman (a cura di), The Translation of Culture, 1971", "why": "La rilettura dei dati di Evans-Pritchard sulla parentela nuer, nel volume di saggi in suo onore", "access": "NON-OA" },
-        { "ref": "Hutchinson, Nuer Dilemmas: Coping with Money, War, and the State, 1996", "why": "I Nuer cinquant'anni dopo: bestiame, denaro e guerra hanno cambiato il prezzo della sposa e i matrimoni al nome dei morti", "access": "NON-OA" }
+        {
+          "ref": "Evans-Pritchard, Kinship and Marriage among the Nuer, 1951, cap. III 'The Family'",
+          "why": "Matrimonio con il fantasma, levirato, matrimonio tra donne, concubinato: tutte le forme di unione nuer e la distinzione tra pater e genitor",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Evans-Pritchard, The Nuer, 1940",
+          "why": "Il sistema dei lignaggi e il 'linguaggio bovino' in cui i Nuer definiscono ogni rapporto sociale: il contesto senza cui il bestiame dei fantasmi non si capisce",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Gough, 'Nuer Kinship: A Re-examination', in Beidelman (a cura di), The Translation of Culture, 1971",
+          "why": "La rilettura dei dati di Evans-Pritchard sulla parentela nuer, nel volume di saggi in suo onore",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Hutchinson, Nuer Dilemmas: Coping with Money, War, and the State, 1996",
+          "why": "I Nuer cinquant'anni dopo: bestiame, denaro e guerra hanno cambiato il prezzo della sposa e i matrimoni al nome dei morti",
+          "access": "NON-OA"
+        }
       ]
     }
   }
