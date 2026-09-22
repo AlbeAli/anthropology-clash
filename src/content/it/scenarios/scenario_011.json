@@ -8,8 +8,14 @@
     "neofita": {
       "setup": "Bali, aprile 1958. Sei arrivato da dieci giorni in un villaggio di cinquecento persone per studiarlo, e nessuno ti rivolge la parola: la gente ti guarda attraverso, 'come se non ci fossi'. Oggi nella piazza c'è un grande combattimento di galli, organizzato per raccogliere i soldi di una scuola nuova. È illegale, ma ci sono centinaia di persone e ti sei messo tra loro, invisibile come sempre. Al terzo incontro arriva un camion di poliziotti armati di mitra: tutti scappano in ogni direzione. Cosa fai?",
       "choices": [
-        { "id": "a", "text": "Scappi anche tu, con gli altri" },
-        { "id": "b", "text": "Resti fermo e tiri fuori i documenti: sei uno straniero autorizzato" }
+        {
+          "id": "a",
+          "text": "Scappi anche tu, con gli altri"
+        },
+        {
+          "id": "b",
+          "text": "Resti fermo e tiri fuori i documenti: sei uno straniero autorizzato"
+        }
       ],
       "feedback": {
         "a": "Così fecero Clifford Geertz e sua moglie (1972): 'quando sei a Roma'. Corsero per la strada del villaggio, seguirono un fuggitivo nel suo cortile, e sua moglie, 'che evidentemente ci era già passata', tirò fuori tavolo, tovaglia, tre sedie e tre tazze di tè. Al poliziotto che entrò, l'ospite di cinque minuti 'balzò in nostra difesa': professori americani autorizzati, lì a bere tè tutto il pomeriggio, senza sapere nulla di galli. 'La mattina dopo il villaggio era per noi un mondo completamente diverso': tutti sapevano che eri scappato come loro, e ti prendevano in giro, 'gentilmente, affettuosamente'. 'A Bali essere presi in giro è essere accettati'. Il villaggio si aprì, e Geertz ne trasse il suo saggio: 'sono solo apparentemente galli, quelli che combattono. In realtà, sono uomini'.",
@@ -20,23 +26,52 @@
     "studente": {
       "setup": "Bali, aprile 1958. Sei nei panni di Clifford Geertz, arrivato con la moglie, 'malarici e timidi', in un villaggio di circa cinquecento persone. Dopo dieci giorni siete ancora 'non-persone, spettri, uomini invisibili': la gente vi guarda 'con lo sguardo fissato qualche metro dietro di voi'. Nella piazza si tiene un grande combattimento di galli per finanziare una scuola. È illegale sotto la Repubblica, 'come lo era sotto gli olandesi': l'élite lo giudica 'primitivo, arretrato, non progressista', e 'cerca, piuttosto asistematicamente, di porvi fine'; ma il capo del villaggio lo ha organizzato di persona. Al terzo incontro, con centinaia di persone 'fuse in un solo corpo intorno all'arena', arriva un camion di poliziotti con i mitra: 'pulisi! pulisi!', e il 'superorganismo' si disfa in ogni direzione. Cosa fai?",
       "choices": [
-        { "id": "a", "text": "Corri con gli altri, dove capita" },
-        { "id": "b", "text": "Resti fermo e mostri i documenti: professore americano, autorizzato dal governo" },
-        { "id": "c", "text": "Resti fermo senza documenti: guardavi soltanto, non scommettevi" },
-        { "id": "d", "text": "Segui il capo del villaggio, che corre al fiume a fingere di fare il bagno" }
+        {
+          "id": "a",
+          "text": "Corri con gli altri, dove capita"
+        },
+        {
+          "id": "b",
+          "text": "Resti fermo e mostri i documenti: professore americano, autorizzato dal governo"
+        },
+        {
+          "id": "c",
+          "text": "Resti fermo senza documenti: guardavi soltanto, non scommettevi"
+        },
+        {
+          "id": "d",
+          "text": "Segui il capo del villaggio, che corre al fiume a fingere di fare il bagno"
+        }
       ],
       "feedback": {
         "a": "'Sul consolidato principio antropologico quando sei a Roma', Geertz (1972) corse. Nel cortile di un fuggitivo, tè per tre 'senza alcuna comunicazione esplicita'. Al poliziotto che chiese 'che diavolo' facessero lì, l'ospite rispose con 'una descrizione appassionata' di chi fossero, 'così dettagliata e così precisa' da stupirlo. La mattina dopo, 'un mondo completamente diverso': 'a Bali essere presi in giro è essere accettati'. Fu 'il punto di svolta', 'eravamo letteralmente dentro'. Non è 'una ricetta generalizzabile' per il rapport, ammette Geertz, ma lo portò subito a 'un'esplosione emotiva, una guerra di status e un dramma filosofico di importanza centrale' per la società: il combattimento come 'storia che i Balinesi raccontano a se stessi su se stessi'.",
         "b": "È la mossa che gli abitanti si aspettavano e che poi lodarono di non aver visto: erano 'estremamente contenti e ancora più sorpresi' che Geertz non avesse 'tirato fuori i documenti' e rivendicato 'lo status di Visitatore Distinto', ma 'dimostrato solidarietà con quelli che ora erano i nostri compaesani'. I documenti ti proteggono, ma ti collocano con il camion, cioè con l'élite che vuole 'porre fine' al combattimento come agli 'altri imbarazzi: oppio, accattonaggio, seni scoperti'. La posta del gioco, spiega Geertz, non è il denaro ma lo status: nei combattimenti 'profondi' migra 'la gerarchia di status balinese nel corpo del combattimento', un 'bagno di sangue di status' (Goffman). Chi resta fuori dal panico resta fuori anche da quello.",
         "c": "Anche questo i Balinesi lo suggerirono il giorno dopo: 'perché non hai detto che guardavi soltanto e non scommettevi?', 'avevi davvero paura di quei fucilini?' (Geertz 1972). Ma il combattimento non distingue chi guarda da chi partecipa: 'la folla, me e mia moglie compresi, ancora trasparenti, fusa in un solo corpo intorno all'arena, un superorganismo in senso letterale'. Sul bordo dell'arena i giochi d'azzardo 'senza cervello' sono per 'donne, bambini, adolescenti' e chi non combatte i galli; al centro, 'i membri davvero solidi della comunità'. Dichiararti spettatore è scegliere il bordo. Geertz sostiene che il combattimento è 'una forma d'arte': 'rende comprensibile l'esperienza ordinaria' con atti 'a cui sono state tolte le conseguenze pratiche'. Finché non arriva il camion.",
-        "d": "Il capo 'non solo era stato al combattimento: lo aveva organizzato'. All'arrivo del camion 'corse al fiume, si tolse il sarong e si tuffò', per poter dire, quando lo trovarono 'seduto lì a versarsi acqua in testa', che era 'stato via a fare il bagno' e non sapeva nulla. 'Non gli credettero e lo multarono di trecento rupie, che il villaggio raccolse collettivamente' (Geertz 1972). Hai seguito il bugiardo più esposto del villaggio; ma la multa pagata da tutti anticipa il saggio: il combattimento è 'una simulazione della matrice sociale', 'villaggi, gruppi di parentela, società d'irrigazione, congregazioni di tempio', e comincia sempre come 'sacrificio di sangue' ai demoni, senza il quale 'nessuna festa di tempio dovrebbe tenersi'. 'ogni popolo ama la propria forma di violenza'."
+        "d": "Il capo 'non solo era stato al combattimento: lo aveva organizzato'. All'arrivo del camion 'corse al fiume, si tolse il sarong e si tuffò', per poter dire, quando lo trovarono 'seduto lì a versarsi acqua in testa', che era 'stato via a fare il bagno' e non sapeva nulla. 'Non gli credettero e lo multarono di trecento rupie, che il villaggio raccolse collettivamente' (Geertz 1972). Hai seguito il bugiardo più esposto del villaggio; la multa pagata da tutti anticipa il saggio: il combattimento è 'una simulazione della matrice sociale', 'villaggi, gruppi di parentela, società d'irrigazione, congregazioni di tempio', e comincia come 'sacrificio di sangue' ai demoni. E il proverbio che Geertz cita in chiusura: 'ogni popolo ama la propria forma di violenza'."
       },
       "source": "Geertz, 'Deep Play: Notes on the Balinese Cockfight', Daedalus 101(1), 1972, pp. 1-37 (JSTOR, accesso aperto); Geertz, The Interpretation of Cultures, 1973, cap. 15, pp. 412-453",
       "deepen": [
-        { "ref": "Geertz, 'Deep Play: Notes on the Balinese Cockfight', Daedalus 101(1), 1972, pp. 1-37", "why": "Il saggio originale, ad accesso aperto su JSTOR: la retata, la struttura delle scommesse, il 'gioco profondo' di Bentham e la cultura come 'insieme di testi'", "access": "OA", "url": "https://www.jstor.org/stable/20024056" },
-        { "ref": "Geertz, The Interpretation of Cultures, 1973, cap. 15", "why": "Lo stesso testo nella raccolta che lo ha reso celebre, da leggere con il cap. 1, 'Thick Description', che ne è il manifesto di metodo", "access": "NON-OA" },
-        { "ref": "Roseberry, 'Balinese Cockfights and the Seduction of Anthropology', Social Research 49(4), 1982", "why": "La critica classica: leggere la cultura come testo lascia fuori la storia e il potere; ripubblicata in Anthropologies and Histories, 1989", "access": "NON-OA" },
-        { "ref": "Crapanzano, 'Hermes' Dilemma: The Masking of Subversion in Ethnographic Description', in Clifford & Marcus (a cura di), Writing Culture, 1986", "why": "Come Geertz costruisce la propria autorità nel racconto della retata: la lettura retorica del saggio che ha aperto il dibattito sulla scrittura etnografica", "access": "NON-OA" }
+        {
+          "ref": "Geertz, 'Deep Play: Notes on the Balinese Cockfight', Daedalus 101(1), 1972, pp. 1-37",
+          "why": "Il saggio originale, ad accesso aperto su JSTOR: la retata, la struttura delle scommesse, il 'gioco profondo' di Bentham e la cultura come 'insieme di testi'",
+          "access": "OA",
+          "url": "https://www.jstor.org/stable/20024056"
+        },
+        {
+          "ref": "Geertz, The Interpretation of Cultures, 1973, cap. 15",
+          "why": "Lo stesso testo nella raccolta che lo ha reso celebre, da leggere con il cap. 1, 'Thick Description', che ne è il manifesto di metodo",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Roseberry, 'Balinese Cockfights and the Seduction of Anthropology', Social Research 49(4), 1982",
+          "why": "La critica classica: leggere la cultura come testo lascia fuori la storia e il potere; ripubblicata in Anthropologies and Histories, 1989",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Crapanzano, 'Hermes' Dilemma: The Masking of Subversion in Ethnographic Description', in Clifford & Marcus (a cura di), Writing Culture, 1986",
+          "why": "Come Geertz costruisce la propria autorità nel racconto della retata: la lettura retorica del saggio che ha aperto il dibattito sulla scrittura etnografica",
+          "access": "NON-OA"
+        }
       ]
     }
   }
