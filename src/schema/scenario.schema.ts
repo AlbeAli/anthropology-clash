@@ -18,6 +18,7 @@ const Deepen = z.object({
 
 const LevelContent = z
   .object({
+    hook: z.string().min(1).max(400).optional(),
     setup: z.string().min(1).max(1200),
     choices: z.array(Choice).min(2).max(4),
     feedback: z.record(z.string(), z.string().min(1).max(800)),
