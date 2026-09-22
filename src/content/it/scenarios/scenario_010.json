@@ -8,35 +8,71 @@
     "neofita": {
       "setup": "Africa orientale, 1883. Guidi una carovana di centocinquanta uomini e sei arrivato a Shira, sulle pendici del Kilimangiaro, alle porte del paese dei Masai. Ti hanno preparato un recinto e delle capanne, ma non puoi ancora comprare cibo: prima bisogna discutere il regalo per il capo. Il giorno dopo arriva un messaggero del capo con una capra: ti chiede di prenderla per un orecchio, di dire dove vai e di giurare che non farai del male al paese e che non pratichi la magia nera. Cosa fai?",
       "choices": [
-        { "id": "a", "text": "Prendi la capra per l'orecchio e fai tutto quello che ti chiedono" },
-        { "id": "b", "text": "Rifiuti il rito: paghi il regalo al capo e chiedi di passare subito" }
+        {
+          "id": "a",
+          "text": "Prendi la capra per l'orecchio e fai tutto quello che ti chiedono"
+        },
+        {
+          "id": "b",
+          "text": "Rifiuti il rito: paghi il regalo al capo e chiedi di passare subito"
+        }
       ],
       "feedback": {
         "a": "Così fece Joseph Thomson (1885); van Gennep (1909) lo cita come esempio 'molto netto' di rito di aggregazione dello straniero. Tu tieni un orecchio; l'ambasciatore del capo tiene l'altro e promette che nessuno vi farà del male, che avrete cibo e che il rubato sarà restituito. La capra viene uccisa, dalla fronte si taglia una striscia di pelle con due fessure: lui la infila cinque volte sul tuo dito, tu sul suo, poi si taglia in due e ciascuno tiene la sua metà. 'Il sultano di Shira e io eravamo fratelli giurati', scrive Thomson. Per van Gennep la sequenza è sempre la stessa: 'arresto, attesa, passaggio, entrata, aggregazione'. Ti sei fermato al confine, hai dichiarato le tue intenzioni, hai accettato contatto e scambio: ora sei dentro, non più uno straniero da temere o da derubare.",
-        "b": "Il 'regalo' per il capo, discusso prima di poter comprare cibo, è già parte del rito. Van Gennep (1909) lo dice chiaro: 'accettare un regalo da qualcuno è legarsi a lui', e lo scambio di doni sta al centro di ogni aggregazione. Ma hai saltato il resto: il contatto, il sacrificio, la pelle divisa in due. Lo straniero non aggregato resta in una posizione doppia, 'debole in quanto fuori da questa società, forte in quanto nel mondo sacro': per questo alcune popolazioni lo derubano e maltrattano 'senza tante formalità', altre lo temono. E il legame creato dal solo cibo spesso 'dura solo il tempo della digestione': il capitano Lyon vide gli Eschimesi considerare ospite qualcuno per ventiquattro ore. Passi, forse, ma da estraneo: nessuno ha promesso di restituirti ciò che ti verrà rubato."
+        "b": "Il 'regalo' per il capo, discusso prima di poter comprare cibo, è già parte del rito. Van Gennep (1909) lo dice chiaro: 'accettare un regalo da qualcuno è legarsi a lui', e lo scambio di doni sta al centro di ogni aggregazione. Ma hai saltato il resto: il contatto, il sacrificio, la pelle divisa in due. Lo straniero non aggregato resta in una posizione doppia, 'debole in quanto fuori da questa società, forte in quanto nel mondo sacro': per questo alcune popolazioni lo derubano e maltrattano 'senza tanti complimenti', altre lo temono. E il legame creato dal solo cibo spesso 'dura solo il tempo della digestione': il capitano Lyon vide gli Eschimesi considerare ospite qualcuno per ventiquattro ore. Passi, forse, ma da estraneo: nessuno ha promesso di restituirti ciò che ti verrà rubato."
       },
       "source": "van Gennep, I riti di passaggio, 1909; Thomson, Through Masai Land, 1885"
     },
     "studente": {
       "setup": "Shira, pendici del Kilimangiaro, 1883. Sei nei panni di Joseph Thomson, inviato della Royal Geographical Society, con una carovana di centocinquanta uomini alle porte del paese masai. Pochi giorni prima la spedizione di Fischer, forte di trecento uomini, ha avuto uno scontro con i Masai, con sangue da entrambe le parti, e il paese è in agitazione. I Chaga di Shira vi hanno preparato un recinto e delle capanne, ma la libertà di comprare cibo dipende dalla discussione del 'regalo' per il capo. Annoti che devi 'tentare di passare la soglia' prima di dichiararti sconfitto. Il giorno dopo arriva un messaggero del capo con una capra, 'per fare amicizia e fratellanza': dovrai tenerla per un orecchio, dire dove vai, dichiarare di non praticare la magia nera e promettere di non nuocere al paese; poi il sacrificio e la striscia di pelle sul dito. Van Gennep (1909) userà proprio questa scena come esempio di rito di aggregazione dello straniero. Come ti comporti?",
       "choices": [
-        { "id": "a", "text": "Fai il rito per intero: orecchio, giuramento, sacrificio, pelle sul dito" },
-        { "id": "b", "text": "Paghi il regalo e tratti solo il passaggio e il cibo: niente sacrifici" },
-        { "id": "c", "text": "Entri subito nel villaggio per parlare direttamente con il capo: hai fretta" },
-        { "id": "d", "text": "Resti nel recinto e aspetti che siano loro a dirti quando e come entrare" }
+        {
+          "id": "a",
+          "text": "Fai il rito per intero: orecchio, giuramento, sacrificio, pelle sul dito"
+        },
+        {
+          "id": "b",
+          "text": "Paghi il regalo e tratti solo il passaggio e il cibo: niente sacrifici"
+        },
+        {
+          "id": "c",
+          "text": "Entri subito nel villaggio per parlare direttamente con il capo: hai fretta"
+        },
+        {
+          "id": "d",
+          "text": "Resti nel recinto e aspetti che siano loro a dirti quando e come entrare"
+        }
       ],
       "feedback": {
         "a": "È il caso che van Gennep (1909) sceglie per mostrare 'il meccanismo diretto e semplice del rito di aggregazione dello straniero'. Thomson (1885): tu tieni un orecchio e dichiari le intenzioni, l'ambasciatore del sultano tiene l'altro e promette cibo e protezione; la capra è uccisa, una striscia di pelle della fronte passa sul tuo dito e sul suo, poi è tagliata in due: 'il sultano di Shira e io eravamo fratelli giurati'. Van Gennep vi legge la sequenza costante 'arresto, attesa, passaggio, entrata, aggregazione' e i suoi termini: riti preliminari di separazione, liminari nel margine, postliminari di aggregazione. Avverte che i riti del sangue 'raramente costituiscono da soli la cerimonia intera': contano contatto, scambio, pasto in comune. Il capo verrà a trovarti nel pomeriggio.",
-        "b": "Van Gennep (1909) conosce la scorciatoia: quando il rito di aggregazione 'è sostituito da tributi di varia natura', comincia 'lo stadio puramente economico'. Ma il regalo non ti tira fuori dal rito: 'accettare un regalo da qualcuno è legarsi a lui', e lo scambio è per lui il rito centrale. Hai fatto il margine, lo scambio, senza l'aggregazione: niente contatto, niente sacrificio, niente pasto in comune. Resti straniero, 'debole in quanto fuori da questa società, forte in quanto nel mondo sacro', che si deruba 'senza tante formalità' o si teme. E i legami di cibo scadono: 'durano solo il tempo della digestione', come tra gli Eschimesi del capitano Lyon, ospiti per ventiquattro ore. Thomson, con 150 uomini dove Fischer con 300 aveva dovuto combattere, non poteva permetterselo.",
+        "b": "Van Gennep (1909) conosce la scorciatoia: quando il rito di aggregazione 'è sostituito da tributi di varia natura', comincia 'lo stadio puramente economico'. Ma il regalo non ti tira fuori dal rito: 'accettare un regalo da qualcuno è legarsi a lui', e lo scambio è per lui il rito centrale. Hai fatto il margine, lo scambio, senza l'aggregazione: niente contatto, niente sacrificio, niente pasto in comune. Resti straniero, 'debole in quanto fuori da questa società, forte in quanto nel mondo sacro', che si deruba 'senza tanti complimenti' o si teme. E i legami di cibo scadono: 'durano solo il tempo della digestione', come tra gli Eschimesi del capitano Lyon, ospiti per ventiquattro ore. Thomson, con 150 uomini dove Fischer con 300 aveva dovuto combattere, non poteva permetterselo.",
         "c": "Per van Gennep (1909) un territorio è appropriato da un gruppo 'in modo tale che penetrarvi, da straniero, è commettere un sacrilegio' come entrare 'da profano, in un bosco sacro, in un tempio'. Gli stranieri 'non possono penetrare subito nel territorio della tribù o nel villaggio; devono provare da lontano le loro intenzioni e subire uno stadio', il 'fastidioso palabre africano'. Le reazioni che elenca sono difensive: gli abitanti abbandonano il villaggio per colline o foreste, o chiudono le porte, si armano, danno i segnali di raccolta, o il capo va loro incontro 'come meglio immunizzato del comune contro il loro contatto'. A Shira, dove i Masai avevano appena combattuto con Fischer, saltare il margine vuol dire presentarsi come nemico. Thomson, che pure aveva fretta, aspettò.",
         "d": "È lo stadio preliminare, e dura 'più o meno a lungo'. Van Gennep (1909) descrive la sequenza delle carovane: all'arrivo, porte chiuse o intermediari; poi il margine, 'scambio di regali, offerta di viveri, sistemazione dell'alloggio'; infine l'aggregazione, 'entrata solenne, pasto in comune, strette di mano'. Recinto e capanne già pronte a Shira sono l'alloggio del margine: lo straniero riceve spesso una 'casa comune', dei giovani o dei guerrieri, ed è aggregato 'non alla società generale, ma alla società speciale' che risponde al suo carattere di uomo attivo e potente. Chi passa da un territorio all'altro 'fluttua tra due mondi': è il margine, che Turner (1969) chiamerà liminalità. Ma il messaggero con la capra arriverà comunque: il margine finisce con un rito, non da solo."
       },
       "source": "van Gennep, Les rites de passage, 1909, cap. II 'Le passage matériel' e cap. III 'Les individus et les groupements' (Classiques UQAC); Thomson, Through Masai Land, 1885, cap. IV 'Through the Door of the Masai', pp. 157-159 (Internet Archive); Turner, The Ritual Process: Structure and Anti-Structure, 1969; Turner, 'Betwixt and Between: The Liminal Period in Rites de Passage', in The Forest of Symbols, 1967",
       "deepen": [
-        { "ref": "van Gennep, Les rites de passage, 1909, cap. II 'Le passage matériel' e cap. III 'Les individus et les groupements'", "why": "La soglia come margine ridotto a una pietra, la definizione di riti preliminari, liminari e postliminari, e la sequenza dell'aggregazione dello straniero con il caso di Thomson", "access": "PD (fr)", "url": "http://classiques.uqac.ca/classiques/gennep_arnold_van/rites_de_passage/rites_de_passage.html" },
-        { "ref": "Thomson, Through Masai Land, 1885, cap. IV 'Through the Door of the Masai'", "why": "Il racconto originale della cerimonia di Shira, pp. 157-159, con il contesto: lo scontro di Fischer, il 'regalo', la visita del capo", "access": "PD", "url": "https://archive.org/details/throughmasiland00thomgoog" },
-        { "ref": "Turner, The Ritual Process: Structure and Anti-Structure, 1969", "why": "La fase di margine diventa liminalità e communitas: il libro che ha fatto della seconda fase di van Gennep il centro dell'antropologia del rito", "access": "NON-OA" },
-        { "ref": "Turner, 'Betwixt and Between: The Liminal Period in Rites de Passage', in The Forest of Symbols, 1967", "why": "Il saggio breve in cui Turner rilegge van Gennep sui riti di iniziazione ndembu: da qui parte l'idea di liminalità", "access": "NON-OA" }
+        {
+          "ref": "van Gennep, Les rites de passage, 1909, cap. II 'Le passage matériel' e cap. III 'Les individus et les groupements'",
+          "why": "La soglia come margine ridotto a una pietra, la definizione di riti preliminari, liminari e postliminari, e la sequenza dell'aggregazione dello straniero con il caso di Thomson",
+          "access": "PD (fr)",
+          "url": "http://classiques.uqac.ca/classiques/gennep_arnold_van/rites_de_passage/rites_de_passage.html"
+        },
+        {
+          "ref": "Thomson, Through Masai Land, 1885, cap. IV 'Through the Door of the Masai'",
+          "why": "Il racconto originale della cerimonia di Shira, pp. 157-159, con il contesto: lo scontro di Fischer, il 'regalo', la visita del capo",
+          "access": "PD",
+          "url": "https://archive.org/details/throughmasiland00thomgoog"
+        },
+        {
+          "ref": "Turner, The Ritual Process: Structure and Anti-Structure, 1969",
+          "why": "La fase di margine diventa liminalità e communitas: il libro che ha fatto della seconda fase di van Gennep il centro dell'antropologia del rito",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Turner, 'Betwixt and Between: The Liminal Period in Rites de Passage', in The Forest of Symbols, 1967",
+          "why": "Il saggio breve in cui Turner rilegge van Gennep sui riti di iniziazione ndembu: da qui parte l'idea di liminalità",
+          "access": "NON-OA"
+        }
       ]
     }
   }
