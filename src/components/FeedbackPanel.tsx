@@ -30,7 +30,7 @@ export default function FeedbackPanel({ content, level, choiceId }: Props) {
         >
           {t("scenario.outcome")}
         </h2>
-        <div className="space-y-3 rounded-sm border-l-4 border-accent bg-surface px-5 py-5">
+        <div className="space-y-3 rounded-sm border border-accent bg-surface px-5 py-5">
           <p className="flex items-start gap-3 text-sm text-ink-soft">
             <span
               aria-hidden="true"
