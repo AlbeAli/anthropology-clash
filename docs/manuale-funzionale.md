@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.24 — 2026-09-22 — Stato: pubblicato (M1-M4 chiuse; M5: 15 scenari scritti, validazione finale in corso, §16.6)
+Versione 0.25 — 2026-09-22 — Stato: pubblicato (M1-M4 chiuse; M5: 15 scenari scritti, validazione finale in corso, §16.6)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -205,8 +205,8 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | 01  | La collana che non si può tenere | Reciprocità         | Malinowski, Argonauts, 1922                       | PD      | **validato** |
 | 02  | La carne è troppo magra          | Reciprocità         | Lee, Eating Christmas in the Kalahari, 1969       | OA      | **validato** |
 | 03  | I riti del corpo dei Nacirema    | Relativismo         | Miner, American Anthropologist, 1956              | OA      | **validato** |
-| 04  | Bruciare la ricchezza            | Reciprocità         | Boas, 1897; Mauss, 1925                           | PD      | scritto      |
-| 05  | Lo spirito della cosa donata     | Reciprocità         | Mauss, Essai sur le don, 1925                     | PD (fr) | scritto      |
+| 04  | Bruciare la ricchezza            | Reciprocità         | Boas, 1897; Mauss, 1925                           | PD      | **validato** |
+| 05  | Lo spirito della cosa donata     | Reciprocità         | Mauss, Essai sur le don, 1925                     | PD (fr) | **validato** |
 | 06  | Cugino o fratello?               | Parentela           | Morgan, Systems of Consanguinity, 1871            | PD      | scritto      |
 | 07  | L'eredità va al nipote           | Parentela           | Malinowski, 1922, 1926 e 1929                     | PD      | scritto      |
 | 08  | Amleto tra i Tiv                 | Parentela           | Bohannan, Shakespeare in the Bush, 1966           | OA      | scritto      |
@@ -219,6 +219,10 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | 15  | Il tempo delle mucche            | Relativismo         | Evans-Pritchard, 1940, cap. I e III; E-P 1939     | NON-OA  | scritto      |
 
 Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura: reciprocità 4, parentela 4, rituale 3, relativismo/etica 4.
+
+Revisione batch A (01, 04, 05), 2026-09-22. Riletti sul testo, non solo riletti: ogni citazione e ogni affermazione attribuita a un autore è stata ricontrollata alla fonte. Verificato: Boas 1897 sul testo integrale (Internet Archive) — «interest-bearing investment of property», «rivals fight with property only», «not at liberty to refuse», p'a'sa «flattening», tassi 5→6 in pochi mesi, 5→7 a sei mesi, 5→10 a dodici, «break a copper of equal or higher value», i frammenti rivettati che aumentano il valore, «in by far the greater number of cases the copper is preserved», le feste del grasso che sfociano in «open enmity»; Mauss 1925 (Sociologie et anthropologie, pp. 212-216) — il testo di Ranaipiri, «la chose reçue n'est pas inerte», «il poursuit... tout individu auquel le taonga est simplement transmis», «présenter quelque chose à quelqu'un c'est présenter quelque chose de soi», «refuser de donner... équivaut à déclarer la guerre»; Lévi-Strauss 1950 (pp. 40-41) — «l'ethnologue se laisse mystifier par l'indigène», «une théorie néo-zélandaise... qui n'est pas autre chose qu'une théorie»; Firth 1929 (pp. 411-413) — la sanzione triplice e «nowhere in the native text can support be found»; Sahlins 1972 (p. 180 e p. 184) — «the hau of a good is its yield», «one man's gift should not be another man's capital», «a direct return on the initial gift is excluded»; Codere 1950 — «fighting with property» invece di «fighting with weapons», 2.264 kwakiutl nel 1882, almeno 658 posizioni di potlatch; Cole & Chaikin 1990 — divieto del 1885 cancellato solo nel 1951, oltre cinquanta condanne dopo il potlatch di Village Island di Dan Cranmer.
+
+Corretto di conseguenza: tolta l'attribuzione a Drucker & Heizer 1967 (opera non reperibile per la verifica: sostituita con l'annotazione di Boas sui rami conservati) e a Weiner 1992 in 05 (non su Internet Archive: al suo posto Sahlins, p. 184); riscritte le frasi su Codere (i dettagli su epidemie, nomi vacanti e coperte a buon mercato non trovavano riscontro) e su Cole & Chaikin (l'U'mista Cultural Centre e la data 1921 non sono confermati dal testo, che parla dei processi del 1922); Firth non è più presentato come esperto della lingua ma con la sua tesi verificata; in 05 neofita «spiegò nel 1909» diventa «pubblicato nel 1909», perché la data della raccolta non è documentata. Anche in 01, già validato, la voce Weiner è stata ridotta al titolo con editore, senza tesi attribuite. Tono: in 04 «misurare con il metro sbagliato» è diventato «con un metro che qui non vale».
 
 Backlog M6 (consumo, con aggancio contemporaneo): da definire caso per caso, tre scenari, ancora aperta Veblen 1899 (testo integrale su Internet Archive) e Douglas & Isherwood 1979 (verificabile con la ricerca interna, p. 73 della ristampa 1982). Piste non ancora verificate, da aprire una alla volta prima di scrivere: Mintz 1985, Appadurai e Kopytoff 1986, Miller 1987, Bourdieu 1979. Vincolo: non ripetere terreno già coperto da 04 (distruzione ostentata), 05 (hau) e 12 (cibo e classificazione).
 
