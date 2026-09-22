@@ -40,6 +40,22 @@ describe("validate-content", () => {
   });
 });
 
+describe("validate-content: aggancio contemporaneo", () => {
+  it("segnala un hook presente in un solo livello", () => {
+    const broken = structuredClone(scenario001);
+    (broken.levels.neofita as { hook?: string }).hook = "Oggi, in una chat di gruppo.";
+    const messages = validateAll(fixture(broken)).issues.map((i) => i.message);
+    expect(messages).toContainEqual(expect.stringContaining("hook"));
+  });
+
+  it("accetta un hook presente in entrambi i livelli", () => {
+    const ok = structuredClone(scenario001);
+    (ok.levels.neofita as { hook?: string }).hook = "Oggi, in una chat di gruppo.";
+    (ok.levels.studente as { hook?: string }).hook = "Oggi, in una chat di gruppo.";
+    expect(validateAll(fixture(ok)).issues).toEqual([]);
+  });
+});
+
 describe("validate-content: vincoli sui livelli", () => {
   it("segnala feedback senza scelta corrispondente e numero scelte fuori regola", () => {
     const broken = structuredClone(scenario001);

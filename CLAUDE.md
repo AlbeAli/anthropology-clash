@@ -51,6 +51,8 @@ scripts          validate-content.ts
 - Il livello `studente` serve anche a laureati che riprendono un tema: la libreria concetti dà accesso libero a qualsiasi scenario, non solo in sequenza.
 - Ogni esempio attribuito a un autore deve trovarsi davvero nell'opera citata. Nessuna affermazione quantitativa ("il più usato", "la maggioranza") senza fonte: attenuare o citare.
 - Concetti ammessi: `reciprocita`, `parentela`, `rituale`, `relativismo`, `consumo`. Aggiungerne uno richiede modifica a `ConceptId` nello schema e voce in `concepts.json`.
+- Campo `hook` opzionale in ogni livello (max 400 caratteri): l'aggancio a una situazione contemporanea che apre lo scenario prima del `setup` etnografico. O in entrambi i livelli o in nessuno, verificato da `pnpm validate`.
+- **Un `hook` non è un caso di studio.** È un'illustrazione in seconda persona e non contiene affermazioni fattuali su gruppi, quantità o singole persone. Se la situazione contemporanea è a sua volta etnografata, la si cita in `source` e vale come qualunque altra fonte: verificata sul testo.
 - Commit per nuovi scenari: `content: aggiunge scenario_NNN (titolo)`.
 
 ## Convenzioni
@@ -71,6 +73,7 @@ scripts          validate-content.ts
 | M3 | Livello, progressi e streak sopravvivono alla chiusura del browser |
 | M4 | URL pubblico su Vercel; eventi visibili in Plausible/Umami; CI verde |
 | M5 | 15 scenari validati |
+| M6 | Concetto `consumo` e campo `hook` in produzione; 3 scenari sul consumo che partono da un caso contemporaneo |
 
 ## Cosa non fare
 

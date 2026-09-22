@@ -87,6 +87,12 @@ export function validateLang(lang: Lang, dir: string): { issues: Issue[]; count:
         }
       }
     }
+    if (Boolean(s.levels.neofita.hook) !== Boolean(s.levels.studente.hook)) {
+      issues.push({
+        file: label,
+        message: "hook: presente in un livello e assente nell'altro; o in entrambi o in nessuno",
+      });
+    }
     if (s.levels.neofita.choices.length !== 2) {
       issues.push({
         file: label,

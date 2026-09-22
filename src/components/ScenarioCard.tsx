@@ -24,6 +24,17 @@ export default function ScenarioCard({ scenario, level, choiceId, onSelect }: Pr
         </h1>
       </header>
 
+      {content.hook ? (
+        <section aria-labelledby="hook-heading" className="space-y-2">
+          <h2 id="hook-heading" className="font-mono text-xs uppercase tracking-widest text-clay">
+            {t("scenario.hook")}
+          </h2>
+          <p className="border-l-2 border-line pl-4 leading-relaxed text-ink-soft text-pretty">
+            {content.hook}
+          </p>
+        </section>
+      ) : null}
+
       <p className="font-serif text-lg leading-relaxed text-pretty sm:text-xl">{content.setup}</p>
 
       <section aria-labelledby="choices-heading" className="space-y-3">

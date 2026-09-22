@@ -17,6 +17,15 @@ describe("Scenario schema", () => {
     );
   });
 
+  it("accetta un hook opzionale e lo rifiuta oltre i 400 caratteri", () => {
+    const conHook = structuredClone(scenario001);
+    (conHook.levels.neofita as { hook?: string }).hook =
+      "Oggi ti arriva un regalo che non puoi ricambiare.";
+    expect(Scenario.safeParse(conHook).success).toBe(true);
+    (conHook.levels.neofita as { hook?: string }).hook = "a".repeat(401);
+    expect(Scenario.safeParse(conHook).success).toBe(false);
+  });
+
   it("rifiuta un concept fuori tassonomia", () => {
     const broken = { ...scenario001, concept: "economia" };
     expect(Scenario.safeParse(broken).success).toBe(false);
