@@ -8,22 +8,40 @@
     "neofita": {
       "setup": "Isole Trobriand, Papua Nuova Guinea, intorno al 1915. Vivi nel villaggio di tuo padre, un uomo di rango: ha palme da cocco, orti, un posto nella canoa e formule magiche che tutti gli invidiano. Sta invecchiando e un giorno ti dice: 'Ti do tutto adesso, finché sono vivo'. Tu però sai come si ragiona qui: quello che un uomo possiede passa al figlio di sua sorella, non al figlio suo. Tuo cugino, il figlio della sorella di tuo padre, lo sa benissimo e aspetta. Cosa fai?",
       "choices": [
-        { "id": "a", "text": "Accetti: è tuo padre, e te lo dà lui" },
-        { "id": "b", "text": "Rifiuti: per legge spetta a tuo cugino" }
+        {
+          "id": "a",
+          "text": "Accetti: è tuo padre, e te lo dà lui"
+        },
+        {
+          "id": "b",
+          "text": "Rifiuti: per legge spetta a tuo cugino"
+        }
       ],
       "feedback": {
         "a": "Succede spesso. Nelle Trobriand la discendenza passa per le donne: sei del clan di tua madre, e per la legge del villaggio tuo padre è un tomakava, un 'estraneo'. Eppure, scrive Malinowski (1922), il padre è 'l'unico parente da cui ci si aspettano doni gratuiti': cede al figlio orti, alberi e magia 'liberamente e con piacere', mentre lo zio materno dà 'per obbligo di costume ciò che non può trattenere per i propri figli'. Il punto è il dopo: alla morte di tuo padre, orti e palme 'spesso devono tornare ai legittimi eredi, cioè ai figli di sua sorella'. Te li godi finché lui vive; poi tuo cugino può reclamarli. E può anche non aspettare: Malinowski (1926) racconta che a volte gli eredi fermano la generosità dello zio chiedendo con un pagamento, il pokala, ciò che sta per dare al figlio.",
         "b": "Per la legge hai ragione: nelle Trobriand rango, terre e magia passano da un uomo al figlio di sua sorella, e tu, figlio, non sei nemmeno un suo parente. Ma tuo padre ci resterebbe male, e il villaggio lo troverebbe strano. Malinowski (1922) osserva che il padre trobriandese è 'di gran lunga l'amico più vicino e affettuoso dei suoi figli' e che 'in materia di eredità dà ai figli tutto ciò che può'. L'unico dono che qui arriva senza contropartita è quello del padre: tuo cugino, per avere ora le stesse cose, dovrebbe pagare lo zio a rate, con il pokala. Rifiutando non hai messo pace: hai solo lasciato che il contrasto tra diritto materno e affetto paterno, che Malinowski (1926) chiama 'Mother-right' e 'Father-love', si risolvesse senza di te."
       },
-      "source": "Malinowski, Argonauti del Pacifico occidentale, 1922; Malinowski, Crime and Custom in Savage Society, 1926"
+      "source": "Malinowski, Argonauts of the Western Pacific, 1922; Malinowski, Crime and Custom in Savage Society, 1926"
     },
     "studente": {
       "setup": "Kiriwina, Isole Trobriand, 1915-1918. Sei un notabile di un villaggio dell'interno: possiedi appezzamenti (baleko), palme, un posto nella canoa, partner nel Kula e un sistema di magia degli orti. Qui la parentela si conta solo per via materna: i tuoi veri parenti (veyola) sono i figli di tua sorella; tuo figlio, che pure hai cresciuto in casa, per la legge è un tomakava, un estraneo, e da ragazzo avrebbe dovuto trasferirsi nel villaggio di sua madre. Invece è rimasto: riempie il tuo deposito di igname e vive in una casa costruita sul tuo terreno. Tuo nipote, il figlio di tua sorella, è il tuo erede: abita a qualche miglio e comincia a chiedere che cosa gli lascerai. A Omarakana, il villaggio del capo To'uluwa, tutti parlano di come è finita tra il figlio prediletto del capo e il nipote erede. Tu stai invecchiando. Come regoli la successione?",
       "choices": [
-        { "id": "a", "text": "Insegni la magia e cedi gli orti a tuo figlio adesso, gratis: è tuo figlio, e il costume lo permette" },
-        { "id": "b", "text": "Aspetti che tuo nipote ti porti il pokala e gli cedi tutto a rate, come vuole la legge" },
-        { "id": "c", "text": "Fidanzi tuo figlio con la figlia di tua sorella: così resterà nel villaggio con pieno diritto" },
-        { "id": "d", "text": "Chiedi al magistrato coloniale di registrare le terre a nome di tuo figlio" }
+        {
+          "id": "a",
+          "text": "Insegni la magia e cedi gli orti a tuo figlio adesso, gratis: è tuo figlio, e il costume lo permette"
+        },
+        {
+          "id": "b",
+          "text": "Aspetti che tuo nipote ti porti il pokala e gli cedi tutto a rate, come vuole la legge"
+        },
+        {
+          "id": "c",
+          "text": "Fidanzi tuo figlio con la figlia di tua sorella: così resterà nel villaggio con pieno diritto"
+        },
+        {
+          "id": "d",
+          "text": "Chiedi al magistrato coloniale di registrare le terre a nome di tuo figlio"
+        }
       ],
       "feedback": {
         "a": "È il 'Father-love' che Malinowski (1926) oppone al 'Mother-right': un uso 'stabilito ma non legale' che permette al padre di dare al figlio 'gratuitamente' terre, magia e diritti nel Kula, che il nipote dovrebbe pagare. Il figlio resta 'per riempire meglio il deposito di igname del padre', si sposa e costruisce la casa sul suo terreno. Ma i beni tornano agli eredi alla tua morte, e i nipoti possono non aspettare. A Omarakana, sotto gli occhi di Malinowski, i Tabalu, parenti materni del capo To'uluwa, cacciarono il figlio prediletto Namwana Guya'u con la formula rituale dello yoba: 'Questo è il nostro villaggio! Tu qui sei un estraneo. Vattene!'. Il capo restò tre giorni chiuso nella capanna: 'non poteva fare nulla', i suoi parenti avevano agito 'in piena conformità con i loro diritti'.",
@@ -33,10 +51,29 @@
       },
       "source": "Malinowski, Argonauts of the Western Pacific, 1922, cap. II §VI, cap. VI §VI e cap. XI §II; Malinowski, Crime and Custom in Savage Society, 1926, Parte I, cap. III, pp. 100-111 (Internet Archive); Malinowski, The Sexual Life of Savages in North-Western Melanesia, 1929, cap. I §1-2 e cap. IV §4-5 (Internet Archive); Lévi-Strauss, 'L'analyse structurale en linguistique et en anthropologie', Word 1(1), 1945; Weiner, The Trobrianders of Papua New Guinea, 1988",
       "deepen": [
-        { "ref": "Malinowski, Crime and Custom in Savage Society, 1926, Parte I, cap. III 'Systems of Law in Conflict'", "why": "Il caso di Namwana Guya'u trascritto dalle note di campo e l'analisi del conflitto tra Mother-right e Father-love, con gli usi che lo attenuano: pokala, residenza del figlio, matrimonio tra cugini incrociati", "access": "PD", "url": "https://archive.org/details/crimecustominsav00mali" },
-        { "ref": "Malinowski, The Sexual Life of Savages in North-Western Melanesia, 1929, cap. I 'The Relations between the Sexes in Tribal Life' e cap. IV 'The Avenues to Marriage'", "why": "I principi del diritto materno (tama, kada, tomakava), il villaggio di Omarakana diviso in tre parti e il matrimonio tra cugini incrociati con la genealogia della famiglia di To'uluwa", "access": "PD", "url": "https://archive.org/details/sexuallifeofsava00mali" },
-        { "ref": "Lévi-Strauss, 'L'analyse structurale en linguistique et en anthropologie', Word 1(1), 1945", "why": "L'atomo di parentela: le Trobriand, filiazione matrilineare, padre e figlio 'liberi e familiari', zio materno e nipote in 'antagonismo marcato', accanto al caso inverso dei Circassi patrilineari; ripreso in Anthropologie structurale, 1958, cap. II", "access": "verificare", "url": "https://doi.org/10.1080/00437956.1945.11659244" },
-        { "ref": "Weiner, The Trobrianders of Papua New Guinea, 1988", "why": "La rilettura di Kiriwina cinquant'anni dopo Malinowski: il ruolo del padre, il lignaggio (dala) e la ricchezza delle donne nelle distribuzioni funebri", "access": "NON-OA" }
+        {
+          "ref": "Malinowski, Crime and Custom in Savage Society, 1926, Parte I, cap. III 'Systems of Law in Conflict'",
+          "why": "Il caso di Namwana Guya'u trascritto dalle note di campo e l'analisi del conflitto tra Mother-right e Father-love, con gli usi che lo attenuano: pokala, residenza del figlio, matrimonio tra cugini incrociati",
+          "access": "PD",
+          "url": "https://archive.org/details/crimecustominsav00mali"
+        },
+        {
+          "ref": "Malinowski, The Sexual Life of Savages in North-Western Melanesia, 1929, cap. I 'The Relations between the Sexes in Tribal Life' e cap. IV 'The Avenues to Marriage'",
+          "why": "I principi del diritto materno (tama, kada, tomakava), il villaggio di Omarakana diviso in tre parti e il matrimonio tra cugini incrociati con la genealogia della famiglia di To'uluwa",
+          "access": "PD",
+          "url": "https://archive.org/details/sexuallifeofsava00mali"
+        },
+        {
+          "ref": "Lévi-Strauss, 'L'analyse structurale en linguistique et en anthropologie', Word 1(1), 1945",
+          "why": "L'atomo di parentela: le Trobriand, filiazione matrilineare, padre e figlio 'liberi e familiari', zio materno e nipote in 'antagonismo marcato', accanto al caso inverso dei Circassi patrilineari; ripreso in Anthropologie structurale, 1958, cap. II",
+          "access": "OA",
+          "url": "https://doi.org/10.1080/00437956.1945.11659244"
+        },
+        {
+          "ref": "Weiner, The Trobrianders of Papua New Guinea, 1988",
+          "why": "La rilettura di Kiriwina cinquant'anni dopo Malinowski: il ruolo del padre, il lignaggio (dala) e la ricchezza delle donne nelle distribuzioni funebri",
+          "access": "NON-OA"
+        }
       ]
     }
   }
