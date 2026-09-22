@@ -14,7 +14,7 @@ describe("content loader", () => {
       getConcepts("it")
         .map((c) => c.id)
         .sort(),
-    ).toEqual(["parentela", "reciprocita", "relativismo", "rituale"]);
+    ).toEqual(["consumo", "parentela", "reciprocita", "relativismo", "rituale"]);
   });
 
   it("restituisce liste vuote per una lingua senza contenuti", () => {

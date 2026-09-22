@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const Lang = z.enum(["it", "en"]);
 export const Level = z.enum(["neofita", "studente"]);
-export const ConceptId = z.enum(["reciprocita", "parentela", "rituale", "relativismo"]);
+export const ConceptId = z.enum(["reciprocita", "parentela", "rituale", "relativismo", "consumo"]);
 
 const Choice = z.object({
   id: z.string().regex(/^[a-d]$/),
