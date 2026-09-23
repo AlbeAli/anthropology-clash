@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.28 — 2026-09-23 — Stato: pubblicato (M1-M5 chiuse; M6 aperta, §16.9)
+Versione 0.29 — 2026-09-23 — Stato: pubblicato (M1-M5 chiuse; M6 aperta, §16.9)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -244,7 +244,7 @@ Repertori: DOAJ (riviste OA: Cultural Anthropology, Social Anthropology, JASO, K
 
 Fonti primarie aperte individuate: Malinowski 1922 (Gutenberg #55822; Internet Archive), Malinowski 1926 e 1929 (Internet Archive; pubblico dominio in UE dal 2013, autore morto nel 1942, e negli USA dal 2022 e 2025), Miner 1956 (DOI 10.1525/aa.1956.58.3.02a00080), Bohannan 1966 e Lee 1969 (Natural History), Mauss 1925 (Classiques UQAC), Morgan 1871 (Internet Archive), van Gennep 1909, Boas 1887, AAA 2012.
 
-Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. Alla data, per gli scenari 01-03 e i concetti: Malinowski 1922; Mauss 1925; Bohannan 1955 e 1966; Weiner 1992; Leach & Leach 1983; Lee 1969 e 1979; Woodburn 1982; Wilmsen 1989; Lee & Guenther 1991; Miner 1956 e 1952; Leathem 2023 (accesso da verificare); Sahlins 1972; Morgan 1871; van Gennep 1909; Turner 1969; Douglas 1966; Boas 1887. In M4 la pagina Metodo va generata o allineata a questo elenco.
+Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. È generata dai contenuti (`src/engine/bibliography.ts`), non mantenuta a mano: con i quindici scenari validati sono 62 voci, senza doppioni, ciascuna con lo stato di accesso e gli scenari che la citano. Nessuna voce resta con l'etichetta «accesso da verificare».
 
 ## 15. Specifica di sviluppo
 
@@ -300,7 +300,7 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 ## 16. Stato di avanzamento e piano operativo
 
-### 16.1 Cosa esiste al 2026-09-18
+### 16.1 Cosa esiste (aggiornato al 2026-09-23)
 
 Fatto in M1, oltre a quanto previsto dalla v0.6:
 
@@ -311,6 +311,15 @@ Fatto in M1, oltre a quanto previsto dalla v0.6:
 - ESLint `id-denylist` a tutela del principio "nessuna risposta sbagliata" anche nel codice.
 - Test sul caricatore contenuti (`src/engine/content.test.ts`).
 - README e questo documento.
+
+Stato al 2026-09-23, dopo la chiusura di M5:
+
+- 15 scenari in `src/content/it/scenarios/`, tutti validati sul testo delle fonti; 5 concetti in `concepts.json` (`consumo` aggiunto il 2026-09-22).
+- Schema con campo `hook` opzionale per l'aggancio contemporaneo; `pnpm validate` verifica anche che stia in entrambi i livelli o in nessuno.
+- 33 test (engine, schema, script di validazione), lint e build verdi; CI verde su `main`.
+- App in produzione su Vercel, pagina Metodo con 62 voci di bibliografia generate dai contenuti.
+- Scroll in cima a ogni rotta, titolo del documento per pagina, focus visibile sull'intestazione del riscontro (2026-09-21); bordo del riscontro a 1px su tutti i lati dopo il rilievo del detector (2026-09-22).
+- Autore dichiarato in README, manuale, `CLAUDE.md`, `package.json`, `index.html` e footer dell'app.
 
 Fatto dopo M1 (2026-09-18):
 
