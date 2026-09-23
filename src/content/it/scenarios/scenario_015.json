@@ -8,8 +8,14 @@
     "neofita": {
       "setup": "Sudan meridionale, anni Trenta. Sei un ricercatore appena arrivato in un accampamento nuer, sul fiume, nella stagione secca. Domani devi incontrare gli anziani per una questione di bestiame e chiedi a che ora. Ti rispondono: 'alla mungitura', 'quando i vitelli tornano a casa'. Tu hai un orologio al polso, e una giornata da organizzare. Cosa fai?",
       "choices": [
-        { "id": "a", "text": "Insisti per un'ora precisa: le nove, o le dieci" },
-        { "id": "b", "text": "Accetti 'alla mungitura' e ti organizzi su quello" }
+        {
+          "id": "a",
+          "text": "Insisti per un'ora precisa: le nove, o le dieci"
+        },
+        {
+          "id": "b",
+          "text": "Accetti 'alla mungitura' e ti organizzi su quello"
+        }
       ],
       "feedback": {
         "a": "Evans-Pritchard (1940) lo dice chiaramente: 'i Nuer non hanno un'espressione equivalente a tempo nella nostra lingua, e non possono quindi, come facciamo noi, parlare del tempo come di qualcosa di reale, che passa, si può sprecare, si può risparmiare'. Non ci sono 'punti di riferimento autonomi a cui le attività debbano conformarsi con precisione': i loro punti di riferimento 'sono principalmente le attività stesse'. Le nove del tuo orologio non corrispondono a niente che qualcuno lì stia aspettando; 'alla mungitura' sì. Puoi tenere l'orologio, ma dovrai tradurre: la mungitura del mattino, la mandria al pascolo, il ritorno dei vitelli. 'Non credo', scrive Evans-Pritchard, 'che provino mai la stessa sensazione di lottare contro il tempo'. E aggiunge: 'i Nuer sono fortunati'.",
@@ -20,10 +26,22 @@
     "studente": {
       "setup": "Sudan anglo-egiziano, 1936. Sei nei panni di Evans-Pritchard che scrive il capitolo 'Tempo e spazio' dei Nuer, dopo periodi di campo tra il 1930 e il 1936 in un paese 'insolitamente ostile' dopo la sconfitta militare. Hai annotato che 'i Nuer non hanno un'espressione equivalente a tempo', che il 'segnatempo quotidiano è l'orologio del bestiame', che tot e mai, siccità e piogge, 'non sono pure unità di computo del tempo ma stanno per l'insieme delle attività sociali' di quelle stagioni, e che oltre l'anno si conta 'per classi d'età', sei in tutto, e per lignaggi. Devi trovare un concetto che tenga insieme queste note senza dire né che i Nuer vivono fuori dal tempo, né che hanno il nostro tempo senza orologi. Come lo formuli?",
       "choices": [
-        { "id": "a", "text": "I Nuer non hanno il concetto di tempo: vivono in un presente senza durata" },
-        { "id": "b", "text": "Il tempo nuer è ecologico: mungitura, stagioni, bisogni del bestiame" },
-        { "id": "c", "text": "Il tempo nuer è strutturale: classi d'età e lignaggi, cioè distanza sociale" },
-        { "id": "d", "text": "Il tempo nuer è come il nostro, solo senza orologio: lo misurano con le vacche" }
+        {
+          "id": "a",
+          "text": "I Nuer non hanno il concetto di tempo: vivono in un presente senza durata"
+        },
+        {
+          "id": "b",
+          "text": "Il tempo nuer è ecologico: mungitura, stagioni, bisogni del bestiame"
+        },
+        {
+          "id": "c",
+          "text": "Il tempo nuer è strutturale: classi d'età e lignaggi, cioè distanza sociale"
+        },
+        {
+          "id": "d",
+          "text": "Il tempo nuer è come il nostro, solo senza orologio: lo misurano con le vacche"
+        }
       ],
       "feedback": {
         "a": "Le tue stesse frasi la autorizzano: 'i Nuer non hanno un'espressione equivalente a tempo', 'non possono parlare del tempo come di qualcosa di reale, che passa, si può sprecare, si può risparmiare' (Evans-Pritchard 1940). Ma il capitolo dice altro: 'gli eventi seguono un ordine logico', solo 'non sono controllati da un sistema astratto'. I Nuer hanno un computo del giorno (l'orologio del bestiame), dell'anno (tot e mai, l'altezza della siccità e delle piogge) e delle generazioni (le classi d'età: 'il tempo qui è contato in classi'). Ciò che manca è un tempo 'astratto', con 'punti di riferimento autonomi'. Dire 'senza tempo' è un etnocentrismo rovesciato: misura i Nuer con il nostro concetto e registra un'assenza.",
@@ -31,11 +49,25 @@
         "c": "È la seconda metà, la più originale: 'il tempo strutturale è un riflesso della distanza strutturale' (Evans-Pritchard 1940). Oltre l'anno, 'la distanza tra gli eventi cessa di essere contata in concetti di tempo come li intendiamo noi ed è contata in termini di distanza strutturale, cioè della relazione tra gruppi di persone'. Un Nuer dice che un evento accadde 'nel periodo di iniziazione della classe Boiloc', ma 'nessuno può dire quanti anni fa': 'il tempo qui è contato in classi', sei in esistenza, circa dieci anni l'una; e poi in lignaggi. Di qui il paradosso: 'il movimento del tempo strutturale è, in un certo senso, un'illusione: la struttura resta costante e 'la percezione del tempo non è che il movimento delle persone attraverso la struttura'. Da solo però non spiega la mungitura.",
         "d": "È la tentazione opposta al 'senza tempo', e il capitolo la respinge: 'non credo che provino mai la stessa sensazione di lottare contro il tempo o di dover coordinare le attività con un passare astratto del tempo, perché i loro punti di riferimento sono principalmente le attività stesse, generalmente di carattere tranquillo' (Evans-Pritchard 1940). L'orologio del bestiame non misura un tempo che esiste a parte: è la giornata stessa. Thompson (1967) userà i Nuer di Evans-Pritchard per descrivere il tempo 'orientato al compito' che il capitalismo industriale ha sostituito con quello dell'orologio. Chi scrive 'senza orologio' ha già messo l'orologio al centro."
       },
-      "source": "Evans-Pritchard, The Nuer, 1940, cap. I 'Interest in Cattle', pp. 10-19, e cap. III 'Time and Space', pp. 94-108; Evans-Pritchard, 'Nuer Time-Reckoning', Africa 12(2), 1939, pp. 189-216, DOI 10.2307/1155085; Thompson, 'Time, Work-Discipline, and Industrial Capitalism', Past and Present 38, 1967, pp. 56-97, DOI 10.1093/past/38.1.56",
+      "source": "Evans-Pritchard, The Nuer, 1940, cap. I 'Interest in Cattle' e cap. III 'Time and Space'; Evans-Pritchard, 'Nuer Time-Reckoning', Africa 12(2), 1939, pp. 189-216, DOI 10.2307/1155085; Thompson, 'Time, Work-Discipline, and Industrial Capitalism', Past and Present 38, 1967, pp. 56-97, DOI 10.1093/past/38.1.56",
       "deepen": [
-        { "ref": "Evans-Pritchard, The Nuer, 1940, cap. III 'Time and Space'", "why": "Tempo ecologico e tempo strutturale, l'orologio del bestiame, le classi d'età e la distanza strutturale: quindici pagine che restano il punto di partenza di ogni antropologia del tempo", "access": "NON-OA" },
-        { "ref": "Evans-Pritchard, 'Nuer Time-Reckoning', Africa 12(2), 1939", "why": "La versione più lunga e dettagliata dello stesso materiale, uscita l'anno prima del libro sulla rivista dell'International African Institute", "access": "NON-OA", "url": "https://doi.org/10.2307/1155085" },
-        { "ref": "Thompson, 'Time, Work-Discipline, and Industrial Capitalism', Past and Present 38, 1967", "why": "Lo storico che porta i Nuer in Inghilterra: dal tempo orientato al compito al tempo dell'orologio nella disciplina di fabbrica", "access": "NON-OA", "url": "https://doi.org/10.1093/past/38.1.56" }
+        {
+          "ref": "Evans-Pritchard, The Nuer, 1940, cap. III 'Time and Space'",
+          "why": "Tempo ecologico e tempo strutturale, l'orologio del bestiame, le classi d'età e la distanza strutturale: quindici pagine che restano il punto di partenza di ogni antropologia del tempo",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Evans-Pritchard, 'Nuer Time-Reckoning', Africa 12(2), 1939",
+          "why": "La versione più lunga e dettagliata dello stesso materiale, uscita l'anno prima del libro sulla rivista dell'International African Institute",
+          "access": "NON-OA",
+          "url": "https://doi.org/10.2307/1155085"
+        },
+        {
+          "ref": "Thompson, 'Time, Work-Discipline, and Industrial Capitalism', Past and Present 38, 1967",
+          "why": "Lo storico che porta i Nuer in Inghilterra: dal tempo orientato al compito al tempo dell'orologio nella disciplina di fabbrica",
+          "access": "NON-OA",
+          "url": "https://doi.org/10.1093/past/38.1.56"
+        }
       ]
     }
   }
