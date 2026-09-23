@@ -1,0 +1,80 @@
+{
+  "id": "scenario_016",
+  "lang": "it",
+  "title": "Il gusto classifica chi classifica",
+  "concept": "consumo",
+  "concept_label": "Consumo e cultura materiale",
+  "levels": {
+    "neofita": {
+      "hook": "Un amico ti mostra le sue foto: un tramonto sul mare, un cucciolo, una prima comunione. Dici che sono belle. Poi un altro ti mostra le sue: una tubatura arrugginita, un mucchio di cavoli, il banco di un macellaio. Dice che quelle sì che sono fotografie. Nessuno dei due sta scherzando. Chi dei due ha gusto, e chi lo stabilisce?",
+      "setup": "Francia, anni Sessanta. Un questionario gira tra più di mille persone. Una domanda elenca soggetti — un paesaggio, un incidente d'auto, una donna incinta, una natura morta, una struttura metallica, dei cavoli, un tramonto sul mare, il banco di un macellaio, la corteccia di un albero, una prima comunione — e chiede se con quel soggetto un fotografo farebbe una foto bella, interessante, insignificante o brutta. Le risposte non si distribuiscono a caso: cambiano in modo regolare con il titolo di studio di chi risponde. Tocca a te interpretarle.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Sono gusti: ognuno risponde come gli pare, non c'è niente da spiegare"
+        },
+        {
+          "id": "b",
+          "text": "Il gusto si impara, e dice da dove viene chi risponde"
+        }
+      ],
+      "feedback": {
+        "a": "Bourdieu (1979) parte proprio da qui: se fosse solo gusto personale, le risposte si distribuirebbero a caso. Non lo fanno. «Più alto è il livello di istruzione, maggiore è la quota di chi, alla domanda se una serie di oggetti darebbe belle fotografie, rifiuta gli oggetti ordinari dell'ammirazione popolare — una prima comunione, un tramonto, un paesaggio — come 'volgari' o 'brutti'», e maggiore è la quota di chi dichiara che si può fare una bella foto di una struttura metallica, della corteccia di un albero e «soprattutto dei cavoli, oggetto banale per eccellenza». E «l'occhio è un prodotto della storia riprodotto dall'educazione»: si impara a guardare come si impara una lingua, senza ricordare quando.",
+        "b": "È la tesi di Bourdieu (1979): «il gusto classifica, e classifica chi classifica. I soggetti sociali, classificati dalle loro classificazioni, si distinguono per le distinzioni che fanno, tra il bello e il brutto, il distinto e il volgare». Dire che i cavoli sono un bel soggetto e il tramonto è volgare non è un'informazione sui cavoli: è una posizione dichiarata, e leggibile. Per questo «l'arte e il consumo culturale sono predisposti, consapevolmente e deliberatamente o no, ad assolvere una funzione sociale di legittimazione delle differenze sociali». Non è un verdetto su chi ha buon gusto: è la domanda su dove si è imparato a guardare."
+      },
+      "source": "Bourdieu, La distinction, 1979: indagine per questionario su 1.217 persone in Francia, 1963 e 1967-68"
+    },
+    "studente": {
+      "hook": "In una chat qualcuno posta il banco di un macellaio in bianco e nero e scrive: questa sì che è fotografia. Poco sotto, un tramonto sul mare raccoglie cuori e un commento: kitsch. Ti accorgi che nessuno sta discutendo delle immagini: si discute di chi le guarda. E ti chiedi da dove venga tanta sicurezza, da una parte e dall'altra.",
+      "setup": "Hai davanti i dati di un'indagine per questionario condotta in Francia nel 1963 e nel 1967-68 su un campione di 1.217 persone. La domanda 26 chiede, per ventun soggetti, se un fotografo ne trarrebbe una foto bella, interessante, insignificante o brutta. L'elenco: un paesaggio, un incidente d'auto, una bambina che gioca col gatto, una donna incinta, una natura morta, una donna che allatta, una struttura metallica, vagabondi che litigano, dei cavoli, un tramonto sul mare, un tessitore al telaio, una danza popolare, una corda, il banco di un macellaio, la corteccia di un albero, un monumento famoso, un deposito di rottami, una prima comunione, un uomo ferito, un serpente, un «vecchio maestro». Le risposte si dispongono per titolo di studio, e su alcuni soggetti anche per genere: il 44,5% delle donne contro il 35% degli uomini dice che di un uomo ferito può esistere solo una brutta foto, mentre sui cavoli lo scarto quasi sparisce (20,5% contro 19%). Devi scrivere l'interpretazione.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Gusto personale: le differenze sono individuali, la regolarità statistica è un artefatto"
+        },
+        {
+          "id": "b",
+          "text": "Pura economia: chi ha meno mezzi sceglie il meno caro, il gusto viene dopo"
+        },
+        {
+          "id": "c",
+          "text": "Estetica popolare autonoma: le classi popolari hanno un gusto proprio, da rivendicare"
+        },
+        {
+          "id": "d",
+          "text": "Disposizione estetica: il modo di guardare è appreso e classifica chi guarda"
+        }
+      ],
+      "feedback": {
+        "a": "Contro questa lettura l'indagine mette la propria regolarità: «più alto è il livello di istruzione, maggiore è la quota di chi... rifiuta gli oggetti ordinari dell'ammirazione popolare — una prima comunione, un tramonto, un paesaggio — come 'volgari' o 'brutti'» (Bourdieu 1979, p. 35), e maggiore è la quota di chi rivendica l'autonomia della rappresentazione rispetto alla cosa rappresentata. La competenza non è un supplemento facoltativo: «un'opera d'arte ha senso e interesse solo per chi possiede la competenza culturale, cioè il codice» in cui è codificata (p. 2); «l'occhio è un prodotto della storia riprodotto dall'educazione» (p. 3). Il gusto individuale non viene negato: si distribuisce meno a caso di quanto creda chi lo esercita.",
+        "b": "Bourdieu (1979) nomina questa scorciatoia e la scarta: alcuni «la liquidano, facendo della pratica un prodotto diretto della necessità economica (gli operai mangiano fagioli perché non possono permettersi altro), senza accorgersi che la necessità può essere soddisfatta, il più delle volte, perché gli agenti sono inclini a soddisfarla, perché hanno gusto per ciò a cui sono comunque condannati» (p. 178). Il vincolo economico esiste e pesa. Ma qui non spiega la forma dei dati: dichiarare bella una foto di cavoli o volgare un tramonto non costa niente, né in un senso né nell'altro.",
+        "c": "È l'errore speculare, che Bourdieu (1979) segnala nello stesso passo: altri trasformano il gusto di necessità «in un gusto di libertà, dimenticando i condizionamenti di cui è il prodotto» (p. 178). Rivendicare l'autonomia del gusto popolare lo lascia dove si trova, e lascia senza spiegazione la forma dei dati: le risposte si dispongono per titolo di studio e, su alcuni soggetti, per genere — 44,5% contro 35% sull'uomo ferito, 33,5% contro 27% sul banco del macellaio, 30,5% contro 21,5% sul serpente, mentre sulla natura morta (6% contro 6,5%) e sui cavoli (20,5% contro 19%) lo scarto sparisce (p. 39).",
+        "d": "È la lettura di Bourdieu (1979): «il gusto classifica, e classifica chi classifica. I soggetti sociali, classificati dalle loro classificazioni, si distinguono per le distinzioni che fanno, tra il bello e il brutto, il distinto e il volgare, nelle quali la loro posizione nelle classificazioni oggettive si esprime o si tradisce» (p. 6). Perfino i soggetti dell'elenco sono scelti così: il banco del macellaio «per l'allusione a Rembrandt», il serpente «per il riferimento a Boileau» (p. 35). Da qui la conseguenza: «l'arte e il consumo culturale sono predisposti, consapevolmente e deliberatamente o no, ad assolvere una funzione sociale di legittimazione delle differenze sociali» (p. 7)."
+      },
+      "source": "Bourdieu, La distinction. Critique sociale du jugement, 1979, introduzione (pp. 2-3, 6-7, 13), cap. 1 (pp. 35, 39), cap. 3 (p. 178) e appendice 1 (p. 517, domanda 26), nella traduzione di Richard Nice, Distinction, Harvard University Press, 1984",
+      "deepen": [
+        {
+          "ref": "Bourdieu, La distinction. Critique sociale du jugement, 1979, nella traduzione di Richard Nice, Distinction, Harvard University Press, 1984",
+          "why": "Le pagine in cui il gusto diventa un fatto sociale: «il gusto classifica, e classifica chi classifica» (p. 6), la competenza come codice (p. 2), e in appendice il questionario integrale con la domanda 26 (p. 517)",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Veblen, The Theory of the Leisure Class, 1899, cap. IV",
+          "why": "L'altra radice dell'antropologia del consumo: «il consumo vistoso di beni di valore è un mezzo di reputabilità per il gentiluomo agiato». Testo integrale, pubblico dominio",
+          "access": "PD",
+          "url": "https://archive.org/details/theoryofleisurec01vebl"
+        },
+        {
+          "ref": "Douglas e Isherwood, The World of Goods, 1979, ristampa 1982",
+          "why": "Il consumo letto come sistema di comunicazione: i beni servono a «rendere visibili e stabili le categorie della cultura» (p. 73). Stesso oggetto di Bourdieu, domanda diversa",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Miller, Material Culture and Mass Consumption, Basil Blackwell, 1987",
+          "why": "Il seguito del dibattito: il consumo come riappropriazione, «un processo che ha la potenzialità di produrre una cultura inalienabile», e il capitolo sulla ricontestualizzazione dei beni di massa",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  }
+}
