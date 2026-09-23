@@ -68,7 +68,7 @@
   },
   "concepts": {
     "title": "Libreria dei concetti",
-    "intro": "Quattro concetti, ciascuno con gli scenari che lo mettono alla prova. Puoi aprire qualsiasi scenario, in qualsiasi ordine, con il livello che preferisci.",
+    "intro": "Cinque concetti, ciascuno con gli scenari che lo mettono alla prova. Puoi aprire qualsiasi scenario, in qualsiasi ordine, con il livello che preferisci.",
     "noScenarios": "Nessuno scenario ancora disponibile",
     "todo": "Da fare",
     "done": "Completato · {{level}}"
@@ -98,7 +98,7 @@
       "body": [
         "Uno scenario è una semplificazione. Riduce a due o quattro scelte una situazione che nella realtà ha molte più sfumature, e compatta in poche righe il contesto che un'etnografia sviluppa in centinaia di pagine. Il livello Studente aggiunge profondità, ma resta un punto di partenza, non un sostituto della lettura.",
         "Le fonti hanno la loro data. Molte descrivono società di cinquanta o cento anni fa, viste da ricercatori con i limiti del loro tempo e della loro posizione. Il livello Studente segnala le riletture critiche dove esistono.",
-        "I concetti sono per ora quattro: reciprocità, parentela, rituale, relativismo. Il catalogo cresce nel tempo; i concetti senza scenari sono visibili nella libreria ma non ancora giocabili."
+        "I concetti sono per ora cinque: reciprocità, parentela, rituale, relativismo, consumo. Il catalogo cresce nel tempo; i concetti senza scenari sono visibili nella libreria ma non ancora giocabili."
       ]
     },
     "ethics": {
