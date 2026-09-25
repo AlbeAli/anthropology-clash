@@ -6,6 +6,7 @@
   "concept_label": "Reciprocità e dono",
   "levels": {
     "neofita": {
+      "hook": "Sei al ristorante con un amico. Arriva il conto e tutti e due allungate la mano: «Offro io». «No, questa volta tocca a me». Nessuno dei due ha bisogno di risparmiare quella cifra, e nessuno dei due vuole cedere. Alla fine paga lui, e tu sai già che la prossima volta dovrai offrire tu, e forse qualcosa di più.",
       "setup": "Sei ospite a Fort Rupert, un villaggio dei Kwakwaka'wakw (che Boas chiamava Kwakiutl) sulla costa della Columbia Britannica, in Canada, negli anni Novanta dell'Ottocento. Un capo ha invitato un capo rivale con tutta la sua gente. Prima distribuisce centinaia di coperte di lana; poi fa portare al centro della casa un 'rame', una lastra di metallo con un nome proprio che vale migliaia di coperte, e lo spezza davanti a tutti. I frammenti vengono consegnati al rivale. Che cosa hai appena visto?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Boas, The Social Organization and the Secret Societies of the Kwakiutl Indians, 1897; Mauss, Saggio sul dono, 1925; Cole & Chaikin, An Iron Hand upon the People, 1990"
     },
     "studente": {
+      "hook": "Da quando vi siete trasferiti, i vicini vi invitano a cena. Voi ricambiate, loro rilanciano: un piatto in più, il vino buono, gli ospiti che contano. Nessuno lo dice, ma ogni invito risponde al precedente e lo supera. Fermarsi adesso sembrerebbe un'ammissione. Ti chiedi che cosa si stia scambiando davvero, a quelle cene, oltre al cibo.",
       "setup": "Tsaxis (Fort Rupert), isola di Vancouver, primi anni Novanta dell'Ottocento. Sei il capo di un numaym, il gruppo di discendenza che detiene nomi, privilegi e posti a sedere nelle feste, tra i Kwagu'ł, uno dei gruppi Kwakwaka'wakw che Boas chiama Kwakiutl. Un capo rivale ti ha invitato con la tua gente. Davanti a tutte le tribù ha distribuito coperte di lana, l'unità in cui si misura il valore di ogni cosa, e ne ha date a te più che a chiunque altro. Poi ha fatto portare il suo rame, la lastra con un nome proprio il cui prezzo cresce a ogni vendita, ne ha spezzato un pezzo e te lo ha fatto consegnare. Tutti guardano te. Cosa fai?",
       "choices": [
         {

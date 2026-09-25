@@ -6,6 +6,7 @@
   "concept_label": "Reciprocità e dono",
   "levels": {
     "neofita": {
+      "hook": "Una zia ti ha regalato la sua vecchia macchina per cucire. Tu non la usi, e la passi a una vicina che cuce. Qualche settimana dopo la vicina ti porta una torta per ringraziarti. Mentre la tagli, ti viene spontaneo pensare di portarne una fetta alla zia. Nessuno te l'ha chiesto: perché ti sembra giusto?",
       "setup": "Nuova Zelanda, primi del Novecento, in una comunità maori. Anni fa un amico ti ha dato un taonga, un oggetto di pregio come una mantella intrecciata, senza chiedere nulla in cambio e senza fissare un prezzo. Tempo dopo tu lo hai dato a una terza persona. Oggi quella persona torna e ti porta un dono 'in cambio' del taonga che le avevi dato. È tuo?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Mauss, Saggio sul dono, 1925, cap. I; Best, Maori Forest Lore, 1909"
     },
     "studente": {
+      "hook": "Un'amica ti ha passato, senza chiedere nulla, il contatto giusto per un lavoro che poi non hai preso. Tu l'hai girato a un conoscente, che quel lavoro l'ha ottenuto. Ora lui ti manda una bottiglia per ringraziarti. È indirizzata a te, eppure tenerla così com'è ti sembra incompleto. Ti chiedi a chi spetti davvero, e perché.",
       "setup": "Aotearoa, Nuova Zelanda, primo Novecento. Elsdon Best raccoglie da Tamati Ranaipiri, uno dei suoi informatori maori, una spiegazione del hau, la forza o 'spirito' che abita le cose e la foresta. Mauss (1925) farà di quel testo la chiave dell'obbligo di rendere. Sei nella posizione dell'uomo di mezzo dell'esempio di Ranaipiri: anni fa A ti ha dato un taonga, un bene di pregio come una mantella o un ornamento di pounamu, 'senza prezzo fissato, senza fare mercato'. Tu lo hai dato a C. Ora C, 'trascorso un certo tempo', decide di restituire qualcosa in pagamento (utu) e ti porta un taonga. Cosa ne fai?",
       "choices": [
         {
