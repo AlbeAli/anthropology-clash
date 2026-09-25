@@ -35,3 +35,8 @@ La CI (GitHub Actions) esegue `lint → validate → test → build` su ogni pus
 Uno scenario per file in `src/content/it/scenarios/scenario_NNN.json`, nome file uguale all'`id`. Lo schema è in `src/schema/scenario.schema.ts`; i vincoli aggiuntivi (fonte con autore e anno, `deepen` obbligatorio nel livello studente, 2 scelte per neofita e 3-4 per studente) sono in `scripts/validate-content.ts`.
 
 Ogni scenario ha una fonte etnografica reale e verificabile. Le fonti e i criteri sono documentati nella pagina "Metodo e fonti" dell'app e nel documento funzionale.
+
+## Licenza
+
+- Codice: [MIT](LICENSE).
+- Testi degli scenari in `src/content/`: [CC BY-NC-SA 4.0](LICENSE-CONTENT.md). Le citazioni dalle fonti restano dei rispettivi titolari dei diritti.
