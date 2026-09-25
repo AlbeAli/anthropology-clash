@@ -6,6 +6,7 @@
   "concept_label": "Rituale",
   "levels": {
     "neofita": {
+      "hook": "Ti presenti a casa di gente che non conosci: la famiglia della persona con cui stai. Sulla porta ti offrono qualcosa da bere e insistono finché non accetti. Non hai sete, e però capisci che rifiutare peserebbe. Bevi, e qualcosa cambia: da quel momento sei uno che è entrato.",
       "setup": "Africa orientale, 1883. Guidi una carovana di centocinquanta uomini e sei arrivato a Shira, sulle pendici del Kilimangiaro, alle porte del paese dei Masai. Ti hanno preparato un recinto e delle capanne, ma non puoi ancora comprare cibo: prima bisogna discutere il regalo per il capo. Il giorno dopo arriva un messaggero del capo con una capra: ti chiede di prenderla per un orecchio, di dire dove vai e di giurare che non farai del male al paese e che non pratichi la magia nera. Cosa fai?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "van Gennep, I riti di passaggio, 1909; Thomson, Through Masai Land, 1885"
     },
     "studente": {
+      "hook": "Primo giorno in un posto nuovo: un lavoro, un condominio, un gruppo. Nessuno ti dice le regole, e però ci sono: un caffè da accettare, una presentazione da farsi fare da qualcuno, una battuta da subire senza offendersi. Finché non le hai attraversate resti sulla porta, trattato con cortesia e tenuto fuori. Chi decide quando sei dentro?",
       "setup": "Shira, pendici del Kilimangiaro, 1883. Sei nei panni di Joseph Thomson, inviato della Royal Geographical Society, con una carovana di centocinquanta uomini alle porte del paese masai. Pochi giorni prima la spedizione di Fischer, forte di trecento uomini, ha avuto uno scontro con i Masai, con sangue da entrambe le parti, e il paese è in agitazione. I Chaga di Shira vi hanno preparato un recinto e delle capanne, ma la libertà di comprare cibo dipende dalla discussione del 'regalo' per il capo. Annoti che devi 'tentare di passare la soglia' prima di dichiararti sconfitto. Il giorno dopo arriva un messaggero del capo con una capra, 'per fare amicizia e fratellanza': dovrai tenerla per un orecchio, dire dove vai, dichiarare di non praticare la magia nera e promettere di non nuocere al paese; poi il sacrificio e la striscia di pelle sul dito. Van Gennep (1909) userà proprio questa scena come esempio di rito di aggregazione dello straniero. Come ti comporti?",
       "choices": [
         {
