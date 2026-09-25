@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.32 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, §16.9)
+Versione 0.33 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, §16.9)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -184,15 +184,15 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 
 ## 11. Punti aperti
 
-| Punto                                      | Stato                                                                                                                                                                |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Nome prodotto                              | Provvisorio: Anthropology Clash (candidati in §12)                                                                                                                   |
-| Numero scenari MVP                         | Deciso: 15 (§13)                                                                                                                                                     |
-| Fonti primarie non ad accesso aperto       | Risolto: lette direttamente con la ricerca interna di Internet Archive (§16.7); Geertz 1972 e Douglas 1972 sono OA su JSTOR, Kroeber 1909 e Leathem 2023 sono aperti |
-| Dominio, licenza contenuti, monetizzazione | Da decidere, non bloccanti                                                                                                                                           |
-| Licenza del codice                         | Da decidere prima di promuovere il repo pubblico                                                                                                                     |
-| Pre-commit hook (lint + validate)          | Da valutare: aggiunge una dipendenza; la CI copre già il caso                                                                                                        |
-| Identità visiva (font, palette, tono)      | Applicata (§16.2); copy del kicker in Home ancora provvisorio                                                                                                        |
+| Punto                                 | Stato                                                                                                                                                                  |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Nome prodotto                         | Provvisorio: Anthropology Clash (candidati in §12)                                                                                                                     |
+| Numero scenari MVP                    | Deciso: 15 (§13)                                                                                                                                                       |
+| Fonti primarie non ad accesso aperto  | Risolto: lette direttamente con la ricerca interna di Internet Archive (§16.7); Geertz 1972 e Douglas 1972 sono OA su JSTOR, Kroeber 1909 e Leathem 2023 sono aperti   |
+| Dominio, monetizzazione               | Da decidere, non bloccanti                                                                                                                                             |
+| Licenza                               | Decisa il 2026-09-25: codice MIT (`LICENSE`), testi di `src/content` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`); le citazioni dalle fonti restano dei titolari dei diritti |
+| Pre-commit hook (lint + validate)     | Da valutare: aggiunge una dipendenza; la CI copre già il caso                                                                                                          |
+| Identità visiva (font, palette, tono) | Applicata (§16.2); copy del kicker in Home ancora provvisorio                                                                                                          |
 
 ## 12. Nome
 
@@ -334,7 +334,7 @@ Fatto dopo M1 (2026-09-18):
 - M3, persistenza e libreria (`ab3eee1`, merge `44213eb`): stato locale completo, streak, `/concetti`, Home completa, barra con link, badge streak e selettore lingua.
 - M4, codice (`13e2e70`, merge `419342c`): pagina `/metodo` con bibliografia generata, analytics Umami condizionale, `vercel.json` completo.
 
-Non fatto, e volutamente: pre-commit hook (aperto), licenza (aperta).
+Non fatto, e volutamente: pre-commit hook (aperto). Licenza decisa il 2026-09-25 (§11).
 
 ### 16.2 Identità visiva (applicata)
 
@@ -406,7 +406,7 @@ Scritti al 2026-09-18: 04 potlatch (Boas 1897 e Mauss 1925 verificati; Codere 19
 
 Scritti al 2026-09-19 (fonti NON-OA): 09 Sposare un fantasma (Evans-Pritchard 1951, cap. III, pp. 108-124 e 148-154), 11 Il combattimento di galli (Geertz 1972, che si è rivelato ad accesso aperto su JSTOR nel fascicolo di Daedalus 101(1): link ufficiale in bibliografia; testo verificato sull'edizione 1973), 12 L'animale abominevole (Douglas 1966, cap. 2-3, pp. 29-57; Douglas 1972 "Deciphering a Meal" anch'esso OA su JSTOR), 15 Il tempo delle mucche (Evans-Pritchard 1940, cap. I e III). Metodo di verifica per i libri sotto diritti: la funzione "cerca all'interno" di Internet Archive sulle copie in prestito digitale restituisce i paragrafi che contengono la frase cercata, con il numero di pagina; ogni citazione tra virgolette è stata confrontata così, senza scaricare i testi. Il 2026-09-19 sono state verificate con lo stesso metodo anche le letture secondarie citate negli scenari 07-15 (Lévi-Strauss 1945 sull'edizione 1958, Weiner 1988, Bohannan 1958 e 1953, Sahlins 1961, Radcliffe-Brown 1950, Turner 1967 e 1969, Boas 1896 su JSTOR Early Journal Content, Jacknis 1985, Fluehr-Lobban 2003, Gough 1971, Hutchinson 1996, Roseberry 1982, Crapanzano 1986, Leach 1964, Thompson 1967); le affermazioni non confermabili sul testo sono state tolte o ridotte al titolo (Bohannan 1952, Douglas 1972) e Munn 1992 è stata eliminata. Douglas 1993 è sostituita dalla prefazione del 2002 all'edizione Routledge Classics, dove la correzione è verificata. Regola da qui in poi: nessuna affermazione senza riscontro sul testo; ciò che non si conferma non si scrive. M5 si chiude con la conferma di queste letture e la revisione dei quindici scenari sul testo.
 
-Chiusura, 2026-09-23. I quindici scenari sono passati uno per uno dalla rilettura in quattro lotti (01/04/05, 06-09, 10-12, 13-15): ogni citazione e ogni affermazione attribuita a un autore è stata ricontrollata alla fonte, non riletta. Il metodo è quello di §16.7: testo integrale dove è pubblico dominio o ad accesso aperto, ricerca interna di Internet Archive dove il libro è sotto diritti. Ciò che non ha retto il confronto è stato tolto o riscritto sul testo: undici interventi in tutto, elencati nelle note dei quattro lotti qui sopra. Nessuno scenario porta più l'etichetta «accesso da verificare»; la pagina Metodo genera 62 voci di bibliografia senza doppioni. Restano fuori dal perimetro di M5 i punti aperti di §11: licenza del codice e dei contenuti, nome, dominio, copy del kicker.
+Chiusura, 2026-09-23. I quindici scenari sono passati uno per uno dalla rilettura in quattro lotti (01/04/05, 06-09, 10-12, 13-15): ogni citazione e ogni affermazione attribuita a un autore è stata ricontrollata alla fonte, non riletta. Il metodo è quello di §16.7: testo integrale dove è pubblico dominio o ad accesso aperto, ricerca interna di Internet Archive dove il libro è sotto diritti. Ciò che non ha retto il confronto è stato tolto o riscritto sul testo: undici interventi in tutto, elencati nelle note dei quattro lotti qui sopra. Nessuno scenario porta più l'etichetta «accesso da verificare»; la pagina Metodo genera 62 voci di bibliografia senza doppioni. Restano fuori dal perimetro di M5 i punti aperti di §11: licenza del codice e dei contenuti (decisa poi il 2026-09-25), nome, dominio, copy del kicker.
 
 ### 16.7 Decisioni prese durante M1
 
