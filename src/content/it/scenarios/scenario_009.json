@@ -6,6 +6,7 @@
   "concept_label": "Parentela",
   "levels": {
     "neofita": {
+      "hook": "In famiglia si dice che un nome non deve finire. C'è un parente morto giovane, e a ogni nascita qualcuno propone di dare quel nome. Ti sembra un gesto affettuoso e niente più, finché non ti accorgi che chi lo propone parla di un posto da riempire, non di un ricordo da tenere.",
       "setup": "Sudan meridionale, tra i Nuer, anni Trenta. Tuo fratello maggiore, figlio di tuo padre e di tua madre, è morto prima di sposarsi, e il bestiame che era suo è passato a te. Gli anziani ti dicono che devi 'prendere una moglie al suo nome': pagare con quel bestiame il prezzo della sposa e fare i riti di nozze per lui, il morto. I figli che nasceranno saranno suoi, non tuoi. Tu, però, volevi sposarti per conto tuo. Cosa fai?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Evans-Pritchard, Kinship and Marriage among the Nuer, 1951"
     },
     "studente": {
+      "hook": "Compili un modulo e ti chiede il nome del padre. Sai chi c'è scritto sui documenti e sai chi ha cresciuto quella persona, e non sono lo stesso. Nessuna delle due risposte è falsa, ma il modulo ne accetta una sola. Ti chiedi che cosa stia chiedendo davvero: chi ha generato, chi ha firmato le carte, o chi si è preso l'impegno.",
       "setup": "Nuerland, Sudan anglo-egiziano, 1936. Sei nei panni di un giovane nuer di un villaggio della tribù Leek. Tuo fratello maggiore, figlio di tuo padre e di tua madre, è morto prima di sposarsi: 'molti giovani muoiono prima del matrimonio', e il suo bestiame, ghok jookni, 'bestiame dei fantasmi', è passato a te con la mandria di famiglia. Qui la discendenza è agnatica, ma il padre legale di un figlio, il pater, è chi ha pagato il prezzo della sposa, non chi lo ha generato, il genitor: 'una figlia è una persona non imparentata', dicono i Nuer, ma il nome di un uomo 'deve continuare nel suo lignaggio'. Gli anziani si aspettano che tu prenda una moglie al nome del morto. Hai anche una sorella non sposata, e un desiderio: sposarti in proprio, con quel bestiame. Come regoli la cosa?",
       "choices": [
         {

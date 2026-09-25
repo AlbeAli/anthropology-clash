@@ -6,6 +6,7 @@
   "concept_label": "Parentela",
   "levels": {
     "neofita": {
+      "hook": "Racconti la trama di un film che ti sembra chiarissima, e chi ascolta la capisce in un altro modo: non gli manca un dettaglio, gli sembra che il protagonista si comporti in modo assurdo. Provi a spiegare, e ogni spiegazione ne chiede un'altra. A un certo punto non sai più se stai raccontando la storia o le tue regole.",
       "setup": "Nigeria centrale, tra i Tiv, intorno al 1950. Sei un'antropologa americana e vivi nella fattoria di un anziano; le paludi sono salite, le cerimonie si sono fermate e la birra di miglio gira dall'alba. Gli anziani ti chiedono una storia del tuo paese e tu racconti l'Amleto, sicura che almeno la trama sia chiara ovunque. Arrivi al punto: il fratello del re morto ha sposato la vedova un mese dopo il funerale. 'Ha fatto bene', dice il vecchio, raggiante: 'anche da noi il fratello minore sposa la vedova del maggiore e diventa il padre dei suoi figli'. Come vai avanti?",
       "choices": [
         { "id": "a", "text": "Spieghi che da voi è una vergogna: risposarsi così presto, e col cognato" },
@@ -18,6 +19,7 @@
       "source": "Bohannan, 'Shakespeare in the Bush', Natural History, 1966"
     },
     "studente": {
+      "hook": "Spieghi a qualcuno una vicenda di famiglia — chi ha fatto cosa, chi doveva intervenire — e l'altro ti interrompe per sistemarla: secondo lui il pezzo importante l'hai messo nel posto sbagliato. Non è distratto, sta usando un'altra idea di chi deve rispondere a chi. Insistere ti farebbe vincere la discussione e perdere l'ascolto.",
       "setup": "Tivland, Nigeria centrale, intorno al 1950. Sei nei panni di Laura Bohannan, al secondo periodo di campo tra i Tiv, ospite nella fattoria di un anziano a capo di circa centoquaranta persone, 'tutti suoi parenti stretti o le loro mogli e i loro figli'. Le paludi sono salite, le cerimonie si sono fermate, la birra gira dall'alba. Gli anziani vogliono una storia del tuo paese e tu racconti l'Amleto, certa che 'la trama e le motivazioni delle grandi tragedie' siano chiare ovunque. Vanno storte diverse cose: il fratello che sposa la vedova 'ha fatto bene'; lo spettro non può parlare, è un presagio mandato da uno stregone; la follia viene solo dalla stregoneria o dagli esseri della foresta, e possono stregare Amleto solo i parenti in linea maschile: dunque Claudio. Ora sei al punto in cui Amleto deve vendicare il padre. Il vecchio, rivolto ai giovani seduti dietro gli anziani, sentenzia: 'Se il fratello di tuo padre ha ucciso tuo padre, devi rivolgerti ai coetanei di tuo padre: possono vendicarlo loro. Nessuno può usare violenza contro i propri parenti anziani'. Come prosegui il racconto?",
       "choices": [
         { "id": "a", "text": "Insisti: lo spettro ha chiesto vendetta al figlio, e Amleto deve compierla di sua mano" },
