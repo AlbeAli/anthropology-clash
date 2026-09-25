@@ -6,6 +6,7 @@
   "concept_label": "Relativismo ed etnocentrismo",
   "levels": {
     "neofita": {
+      "hook": "Guardi un documentario su un popolo lontano. Il narratore parla di riti, amuleti, guaritori e cerimonie dolorose, e tutto ti sembra strano ed esotico. Quando finisce hai la sensazione netta di quanto quelle persone siano diverse da te. Poi spegni e torni alla tua serata di sempre.",
       "setup": "Leggi la descrizione di un popolo del Nord America. I Nacirema dedicano gran parte della giornata a riti sul corpo, che considerano brutto e soggetto a malattie. Ogni casa ha una piccola stanza-santuario con una cassetta di amuleti e pozioni ottenute da guaritori. Ogni mattina compiono un rito della bocca: inseriscono un fascio di setole con polveri magiche e lo muovono con gesti precisi. Una o due volte l'anno vanno da un 'uomo della bocca sacra', che allarga le cavità dei denti con strumenti appuntiti e vi inserisce sostanze magiche. Che idea ti sei fatto?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Miner, 'Body Ritual among the Nacirema', American Anthropologist, 1956"
     },
     "studente": {
+      "hook": "Leggi un reportage su una comunità lontana: riti quotidiani, amuleti, specialisti che curano con strumenti misteriosi. Il tono è serio, i dettagli sono precisi, e alla fine hai l'impressione di aver capito come vivono. Ti chiedi quanto ti fidi di quell'impressione, e da che cosa dipende.",
       "setup": "Un articolo su American Anthropologist (1956) descrive i Nacirema, popolo nordamericano 'poco compreso'. L'autore riporta: il corpo è ritenuto brutto e incline a decadere; ogni casa ha un santuario con una cassetta di amuleti prescritti da 'uomini della medicina' e preparati da erboristi; il rito quotidiano della bocca prevede un fascio di setole e polveri magiche; gli 'uomini della bocca sacra' allargano le cavità dentali con strumenti appuntiti; esiste un tempio (latipso) dove i malati subiscono cerimonie dolorose e versano un dono prima di entrare; un 'ascoltatore' esorcizza i demoni dei genitori dalle menti dei bambini. L'autore chiude citando Malinowski sul potere della magia. Come classifichi il caso?",
       "choices": [
         {

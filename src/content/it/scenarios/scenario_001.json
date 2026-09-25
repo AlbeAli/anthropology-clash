@@ -6,6 +6,7 @@
   "concept_label": "Reciprocità e dono",
   "levels": {
     "neofita": {
+      "hook": "Il giorno del tuo diploma tuo padre ti consegna l'orologio del nonno. Non è costoso e non funziona nemmeno benissimo, ma tutti in famiglia sanno chi l'ha portato e in quali occasioni. Tuo padre ti dice solo: «Adesso ce l'hai tu». Capisci che non è un regalo come gli altri. Ma allora che cos'è?",
       "setup": "Sei ospite nelle isole Trobriand, nel Pacifico, negli anni Venti. Un uomo arriva in canoa da un'isola vicina e ti porge una lunga collana di conchiglie rosse. È un oggetto famoso: ha un nome proprio, e tutti sanno chi l'ha avuta prima di te. Non è in vendita e non è un regalo qualsiasi. Cosa fai?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Malinowski, Argonauti del Pacifico occidentale, 1922"
     },
     "studente": {
+      "hook": "Ti affidano l'orologio del nonno. Un orologiaio ti dice quanto vale, e la cifra ti sembra del tutto fuori luogo: il suo valore è nei polsi su cui è passato, nelle storie che lo accompagnano. Non lo venderesti, ma non ti sembra nemmeno del tutto tuo. Sai che un giorno toccherà a te decidere a chi passarlo. Nessuno lo ha scritto: da dove viene quell'obbligo?",
       "setup": "Isole Trobriand, arcipelago del Massim, Nuova Guinea orientale, primi anni Venti. Sei a Sinaketa, sull'isola di Kiriwina. Un partner di Kula arriva da Dobu con una spedizione di canoe e ti consegna un soulava, una lunga collana di dischi di spondilo rosso. Ha un nome proprio e una storia nota. I soulava circolano tra le isole in senso orario, i mwali (bracciali di conchiglia bianca) in senso antiorario. Il partner non ti chiede nulla in cambio, adesso. Sai che la relazione con lui è di lunga durata, forse ereditata dal tuo predecessore. Come rispondi?",
       "choices": [
         {
