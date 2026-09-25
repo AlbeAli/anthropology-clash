@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.34 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, M7 aperta, §16.10)
+Versione 0.35 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, M7 aperta, §16.10)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -480,3 +480,7 @@ Regole, invariate rispetto a M6 e a `CLAUDE.md`: seconda persona; nessuna afferm
 Procedura: lotti di tre scenari, bozze proposte all'autore e riviste insieme prima del commit, un commit `content:` per lotto. Lotti: 01-03, 04-06, 07-09, 10-12, 13-15.
 
 Criterio di chiusura: 18 scenari su 18 con `hook` in entrambi i livelli, `pnpm validate` verde, verifica nel browser della resa di «Oggi» su un lotto per livello.
+
+Fatto:
+
+1. Lotto 01-03 (2026-09-25): agganci rivisti con l'autore. In 01 l'orologio del nonno, custodito e non posseduto, al posto del trofeo e del libro che gira tra amici, giudicati poco credibili; in 02 il dono offerto e preso in giro; in 03 il racconto esotico che si prende per buono, senza rivelare chi sono i Nacirema. Il test sull'`hook` in un solo livello ora toglie esplicitamente quello del livello studente, perché `scenario_001` usato come base ne ha uno.
