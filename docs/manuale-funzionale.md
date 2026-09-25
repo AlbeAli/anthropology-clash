@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.33 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, §16.9)
+Versione 0.35 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, M7 aperta, §16.10)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -192,7 +192,7 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | Dominio, monetizzazione               | Da decidere, non bloccanti                                                                                                                                             |
 | Licenza                               | Decisa il 2026-09-25: codice MIT (`LICENSE`), testi di `src/content` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`); le citazioni dalle fonti restano dei titolari dei diritti |
 | Pre-commit hook (lint + validate)     | Da valutare: aggiunge una dipendenza; la CI copre già il caso                                                                                                          |
-| Identità visiva (font, palette, tono) | Applicata (§16.2); copy del kicker in Home ancora provvisorio                                                                                                          |
+| Identità visiva (font, palette, tono) | Applicata (§16.2); kicker in Home deciso il 2026-09-25: «Dilemmi dal campo, domande di oggi», modificabile in `home.kicker`                                            |
 
 ## 12. Nome
 
@@ -293,14 +293,15 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 ### 15.5 Milestone
 
-| M   | Contenuto                                                                              | Fatto quando                                                    | Stato                                                              |
-| --- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------ |
-| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                    | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf`                            |
-| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo                | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`                             |
-| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente  | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`                             |
-| M4  | Pagina Metodo, analytics, deploy Vercel                                                | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app       |
-| M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
-| M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
+| M   | Contenuto                                                                              | Fatto quando                                                                   | Stato                                                              |
+| --- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                    | `pnpm validate` passa; `pnpm dev` renderizza scenario_001                      | **chiusa** 2026-09-16, commit `e88eddf`                            |
+| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo                | I 3 scenari giocabili da cima a fondo in entrambi i livelli                    | **chiusa** 2026-09-18, merge `62fedef`                             |
+| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente  | Chiudo e riapro il browser: livello, progressi e streak restano                | **chiusa** 2026-09-18, merge `44213eb`                             |
+| M4  | Pagina Metodo, analytics, deploy Vercel                                                | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)                 | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app       |
+| M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                               | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
+| M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate                | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
+| M7  | Aggancio contemporaneo (`hook`) negli scenari 01-15                                    | 18 scenari su 18 con `hook` in entrambi i livelli, validati insieme all'autore | **aperta** 2026-09-25 (§16.10)                                     |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -469,3 +470,17 @@ Chiusura, 2026-09-25. I tre scenari sul consumo sono in `main` e giocabili in en
 Limite dichiarato di `scenario_016`: la fonte è un'indagine per questionario, non un'etnografia sul campo. La scelta è stata presa con l'autore il 2026-09-23, dopo aver constatato che le due piste etnografiche previste non erano verificabili in quella sessione (§13); le due restanti tornano su fonti etnografiche.
 
 Rischio noto: il consumo tocca terreno già coperto da 04 (distruzione ostentata), 05 (hau) e 12 (cibo e classificazione). I nuovi scenari vanno su terreno diverso, per esempio i beni come sistema di classificazione, la biografia sociale degli oggetti, il gusto come distinzione; la scelta si fa quando la fonte è stata letta, non prima.
+
+### 16.10 M7 — ogni scenario parte dalla vita di oggi (aperta 2026-09-25)
+
+Direzione di prodotto decisa con l'autore il 2026-09-25: le scelte etnografiche restano sempre collegate alla vita reale di chi gioca. Il kicker della Home diventa «Dilemmi dal campo, domande di oggi» e M7 mantiene la promessa su tutti gli scenari: i quindici scenari di M1-M5 ricevono il `hook` che finora avevano solo 016-018.
+
+Regole, invariate rispetto a M6 e a `CLAUDE.md`: seconda persona; nessuna affermazione fattuale su gruppi, quantità o persone; massimo 400 caratteri; in entrambi i livelli o in nessuno; l'aggancio non anticipa la lettura che lo scenario fa scoprire (vale soprattutto per 03, dove l'aggancio non deve rivelare chi sono i Nacirema).
+
+Procedura: lotti di tre scenari, bozze proposte all'autore e riviste insieme prima del commit, un commit `content:` per lotto. Lotti: 01-03, 04-06, 07-09, 10-12, 13-15.
+
+Criterio di chiusura: 18 scenari su 18 con `hook` in entrambi i livelli, `pnpm validate` verde, verifica nel browser della resa di «Oggi» su un lotto per livello.
+
+Fatto:
+
+1. Lotto 01-03 (2026-09-25): agganci rivisti con l'autore. In 01 l'orologio del nonno, custodito e non posseduto, al posto del trofeo e del libro che gira tra amici, giudicati poco credibili; in 02 il dono offerto e preso in giro; in 03 il racconto esotico che si prende per buono, senza rivelare chi sono i Nacirema. Il test sull'`hook` in un solo livello ora toglie esplicitamente quello del livello studente, perché `scenario_001` usato come base ne ha uno.

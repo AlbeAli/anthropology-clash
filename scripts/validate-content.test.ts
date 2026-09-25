@@ -44,6 +44,7 @@ describe("validate-content: aggancio contemporaneo", () => {
   it("segnala un hook presente in un solo livello", () => {
     const broken = structuredClone(scenario001);
     (broken.levels.neofita as { hook?: string }).hook = "Oggi, in una chat di gruppo.";
+    delete (broken.levels.studente as { hook?: string }).hook;
     const messages = validateAll(fixture(broken)).issues.map((i) => i.message);
     expect(messages).toContainEqual(expect.stringContaining("hook"));
   });

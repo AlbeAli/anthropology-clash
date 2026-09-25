@@ -6,6 +6,7 @@
   "concept_label": "Reciprocità e dono",
   "levels": {
     "neofita": {
+      "hook": "Per festeggiare una promozione offri la cena a tutto il gruppo. Al tavolo un amico scherza: «Speriamo che basti, con quello che guadagni adesso». Ridono tutti. Tu un po' meno: volevi solo fare una cosa gentile, e ti ritrovi preso in giro proprio per quella.",
       "setup": "Sei un ricercatore e vivi da più di un anno con i Ju/'hoansi (!Kung), cacciatori-raccoglitori del deserto del Kalahari, in Botswana. È dicembre. Per ringraziare tutti, compri il bue più grosso della zona e annunci che lo offrirai per la festa di Natale. Ti aspetti entusiasmo. Invece, uno dopo l'altro, vengono a dirti che il bue è vecchio, magro, 'un sacco d'ossa', che non basterà per nessuno e che la gente litigherà per la carne. Cosa fai?",
       "choices": [
         { "id": "a", "text": "Ti offendi: cerchi un altro bue o rinunci alla festa" },
@@ -18,6 +19,7 @@
       "source": "Lee, 'Eating Christmas in the Kalahari', Natural History, 1969"
     },
     "studente": {
+      "hook": "Porti in ufficio i pasticcini per festeggiare il nuovo incarico. Un collega li guarda e dice: «Tutto qui? Adesso che sei responsabile?». Gli altri sorridono, qualcuno rincara. Non sembra cattiveria, e non sembra nemmeno un caso. Ti chiedi cosa stiano facendo, esattamente, quando prendono in giro chi offre.",
       "setup": "Dobe, Botswana nord-occidentale, dicembre, anni Sessanta. Sei Richard Lee: da oltre un anno studi l'ecologia della sussistenza dei Ju/'hoansi (!Kung) e, per non alterare i loro pattern alimentari, non hai mai condiviso cibo con loro. Per Natale decidi di ricambiare l'ospitalità: compri da un allevatore un bue di circa 550 chili, il più grosso disponibile. Nei giorni seguenti ogni persona che incontri ti dice che è vecchio, magro, 'un sacco d'ossa', che farà arrabbiare tutti. Alla macellazione lo strato di grasso è spesso. La festa riesce. Cosa fai di quello che è successo?",
       "choices": [
         { "id": "a", "text": "Lo consideri un malinteso e lo lasci fuori dalle note di campo" },
