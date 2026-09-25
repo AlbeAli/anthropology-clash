@@ -6,6 +6,7 @@
   "concept_label": "Parentela",
   "levels": {
     "neofita": {
+      "hook": "Da bambino chiamavi «zia» la migliore amica di tua madre, anche se non era tua parente. Un amico che viene da un altro paese ti chiede perché, e ti accorgi di non saperlo spiegare: era zia e basta. Poi ti viene in mente il cugino con cui sei cresciuto, che tutti in famiglia chiamano «tuo fratello».",
       "setup": "Vivi da qualche mese in una comunità seneca, una delle nazioni irochesi, nello Stato di New York, a metà Ottocento, e stai imparando la lingua. Un ragazzo della tua età, figlio del fratello di tuo padre, ti chiede scherzando come lo chiami. A casa tua sarebbe 'cugino'. Qui però hai notato che nessuno usa quella parola per lui, e che suo padre viene chiamato con la stessa parola che si usa per il tuo. Come lo chiami?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Morgan, Systems of Consanguinity and Affinity of the Human Family, 1871"
     },
     "studente": {
+      "hook": "Tua madre si risposa e il figlio del suo compagno viene a vivere con voi. Quando lo presenti esiti: fratellastro suona freddo, fratello sembra troppo, il suo nome da solo non dice niente. Qualunque parola scegli, sistema anche gli altri: chi è per te suo padre, chi è lui per tua nonna. Ti chiedi che cosa decida, alla fine, come si chiama una persona in famiglia.",
       "setup": "Stato di New York, riserva seneca, metà Ottocento. Lewis Henry Morgan sta raccogliendo i termini di parentela con un questionario che fa compilare direttamente a parlanti nativi: 'Come chiamo il fratello di mio padre quando gli parlo?', 'Come chiamo il figlio del fratello di mio padre se è più grande di me?'. Sei tu a rispondere. Sai che i Seneca sono divisi in otto gruppi di discendenza che Morgan chiama tribù e che oggi si chiamerebbero clan (Lupo, Orso, Castoro, Tartaruga, Cervo, Beccaccino, Airone, Falco), che non ci si sposa dentro il proprio gruppo e che lo si eredita dalla madre. Il ragazzo di cui Morgan ti chiede è figlio del fratello di tuo padre, più grande di te di due anni. Cosa rispondi?",
       "choices": [
         {

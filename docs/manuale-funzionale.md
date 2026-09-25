@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.35 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, M7 aperta, §16.10)
+Versione 0.36 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, M7 aperta, §16.10)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -484,3 +484,4 @@ Criterio di chiusura: 18 scenari su 18 con `hook` in entrambi i livelli, `pnpm v
 Fatto:
 
 1. Lotto 01-03 (2026-09-25): agganci rivisti con l'autore. In 01 l'orologio del nonno, custodito e non posseduto, al posto del trofeo e del libro che gira tra amici, giudicati poco credibili; in 02 il dono offerto e preso in giro; in 03 il racconto esotico che si prende per buono, senza rivelare chi sono i Nacirema. Il test sull'`hook` in un solo livello ora toglie esplicitamente quello del livello studente, perché `scenario_001` usato come base ne ha uno.
+2. Lotto 04-06 (2026-09-25): in 04 il dono che sfida (la lite per pagare il conto, le cene tra vicini che rilanciano), senza anticipare la distruzione del rame; in 05 il dono che torna a chi ha dato per primo (la macchina per cucire della zia, il contatto di lavoro girato a un conoscente); in 06 i nomi di parentela che non seguono la genealogia (la «zia» non parente, il fratellastro in una famiglia ricomposta). Approvati dall'autore così come proposti.
