@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.31 — 2026-09-25 — Stato: pubblicato (M1-M5 chiuse; M6 in corso, §16.9)
+Versione 0.32 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, §16.9)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -238,7 +238,9 @@ Corretto: in 13 la frase «effetti simili non hanno cause simili» non è di Boa
 
 Backlog M6 (consumo, con aggancio contemporaneo): tre scenari, uno per sessione. Scritto il primo il 2026-09-23, scenario_016 «Il gusto classifica chi classifica», sulla pista del gusto come distinzione: Bourdieu 1979, indagine per questionario condotta in Francia nel 1963 e nel 1967-68 su 1.217 persone, domanda 26 sui soggetti fotografabili; citazioni e numeri di pagina verificati con la ricerca interna di Internet Archive sulla traduzione di Richard Nice (Harvard University Press, 1984). Scritto il secondo il 2026-09-25, scenario_017 «Cinquecento bacinelle», sulla pista dei beni come sistema di classificazione: il quartiere hausa di Sabo a Ibadan nell'etnografia di Abner Cohen (1969, cap. 2, pp. 67-68, verificato sul suo testo con la ricerca interna) e la lettura che ne danno Douglas e Isherwood (1979, ristampa 1982, pp. 12, 57, 59 e 141-145, verificate ora che l'item è tornato raggiungibile). Nella stessa occasione è stato corretto scenario_016: il rinvio a Douglas e Isherwood era a p. 73, che è il numero del foglio della scansione, non della pagina; la pagina è 59, confermata dall'indice analitico («construction of categories of culture and, 59-62»).
 
-Stato delle altre piste al 2026-09-25: Veblen 1899 verificato sul testo integrale (`theoryofleisurec01vebl`, «conspicuous consumption of valuable goods is a means of reputability to the gentleman of leisure»); di Appadurai e Kopytoff 1986 non esiste copia in prestito digitale, solo un caricamento non autorizzato, e la pista «biografia sociale degli oggetti» non è verificabile con il metodo di §16.7; restano aperte e interrogabili Mintz 1985 (`sweetnesspowerpl0000mint`) e Miller 1987 (`materialculturem0000mill`), fra cui scegliere per il terzo scenario. Vincolo invariato: non ripetere terreno già coperto da 04 (distruzione ostentata), 05 (hau), 12 (cibo e classificazione), 016 (gusto come distinzione) e 017 (beni come marcatori).
+Scritto il terzo lo stesso 2026-09-25, scenario_018 «Zucchero nel tè», sulla pista del gusto come prodotto storico: lo zucchero in Inghilterra tra il 1650 e il 1900 in Mintz 1985, da medicina e scultura da banchetto a quasi un quinto delle calorie della dieta inglese. Con questo il backlog M6 è chiuso: tre scenari, tre piste distinte (gusto come distinzione, beni come marcatori, merce e potere), nessuna sovrapposizione con 04, 05 e 12.
+
+Altre piste, non usate: di Appadurai e Kopytoff 1986 non esiste copia in prestito digitale, solo un caricamento non autorizzato, e la pista «biografia sociale degli oggetti» non è verificabile con il metodo di §16.7; Miller 1987 (`materialculturem0000mill`) è verificato e citato nei `deepen` di 016 e 018, ma non ha dato un caso etnografico proprio. Veblen 1899 (`theoryofleisurec01vebl`, testo integrale) resta la voce di sfondo dei tre scenari.
 
 ## 14. Fonti e accesso
 
@@ -246,7 +248,7 @@ Repertori: DOAJ (riviste OA: Cultural Anthropology, Social Anthropology, JASO, K
 
 Fonti primarie aperte individuate: Malinowski 1922 (Gutenberg #55822; Internet Archive), Malinowski 1926 e 1929 (Internet Archive; pubblico dominio in UE dal 2013, autore morto nel 1942, e negli USA dal 2022 e 2025), Miner 1956 (DOI 10.1525/aa.1956.58.3.02a00080), Bohannan 1966 e Lee 1969 (Natural History), Mauss 1925 (Classiques UQAC), Morgan 1871 (Internet Archive), van Gennep 1909, Boas 1887, AAA 2012.
 
-Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. È generata dai contenuti (`src/engine/bibliography.ts`), non mantenuta a mano: con i diciassette scenari validati sono 67 voci, senza doppioni, ciascuna con lo stato di accesso e gli scenari che la citano. Nessuna voce resta con l'etichetta «accesso da verificare».
+Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. È generata dai contenuti (`src/engine/bibliography.ts`), non mantenuta a mano: con i diciotto scenari validati sono 68 voci, senza doppioni, ciascuna con lo stato di accesso e gli scenari che la citano. Nessuna voce resta con l'etichetta «accesso da verificare».
 
 ## 15. Specifica di sviluppo
 
@@ -291,14 +293,14 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 ### 15.5 Milestone
 
-| M   | Contenuto                                                                              | Fatto quando                                                    | Stato                                                          |
-| --- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
-| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                    | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf`                        |
-| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo                | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`                         |
-| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente  | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`                         |
-| M4  | Pagina Metodo, analytics, deploy Vercel                                                | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app   |
-| M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)   |
-| M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate | aperta 2026-09-22; concetto e campo fatti, scenari da scrivere |
+| M   | Contenuto                                                                              | Fatto quando                                                    | Stato                                                              |
+| --- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------ |
+| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                    | `pnpm validate` passa; `pnpm dev` renderizza scenario_001       | **chiusa** 2026-09-16, commit `e88eddf`                            |
+| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo                | I 3 scenari giocabili da cima a fondo in entrambi i livelli     | **chiusa** 2026-09-18, merge `62fedef`                             |
+| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente  | Chiudo e riapro il browser: livello, progressi e streak restano | **chiusa** 2026-09-18, merge `44213eb`                             |
+| M4  | Pagina Metodo, analytics, deploy Vercel                                                | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)  | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app       |
+| M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
+| M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -314,12 +316,12 @@ Fatto in M1, oltre a quanto previsto dalla v0.6:
 - Test sul caricatore contenuti (`src/engine/content.test.ts`).
 - README e questo documento.
 
-Stato al 2026-09-23, dopo la chiusura di M5:
+Stato al 2026-09-25, dopo la chiusura di M6:
 
-- 17 scenari in `src/content/it/scenarios/`, tutti validati sul testo delle fonti; 5 concetti in `concepts.json` (`consumo` aggiunto il 2026-09-22), ciascuno con almeno uno scenario giocabile.
+- 18 scenari in `src/content/it/scenarios/`, tutti validati sul testo delle fonti; 5 concetti in `concepts.json` (`consumo` aggiunto il 2026-09-22), ciascuno con almeno uno scenario giocabile.
 - Schema con campo `hook` opzionale per l'aggancio contemporaneo; `pnpm validate` verifica anche che stia in entrambi i livelli o in nessuno.
 - 33 test (engine, schema, script di validazione), lint e build verdi; CI verde su `main`.
-- App in produzione su Vercel, pagina Metodo con 67 voci di bibliografia generate dai contenuti.
+- App in produzione su Vercel, pagina Metodo con 68 voci di bibliografia generate dai contenuti.
 - Scroll in cima a ogni rotta, titolo del documento per pagina, focus visibile sull'intestazione del riscontro (2026-09-21); bordo del riscontro a 1px su tutti i lati dopo il rilievo del detector (2026-09-22).
 - Autore dichiarato in README, manuale, `CLAUDE.md`, `package.json`, `index.html` e footer dell'app.
 
@@ -432,6 +434,7 @@ Chiusura, 2026-09-23. I quindici scenari sono passati uno per uno dalla rilettur
 | 2026-09-21 | Respinte: `previousDay` a mezzogiorno, `refKey` senza virgola, `role="radiogroup"` sul toggle di livello, `en.json` tradotto, selettore lingua attivo, scenario_001 in inglese, condivisione per scenario, `StorageAdapter` | Nessun bug reale nei primi due (`dayKey` usa la data locale; ogni riferimento ha la virgola e `validate-content` lo impone); un radiogroup senza navigazione a frecce è una regressione ARIA; le traduzioni violano "non tradurre in inglese per iniziativa propria" e con 1 scenario su 15 l'esperienza sarebbe mista; gli ultimi due sono fuori scope MVP (§6, §7)                                                                                                                                                                                           |
 | 2026-09-22 | Quinto concetto: `consumo` (label «Consumo e cultura materiale»)                                                                                                                                                            | Richiesta dell'autore. Costo tecnico minimo perché engine, libreria e validazione iterano sulla tassonomia: enum, voce in `concepts.json`, un test. Nessuna migrazione di `localStorage`: `sanitize` non valida `seenConcepts` contro l'enum, `STORAGE_VERSION` resta 1. Definizione ancorata a due fonti verificate sul testo: Veblen 1899 (cap. II e IV, copia integrale `theoryofleisurec01vebl` su Internet Archive) e Douglas & Isherwood 1979 (p. 73 della ristampa 1982, ricerca interna)                                                               |
 | 2026-09-22 | Campo `hook` opzionale invece di un tipo di scenario separato                                                                                                                                                               | Per far partire uno scenario da una situazione di oggi bastano 400 caratteri sopra il `setup`: retrocompatibile (i 15 scenari restano validi senza modifiche), ~40 righe tra schema, `ScenarioCard`, locale, validazione e test. Un `era`/tipo separato avrebbe richiesto filtri in libreria e home, ordinamento della sequenza e circa 150 righe, senza un beneficio dimostrato prima di avere i contenuti                                                                                                                                                    |
+| 2026-09-25 | L'offset foglio-pagina non si assume costante: si verifica su più punti del libro                                                                                                                                           | In Mintz 1985 cambia tre volte (36, 42, 48) per le dodici pagine di tavole fuori testo non numerate: un unico controllo avrebbe dato pagine sbagliate per metà del libro. Dove le intestazioni correnti non coprono il passo (le «subtleties»), la citazione resta al capitolo senza numero di pagina                                                                                                                                                                                                                                                          |
 | 2026-09-25 | Nelle citazioni da copie in prestito di Internet Archive il numero di pagina si ricava e si controlla, non si prende dal lettore                                                                                            | Il campo `page` che la ricerca interna restituisce è il foglio della scansione, non la pagina del libro: in `scenario_016` era finito «p. 73» al posto di «p. 59». Da qui in poi l'offset foglio-pagina si calcola su una voce dell'indice o del sommario e si controlla su una seconda (per Cohen 1969 l'indice dà «Bowls, Ornamental, 67-8»)                                                                                                                                                                                                                 |
 | 2026-09-23 | `scenario_016` su Bourdieu 1979, con i numeri di pagina della traduzione di Richard Nice (Harvard University Press, 1984)                                                                                                   | È una indagine per questionario, non un'etnografia sul campo: scelta accettata dall'autore perché le due piste etnografiche previste non erano verificabili quel giorno (item `worldofgoods00doug` in errore, nessuna copia in prestito di Appadurai 1986) e perché il gusto come distinzione è terreno diverso da 04, 05 e 12. Le citazioni esistono solo in traduzione nella copia consultata; la corrispondenza foglio-pagina è controllata su due voci dell'indice (cap. 1 a p. 11, cap. 3 a p. 169), quindi i numeri di pagina valgono per quell'edizione |
 | 2026-09-22 | Il `hook` non è un caso di studio                                                                                                                                                                                           | La regola "ogni scenario ha una fonte reale" resterebbe aggirabile da un aggancio inventato. Il `hook` è un'illustrazione in seconda persona senza affermazioni fattuali su gruppi, quantità o persone; se la situazione contemporanea è etnografata si cita l'opera in `source` e la si verifica sul testo. Il carico della dimostrazione resta su `setup` e feedback                                                                                                                                                                                         |
@@ -441,7 +444,7 @@ Chiusura, 2026-09-23. I quindici scenari sono passati uno per uno dalla rilettur
 - `docs/manuale-funzionale.md` è l'unica versione viva. Si aggiorna con commit `docs:` a ogni decisione, cambio di scope o chiusura di milestone.
 - `CLAUDE.md` riassume le regole vincolanti per chi scrive codice e contenuti; deriva dal manuale e non lo sostituisce.
 
-### 16.9 M6 — antropologia del consumo e aggancio contemporaneo (aperta 2026-09-22)
+### 16.9 M6 — antropologia del consumo e aggancio contemporaneo (aperta 2026-09-22, chiusa 2026-09-25)
 
 Obiettivo: un quinto concetto giocabile e un modo dichiarato di entrare negli scenari partendo da una situazione di oggi per risalire alle origini del concetto.
 
@@ -451,6 +454,7 @@ Fatto:
 2. Campo `hook` opzionale in `LevelContent`, massimo 400 caratteri, reso sopra il `setup` con l'etichetta «Oggi» (`scenario.hook` nei locales). `pnpm validate` impone la presenza in entrambi i livelli o in nessuno; due test nello schema e due nello script di validazione.
 3. Primo dei tre scenari, `scenario_016` «Il gusto classifica chi classifica» (2026-09-23): Bourdieu 1979, con `hook` in entrambi i livelli, quattro scelte nel livello studente che riprendono le due letture che Bourdieu stesso scarta (la necessità economica e il gusto di libertà) e quattro `deepen` verificati. `pnpm validate` verde su 16 file, bibliografia a 66 voci senza doppioni. Corretta nello stesso passaggio la copia della libreria e dei limiti, rimasta a «quattro concetti» dopo l'aggiunta di `consumo`.
 4. Secondo scenario, `scenario_017` «Cinquecento bacinelle» (2026-09-25): il caso etnografico è il quartiere hausa di Sabo a Ibadan in Cohen 1969, verificato sul suo testo, e la cornice è quella di Douglas e Isherwood 1979; quattro scelte nel livello studente, di cui tre sono letture che i due testi discutono e ridimensionano (accumulo irrazionale, consumo vistoso, riserva di valore). `pnpm validate` verde su 17 file, bibliografia a 67 voci senza doppioni. Corretto nello stesso passaggio il rinvio di `scenario_016` a Douglas e Isherwood: p. 59, non p. 73.
+5. Terzo scenario, `scenario_018` «Zucchero nel tè» (2026-09-25): Mintz 1985 sullo zucchero in Inghilterra tra il 1650 e il 1900, verificato sul testo; quattro scelte nel livello studente che ripercorrono le spiegazioni che Mintz discute e ridimensiona (predisposizione biologica, prezzo, emulazione) prima della sua. I numeri di pagina sono stati ricavati dalle intestazioni correnti perché in quella copia l'offset foglio-pagina cambia tre volte (36, 42, 48) per le tavole fuori testo non numerate.
 
 Da fare, nell'ordine:
 
@@ -459,6 +463,8 @@ Da fare, nell'ordine:
 5. Verifica nel browser di entrambi i livelli, della libreria (il concetto non deve più risultare vuoto) e della pagina Metodo (bibliografia senza doppioni).
 
 Criterio di chiusura: i tre scenari giocabili in entrambi i livelli, `pnpm validate` verde su 18 file, nessuna affermazione priva di riscontro sul testo.
+
+Chiusura, 2026-09-25. I tre scenari sul consumo sono in `main` e giocabili in entrambi i livelli: 016 il gusto come distinzione (Bourdieu 1979), 017 i beni come marcatori (Cohen 1969 con Douglas e Isherwood 1979), 018 la merce e il potere (Mintz 1985). `pnpm validate` passa su 18 file, i 33 test e il lint sono verdi, la pagina Metodo genera 68 voci senza doppioni e il concetto `consumo` non risulta più vuoto nella libreria. Ogni citazione è stata confrontata sul testo delle fonti con il metodo di §16.7; due errori sono stati corretti in corso d'opera, il rinvio a p. 73 in 016 e la copia «quattro concetti» rimasta nella libreria.
 
 Limite dichiarato di `scenario_016`: la fonte è un'indagine per questionario, non un'etnografia sul campo. La scelta è stata presa con l'autore il 2026-09-23, dopo aver constatato che le due piste etnografiche previste non erano verificabili in quella sessione (§13); le due restanti tornano su fonti etnografiche.
 
