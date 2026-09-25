@@ -6,6 +6,7 @@
   "concept_label": "Relativismo ed etnocentrismo",
   "levels": {
     "neofita": {
+      "hook": "Qualcuno ti racconta una cosa di sé perché si fida, non perché tu la ripeta. Più tardi ti accorgi che raccontarla ti farebbe fare bella figura, e che chiarirebbe un malinteso che riguarda anche altri. Nessuno ti ha fatto giurare niente. Ti chiedi se un permesso che non hai chiesto conti come un no.",
       "setup": "Sud-ovest degli Stati Uniti, anni Ottanta. Sei un linguista e da anni studi la lingua di un piccolo gruppo indiano. Lavorando sulla lingua hai raccolto, quasi per caso, molto materiale su religione e riti. Nessuno l'ha mai descritto: l'unico studio è una tesi degli anni Trenta, e i libri danno per scontato che la loro cultura sia uguale a quella di un gruppo più grande. Non è così. Ma i tuoi consulenti sono stati chiari: queste cose 'non sono proprietà dei non indiani', te le hanno dette solo perché non restassi in errore, e 'non devono essere pubblicate'. Cosa fai?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "AAA, Principles of Professional Responsibility, 2012; Cassell, 'Case 22: Forbidden Knowledge', Handbook on Ethical Issues in Anthropology, 1987"
     },
     "studente": {
+      "hook": "Hai in mano qualcosa che ti è stato detto a condizione che restasse lì: un pezzo di storia familiare, un documento, una confidenza. Raccontarlo bene correggerebbe un'idea sbagliata che circola, e servirebbe a più persone di quelle coinvolte. Chi te l'ha detto non ha messo condizioni scritte. Ti chiedi a chi appartenga, adesso, quell'informazione.",
       "setup": "Sud-ovest degli Stati Uniti, anni Ottanta. Sei nei panni di un linguista che ha lavorato a lungo con un piccolo gruppo indiano; il caso è reale, inviato da un lettore all'Anthropology Newsletter e discusso nel manuale etico dell'AAA (Cassell 1987). Dallo studio della lingua ti è arrivata 'come manna' molta etnografia. L'unica monografia è una tesi di master degli anni Trenta, incompleta e introvabile; la letteratura assume che la loro cultura sia identica a quella di un gruppo più grande a cui erano associati nel Settecento. Hai scoperto che non è vero: hanno, o avevano, perché si stanno rapidamente occidentalizzando, una cultura distinta 'soprattutto in religione, rito e soprannaturale'. Il gruppo non obietta a descrizioni della cultura materiale di un tempo, ma si oppone con forza a qualsiasi discussione della cultura non materiale: 'queste credenze non sono proprietà dei non indiani', te ne hanno parlato solo perché avevi già intuito qualcosa e non volevano che restassi in errore. 'Queste cose non vanno pubblicate'. Hai iniziato un articolo e l'hai abbandonato. Cosa fai?",
       "choices": [
         {

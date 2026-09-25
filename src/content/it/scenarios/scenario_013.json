@@ -6,6 +6,7 @@
   "concept_label": "Relativismo ed etnocentrismo",
   "levels": {
     "neofita": {
+      "hook": "Devi sistemare le foto di vent'anni in cartelle. Per anno? Per persona? Per luogo? Qualunque criterio scegli, alcune foto perdono il loro senso: quella del compleanno finisce lontano da quella del giorno dopo. Ti accorgi che non stai ordinando: stai decidendo che cosa quelle foto raccontano.",
       "setup": "Stati Uniti, 1887. Sei un giovane etnologo tornato da poco dalla costa nord-occidentale americana, e ti affidano una sala di museo: maschere, sonagli, cesti, archi e coperte raccolti tra decine di popoli. Il curatore del museo nazionale di Washington ha un metodo che fa scuola: come in un museo di storia naturale, tutti i sonagli insieme, tutti gli archi insieme, dal più semplice al più elaborato, per mostrare che le invenzioni evolvono ovunque allo stesso modo. Tu quegli oggetti li hai visti in uso. Come li disponi?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Boas, 'The Occurrence of Similar Inventions in Areas Widely Apart' e 'Museums of Ethnology and Their Classification', Science, 1887"
     },
     "studente": {
+      "hook": "Ti chiedono di riordinare un archivio condiviso: file, materiali, appunti di anni. Per tipo di documento è comodo da cercare; per progetto è l'unico modo in cui le cose si spiegano a vicenda. Qualunque dei due scegli, l'altro diventa invisibile. E chi aprirà l'archivio dopo di te penserà che quell'ordine sia la natura delle cose.",
       "setup": "New York, primavera 1887. Sei nei panni di Franz Boas. Al museo nazionale di Washington Otis Mason ha disposto le collezioni etnologiche 'secondo gli oggetti, non secondo le tribù a cui appartengono': come esemplari biologici, divisi 'in famiglie, generi e specie', dal propulsore al cesto all'arco, per mostrare che 'nella cultura umana, come altrove in natura, cause simili producono effetti simili'. Mason è un'autorità; dietro di lui c'è Powell, direttore del Bureau of Ethnology. Devi scrivere a Science che cosa pensi del metodo, e hai in testa le vetrine in cui maschere e sonagli della costa nord-occidentale stanno sparsi per l'edificio, in mezzo a oggetti di altre tribù. Che cosa proponi?",
       "choices": [
         {
