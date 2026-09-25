@@ -1,0 +1,80 @@
+{
+  "id": "scenario_017",
+  "lang": "it",
+  "title": "Cinquecento bacinelle",
+  "concept": "consumo",
+  "concept_label": "Consumo e cultura materiale",
+  "levels": {
+    "neofita": {
+      "hook": "Entri in casa di qualcuno e vedi, dietro un vetro, un servizio di piatti che non hai mai visto usare: impilato, lucido, in ordine. Chiedi perché non li usa e ti senti rispondere che quelli non si usano. Pensi che sia uno spreco. Poi ti accorgi che sai benissimo quali oggetti, in casa tua, nessuno tocca.",
+      "setup": "Ibadan, Nigeria, primi anni Sessanta. Nel quartiere di Sabo vivono migranti hausa musulmani. Le donne sposate stanno in casa e commerciano da dentro, servite dalle figlie e dalle ragazze affidate: si cuoce e si vende cibo alle migliaia di uomini soli del quartiere. I profitti finiscono quasi tutti nella stessa cosa: bacinelle di smalto colorato, di fabbricazione cecoslovacca. Se ne accumulano a centinaia, in colonne che arrivano al soffitto in stanze piccole e buie. Si lavano, si riordinano, si contano. Devi capire perché.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "È una fissazione che immobilizza i guadagni in oggetti inerti"
+        },
+        {
+          "id": "b",
+          "text": "Le bacinelle contano qualcosa: dicono chi è chi"
+        }
+      ],
+      "feedback": {
+        "a": "È la prima impressione, e Douglas e Isherwood (1979) la mettono per iscritto prima di scartarla: «sembra tutto assurdo, irrazionale, consumo da burattini se mai ce n'è stato uno. Ma l'etnografo non cade nella trappola di trattare l'utilità come indipendente dalla capacità di guadagno». Cohen (1969), che ha studiato il quartiere, mostra il legame: «una padrona di casa attirerà e tratterrà più ragazze da maritare tra le sue parenti, quante più bacinelle accumula. Più una donna è anziana, più è stabile come padrona di casa, e più ragazze attira al suo servizio». E il lavoro di quelle ragazze è una delle fonti del capitale. La pila di bacinelle lavora.",
+        "b": "Cohen (1969) registra che «le donne sono ordinate in status in proporzione al numero di bacinelle che possiedono», e che alla figlia che si sposa la padrona di casa dà parte del tesoro «in proporzione al tempo in cui la figlia l'ha servita»: nel 1963 una donna che ne possiede cinquecento ne dà cinquanta in dote a una ragazza affidata. Douglas e Isherwood (1979) ne fanno una regola generale: invece di pensare che i beni servano alla sussistenza più la gara di esibizione, «supponiamo che servano a rendere visibili e stabili le categorie della cultura». Le bacinelle non sono un capriccio sopra l'economia: sono il modo in cui una posizione diventa visibile e contabile."
+      },
+      "source": "Cohen, Custom and Politics in Urban Africa, 1969, pp. 67-68; Douglas e Isherwood, The World of Goods, 1979"
+    },
+    "studente": {
+      "hook": "Stai per mandare un regalo di nozze e ti fermi: la stessa somma in contanti sarebbe più utile, e invece no, non si fa. Poi pensi al servizio buono in fondo all'armadio, mai usato e mai buttato, che sapresti contare a memoria. Nessuno ti ha insegnato la regola, e però sai quali oggetti dicono qualcosa e quali no.",
+      "setup": "Ibadan, primi anni Sessanta. Nel quartiere hausa di Sabo, dove migranti musulmani si sono insediati tra gli yoruba, le donne sposate vivono in reclusione: nessun uomo può sposarsi senza dare alla moglie almeno una stanza propria, e da quella stanza la moglie avvia un commercio, servita dalle figlie e dalle ragazze affidate, che cuociono e vendono cibo alle migliaia di uomini soli del quartiere e ai viaggiatori che passano dai due autoparchi. I profitti confluiscono in un oggetto solo: bacinelle di smalto colorato di fabbricazione cecoslovacca. Le donne sono ordinate in status in proporzione al numero di bacinelle che possiedono; alcune ne accumulano centinaia, disposte in colonne fino al soffitto in stanze piccole e buie. Due mogli, invitate a ricevere una visita, chiedono quasi due settimane di tempo per lavarle e riordinarle. Gli uomini del quartiere si lamentano che per le bacinelle non si trova più posto nemmeno per la preghiera del mattino. Nel 1963 una donna che ne possiede cinquecento ne dà cinquanta in dote a una figlia affidata. Devi spiegare il meccanismo.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Accumulo irrazionale: guadagni immobilizzati in oggetti che non servono a nulla"
+        },
+        {
+          "id": "b",
+          "text": "Consumo vistoso: si mostra ricchezza per ottenere reputazione"
+        },
+        {
+          "id": "c",
+          "text": "Riserva di valore: senza banche, le bacinelle sono il modo di tenere il capitale"
+        },
+        {
+          "id": "d",
+          "text": "Sistema di marcatori: rendono visibile una posizione, e si standardizzano per poterla misurare"
+        }
+      ],
+      "feedback": {
+        "a": "Douglas e Isherwood (1979) scrivono questa lettura per scartarla: «sembra tutto assurdo, irrazionale, consumo da burattini se mai ce n'è stato uno. Ma l'etnografo non cade nella trappola di trattare l'utilità come indipendente dalla capacità di guadagno», e citano Cohen: «una padrona di casa attirerà e tratterrà più ragazze da maritare tra le sue parenti, quante più bacinelle accumula» (p. 143). La conclusione è loro: «il legame tra consumo e produzione è cristallino». Cohen (1969) elenca infatti tra le fonti del capitale di una padrona di casa la produttività del lavoro delle figlie e delle ragazze affidate che lavorano per lei. Chiamarlo accumulo inerte fa perdere di vista chi lavora.",
+        "b": "Non è sbagliato, ed è in parte la lettura di Cohen (1969), la cui sezione si intitola «Accumulazione di capitale e spesa vistosa»: nel mondo delle padrone di casa di Sabo le bacinelle sono diventate «il più importante simbolo di status». Ma Douglas e Isherwood (1979) propongono di cambiare la cornice: «invece di supporre che i beni servano in primo luogo alla sussistenza più l'esibizione competitiva, supponiamo che servano a rendere visibili e stabili le categorie della cultura» (p. 59). La sola esibizione non spiega due cose che nel testo ci sono: perché si standardizzi su un unico oggetto, e perché la dote in bacinelle sia proporzionata agli anni di servizio della figlia.",
+        "c": "Il testo non lo esclude, e però mostra che la riserva di valore, a Sabo, ha già un'altra forma: Cohen (1969) scrive che di alcune donne si dice che possiedano grosse somme in contanti, nascoste in qualche luogo segreto. Quello che le bacinelle fanno, e il denaro nascosto no, è essere contate: «le donne sono ordinate in status in proporzione al numero di bacinelle che possiedono», e a farle vedere si invita qualcuno in casa. Un capitale nascosto non ordina nessuno. Douglas e Isherwood (1979) è su questo che insistono: i beni vanno letti come comunicatori, e «tutti i possessi materiali portano significati sociali» (p. 59).",
+        "d": "È la lettura di Douglas e Isherwood (1979): i beni servono «a rendere visibili e stabili le categorie della cultura», e «pratica etnografica corrente» è concentrare l'analisi «sul loro uso come comunicatori» (p. 59). Di qui la standardizzazione: «le donne di Sabo si sono standardizzate sui recipienti di smalto cecoslovacchi, un campo che possono padroneggiare del tutto» (p. 145), come nel Kula trobriandese, dove sono accettati due soli tipi di oggetto e «ognuno nel circuito è un intenditore». Dove i valori si standardizzano, scrivono, si sta esercitando una forma di controllo sociale. E i beni in sé non decidono nulla: «sono neutri, i loro usi sono sociali: possono servire da recinti o da ponti» (p. 12)."
+      },
+      "source": "Cohen, Custom and Politics in Urban Africa: A Study of Hausa Migrants in Yoruba Towns, University of California Press, 1969, cap. 2, sezioni «Housewives in Seclusion», «Trade from Behind the Purdah» e «Accumulation of Capital and Conspicuous Expenditure», pp. 67-68; Douglas e Isherwood, The World of Goods, 1979, ristampa 1982, pp. 12, 57, 59 e 141-145",
+      "deepen": [
+        {
+          "ref": "Cohen, Custom and Politics in Urban Africa: A Study of Hausa Migrants in Yoruba Towns, University of California Press, 1969, cap. 2",
+          "why": "L'etnografia da cui viene il caso: il commercio condotto dalla reclusione, il capitale che nasce dal lavoro delle ragazze affidate, le bacinelle contate, lavate e date in dote (pp. 67-68)",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Douglas e Isherwood, The World of Goods, 1979, ristampa 1982",
+          "why": "La proposta teorica: i beni «servono a rendere visibili e stabili le categorie della cultura» (p. 59), «sono neutri, i loro usi sono sociali: possono servire da recinti o da ponti» (p. 12), e il consumo è «l'arena in cui la cultura viene contesa e modellata» (p. 57)",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Veblen, The Theory of the Leisure Class, 1899, cap. IV",
+          "why": "La cornice che Douglas e Isherwood vogliono sostituire: «il consumo vistoso di beni di valore è un mezzo di reputabilità per il gentiluomo agiato». Testo integrale, pubblico dominio",
+          "access": "PD",
+          "url": "https://archive.org/details/theoryofleisurec01vebl"
+        },
+        {
+          "ref": "Bourdieu, La distinction. Critique sociale du jugement, 1979, nella traduzione di Richard Nice, Distinction, Harvard University Press, 1984",
+          "why": "Lo stesso meccanismo su un altro materiale: «il gusto classifica, e classifica chi classifica» (p. 6). Da leggere accanto a p. 59 di Douglas e Isherwood",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  }
+}
