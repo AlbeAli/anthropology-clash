@@ -1,0 +1,80 @@
+{
+  "id": "scenario_018",
+  "lang": "it",
+  "title": "Zucchero nel tè",
+  "concept": "consumo",
+  "concept_label": "Consumo e cultura materiale",
+  "levels": {
+    "neofita": {
+      "hook": "Al bar chiedi un caffè e arriva con due bustine di zucchero che non hai ordinato. A casa leggi l'etichetta di un sugo pronto e tra gli ingredienti c'è lo zucchero. Nessuno ti ha chiesto se lo volevi: è già nel prezzo e nella ricetta. Ti chiedi da quando è diventato normale, e chi l'ha stabilito.",
+      "setup": "Inghilterra, tra il 1650 e il 1900. All'inizio lo zucchero è una rarità: medicina prescritta dai medici, spezia, e pasta modellabile per le sculture commestibili dei banchetti, riservate al re, alla nobiltà, alla cavalleria e alla Chiesa. Due secoli e mezzo dopo è nel tè, nella marmellata e nei dolci di ogni famiglia operaia: verso il 1900 fornisce quasi un quinto delle calorie della dieta inglese. Arriva dalle colonie tropicali, prodotto da persone rese schiave. Devi spiegare come un lusso diventa una necessità.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Il gusto per il dolce è naturale: prima o poi doveva accadere"
+        },
+        {
+          "id": "b",
+          "text": "Il gusto è stato costruito insieme alla merce"
+        }
+      ],
+      "feedback": {
+        "a": "Mintz (1985) concede la premessa e le toglie il compito di spiegare. Le ricerche sui neonati indicano una predilezione innata per il dolce, che compare «molto presto nello sviluppo ed è relativamente indipendente dall'esperienza». Ma «che una predisposizione innata al dolce faccia parte del corredo umano sembra indiscutibile. Solo che non può in nessun modo spiegare sistemi alimentari diversi, gradi di preferenza e tassonomie del gusto: non più di quanto l'anatomia dei cosiddetti organi della fonazione possa 'spiegare' una lingua particolare». Le abitudini molto diverse dei popoli contemporanei mostrano «norme culturalmente convenzionalizzate, non imperativi biologici».",
+        "b": "È la tesi di Mintz (1985): il gusto inglese per il dolce è un fatto storico, costruito insieme alla merce. Verso il 1800 lo zucchero è «una necessità, sia pure costosa e rara, nella dieta di ogni inglese»; nel 1900 fornisce quasi un quinto delle calorie. Le sue funzioni mediche vengono «assimilate in una nuova funzione, quella di fonte di calorie». E non basta dire che i poveri imitavano i ricchi: «etichettare questo uso come 'emulazione' spiega molto poco», perché «le circostanze in cui una nuova abitudine viene acquisita contano quanto le abitudini di coloro da cui la si impara». Un eccitante caldo pieno di calorie dolci, scrive, «faceva al caso» di chi era già mal nutrito."
+      },
+      "source": "Mintz, Sweetness and Power, 1985, introduzione e cap. 1-3"
+    },
+    "studente": {
+      "hook": "Guardi la lista degli ingredienti di qualcosa che non ti sembra dolce — pane in cassetta, una salsa — e lo zucchero c'è. Non l'hai scelto tu. Poi ripensi a quante volte hai sentito dire che il dolce piace per natura, e ti accorgi che quella frase chiude la domanda invece di aprirla: chi ha reso normale questa quantità, e a chi è convenuto?",
+      "setup": "Inghilterra, 1650-1900. Nel Seicento lo zucchero è raro e caro: medicina, spezia, e pasta modellabile per le «subtleties», sculture commestibili che scandiscono gli intervalli dei banchetti e che, per il costo degli ingredienti, restano confinate al re, alla nobiltà, alla cavalleria e alla Chiesa; col tempo servono anche a mandare messaggi politici. Poi la curva cambia. Lo storico dell'economia D. C. Coleman ritiene che tra il 1650 e il 1750 il consumo per abitante di zucchero sia cresciuto più rapidamente di quello di pane, carne e latticini; all'inizio del Settecento il prezzo scende a circa sei pence la libbra. Verso il 1800 lo zucchero è una necessità, ancora costosa, nella dieta di ogni inglese; tra il 1750 e il 1850 smette di essere un lusso; nel 1900 fornisce quasi un quinto delle calorie della dieta inglese. Nel 1905 i fabbricanti di marmellata concordano che il mercato più redditizio è la classe operaia, per cui la marmellata, un tempo lusso, è ormai una necessità e un sostituto del burro, più caro. Lo zucchero viene dalle piantagioni coloniali, prodotto da persone rese schiave. Devi spiegare il passaggio.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Predisposizione biologica: il dolce piace alla specie, la storia è solo l'occasione"
+        },
+        {
+          "id": "b",
+          "text": "Prezzo: il costo scende, il consumo sale, non serve altro"
+        },
+        {
+          "id": "c",
+          "text": "Emulazione: i ceti popolari imitano i consumi dei ricchi"
+        },
+        {
+          "id": "d",
+          "text": "Merce e potere: disponibilità e significati vengono costruiti insieme"
+        }
+      ],
+      "feedback": {
+        "a": "Mintz (1985) la accoglie e la circoscrive. Le ricerche sui neonati indicano un gusto innato per il dolce, che compare «molto presto nello sviluppo ed è relativamente indipendente dall'esperienza» (p. 14); e «che una predisposizione innata al dolce faccia parte del corredo umano sembra indiscutibile» (p. 18). Ma là si fermano: «non può in nessun modo spiegare sistemi alimentari diversi, gradi di preferenza e tassonomie del gusto: non più di quanto l'anatomia dei cosiddetti organi della fonazione possa 'spiegare' una lingua particolare» (p. 18). Le abitudini molto diverse dei popoli contemporanei mostrano che nessuna predisposizione ancestrale spiega «norme culturalmente convenzionalizzate, non imperativi biologici» (p. 15).",
+        "b": "Mintz (1985) mette il prezzo tra le ragioni, non al posto della spiegazione: «se teniamo conto della predisposizione ominide al dolce, e vi aggiungiamo la resa calorica stupefacente del saccarosio e l'efficienza produttiva che quella resa comporta, insieme al calo costante del costo dello zucchero nei secoli, abbiamo qualche ragione del successo dello zucchero nel conquistare nuovi consumatori. Naturalmente niente di tutto questo fa passare sopra allo sforzo concertato di creare la domanda» (p. 192). E nell'introduzione l'avvertimento di metodo: «non si può semplicemente presumere che tutti abbiano un desiderio infinito di dolcezza, non più di quanto si possa presumere lo stesso di un desiderio di comodità, ricchezza o potere».",
+        "c": "Mintz (1985) la registra e la trova povera: tè e zucchero furono anche «oggetti con cui si poteva tentare l'emulazione di chi stava più in alto nel sistema sociale. Ma etichettare questo uso come 'emulazione' spiega molto poco. Le circostanze in cui una nuova abitudine viene acquisita contano quanto le abitudini di coloro da cui la si impara» (p. 118). Sembra probabile, scrive, che molti dei nuovi bevitori di tè non fossero del tutto soddisfatti del loro cibo quotidiano, e un eccitante caldo pieno di calorie dolci «faceva al caso», forse in particolare di chi era già mal nutrito. E l'imitazione non basta a spiegare la selezione: «incoronazioni, insediamenti di alte autorità religiose e investiture cavalleresche non si diffusero nella società; lo zucchero sì» (p. 122).",
+        "d": "È la lettura di Mintz (1985). I significati si diffondono per due vie: nell'intensificazione il consumo replica quello di chi sta più in alto; nell'estensificazione «chi ha il potere può prendere in mano la disponibilità dei nuovi prodotti, ma sono i nuovi utenti a riempirli di significato» (p. 152). Ma «chi controllava la società teneva una posizione dominante non solo riguardo alla disponibilità dello zucchero, ma anche riguardo ad almeno alcuni dei significati» dei suoi prodotti (p. 152). Il risultato: tra il 1750 e il 1850 lo zucchero «cessò di essere un lusso e divenne una necessità» (p. 155), e «da rarità a bene prodotto in massa» (p. 196). Il precedente era il tabacco, «trasformato rapidamente da raro lusso dei ceti alti in necessità della classe operaia» (p. 36)."
+      },
+      "source": "Mintz, Sweetness and Power: The Place of Sugar in Modern History, Viking, 1985, introduzione, cap. 1 «Food, Sociality, and Sugar» (pp. 14, 15, 18), cap. 2 «Production» (pp. 36, 67), cap. 3 «Consumption» (pp. 108, 118, 120, 122, 130), cap. 4 «Power» (pp. 152, 155) e cap. 5 «Eating and Being» (pp. 192, 196)",
+      "deepen": [
+        {
+          "ref": "Mintz, Sweetness and Power: The Place of Sugar in Modern History, Viking, 1985, cap. 3 e 4",
+          "why": "Le pagine in cui il lusso diventa necessità: lo zucchero da medicina a «fonte di calorie», l'emulazione che «spiega molto poco», la distinzione tra intensificazione ed estensificazione dei significati",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Douglas e Isherwood, The World of Goods, 1979, ristampa 1982",
+          "why": "Il versante dei significati: i beni «servono a rendere visibili e stabili le categorie della cultura» (p. 59). Con Mintz si legge l'altro versante, la produzione di ciò che poi significa",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Veblen, The Theory of the Leisure Class, 1899, cap. IV",
+          "why": "Il lusso come prova di rango, prima che diventi merce di massa: «il consumo vistoso di beni di valore è un mezzo di reputabilità per il gentiluomo agiato». Testo integrale, pubblico dominio",
+          "access": "PD",
+          "url": "https://archive.org/details/theoryofleisurec01vebl"
+        },
+        {
+          "ref": "Miller, Material Culture and Mass Consumption, Basil Blackwell, 1987",
+          "why": "Il consumo come riappropriazione, «un processo che ha la potenzialità di produrre una cultura inalienabile»: prosegue il punto di Mintz sui nuovi utenti che riempiono di significato i beni di massa",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  }
+}
