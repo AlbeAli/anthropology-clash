@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.36 — 2026-09-25 — Stato: pubblicato (M1-M6 chiuse, M7 aperta, §16.10)
+Versione 0.37 — 2026-09-25 — Stato: pubblicato (M1-M7 chiuse, §16.10)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -301,7 +301,7 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 | M4  | Pagina Metodo, analytics, deploy Vercel                                                | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)                 | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app       |
 | M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                               | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
 | M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate                | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
-| M7  | Aggancio contemporaneo (`hook`) negli scenari 01-15                                    | 18 scenari su 18 con `hook` in entrambi i livelli, validati insieme all'autore | **aperta** 2026-09-25 (§16.10)                                     |
+| M7  | Aggancio contemporaneo (`hook`) negli scenari 01-15                                    | 18 scenari su 18 con `hook` in entrambi i livelli, validati insieme all'autore | **chiusa** 2026-09-25: 18 su 18 (§16.10)                           |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -317,10 +317,10 @@ Fatto in M1, oltre a quanto previsto dalla v0.6:
 - Test sul caricatore contenuti (`src/engine/content.test.ts`).
 - README e questo documento.
 
-Stato al 2026-09-25, dopo la chiusura di M6:
+Stato al 2026-09-25, dopo la chiusura di M7:
 
 - 18 scenari in `src/content/it/scenarios/`, tutti validati sul testo delle fonti; 5 concetti in `concepts.json` (`consumo` aggiunto il 2026-09-22), ciascuno con almeno uno scenario giocabile.
-- Schema con campo `hook` opzionale per l'aggancio contemporaneo; `pnpm validate` verifica anche che stia in entrambi i livelli o in nessuno.
+- Schema con campo `hook` opzionale per l'aggancio contemporaneo; `pnpm validate` verifica anche che stia in entrambi i livelli o in nessuno. Da M7 tutti i 18 scenari lo hanno, in entrambi i livelli.
 - 33 test (engine, schema, script di validazione), lint e build verdi; CI verde su `main`.
 - App in produzione su Vercel, pagina Metodo con 68 voci di bibliografia generate dai contenuti.
 - Scroll in cima a ogni rotta, titolo del documento per pagina, focus visibile sull'intestazione del riscontro (2026-09-21); bordo del riscontro a 1px su tutti i lati dopo il rilievo del detector (2026-09-22).
@@ -471,7 +471,7 @@ Limite dichiarato di `scenario_016`: la fonte è un'indagine per questionario, n
 
 Rischio noto: il consumo tocca terreno già coperto da 04 (distruzione ostentata), 05 (hau) e 12 (cibo e classificazione). I nuovi scenari vanno su terreno diverso, per esempio i beni come sistema di classificazione, la biografia sociale degli oggetti, il gusto come distinzione; la scelta si fa quando la fonte è stata letta, non prima.
 
-### 16.10 M7 — ogni scenario parte dalla vita di oggi (aperta 2026-09-25)
+### 16.10 M7 — ogni scenario parte dalla vita di oggi (aperta e chiusa 2026-09-25)
 
 Direzione di prodotto decisa con l'autore il 2026-09-25: le scelte etnografiche restano sempre collegate alla vita reale di chi gioca. Il kicker della Home diventa «Dilemmi dal campo, domande di oggi» e M7 mantiene la promessa su tutti gli scenari: i quindici scenari di M1-M5 ricevono il `hook` che finora avevano solo 016-018.
 
@@ -485,3 +485,10 @@ Fatto:
 
 1. Lotto 01-03 (2026-09-25): agganci rivisti con l'autore. In 01 l'orologio del nonno, custodito e non posseduto, al posto del trofeo e del libro che gira tra amici, giudicati poco credibili; in 02 il dono offerto e preso in giro; in 03 il racconto esotico che si prende per buono, senza rivelare chi sono i Nacirema. Il test sull'`hook` in un solo livello ora toglie esplicitamente quello del livello studente, perché `scenario_001` usato come base ne ha uno.
 2. Lotto 04-06 (2026-09-25): in 04 il dono che sfida (la lite per pagare il conto, le cene tra vicini che rilanciano), senza anticipare la distruzione del rame; in 05 il dono che torna a chi ha dato per primo (la macchina per cucire della zia, il contatto di lavoro girato a un conoscente); in 06 i nomi di parentela che non seguono la genealogia (la «zia» non parente, il fratellastro in una famiglia ricomposta). Approvati dall'autore così come proposti.
+3. Lotto 07-09 (2026-09-25): in 07 l'eredità che la famiglia contesta (la casa intestata a un nipote, l'attività che passa a chi non ci ha lavorato); in 08 la storia raccontata che chi ascolta rimette in ordine con altre regole; in 09 il nome che «non deve finire» e il modulo che chiede un solo padre.
+4. Lotto 10-12 (2026-09-25): in 10 la soglia della casa altrui e del primo giorno in un posto nuovo; in 11 l'accettazione che arriva da un guaio condiviso e non dalle buone maniere; in 12 il disgusto che viene prima della ragione, senza anticipare la lettura del Levitico.
+5. Lotto 13-15 (2026-09-25): in 13 l'ordine delle foto e dell'archivio condiviso che decide che cosa raccontano; in 14 la confidenza che non si deve ripetere anche senza condizioni scritte; in 15 gli appuntamenti «verso sera» e i tempi scanditi dalle cose da fare invece che dall'orologio.
+
+I lotti 07-09, 10-12 e 13-15 sono stati proposti insieme nella PR #1 (https://github.com/AlbeAli/anthropology-clash/pull/1), con il testo completo dei diciotto agganci nella descrizione, e approvati dall'autore così come proposti prima del merge.
+
+Chiusura, 2026-09-25. Tutti i 18 scenari hanno l'`hook` in entrambi i livelli, e il più lungo arriva a 367 caratteri su 400. `pnpm validate` passa su 18 file; i 33 test e il lint sono verdi; la CI della PR è verde. La resa di «Oggi» è stata verificata nel browser su un lotto per livello: `scenario_010` nel livello neofita e `scenario_013` nel livello studente, entrambi con l'etichetta sopra il `setup`.
