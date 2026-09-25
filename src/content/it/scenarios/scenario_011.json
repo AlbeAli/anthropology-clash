@@ -6,6 +6,7 @@
   "concept_label": "Rituale",
   "levels": {
     "neofita": {
+      "hook": "Sei da poco in un posto dove nessuno ti considera: presente, salutato, mai coinvolto. Poi succede qualcosa che mette tutti nei guai insieme — una figura barbina, un controllo, una fuga — e tu scappi con loro invece di tirartene fuori. Il giorno dopo, per la prima volta, ti prendono in giro.",
       "setup": "Bali, aprile 1958. Sei arrivato da dieci giorni in un villaggio di cinquecento persone per studiarlo, e nessuno ti rivolge la parola: la gente ti guarda attraverso, 'come se non ci fossi'. Oggi nella piazza c'è un grande combattimento di galli, organizzato per raccogliere i soldi di una scuola nuova. È illegale, ma ci sono centinaia di persone e ti sei messo tra loro, invisibile come sempre. Al terzo incontro arriva un camion di poliziotti armati di mitra: tutti scappano in ogni direzione. Cosa fai?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Geertz, 'Deep Play: Notes on the Balinese Cockfight', Daedalus, 1972"
     },
     "studente": {
+      "hook": "Da settimane sei ai margini di un gruppo: nessuno è sgarbato, nessuno ti coinvolge. Una sera le cose si complicano per tutti insieme e tu, invece di chiarire che non c'entri, resti dalla loro parte. Da lì in poi ti chiamano per nome, ti prendono in giro, ti raccontano cose. Ti chiedi perché sia servito un guaio e non mesi di buone maniere.",
       "setup": "Bali, aprile 1958. Sei nei panni di Clifford Geertz, arrivato con la moglie, 'malarici e timidi', in un villaggio di circa cinquecento persone. Dopo dieci giorni siete ancora 'non-persone, spettri, uomini invisibili': la gente vi guarda 'con lo sguardo fissato qualche metro dietro di voi'. Nella piazza si tiene un grande combattimento di galli per finanziare una scuola. È illegale sotto la Repubblica, 'come lo era sotto gli olandesi': l'élite lo giudica 'primitivo, arretrato, non progressista', e 'cerca, piuttosto asistematicamente, di porvi fine'; ma il capo del villaggio lo ha organizzato di persona. Al terzo incontro, con centinaia di persone 'fuse in un solo corpo intorno all'arena', arriva un camion di poliziotti con i mitra: 'pulisi! pulisi!', e il 'superorganismo' si disfa in ogni direzione. Cosa fai?",
       "choices": [
         {

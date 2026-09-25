@@ -6,6 +6,7 @@
   "concept_label": "Rituale",
   "levels": {
     "neofita": {
+      "hook": "Ti mettono nel piatto qualcosa che altrove si mangia normalmente: un insetto, o un pezzo che da te si butta. Il tuo corpo dice no prima della tua testa. Nessuno ti ha mai spiegato la regola, e però la conosci. Se ti chiedessero perché quello non si mangia diresti che fa schifo, e ti accorgeresti che non è una spiegazione.",
       "setup": "Un'aula, oggi. Devi spiegare a una classe perché il Levitico, al capitolo 11, dichiara impuro il maiale insieme al cammello, alla lepre e all'irace, e vieta di mangiarne la carne e di toccarne la carcassa. Il testo dà una ragione sola: il maiale 'ha l'unghia divisa ed è bifido, ma non rumina'. Niente sulla sporcizia, niente sulle malattie. Gli studenti aspettano. Che cosa dici?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Douglas, Purezza e pericolo, 1966, cap. 3 'Gli abomini del Levitico'"
     },
     "studente": {
+      "hook": "In cucina hai regole che non hai mai formulato: cose che non vanno nello stesso piatto, avanzi che si tengono e avanzi che si buttano pur essendo buoni, animali che si mangiano e animali no. Quando le difendi parli di igiene, di salute, di buon senso. Poi qualcuno ne infrange una che non avevi mai detto ad alta voce, e il fastidio arriva prima di qualsiasi ragione.",
       "setup": "Sei nei panni di un'antropologa a cui, a metà anni Sessanta, un biblista chiede una lettura antropologica di Levitico 11. Il testo elenca: si mangia 'ciò che ha l'unghia divisa, è bifido e rumina'; sono impuri il cammello, l'irace e la lepre, 'perché ruminano ma non hanno l'unghia divisa', e il maiale, 'perché ha l'unghia divisa ed è bifido, ma non rumina'; nelle acque, 'tutto ciò che non ha pinne e squame è un abominio'; tra gli insetti alati 'che camminano su quattro zampe' si salvano solo quelli 'che hanno zampe sopra i piedi per saltare', locuste e cavallette; infine 'tutto ciò che striscia sulla terra'. La letteratura offre tre strade: l'igiene, l'allegoria dei vizi, l'arbitrio di una legge fatta per essere obbedita. Il biblista ti chiede la tua. Che cosa proponi?",
       "choices": [
         {

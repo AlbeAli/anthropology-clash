@@ -6,6 +6,7 @@
   "concept_label": "Relativismo ed etnocentrismo",
   "levels": {
     "neofita": {
+      "hook": "Ti danno un appuntamento «dopo il lavoro», «quando esce da scuola», «verso sera». Tu vorresti un'ora e ti sembra vaghezza. Poi ti accorgi che per chi te l'ha dato quell'indicazione è precisa: è il pezzo di giornata in cui quella cosa succede, e nessuno ha bisogno di guardare l'orologio.",
       "setup": "Sudan meridionale, anni Trenta. Sei un ricercatore appena arrivato in un accampamento nuer, sul fiume, nella stagione secca. Domani devi incontrare gli anziani per una questione di bestiame e chiedi a che ora. Ti rispondono: 'alla mungitura', 'quando i vitelli tornano a casa'. Tu hai un orologio al polso, e una giornata da organizzare. Cosa fai?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Evans-Pritchard, I Nuer, 1940, cap. III 'Tempo e spazio'"
     },
     "studente": {
+      "hook": "Provi a mettere d'accordo due persone che contano il tempo in modi diversi: una ragiona per orari, l'altra per cose da finire — quando i bambini dormono, quando chiude il turno, quando torna chi manca. Nessuna delle due è disordinata. Ti accorgi che stai chiedendo a una di tradurre la sua giornata nell'unità di misura dell'altra.",
       "setup": "Sudan anglo-egiziano, 1936. Sei nei panni di Evans-Pritchard che scrive il capitolo 'Tempo e spazio' dei Nuer, dopo periodi di campo tra il 1930 e il 1936 in un paese 'insolitamente ostile' dopo la sconfitta militare. Hai annotato che 'i Nuer non hanno un'espressione equivalente a tempo', che il 'segnatempo quotidiano è l'orologio del bestiame', che tot e mai, siccità e piogge, 'non sono pure unità di computo del tempo ma stanno per l'insieme delle attività sociali' di quelle stagioni, e che oltre l'anno si conta 'per classi d'età', sei in tutto, e per lignaggi. Devi trovare un concetto che tenga insieme queste note senza dire né che i Nuer vivono fuori dal tempo, né che hanno il nostro tempo senza orologi. Come lo formuli?",
       "choices": [
         {

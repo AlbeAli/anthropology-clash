@@ -6,6 +6,7 @@
   "concept_label": "Parentela",
   "levels": {
     "neofita": {
+      "hook": "Tuo nonno decide di intestare la casa a un nipote mentre è ancora vivo, e in famiglia si storce il naso: c'è una regola non scritta su a chi tocca, e nessuno l'ha mai messa per iscritto. Lui dice che i suoi beni li dà a chi vuole. Gli altri dicono che non funziona così. Ti chiedi chi abbia ragione, e in base a che cosa.",
       "setup": "Isole Trobriand, Papua Nuova Guinea, intorno al 1915. Vivi nel villaggio di tuo padre, un uomo di rango: ha palme da cocco, orti, un posto nella canoa e formule magiche che tutti gli invidiano. Sta invecchiando e un giorno ti dice: 'Ti do tutto adesso, finché sono vivo'. Tu però sai come si ragiona qui: quello che un uomo possiede passa al figlio di sua sorella, non al figlio suo. Tuo cugino, il figlio della sorella di tuo padre, lo sa benissimo e aspetta. Cosa fai?",
       "choices": [
         {
@@ -24,6 +25,7 @@
       "source": "Malinowski, Argonauts of the Western Pacific, 1922; Malinowski, Crime and Custom in Savage Society, 1926"
     },
     "studente": {
+      "hook": "Un'attività di famiglia passa di mano. La legge dice una cosa, il testamento un'altra, i parenti una terza: «si è sempre fatto così». Chi ci ha lavorato per anni non è chi la eredita. Nessuno sta violando niente, e però due regole diverse stanno chiedendo la stessa cosa. Ti chiedi quale delle due, alla prova, pesi di più.",
       "setup": "Kiriwina, Isole Trobriand, 1915-1918. Sei un notabile di un villaggio dell'interno: possiedi appezzamenti (baleko), palme, un posto nella canoa, partner nel Kula e un sistema di magia degli orti. Qui la parentela si conta solo per via materna: i tuoi veri parenti (veyola) sono i figli di tua sorella; tuo figlio, che pure hai cresciuto in casa, per la legge è un tomakava, un estraneo, e da ragazzo avrebbe dovuto trasferirsi nel villaggio di sua madre. Invece è rimasto: riempie il tuo deposito di igname e vive in una casa costruita sul tuo terreno. Tuo nipote, il figlio di tua sorella, è il tuo erede: abita a qualche miglio e comincia a chiedere che cosa gli lascerai. A Omarakana, il villaggio del capo To'uluwa, tutti parlano di come è finita tra il figlio prediletto del capo e il nipote erede. Tu stai invecchiando. Come regoli la successione?",
       "choices": [
         {
