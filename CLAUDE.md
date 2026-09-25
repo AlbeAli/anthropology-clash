@@ -75,6 +75,7 @@ scripts          validate-content.ts
 | M4 | URL pubblico su Vercel; eventi visibili in Plausible/Umami; CI verde |
 | M5 | 15 scenari validati |
 | M6 | Concetto `consumo` e campo `hook` in produzione; 3 scenari sul consumo che partono da un caso contemporaneo |
+| M7 | `hook` contemporaneo in tutti i 18 scenari, in entrambi i livelli, validato con l'autore |
 
 ## Cosa non fare
 
