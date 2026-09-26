@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.41 — 2026-09-26 — Stato: pubblicato (M1-M8 chiuse, §16.11)
+Versione 0.42 — 2026-09-26 — Stato: pubblicato (M1-M8 chiuse, §16.11)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -187,11 +187,11 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | Punto                                 | Stato                                                                                                                                                                  |
 | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Nome prodotto                         | Provvisorio: Anthropology Clash (candidati in §12)                                                                                                                     |
-| Numero scenari MVP                    | Deciso: 15 (§13)                                                                                                                                                       |
+| Numero scenari MVP                    | Deciso: 15 (§13); portati a 20 con M6-M8, quattro per concetto (§16.11)                                                                                                |
 | Fonti primarie non ad accesso aperto  | Risolto: lette direttamente con la ricerca interna di Internet Archive (§16.7); Geertz 1972 e Douglas 1972 sono OA su JSTOR, Kroeber 1909 e Leathem 2023 sono aperti   |
 | Dominio, monetizzazione               | Da decidere, non bloccanti                                                                                                                                             |
 | Licenza                               | Decisa il 2026-09-25: codice MIT (`LICENSE`), testi di `src/content` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`); le citazioni dalle fonti restano dei titolari dei diritti |
-| Pre-commit hook (lint + validate)     | Da valutare: aggiunge una dipendenza; la CI copre già il caso                                                                                                          |
+| Pre-commit hook (lint + validate)     | Chiuso il 2026-09-26: non necessario; la CI esegue lint, test e validate a ogni push, un hook aggiungerebbe una dipendenza                                             |
 | Identità visiva (font, palette, tono) | Applicata (§16.2); kicker in Home deciso il 2026-09-25: «Dilemmi dal campo, domande di oggi», modificabile in `home.kicker`                                            |
 
 ## 12. Nome
@@ -306,7 +306,7 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 ## 16. Stato di avanzamento e piano operativo
 
-### 16.1 Cosa esiste (aggiornato al 2026-09-25)
+### 16.1 Cosa esiste (aggiornato al 2026-09-26)
 
 Fatto in M1, oltre a quanto previsto dalla v0.6:
 
@@ -326,6 +326,7 @@ Stato al 2026-09-26, dopo la chiusura di M8:
 - App in produzione su Vercel, pagina Metodo con 71 voci di bibliografia generate dai contenuti.
 - Scroll in cima a ogni rotta, titolo del documento per pagina, focus visibile sull'intestazione del riscontro (2026-09-21); bordo del riscontro a 1px su tutti i lati dopo il rilievo del detector (2026-09-22).
 - Autore dichiarato in README, manuale, `CLAUDE.md`, `package.json`, `index.html` e footer dell'app.
+- Hook di sincronizzazione git tra locale, GitHub e cloud (`.claude/hooks/git-sync.mjs`, §16.7).
 
 Fatto dopo M1 (2026-09-18):
 
@@ -336,7 +337,7 @@ Fatto dopo M1 (2026-09-18):
 - M3, persistenza e libreria (`ab3eee1`, merge `44213eb`): stato locale completo, streak, `/concetti`, Home completa, barra con link, badge streak e selettore lingua.
 - M4, codice (`13e2e70`, merge `419342c`): pagina `/metodo` con bibliografia generata, analytics Umami condizionale, `vercel.json` completo.
 
-Non fatto, e volutamente: pre-commit hook (aperto). Licenza decisa il 2026-09-25 (§11).
+Non fatto, e volutamente: pre-commit hook (non necessario, chiuso il 2026-09-26, §11). Licenza decisa il 2026-09-25 (§11).
 
 ### 16.2 Identità visiva (applicata)
 
