@@ -76,6 +76,7 @@ scripts          validate-content.ts
 | M5 | 15 scenari validati |
 | M6 | Concetto `consumo` e campo `hook` in produzione; 3 scenari sul consumo che partono da un caso contemporaneo |
 | M7 | `hook` contemporaneo in tutti i 18 scenari, in entrambi i livelli, validato con l'autore |
+| M8 | 20 scenari, 4 per concetto: uno in più per `rituale` e uno per `consumo` |
 
 ## Cosa non fare
 

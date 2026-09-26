@@ -1,0 +1,77 @@
+{
+  "id": "scenario_019",
+  "lang": "it",
+  "title": "Piangere al ritorno",
+  "concept": "rituale",
+  "concept_label": "Rituale",
+  "levels": {
+    "neofita": {
+      "hook": "Vai a prendere all'aeroporto una persona cara che non vedi da mesi. La vedi uscire, vi abbracciate, e ti accorgi di avere gli occhi lucidi. Più tardi ci ripensi e non sai bene come chiamarle, quelle lacrime: gioia, sollievo, stanchezza? Ti sembrano solo tue, venute da sole.",
+      "setup": "Isole Andamane, tra il 1906 e il 1908. L'antropologo Alfred Radcliffe-Brown vive tra le tribù delle Grandi Andamane. Vede due fratelli che non si incontravano da qualche settimana: si siedono, uno in grembo all'altro, con le braccia al collo, e piangono e si lamentano per due o tre minuti, finché sono stanchi. Le lacrime sono vere. Quando chiede di mostrargli come si fa, due o tre persone si siedono e piangono subito, lì, a richiesta. Come leggi quelle lacrime?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Sono commossi: piangono per la gioia di rivedersi"
+        },
+        {
+          "id": "b",
+          "text": "È un'usanza obbligatoria: il pianto rinnova il legame"
+        }
+      ],
+      "feedback": {
+        "a": "Radcliffe-Brown (1922) lo esclude. Gli Andamanesi piangono anche per dolore e in modo spontaneo, un bambino sgridato, una vedova che pensa al marito; ma il pianto dell'incontro è un'altra cosa: 'è sempre un rito, e il costume ne esige l'esecuzione corretta'. Gli uomini, nota, piangono di rado per conto loro, e però versano lacrime abbondanti quando prendono parte al rito. E lo stesso pianto torna in occasioni che con la gioia non hanno niente a che fare: sul corpo di un morto, sulle sue ossa, al matrimonio, all'iniziazione, alla pace tra due gruppi nemici.",
+        "b": "È la lettura di Radcliffe-Brown (1922): chi non piangesse quando deve commetterebbe 'un'offesa condannata da tutte le persone per bene'. Il pianto serve 'ad affermare l'esistenza di un legame sociale' tra due persone. E non si limita a esprimere un sentimento: il rito, obbligatorio, 'costringe i due partecipanti ad agire come se provassero certe emozioni, e così, in qualche misura, produce in loro quelle emozioni'. All'incontro, scrive, la prima sensazione è una timidezza mista a piacere; l'abbraccio e il pianto la sciolgono e rimettono al suo posto l'intimità che c'era prima della separazione."
+      },
+      "source": "Radcliffe-Brown, The Andaman Islanders, 1922"
+    },
+    "studente": {
+      "hook": "Ti capita di commuoverti quando non te lo aspetti: all'arrivo di un treno, a un matrimonio, al funerale di qualcuno che conoscevi appena. Ogni volta trovi un nome diverso per quelle lacrime: gioia, nostalgia, dolore, forse solo il pianto degli altri intorno. Che cosa, esattamente, ti ha fatto piangere?",
+      "setup": "Grandi Andamane, 1906-1908. Sei nei panni di Alfred Radcliffe-Brown, con una borsa di ricerca dell'Università di Cambridge. Quando due amici o parenti si ritrovano dopo qualche settimana di lontananza, si siedono uno in grembo all'altro, le braccia al collo, e piangono e si lamentano per due o tre minuti: tra marito e moglie, è l'uomo a sedere in grembo alla donna. Le lacrime sono vere, e quando chiedi di mostrarti come si fa, due o tre persone si siedono e piangono subito. Gli uomini piangono di rado per conto loro, ma versano lacrime abbondanti in queste occasioni. Il pianto torna in sette situazioni: all'incontro, alla pace tra due gruppi nemici, alla fine del lutto, sul corpo di un morto, sulle sue ossa riesumate, al matrimonio, alle tappe dell'iniziazione. Nel Nord la pace si faceva con una danza: gli offesi scuotono uno per uno gli avversari, che restano immobili; poi i due gruppi siedono e piangono insieme, e si scambiano gli archi. Devi spiegare il pianto.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Espressione spontanea: gioia all'incontro, dolore al funerale"
+        },
+        {
+          "id": "b",
+          "text": "Recita: lacrime a comando, senza il sentimento corrispondente"
+        },
+        {
+          "id": "c",
+          "text": "Sette usanze diverse con lo stesso gesto: ognuna va spiegata a parte"
+        },
+        {
+          "id": "d",
+          "text": "Un solo rito obbligatorio che afferma e rinnova il legame sociale"
+        }
+      ],
+      "feedback": {
+        "a": "Radcliffe-Brown (1922) la scarta subito: 'in nessuno dei casi elencati il pianto è semplice espressione spontanea di un sentimento. È sempre un rito, e il costume ne esige l'esecuzione corretta' (p. 239). Nemmeno il dolore basta: alcune occasioni sono tristi, la morte, le ossa, ma in altre 'non sembra esserci motivo di dolore, semmai di gioia'. Gli Andamanesi piangono anche spontaneamente, un bambino sgridato, una vedova; ma gli uomini, che per conto loro piangono di rado, 'versano lacrime abbondanti quando prendono parte al rito'. Il pianto è dunque un esempio di 'costumi cerimoniali': chi non lo facesse commetterebbe 'un'offesa condannata da tutte le persone per bene' (p. 240).",
+        "b": "Le lacrime a richiesta sembrano dare ragione a questa lettura, ma Radcliffe-Brown (1922) scrive che 'in tutti i casi è vero pianto': chi piange 'siede e si lamenta o urla, e le lacrime gli scorrono sul viso' (p. 117). Per lui obbligo e sentimento non si escludono. Il rito 'costringe i due partecipanti ad agire come se provassero certe emozioni, e così, in qualche misura, produce in loro quelle emozioni' (p. 241). La sequenza è precisa: all'incontro la prima sensazione è 'timidezza mista a piacere', una tensione; l'abbraccio risveglia l'affetto rimasto sopito, il pianto scarica la tensione e rinforza l'abbraccio, perché condividere la stessa emozione nello stesso momento lega le persone (pp. 241-242).",
+        "c": "È proprio ciò che Radcliffe-Brown (1922) esclude per metodo. Il postulato fissato all'inizio del capitolo chiede una spiegazione che valga per tutte le occasioni, 'poiché dobbiamo assumere che uno stesso rito abbia lo stesso significato in qualunque circostanza abbia luogo' (p. 240). Tiene però conto di una differenza: nei primi tre casi, incontro, pace, fine del lutto, il rito è reciproco, entrambe le parti piangono e si abbracciano; negli altri quattro è unilaterale, qualcuno piange su una persona, o sulle sue reliquie, che resta passiva. Una spiegazione soddisfacente, scrive, deve rendere conto di questa differenza, non moltiplicare i significati.",
+        "d": "È la sua spiegazione: il rito è 'l'affermazione di un legame di solidarietà sociale tra chi vi prende parte' e produce in loro la consapevolezza di quel legame 'risvegliando il sentimento di attaccamento' (p. 245). Quando il rito è reciproco rinnova relazioni interrotte e funziona da 'cerimonia di aggregazione' (p. 243) come la terza fase di van Gennep (1909). Quando è unilaterale mostra che il legame continua anche mentre si indebolisce o cambia: la madre che piange al matrimonio sente che il figlio le viene tolto, ma resta suo (pp. 243-244). Alla pace, il pianto che segue la danza 'è il rinnovamento dell'amicizia' tra due gruppi (p. 242). Durkheim (1912) aveva scritto del lutto australiano: ci si lamenta 'perché si è tenuti a lamentarsi' (p. 568)."
+      },
+      "source": "Radcliffe-Brown, The Andaman Islanders: A Study in Social Anthropology, Cambridge University Press, 1922, cap. II «Ceremonial Customs» (pp. 116-117, 134-135) e cap. V «The Interpretation of Andamanese Customs and Beliefs: Ceremonial» (pp. 238-246); Durkheim, Les formes élémentaires de la vie religieuse, 1912, libro III, cap. V «Les rites piaculaires» (pp. 567-568); van Gennep, Les rites de passage, 1909",
+      "deepen": [
+        {
+          "ref": "Radcliffe-Brown, The Andaman Islanders: A Study in Social Anthropology, 1922, cap. V",
+          "why": "L'interpretazione del pianto rituale e della danza di pace, pp. 238-246: il rito come affermazione del legame e come produzione, non solo espressione, del sentimento. Testo integrale, pubblico dominio",
+          "access": "PD",
+          "url": "https://archive.org/details/andamanislanders00radc"
+        },
+        {
+          "ref": "Durkheim, Les formes élémentaires de la vie religieuse, 1912, libro III, cap. V",
+          "why": "Il lutto australiano come 'dovere imposto dal gruppo', pp. 567-568: dieci anni prima di Radcliffe-Brown, la stessa idea che l'emozione rituale non nasca dal singolo",
+          "access": "PD (fr)",
+          "url": "https://archive.org/details/Les_Formes_elementaires_de_la_vie_religieuse"
+        },
+        {
+          "ref": "van Gennep, Les rites de passage, 1909",
+          "why": "La stessa 'aggregazione' che Radcliffe-Brown usa per i pianti reciproci, qui come terza fase dei riti di passaggio, dopo separazione e margine",
+          "access": "PD (fr)",
+          "url": "http://classiques.uqac.ca/classiques/gennep_arnold_van/rites_de_passage/rites_de_passage.html"
+        }
+      ]
+    }
+  }
+}
