@@ -1,0 +1,74 @@
+{
+  "id": "scenario_020",
+  "lang": "it",
+  "title": "Asce d'acciaio",
+  "concept": "consumo",
+  "concept_label": "Consumo e cultura materiale",
+  "levels": {
+    "neofita": {
+      "hook": "Qualcuno ti regala uno strumento nuovo, più moderno di quello che usavi: un telefono migliore, un computer più veloce. Te lo presentano come un progresso, e sei d'accordo: fa le stesse cose, ma meglio. Però un oggetto non vive da solo. Che cosa cambierà, esattamente, nella tua giornata e nelle persone intorno a te?",
+      "setup": "Penisola di Capo York, Australia settentrionale, anni Trenta. Tra gli Yir Yoront, alla foce del fiume Coleman, l'ascia di pietra è l'attrezzo più importante: serve per la legna, i ripari, gli altri utensili. La fanno e la tengono solo gli uomini adulti. Donne e bambini, che la usano più spesso, devono chiederla al marito, al padre o al fratello maggiore, e la chiamano sempre «la tua ascia» o «la sua ascia». Poi i missionari cominciano a regalare asce d'acciaio, anche alle donne e ai ragazzi. Che cosa cambia?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "È solo un attrezzo migliore: si lavora meglio e si vive meglio"
+        },
+        {
+          "id": "b",
+          "text": "Cambia chi possiede l'ascia, e con lei i rapporti tra le persone"
+        }
+      ],
+      "feedback": {
+        "a": "Lauriston Sharp (1952), che racconta il caso, descrive un'altra storia. L'ascia d'acciaio faceva alcuni lavori meglio e si rompeva meno, ma serviva più o meno per le stesse cose di quella di pietra: nessun effetto pratico sul tenore di vita. Il tempo risparmiato non andò a «migliorare le condizioni di vita», come speravano i bianchi, ma nel sonno, «un'arte che avevano perfettamente padroneggiato». Il cambiamento vero fu un altro, e non si vedeva guardando l'attrezzo.",
+        "b": "È ciò che osservò Lauriston Sharp (1952). L'ascia di pietra era un simbolo della mascolinità, «come i pantaloni o la pipa tra noi», e del prestigio dell'età: chi doveva chiederla in prestito lo ricordava ogni giorno. Quando i missionari la regalarono a donne e ragazzi, una donna cominciò a dire «la mia ascia», una forma che non usava mai per quella di pietra. Un vecchio poteva ritrovarsi con un'ascia di pietra mentre moglie e figli ne avevano una d'acciaio, e dover chiedere a loro. Il risultato, scrive Sharp, fu una «confusione rivoluzionaria» dei ruoli di sesso, età e parentela: più libertà per alcuni, ma anche insicurezza per tutti."
+      },
+      "source": "Sharp, Steel Axes for Stone Age Australians, 1952"
+    },
+    "studente": {
+      "hook": "Ti arriva in regalo un attrezzo nuovo, più efficiente di quello che usavi da anni, da qualcuno convinto di farti un favore. È davvero migliore: lavora più in fretta, si rompe meno. Chi te l'ha dato si aspetta di vederti usare il tempo guadagnato come lo userebbe lui. Tu intanto ti chiedi che cosa te ne farai, e che fine farà quello vecchio.",
+      "setup": "Foce del fiume Coleman, costa occidentale della penisola di Capo York, metà degli anni Trenta. Sei l'antropologo americano che vive da solo tredici mesi tra gli Yir Yoront; Lauriston Sharp racconterà il caso nel 1952. L'ascia di pietra è l'attrezzo più importante: la usano soprattutto le donne, per la legna di ogni giorno. Ma la fanno e la tengono solo gli uomini adulti. La pietra viene da cave quattrocento miglia a sud, lungo catene di partner commerciali maschi: una dozzina di lance con punta di razza per una testa d'ascia, scambiate nei grandi raduni della stagione secca attorno alle iniziazioni. Donne, ragazzi e giovani chiedono l'ascia in prestito secondo le regole di parentela, al marito, al padre, al fratello maggiore, mai al fratello della madre; e dicono sempre «la tua ascia», mai «la mia». Dalla missione del fiume Mitchell arrivano asce d'acciaio: vendute, date in cambio di lavoro, regalate alle feste di Natale senza distinzione. I missionari incoraggiano i beni che considerano «migliorativi». Devi prevedere che cosa cambierà.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Progresso tecnico: più efficienza, tempo libero per migliorare la vita"
+        },
+        {
+          "id": "b",
+          "text": "Poco o nulla: un'ascia vale l'altra, cambia solo il materiale"
+        },
+        {
+          "id": "c",
+          "text": "Emancipazione: donne e giovani conquistano autonomia"
+        },
+        {
+          "id": "d",
+          "text": "Un oggetto senza posto nel sistema dei significati incrina l'ordine"
+        }
+      ],
+      "feedback": {
+        "a": "È l'aspettativa dei bianchi, e Sharp (1952) la smonta. Il passaggio all'acciaio non creò difficoltà tecniche, ma tra gli Yir Yoront la nuova ascia non acquistò gli usi che aveva nelle missioni e nelle stazioni del bestiame: servì più o meno per ciò che faceva quella di pietra, senza effetti sul tenore di vita. L'idea che fosse più efficiente e che rappresentasse un «progresso» verso obiettivi fissati dai bianchi «trovò ben poca conferma nella pratica». Il tempo guadagnato fu investito «non nel migliorare le condizioni di vita», ma nel sonno, «un'arte che avevano perfettamente padroneggiato» (p. 82). L'oggetto, conclude, va guardato per il comportamento che gli sta intorno, non come cosa (p. 73).",
+        "b": "Tecnicamente è quasi vero, e proprio per questo inganna. Sharp (1952) sposta lo sguardo dall'ascia «la cosa» ai comportamenti che le stanno intorno (p. 73). L'ascia di pietra era un simbolo della mascolinità, «come i pantaloni o la pipa tra noi», e dato che i non maschi dovevano chiederla, ricordava ogni giorno «la superiorità e il legittimo predominio del maschio»; e poiché la chiedevano i più giovani ai più anziani, anche «il prestigio dell'età» (pp. 78-79). Stava anche dentro una rete: i partner commerciali, gli scambi ai raduni delle iniziazioni. Cambiare il materiale e il canale di distribuzione voleva dire toccare tutto questo.",
+        "c": "Sharp (1952) registra il guadagno e il suo prezzo. Una donna che riceveva un'ascia dalla missione la chiamava «la mia» ascia d'acciaio, una forma che non usava mai per quella di pietra; un vecchio poteva avere solo un'ascia di pietra mentre moglie e figli ne avevano d'acciaio, che magari lui chiedeva in prestito. Ne seguì una «confusione rivoluzionaria dei ruoli di sesso, età e parentela», con «un grande guadagno di indipendenza» per chi prima non poteva possedere un'ascia (pp. 83-84). Ma la nuova libertà, accolta come una fuga dalle vecchie tensioni, lasciò donne e ragazzi «anch'essi confusi e insicuri»; la proprietà divenne meno definita, e comparvero furto e sconfinamento (p. 86).",
+        "d": "È la lettura di Sharp (1952). Nel sistema totemico yir yoront ogni cosa ha un posto fissato all'inizio dei tempi dagli antenati. L'ascia d'acciaio non ne ha uno: come le cose dei bianchi appartiene al clan del Cadavere, ma è un'«ascia», come quella di pietra del clan dell'Iguana della Nuvola Illuminata, e non ha un mito d'origine. Oscillando tra i due clan, «non sta solo sostituendo fisicamente l'ascia di pietra, ma sta colpendo i sostegni dell'intero sistema culturale» (p. 88). Il sistema, nota, frena i cambiamenti radicali (p. 86): gli Yir Yoront conoscono la canoa dei vicini, ma i loro antenati non l'avevano (p. 87). Douglas e Isherwood (1979) diranno che i beni «servono a rendere visibili e stabili le categorie della cultura» (p. 59)."
+      },
+      "source": "Sharp, «Steel Axes for Stone Age Australians», in Spicer (a cura di), Human Problems in Technological Change: A Casebook, Russell Sage Foundation, 1952, caso 5, pp. 69-89 (pp. 72-76, 78-79, 82-88); Douglas e Isherwood, The World of Goods, 1979, ristampa 1982, p. 59",
+      "deepen": [
+        {
+          "ref": "Sharp, «Steel Axes for Stone Age Australians», in Spicer (a cura di), Human Problems in Technological Change, 1952",
+          "why": "Il caso intero, pp. 69-89: la storia dei contatti, l'ascia di pietra come simbolo di mascolinità ed età, la distribuzione della missione, l'oggetto che non trova posto nel sistema totemico",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Douglas e Isherwood, The World of Goods, 1979, ristampa 1982",
+          "why": "La cornice teorica: i beni «servono a rendere visibili e stabili le categorie della cultura» (p. 59). L'ascia d'acciaio mostra che cosa succede quando un bene arriva senza una categoria che lo accolga",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Mintz, Sweetness and Power: The Place of Sugar in Modern History, Viking, 1985, cap. 4",
+          "why": "Il rapporto tra chi controlla la disponibilità di un bene nuovo e chi lo riempie di significato: «chi ha il potere può prendere in mano la disponibilità dei nuovi prodotti, ma sono i nuovi utenti a riempirli di significato» (p. 152)",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  }
+}
