@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.37 — 2026-09-25 — Stato: pubblicato (M1-M7 chiuse, §16.10)
+Versione 0.38 — 2026-09-26 — Stato: pubblicato (M1-M7 chiuse, §16.10; M8 aperta, §16.11)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -218,7 +218,7 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | 14  | Non pubblicarlo                  | Relativismo / etica | AAA 2012; Cassell 1987 (caso 22); AAA 1971        | OA      | **validato** |
 | 15  | Il tempo delle mucche            | Relativismo         | Evans-Pritchard, 1940, cap. I e III; E-P 1939     | NON-OA  | **validato** |
 
-Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura: reciprocità 4, parentela 4, rituale 3, relativismo/etica 4.
+Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura al 2026-09-26, 18 scenari: reciprocità 4 (01, 02, 04, 05), parentela 4 (06-09), relativismo/etica 4 (03, 13-15), rituale 3 (10-12), consumo 3 (16-18, backlog M6 qui sotto).
 
 Revisione batch A (01, 04, 05), 2026-09-22. Riletti sul testo, non solo riletti: ogni citazione e ogni affermazione attribuita a un autore è stata ricontrollata alla fonte. Verificato: Boas 1897 sul testo integrale (Internet Archive) — «interest-bearing investment of property», «rivals fight with property only», «not at liberty to refuse», p'a'sa «flattening», tassi 5→6 in pochi mesi, 5→7 a sei mesi, 5→10 a dodici, «break a copper of equal or higher value», i frammenti rivettati che aumentano il valore, «in by far the greater number of cases the copper is preserved», le feste del grasso che sfociano in «open enmity»; Mauss 1925 (Sociologie et anthropologie, pp. 212-216) — il testo di Ranaipiri, «la chose reçue n'est pas inerte», «il poursuit... tout individu auquel le taonga est simplement transmis», «présenter quelque chose à quelqu'un c'est présenter quelque chose de soi», «refuser de donner... équivaut à déclarer la guerre»; Lévi-Strauss 1950 (pp. 40-41) — «l'ethnologue se laisse mystifier par l'indigène», «une théorie néo-zélandaise... qui n'est pas autre chose qu'une théorie»; Firth 1929 (pp. 411-413) — la sanzione triplice e «nowhere in the native text can support be found»; Sahlins 1972 (p. 180 e p. 184) — «the hau of a good is its yield», «one man's gift should not be another man's capital», «a direct return on the initial gift is excluded»; Codere 1950 — «fighting with property» invece di «fighting with weapons», 2.264 kwakiutl nel 1882, almeno 658 posizioni di potlatch; Cole & Chaikin 1990 — divieto del 1885 cancellato solo nel 1951, oltre cinquanta condanne dopo il potlatch di Village Island di Dan Cranmer.
 
@@ -302,6 +302,7 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 | M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                               | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
 | M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate                | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
 | M7  | Aggancio contemporaneo (`hook`) negli scenari 01-15                                    | 18 scenari su 18 con `hook` in entrambi i livelli, validati insieme all'autore | **chiusa** 2026-09-25: 18 su 18 (§16.10)                           |
+| M8  | Riequilibrio della tassonomia: uno scenario in più per rituale e uno per consumo       | 20 scenari, 4 per concetto, `hook` in entrambi i livelli, fonti verificate     | **aperta** 2026-09-26 (§16.11)                                     |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -492,3 +493,13 @@ Fatto:
 I lotti 07-09, 10-12 e 13-15 sono stati proposti insieme nella PR #1 (https://github.com/AlbeAli/anthropology-clash/pull/1), con il testo completo dei diciotto agganci nella descrizione, e approvati dall'autore così come proposti prima del merge.
 
 Chiusura, 2026-09-25. Tutti i 18 scenari hanno l'`hook` in entrambi i livelli, e il più lungo arriva a 367 caratteri su 400. `pnpm validate` passa su 18 file; i 33 test e il lint sono verdi; la CI della PR è verde. La resa di «Oggi» è stata verificata nel browser su un lotto per livello: `scenario_010` nel livello neofita e `scenario_013` nel livello studente, entrambi con l'etichetta sopra il `setup`.
+
+### 16.11 M8 — quattro scenari per concetto (aperta 2026-09-26)
+
+Direzione scelta dall'autore il 2026-09-26 tra sei proposte (nuovi scenari sui concetti esistenti, sesto concetto, riepilogo di fine sessione, punti aperti di §11, inglese, misura e test end-to-end): portare rituale e consumo da 3 a 4 scenari, come gli altri tre concetti. Nessuna modifica a schema, engine o UI.
+
+Procedura, invariata rispetto a §16.6 e §16.10: prima la verifica di accesso e testo delle fonti candidate, poi la scelta della pista; una branch per scenario, commit `content: aggiunge scenario_NNN (titolo)`; `hook` in entrambi i livelli secondo le regole di §9, senza anticipare la lettura che lo scenario fa scoprire; ogni citazione confrontata sul testo con il metodo di §16.7. Rischio noto: sovrapposizione con 10-12 per il rituale e con 04, 05, 12 e 16-18 per il consumo; la pista si sceglie a fonte letta, non prima.
+
+Stato al 2026-09-26: la verifica delle fonti non è partita perché la rete della sessione non raggiungeva Internet Archive, Wayback, Classiques UQAC, Crossref, JSTOR e Gutenberg. Nessuna fonte candidata è ancora stata letta; nessuna pista è scelta.
+
+Criterio di chiusura: 20 scenari, 4 per concetto, `pnpm validate` verde su 20 file, bibliografia senza doppioni, nessuna affermazione priva di riscontro sul testo.
