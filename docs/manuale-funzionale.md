@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.39 — 2026-09-26 — Stato: pubblicato (M1-M7 chiuse, §16.10; M8 aperta, §16.11)
+Versione 0.40 — 2026-09-26 — Stato: pubblicato (M1-M8 chiuse, §16.11)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -218,7 +218,7 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | 14  | Non pubblicarlo                  | Relativismo / etica | AAA 2012; Cassell 1987 (caso 22); AAA 1971        | OA      | **validato** |
 | 15  | Il tempo delle mucche            | Relativismo         | Evans-Pritchard, 1940, cap. I e III; E-P 1939     | NON-OA  | **validato** |
 
-Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura al 2026-09-26, 19 scenari: reciprocità 4 (01, 02, 04, 05), parentela 4 (06-09), relativismo/etica 4 (03, 13-15), rituale 4 (10-12, 19), consumo 3 (16-18, backlog M6 qui sotto; il quarto è in M8, §16.11).
+Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura al 2026-09-26, 20 scenari: reciprocità 4 (01, 02, 04, 05), parentela 4 (06-09), relativismo/etica 4 (03, 13-15), rituale 4 (10-12, 19), consumo 4 (16-18 dal backlog M6 qui sotto, 20 da M8, §16.11).
 
 Revisione batch A (01, 04, 05), 2026-09-22. Riletti sul testo, non solo riletti: ogni citazione e ogni affermazione attribuita a un autore è stata ricontrollata alla fonte. Verificato: Boas 1897 sul testo integrale (Internet Archive) — «interest-bearing investment of property», «rivals fight with property only», «not at liberty to refuse», p'a'sa «flattening», tassi 5→6 in pochi mesi, 5→7 a sei mesi, 5→10 a dodici, «break a copper of equal or higher value», i frammenti rivettati che aumentano il valore, «in by far the greater number of cases the copper is preserved», le feste del grasso che sfociano in «open enmity»; Mauss 1925 (Sociologie et anthropologie, pp. 212-216) — il testo di Ranaipiri, «la chose reçue n'est pas inerte», «il poursuit... tout individu auquel le taonga est simplement transmis», «présenter quelque chose à quelqu'un c'est présenter quelque chose de soi», «refuser de donner... équivaut à déclarer la guerre»; Lévi-Strauss 1950 (pp. 40-41) — «l'ethnologue se laisse mystifier par l'indigène», «une théorie néo-zélandaise... qui n'est pas autre chose qu'une théorie»; Firth 1929 (pp. 411-413) — la sanzione triplice e «nowhere in the native text can support be found»; Sahlins 1972 (p. 180 e p. 184) — «the hau of a good is its yield», «one man's gift should not be another man's capital», «a direct return on the initial gift is excluded»; Codere 1950 — «fighting with property» invece di «fighting with weapons», 2.264 kwakiutl nel 1882, almeno 658 posizioni di potlatch; Cole & Chaikin 1990 — divieto del 1885 cancellato solo nel 1951, oltre cinquanta condanne dopo il potlatch di Village Island di Dan Cranmer.
 
@@ -248,7 +248,7 @@ Repertori: DOAJ (riviste OA: Cultural Anthropology, Social Anthropology, JASO, K
 
 Fonti primarie aperte individuate: Malinowski 1922 (Gutenberg #55822; Internet Archive), Malinowski 1926 e 1929 (Internet Archive; pubblico dominio in UE dal 2013, autore morto nel 1942, e negli USA dal 2022 e 2025), Miner 1956 (DOI 10.1525/aa.1956.58.3.02a00080), Bohannan 1966 e Lee 1969 (Natural History), Mauss 1925 (Classiques UQAC), Morgan 1871 (Internet Archive), van Gennep 1909, Boas 1887, AAA 2012.
 
-Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. È generata dai contenuti (`src/engine/bibliography.ts`), non mantenuta a mano: con i diciannove scenari validati sono 70 voci, senza doppioni, ciascuna con lo stato di accesso e gli scenari che la citano. Nessuna voce resta con l'etichetta «accesso da verificare».
+Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. È generata dai contenuti (`src/engine/bibliography.ts`), non mantenuta a mano: con i venti scenari validati sono 71 voci, senza doppioni, ciascuna con lo stato di accesso e gli scenari che la citano. Nessuna voce resta con l'etichetta «accesso da verificare».
 
 ## 15. Specifica di sviluppo
 
@@ -302,7 +302,7 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 | M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                               | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
 | M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate                | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
 | M7  | Aggancio contemporaneo (`hook`) negli scenari 01-15                                    | 18 scenari su 18 con `hook` in entrambi i livelli, validati insieme all'autore | **chiusa** 2026-09-25: 18 su 18 (§16.10)                           |
-| M8  | Riequilibrio della tassonomia: uno scenario in più per rituale e uno per consumo       | 20 scenari, 4 per concetto, `hook` in entrambi i livelli, fonti verificate     | **aperta** 2026-09-26 (§16.11)                                     |
+| M8  | Riequilibrio della tassonomia: uno scenario in più per rituale e uno per consumo       | 20 scenari, 4 per concetto, `hook` in entrambi i livelli, fonti verificate     | **chiusa** 2026-09-26: 20 scenari, 4 per concetto (§16.11)         |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -318,12 +318,12 @@ Fatto in M1, oltre a quanto previsto dalla v0.6:
 - Test sul caricatore contenuti (`src/engine/content.test.ts`).
 - README e questo documento.
 
-Stato al 2026-09-25, dopo la chiusura di M7:
+Stato al 2026-09-26, dopo la chiusura di M8:
 
-- 18 scenari in `src/content/it/scenarios/`, tutti validati sul testo delle fonti; 5 concetti in `concepts.json` (`consumo` aggiunto il 2026-09-22), ciascuno con almeno uno scenario giocabile.
-- Schema con campo `hook` opzionale per l'aggancio contemporaneo; `pnpm validate` verifica anche che stia in entrambi i livelli o in nessuno. Da M7 tutti i 18 scenari lo hanno, in entrambi i livelli.
+- 20 scenari in `src/content/it/scenarios/`, quattro per concetto, tutti validati sul testo delle fonti; 5 concetti in `concepts.json` (`consumo` aggiunto il 2026-09-22), ciascuno con almeno uno scenario giocabile.
+- Schema con campo `hook` opzionale per l'aggancio contemporaneo; `pnpm validate` verifica anche che stia in entrambi i livelli o in nessuno. Da M7 tutti gli scenari lo hanno, in entrambi i livelli.
 - 33 test (engine, schema, script di validazione), lint e build verdi; CI verde su `main`.
-- App in produzione su Vercel, pagina Metodo con 68 voci di bibliografia generate dai contenuti.
+- App in produzione su Vercel, pagina Metodo con 71 voci di bibliografia generate dai contenuti.
 - Scroll in cima a ogni rotta, titolo del documento per pagina, focus visibile sull'intestazione del riscontro (2026-09-21); bordo del riscontro a 1px su tutti i lati dopo il rilievo del detector (2026-09-22).
 - Autore dichiarato in README, manuale, `CLAUDE.md`, `package.json`, `index.html` e footer dell'app.
 
@@ -440,6 +440,7 @@ Chiusura, 2026-09-23. I quindici scenari sono passati uno per uno dalla rilettur
 | 2026-09-25 | Nelle citazioni da copie in prestito di Internet Archive il numero di pagina si ricava e si controlla, non si prende dal lettore                                                                                            | Il campo `page` che la ricerca interna restituisce è il foglio della scansione, non la pagina del libro: in `scenario_016` era finito «p. 73» al posto di «p. 59». Da qui in poi l'offset foglio-pagina si calcola su una voce dell'indice o del sommario e si controlla su una seconda (per Cohen 1969 l'indice dà «Bowls, Ornamental, 67-8»)                                                                                                                                                                                                                 |
 | 2026-09-23 | `scenario_016` su Bourdieu 1979, con i numeri di pagina della traduzione di Richard Nice (Harvard University Press, 1984)                                                                                                   | È una indagine per questionario, non un'etnografia sul campo: scelta accettata dall'autore perché le due piste etnografiche previste non erano verificabili quel giorno (item `worldofgoods00doug` in errore, nessuna copia in prestito di Appadurai 1986) e perché il gusto come distinzione è terreno diverso da 04, 05 e 12. Le citazioni esistono solo in traduzione nella copia consultata; la corrispondenza foglio-pagina è controllata su due voci dell'indice (cap. 1 a p. 11, cap. 3 a p. 169), quindi i numeri di pagina valgono per quell'edizione |
 | 2026-09-22 | Il `hook` non è un caso di studio                                                                                                                                                                                           | La regola "ogni scenario ha una fonte reale" resterebbe aggirabile da un aggancio inventato. Il `hook` è un'illustrazione in seconda persona senza affermazioni fattuali su gruppi, quantità o persone; se la situazione contemporanea è etnografata si cita l'opera in `source` e la si verifica sul testo. Il carico della dimostrazione resta su `setup` e feedback                                                                                                                                                                                         |
+| 2026-09-26 | Ricerca interna di Internet Archive eseguita dal Chromium headless del container                                                                                                                                            | Da una sessione cloud senza browser collegato la chiamata diretta a `inside.php` risponde «Item not available»: serve il flusso della pagina dell'item, che chiede un token a `searchInside.php`. Il Chromium del container non si fidava del certificato del proxy di rete; il certificato è stato aggiunto all'archivio NSS (`certutil`), senza disattivare la verifica TLS. La configurazione vale per il container e va rifatta in una sessione nuova                                                                                                      |
 
 ### 16.8 Regola di sincronizzazione dei documenti
 
@@ -494,7 +495,7 @@ I lotti 07-09, 10-12 e 13-15 sono stati proposti insieme nella PR #1 (https://gi
 
 Chiusura, 2026-09-25. Tutti i 18 scenari hanno l'`hook` in entrambi i livelli, e il più lungo arriva a 367 caratteri su 400. `pnpm validate` passa su 18 file; i 33 test e il lint sono verdi; la CI della PR è verde. La resa di «Oggi» è stata verificata nel browser su un lotto per livello: `scenario_010` nel livello neofita e `scenario_013` nel livello studente, entrambi con l'etichetta sopra il `setup`.
 
-### 16.11 M8 — quattro scenari per concetto (aperta 2026-09-26)
+### 16.11 M8 — quattro scenari per concetto (aperta e chiusa 2026-09-26)
 
 Direzione scelta dall'autore il 2026-09-26 tra sei proposte (nuovi scenari sui concetti esistenti, sesto concetto, riepilogo di fine sessione, punti aperti di §11, inglese, misura e test end-to-end): portare rituale e consumo da 3 a 4 scenari, come gli altri tre concetti. Nessuna modifica a schema, engine o UI.
 
@@ -502,19 +503,21 @@ Procedura, invariata rispetto a §16.6 e §16.10: prima la verifica di accesso e
 
 Verifica delle fonti, 2026-09-26. All'inizio la rete della sessione non raggiungeva Internet Archive, Wayback, Classiques UQAC, Crossref, JSTOR e Gutenberg; l'autore ha aggiunto i domini alla lista consentita dell'ambiente cloud (accesso di rete personalizzato). Esito per candidato:
 
-| Concetto | Candidato                                                                                      | Esito                                                                                                                                            |
-| -------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| rituale  | Radcliffe-Brown, The Andaman Islanders, 1922                                                   | Verificato sul testo integrale (`andamanislanders00radc`, pubblico dominio): scelto per `scenario_019`                                           |
-| rituale  | Durkheim, Les formes élémentaires de la vie religieuse, 1912                                   | Verificato sul testo integrale (pp. 567-568): lettura di appoggio in 019                                                                         |
-| rituale  | Mauss, «L'expression obligatoire des sentiments», 1921                                         | Non letto: la copia UQAC non risponde e la copia Wayback era temporaneamente offline; escluso                                                    |
-| consumo  | Bohannan 1955 (American Anthropologist) e 1959 (Journal of Economic History)                   | DOI verificati su Crossref, licenze non aperte; Wiley blocca con un controllo anti-bot, Cambridge Core chiede l'acquisto; libri solo in prestito |
-| consumo  | Sharp 1952 (in Spicer 1952), Salisbury 1962                                                    | Solo copie in prestito: la ricerca interna restituisce «Item not available» fuori dal browser                                                    |
-| consumo  | Kroeber 1919, «On the Principle of Order in Civilization as Exemplified by Changes of Fashion» | Testo integrale aperto (JSTOR Early Journal Content, `jstor-660477`); non ancora letto per intero; non è un'etnografia sul campo                 |
+| Concetto | Candidato                                                                                      | Esito                                                                                                                                                                                                                |
+| -------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| rituale  | Radcliffe-Brown, The Andaman Islanders, 1922                                                   | Verificato sul testo integrale (`andamanislanders00radc`, pubblico dominio): scelto per `scenario_019`                                                                                                               |
+| rituale  | Durkheim, Les formes élémentaires de la vie religieuse, 1912                                   | Verificato sul testo integrale (pp. 567-568): lettura di appoggio in 019                                                                                                                                             |
+| rituale  | Mauss, «L'expression obligatoire des sentiments», 1921                                         | Non letto: la copia UQAC non risponde e la copia Wayback era temporaneamente offline; escluso                                                                                                                        |
+| consumo  | Bohannan 1955 (American Anthropologist) e 1959 (Journal of Economic History)                   | DOI verificati su Crossref, licenze non aperte; Wiley blocca con un controllo anti-bot, Cambridge Core chiede l'acquisto; libri solo in prestito                                                                     |
+| consumo  | Sharp 1952 (in Spicer 1952), Salisbury 1962                                                    | Solo copie in prestito. Sharp verificato con la ricerca interna eseguita dal Chromium del container dopo aver reso attendibile il certificato del proxy (vedi §16.7): scelto per `scenario_020`. Salisbury non letto |
+| consumo  | Kroeber 1919, «On the Principle of Order in Civilization as Exemplified by Changes of Fashion» | Testo integrale aperto (JSTOR Early Journal Content, `jstor-660477`); non ancora letto per intero; non è un'etnografia sul campo                                                                                     |
 
 Fatto:
 
 1. `scenario_019` «Piangere al ritorno» (2026-09-26): il pianto rituale delle Grandi Andamane in Radcliffe-Brown 1922, cap. II (pp. 116-117, 134-135) e cap. V (pp. 238-246), con Durkheim 1912 e van Gennep 1909. Quattro scelte nel livello studente, tutte discusse dal testo: espressione spontanea, recita, sette usanze distinte (escluse dal suo postulato di metodo), rito che afferma il legame. Il punto nuovo rispetto a 10-12 è il rito che produce l'emozione invece di esprimerla. Radcliffe-Brown usa «ceremony of aggregation» senza citare van Gennep: lo scenario lo presenta come lo stesso termine, non come ripresa dichiarata. Bozza e agganci approvati dall'autore; `pnpm validate` verde su 19 file, bibliografia a 70 voci senza doppioni; verificati nel browser entrambi i livelli (etichetta «Oggi» sopra il `setup`, riscontro su tutte le opzioni), la pagina Metodo e la libreria (rituale a quattro scenari).
 
-Da fare: il quarto scenario sul consumo. Le piste etnografiche (Sharp, Salisbury) richiedono la ricerca interna di Internet Archive da un browser; la riserva aperta è Kroeber 1919, con lo stesso limite dichiarato di `scenario_016`.
+2. `scenario_020` «Asce d'acciaio» (2026-09-26): gli Yir Yoront della penisola di Capo York negli anni Trenta e le asce d'acciaio distribuite dalla missione, dal caso di Lauriston Sharp in Spicer (a cura di), Human Problems in Technological Change, 1952, caso 5, pp. 69-89, con Douglas e Isherwood 1979 e Mintz 1985. Quattro scelte nel livello studente: progresso tecnico, un'ascia vale l'altra, emancipazione, oggetto senza posto nel sistema dei significati. Offset foglio-pagina 8, controllato su sei intestazioni correnti (pp. 71, 73, 79, 81, 83, 85). Limiti dichiarati: il testo parla di «un antropologo americano» vissuto tredici mesi tra gli Yir Yoront senza identificarlo con l'autore, e lo scenario non glielo attribuisce; la prefazione dice che i contributori hanno lasciato al curatore «great license» nell'organizzare i dati; l'articolo omonimo in Human Organization (1952) non è stato letto e non è citato. Lasciati fuori dallo scenario, ma presenti nella fonte, gli episodi di violenza dei coloni e lo scambio di asce contro prestazioni sessuali. Bozza e agganci approvati dall'autore; `pnpm validate` verde su 20 file, bibliografia a 71 voci senza doppioni; verificati nel browser entrambi i livelli, la pagina Metodo e la libreria (consumo a quattro scenari).
+
+Chiusura, 2026-09-26. Venti scenari, quattro per concetto, tutti con `hook` in entrambi i livelli. `pnpm validate` passa su 20 file; i 33 test, il lint e la build sono verdi; la pagina Metodo genera 71 voci senza doppioni. Ogni citazione dei due nuovi scenari è stata confrontata sul testo delle fonti. Kroeber 1919 resta una pista aperta e verificabile per il consumo, fuori da M8.
 
 Criterio di chiusura: 20 scenari, 4 per concetto, `pnpm validate` verde su 20 file, bibliografia senza doppioni, nessuna affermazione priva di riscontro sul testo.
