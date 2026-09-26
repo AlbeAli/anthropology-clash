@@ -62,6 +62,7 @@ scripts          validate-content.ts
 - **Licenze:** codice MIT (`LICENSE`), testi di `src/content/` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`). Le citazioni dalle fonti restano dei titolari: citare solo quanto serve alla discussione.
 - **Unico contributor su GitHub: AlbeAli.** Nessun trailer `Co-Authored-By` (né Claude né altri) nei messaggi di commit e nelle PR, in nessun caso.
 - `main` sempre rilasciabile. Una branch per milestone o per scenario.
+- **Locale, GitHub e cloud sempre allineati.** Hook di progetto in `.claude/settings.json` (`.claude/hooks/git-sync.mjs`): all'avvio della sessione `git fetch` e pull solo fast-forward, se l'albero è pulito e la branch non diverge; a fine turno avviso se restano modifiche non committate o commit non pushati. Ogni lavoro finisce con commit e push.
 - Nessun commento nel codice salvo vincolo non ovvio.
 - Nessuna dipendenza aggiunta senza motivazione nel messaggio di commit.
 
