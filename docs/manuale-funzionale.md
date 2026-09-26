@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.38 — 2026-09-26 — Stato: pubblicato (M1-M7 chiuse, §16.10; M8 aperta, §16.11)
+Versione 0.39 — 2026-09-26 — Stato: pubblicato (M1-M7 chiuse, §16.10; M8 aperta, §16.11)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -218,7 +218,7 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | 14  | Non pubblicarlo                  | Relativismo / etica | AAA 2012; Cassell 1987 (caso 22); AAA 1971        | OA      | **validato** |
 | 15  | Il tempo delle mucche            | Relativismo         | Evans-Pritchard, 1940, cap. I e III; E-P 1939     | NON-OA  | **validato** |
 
-Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura al 2026-09-26, 18 scenari: reciprocità 4 (01, 02, 04, 05), parentela 4 (06-09), relativismo/etica 4 (03, 13-15), rituale 3 (10-12), consumo 3 (16-18, backlog M6 qui sotto).
+Legenda: PD pubblico dominio; OA open access; NON-OA sotto diritti, si lavora su fonti secondarie aperte e si valida insieme il punto specifico. Copertura al 2026-09-26, 19 scenari: reciprocità 4 (01, 02, 04, 05), parentela 4 (06-09), relativismo/etica 4 (03, 13-15), rituale 4 (10-12, 19), consumo 3 (16-18, backlog M6 qui sotto; il quarto è in M8, §16.11).
 
 Revisione batch A (01, 04, 05), 2026-09-22. Riletti sul testo, non solo riletti: ogni citazione e ogni affermazione attribuita a un autore è stata ricontrollata alla fonte. Verificato: Boas 1897 sul testo integrale (Internet Archive) — «interest-bearing investment of property», «rivals fight with property only», «not at liberty to refuse», p'a'sa «flattening», tassi 5→6 in pochi mesi, 5→7 a sei mesi, 5→10 a dodici, «break a copper of equal or higher value», i frammenti rivettati che aumentano il valore, «in by far the greater number of cases the copper is preserved», le feste del grasso che sfociano in «open enmity»; Mauss 1925 (Sociologie et anthropologie, pp. 212-216) — il testo di Ranaipiri, «la chose reçue n'est pas inerte», «il poursuit... tout individu auquel le taonga est simplement transmis», «présenter quelque chose à quelqu'un c'est présenter quelque chose de soi», «refuser de donner... équivaut à déclarer la guerre»; Lévi-Strauss 1950 (pp. 40-41) — «l'ethnologue se laisse mystifier par l'indigène», «une théorie néo-zélandaise... qui n'est pas autre chose qu'une théorie»; Firth 1929 (pp. 411-413) — la sanzione triplice e «nowhere in the native text can support be found»; Sahlins 1972 (p. 180 e p. 184) — «the hau of a good is its yield», «one man's gift should not be another man's capital», «a direct return on the initial gift is excluded»; Codere 1950 — «fighting with property» invece di «fighting with weapons», 2.264 kwakiutl nel 1882, almeno 658 posizioni di potlatch; Cole & Chaikin 1990 — divieto del 1885 cancellato solo nel 1951, oltre cinquanta condanne dopo il potlatch di Village Island di Dan Cranmer.
 
@@ -248,7 +248,7 @@ Repertori: DOAJ (riviste OA: Cultural Anthropology, Social Anthropology, JASO, K
 
 Fonti primarie aperte individuate: Malinowski 1922 (Gutenberg #55822; Internet Archive), Malinowski 1926 e 1929 (Internet Archive; pubblico dominio in UE dal 2013, autore morto nel 1942, e negli USA dal 2022 e 2025), Miner 1956 (DOI 10.1525/aa.1956.58.3.02a00080), Bohannan 1966 e Lee 1969 (Natural History), Mauss 1925 (Classiques UQAC), Morgan 1871 (Internet Archive), van Gennep 1909, Boas 1887, AAA 2012.
 
-Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. È generata dai contenuti (`src/engine/bibliography.ts`), non mantenuta a mano: con i diciotto scenari validati sono 68 voci, senza doppioni, ciascuna con lo stato di accesso e gli scenari che la citano. Nessuna voce resta con l'etichetta «accesso da verificare».
+Bibliografia della pagina "Metodo e fonti": un'opera entra solo se un feedback, una definizione o un `deepen` la cita. È generata dai contenuti (`src/engine/bibliography.ts`), non mantenuta a mano: con i diciannove scenari validati sono 70 voci, senza doppioni, ciascuna con lo stato di accesso e gli scenari che la citano. Nessuna voce resta con l'etichetta «accesso da verificare».
 
 ## 15. Specifica di sviluppo
 
@@ -500,6 +500,21 @@ Direzione scelta dall'autore il 2026-09-26 tra sei proposte (nuovi scenari sui c
 
 Procedura, invariata rispetto a §16.6 e §16.10: prima la verifica di accesso e testo delle fonti candidate, poi la scelta della pista; una branch per scenario, commit `content: aggiunge scenario_NNN (titolo)`; `hook` in entrambi i livelli secondo le regole di §9, senza anticipare la lettura che lo scenario fa scoprire; ogni citazione confrontata sul testo con il metodo di §16.7. Rischio noto: sovrapposizione con 10-12 per il rituale e con 04, 05, 12 e 16-18 per il consumo; la pista si sceglie a fonte letta, non prima.
 
-Stato al 2026-09-26: la verifica delle fonti non è partita perché la rete della sessione non raggiungeva Internet Archive, Wayback, Classiques UQAC, Crossref, JSTOR e Gutenberg. Nessuna fonte candidata è ancora stata letta; nessuna pista è scelta.
+Verifica delle fonti, 2026-09-26. All'inizio la rete della sessione non raggiungeva Internet Archive, Wayback, Classiques UQAC, Crossref, JSTOR e Gutenberg; l'autore ha aggiunto i domini alla lista consentita dell'ambiente cloud (accesso di rete personalizzato). Esito per candidato:
+
+| Concetto | Candidato                                                                                      | Esito                                                                                                                                            |
+| -------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| rituale  | Radcliffe-Brown, The Andaman Islanders, 1922                                                   | Verificato sul testo integrale (`andamanislanders00radc`, pubblico dominio): scelto per `scenario_019`                                           |
+| rituale  | Durkheim, Les formes élémentaires de la vie religieuse, 1912                                   | Verificato sul testo integrale (pp. 567-568): lettura di appoggio in 019                                                                         |
+| rituale  | Mauss, «L'expression obligatoire des sentiments», 1921                                         | Non letto: la copia UQAC non risponde e la copia Wayback era temporaneamente offline; escluso                                                    |
+| consumo  | Bohannan 1955 (American Anthropologist) e 1959 (Journal of Economic History)                   | DOI verificati su Crossref, licenze non aperte; Wiley blocca con un controllo anti-bot, Cambridge Core chiede l'acquisto; libri solo in prestito |
+| consumo  | Sharp 1952 (in Spicer 1952), Salisbury 1962                                                    | Solo copie in prestito: la ricerca interna restituisce «Item not available» fuori dal browser                                                    |
+| consumo  | Kroeber 1919, «On the Principle of Order in Civilization as Exemplified by Changes of Fashion» | Testo integrale aperto (JSTOR Early Journal Content, `jstor-660477`); non ancora letto per intero; non è un'etnografia sul campo                 |
+
+Fatto:
+
+1. `scenario_019` «Piangere al ritorno» (2026-09-26): il pianto rituale delle Grandi Andamane in Radcliffe-Brown 1922, cap. II (pp. 116-117, 134-135) e cap. V (pp. 238-246), con Durkheim 1912 e van Gennep 1909. Quattro scelte nel livello studente, tutte discusse dal testo: espressione spontanea, recita, sette usanze distinte (escluse dal suo postulato di metodo), rito che afferma il legame. Il punto nuovo rispetto a 10-12 è il rito che produce l'emozione invece di esprimerla. Radcliffe-Brown usa «ceremony of aggregation» senza citare van Gennep: lo scenario lo presenta come lo stesso termine, non come ripresa dichiarata. Bozza e agganci approvati dall'autore; `pnpm validate` verde su 19 file, bibliografia a 70 voci senza doppioni; verificati nel browser entrambi i livelli (etichetta «Oggi» sopra il `setup`, riscontro su tutte le opzioni), la pagina Metodo e la libreria (rituale a quattro scenari).
+
+Da fare: il quarto scenario sul consumo. Le piste etnografiche (Sharp, Salisbury) richiedono la ricerca interna di Internet Archive da un browser; la riserva aperta è Kroeber 1919, con lo stesso limite dichiarato di `scenario_016`.
 
 Criterio di chiusura: 20 scenari, 4 per concetto, `pnpm validate` verde su 20 file, bibliografia senza doppioni, nessuna affermazione priva di riscontro sul testo.
