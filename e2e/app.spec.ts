@@ -80,3 +80,12 @@ for (const path of ["/", `/s/${first.id}`, "/concetti", "/metodo", "/viaggio"]) 
     expect(overflow).toBeLessThanOrEqual(0);
   });
 }
+
+test.describe("tema", () => {
+  test.use({ colorScheme: "dark" });
+
+  test("senza una scelta salvata segue il tema scuro del sistema", async ({ page }) => {
+    await fresh(page);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  });
+});
