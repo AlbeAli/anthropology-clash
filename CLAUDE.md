@@ -78,6 +78,7 @@ scripts          validate-content.ts
 | M6 | Concetto `consumo` e campo `hook` in produzione; 3 scenari sul consumo che partono da un caso contemporaneo |
 | M7 | `hook` contemporaneo in tutti i 18 scenari, in entrambi i livelli, validato con l'autore |
 | M8 | 20 scenari, 4 per concetto: uno in più per `rituale` e uno per `consumo` |
+| M9 | Redesign «Le linee della metro» in produzione; riepilogo di fine sessione copiabile; test end-to-end in CI; scenario da Kroeber 1919 validato |
 
 ## Cosa non fare
 
