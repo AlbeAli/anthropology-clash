@@ -99,6 +99,22 @@ test("le fermate sulla striscia della linea non si sovrappongono", async ({ page
   });
 });
 
+test("senza account nessuna pagina contatta Supabase, e la pagina di accesso esiste", async ({
+  page,
+}) => {
+  const calls: string[] = [];
+  page.on("request", (req) => {
+    if (req.url().includes("supabase.co")) calls.push(req.url());
+  });
+  await fresh(page);
+  for (const path of [`/s/${first.id}`, "/concetti", "/viaggio", "/metodo"]) {
+    await page.goto(path);
+  }
+  expect(calls).toEqual([]);
+  await page.goto("/accedi");
+  await expect(page.getByRole("heading", { level: 1, name: "Accedi" })).toBeVisible();
+});
+
 test.describe("tema", () => {
   test.use({ colorScheme: "dark" });
 

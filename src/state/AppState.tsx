@@ -4,6 +4,9 @@ import { readState, writeState, type StoredState, type Theme } from "../engine/s
 import { currentStreak, dayKey, markCompleted } from "../engine/progress";
 import { applyTheme, systemTheme } from "../engine/theme";
 import { track } from "../engine/analytics";
+import { getScenario } from "../engine/content";
+import { mergeState, type RemoteProgress } from "../engine/sync";
+import { DEFAULT_LANG } from "../i18n";
 
 type AppState = {
   state: StoredState;
@@ -13,6 +16,7 @@ type AppState = {
   recent: string | null;
   clearRecent: () => void;
   resetProgress: () => void;
+  mergeRemote: (remote: RemoteProgress) => void;
   setLevel: (level: Level) => void;
   setTheme: (theme: Theme) => void;
   complete: (input: { scenarioId: string; concept: ConceptId; choice: string }) => void;
@@ -27,6 +31,14 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const update = useCallback((next: StoredState) => {
     setState(next);
     writeState(next);
+  }, []);
+
+  const mergeRemote = useCallback((remote: RemoteProgress) => {
+    setState((prev) => {
+      const next = mergeState(prev, remote, (id) => getScenario(DEFAULT_LANG, id)?.concept);
+      writeState(next);
+      return next;
+    });
   }, []);
 
   const level = state.level ?? "neofita";
@@ -44,6 +56,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         setRecent(null);
         update({ ...state, completed: {}, streak: { count: 0, lastDay: null }, seenConcepts: [] });
       },
+      mergeRemote,
       setLevel: (next) => {
         track("level_chosen", { level: next });
         update({ ...state, level: next });
@@ -60,7 +73,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         );
       },
     }),
-    [state, level, theme, recent, update],
+    [state, level, theme, recent, update, mergeRemote],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

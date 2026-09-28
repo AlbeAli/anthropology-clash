@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { Link, Route, Routes, useLocation, useMatch } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppStateProvider, useAppState } from "./state/AppState";
+import { AccountProvider } from "./state/Account";
 import { applyTheme } from "./engine/theme";
 import { getScenario } from "./engine/content";
 import { DEFAULT_LANG } from "./i18n";
@@ -14,6 +15,7 @@ const ConceptLibrary = lazy(() => import("./pages/ConceptLibrary"));
 const Method = lazy(() => import("./pages/Method"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Journey = lazy(() => import("./pages/Journey"));
+const SignIn = lazy(() => import("./pages/SignIn"));
 
 function Shell() {
   const { t } = useTranslation();
@@ -38,7 +40,9 @@ function Shell() {
           ? t("journey.title")
           : pathname === "/metodo"
             ? t("method.title")
-            : undefined;
+            : pathname === "/accedi"
+              ? t("account.title")
+              : undefined;
     document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
   }, [pathname, scenarioMatch, t]);
 
@@ -64,6 +68,7 @@ function Shell() {
             <Route path="/concetti" element={<ConceptLibrary />} />
             <Route path="/metodo" element={<Method />} />
             <Route path="/viaggio" element={<Journey />} />
+            <Route path="/accedi" element={<SignIn />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
@@ -83,7 +88,9 @@ function Shell() {
 export default function App() {
   return (
     <AppStateProvider>
-      <Shell />
+      <AccountProvider>
+        <Shell />
+      </AccountProvider>
     </AppStateProvider>
   );
 }

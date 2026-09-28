@@ -2,7 +2,7 @@
   "app": {
     "name": "Anthropology Clash",
     "tagline": "Scenari a bivio ispirati a casi etnografici reali",
-    "footer": "Un progetto di Alberto Alioto (AlbeAli). Nome provvisorio. Nessun account e nessun cookie: i progressi restano nel tuo browser."
+    "footer": "Un progetto di Alberto Alioto (AlbeAli). Nome provvisorio. Account facoltativo, nessun cookie di tracciamento: senza account i progressi restano nel tuo browser."
   },
   "nav": {
     "label": "Navigazione",
@@ -11,7 +11,9 @@
     "method": "Metodo e fonti",
     "methodShort": "Metodo",
     "journey": "Il tuo viaggio",
-    "journeyShort": "Viaggio"
+    "journeyShort": "Viaggio",
+    "signIn": "Accedi",
+    "account": "Il tuo account"
   },
   "level": {
     "label": "Livello",
@@ -207,6 +209,38 @@
       "lines": "Linee: {{lines}}",
       "none": "nessuna",
       "item": "· {{title}} (linea {{line}}, {{level}})"
-    }
+    },
+    "resetNoteAccount": "Cancella fermate visitate e serie da questo browser e dal tuo account. Livello e tema restano.",
+    "resetFailed": "Non riesco a raggiungere il tuo account: i progressi non sono stati azzerati. Riprova tra poco."
+  },
+  "account": {
+    "title": "Accedi",
+    "titleSignedIn": "Il tuo account",
+    "lede": "L'account è facoltativo: serve solo a ritrovare le fermate visitate su un altro dispositivo. Senza account l'app funziona allo stesso modo.",
+    "emailLabel": "La tua email",
+    "emailPlaceholder": "nome@esempio.it",
+    "send": "Mandami il link",
+    "sending": "Invio in corso",
+    "sent": "Controlla la posta: ti abbiamo mandato un link per entrare. Aprilo in questo browser, su questo dispositivo.",
+    "rate": "Troppe richieste in poco tempo. Riprova tra qualche minuto.",
+    "error": "Non è stato possibile mandare il link. Controlla l'indirizzo e riprova.",
+    "or": "oppure",
+    "google": "Continua con Google",
+    "googleError": "Non è stato possibile aprire l'accesso con Google. Riprova.",
+    "callbackError": "Il link non è valido o è scaduto. Chiedine uno nuovo qui sotto.",
+    "checking": "Accesso in corso",
+    "privacy": "Con l'account conserviamo la tua email e le fermate visitate, sui server di Supabase nell'Unione europea (Irlanda). Nessuna password. Puoi uscire quando vuoi: le fermate restano anche in questo browser.",
+    "signedInAs": "Hai fatto l'accesso come {{email}}.",
+    "signedInNoEmail": "Hai fatto l'accesso.",
+    "status": {
+      "idle": "In attesa di sincronizzazione",
+      "syncing": "Sincronizzazione in corso",
+      "synced": "Fermate sincronizzate con il tuo account",
+      "error": "Sincronizzazione non riuscita: le fermate restano in questo browser. Si riprova alla prossima fermata o ricaricando la pagina."
+    },
+    "journey": "Vai al tuo viaggio",
+    "signOut": "Esci",
+    "signedOut": "Uscita effettuata. Le fermate restano in questo browser.",
+    "unavailable": "L'accesso non è attivo in questa versione dell'app."
   }
 }

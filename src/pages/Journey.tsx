@@ -4,12 +4,14 @@ import { useTranslation } from "react-i18next";
 import { getConcepts, getScenarios } from "../engine/content";
 import { linesTouched, visitsInOrder } from "../engine/journey";
 import { useAppState } from "../state/AppState";
+import { useAccount } from "../state/Account";
 import { DEFAULT_LANG } from "../i18n";
 import LineBullet from "../components/metro/LineBullet";
 
 export default function Journey() {
   const { t, i18n } = useTranslation();
   const { state, resetProgress } = useAppState();
+  const { user, clearAccountProgress } = useAccount();
   const scenarios = getScenarios(DEFAULT_LANG);
   const concepts = getConcepts(DEFAULT_LANG);
   const visits = visitsInOrder(state.completed, scenarios);
@@ -57,9 +59,14 @@ export default function Journey() {
     }
   }
 
-  function reset() {
+  async function reset() {
     if (!confirming) {
       setConfirming(true);
+      return;
+    }
+    if (!(await clearAccountProgress())) {
+      setConfirming(false);
+      setNotice(t("journey.resetFailed"));
       return;
     }
     resetProgress();
@@ -180,7 +187,9 @@ export default function Journey() {
 
       {visits.length > 0 && (
         <div className="mt-10 border-t border-line pt-5">
-          <p className="mb-3 text-sm text-ink-soft">{t("journey.resetNote")}</p>
+          <p className="mb-3 text-sm text-ink-soft">
+            {user ? t("journey.resetNoteAccount") : t("journey.resetNote")}
+          </p>
           <div className="flex flex-wrap gap-2.5">
             <button
               type="button"
