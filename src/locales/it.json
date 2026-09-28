@@ -13,7 +13,8 @@
     "journey": "Il tuo viaggio",
     "journeyShort": "Viaggio",
     "signIn": "Accedi",
-    "account": "Il tuo account"
+    "account": "Il tuo account",
+    "privacy": "Privacy"
   },
   "level": {
     "label": "Livello",
@@ -146,8 +147,10 @@
     },
     "privacy": {
       "title": "Dati e privacy",
+      "link": "Leggi l'informativa sulla privacy",
       "body": [
-        "L'app non ha account e non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi, e non si sincronizzano tra dispositivi.",
+        "Senza account l'app non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi.",
+        "L'account è facoltativo e serve solo a ritrovare le fermate visitate su un altro dispositivo. Con l'account conserviamo l'email con cui accedi e le fermate visitate, su server nell'Unione europea; si elimina dal profilo, e dopo 24 mesi di inattività viene cancellato automaticamente.",
         "Le statistiche d'uso aggregate (quante persone aprono l'app, quanti scenari vengono completati) sono raccolte con Umami, uno strumento senza cookie e senza identificatori personali. Per questo non c'è alcun banner da accettare."
       ]
     },
@@ -241,6 +244,90 @@
     "journey": "Vai al tuo viaggio",
     "signOut": "Esci",
     "signedOut": "Uscita effettuata. Le fermate restano in questo browser.",
-    "unavailable": "L'accesso non è attivo in questa versione dell'app."
+    "unavailable": "L'accesso non è attivo in questa versione dell'app.",
+    "method": {
+      "email": "Accesso con link via email",
+      "google": "Accesso con Google",
+      "other": "Accesso con un servizio esterno"
+    },
+    "notSignedIn": "Non hai fatto l'accesso.",
+    "goSignIn": "Vai alla pagina di accesso",
+    "export": "Scarica i miei dati",
+    "exportName": "anthropology-clash-dati.json",
+    "exportDone": "File scaricato: contiene email, fermate e serie salvate sul tuo account.",
+    "exportFailed": "Non è stato possibile leggere i dati dal tuo account. Riprova tra poco.",
+    "deleteTitle": "Elimina l'account",
+    "deleteNote": "Cancella dal server il tuo account, le fermate e la serie. Non si può annullare. Le fermate salvate in questo browser restano: puoi azzerarle da «Il tuo viaggio».",
+    "delete": "Elimina l'account",
+    "deleteConfirm": "Conferma: elimina l'account",
+    "deleteCancel": "Annulla",
+    "deleted": "Account eliminato. Le fermate restano solo in questo browser.",
+    "deleteFailed": "Non è stato possibile eliminare l'account. Riprova tra poco o scrivi all'indirizzo indicato nell'informativa.",
+    "privacyLink": "Informativa sulla privacy"
+  },
+  "privacyPage": {
+    "title": "Privacy",
+    "updated": "Ultimo aggiornamento: 28 settembre 2026",
+    "contact": "privacy@anthropologyclash.app",
+    "sections": [
+      {
+        "title": "Chi tratta i dati",
+        "body": [
+          "Titolare del trattamento è Alberto Alioto (AlbeAli), autore di Anthropology Clash. Per ogni richiesta sui tuoi dati scrivi a {{contact}}."
+        ]
+      },
+      {
+        "title": "Senza account",
+        "body": [
+          "Senza account l'app non raccoglie dati personali. Livello, tema, fermate visitate e serie di giorni restano nella memoria del tuo browser e non lasciano il dispositivo.",
+          "Le statistiche d'uso sono aggregate e raccolte con Umami, senza cookie e senza identificatori personali. Come per ogni sito, le pagine sono servite da Vercel, che riceve i dati tecnici delle richieste, per esempio l'indirizzo IP."
+        ]
+      },
+      {
+        "title": "Con account",
+        "body": [
+          "Se crei un account conserviamo: l'indirizzo email con cui accedi (o quello del tuo account Google, se entri con Google), le fermate visitate con livello, scelta e giorno, la serie di giorni e la data dell'ultima sincronizzazione.",
+          "Il servizio di accesso registra anche la data di creazione dell'account e dell'ultimo accesso e, nei suoi registri tecnici, dati come l'indirizzo IP delle richieste. Non chiediamo nome, foto né numero di telefono e non usiamo i dati per profilazione."
+        ]
+      },
+      {
+        "title": "Perché e su quale base",
+        "body": [
+          "Usiamo questi dati solo per farti accedere e per ritrovare le tue fermate su altri dispositivi. La base giuridica è l'esecuzione del servizio che chiedi creando l'account (art. 6, paragrafo 1, lettera b, del Regolamento UE 2016/679, GDPR)."
+        ]
+      },
+      {
+        "title": "Dove sono e chi li gestisce",
+        "body": [
+          "I dati dell'account sono conservati da Supabase, in una regione dell'Unione europea (Irlanda). Le email con il link di accesso sono inviate dal servizio di posta di Supabase. Se entri con Google, Google ti identifica secondo la propria informativa."
+        ]
+      },
+      {
+        "title": "Per quanto tempo",
+        "body": [
+          "Finché mantieni l'account. Se per 24 mesi non accedi e non sincronizzi le fermate, l'account e i dati collegati vengono cancellati automaticamente, senza preavviso; il controllo avviene una volta al mese.",
+          "Puoi eliminare l'account in qualsiasi momento dal profilo. Le fermate salvate nel browser restano finché non le azzeri o non cancelli i dati del sito."
+        ]
+      },
+      {
+        "title": "I tuoi diritti",
+        "body": [
+          "Puoi chiedere accesso ai tuoi dati, rettifica, cancellazione, limitazione del trattamento e portabilità, e puoi opporti al trattamento. Dal profilo puoi già scaricare i tuoi dati in formato JSON ed eliminare l'account; per il resto scrivi a {{contact}}.",
+          "Hai anche il diritto di proporre reclamo al Garante per la protezione dei dati personali (garanteprivacy.it)."
+        ]
+      },
+      {
+        "title": "Età minima",
+        "body": [
+          "Per creare un account servono almeno 14 anni. L'app si usa senza account a qualsiasi età."
+        ]
+      },
+      {
+        "title": "Cookie",
+        "body": [
+          "L'app non usa cookie di tracciamento. Con l'account, la sessione è salvata nella memoria del browser solo per tenerti collegato."
+        ]
+      }
+    ]
   }
 }

@@ -70,6 +70,13 @@ export default function Method() {
               {p}
             </p>
           ))}
+          {id === "privacy" && (
+            <p>
+              <Link to="/privacy" className="font-bold underline underline-offset-4">
+                {t("method.privacy.link")}
+              </Link>
+            </p>
+          )}
         </Section>
       ))}
 

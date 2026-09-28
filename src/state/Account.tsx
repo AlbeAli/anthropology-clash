@@ -21,7 +21,7 @@ import { useAppState } from "./AppState";
 
 export type SyncStatus = "idle" | "syncing" | "synced" | "error";
 export type LinkResult = "sent" | "rate" | "error";
-export type AccountUser = { id: string; email: string | null };
+export type AccountUser = { id: string; email: string | null; provider: string | null };
 
 type Account = {
   available: boolean;
@@ -31,6 +31,8 @@ type Account = {
   signInWithGoogle: () => Promise<boolean>;
   signOut: () => Promise<void>;
   clearAccountProgress: () => Promise<boolean>;
+  exportData: () => Promise<string | null>;
+  deleteAccount: () => Promise<boolean>;
 };
 
 const Ctx = createContext<Account | null>(null);
@@ -72,7 +74,16 @@ export function AccountProvider({ children }: { children: ReactNode }) {
     const { data } = client.auth.onAuthStateChange((_event, session) => {
       const u = session?.user;
       setUser((prev) =>
-        u ? (prev?.id === u.id ? prev : { id: u.id, email: u.email ?? null }) : null,
+        u
+          ? prev?.id === u.id
+            ? prev
+            : {
+                id: u.id,
+                email: u.email ?? null,
+                provider:
+                  typeof u.app_metadata?.provider === "string" ? u.app_metadata.provider : null,
+              }
+          : null,
       );
     });
     return () => data.subscription.unsubscribe();
@@ -164,6 +175,36 @@ export function AccountProvider({ children }: { children: ReactNode }) {
         } catch {
           return false;
         }
+      },
+      exportData: async () => {
+        if (!client || !user) return null;
+        try {
+          const remote = await pullRemote(client, user.id);
+          return JSON.stringify(
+            {
+              exported_at: new Date().toISOString(),
+              account: { id: user.id, email: user.email, provider: user.provider },
+              progress: remote.completed,
+              streak: remote.streak,
+            },
+            null,
+            2,
+          );
+        } catch {
+          return null;
+        }
+      },
+      deleteAccount: async () => {
+        if (!client || !user) return false;
+        const { error } = await client.functions.invoke("delete-account", { method: "POST" });
+        if (error) return false;
+        try {
+          await client.auth.signOut({ scope: "local" });
+        } catch {
+          /* utente già eliminato: la sessione locale va comunque chiusa */
+        }
+        setUser(null);
+        return true;
       },
     }),
     [available, user, status, client, connect],

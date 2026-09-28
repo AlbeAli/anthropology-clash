@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useAccount, type LinkResult } from "../state/Account";
 import { callbackError, fetchProviders, isAuthCallback, type Providers } from "../engine/account";
 
-type Notice = LinkResult | "googleError" | "callbackError" | "signedOut" | "";
+type Notice = LinkResult | "googleError" | "callbackError" | "";
 
 const primary =
   "inline-flex min-h-12 items-center justify-center rounded-md bg-ink px-5 font-display font-extrabold text-bg transition-transform duration-200 ease-out-expo hover:-translate-y-0.5 disabled:opacity-40";
@@ -14,7 +14,7 @@ const secondary =
 export default function SignIn() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { available, user, status, sendLink, signInWithGoogle, signOut } = useAccount();
+  const { available, user, sendLink, signInWithGoogle } = useAccount();
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [providers, setProviders] = useState<Providers>({ google: false });
@@ -24,27 +24,24 @@ export default function SignIn() {
   const [pending, setPending] = useState(
     () => isAuthCallback(window.location) && !callbackError(window.location),
   );
+  const waiting = pending || Boolean(user);
 
   useEffect(() => {
     if (available) void fetchProviders().then(setProviders);
   }, [available]);
 
-  const waiting = pending && !user;
-
   useEffect(() => {
-    if (user && (window.location.search || window.location.hash)) {
-      navigate("/accedi", { replace: true });
-    }
+    if (user) navigate("/profilo", { replace: true });
   }, [user, navigate]);
 
   useEffect(() => {
-    if (!waiting) return;
+    if (!pending || user) return;
     const timer = setTimeout(() => {
       setPending(false);
       setNotice("callbackError");
     }, 8000);
     return () => clearTimeout(timer);
-  }, [waiting]);
+  }, [pending, user]);
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -57,39 +54,15 @@ export default function SignIn() {
     if (!(await signInWithGoogle())) setNotice("googleError");
   }
 
-  async function leave() {
-    await signOut();
-    setNotice("signedOut");
-  }
-
   return (
     <div className="mx-auto max-w-xl">
       <h1 className="mb-3 font-display text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl">
-        {user ? t("account.titleSignedIn") : t("account.title")}
+        {t("account.title")}
       </h1>
       <p className="mb-7 max-w-[52ch] text-lg text-ink-soft">{t("account.lede")}</p>
 
       {!available ? (
         <p className="font-bold">{t("account.unavailable")}</p>
-      ) : user ? (
-        <section className="rounded-2xl border-[3px] border-ink p-5 sm:p-6">
-          <p className="mb-2 text-lg font-bold">
-            {user.email
-              ? t("account.signedInAs", { email: user.email })
-              : t("account.signedInNoEmail")}
-          </p>
-          <p className="mb-5 text-ink-soft" role="status">
-            {t(`account.status.${status}`)}
-          </p>
-          <div className="flex flex-wrap gap-2.5">
-            <Link to="/viaggio" className={primary}>
-              {t("account.journey")}
-            </Link>
-            <button type="button" onClick={leave} className={secondary}>
-              {t("account.signOut")}
-            </button>
-          </div>
-        </section>
       ) : waiting ? (
         <p className="font-display text-lg font-bold" role="status">
           {t("account.checking")}
@@ -132,7 +105,12 @@ export default function SignIn() {
         {notice ? t(`account.${notice}`) : ""}
       </p>
 
-      <p className="mt-8 border-t border-line pt-5 text-sm text-ink-soft">{t("account.privacy")}</p>
+      <p className="mt-8 border-t border-line pt-5 text-sm text-ink-soft">
+        {t("account.privacy")}{" "}
+        <Link to="/privacy" className="font-bold underline underline-offset-4">
+          {t("account.privacyLink")}
+        </Link>
+      </p>
     </div>
   );
 }

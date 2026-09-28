@@ -115,6 +115,18 @@ test("senza account nessuna pagina contatta Supabase, e la pagina di accesso esi
   await expect(page.getByRole("heading", { level: 1, name: "Accedi" })).toBeVisible();
 });
 
+test("l'informativa sulla privacy si apre dal piè di pagina e il profilo chiede l'accesso", async ({
+  page,
+}) => {
+  await fresh(page);
+  await page.getByRole("contentinfo").getByRole("link", { name: "Privacy" }).click();
+  await expect(page.getByRole("heading", { level: 1, name: "Privacy" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Per quanto tempo" })).toBeVisible();
+  await expect(page.getByText("privacy@anthropologyclash.app").first()).toBeVisible();
+  await page.goto("/profilo");
+  await expect(page.getByRole("heading", { level: 1, name: "Il tuo account" })).toBeVisible();
+});
+
 test.describe("tema", () => {
   test.use({ colorScheme: "dark" });
 

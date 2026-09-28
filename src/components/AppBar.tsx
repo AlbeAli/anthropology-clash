@@ -53,7 +53,7 @@ export default function AppBar() {
           <StreakBadge count={streak} />
           {available && (
             <NavLink
-              to="/accedi"
+              to={user ? "/profilo" : "/accedi"}
               aria-label={user ? t("nav.account") : t("nav.signIn")}
               title={user ? t("nav.account") : t("nav.signIn")}
               className={({ isActive }) =>

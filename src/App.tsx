@@ -16,6 +16,8 @@ const Method = lazy(() => import("./pages/Method"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Journey = lazy(() => import("./pages/Journey"));
 const SignIn = lazy(() => import("./pages/SignIn"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Privacy = lazy(() => import("./pages/Privacy"));
 
 function Shell() {
   const { t } = useTranslation();
@@ -42,7 +44,11 @@ function Shell() {
             ? t("method.title")
             : pathname === "/accedi"
               ? t("account.title")
-              : undefined;
+              : pathname === "/profilo"
+                ? t("account.titleSignedIn")
+                : pathname === "/privacy"
+                  ? t("privacyPage.title")
+                  : undefined;
     document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
   }, [pathname, scenarioMatch, t]);
 
@@ -69,6 +75,8 @@ function Shell() {
             <Route path="/metodo" element={<Method />} />
             <Route path="/viaggio" element={<Journey />} />
             <Route path="/accedi" element={<SignIn />} />
+            <Route path="/profilo" element={<Profile />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
@@ -76,9 +84,14 @@ function Shell() {
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 font-mono text-xs text-ink-soft sm:px-6">
           <p>{t("app.footer")}</p>
-          <Link to="/metodo" className="uppercase tracking-widest hover:text-accent">
-            {t("nav.method")}
-          </Link>
+          <div className="flex gap-x-5">
+            <Link to="/metodo" className="uppercase tracking-widest hover:text-accent">
+              {t("nav.method")}
+            </Link>
+            <Link to="/privacy" className="uppercase tracking-widest hover:text-accent">
+              {t("nav.privacy")}
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
