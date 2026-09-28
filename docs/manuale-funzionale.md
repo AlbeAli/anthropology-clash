@@ -77,19 +77,19 @@ Aggiungere un concetto richiede modifica a `ConceptId` nello schema e voce in `c
 
 ## 6. Funzionalità MVP
 
-| Funzione                     | Descrizione                                                 | Priorità | Milestone                     |
-| ---------------------------- | ----------------------------------------------------------- | -------- | ----------------------------- |
-| Motore scenari               | Rendering scenario → scelta → feedback da JSON statico      | Alta     | M1-M2                         |
-| Validazione contenuti        | Schema Zod in CI e pre-build su tutti i JSON                | Alta     | M1                            |
-| Feedback su tutte le opzioni | Dopo la scelta, esito anche delle alternative non scelte    | Alta     | M2                            |
-| Selettore livello            | Toggle neofita/studente, persistito in `localStorage`       | Alta     | M1 (stato) / M3 (persistenza) |
-| Tracciamento progressi       | Scenari completati, streak, concetti coperti                | Alta     | M3                            |
-| Libreria concetti            | Indice dei concetti con definizione e stato degli scenari   | Media    | M3                            |
-| Pagina "Metodo e fonti"      | Provenienza dei contenuti, criteri, limiti, bibliografia    | Alta     | M4                            |
-| Analytics privacy-first      | Umami (deciso 2026-09-18), senza cookie                     | Alta     | M4                            |
-| Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                         |
-| Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                            |
-| Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Media    | M9 (§16.12)                   |
+| Funzione                     | Descrizione                                                 | Priorità | Milestone                      |
+| ---------------------------- | ----------------------------------------------------------- | -------- | ------------------------------ |
+| Motore scenari               | Rendering scenario → scelta → feedback da JSON statico      | Alta     | M1-M2                          |
+| Validazione contenuti        | Schema Zod in CI e pre-build su tutti i JSON                | Alta     | M1                             |
+| Feedback su tutte le opzioni | Dopo la scelta, esito anche delle alternative non scelte    | Alta     | M2                             |
+| Selettore livello            | Toggle neofita/studente, persistito in `localStorage`       | Alta     | M1 (stato) / M3 (persistenza)  |
+| Tracciamento progressi       | Scenari completati, streak, concetti coperti                | Alta     | M3                             |
+| Libreria concetti            | Indice dei concetti con definizione e stato degli scenari   | Media    | M3                             |
+| Pagina "Metodo e fonti"      | Provenienza dei contenuti, criteri, limiti, bibliografia    | Alta     | M4                             |
+| Analytics privacy-first      | Umami (deciso 2026-09-18), senza cookie                     | Alta     | M4                             |
+| Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                          |
+| Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                             |
+| Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Media    | M9, fatto nel lotto 4 (§16.12) |
 
 ## 7. Roadmap post-MVP
 
@@ -556,5 +556,7 @@ Lotto 1, 2026-09-28, sulla branch `m9`: token della metro (bianco, inchiostro #1
 Lotto 2, 2026-09-28: la Home diventa la mappa della metro. Tabellone delle partenze con la prossima fermata non visitata e il suo titolo a palette; pannello con le fermate visitate e una barra a segmenti per linea, che isola la linea sulla mappa; livello con la sua descrizione; mappa a cinque linee con il treno che scende sulla fermata «sei qui», l'aggancio di oggi che compare al passaggio del mouse e la fermata appena visitata che si riempie al ritorno. Nomi brevi delle linee (Dono, Parentela, Rituale, Relativismo, Consumo) e lettere in `it.json`, con il nome completo del concetto sotto. Tra una pagina e l'altra passano le bande dei cinque colori. Griglia della mappa da una a cinque colonne; su telefono la linea isolata nasconde le altre invece di attenuarle. Tutte le animazioni si spengono con `prefers-reduced-motion`. Verificato nel browser a 1280 e 375 px, senza scroll orizzontale.
 
 Lotto 3, 2026-09-28: la pagina dello scenario diventa un percorso sulla linea. In alto la striscia della linea con le sue fermate, il treno che arriva da quella precedente e i link alle altre; poi il cartello nero con titolo, numero di fermata, concetto e barra del colore di linea; il selettore di livello. Il racconto è un percorso verticale a tappe (Oggi, Sul campo, Quale uscita prendi) che si accende scorrendo; dopo la scelta si allunga con gli esiti di tutte le uscite, le letture per approfondire nel livello studente, la fonte, ora sempre visibile e non più chiusa per il livello neofita, e l'arrivo con il timbro «Fermata visitata» e la prossima fermata sul tabellone. Le uscite sono numerate; quella scelta prende il colore della linea, che resta l'identità del concetto e non un giudizio. Il fuoco passa all'esito scelto e un annuncio per i lettori di schermo segnala che sotto ci sono gli esiti. Verificato a 1280 e 375 px nei due livelli.
+
+Lotto 4, 2026-09-28: pagina «Il tuo viaggio» (`/viaggio`), che realizza il riepilogo di fine sessione di §6. Un biglietto con le fermate visitate sul totale, la data, le linee toccate e le fermate in ordine di visita con livello e giorno; nessun punteggio. «Copia il riepilogo» scrive negli appunti un testo con titolo, conteggio, linee e fermate; se il browser nega gli appunti, il testo compare in un campo da selezionare. «Azzera i progressi» cancella fermate e serie da questo browser dopo una conferma nella pagina; livello e tema restano. La barra ha la voce «Il tuo viaggio» con il numero di fermate, accorciata in «Viaggio» su telefono; il contatore della serie è ora un anello, per non confondersi con quello delle fermate; su telefono il tema sta accanto al nome e la barra passa da tre righe a due. Logica dell'ordine e delle linee toccate in `src/engine/journey.ts`, con tre test. Verificato a 1280 e 375 px.
 
 Criterio di chiusura: redesign in produzione e verificato nel browser a 375 px e su desktop, riepilogo copiabile, test end-to-end verdi in CI, scenario Kroeber validato sul testo, punti di §11 riproposti all'autore.
