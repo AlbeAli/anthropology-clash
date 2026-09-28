@@ -19,9 +19,13 @@ type Props = {
 export default function LineMap({ concepts, scenarios, completed, hereId, filter, fresh }: Props) {
   const { t } = useTranslation();
   const hereLine = scenarios.find((s) => s.id === hereId)?.concept;
+  const maxStops = Math.max(
+    0,
+    ...concepts.map((c) => scenarios.filter((s) => s.concept === c.id).length),
+  );
 
   return (
-    <div className="grid grid-cols-1 gap-x-6 gap-y-8 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+    <div className="grid grid-cols-1 gap-x-6 gap-y-8 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-y-0">
       {concepts.map((c, i) => {
         const stops = scenarios.filter((s) => s.concept === c.id);
         const done = stops.filter((s) => s.id in completed).length;
@@ -31,12 +35,16 @@ export default function LineMap({ concepts, scenarios, completed, hereId, filter
             key={c.id}
             aria-label={t("home.map.lineLabel", { line: t(`lines.${c.id}.name`) })}
             className={
-              "min-w-0 transition-[opacity,filter] duration-300 " +
+              "map-line min-w-0 transition-[opacity,filter] duration-300 " +
               (dimmed ? "max-sm:hidden sm:opacity-15 sm:grayscale" : "")
             }
-            style={{ ["--lc" as string]: lineColor(c.id), ["--i" as string]: i }}
+            style={{
+              ["--lc" as string]: lineColor(c.id),
+              ["--i" as string]: i,
+              ["--rows" as string]: maxStops + 1,
+            }}
           >
-            <div className="mb-3.5 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-2.5 gap-y-0.5">
+            <div className="mb-3.5 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2.5 gap-y-0.5">
               <span className="row-span-2">
                 <LineBullet concept={c.id} />
               </span>
@@ -94,7 +102,11 @@ function Stops({
   }, [withTrain, hereId]);
 
   return (
-    <ol ref={list} className="metro-rail relative m-0 list-none py-0 pr-0 pl-5">
+    <ol
+      ref={list}
+      className="map-stops metro-rail relative m-0 list-none py-0 pr-0 pl-5"
+      style={{ ["--stops" as string]: stops.length }}
+    >
       {withTrain && (
         <span
           aria-hidden="true"
