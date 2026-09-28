@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import type { Level, Scenario } from "../schema/scenario.schema";
+import { prefersReducedMotion } from "../engine/motion";
+import { legTag } from "./metro/legTag";
 
 type Props = {
   content: Scenario["levels"][Level];
@@ -11,100 +13,64 @@ type Props = {
 export default function FeedbackPanel({ content, level, choiceId }: Props) {
   const { t } = useTranslation();
   const heading = useRef<HTMLHeadingElement>(null);
+  const number = (id: string) => content.choices.findIndex((c) => c.id === id) + 1;
   const chosen = content.choices.find((c) => c.id === choiceId);
   const others = content.choices.filter((c) => c.id !== choiceId);
 
   useEffect(() => {
     heading.current?.focus({ preventScroll: true });
-    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    heading.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    heading.current?.scrollIntoView({
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+      block: "start",
+    });
   }, [choiceId]);
 
   return (
-    <div className="space-y-8">
-      <section aria-labelledby="outcome-heading" className="space-y-3">
-        <h2
-          id="outcome-heading"
-          ref={heading}
-          tabIndex={-1}
-          className="scroll-mt-6 font-mono text-xs uppercase tracking-widest text-clay"
-        >
-          {t("scenario.outcome")}
-        </h2>
-        <div className="space-y-3 rounded-sm border border-accent bg-surface px-5 py-5">
-          <p className="flex items-start gap-3 text-sm text-ink-soft">
-            <span
-              aria-hidden="true"
-              className="flex size-5 shrink-0 items-center justify-center rounded-sm bg-accent font-mono text-[11px] font-medium uppercase text-surface"
-            >
-              {choiceId}
-            </span>
-            <span>{chosen?.text}</span>
-          </p>
-          <p className="font-serif text-lg leading-relaxed text-pretty">
-            {content.feedback[choiceId]}
-          </p>
-        </div>
-      </section>
-
-      <section aria-labelledby="alternatives-heading" className="space-y-3">
-        <h2
-          id="alternatives-heading"
-          className="font-mono text-xs uppercase tracking-widest text-clay"
-        >
-          {t("scenario.alternatives")}
-        </h2>
-        <ul className="space-y-3">
-          {others.map((c) => (
-            <li key={c.id} className="space-y-2 rounded-sm border border-line bg-surface px-5 py-4">
-              <p className="flex items-start gap-3 text-sm text-ink-soft">
-                <span
-                  aria-hidden="true"
-                  className="flex size-5 shrink-0 items-center justify-center rounded-sm border border-line font-mono text-[11px] font-medium uppercase"
-                >
-                  {c.id}
-                </span>
-                <span>{c.text}</span>
-              </p>
-              <p className="font-serif leading-relaxed text-pretty">{content.feedback[c.id]}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <details
-        open={level === "studente"}
-        className="group rounded-sm border border-line bg-surface"
-      >
-        <summary className="cursor-pointer list-none px-5 py-3 font-mono text-xs uppercase tracking-widest text-ink-soft marker:hidden hover:text-accent">
-          <span
-            aria-hidden="true"
-            className="mr-2 inline-block transition-transform group-open:rotate-90"
+    <>
+      {chosen && (
+        <section className="leg" data-main="" aria-labelledby="outcome-heading">
+          <h2
+            id="outcome-heading"
+            ref={heading}
+            tabIndex={-1}
+            className={legTag + " scroll-mt-24 outline-none"}
           >
-            ›
-          </span>
-          {t("scenario.source")}
-        </summary>
-        <p className="border-t border-line px-5 py-4 text-sm leading-relaxed text-ink-soft">
-          {content.source}
-        </p>
-      </details>
+            {t("scenario.legs.yourExit")}
+          </h2>
+          <article className="leg-body rounded-xl border-[3px] border-ink p-5 sm:p-6">
+            <Header n={number(chosen.id)} text={chosen.text} filled />
+            <p className="text-lg leading-relaxed text-pretty">{content.feedback[chosen.id]}</p>
+          </article>
+        </section>
+      )}
+
+      {others.map((c) => (
+        <section key={c.id} className="leg" aria-labelledby={`outcome-${c.id}`}>
+          <h2 id={`outcome-${c.id}`} className={legTag}>
+            {t("scenario.legs.otherExit", { n: number(c.id) })}
+          </h2>
+          <article className="leg-body rounded-xl border-[3px] border-line p-5 sm:p-6">
+            <Header n={number(c.id)} text={c.text} />
+            <p className="leading-relaxed text-pretty">{content.feedback[c.id]}</p>
+          </article>
+        </section>
+      ))}
 
       {level === "studente" && content.deepen && (
-        <section aria-labelledby="deepen-heading" className="space-y-3">
-          <h2 id="deepen-heading" className="font-mono text-xs uppercase tracking-widest text-clay">
+        <section className="leg" aria-labelledby="deepen-heading">
+          <h2 id="deepen-heading" className={legTag}>
             {t("scenario.deepen")}
           </h2>
-          <ol className="divide-y divide-line rounded-sm border border-line bg-surface">
+          <ul className="leg-body grid gap-2.5">
             {content.deepen.map((d) => (
-              <li key={d.ref} className="space-y-2 px-5 py-4">
-                <p className="font-medium">
+              <li key={d.ref} className="rounded-xl bg-surface px-4 py-3.5">
+                <p className="font-bold">
                   {d.url ? (
                     <a
                       href={d.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-accent underline decoration-line underline-offset-4 hover:decoration-accent"
+                      className="underline decoration-2 underline-offset-4 hover:decoration-(--lc)"
                     >
                       {d.ref}
                       <span aria-hidden="true"> ↗</span>
@@ -114,17 +80,43 @@ export default function FeedbackPanel({ content, level, choiceId }: Props) {
                     d.ref
                   )}
                 </p>
-                <p className="text-sm leading-relaxed text-ink-soft">{d.why}</p>
-                <p>
-                  <span className="inline-block rounded-sm border border-line bg-bg px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
+                <p className="mt-1.5 text-[15px] leading-relaxed text-ink-soft">{d.why}</p>
+                <p className="mt-2">
+                  <span className="inline-block rounded border-2 border-ink px-2 py-0.5 font-display text-xs font-bold tracking-wide uppercase">
                     {t(`access.${d.access}`)}
                   </span>
                 </p>
               </li>
             ))}
-          </ol>
+          </ul>
         </section>
       )}
-    </div>
+
+      <section className="leg" aria-labelledby="source-heading">
+        <h2 id="source-heading" className={legTag}>
+          {t("scenario.source")}
+        </h2>
+        <p className="leg-body rounded-xl bg-surface px-5 py-4 text-[15px] leading-relaxed">
+          {content.source}
+        </p>
+      </section>
+    </>
+  );
+}
+
+function Header({ n, text, filled = false }: { n: number; text: string; filled?: boolean }) {
+  return (
+    <header className="mb-2.5 flex items-center gap-3 font-bold">
+      <span
+        aria-hidden="true"
+        className={
+          "inline-grid size-9 shrink-0 place-items-center rounded-md font-display text-[15px] font-extrabold " +
+          (filled ? "bg-ink text-bg" : "border-[3px] border-ink")
+        }
+      >
+        {n}
+      </span>
+      {text}
+    </header>
   );
 }

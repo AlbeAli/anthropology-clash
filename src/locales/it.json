@@ -53,17 +53,32 @@
     }
   },
   "scenario": {
-    "concept": "Concetto",
     "hook": "Oggi",
-    "choices": "Cosa fai?",
     "source": "Fonte",
-    "outcome": "Cosa succede",
-    "alternatives": "Le altre strade",
     "deepen": "Per approfondire",
-    "next": "Prossimo scenario",
-    "restart": "Torna all'inizio",
     "newTab": "si apre in una nuova scheda",
-    "backToConcepts": "Torna ai concetti"
+    "strip": {
+      "line": "Linea {{line}}",
+      "position": "Fermata {{index}} di {{total}}",
+      "nav": "Fermate della linea"
+    },
+    "sign": "Linea {{line}} · fermata {{n}} · {{concept}}",
+    "hintScroll": "Scorri: il percorso si accende tappa dopo tappa.",
+    "hintVisited": "Fermata già visitata: puoi scegliere di nuovo.",
+    "live": "Uscita scelta. Sotto trovi dove porta ogni uscita.",
+    "legs": {
+      "start": "partenza",
+      "field": "Sul campo",
+      "choices": "Quale uscita prendi?",
+      "yourExit": "Dove porta la tua uscita",
+      "otherExit": "Dove porta l'uscita {{n}}",
+      "arrival": "Arrivo"
+    },
+    "stamp": "Fermata visitata",
+    "nextStop": "Prossima fermata · Linea {{line}} · fermata {{n}}",
+    "allDone": "Tutte le fermate visitate. Si riparte da",
+    "go": "Prosegui",
+    "backToMap": "Torna alla mappa"
   },
   "theme": {
     "switchTo": {
