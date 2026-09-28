@@ -33,7 +33,7 @@ export default function ScenarioPage() {
   return (
     <div className="mx-auto max-w-3xl" style={{ ["--lc" as string]: lineColor(scenario.concept) }}>
       <LineStrip key={scenario.id} scenario={scenario} completed={state.completed} />
-      <header className="relative mb-6 flex items-center gap-4 overflow-hidden rounded-xl bg-[#1a1a1a] px-5 py-5 text-white sm:gap-5 sm:px-6">
+      <header className="relative mb-6 flex items-center gap-4 overflow-hidden rounded-xl bg-panel ring-1 ring-(--panel-ring) px-5 py-5 text-white sm:gap-5 sm:px-6">
         <LineBullet concept={scenario.concept} />
         <div className="min-w-0">
           <p className="font-display text-sm font-bold opacity-85">
@@ -107,7 +107,7 @@ function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level })
                     <i aria-hidden="true" className="size-3 rounded-full bg-(--lc)" />
                     {t("scenario.stamp")}
                   </span>
-                  <div className="grid items-center gap-4 rounded-xl bg-[#1a1a1a] p-5 text-white sm:grid-cols-[minmax(0,1fr)_auto]">
+                  <div className="grid items-center gap-4 rounded-xl bg-panel ring-1 ring-(--panel-ring) p-5 text-white sm:grid-cols-[minmax(0,1fr)_auto]">
                     <div className="min-w-0">
                       <p className="mb-1.5 font-display text-sm font-bold opacity-80">
                         {allDone

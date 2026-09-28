@@ -79,7 +79,7 @@ export default function Journey() {
         aria-label={t("journey.ticket")}
         className="ticket-print overflow-hidden rounded-2xl border-[3px] border-ink bg-bg"
       >
-        <div className="flex flex-wrap items-center justify-between gap-3 bg-[#1a1a1a] px-5 py-4 text-white sm:px-6">
+        <div className="flex flex-wrap items-center justify-between gap-3 bg-panel ring-1 ring-(--panel-ring) px-5 py-4 text-white sm:px-6">
           <p className="font-display text-xl font-extrabold sm:text-2xl">
             {t("journey.count", { count: visits.length, total: scenarios.length })}
           </p>

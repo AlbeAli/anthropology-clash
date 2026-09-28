@@ -45,7 +45,7 @@ export default function Home() {
         {next && (
           <Link
             to={`/s/${next.id}`}
-            className="group relative grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4 overflow-hidden rounded-xl bg-[#1a1a1a] p-5 pb-7 text-white transition-transform duration-300 ease-out-expo hover:-translate-y-0.5 sm:gap-5 sm:p-6 sm:pb-8"
+            className="group relative grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4 overflow-hidden rounded-xl bg-panel ring-1 ring-(--panel-ring) p-5 pb-7 text-white transition-transform duration-300 ease-out-expo hover:-translate-y-0.5 sm:gap-5 sm:p-6 sm:pb-8"
           >
             <LineBullet concept={next.concept} />
             <span className="min-w-0">

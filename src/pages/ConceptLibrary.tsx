@@ -1,8 +1,10 @@
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getConcepts, getScenarios } from "../engine/content";
+import { lineColor, stopNumber } from "../engine/lines";
 import { DEFAULT_LANG } from "../i18n";
 import { useAppState } from "../state/AppState";
+import LineBullet from "../components/metro/LineBullet";
 
 export default function ConceptLibrary() {
   const { t } = useTranslation();
@@ -11,58 +13,81 @@ export default function ConceptLibrary() {
   const scenarios = getScenarios(DEFAULT_LANG);
 
   return (
-    <div className="mx-auto max-w-2xl space-y-10">
-      <div className="space-y-3">
-        <p className="font-mono text-xs uppercase tracking-widest text-clay">{t("nav.concepts")}</p>
-        <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-          {t("concepts.title")}
-        </h1>
-        <p className="max-w-prose text-ink-soft">{t("concepts.intro")}</p>
-      </div>
+    <div className="mx-auto max-w-3xl">
+      <h1 className="mb-3 font-display text-4xl leading-tight font-extrabold tracking-tight text-balance sm:text-5xl">
+        {t("concepts.title")}
+      </h1>
+      <p className="mb-6 max-w-[58ch] text-lg text-ink-soft">{t("concepts.intro")}</p>
+      <nav aria-label={t("concepts.jump")} className="mb-9 flex flex-wrap gap-2">
+        {concepts.map((c) => (
+          <a
+            key={c.id}
+            href={`#${c.id}`}
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-ink py-1 pr-4 pl-1 font-display text-sm font-bold transition-colors hover:bg-surface"
+          >
+            <LineBullet concept={c.id} size="sm" />
+            {t(`lines.${c.id}.name`)}
+          </a>
+        ))}
+      </nav>
 
-      <ul className="space-y-6">
-        {concepts.map((concept) => {
-          const linked = scenarios.filter((s) => s.concept === concept.id);
+      <ul className="grid gap-7">
+        {concepts.map((c, i) => {
+          const stops = scenarios.filter((s) => s.concept === c.id);
+          const done = stops.filter((s) => s.id in state.completed).length;
           return (
-            <li key={concept.id} className="space-y-4 rounded-sm border border-line bg-surface p-5">
-              <div className="space-y-2">
-                <h2 className="font-serif text-2xl font-semibold">{concept.label}</h2>
-                <p className="text-sm leading-relaxed text-ink-soft">{concept.definition}</p>
+            <li
+              key={c.id}
+              id={c.id}
+              className="scroll-mt-32 overflow-hidden rounded-xl border-[3px] border-ink"
+              style={{ ["--lc" as string]: lineColor(c.id), ["--i" as string]: i }}
+            >
+              <div className="flex items-center gap-4 bg-panel px-5 py-4 text-white sm:px-6">
+                <LineBullet concept={c.id} />
+                <div className="min-w-0">
+                  <h2 className="font-display text-2xl leading-tight font-extrabold">
+                    {t(`lines.${c.id}.name`)}
+                  </h2>
+                  <p className="text-sm opacity-85">{c.label}</p>
+                </div>
               </div>
-              {linked.length === 0 ? (
-                <p className="font-mono text-xs uppercase tracking-wide text-ink-soft">
-                  {t("concepts.noScenarios")}
+              <span aria-hidden="true" className="block h-1.5 bg-(--lc)" />
+              <div className="p-5 sm:p-6">
+                <p className="max-w-[65ch] leading-relaxed text-pretty">{c.definition}</p>
+                <p className="mt-4 mb-3 font-display text-sm font-bold text-ink-soft">
+                  {t("home.map.lineCount", { count: done, total: stops.length })}
                 </p>
-              ) : (
-                <ol className="divide-y divide-line border-t border-line">
-                  {linked.map((s) => {
-                    const done = state.completed[s.id];
-                    return (
-                      <li
-                        key={s.id}
-                        className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3"
-                      >
-                        <Link
-                          to={`/s/${s.id}`}
-                          className="font-medium text-ink underline decoration-line underline-offset-4 hover:text-accent hover:decoration-accent"
+                {stops.length === 0 ? (
+                  <p className="text-ink-soft">{t("concepts.noScenarios")}</p>
+                ) : (
+                  <ol className="metro-rail relative m-0 list-none py-0 pr-0 pl-5">
+                    {stops.map((s, j) => {
+                      const visit = state.completed[s.id];
+                      return (
+                        <li
+                          key={s.id}
+                          data-state={visit ? "done" : "todo"}
+                          className="metro-stop relative pt-1 pb-4.5 pl-6.5"
+                          style={{ ["--j" as string]: j }}
                         >
-                          {s.title}
-                        </Link>
-                        <span
-                          className={
-                            "font-mono text-[11px] uppercase tracking-wide " +
-                            (done ? "text-accent" : "text-ink-soft")
-                          }
-                        >
-                          {done
-                            ? t("concepts.done", { level: t(`level.${done.level}`) })
-                            : t("concepts.todo")}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ol>
-              )}
+                          <span aria-hidden="true" className="metro-dot" />
+                          <Link
+                            to={`/s/${s.id}`}
+                            className="inline-block leading-tight font-bold decoration-2 underline-offset-4 hover:underline"
+                          >
+                            {s.title}
+                          </Link>
+                          <small className="block text-sm text-ink-soft">
+                            {visit
+                              ? t("home.stop.visited", { level: t(`level.${visit.level}`) })
+                              : t("home.stop.todo", { n: stopNumber(s.id) })}
+                          </small>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                )}
+              </div>
             </li>
           );
         })}

@@ -14,6 +14,8 @@
   --focus: #0065b3;
   --bar: #1a1a1a;
   --bar-ink: #ffffff;
+  --panel: #1a1a1a;
+  --panel-ring: transparent;
   --l-reciprocita: #e2231a;
   --l-parentela: #0065b3;
   --l-rituale: #008c44;
@@ -36,6 +38,8 @@
     --clay-soft: #26262a;
     --focus: #5aa9f0;
     --bar: #000000;
+    --panel: #000000;
+    --panel-ring: #ffffff26;
     color-scheme: dark;
   }
 }
@@ -53,6 +57,8 @@
   --clay-soft: #26262a;
   --focus: #5aa9f0;
   --bar: #000000;
+  --panel: #000000;
+  --panel-ring: #ffffff26;
   color-scheme: dark;
 }
 
@@ -69,6 +75,7 @@
   --color-clay-soft: var(--clay-soft);
   --color-bar: var(--bar);
   --color-bar-ink: var(--bar-ink);
+  --color-panel: var(--panel);
 
   --font-display: "Archivo", system-ui, -apple-system, sans-serif;
   --font-serif: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;

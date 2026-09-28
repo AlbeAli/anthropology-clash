@@ -105,8 +105,7 @@
     "title": "Libreria dei concetti",
     "intro": "Cinque concetti, ciascuno con gli scenari che lo mettono alla prova. Puoi aprire qualsiasi scenario, in qualsiasi ordine, con il livello che preferisci.",
     "noScenarios": "Nessuno scenario ancora disponibile",
-    "todo": "Da fare",
-    "done": "Completato · {{level}}"
+    "jump": "Vai a una linea"
   },
   "method": {
     "title": "Da dove vengono gli scenari",
@@ -154,7 +153,8 @@
       "title": "Bibliografia",
       "note_one": "{{count}} opera citata nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita.",
       "note_other": "{{count}} opere citate nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita."
-    }
+    },
+    "jump": "Indice della pagina"
   },
   "notFound": {
     "title": "Questa fermata non esiste",

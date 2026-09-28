@@ -46,9 +46,9 @@ export default function AppBar() {
           <NavLink to="/metodo" className={navClass}>
             {t("nav.methodShort")}
           </NavLink>
-          <StreakBadge count={streak} />
         </nav>
-        <div className="order-2 sm:order-3">
+        <div className="order-2 flex items-center sm:order-3">
+          <StreakBadge count={streak} />
           <ThemeToggle theme={theme} onChange={setTheme} />
         </div>
       </div>
