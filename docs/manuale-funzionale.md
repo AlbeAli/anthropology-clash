@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.41 — 2026-09-26 — Stato: pubblicato (M1-M8 chiuse, §16.11)
+Versione 0.42 — 2026-09-28 — Stato: pubblicato (M1-M8 chiuse, M9 aperta, §16.12)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -89,7 +89,7 @@ Aggiungere un concetto richiede modifica a `ConceptId` nello schema e voce in `c
 | Analytics privacy-first      | Umami (deciso 2026-09-18), senza cookie                     | Alta     | M4                            |
 | Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                         |
 | Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                            |
-| Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Bassa    | post-M5                       |
+| Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Media    | M9 (§16.12)                   |
 
 ## 7. Roadmap post-MVP
 
@@ -189,9 +189,9 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | Nome prodotto                         | Provvisorio: Anthropology Clash (candidati in §12)                                                                                                                     |
 | Numero scenari MVP                    | Deciso: 15 (§13)                                                                                                                                                       |
 | Fonti primarie non ad accesso aperto  | Risolto: lette direttamente con la ricerca interna di Internet Archive (§16.7); Geertz 1972 e Douglas 1972 sono OA su JSTOR, Kroeber 1909 e Leathem 2023 sono aperti   |
-| Dominio, monetizzazione               | Da decidere, non bloccanti                                                                                                                                             |
+| Dominio, monetizzazione               | Da decidere, non bloccanti; ripresi alla chiusura di M9 (§16.12)                                                                                                       |
 | Licenza                               | Decisa il 2026-09-25: codice MIT (`LICENSE`), testi di `src/content` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`); le citazioni dalle fonti restano dei titolari dei diritti |
-| Pre-commit hook (lint + validate)     | Da valutare: aggiunge una dipendenza; la CI copre già il caso                                                                                                          |
+| Pre-commit hook (lint + validate)     | Da valutare: aggiunge una dipendenza; la CI copre già il caso. In sospeso fino alla chiusura di M9 (§16.12)                                                            |
 | Identità visiva (font, palette, tono) | Applicata (§16.2); kicker in Home deciso il 2026-09-25: «Dilemmi dal campo, domande di oggi», modificabile in `home.kicker`                                            |
 
 ## 12. Nome
@@ -293,16 +293,17 @@ Regole: `version` cambia solo per modifiche non retrocompatibili, e allora il co
 
 ### 15.5 Milestone
 
-| M   | Contenuto                                                                              | Fatto quando                                                                   | Stato                                                              |
-| --- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                    | `pnpm validate` passa; `pnpm dev` renderizza scenario_001                      | **chiusa** 2026-09-16, commit `e88eddf`                            |
-| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo                | I 3 scenari giocabili da cima a fondo in entrambi i livelli                    | **chiusa** 2026-09-18, merge `62fedef`                             |
-| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente  | Chiudo e riapro il browser: livello, progressi e streak restano                | **chiusa** 2026-09-18, merge `44213eb`                             |
-| M4  | Pagina Metodo, analytics, deploy Vercel                                                | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)                 | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app       |
-| M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                               | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
-| M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate                | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
-| M7  | Aggancio contemporaneo (`hook`) negli scenari 01-15                                    | 18 scenari su 18 con `hook` in entrambi i livelli, validati insieme all'autore | **chiusa** 2026-09-25: 18 su 18 (§16.10)                           |
-| M8  | Riequilibrio della tassonomia: uno scenario in più per rituale e uno per consumo       | 20 scenari, 4 per concetto, `hook` in entrambi i livelli, fonti verificate     | **chiusa** 2026-09-26: 20 scenari, 4 per concetto (§16.11)         |
+| M   | Contenuto                                                                              | Fatto quando                                                                                  | Stato                                                              |
+| --- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| M1  | Scaffold, schema Zod, script di validazione, i18next, scenari 01-03                    | `pnpm validate` passa; `pnpm dev` renderizza scenario_001                                     | **chiusa** 2026-09-16, commit `e88eddf`                            |
+| M2  | Loop completo: setup → scelta → feedback su tutte le opzioni → prossimo                | I 3 scenari giocabili da cima a fondo in entrambi i livelli                                   | **chiusa** 2026-09-18, merge `62fedef`                             |
+| M3  | Toggle livello persistito, stato locale, streak, libreria concetti, barra persistente  | Chiudo e riapro il browser: livello, progressi e streak restano                               | **chiusa** 2026-09-18, merge `44213eb`                             |
+| M4  | Pagina Metodo, analytics, deploy Vercel                                                | URL pubblico; eventi in dashboard; CI verde (già attiva da M1)                                | **chiusa** 2026-09-18: https://anthropology-clash.vercel.app       |
+| M5  | Scenari 04-15 scritti e validati                                                       | `pnpm validate` passa su 15 file                                                              | **chiusa** 2026-09-23: 15 scenari validati sul testo (§16.6)       |
+| M6  | Concetto `consumo`, campo `hook`, 3 scenari sul consumo che partono da un caso di oggi | I tre scenari giocabili in entrambi i livelli, fonti verificate                               | **chiusa** 2026-09-25: 18 scenari, 68 voci in bibliografia (§16.9) |
+| M7  | Aggancio contemporaneo (`hook`) negli scenari 01-15                                    | 18 scenari su 18 con `hook` in entrambi i livelli, validati insieme all'autore                | **chiusa** 2026-09-25: 18 su 18 (§16.10)                           |
+| M8  | Riequilibrio della tassonomia: uno scenario in più per rituale e uno per consumo       | 20 scenari, 4 per concetto, `hook` in entrambi i livelli, fonti verificate                    | **chiusa** 2026-09-26: 20 scenari, 4 per concetto (§16.11)         |
+| M9  | Riepilogo di fine sessione, redesign «Le linee della metro», scenario da Kroeber 1919  | Redesign in produzione, riepilogo copiabile, test end-to-end in CI, scenario Kroeber validato | **aperta** 2026-09-27 (§16.12)                                     |
 
 ## 16. Stato di avanzamento e piano operativo
 
@@ -522,3 +523,32 @@ Fatto:
 Chiusura, 2026-09-26. Venti scenari, quattro per concetto, tutti con `hook` in entrambi i livelli. `pnpm validate` passa su 20 file; i 33 test, il lint e la build sono verdi; la pagina Metodo genera 71 voci senza doppioni. Ogni citazione dei due nuovi scenari è stata confrontata sul testo delle fonti. Kroeber 1919 resta una pista aperta e verificabile per il consumo, fuori da M8.
 
 Criterio di chiusura: 20 scenari, 4 per concetto, `pnpm validate` verde su 20 file, bibliografia senza doppioni, nessuna affermazione priva di riscontro sul testo.
+
+### 16.12 M9 — riepilogo, redesign «Le linee della metro», scenario da Kroeber 1919 (aperta 2026-09-27)
+
+Direzioni proposte all'autore il 2026-09-27 con costi e rischi: riepilogo di fine sessione, sesto concetto, punti aperti di §11, test end-to-end, revisione dell'interfaccia, Kroeber 1919. Decisione dell'autore:
+
+- **Riepilogo di fine sessione** (§6): sì, progettato dentro il nuovo design.
+- **Sesto concetto**: no.
+- **Punti aperti di §11** (nome, dominio, monetizzazione, pre-commit hook): in sospeso, si riprendono alla chiusura di M9.
+- **Test end-to-end**: dopo il redesign. Scritti ora andrebbero riscritti quasi tutti; si scrivono quando il nuovo flusso è deciso, su ciò che non deve cambiare: scenario giocabile, esiti su tutte le opzioni, progressi dopo il ricaricamento, bibliografia senza doppioni.
+- **Revisione dell'interfaccia**: sì, prima un audit in sola lettura con la skill impeccable, poi il redesign.
+- **Kroeber 1919**: sì, scenario sul consumo dal testo aperto di JSTOR Early Journal Content; il consumo passa a cinque scenari.
+
+Audit, 2026-09-27, in sola lettura: 15 su 20. Difetti rilevati: la barra mostra attivo il livello neofita mentre la Home non ne segna nessuno; il selettore di livello in Home è un radiogroup senza navigazione a frecce; manca una pagina 404; il selettore lingua ha una voce sola e nessun effetto; lo scorrimento animato verso il riscontro non rispetta `prefers-reduced-motion`; l'etichetta del contatore della serie non arriva ai lettori di schermo; alcuni controlli restano sotto i 44 px al tocco; Zod è nel bundle del browser anche se la validazione avviene già in `prebuild`. I difetti confluiscono nel redesign.
+
+Redesign. `PRODUCT.md` scritto con l'autore: tre pubblici con pari peso (chi è curioso e usa il telefono, chi studia antropologia, chi insegna e proietta in aula); motivi del cambiamento: interfaccia troppo austera, percorso poco chiaro, poco memorabile, lettura faticosa; vincolanti solo le regole di contenuto, nessun elemento visivo attuale. Analisi di undici siti e app affini (Mission US, Never Alone, When Rivers Were Trails, Moral Machine, SAPIENS, Open Encyclopedia of Anthropology, Smithsonian Human Origins, HRAF, Cultural Atlas, quiz universitari italiani, EthnoGuesser), con pro e contro. Tre giri di proposte e sette anteprime giocabili sui testi reali. Il 2026-09-28 l'autore ha scelto **«Le linee della metro»**: ogni concetto è una linea, ogni scenario una fermata, il viaggio va da «Oggi» al campo. Il prototipo di riferimento è pubblicato come Artifact privato; il contratto di direzione è in `.impeccable/surfaces/`.
+
+Identità scelta: fondo bianco, inchiostro #1A1A1A, un colore per linea (Dono #E2231A, Parentela #0065B3, Rituale #008C44, Relativismo #F7A600 con testo scuro, Consumo #7B3F98); Archivo per la segnaletica, Atkinson Hyperlegible per la lettura. Il colore identifica la linea, cioè il concetto, e non segna mai l'esito di una scelta: la regola di §16.2 resta valida. L'avanzamento si mostra in fermate visitate, mai come punteggio. L'identità di §16.2 viene sostituita quando il redesign entra in `main`.
+
+Da fare, per lotti, ciascuno con commit e verifica nel browser:
+
+1. Token, caratteri e barra; correzione dei difetti dell'audit.
+2. Home con tabellone delle partenze, pannello delle linee e mappa.
+3. Scenario con striscia della linea, cartello, percorso verticale, esiti su tutte le opzioni.
+4. «Il tuo viaggio»: riepilogo di fine sessione copiabile.
+5. Concetti e Metodo nel nuovo mondo; tema scuro; pagina 404.
+6. Test end-to-end in CI; `DESIGN.md` a fine build.
+7. Scenario da Kroeber 1919, con la procedura di §16.6.
+
+Criterio di chiusura: redesign in produzione e verificato nel browser a 375 px e su desktop, riepilogo copiabile, test end-to-end verdi in CI, scenario Kroeber validato sul testo, punti di §11 riproposti all'autore.
