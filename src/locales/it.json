@@ -9,7 +9,9 @@
     "skipToContent": "Salta al contenuto principale",
     "concepts": "Concetti",
     "method": "Metodo e fonti",
-    "methodShort": "Metodo"
+    "methodShort": "Metodo",
+    "journey": "Il tuo viaggio",
+    "journeyShort": "Viaggio"
   },
   "level": {
     "label": "Livello",
@@ -18,31 +20,67 @@
   },
   "home": {
     "kicker": "Dilemmi dal campo, domande di oggi",
-    "start": "Inizia dal primo scenario",
-    "levelHeading": "Scegli il livello",
+    "title": "{{lines}} linee, {{stops}} fermate.",
+    "lede": "Ogni linea è un concetto, ogni fermata un caso etnografico. Il viaggio parte da una situazione di oggi e arriva sul campo.",
+    "board": {
+      "label": "Prossima partenza · Linea {{line}} · fermata {{n}}",
+      "again": "Tutte le fermate visitate · si riparte dalla linea {{line}}",
+      "eta": "In partenza",
+      "go": "Parti"
+    },
+    "visited_one": "fermata visitata su {{total}}",
+    "visited_other": "fermate visitate su {{total}}",
+    "isolate": "Isola una linea sulla mappa",
+    "levelHeading": "Livello",
     "levels": {
       "neofita": "Linguaggio comune, due scelte, spiegazione breve. Per chi parte da zero.",
       "studente": "Contesto etnografico, tre o quattro scelte, riferimenti teorici e letture per approfondire."
     },
-    "progressHeading": "Il tuo percorso",
-    "progress": "Completati: {{done}} di {{total}}",
-    "continue": "Continua la sequenza",
-    "replay": "Rigioca dall'inizio",
-    "pickTheme": "Scegli un tema"
+    "map": {
+      "title": "La mappa",
+      "hint": "Ogni fermata apre uno scenario. Con il mouse, passandoci sopra leggi l'aggancio di oggi.",
+      "showAll": "Mostra tutte le linee",
+      "lineCount_one": "{{count}} fermata visitata su {{total}}",
+      "lineCount_other": "{{count}} fermate visitate su {{total}}",
+      "lineLabel": "Linea {{line}}",
+      "legendVisited": "visitata",
+      "legendHere": "sei qui",
+      "legendTodo": "da visitare"
+    },
+    "stop": {
+      "here": "sei qui",
+      "visited": "visitata · {{level}}",
+      "todo": "fermata {{n}}",
+      "peek": "Oggi"
+    }
   },
   "scenario": {
-    "concept": "Concetto",
     "hook": "Oggi",
-    "choices": "Cosa fai?",
     "source": "Fonte",
-    "notFound": "Scenario non trovato",
-    "outcome": "Cosa succede",
-    "alternatives": "Le altre strade",
     "deepen": "Per approfondire",
-    "next": "Prossimo scenario",
-    "restart": "Torna all'inizio",
     "newTab": "si apre in una nuova scheda",
-    "backToConcepts": "Torna ai concetti"
+    "strip": {
+      "line": "Linea {{line}}",
+      "position": "Fermata {{index}} di {{total}}",
+      "nav": "Fermate della linea"
+    },
+    "sign": "Linea {{line}} · fermata {{n}} · {{concept}}",
+    "hintScroll": "Scorri: il percorso si accende tappa dopo tappa.",
+    "hintVisited": "Fermata già visitata: puoi scegliere di nuovo.",
+    "live": "Uscita scelta. Sotto trovi dove porta ogni uscita.",
+    "legs": {
+      "start": "partenza",
+      "field": "Sul campo",
+      "choices": "Quale uscita prendi?",
+      "yourExit": "Dove porta la tua uscita",
+      "otherExit": "Dove porta l'uscita {{n}}",
+      "arrival": "Arrivo"
+    },
+    "stamp": "Fermata visitata",
+    "nextStop": "Prossima fermata · Linea {{line}} · fermata {{n}}",
+    "allDone": "Tutte le fermate visitate. Si riparte da",
+    "go": "Prosegui",
+    "backToMap": "Torna alla mappa"
   },
   "theme": {
     "switchTo": {
@@ -57,21 +95,17 @@
     "NON-OA": "Sotto diritti d'autore",
     "verificare": "Accesso da verificare"
   },
-  "lang": {
-    "label": "Lingua",
-    "it": "Italiano"
-  },
   "streak": {
     "title": "Giorni consecutivi con almeno uno scenario completato",
     "days_one": "{{count}} giorno di serie",
-    "days_other": "{{count}} giorni di serie"
+    "days_other": "{{count}} giorni di serie",
+    "short": "serie"
   },
   "concepts": {
     "title": "Libreria dei concetti",
     "intro": "Cinque concetti, ciascuno con gli scenari che lo mettono alla prova. Puoi aprire qualsiasi scenario, in qualsiasi ordine, con il livello che preferisci.",
     "noScenarios": "Nessuno scenario ancora disponibile",
-    "todo": "Da fare",
-    "done": "Completato · {{level}}"
+    "jump": "Vai a una linea"
   },
   "method": {
     "title": "Da dove vengono gli scenari",
@@ -119,6 +153,60 @@
       "title": "Bibliografia",
       "note_one": "{{count}} opera citata nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita.",
       "note_other": "{{count}} opere citate nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita."
+    },
+    "jump": "Indice della pagina"
+  },
+  "notFound": {
+    "title": "Questa fermata non esiste",
+    "body": "L'indirizzo non corrisponde a nessuna pagina. Dalla pagina iniziale ritrovi tutti gli scenari.",
+    "home": "Torna alla pagina iniziale"
+  },
+  "lines": {
+    "reciprocita": {
+      "name": "Dono",
+      "letter": "D"
+    },
+    "parentela": {
+      "name": "Parentela",
+      "letter": "P"
+    },
+    "rituale": {
+      "name": "Rituale",
+      "letter": "R"
+    },
+    "relativismo": {
+      "name": "Relativismo",
+      "letter": "E"
+    },
+    "consumo": {
+      "name": "Consumo",
+      "letter": "C"
+    }
+  },
+  "journey": {
+    "title": "Il tuo viaggio",
+    "lede": "Un biglietto con le fermate visitate e le linee toccate. Nessun punteggio: solo dove sei passato.",
+    "ticket": "Biglietto",
+    "count_one": "{{count}} fermata visitata su {{total}}",
+    "count_other": "{{count}} fermate visitate su {{total}}",
+    "lines": "Linee toccate",
+    "stops": "Fermate, in ordine di visita",
+    "empty": "Ancora nessuna fermata. Parti dalla mappa.",
+    "copy": "Copia il riepilogo",
+    "copied": "Riepilogo copiato",
+    "copyFallback": "Seleziona e copia il testo qui sotto",
+    "copyArea": "Testo del riepilogo",
+    "map": "Torna alla mappa",
+    "reset": "Azzera i progressi",
+    "resetConfirm": "Conferma: azzera i progressi",
+    "resetCancel": "Annulla",
+    "resetDone": "Progressi azzerati",
+    "resetNote": "Cancella fermate visitate e serie da questo browser. Livello e tema restano.",
+    "summary": {
+      "head": "Il mio viaggio in {{app}}",
+      "lines": "Linee: {{lines}}",
+      "none": "nessuna",
+      "item": "· {{title}} (linea {{line}}, {{level}})"
     }
   }
 }

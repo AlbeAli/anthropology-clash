@@ -1,0 +1,63 @@
+{
+  "id": "scenario_021",
+  "lang": "it",
+  "title": "Il pendolo della moda",
+  "concept": "consumo",
+  "concept_label": "Consumo e cultura materiale",
+  "levels": {
+    "neofita": {
+      "hook": "Guardi una tua foto di qualche anno fa e ti chiedi come facevi a vestirti così. Eppure ogni capo l'avevi scelto tu, in negozio, davanti allo specchio. Ti viene un dubbio: quella scelta era davvero solo tua, o seguivi una corrente che non vedevi?",
+      "setup": "Stati Uniti, 1918. L'antropologo A. L. Kroeber sfoglia annate di riviste di moda a partire dal 1844 e misura con il righello gli abiti da sera femminili disegnati nelle tavole: dieci figure per anno, otto misure ciascuna, tutte calcolate in rapporto all'altezza della figura. Nel 1859, al culmine della crinolina, la gonna è più larga di quanto la donna sia alta; nel 1911 è ridotta a meno di un quarto dell'altezza. Chi decide che cosa si indossa?",
+      "choices": [
+        { "id": "a", "text": "Lo decidono i grandi stilisti: sono loro a inventare le forme che tutti seguono" },
+        { "id": "b", "text": "Non lo decide nessuno in particolare: la moda segue una corrente più grande delle singole persone" }
+      ],
+      "feedback": {
+        "a": "Se è così, ti aspetti che le forme cambino di colpo quando arriva un nuovo nome. Kroeber trova altro: la larghezza della gonna cresce per anni, tocca il massimo nel 1859 e poi si restringe per circa mezzo secolo, fino al 1911. Un movimento così lungo attraversa molte carriere. Per questo scrive che un disegnatore con «dieci volte il genio» di Poiret o di Worth avrebbe dovuto comunque piegarsi alla corrente del suo tempo, o creare abiti che nessuno avrebbe indossato. I sarti contano, ma dentro una direzione che non scelgono da soli.",
+        "b": "È la lettura di Kroeber. Sotto i dettagli che cambiano di stagione in stagione, pieghe, guarnizioni, colori, le proporzioni dell'abito si muovono lentamente, in periodi che possono durare più di una vita: la larghezza della gonna compie un'oscillazione di circa un secolo, la lunghezza di circa trentacinque anni. Kroeber ne conclude che le forze in gioco sono sociali, non il talento di qualche persona. Avverte però che questo non permette di scrivere in anticipo la moda futura: ogni stile mette insieme troppi elementi."
+      },
+      "source": "Kroeber, 'On the Principle of Order in Civilization as Exemplified by Changes of Fashion', American Anthropologist 21, 1919"
+    },
+    "studente": {
+      "hook": "Sfogli le foto di famiglia di qualche decennio fa e ti sembra che gonne, spalle e punto vita cambino da una generazione all'altra. Ogni volta qualcuno aveva scelto, comprato, indossato. Ti chiedi se in questi cambiamenti ci sia un ordine, e chi, se qualcuno, lo stabilisce.",
+      "setup": "Nel 1918 A. L. Kroeber riprende un progetto abbandonato vent'anni prima: misurare la moda. Sceglie un solo tipo di abito, quello da sera femminile, perché da oltre un secolo serve alle stesse occasioni, è sempre di seta e non ha conosciuto invenzioni radicali: le sue variazioni, scrive, sono «puramente stilistiche». Prende dieci figure per anno dal Petit Courrier des Dames a partire dal 1844, poi da Harper's Bazar e, per il 1919, da Vogue, e su ciascuna rileva otto misure, dalla lunghezza della gonna alla profondità della scollatura, tutte in percentuale dell'altezza della figura. Per la larghezza della gonna i numeri sono netti: 57 nel 1844, 116 nel 1859, quando la crinolina supera l'altezza della persona, poi una lunga contrazione fino a 23 nel 1911. Kroeber pubblica i risultati su American Anthropologist cercandovi un principio d'ordine della civiltà. Come si spiega l'andamento?",
+      "choices": [
+        { "id": "a", "text": "Lo impongono i grandi sarti parigini, da Worth a Poiret" },
+        { "id": "b", "text": "È il consumo vistoso: ogni stile, fatto per mostrare spreco, presto stanca e va sostituito" },
+        { "id": "c", "text": "Sono ragioni pratiche: comodità, materiali, uso dell'abito" },
+        { "id": "d", "text": "Le proporzioni seguono ritmi lunghi e sovraindividuali, che nessuno decide" }
+      ],
+      "feedback": {
+        "a": "Kroeber considera proprio la lettura di chi fa derivare «le mode di un mondo» dal solo centro di Parigi, e la trova insufficiente per l'ampiezza dei periodi: quando un'oscillazione richiede un secolo, vi contribuiscono in successione molte persone. Anche il ritorno dello strascico nel 1863 o la «Grecian bend» del 1872, scrive, si spiegano meglio con gli stili che li precedono che con il talento di una mano particolarmente dotata. Un disegnatore con dieci volte il genio di Poiret o di Worth avrebbe dovuto incanalarlo nella stessa direzione. Kroeber non nega le differenze di talento: dice che non decidono il corso della moda.",
+        "b": "È la spiegazione di Veblen (1899, cap. VII): l'abito deve mostrare spreco, ma lo spreco offende il gusto, così ogni stile diventa presto insopportabile e cede il posto a un altro altrettanto futile; da qui, scrive, «l'essenziale bruttezza e l'incessante cambiamento» dell'abbigliamento alla moda. Questa lettura rende conto del ricambio rapido di stagione in stagione. I dati di Kroeber misurano un altro livello: sotto i dettagli che cambiano in fretta, le proporzioni si muovono per decenni nella stessa direzione, come l'oscillazione di un enorme pendolo. Un ricambio stagionale da solo non rende conto di un ritmo di un secolo.",
+        "c": "Kroeber ha costruito lo studio per escludere questa strada: ha scelto un abito il cui uso, il cui materiale e la cui forma di base restano gli stessi per tutto il periodo, così che le variazioni fossero «puramente stilistiche». Le ragioni pratiche compaiono solo come limiti: una gonna molto stretta difficilmente arriva fino a terra, per l'inconveniente, e la lunghezza non può andare oltre il suolo. Per questo, osserva, quando la lunghezza tocca il massimo resta ferma per un po', come se la moda volesse spingere l'orlo sotto terra e ne fosse impedita solo dall'impossibilità fisica.",
+        "d": "È la conclusione di Kroeber. La larghezza della gonna compie un'oscillazione simmetrica di circa un secolo, la lunghezza di circa trentacinque anni, la larghezza delle spalle forse una ancora più lunga: periodi che superano la vita di una persona. Ne ricava un «determinismo della civiltà» contro la «casualità individualistica». Dichiara anche i limiti: dieci figure per anno sono una base esile, le tavole mostrano gli ideali della moda più che gli abiti davvero indossati, e la moda futura nel suo insieme non si può scrivere in anticipo; al massimo si può azzardare la tendenza di un singolo elemento ben studiato."
+      },
+      "source": "Kroeber, 'On the Principle of Order in Civilization as Exemplified by Changes of Fashion', American Anthropologist 21, 1919, pp. 235-263; Veblen, The Theory of the Leisure Class, 1899, cap. VII",
+      "deepen": [
+        {
+          "ref": "Kroeber, 'On the Principle of Order in Civilization as Exemplified by Changes of Fashion', American Anthropologist 21, 1919, pp. 235-263",
+          "why": "L'articolo intero: come sono state scelte e misurate le tavole, le tabelle anno per anno dal 1844 al 1919 e le conclusioni sul peso degli individui nel cambiamento.",
+          "access": "OA",
+          "url": "https://www.jstor.org/stable/660477"
+        },
+        {
+          "ref": "Veblen, The Theory of the Leisure Class, 1899, cap. VII",
+          "why": "Il capitolo sull'abito come espressione della cultura pecuniaria: la spiegazione del cambiamento continuo della moda con lo spreco vistoso, da leggere accanto ai ritmi lunghi di Kroeber.",
+          "access": "PD",
+          "url": "https://archive.org/details/theoryofleisurec01vebl"
+        },
+        {
+          "ref": "Douglas e Isherwood, The World of Goods, 1979, ristampa 1982",
+          "why": "I beni come mezzi per «rendere visibili e stabili le categorie della cultura» (p. 59): per chiedersi che cosa comunichi la forma di un abito in un dato momento.",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Bourdieu, La distinction. Critique sociale du jugement, 1979, nella traduzione di Richard Nice, Distinction, Harvard University Press, 1984",
+          "why": "Il gusto come distinzione sociale: un'altra strada per capire perché un abito piace in un certo momento e a certe persone.",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  }
+}

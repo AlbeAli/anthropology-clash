@@ -2,18 +2,26 @@ import { useTranslation } from "react-i18next";
 
 export default function StreakBadge({ count }: { count: number }) {
   const { t } = useTranslation();
-  const label = t("streak.days", { count });
   return (
     <span
       title={t("streak.title", { count })}
-      aria-label={label}
-      className={
-        "inline-flex h-9 items-center gap-1.5 rounded-sm border px-2.5 font-mono text-xs uppercase tracking-wide " +
-        (count > 0 ? "border-clay text-clay" : "border-line text-ink-soft")
-      }
+      className="inline-flex min-h-11 items-center gap-2 px-2 font-display text-sm font-bold"
     >
-      <span aria-hidden="true">◆</span>
-      <span aria-hidden="true">{count}</span>
+      <span
+        aria-hidden="true"
+        className={
+          "inline-grid h-6 min-w-6 place-items-center rounded-full px-1.5 text-xs tabular-nums " +
+          (count > 0
+            ? "border-2 border-(--l-relativismo) text-(--l-relativismo)"
+            : "border-2 border-white/50")
+        }
+      >
+        {count}
+      </span>
+      <span aria-hidden="true" className="hidden sm:inline">
+        {t("streak.short")}
+      </span>
+      <span className="sr-only">{t("streak.days", { count })}</span>
     </span>
   );
 }

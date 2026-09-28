@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildBibliography, refKey, splitSource } from "./bibliography";
+import { buildBibliography, refKey, splitSource, workOf } from "./bibliography";
 
 describe("bibliography", () => {
   it("separa le fonti sul punto e virgola senza spezzare i titoli", () => {
@@ -40,6 +40,50 @@ describe("bibliography", () => {
     expect(lee).toHaveLength(1);
     expect(lee[0].ref).toContain("Natural History");
     expect(lee[0].access).toBe("OA");
+  });
+
+  it("mostra l'opera senza capitoli, conservando pagine di articolo e traduzione", () => {
+    expect(workOf("Veblen, The Theory of the Leisure Class, 1899, cap. VII")).toBe(
+      "Veblen, The Theory of the Leisure Class, 1899",
+    );
+    expect(
+      workOf("Kroeber, 'On the Principle of Order', American Anthropologist 21, 1919, pp. 235-263"),
+    ).toBe("Kroeber, 'On the Principle of Order', American Anthropologist 21, 1919, pp. 235-263");
+    expect(
+      workOf(
+        "Mintz, Sweetness and Power, Viking, 1985, introduzione, cap. 1 «Food, Sociality, and Sugar» (pp. 14, 15, 18) e cap. 5 «Eating and Being» (pp. 192, 196)",
+      ),
+    ).toBe("Mintz, Sweetness and Power, Viking, 1985");
+    expect(
+      workOf(
+        "Bourdieu, La distinction, 1979, introduzione (pp. 2-3, 6-7, 13), cap. 1 (pp. 35, 39), nella traduzione di Richard Nice, Distinction, Harvard University Press, 1984",
+      ),
+    ).toBe(
+      "Bourdieu, La distinction, 1979, nella traduzione di Richard Nice, Distinction, Harvard University Press, 1984",
+    );
+    expect(
+      workOf(
+        "Douglas e Isherwood, The World of Goods, 1979, ristampa 1982, pp. 12, 57, 59 e 141-145",
+      ),
+    ).toBe("Douglas e Isherwood, The World of Goods, 1979, ristampa 1982");
+    expect(workOf("Douglas e Isherwood, The World of Goods, 1979, ristampa 1982, p. 59")).toBe(
+      "Douglas e Isherwood, The World of Goods, 1979, ristampa 1982",
+    );
+    expect(
+      workOf(
+        "Cohen, Custom and Politics in Urban Africa, 1969, cap. 2, sezioni «Housewives in Seclusion», «Trade from Behind the Purdah» e «Accumulation of Capital», pp. 67-68",
+      ),
+    ).toBe("Cohen, Custom and Politics in Urban Africa, 1969");
+    expect(
+      workOf("Radcliffe-Brown, Introduzione a African Systems of Kinship and Marriage, 1950"),
+    ).toBe("Radcliffe-Brown, Introduzione a African Systems of Kinship and Marriage, 1950");
+    const veblen = buildBibliography("it").filter((e) => e.ref.startsWith("Veblen"));
+    expect(veblen).toHaveLength(1);
+    expect(veblen[0].ref).toBe("Veblen, The Theory of the Leisure Class, 1899");
+    expect(veblen[0].scenarios).toEqual(
+      expect.arrayContaining(["scenario_016", "scenario_017", "scenario_018", "scenario_021"]),
+    );
+    expect(buildBibliography("it").some((e) => /\bcap\.\s/.test(e.ref))).toBe(false);
   });
 
   it("è vuota per una lingua senza contenuti", () => {

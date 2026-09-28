@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Level } from "../schema/scenario.schema";
+import type { Level } from "../schema/scenario.schema";
+import { LEVELS } from "../engine/levels";
 
 type Props = {
   level: Level;
@@ -12,9 +13,16 @@ export default function LevelToggle({ level, onChange }: Props) {
     <div
       role="group"
       aria-label={t("level.label")}
-      className="flex items-center gap-1 rounded-sm border border-line bg-surface p-1"
+      className="relative inline-grid grid-cols-2 overflow-hidden rounded-lg border-2 border-ink bg-bg"
     >
-      {Level.options.map((option) => {
+      <span
+        aria-hidden="true"
+        className={
+          "absolute inset-y-0 left-0 w-1/2 bg-ink transition-transform duration-300 ease-out-expo " +
+          (level === LEVELS[1] ? "translate-x-full" : "translate-x-0")
+        }
+      />
+      {LEVELS.map((option) => {
         const active = level === option;
         return (
           <button
@@ -23,10 +31,8 @@ export default function LevelToggle({ level, onChange }: Props) {
             aria-pressed={active}
             onClick={() => onChange(option)}
             className={
-              "rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wide transition-colors " +
-              (active
-                ? "bg-accent text-surface"
-                : "text-ink-soft hover:bg-accent-soft hover:text-accent")
+              "relative min-h-11 px-4 font-display text-[15px] font-bold transition-colors duration-300 " +
+              (active ? "text-bg" : "text-ink")
             }
           >
             {t(`level.${option}`)}

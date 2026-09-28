@@ -16,7 +16,8 @@
     "preview": "vite preview",
     "validate": "tsx scripts/validate-content.ts",
     "test": "vitest run",
-    "lint": "eslint . && prettier --check ."
+    "lint": "eslint . && prettier --check .",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "i18next": "^26.4.2",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^22.20.2",
     "@types/react": "^19.3.0",

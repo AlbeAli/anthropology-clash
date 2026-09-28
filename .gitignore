@@ -5,3 +5,5 @@ dist
 .claude/launch.json
 
 .impeccable/questions/
+test-results
+playwright-report

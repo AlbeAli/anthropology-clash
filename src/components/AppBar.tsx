@@ -1,55 +1,56 @@
 import { Link, NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useAppState } from "../state/AppState";
-import LevelToggle from "./LevelToggle";
 import ThemeToggle from "./ThemeToggle";
 import StreakBadge from "./StreakBadge";
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
-  "font-mono text-xs uppercase tracking-widest hover:text-accent " +
-  (isActive ? "text-accent" : "text-ink-soft");
+  "inline-flex min-h-11 items-center rounded-sm px-2.5 font-display sm:px-3 text-[15px] font-bold transition-colors " +
+  (isActive ? "bg-bar-ink text-bar" : "text-bar-ink hover:bg-white/15");
 
 export default function AppBar() {
-  const { t, i18n } = useTranslation();
-  const { level, setLevel, theme, setTheme, streak } = useAppState();
+  const { t } = useTranslation();
+  const { state, theme, setTheme, streak } = useAppState();
+  const visited = Object.keys(state.completed).length;
 
   return (
-    <header className="border-b-2 border-clay">
-      <div className="mx-auto max-w-2xl space-y-3 px-4 py-4">
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-          <Link
-            to="/"
-            className="font-serif text-lg font-semibold tracking-tight text-ink hover:text-accent"
-          >
-            {t("app.name")}
-          </Link>
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <LevelToggle level={level} onChange={setLevel} />
-            <select
-              aria-label={t("lang.label")}
-              value={i18n.language}
-              onChange={() => {}}
-              className="h-9 rounded-sm border border-line bg-surface px-1.5 font-mono text-[11px] uppercase text-ink-soft"
-            >
-              <option value="it">{t("lang.it")}</option>
-            </select>
-            <ThemeToggle theme={theme} onChange={setTheme} />
-          </div>
-        </div>
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-bar text-bar-ink">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-2 gap-y-0 px-4 py-2 sm:px-6">
+        <Link
+          to="/"
+          className="group inline-flex min-h-11 items-center gap-2.5 font-display text-xl font-extrabold tracking-tight"
+        >
+          <span
+            aria-hidden="true"
+            className="size-5.5 rounded-full border-[5px] border-current transition-transform duration-500 ease-out-expo group-hover:scale-110 group-hover:rotate-180"
+          />
+          {t("app.name")}
+        </Link>
         <nav
           aria-label={t("nav.label")}
-          className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2"
+          className="order-3 flex flex-wrap items-center gap-0.5 max-sm:w-full sm:order-2 sm:ml-auto sm:gap-1"
         >
-          <div className="flex items-center gap-4">
-            <NavLink to="/concetti" className={navClass}>
-              {t("nav.concepts")}
-            </NavLink>
-            <NavLink to="/metodo" className={navClass}>
-              {t("nav.methodShort")}
-            </NavLink>
-          </div>
-          <StreakBadge count={streak} />
+          <NavLink to="/concetti" className={navClass}>
+            {t("nav.concepts")}
+          </NavLink>
+          <NavLink to="/viaggio" className={navClass}>
+            <span className="sm:hidden">{t("nav.journeyShort")}</span>
+            <span className="hidden sm:inline">{t("nav.journey")}</span>
+            <span
+              aria-hidden="true"
+              className="ml-2 inline-grid h-6 min-w-6 place-items-center rounded-full bg-(--l-relativismo) px-1.5 text-xs text-[#1a1a1a] tabular-nums"
+            >
+              {visited}
+            </span>
+          </NavLink>
+          <NavLink to="/metodo" className={navClass}>
+            {t("nav.methodShort")}
+          </NavLink>
         </nav>
+        <div className="order-2 flex items-center sm:order-3">
+          <StreakBadge count={streak} />
+          <ThemeToggle theme={theme} onChange={setTheme} />
+        </div>
       </div>
     </header>
   );

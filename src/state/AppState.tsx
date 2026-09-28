@@ -8,9 +8,11 @@ import { track } from "../engine/analytics";
 type AppState = {
   state: StoredState;
   level: Level;
-  levelChosen: boolean;
   theme: Theme;
   streak: number;
+  recent: string | null;
+  clearRecent: () => void;
+  resetProgress: () => void;
   setLevel: (level: Level) => void;
   setTheme: (theme: Theme) => void;
   complete: (input: { scenarioId: string; concept: ConceptId; choice: string }) => void;
@@ -20,6 +22,7 @@ const Ctx = createContext<AppState | null>(null);
 
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<StoredState>(readState);
+  const [recent, setRecent] = useState<string | null>(null);
 
   const update = useCallback((next: StoredState) => {
     setState(next);
@@ -33,9 +36,14 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     () => ({
       state,
       level,
-      levelChosen: state.level !== null,
       theme,
       streak: currentStreak(state.streak, dayKey(new Date())),
+      recent,
+      clearRecent: () => setRecent(null),
+      resetProgress: () => {
+        setRecent(null);
+        update({ ...state, completed: {}, streak: { count: 0, lastDay: null }, seenConcepts: [] });
+      },
       setLevel: (next) => {
         track("level_chosen", { level: next });
         update({ ...state, level: next });
@@ -46,12 +54,13 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       },
       complete: ({ scenarioId, concept, choice }) => {
         track("scenario_completed", { scenario: scenarioId, level, choice });
+        if (!(scenarioId in state.completed)) setRecent(scenarioId);
         update(
           markCompleted(state, { scenarioId, concept, level, choice, today: dayKey(new Date()) }),
         );
       },
     }),
-    [state, level, theme, update],
+    [state, level, theme, recent, update],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

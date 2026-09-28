@@ -17,6 +17,45 @@ export function splitSource(source: string): string[] {
     .filter(Boolean);
 }
 
+const LOCATOR =
+  /^(?:(?:parte|libro|cap\.|sez\.|sezion[ei]|caso|appendice)\s|(?:introduzione|prefazione|preface)(?:$|\s\(|\se\s))/i;
+const PAGES = /^pp?\.\s/;
+
+function topLevelSegments(ref: string): string[] {
+  const segments: string[] = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < ref.length; i++) {
+    const c = ref[i];
+    if (c === "(" || c === "«") depth++;
+    else if ((c === ")" || c === "»") && depth > 0) depth--;
+    else if (c === "," && depth === 0 && ref[i + 1] === " ") {
+      segments.push(ref.slice(start, i));
+      start = i + 2;
+    }
+  }
+  segments.push(ref.slice(start));
+  return segments;
+}
+
+export function workOf(ref: string): string {
+  const segments = topLevelSegments(ref);
+  const kept: string[] = [];
+  let located = false;
+  let inPages = false;
+  segments.forEach((segment, i) => {
+    const pages =
+      /^p\.\s/.test(segment) ||
+      (PAGES.test(segment) && (located || /^\d/.test(segments[i + 1] ?? "")));
+    const morePages = inPages && /^\d/.test(segment);
+    inPages = pages || morePages;
+    const moreTitles = located && segment.startsWith("«");
+    if (i > 0 && (LOCATOR.test(segment) || inPages || moreTitles)) located = true;
+    else kept.push(segment);
+  });
+  return kept.join(", ");
+}
+
 export function refKey(ref: string): string {
   const lower = ref.toLowerCase();
   const author = lower.split(",")[0].trim();
@@ -33,7 +72,8 @@ export function refKey(ref: string): string {
 
 export function buildBibliography(lang: Lang): BibliographyEntry[] {
   const byKey = new Map<string, BibliographyEntry>();
-  const add = (ref: string, scenarioId: string, extra: Partial<BibliographyEntry> = {}) => {
+  const add = (cited: string, scenarioId: string, extra: Partial<BibliographyEntry> = {}) => {
+    const ref = workOf(cited);
     const key = refKey(ref);
     const entry = byKey.get(key) ?? { ref, scenarios: [] };
     if (ref.length > entry.ref.length) entry.ref = ref;

@@ -77,19 +77,19 @@ Aggiungere un concetto richiede modifica a `ConceptId` nello schema e voce in `c
 
 ## 6. Funzionalità MVP
 
-| Funzione                     | Descrizione                                                 | Priorità | Milestone                     |
-| ---------------------------- | ----------------------------------------------------------- | -------- | ----------------------------- |
-| Motore scenari               | Rendering scenario → scelta → feedback da JSON statico      | Alta     | M1-M2                         |
-| Validazione contenuti        | Schema Zod in CI e pre-build su tutti i JSON                | Alta     | M1                            |
-| Feedback su tutte le opzioni | Dopo la scelta, esito anche delle alternative non scelte    | Alta     | M2                            |
-| Selettore livello            | Toggle neofita/studente, persistito in `localStorage`       | Alta     | M1 (stato) / M3 (persistenza) |
-| Tracciamento progressi       | Scenari completati, streak, concetti coperti                | Alta     | M3                            |
-| Libreria concetti            | Indice dei concetti con definizione e stato degli scenari   | Media    | M3                            |
-| Pagina "Metodo e fonti"      | Provenienza dei contenuti, criteri, limiti, bibliografia    | Alta     | M4                            |
-| Analytics privacy-first      | Umami (deciso 2026-09-18), senza cookie                     | Alta     | M4                            |
-| Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                         |
-| Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                            |
-| Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Media    | M9 (§16.12)                   |
+| Funzione                     | Descrizione                                                 | Priorità | Milestone                      |
+| ---------------------------- | ----------------------------------------------------------- | -------- | ------------------------------ |
+| Motore scenari               | Rendering scenario → scelta → feedback da JSON statico      | Alta     | M1-M2                          |
+| Validazione contenuti        | Schema Zod in CI e pre-build su tutti i JSON                | Alta     | M1                             |
+| Feedback su tutte le opzioni | Dopo la scelta, esito anche delle alternative non scelte    | Alta     | M2                             |
+| Selettore livello            | Toggle neofita/studente, persistito in `localStorage`       | Alta     | M1 (stato) / M3 (persistenza)  |
+| Tracciamento progressi       | Scenari completati, streak, concetti coperti                | Alta     | M3                             |
+| Libreria concetti            | Indice dei concetti con definizione e stato degli scenari   | Media    | M3                             |
+| Pagina "Metodo e fonti"      | Provenienza dei contenuti, criteri, limiti, bibliografia    | Alta     | M4                             |
+| Analytics privacy-first      | Umami (deciso 2026-09-18), senza cookie                     | Alta     | M4                             |
+| Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                          |
+| Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                             |
+| Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Media    | M9, fatto nel lotto 4 (§16.12) |
 
 ## 7. Roadmap post-MVP
 
@@ -133,7 +133,7 @@ Alternative scartate: Astro (app interattiva con stato), Next.js (SSR inutile, v
 vercel.json     rewrite SPA verso index.html
 ```
 
-Caricamento contenuti: `import.meta.glob` su `src/content/*/scenarios/*.json`, parsing Zod al bootstrap. Un JSON non valido fa fallire la build (`prebuild` esegue `pnpm validate`) e, in dev, il caricamento dell'app.
+Caricamento contenuti: `import.meta.glob` su `src/content/*/scenarios/*.json`, senza parsing nel browser dal lotto 1 di M9: la validazione Zod gira in `pnpm validate`, che `prebuild` esegue prima di ogni build, nei test e in CI, così Zod resta fuori dal bundle (circa 25 KB compressi in meno). Un JSON non valido fa fallire la build; in dev si vede con `pnpm validate`.
 
 ### 8.3 Dove risiedono i dati
 
@@ -265,7 +265,7 @@ Implementato in `src/schema/scenario.schema.ts`. Differenze rispetto alla v0.6: 
 | Libreria concetti | `/concetti` | Griglia dei 5 concetti con definizione; per ciascuno gli scenari con stato e livello di completamento                                                                                                                        | **M3**: fatta         |
 | Metodo e fonti    | `/metodo`   | Provenienza, criteri, limiti, nota etica, dati e privacy, bibliografia generata dai contenuti                                                                                                                                | **M4**: fatta         |
 
-Barra persistente: nome app, toggle livello, streak, link a concetti e metodo, selettore lingua (solo `it`). Nessun modale nell'MVP.
+Barra persistente: nome app, link a concetti e metodo, serie, tema. Dal lotto 1 di M9 il livello si sceglie in Home e nella pagina dello scenario, e il selettore lingua con la sola voce italiano è tolto finché non esiste una seconda lingua. Nessun modale nell'MVP.
 
 ### 15.3 Stato locale
 
@@ -550,5 +550,25 @@ Da fare, per lotti, ciascuno con commit e verifica nel browser:
 5. Concetti e Metodo nel nuovo mondo; tema scuro; pagina 404.
 6. Test end-to-end in CI; `DESIGN.md` a fine build.
 7. Scenario da Kroeber 1919, con la procedura di §16.6.
+
+Lotto 1, 2026-09-28, sulla branch `m9`: token della metro (bianco, inchiostro #1A1A1A, colori di linea, tema scuro provvisorio), Archivo e Atkinson Hyperlegible al posto di Source Serif e IBM Plex, barra nera con serie accessibile ai lettori di schermo e icone del tema disegnate in SVG; selettore di livello spostato dalla barra alla pagina dello scenario, con indicatore che scorre; livello coerente tra barra, Home e scenario (neofita è il predefinito ovunque); pagina 404; scorrimento verso il riscontro senza animazione con `prefers-reduced-motion`; controlli della barra a 44 px; Zod fuori dal bundle. Test 34, lint, build e validate verdi; verificato nel browser a 375 px e su desktop, chiaro e scuro, senza errori in console.
+
+Lotto 2, 2026-09-28: la Home diventa la mappa della metro. Tabellone delle partenze con la prossima fermata non visitata e il suo titolo a palette; pannello con le fermate visitate e una barra a segmenti per linea, che isola la linea sulla mappa; livello con la sua descrizione; mappa a cinque linee con il treno che scende sulla fermata «sei qui», l'aggancio di oggi che compare al passaggio del mouse e la fermata appena visitata che si riempie al ritorno. Nomi brevi delle linee (Dono, Parentela, Rituale, Relativismo, Consumo) e lettere in `it.json`, con il nome completo del concetto sotto. Tra una pagina e l'altra passano le bande dei cinque colori. Griglia della mappa da una a cinque colonne; su telefono la linea isolata nasconde le altre invece di attenuarle. Tutte le animazioni si spengono con `prefers-reduced-motion`. Verificato nel browser a 1280 e 375 px, senza scroll orizzontale.
+
+Lotto 3, 2026-09-28: la pagina dello scenario diventa un percorso sulla linea. In alto la striscia della linea con le sue fermate, il treno che arriva da quella precedente e i link alle altre; poi il cartello nero con titolo, numero di fermata, concetto e barra del colore di linea; il selettore di livello. Il racconto è un percorso verticale a tappe (Oggi, Sul campo, Quale uscita prendi) che si accende scorrendo; dopo la scelta si allunga con gli esiti di tutte le uscite, le letture per approfondire nel livello studente, la fonte, ora sempre visibile e non più chiusa per il livello neofita, e l'arrivo con il timbro «Fermata visitata» e la prossima fermata sul tabellone. Le uscite sono numerate; quella scelta prende il colore della linea, che resta l'identità del concetto e non un giudizio. Il fuoco passa all'esito scelto e un annuncio per i lettori di schermo segnala che sotto ci sono gli esiti. Verificato a 1280 e 375 px nei due livelli.
+
+Lotto 4, 2026-09-28: pagina «Il tuo viaggio» (`/viaggio`), che realizza il riepilogo di fine sessione di §6. Un biglietto con le fermate visitate sul totale, la data, le linee toccate e le fermate in ordine di visita con livello e giorno; nessun punteggio. «Copia il riepilogo» scrive negli appunti un testo con titolo, conteggio, linee e fermate; se il browser nega gli appunti, il testo compare in un campo da selezionare. «Azzera i progressi» cancella fermate e serie da questo browser dopo una conferma nella pagina; livello e tema restano. La barra ha la voce «Il tuo viaggio» con il numero di fermate, accorciata in «Viaggio» su telefono; il contatore della serie è ora un anello, per non confondersi con quello delle fermate; su telefono il tema sta accanto al nome e la barra passa da tre righe a due. Logica dell'ordine e delle linee toccate in `src/engine/journey.ts`, con tre test. Verificato a 1280 e 375 px.
+
+Lotto 5, 2026-09-28: Concetti e Metodo entrano nel mondo della metro. Concetti: una scheda per linea con il cartello nero, la barra del colore, la definizione, il conteggio delle fermate visitate e le fermate disegnate sulla linea, più scorciatoie in alto per saltare a una linea. Metodo: indice della pagina con collegamenti alle sezioni (la pagina a 375 px superava i 14.000 px), titoli di sezione a segnaletica, bibliografia in cui ogni scenario citato porta il simbolo della sua linea. Tema scuro rifinito: i pannelli neri usano un token proprio e nel tema scuro prendono un bordo per staccarsi dal fondo. Su telefono serie e tema stanno accanto al nome, e la barra resta su due righe anche a 375 px. La pagina 404 era già nel lotto 1. Verificato a 1280 e 375 px, chiaro e scuro.
+
+Correzione dopo il lotto 5, 2026-09-28, su segnalazione dell'autore: sulla mappa le linee non erano allineate, perché le intestazioni andavano su due o tre righe e i titoli delle fermate a capo in modo diverso, e l'anteprima «Oggi» finiva sotto il testo delle fermate vicine. Su desktop le cinque linee ora condividono le righe della griglia (subgrid) e le fermate stanno alla stessa altezza in tutte le colonne; l'anteprima passa sopra le fermate e ha lo sfondo pieno.
+
+Lotto 6, 2026-09-28: test end-to-end con Playwright (`@playwright/test`, dipendenza di sviluppo, `pnpm e2e`), in un job separato della CI con il solo Chromium. Dodici percorsi, ciascuno su desktop (1280 px) e su telefono (Pixel 5), con il movimento ridotto per evitare falsi negativi: Home con tutte le linee e fermate, esiti di tutte le uscite e fonte, livello studente con le letture, progressi dopo il ricaricamento e azzeramento, bibliografia senza doppioni, pagina 404, nessuno scroll orizzontale sulle cinque pagine, tema scuro del sistema seguito senza una scelta salvata. I conteggi si leggono dai JSON, così i test reggono gli scenari nuovi. Al primo giro i test hanno trovato un difetto vero: a 1280 px la Home scorreva in orizzontale perché l'anteprima dell'ultima colonna sporgeva oltre il bordo; ora resta nella larghezza della colonna. `DESIGN.md` descrive il nuovo sistema visivo nel formato di impeccable. Il dubbio del lotto 5 sul tema all'apertura è chiarito: veniva dalla simulazione del browser di prova, e il test lo conferma.
+
+Lotto 7, 2026-09-28: `scenario_021` «Il pendolo della moda», approvato dall'autore. Fonte primaria: Kroeber, «On the Principle of Order in Civilization as Exemplified by Changes of Fashion», American Anthropologist 21, 1919, pp. 235-263, letto sul testo integrale di JSTOR Early Journal Content (Internet Archive `jstor-660477`): abiti da sera femminili misurati su tavole di moda dal 1844 al 1919 (Petit Courrier des Dames, Harper's Bazar, Vogue), dieci figure per anno, otto misure in percentuale dell'altezza; larghezza della gonna 57 nel 1844, 116 nel 1859, 23 nel 1911; oscillazioni di circa un secolo per la larghezza e di circa trentacinque anni per la lunghezza; conclusione sul peso trascurabile dei singoli («dieci volte il genio» di Poiret o Worth) e limiti dichiarati. Lettura di confronto: Veblen 1899, cap. VII, pp. 176-178, verificato sulla copia `theoryofleisurec01vebl`. Limite dichiarato: analisi quantitativa di fonti a stampa, non etnografia sul campo, come per `scenario_016`. Il consumo passa a cinque fermate; 21 scenari, bibliografia a 72 voci senza doppioni; validate, 40 test unitari e gli end-to-end verdi. Punto aperto: in bibliografia Veblen appare una sola volta con l'etichetta «cap. VII», mentre 016-018 citano il cap. IV; proposta all'autore di mostrare in bibliografia solo l'opera.
+
+Bibliografia, 2026-09-28, su proposta accolta dall'autore: ogni voce mostra l'opera, i capitoli e le pagine citate restano nelle schede degli scenari. Il problema di Veblen toccava anche Mauss, Mintz, Malinowski ed Evans-Pritchard, perché la voce prendeva la forma più lunga tra le citazioni. `workOf` in `src/engine/bibliography.ts` toglie capitoli, parti, libri, sezioni, introduzioni, prefazioni, appendici e pagine sparse; conserva le pagine degli articoli in rivista e la traduzione citata (Bourdieu nella traduzione di Nice). Test 41, lint, validate e i 24 end-to-end verdi.
+
+Decisione dell'autore, 2026-09-28: account e accesso sono necessari se l'app sarà pubblicata e vanno implementati. È un cambio delle regole vincolanti (nessun account, nessun backend nell'MVP, §7 e `CLAUDE.md`): la soluzione (servizio, costi, privacy e GDPR, migrazione dei progressi da `localStorage`) va analizzata e proposta all'autore prima di toccare il codice, e diventa la milestone successiva.
 
 Criterio di chiusura: redesign in produzione e verificato nel browser a 375 px e su desktop, riepilogo copiabile, test end-to-end verdi in CI, scenario Kroeber validato sul testo, punti di §11 riproposti all'autore.

@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { Level, Scenario } from "../schema/scenario.schema";
 import ChoiceButton from "./ChoiceButton";
+import { legTag } from "./metro/legTag";
 
 type Props = {
   scenario: Scenario;
@@ -14,38 +15,41 @@ export default function ScenarioCard({ scenario, level, choiceId, onSelect }: Pr
   const content = scenario.levels[level];
 
   return (
-    <article className="space-y-8">
-      <header className="space-y-3">
-        <p className="font-mono text-xs uppercase tracking-widest text-clay">
-          <span className="text-ink-soft">{t("scenario.concept")}</span> · {scenario.concept_label}
-        </p>
-        <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl">
-          {scenario.title}
-        </h1>
-      </header>
-
+    <>
       {content.hook ? (
-        <section aria-labelledby="hook-heading" className="space-y-2">
-          <h2 id="hook-heading" className="font-mono text-xs uppercase tracking-widest text-clay">
+        <section className="leg" data-main="" aria-labelledby="hook-heading">
+          <h2 id="hook-heading" className={legTag}>
             {t("scenario.hook")}
+            <em className="font-bold text-ink-soft not-italic">{t("scenario.legs.start")}</em>
           </h2>
-          <p className="border-l-2 border-line pl-4 leading-relaxed text-ink-soft text-pretty">
-            {content.hook}
-          </p>
+          <div className="leg-body">
+            <p className="max-w-[62ch] text-ink-soft">{content.hook}</p>
+          </div>
         </section>
       ) : null}
 
-      <p className="font-serif text-lg leading-relaxed text-pretty sm:text-xl">{content.setup}</p>
-
-      <section aria-labelledby="choices-heading" className="space-y-3">
-        <h2 id="choices-heading" className="font-mono text-xs uppercase tracking-widest text-clay">
-          {t("scenario.choices")}
+      <section className="leg" data-main="" aria-labelledby="field-heading">
+        <h2 id="field-heading" className={legTag}>
+          {t("scenario.legs.field")}
+          <em className="font-bold text-ink-soft not-italic">{scenario.concept_label}</em>
         </h2>
-        <ul className="space-y-2">
-          {content.choices.map((choice) => (
+        <div className="leg-body">
+          <p className="max-w-[62ch] text-lg leading-relaxed text-pretty sm:text-xl">
+            {content.setup}
+          </p>
+        </div>
+      </section>
+
+      <section className="leg" data-main="" aria-labelledby="choices-heading">
+        <h2 id="choices-heading" className={legTag}>
+          {t("scenario.legs.choices")}
+        </h2>
+        <ul className="leg-body grid gap-3">
+          {content.choices.map((choice, i) => (
             <li key={choice.id}>
               <ChoiceButton
                 id={choice.id}
+                number={i + 1}
                 text={choice.text}
                 onSelect={onSelect}
                 state={choiceId === null ? "open" : choiceId === choice.id ? "chosen" : "other"}
@@ -54,6 +58,6 @@ export default function ScenarioCard({ scenario, level, choiceId, onSelect }: Pr
           ))}
         </ul>
       </section>
-    </article>
+    </>
   );
 }
