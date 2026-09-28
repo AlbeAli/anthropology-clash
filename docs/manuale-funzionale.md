@@ -574,3 +574,11 @@ Chiusura, 2026-09-28: merge unico `--no-ff` di `m9` su `main` (`63ece91`), come 
 Decisione dell'autore, 2026-09-28: account e accesso sono necessari se l'app sarà pubblicata e vanno implementati. È un cambio delle regole vincolanti (nessun account, nessun backend nell'MVP, §7 e `CLAUDE.md`): la soluzione (servizio, costi, privacy e GDPR, migrazione dei progressi da `localStorage`) va analizzata e proposta all'autore prima di toccare il codice, e diventa la milestone successiva.
 
 Criterio di chiusura: redesign in produzione e verificato nel browser a 375 px e su desktop, riepilogo copiabile, test end-to-end verdi in CI, scenario Kroeber validato sul testo, punti di §11 riproposti all'autore.
+
+### 16.13 M10 — account e accesso (aperta 2026-09-28)
+
+Opzioni confrontate e proposte all'autore il 2026-09-28, con prezzi letti sulle pagine ufficiali: Supabase (50.000 utenti attivi al mese, database da 500 MB e pausa dopo una settimana senza attività nel piano gratuito; Pro 25 $ al mese), Firebase (autenticazione eseguita solo in data center statunitensi), Clerk (secondo servizio necessario per i progressi, marchio visibile nel piano gratuito), Auth.js con Neon (codice lato server, non adatto a una SPA Vite).
+
+Decisione dell'autore: **Supabase**, regione UE, con tre metodi di accesso: link via email, Google, Telegram. L'app continua a funzionare senza account; al primo accesso i progressi di `localStorage` si uniscono a quelli remoti.
+
+Da decidere con l'autore prima del codice: modalità di Telegram (accesso con Telegram tramite OpenID Connect, gratuito e senza numero di telefono, oppure codice inviato su Telegram tramite Telegram Gateway, 0,01 $ a codice e numero di telefono obbligatorio); dominio, necessario per inviare le email di accesso con un servizio SMTP esterno, perché quello integrato di Supabase invia 2 messaggi l'ora e solo ai membri del team.
