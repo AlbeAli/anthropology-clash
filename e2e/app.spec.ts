@@ -104,7 +104,7 @@ test("senza account nessuna pagina contatta Supabase, e la pagina di accesso esi
 }) => {
   const calls: string[] = [];
   page.on("request", (req) => {
-    if (req.url().includes("supabase.co")) calls.push(req.url());
+    if (req.url().includes("supabase")) calls.push(req.url());
   });
   await fresh(page);
   for (const path of [`/s/${first.id}`, "/concetti", "/viaggio", "/metodo"]) {
