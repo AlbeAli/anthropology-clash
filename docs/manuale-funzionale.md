@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.43 — 2026-09-28 — Stato: pubblicato (M1-M9 chiuse, §16.12; M10 account in analisi)
+Versione 0.44 — 2026-09-28 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, §16.13)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -53,7 +53,7 @@ Progressione: streak giornaliera (1 scenario al giorno consigliato, accesso libe
 
 ## 5. Modello dati
 
-Contenuto statico, JSON versionato in `src/content/<lang>/`, nessun backend nell'MVP. Un file per scenario, `scenario_NNN.json`, nome file uguale all'`id`. Tassonomia concetti in `concepts.json` (`reciprocita`, `parentela`, `rituale`, `relativismo`, `consumo`).
+Contenuto statico, JSON versionato in `src/content/<lang>/`; il backend di M10 (Supabase) conserva solo account e progressi, mai i contenuti. Un file per scenario, `scenario_NNN.json`, nome file uguale all'`id`. Tassonomia concetti in `concepts.json` (`reciprocita`, `parentela`, `rituale`, `relativismo`, `consumo`).
 
 Schema di riferimento: `src/schema/scenario.schema.ts` (Zod). Struttura:
 
@@ -90,10 +90,12 @@ Aggiungere un concetto richiede modifica a `ConceptId` nello schema e voce in `c
 | Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                          |
 | Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                             |
 | Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Media    | M9, fatto nel lotto 4 (§16.12) |
+| Account facoltativo          | Link via email, Google, Telegram; progressi sincronizzati   | Alta     | M10 (§16.13)                   |
+| Profilo e privacy            | Profilo con esportazione e cancellazione; pagina `/privacy` | Alta     | M10 (§16.13)                   |
 
 ## 7. Roadmap post-MVP
 
-Backend con account e sync multi-dispositivo (Supabase, magic link, RLS); livelli aggiuntivi e percorsi per corso; UGC curato con stato editoriale `draft → in_review → published | rejected`; sfida giornaliera condivisibile; app nativa se la web app è validata.
+Account e sincronizzazione tra dispositivi: anticipati a M10 per decisione del 2026-09-28 (§16.13). Livelli aggiuntivi e percorsi per corso; UGC curato con stato editoriale `draft → in_review → published | rejected`; sfida giornaliera condivisibile; app nativa se la web app è validata.
 
 Rinviati a dopo M5 per decisione del 2026-09-21 (proposte esterne valutate, §16.7): interfaccia in inglese con selettore lingua attivo, da rilasciare solo insieme ai 15 scenari in inglese verificati sui testi originali (le citazioni da fonti inglesi vanno riprese verbatim, non ritradotte); pulsante di condivisione per scenario (§6 prevede il riepilogo di fine sessione); astrazione dello storage (`StorageAdapter`, fusione di stati) che ha senso solo con un backend reale.
 
@@ -137,14 +139,14 @@ Caricamento contenuti: `import.meta.glob` su `src/content/*/scenarios/*.json`, s
 
 ### 8.3 Dove risiedono i dati
 
-| Dato               | MVP                                            | Fase 2                                           |
-| ------------------ | ---------------------------------------------- | ------------------------------------------------ |
-| Scenari e concetti | JSON nel repo, asset statici                   | Invariato                                        |
-| Progressi utente   | `localStorage`, chiave `anthropology-clash.v1` | Postgres (`progress`), `localStorage` come cache |
-| Dati personali     | **Nessuno**                                    | Supabase Auth, magic link                        |
-| UGC                | Non previsto                                   | Tabella `submissions`                            |
+| Dato               | Senza account                                  | Con account (M10)                                                                    |
+| ------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Scenari e concetti | JSON nel repo, asset statici                   | Invariato                                                                            |
+| Progressi utente   | `localStorage`, chiave `anthropology-clash.v1` | Postgres su Supabase (regione UE, RLS), `localStorage` come copia locale             |
+| Dati personali     | **Nessuno**                                    | Solo identificativo dell'accesso: email (link, Google) o id Telegram, senza telefono |
+| UGC                | Non previsto                                   | Non previsto (fase successiva, tabella `submissions`)                                |
 
-Limite accettato e dichiarato nella UI: i progressi non si sincronizzano tra dispositivi e si perdono cancellando i dati del browser.
+Senza account resta il limite dichiarato nella UI: i progressi non si sincronizzano tra dispositivi e si perdono cancellando i dati del browser. L'account è facoltativo e non serve per giocare.
 
 ### 8.4 Hosting e rilascio
 
@@ -152,9 +154,12 @@ Limite accettato e dichiarato nella UI: i progressi non si sincronizzano tra dis
 - App pubblica: https://anthropology-clash.vercel.app (Vercel, deploy automatico a ogni push su `main`, anteprima per ogni branch).
 - CI GitHub Actions su push e pull request: `pnpm lint → validate → test → build` (Node da `.nvmrc`, `pnpm install --frozen-lockfile`), più il job `e2e` con Playwright e Chromium (M9).
 - Deploy: Vercel, build statica, anteprima per ogni branch. `vercel.json` già presente per il rewrite SPA. Collegamento del progetto Vercel: M4.
-- Dominio: da decidere.
+- Dominio: `anthropologyclash.app`, deciso il 2026-09-28 (§16.13); libero al registro RDAP alla stessa data, da registrare a cura dell'autore. Serve anche come mittente delle email di accesso.
+- Variabili d'ambiente su Vercel (M10): `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`, pubbliche per costruzione; nessun segreto su Vercel.
 
 ### 8.5 Analytics e privacy
+
+Account (M10): facoltativo; dati limitati all'identificativo dell'accesso e ai progressi; nessuna password; ai provider si chiede il minimo (per Telegram solo `openid`, senza `profile` né `phone`); cancellazione dal profilo con tutti i progressi; informativa in `/privacy` con titolare, finalità, base giuridica, conservazione, diritti e fornitori (Supabase, servizio SMTP, Google, Telegram); età minima 14 anni per il consenso ai servizi online in Italia. La sessione di Supabase sta nel browser come dato tecnico dell'accesso, non come tracciamento.
 
 Plausible o Umami: metriche aggregate, senza cookie, nessun banner. Google Analytics escluso. Eventi minimi: apertura app, livello scelto, scenario iniziato, scenario completato, ritorno.
 
@@ -189,7 +194,8 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | Nome prodotto                         | Provvisorio: Anthropology Clash (candidati in §12)                                                                                                                     |
 | Numero scenari MVP                    | Deciso: 15 (§13)                                                                                                                                                       |
 | Fonti primarie non ad accesso aperto  | Risolto: lette direttamente con la ricerca interna di Internet Archive (§16.7); Geertz 1972 e Douglas 1972 sono OA su JSTOR, Kroeber 1909 e Leathem 2023 sono aperti   |
-| Dominio, monetizzazione               | Da decidere, non bloccanti; ripresi alla chiusura di M9 (§16.12)                                                                                                       |
+| Dominio                               | Deciso il 2026-09-28: `anthropologyclash.app` (§8.4, §16.13)                                                                                                           |
+| Monetizzazione                        | Da decidere; il piano Hobby di Vercel esclude pubblicità e pagamenti, ammette le donazioni (§16.13)                                                                    |
 | Licenza                               | Decisa il 2026-09-25: codice MIT (`LICENSE`), testi di `src/content` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`); le citazioni dalle fonti restano dei titolari dei diritti |
 | Pre-commit hook (lint + validate)     | Da valutare: aggiunge una dipendenza; la CI copre già il caso. In sospeso fino alla chiusura di M9 (§16.12)                                                            |
 | Identità visiva (font, palette, tono) | Applicata (§16.2); kicker in Home deciso il 2026-09-25: «Dilemmi dal campo, domande di oggi», modificabile in `home.kicker`                                            |
@@ -581,4 +587,21 @@ Opzioni confrontate e proposte all'autore il 2026-09-28, con prezzi letti sulle 
 
 Decisione dell'autore: **Supabase**, regione UE, con tre metodi di accesso: link via email, Google, Telegram. L'app continua a funzionare senza account; al primo accesso i progressi di `localStorage` si uniscono a quelli remoti.
 
-Da decidere con l'autore prima del codice: modalità di Telegram (accesso con Telegram tramite OpenID Connect, gratuito e senza numero di telefono, oppure codice inviato su Telegram tramite Telegram Gateway, 0,01 $ a codice e numero di telefono obbligatorio); dominio, necessario per inviare le email di accesso con un servizio SMTP esterno, perché quello integrato di Supabase invia 2 messaggi l'ora e solo ai membri del team.
+Telegram: due modalità proposte, l'accesso con Telegram tramite OpenID Connect (gratuito, senza numero di telefono, configurabile in Supabase come provider personalizzato `custom:telegram`; il piano gratuito ne ammette tre) e il codice inviato su Telegram tramite Telegram Gateway (0,01 $ a codice, numero di telefono obbligatorio, funzione di invio da scrivere). Decisione dell'autore, 2026-09-28: **accesso con Telegram tramite OpenID Connect**, con il solo scope `openid`. L'account Telegram nasce senza email (`email_optional`); il collegamento di più metodi allo stesso account va verificato sulla documentazione di Supabase prima del lotto del profilo.
+
+Dominio, 2026-09-28: **`anthropologyclash.app`**, libero al registro RDAP alla stessa data. Serve come mittente delle email di accesso: l'email integrata di Supabase invia 2 messaggi l'ora e solo ai membri del team, quindi serve un SMTP esterno (Resend nel confronto: 3.000 email al mese e 100 al giorno gratis). La registrazione del dominio spetta all'autore.
+
+Lotti, ciascuno con commit, test e verifica:
+
+1. Regole: `CLAUDE.md`, `PRODUCT.md` e questo manuale (§5, §6, §7, §8.3, §8.4, §8.5, §11).
+2. Client Supabase, migrazione della tabella dei progressi con RLS, unione con `localStorage`, con test unitari.
+3. Accesso con link via email e Google.
+4. Accesso con Telegram.
+5. Profilo (`/profilo`: metodo di accesso, sincronizzazione, esportazione, uscita, cancellazione tramite Edge Function) e informativa `/privacy`.
+6. End-to-end con Supabase simulato; variabili su Vercel; verifica sul sito pubblico.
+
+Da fare a cura dell'autore, fuori dal codice: registrare il dominio; creare il progetto Supabase in `eu-central-1`; progetto Google Cloud con schermata di consenso; bot Telegram con Client ID e Client Secret da BotFather; account SMTP con il dominio verificato. I segreti si inseriscono solo nel dashboard di Supabase.
+
+Lotto 1, 2026-09-28: regole aggiornate. In `CLAUDE.md` la regola «nessun dato personale» diventa «account facoltativo, dati minimi», con metodi di accesso, cancellazione e informativa; nuova regola sui segreti (nel client solo URL e chiave pubblica, RLS su ogni tabella); `localStorage` resta la copia locale e al primo accesso si unisce ai progressi remoti senza sovrascriverli; il divieto di backend diventa «nessun backend oltre Supabase»; riga M10 nella tabella delle milestone; `pnpm e2e` tra i comandi. Stessi punti in `PRODUCT.md` e qui.
+
+Criterio di chiusura: vedi riga M10 in `CLAUDE.md`.

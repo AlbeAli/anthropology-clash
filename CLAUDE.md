@@ -7,7 +7,7 @@ Web app che insegna concetti antropologici tramite scenari a bivio ispirati a ca
 - TypeScript 5, Vite 6, React 19, Tailwind CSS 4, React Router 7
 - Zod per lo schema dei contenuti, Vitest per i test, i18next + react-i18next per la UI
 - Node LTS (22 o 24), pnpm. Nessun altro gestore pacchetti.
-- Nessun backend nell'MVP. Contenuti in JSON nel repo, stato utente in `localStorage`.
+- Contenuti in JSON nel repo. Stato utente in `localStorage`; da M10, con account facoltativo, anche su Supabase (Auth + Postgres con RLS, regione UE Francoforte `eu-central-1`) tramite `@supabase/supabase-js`. Nessun server proprio: il sito resta statico su Vercel.
 
 ## Comandi
 
@@ -17,6 +17,7 @@ pnpm build      # build statica
 pnpm validate   # valida tutti i JSON in src/content contro lo schema Zod
 pnpm test       # Vitest, solo engine e schema
 pnpm lint       # ESLint + Prettier check
+pnpm e2e        # Playwright, build + preview su 4173
 ```
 
 `pnpm validate` deve passare prima di ogni commit che tocca `src/content/`.
@@ -41,8 +42,9 @@ scripts          validate-content.ts
 - **Ogni scenario ha una fonte reale.** Il campo `source` è obbligatorio. Nessuno scenario inventato senza riferimento etnografico. Per il livello `studente` la fonte include almeno autore e anno.
 - **Pratiche sempre contestualizzate**: dove, quando, secondo quale fonte. Mai "in Africa si usa..." senza popolazione, periodo e fonte.
 - **Nessuna stringa visibile nei componenti.** Tutto passa da `src/locales/`. Lingua attiva: `it`. `en` predisposto, non tradotto: non inventare traduzioni inglesi.
-- **Nessun dato personale.** Niente account, cookie di tracciamento, form con email. Analytics solo Plausible o Umami.
-- **`localStorage` sempre in try/catch.** L'app funziona anche senza persistenza. Chiave: `anthropology-clash.v1`. Il campo `version` cambia solo per modifiche non retrocompatibili.
+- **Account facoltativo, dati minimi.** L'app resta completa senza account. Con account si conservano solo l'identificativo dell'accesso (email per link e Google, id Telegram senza telefono) e i progressi: nessun nome, foto o telefono richiesti ai provider oltre il necessario, nessuna profilazione. Accesso con link via email (SMTP esterno sul dominio, non l'email integrata di Supabase), Google e Telegram (OpenID Connect, provider `custom:telegram`); niente password. Cancellazione dell'account dal profilo, con i progressi; informativa in `/privacy`. Niente cookie di tracciamento; analytics solo Plausible o Umami.
+- **Segreti mai nel repo né nel bundle.** Nel client solo URL del progetto e chiave pubblica (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`); service role, Client Secret di Google e Telegram e credenziali SMTP stanno nel dashboard Supabase o nelle Edge Function. Ogni tabella ha RLS attiva: ogni utente legge e scrive solo le proprie righe.
+- **`localStorage` sempre in try/catch.** L'app funziona anche senza persistenza e senza rete. Chiave: `anthropology-clash.v1`. Il campo `version` cambia solo per modifiche non retrocompatibili. Con account, `localStorage` resta la copia locale: al primo accesso i progressi locali si uniscono a quelli remoti (unione delle fermate, data più vecchia, serie più lunga), mai sovrascritti.
 
 ## Contenuti
 
@@ -79,10 +81,11 @@ scripts          validate-content.ts
 | M7 | `hook` contemporaneo in tutti i 18 scenari, in entrambi i livelli, validato con l'autore |
 | M8 | 20 scenari, 4 per concetto: uno in più per `rituale` e uno per `consumo` |
 | M9 | Redesign «Le linee della metro» in produzione; riepilogo di fine sessione copiabile; test end-to-end in CI; scenario da Kroeber 1919 validato |
+| M10 | Account facoltativo su Supabase UE con link via email, Google e Telegram; progressi sincronizzati e uniti a `localStorage`; profilo con cancellazione; informativa `/privacy`; e2e verdi con Supabase simulato; dominio `anthropologyclash.app` |
 
 ## Cosa non fare
 
-- Non aggiungere backend, auth o database: sono fase 2.
+- Nessun backend oltre Supabase (Auth, Postgres, Edge Function): niente server propri, API routes di Vercel o altri servizi dati. Nuove tabelle solo con migrazione nel repo e RLS.
 - Non usare Next.js, Astro, Redux o altre librerie di stato: React state + context bastano.
 - Non generare scenari senza fonte, anche come placeholder: usare i 3 di M1.
 - Non tradurre in inglese per iniziativa propria.
