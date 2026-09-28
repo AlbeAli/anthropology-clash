@@ -13,6 +13,7 @@ const ScenarioPage = lazy(() => import("./pages/Scenario"));
 const ConceptLibrary = lazy(() => import("./pages/ConceptLibrary"));
 const Method = lazy(() => import("./pages/Method"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Journey = lazy(() => import("./pages/Journey"));
 
 function Shell() {
   const { t } = useTranslation();
@@ -33,9 +34,11 @@ function Shell() {
       ? getScenario(DEFAULT_LANG, scenarioMatch.params.id ?? "")?.title
       : pathname === "/concetti"
         ? t("concepts.title")
-        : pathname === "/metodo"
-          ? t("method.title")
-          : undefined;
+        : pathname === "/viaggio"
+          ? t("journey.title")
+          : pathname === "/metodo"
+            ? t("method.title")
+            : undefined;
     document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
   }, [pathname, scenarioMatch, t]);
 
@@ -60,6 +63,7 @@ function Shell() {
             <Route path="/s/:id" element={<ScenarioPage />} />
             <Route path="/concetti" element={<ConceptLibrary />} />
             <Route path="/metodo" element={<Method />} />
+            <Route path="/viaggio" element={<Journey />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

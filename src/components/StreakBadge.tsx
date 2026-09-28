@@ -11,7 +11,9 @@ export default function StreakBadge({ count }: { count: number }) {
         aria-hidden="true"
         className={
           "inline-grid h-6 min-w-6 place-items-center rounded-full px-1.5 text-xs tabular-nums " +
-          (count > 0 ? "bg-(--l-relativismo) text-[#1a1a1a]" : "border-2 border-white/50")
+          (count > 0
+            ? "border-2 border-(--l-relativismo) text-(--l-relativismo)"
+            : "border-2 border-white/50")
         }
       >
         {count}

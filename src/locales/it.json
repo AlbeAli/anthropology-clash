@@ -9,7 +9,9 @@
     "skipToContent": "Salta al contenuto principale",
     "concepts": "Concetti",
     "method": "Metodo e fonti",
-    "methodShort": "Metodo"
+    "methodShort": "Metodo",
+    "journey": "Il tuo viaggio",
+    "journeyShort": "Viaggio"
   },
   "level": {
     "label": "Livello",
@@ -179,6 +181,32 @@
     "consumo": {
       "name": "Consumo",
       "letter": "C"
+    }
+  },
+  "journey": {
+    "title": "Il tuo viaggio",
+    "lede": "Un biglietto con le fermate visitate e le linee toccate. Nessun punteggio: solo dove sei passato.",
+    "ticket": "Biglietto",
+    "count_one": "{{count}} fermata visitata su {{total}}",
+    "count_other": "{{count}} fermate visitate su {{total}}",
+    "lines": "Linee toccate",
+    "stops": "Fermate, in ordine di visita",
+    "empty": "Ancora nessuna fermata. Parti dalla mappa.",
+    "copy": "Copia il riepilogo",
+    "copied": "Riepilogo copiato",
+    "copyFallback": "Seleziona e copia il testo qui sotto",
+    "copyArea": "Testo del riepilogo",
+    "map": "Torna alla mappa",
+    "reset": "Azzera i progressi",
+    "resetConfirm": "Conferma: azzera i progressi",
+    "resetCancel": "Annulla",
+    "resetDone": "Progressi azzerati",
+    "resetNote": "Cancella fermate visitate e serie da questo browser. Livello e tema restano.",
+    "summary": {
+      "head": "Il mio viaggio in {{app}}",
+      "lines": "Linee: {{lines}}",
+      "none": "nessuna",
+      "item": "· {{title}} (linea {{line}}, {{level}})"
     }
   }
 }

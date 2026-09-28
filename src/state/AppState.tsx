@@ -12,6 +12,7 @@ type AppState = {
   streak: number;
   recent: string | null;
   clearRecent: () => void;
+  resetProgress: () => void;
   setLevel: (level: Level) => void;
   setTheme: (theme: Theme) => void;
   complete: (input: { scenarioId: string; concept: ConceptId; choice: string }) => void;
@@ -39,6 +40,10 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       streak: currentStreak(state.streak, dayKey(new Date())),
       recent,
       clearRecent: () => setRecent(null),
+      resetProgress: () => {
+        setRecent(null);
+        update({ ...state, completed: {}, streak: { count: 0, lastDay: null }, seenConcepts: [] });
+      },
       setLevel: (next) => {
         track("level_chosen", { level: next });
         update({ ...state, level: next });

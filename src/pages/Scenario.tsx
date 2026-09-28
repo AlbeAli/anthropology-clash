@@ -134,6 +134,12 @@ function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level })
                     >
                       {t("scenario.backToMap")}
                     </Link>
+                    <Link
+                      to="/viaggio"
+                      className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
+                    >
+                      {t("nav.journey")}
+                    </Link>
                   </div>
                 </div>
               </section>

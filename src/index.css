@@ -453,3 +453,24 @@
     transform: rotate(-6deg) scale(1);
   }
 }
+
+@layer components {
+  .ticket-print {
+    animation: ticket-print 0.9s var(--ease-out-expo) both;
+  }
+  .ticket-row {
+    animation: metro-in 0.4s var(--ease-out-expo) backwards;
+    animation-delay: calc(0.5s + var(--j, 0) * 0.06s);
+  }
+}
+
+@keyframes ticket-print {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-10px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
