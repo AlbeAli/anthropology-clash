@@ -1,4 +1,4 @@
-import { Scenario, Concept, type Lang } from "../schema/scenario.schema";
+import type { Concept, Lang, Scenario } from "../schema/scenario.schema";
 
 const scenarioFiles = import.meta.glob("../content/*/scenarios/*.json", {
   eager: true,
@@ -17,7 +17,7 @@ const scenariosByLang = new Map<string, Scenario[]>();
 for (const [path, raw] of Object.entries(scenarioFiles)) {
   const lang = langOf(path);
   const list = scenariosByLang.get(lang) ?? [];
-  list.push(Scenario.parse(raw));
+  list.push(raw as Scenario);
   scenariosByLang.set(lang, list);
 }
 for (const list of scenariosByLang.values()) {
@@ -26,7 +26,7 @@ for (const list of scenariosByLang.values()) {
 
 const conceptsByLang = new Map<string, Concept[]>();
 for (const [path, raw] of Object.entries(conceptFiles)) {
-  conceptsByLang.set(langOf(path), Concept.array().parse(raw));
+  conceptsByLang.set(langOf(path), raw as Concept[]);
 }
 
 export function getScenarios(lang: Lang): Scenario[] {

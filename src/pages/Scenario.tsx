@@ -9,18 +9,24 @@ import { useAppState } from "../state/AppState";
 import { track } from "../engine/analytics";
 import ScenarioCard from "../components/ScenarioCard";
 import FeedbackPanel from "../components/FeedbackPanel";
+import LevelToggle from "../components/LevelToggle";
+import NotFound from "./NotFound";
 
 export default function ScenarioPage() {
-  const { t } = useTranslation();
   const { id = "" } = useParams();
-  const { level } = useAppState();
+  const { level, setLevel } = useAppState();
   const scenario = getScenario(DEFAULT_LANG, id);
 
   if (!scenario) {
-    return <p className="text-ink-soft">{t("scenario.notFound")}</p>;
+    return <NotFound />;
   }
 
-  return <ScenarioPlay key={`${scenario.id}-${level}`} scenario={scenario} level={level} />;
+  return (
+    <div className="space-y-8">
+      <LevelToggle level={level} onChange={setLevel} />
+      <ScenarioPlay key={`${scenario.id}-${level}`} scenario={scenario} level={level} />
+    </div>
+  );
 }
 
 function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level }) {

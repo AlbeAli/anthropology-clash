@@ -133,7 +133,7 @@ Alternative scartate: Astro (app interattiva con stato), Next.js (SSR inutile, v
 vercel.json     rewrite SPA verso index.html
 ```
 
-Caricamento contenuti: `import.meta.glob` su `src/content/*/scenarios/*.json`, parsing Zod al bootstrap. Un JSON non valido fa fallire la build (`prebuild` esegue `pnpm validate`) e, in dev, il caricamento dell'app.
+Caricamento contenuti: `import.meta.glob` su `src/content/*/scenarios/*.json`, senza parsing nel browser dal lotto 1 di M9: la validazione Zod gira in `pnpm validate`, che `prebuild` esegue prima di ogni build, nei test e in CI, così Zod resta fuori dal bundle (circa 25 KB compressi in meno). Un JSON non valido fa fallire la build; in dev si vede con `pnpm validate`.
 
 ### 8.3 Dove risiedono i dati
 
@@ -265,7 +265,7 @@ Implementato in `src/schema/scenario.schema.ts`. Differenze rispetto alla v0.6: 
 | Libreria concetti | `/concetti` | Griglia dei 5 concetti con definizione; per ciascuno gli scenari con stato e livello di completamento                                                                                                                        | **M3**: fatta         |
 | Metodo e fonti    | `/metodo`   | Provenienza, criteri, limiti, nota etica, dati e privacy, bibliografia generata dai contenuti                                                                                                                                | **M4**: fatta         |
 
-Barra persistente: nome app, toggle livello, streak, link a concetti e metodo, selettore lingua (solo `it`). Nessun modale nell'MVP.
+Barra persistente: nome app, link a concetti e metodo, serie, tema. Dal lotto 1 di M9 il livello si sceglie in Home e nella pagina dello scenario, e il selettore lingua con la sola voce italiano è tolto finché non esiste una seconda lingua. Nessun modale nell'MVP.
 
 ### 15.3 Stato locale
 
@@ -550,5 +550,7 @@ Da fare, per lotti, ciascuno con commit e verifica nel browser:
 5. Concetti e Metodo nel nuovo mondo; tema scuro; pagina 404.
 6. Test end-to-end in CI; `DESIGN.md` a fine build.
 7. Scenario da Kroeber 1919, con la procedura di §16.6.
+
+Lotto 1, 2026-09-28, sulla branch `m9`: token della metro (bianco, inchiostro #1A1A1A, colori di linea, tema scuro provvisorio), Archivo e Atkinson Hyperlegible al posto di Source Serif e IBM Plex, barra nera con serie accessibile ai lettori di schermo e icone del tema disegnate in SVG; selettore di livello spostato dalla barra alla pagina dello scenario, con indicatore che scorre; livello coerente tra barra, Home e scenario (neofita è il predefinito ovunque); pagina 404; scorrimento verso il riscontro senza animazione con `prefers-reduced-motion`; controlli della barra a 44 px; Zod fuori dal bundle. Test 34, lint, build e validate verdi; verificato nel browser a 375 px e su desktop, chiaro e scuro, senza errori in console.
 
 Criterio di chiusura: redesign in produzione e verificato nel browser a 375 px e su desktop, riepilogo copiabile, test end-to-end verdi in CI, scenario Kroeber validato sul testo, punti di §11 riproposti all'autore.

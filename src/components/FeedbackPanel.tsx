@@ -16,7 +16,8 @@ export default function FeedbackPanel({ content, level, choiceId }: Props) {
 
   useEffect(() => {
     heading.current?.focus({ preventScroll: true });
-    heading.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    heading.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   }, [choiceId]);
 
   return (

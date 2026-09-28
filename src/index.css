@@ -1,46 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f1efe4;
-  --surface: #ffffff;
-  --ink: #26241f;
-  --ink-soft: #5b5748;
-  --line: #d8d2c0;
-  --accent: #1f5c56;
-  --accent-soft: #dceae7;
-  --clay: #a3532a;
-  --clay-soft: #f3ddc9;
-  --accent-strong: #174842;
+  --bg: #ffffff;
+  --surface: #f2f2f0;
+  --ink: #1a1a1a;
+  --ink-soft: #55554f;
+  --line: #d9d9d6;
+  --accent: #1a1a1a;
+  --accent-soft: #f2f2f0;
+  --accent-strong: #000000;
+  --clay: #1a1a1a;
+  --clay-soft: #f2f2f0;
+  --focus: #0065b3;
+  --bar: #1a1a1a;
+  --bar-ink: #ffffff;
+  --l-reciprocita: #e2231a;
+  --l-parentela: #0065b3;
+  --l-rituale: #008c44;
+  --l-relativismo: #f7a600;
+  --l-consumo: #7b3f98;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1b1a16;
-    --surface: #242219;
-    --ink: #ece6d6;
-    --ink-soft: #b3ad9a;
-    --line: #3b382c;
-    --accent: #5fbbae;
-    --accent-soft: #22322f;
-    --clay: #e69a5c;
-    --clay-soft: #3d2a1c;
-    --accent-strong: #7ccfc3;
+    --bg: #121212;
+    --surface: #1e1e1d;
+    --ink: #f2f2ee;
+    --ink-soft: #b5b4ad;
+    --line: #3a3a36;
+    --accent: #f2f2ee;
+    --accent-soft: #26262a;
+    --accent-strong: #ffffff;
+    --clay: #f2f2ee;
+    --clay-soft: #26262a;
+    --focus: #5aa9f0;
+    --bar: #000000;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #1b1a16;
-  --surface: #242219;
-  --ink: #ece6d6;
-  --ink-soft: #b3ad9a;
-  --line: #3b382c;
-  --accent: #5fbbae;
-  --accent-soft: #22322f;
-  --clay: #e69a5c;
-  --clay-soft: #3d2a1c;
-  --accent-strong: #7ccfc3;
+  --bg: #121212;
+  --surface: #1e1e1d;
+  --ink: #f2f2ee;
+  --ink-soft: #b5b4ad;
+  --line: #3a3a36;
+  --accent: #f2f2ee;
+  --accent-soft: #26262a;
+  --accent-strong: #ffffff;
+  --clay: #f2f2ee;
+  --clay-soft: #26262a;
+  --focus: #5aa9f0;
+  --bar: #000000;
   color-scheme: dark;
 }
 
@@ -55,12 +67,16 @@
   --color-accent-strong: var(--accent-strong);
   --color-clay: var(--clay);
   --color-clay-soft: var(--clay-soft);
+  --color-bar: var(--bar);
+  --color-bar-ink: var(--bar-ink);
 
-  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-  --font-mono: "IBM Plex Mono", "SF Mono", Consolas, monospace;
+  --font-display: "Archivo", system-ui, -apple-system, sans-serif;
+  --font-serif: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --font-mono: "Archivo", system-ui, -apple-system, sans-serif;
 
-  --radius-sm: 2px;
+  --radius-sm: 6px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -74,10 +90,27 @@
   body {
     min-height: 100dvh;
     margin: 0;
+    background-color: var(--bg);
+  }
+
+  ::selection {
+    background: var(--l-relativismo);
+    color: #1a1a1a;
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

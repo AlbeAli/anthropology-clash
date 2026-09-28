@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 const ScenarioPage = lazy(() => import("./pages/Scenario"));
 const ConceptLibrary = lazy(() => import("./pages/ConceptLibrary"));
 const Method = lazy(() => import("./pages/Method"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function Shell() {
   const { t } = useTranslation();
@@ -57,6 +58,7 @@ function Shell() {
             <Route path="/s/:id" element={<ScenarioPage />} />
             <Route path="/concetti" element={<ConceptLibrary />} />
             <Route path="/metodo" element={<Method />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>

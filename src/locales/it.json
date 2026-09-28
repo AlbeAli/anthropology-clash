@@ -35,7 +35,6 @@
     "hook": "Oggi",
     "choices": "Cosa fai?",
     "source": "Fonte",
-    "notFound": "Scenario non trovato",
     "outcome": "Cosa succede",
     "alternatives": "Le altre strade",
     "deepen": "Per approfondire",
@@ -57,14 +56,11 @@
     "NON-OA": "Sotto diritti d'autore",
     "verificare": "Accesso da verificare"
   },
-  "lang": {
-    "label": "Lingua",
-    "it": "Italiano"
-  },
   "streak": {
     "title": "Giorni consecutivi con almeno uno scenario completato",
     "days_one": "{{count}} giorno di serie",
-    "days_other": "{{count}} giorni di serie"
+    "days_other": "{{count}} giorni di serie",
+    "short": "serie"
   },
   "concepts": {
     "title": "Libreria dei concetti",
@@ -120,5 +116,10 @@
       "note_one": "{{count}} opera citata nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita.",
       "note_other": "{{count}} opere citate nelle fonti e nelle letture consigliate degli scenari pubblicati. L'elenco è generato dai contenuti: un'opera compare solo se uno scenario la cita."
     }
+  },
+  "notFound": {
+    "title": "Questa fermata non esiste",
+    "body": "L'indirizzo non corrisponde a nessuna pagina. Dalla pagina iniziale ritrovi tutti gli scenari.",
+    "home": "Torna alla pagina iniziale"
   }
 }

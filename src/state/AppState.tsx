@@ -8,7 +8,6 @@ import { track } from "../engine/analytics";
 type AppState = {
   state: StoredState;
   level: Level;
-  levelChosen: boolean;
   theme: Theme;
   streak: number;
   setLevel: (level: Level) => void;
@@ -33,7 +32,6 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     () => ({
       state,
       level,
-      levelChosen: state.level !== null,
       theme,
       streak: currentStreak(state.streak, dayKey(new Date())),
       setLevel: (next) => {

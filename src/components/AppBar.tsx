@@ -1,54 +1,39 @@
 import { Link, NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useAppState } from "../state/AppState";
-import LevelToggle from "./LevelToggle";
 import ThemeToggle from "./ThemeToggle";
 import StreakBadge from "./StreakBadge";
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
-  "font-mono text-xs uppercase tracking-widest hover:text-accent " +
-  (isActive ? "text-accent" : "text-ink-soft");
+  "inline-flex min-h-11 items-center rounded-sm px-3 font-display text-[15px] font-bold transition-colors " +
+  (isActive ? "bg-bar-ink text-bar" : "text-bar-ink hover:bg-white/15");
 
 export default function AppBar() {
-  const { t, i18n } = useTranslation();
-  const { level, setLevel, theme, setTheme, streak } = useAppState();
+  const { t } = useTranslation();
+  const { theme, setTheme, streak } = useAppState();
 
   return (
-    <header className="border-b-2 border-clay">
-      <div className="mx-auto max-w-2xl space-y-3 px-4 py-4">
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-          <Link
-            to="/"
-            className="font-serif text-lg font-semibold tracking-tight text-ink hover:text-accent"
-          >
-            {t("app.name")}
-          </Link>
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <LevelToggle level={level} onChange={setLevel} />
-            <select
-              aria-label={t("lang.label")}
-              value={i18n.language}
-              onChange={() => {}}
-              className="h-9 rounded-sm border border-line bg-surface px-1.5 font-mono text-[11px] uppercase text-ink-soft"
-            >
-              <option value="it">{t("lang.it")}</option>
-            </select>
-            <ThemeToggle theme={theme} onChange={setTheme} />
-          </div>
-        </div>
-        <nav
-          aria-label={t("nav.label")}
-          className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2"
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-bar text-bar-ink">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2">
+        <Link
+          to="/"
+          className="group inline-flex min-h-11 items-center gap-2.5 font-display text-xl font-extrabold tracking-tight"
         >
-          <div className="flex items-center gap-4">
-            <NavLink to="/concetti" className={navClass}>
-              {t("nav.concepts")}
-            </NavLink>
-            <NavLink to="/metodo" className={navClass}>
-              {t("nav.methodShort")}
-            </NavLink>
-          </div>
+          <span
+            aria-hidden="true"
+            className="size-5.5 rounded-full border-[5px] border-current transition-transform duration-500 ease-out-expo group-hover:scale-110 group-hover:rotate-180"
+          />
+          {t("app.name")}
+        </Link>
+        <nav aria-label={t("nav.label")} className="flex flex-wrap items-center gap-1">
+          <NavLink to="/concetti" className={navClass}>
+            {t("nav.concepts")}
+          </NavLink>
+          <NavLink to="/metodo" className={navClass}>
+            {t("nav.methodShort")}
+          </NavLink>
           <StreakBadge count={streak} />
+          <ThemeToggle theme={theme} onChange={setTheme} />
         </nav>
       </div>
     </header>

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { Level } from "../schema/scenario.schema";
+import { LEVELS } from "../engine/levels";
 import { getScenarios } from "../engine/content";
 import { nextInSequence } from "../engine/progress";
 import { DEFAULT_LANG } from "../i18n";
@@ -8,7 +8,7 @@ import { useAppState } from "../state/AppState";
 
 export default function Home() {
   const { t } = useTranslation();
-  const { state, level, levelChosen, setLevel, streak } = useAppState();
+  const { state, level, setLevel, streak } = useAppState();
   const ids = getScenarios(DEFAULT_LANG).map((s) => s.id);
   const completedCount = ids.filter((id) => id in state.completed).length;
   const nextId = nextInSequence(state, ids) ?? ids[0];
@@ -30,19 +30,14 @@ export default function Home() {
         <h2 id="level-heading" className="font-mono text-xs uppercase tracking-widest text-clay">
           {t("home.levelHeading")}
         </h2>
-        <div
-          role="radiogroup"
-          aria-labelledby="level-heading"
-          className="grid gap-2 sm:grid-cols-2"
-        >
-          {Level.options.map((option) => {
-            const active = levelChosen && level === option;
+        <div role="group" aria-labelledby="level-heading" className="grid gap-2 sm:grid-cols-2">
+          {LEVELS.map((option) => {
+            const active = level === option;
             return (
               <button
                 key={option}
                 type="button"
-                role="radio"
-                aria-checked={active}
+                aria-pressed={active}
                 onClick={() => setLevel(option)}
                 className={
                   "space-y-1 rounded-sm border px-4 py-4 text-left transition-colors " +
