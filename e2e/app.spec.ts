@@ -81,6 +81,24 @@ for (const path of ["/", `/s/${first.id}`, "/concetti", "/metodo", "/viaggio"]) 
   });
 }
 
+test("le fermate sulla striscia della linea non si sovrappongono", async ({ page }) => {
+  const byConcept = Map.groupBy(scenarios, (s) => s.concept);
+  const longest = [...byConcept.values()].sort((a, b) => b.length - a.length)[0];
+  await fresh(page, `/s/${longest[0].id}`);
+  const links = page.getByRole("navigation", { name: "Fermate della linea" }).getByRole("link");
+  await expect(links).toHaveCount(longest.length);
+  const boxes = await links.evaluateAll((els) =>
+    els.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { left: r.left, right: r.right, clipped: el.scrollWidth > el.clientWidth };
+    }),
+  );
+  boxes.forEach((b, i) => {
+    expect(b.clipped).toBe(false);
+    if (i > 0) expect(b.left).toBeGreaterThanOrEqual(boxes[i - 1].right - 0.5);
+  });
+});
+
 test.describe("tema", () => {
   test.use({ colorScheme: "dark" });
 

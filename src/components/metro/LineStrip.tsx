@@ -59,7 +59,7 @@ export default function LineStrip({ scenario, completed }: Props) {
             to={`/s/${s.id}`}
             aria-current={k === idx ? "page" : undefined}
             className={
-              "min-h-8 py-1.5 font-display text-xs leading-tight font-bold hover:text-ink hover:underline sm:text-[13px] " +
+              "min-h-8 py-1.5 font-display text-xs leading-tight font-bold hyphens-auto [overflow-wrap:anywhere] hover:text-ink hover:underline sm:text-[13px] " +
               (k === idx ? "text-ink" : "text-ink-soft") +
               (k === 0 ? " text-left" : k === stops.length - 1 ? " text-right" : " text-center")
             }
