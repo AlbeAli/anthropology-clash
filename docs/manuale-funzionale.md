@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.42 — 2026-09-28 — Stato: pubblicato (M1-M8 chiuse, M9 aperta, §16.12)
+Versione 0.43 — 2026-09-28 — Stato: pubblicato (M1-M9 chiuse, §16.12; M10 account in analisi)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -150,7 +150,7 @@ Limite accettato e dichiarato nella UI: i progressi non si sincronizzano tra dis
 
 - Repository GitHub `AlbeAli/anthropology-clash`, pubblico, `main` sempre rilasciabile.
 - App pubblica: https://anthropology-clash.vercel.app (Vercel, deploy automatico a ogni push su `main`, anteprima per ogni branch).
-- CI GitHub Actions su push e pull request: `pnpm lint → validate → test → build` (Node da `.nvmrc`, `pnpm install --frozen-lockfile`).
+- CI GitHub Actions su push e pull request: `pnpm lint → validate → test → build` (Node da `.nvmrc`, `pnpm install --frozen-lockfile`), più il job `e2e` con Playwright e Chromium (M9).
 - Deploy: Vercel, build statica, anteprima per ogni branch. `vercel.json` già presente per il rewrite SPA. Collegamento del progetto Vercel: M4.
 - Dominio: da decidere.
 
@@ -568,6 +568,8 @@ Lotto 6, 2026-09-28: test end-to-end con Playwright (`@playwright/test`, dipende
 Lotto 7, 2026-09-28: `scenario_021` «Il pendolo della moda», approvato dall'autore. Fonte primaria: Kroeber, «On the Principle of Order in Civilization as Exemplified by Changes of Fashion», American Anthropologist 21, 1919, pp. 235-263, letto sul testo integrale di JSTOR Early Journal Content (Internet Archive `jstor-660477`): abiti da sera femminili misurati su tavole di moda dal 1844 al 1919 (Petit Courrier des Dames, Harper's Bazar, Vogue), dieci figure per anno, otto misure in percentuale dell'altezza; larghezza della gonna 57 nel 1844, 116 nel 1859, 23 nel 1911; oscillazioni di circa un secolo per la larghezza e di circa trentacinque anni per la lunghezza; conclusione sul peso trascurabile dei singoli («dieci volte il genio» di Poiret o Worth) e limiti dichiarati. Lettura di confronto: Veblen 1899, cap. VII, pp. 176-178, verificato sulla copia `theoryofleisurec01vebl`. Limite dichiarato: analisi quantitativa di fonti a stampa, non etnografia sul campo, come per `scenario_016`. Il consumo passa a cinque fermate; 21 scenari, bibliografia a 72 voci senza doppioni; validate, 40 test unitari e gli end-to-end verdi. Punto aperto: in bibliografia Veblen appare una sola volta con l'etichetta «cap. VII», mentre 016-018 citano il cap. IV; proposta all'autore di mostrare in bibliografia solo l'opera.
 
 Bibliografia, 2026-09-28, su proposta accolta dall'autore: ogni voce mostra l'opera, i capitoli e le pagine citate restano nelle schede degli scenari. Il problema di Veblen toccava anche Mauss, Mintz, Malinowski ed Evans-Pritchard, perché la voce prendeva la forma più lunga tra le citazioni. `workOf` in `src/engine/bibliography.ts` toglie capitoli, parti, libri, sezioni, introduzioni, prefazioni, appendici e pagine sparse; conserva le pagine degli articoli in rivista e la traduzione citata (Bourdieu nella traduzione di Nice). Test 41, lint, validate e i 24 end-to-end verdi.
+
+Chiusura, 2026-09-28: merge unico `--no-ff` di `m9` su `main` (`63ece91`), come deciso dall'autore. CI verde al primo giro su GitHub, compreso il job `e2e`, che fino ad allora non era mai partito. Sito pubblico verificato: nuovo design, 21 fermate, bibliografia a 72 voci con Veblen una sola volta, nessun errore in console. La verifica a 375 px sul sito pubblico ha trovato un difetto: sulla striscia della linea Consumo «Cinquecento bacinelle» si sovrapponeva a «Zucchero nel tè», perché una parola lunga non andava a capo in una colonna di circa 56 px. Corretto con la sillabazione e l'a capo forzato; un nuovo test end-to-end controlla le etichette della linea più lunga ed era rosso prima della correzione (26 end-to-end verdi, merge `0e3f24e`). L'identità di §16.2 è sostituita da quella della metro, descritta in `DESIGN.md`. Punti di §11 riproposti all'autore. M9 chiusa.
 
 Decisione dell'autore, 2026-09-28: account e accesso sono necessari se l'app sarà pubblicata e vanno implementati. È un cambio delle regole vincolanti (nessun account, nessun backend nell'MVP, §7 e `CLAUDE.md`): la soluzione (servizio, costi, privacy e GDPR, migrazione dei progressi da `localStorage`) va analizzata e proposta all'autore prima di toccare il codice, e diventa la milestone successiva.
 
