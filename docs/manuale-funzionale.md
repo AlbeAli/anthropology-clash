@@ -155,7 +155,7 @@ Senza account resta il limite dichiarato nella UI: i progressi non si sincronizz
 - CI GitHub Actions su push e pull request: `pnpm lint → validate → test → build` (Node da `.nvmrc`, `pnpm install --frozen-lockfile`), più il job `e2e` con Playwright e Chromium (M9).
 - Deploy: Vercel, build statica, anteprima per ogni branch. `vercel.json` già presente per il rewrite SPA. Collegamento del progetto Vercel: M4.
 - Dominio: `anthropologyclash.app`, deciso il 2026-09-28 (§16.13); libero al registro RDAP alla stessa data, da registrare a cura dell'autore. Serve anche come mittente delle email di accesso.
-- Variabili d'ambiente su Vercel (M10): `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`, pubbliche per costruzione; nessun segreto su Vercel.
+- Variabili d'ambiente su Vercel (M10): `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`, pubbliche per costruzione; nessun segreto su Vercel.
 
 ### 8.5 Analytics e privacy
 
@@ -600,8 +600,12 @@ Lotti, ciascuno con commit, test e verifica:
 5. Profilo (`/profilo`: metodo di accesso, sincronizzazione, esportazione, uscita, cancellazione tramite Edge Function) e informativa `/privacy`.
 6. End-to-end con Supabase simulato; variabili su Vercel; verifica sul sito pubblico.
 
-Da fare a cura dell'autore, fuori dal codice: registrare il dominio; creare il progetto Supabase in `eu-central-1`; progetto Google Cloud con schermata di consenso; bot Telegram con Client ID e Client Secret da BotFather; account SMTP con il dominio verificato. I segreti si inseriscono solo nel dashboard di Supabase.
+Da fare a cura dell'autore, fuori dal codice: registrare il dominio; creare il progetto Supabase (fatto il 2026-09-28: `anthropology-clash`, `eu-west-1`); progetto Google Cloud con schermata di consenso; bot Telegram con Client ID e Client Secret da BotFather; account SMTP con il dominio verificato. I segreti si inseriscono solo nel dashboard di Supabase.
 
 Lotto 1, 2026-09-28: regole aggiornate. In `CLAUDE.md` la regola «nessun dato personale» diventa «account facoltativo, dati minimi», con metodi di accesso, cancellazione e informativa; nuova regola sui segreti (nel client solo URL e chiave pubblica, RLS su ogni tabella); `localStorage` resta la copia locale e al primo accesso si unisce ai progressi remoti senza sovrascriverli; il divieto di backend diventa «nessun backend oltre Supabase»; riga M10 nella tabella delle milestone; `pnpm e2e` tra i comandi. Stessi punti in `PRODUCT.md` e qui.
+
+Progetto Supabase, 2026-09-28: creato dall'autore come `anthropology-clash` nella regione **`eu-west-1` (Irlanda)**, non a Francoforte come previsto; la regione non si cambia dopo la creazione e resta nell'Unione europea, quindi l'autore ha deciso di tenerla. Nel client si usa la chiave pubblicabile nuova (`sb_publishable_…`, variabile `VITE_SUPABASE_PUBLISHABLE_KEY`), che Supabase indica per le applicazioni nuove al posto della chiave anonima.
+
+Lotto 2, 2026-09-28: schema remoto e unione dei progressi, senza ancora interfaccia di accesso. Migrazione `supabase/migrations/20260928141952_progress.sql`, applicata al progetto: tabelle `progress` (utente, scenario, livello, scelta, giorno; chiave utente + scenario) e `streaks` (serie e ultimo giorno), entrambe con cancellazione a cascata quando si elimina l'utente, vincoli sui valori (`scenario_NNN`, livello, scelta a-d), RLS attiva, quattro regole per tabella limitate al ruolo `authenticated` e al proprio `user_id`, nessun permesso al ruolo `anon`. Verificato sul database: RLS attiva, nessun privilegio per `anon`, nessun avviso di sicurezza o di prestazioni dagli advisor di Supabase. `src/engine/sync.ts` unisce stato locale e remoto: fermate unite con la data più vecchia (a parità vince quella locale), serie più lunga valutata all'ultimo giorno noto, concetti visti ricavati dalle fermate; livello, tema e lingua restano locali. `src/engine/remote.ts` crea il client solo se le due variabili esistono e lo carica con un import dinamico, così chi non usa l'account non scarica `@supabase/supabase-js` (dipendenza aggiunta, 2.117.2). Cinque test nuovi, 46 in tutto.
 
 Criterio di chiusura: vedi riga M10 in `CLAUDE.md`.

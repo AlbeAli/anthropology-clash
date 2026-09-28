@@ -7,7 +7,7 @@ Web app che insegna concetti antropologici tramite scenari a bivio ispirati a ca
 - TypeScript 5, Vite 6, React 19, Tailwind CSS 4, React Router 7
 - Zod per lo schema dei contenuti, Vitest per i test, i18next + react-i18next per la UI
 - Node LTS (22 o 24), pnpm. Nessun altro gestore pacchetti.
-- Contenuti in JSON nel repo. Stato utente in `localStorage`; da M10, con account facoltativo, anche su Supabase (Auth + Postgres con RLS, regione UE Francoforte `eu-central-1`) tramite `@supabase/supabase-js`. Nessun server proprio: il sito resta statico su Vercel.
+- Contenuti in JSON nel repo. Stato utente in `localStorage`; da M10, con account facoltativo, anche su Supabase (Auth + Postgres con RLS, regione UE Irlanda `eu-west-1`, progetto `anthropology-clash`) tramite `@supabase/supabase-js`. Nessun server proprio: il sito resta statico su Vercel.
 
 ## Comandi
 
@@ -33,6 +33,7 @@ src/schema       scenario.schema.ts
 src/pages        Home, Scenario, ConceptLibrary, Method
 src/state        AppState.tsx (context React: livello, tema, progressi, streak)
 scripts          validate-content.ts
+supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifica)
 ```
 
 ## Regole vincolanti
@@ -43,7 +44,7 @@ scripts          validate-content.ts
 - **Pratiche sempre contestualizzate**: dove, quando, secondo quale fonte. Mai "in Africa si usa..." senza popolazione, periodo e fonte.
 - **Nessuna stringa visibile nei componenti.** Tutto passa da `src/locales/`. Lingua attiva: `it`. `en` predisposto, non tradotto: non inventare traduzioni inglesi.
 - **Account facoltativo, dati minimi.** L'app resta completa senza account. Con account si conservano solo l'identificativo dell'accesso (email per link e Google, id Telegram senza telefono) e i progressi: nessun nome, foto o telefono richiesti ai provider oltre il necessario, nessuna profilazione. Accesso con link via email (SMTP esterno sul dominio, non l'email integrata di Supabase), Google e Telegram (OpenID Connect, provider `custom:telegram`); niente password. Cancellazione dell'account dal profilo, con i progressi; informativa in `/privacy`. Niente cookie di tracciamento; analytics solo Plausible o Umami.
-- **Segreti mai nel repo né nel bundle.** Nel client solo URL del progetto e chiave pubblica (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`); service role, Client Secret di Google e Telegram e credenziali SMTP stanno nel dashboard Supabase o nelle Edge Function. Ogni tabella ha RLS attiva: ogni utente legge e scrive solo le proprie righe.
+- **Segreti mai nel repo né nel bundle.** Nel client solo URL del progetto e chiave pubblicabile `sb_publishable_…` (`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`); service role, Client Secret di Google e Telegram e credenziali SMTP stanno nel dashboard Supabase o nelle Edge Function. Ogni tabella ha RLS attiva: ogni utente legge e scrive solo le proprie righe.
 - **`localStorage` sempre in try/catch.** L'app funziona anche senza persistenza e senza rete. Chiave: `anthropology-clash.v1`. Il campo `version` cambia solo per modifiche non retrocompatibili. Con account, `localStorage` resta la copia locale: al primo accesso i progressi locali si uniscono a quelli remoti (unione delle fermate, data più vecchia, serie più lunga), mai sovrascritti.
 
 ## Contenuti
