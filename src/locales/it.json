@@ -18,17 +18,39 @@
   },
   "home": {
     "kicker": "Dilemmi dal campo, domande di oggi",
-    "start": "Inizia dal primo scenario",
-    "levelHeading": "Scegli il livello",
+    "title": "{{lines}} linee, {{stops}} fermate.",
+    "lede": "Ogni linea è un concetto, ogni fermata un caso etnografico. Il viaggio parte da una situazione di oggi e arriva sul campo.",
+    "board": {
+      "label": "Prossima partenza · Linea {{line}} · fermata {{n}}",
+      "again": "Tutte le fermate visitate · si riparte dalla linea {{line}}",
+      "eta": "In partenza",
+      "go": "Parti"
+    },
+    "visited_one": "fermata visitata su {{total}}",
+    "visited_other": "fermate visitate su {{total}}",
+    "isolate": "Isola una linea sulla mappa",
+    "levelHeading": "Livello",
     "levels": {
       "neofita": "Linguaggio comune, due scelte, spiegazione breve. Per chi parte da zero.",
       "studente": "Contesto etnografico, tre o quattro scelte, riferimenti teorici e letture per approfondire."
     },
-    "progressHeading": "Il tuo percorso",
-    "progress": "Completati: {{done}} di {{total}}",
-    "continue": "Continua la sequenza",
-    "replay": "Rigioca dall'inizio",
-    "pickTheme": "Scegli un tema"
+    "map": {
+      "title": "La mappa",
+      "hint": "Ogni fermata apre uno scenario. Con il mouse, passandoci sopra leggi l'aggancio di oggi.",
+      "showAll": "Mostra tutte le linee",
+      "lineCount_one": "{{count}} fermata visitata su {{total}}",
+      "lineCount_other": "{{count}} fermate visitate su {{total}}",
+      "lineLabel": "Linea {{line}}",
+      "legendVisited": "visitata",
+      "legendHere": "sei qui",
+      "legendTodo": "da visitare"
+    },
+    "stop": {
+      "here": "sei qui",
+      "visited": "visitata · {{level}}",
+      "todo": "fermata {{n}}",
+      "peek": "Oggi"
+    }
   },
   "scenario": {
     "concept": "Concetto",
@@ -121,5 +143,27 @@
     "title": "Questa fermata non esiste",
     "body": "L'indirizzo non corrisponde a nessuna pagina. Dalla pagina iniziale ritrovi tutti gli scenari.",
     "home": "Torna alla pagina iniziale"
+  },
+  "lines": {
+    "reciprocita": {
+      "name": "Dono",
+      "letter": "D"
+    },
+    "parentela": {
+      "name": "Parentela",
+      "letter": "P"
+    },
+    "rituale": {
+      "name": "Rituale",
+      "letter": "R"
+    },
+    "relativismo": {
+      "name": "Relativismo",
+      "letter": "E"
+    },
+    "consumo": {
+      "name": "Consumo",
+      "letter": "C"
+    }
   }
 }

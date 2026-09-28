@@ -22,7 +22,7 @@ export default function ScenarioPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="mx-auto max-w-3xl space-y-8">
       <LevelToggle level={level} onChange={setLevel} />
       <ScenarioPlay key={`${scenario.id}-${level}`} scenario={scenario} level={level} />
     </div>

@@ -14,7 +14,7 @@ export default function AppBar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-bar text-bar-ink">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2 sm:px-6">
         <Link
           to="/"
           className="group inline-flex min-h-11 items-center gap-2.5 font-display text-xl font-extrabold tracking-tight"

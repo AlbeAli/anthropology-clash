@@ -22,7 +22,7 @@ export default function Method() {
   const bibliography = buildBibliography(DEFAULT_LANG);
 
   return (
-    <div className="space-y-10">
+    <div className="mx-auto max-w-2xl space-y-10">
       <div className="space-y-3">
         <p className="font-mono text-xs uppercase tracking-widest text-clay">{t("nav.method")}</p>
         <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">

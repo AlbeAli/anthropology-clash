@@ -6,6 +6,7 @@ import { applyTheme } from "./engine/theme";
 import { getScenario } from "./engine/content";
 import { DEFAULT_LANG } from "./i18n";
 import AppBar from "./components/AppBar";
+import RouteWipe from "./components/metro/RouteWipe";
 import Home from "./pages/Home";
 
 const ScenarioPage = lazy(() => import("./pages/Scenario"));
@@ -47,10 +48,11 @@ function Shell() {
         {t("nav.skipToContent")}
       </a>
       <AppBar />
+      <RouteWipe />
       <main
         id="main-content"
         tabIndex={-1}
-        className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 outline-none sm:py-12"
+        className="w-full flex-1 px-4 py-8 outline-none sm:px-6 sm:py-10"
       >
         <Suspense fallback={<div className="min-h-48" />}>
           <Routes>
@@ -63,7 +65,7 @@ function Shell() {
         </Suspense>
       </main>
       <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 font-mono text-xs text-ink-soft">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 font-mono text-xs text-ink-soft sm:px-6">
           <p>{t("app.footer")}</p>
           <Link to="/metodo" className="uppercase tracking-widest hover:text-accent">
             {t("nav.method")}
