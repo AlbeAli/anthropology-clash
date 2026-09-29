@@ -96,8 +96,7 @@
     "PD": "Pubblico dominio",
     "PD (fr)": "Pubblico dominio, testo francese",
     "OA": "Accesso aperto",
-    "NON-OA": "Sotto diritti d'autore",
-    "verificare": "Accesso da verificare"
+    "NON-OA": "Sotto diritti d'autore"
   },
   "streak": {
     "title": "Giorni consecutivi con almeno uno scenario completato",
@@ -169,6 +168,12 @@
   "notFound": {
     "title": "Questa fermata non esiste",
     "body": "L'indirizzo non corrisponde a nessuna pagina. Dalla pagina iniziale ritrovi tutti gli scenari.",
+    "home": "Torna alla pagina iniziale"
+  },
+  "error": {
+    "title": "Un guasto sulla linea",
+    "body": "Questa pagina non si è caricata. Succede, per esempio, se l'app è stata aggiornata mentre la usavi: ricaricando la pagina di solito si riparte. Le fermate visitate restano salvate nel browser.",
+    "reload": "Ricarica la pagina",
     "home": "Torna alla pagina iniziale"
   },
   "lines": {

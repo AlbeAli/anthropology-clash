@@ -12,7 +12,7 @@ const Choice = z.object({
 const Deepen = z.object({
   ref: z.string().min(1).max(200),
   why: z.string().min(1).max(300),
-  access: z.enum(["PD", "PD (fr)", "OA", "NON-OA", "verificare"]),
+  access: z.enum(["PD", "PD (fr)", "OA", "NON-OA"]),
   url: z.url().optional(),
 });
 

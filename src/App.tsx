@@ -7,6 +7,7 @@ import { applyTheme } from "./engine/theme";
 import { getScenario } from "./engine/content";
 import { DEFAULT_LANG } from "./i18n";
 import AppBar from "./components/AppBar";
+import ErrorBoundary from "./components/ErrorBoundary";
 import RouteWipe from "./components/metro/RouteWipe";
 import Home from "./pages/Home";
 
@@ -68,23 +69,25 @@ function Shell() {
         tabIndex={-1}
         className="w-full flex-1 px-4 py-8 outline-none sm:px-6 sm:py-10"
       >
-        <Suspense fallback={<div className="min-h-48" />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/s/:id" element={<ScenarioPage />} />
-            <Route path="/concetti" element={<ConceptLibrary />} />
-            <Route path="/metodo" element={<Method />} />
-            <Route path="/viaggio" element={<Journey />} />
-            {available && (
-              <>
-                <Route path="/accedi" element={<SignIn />} />
-                <Route path="/profilo" element={<Profile />} />
-                <Route path="/privacy" element={<Privacy />} />
-              </>
-            )}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <ErrorBoundary resetKey={pathname}>
+          <Suspense fallback={<div className="min-h-48" />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/s/:id" element={<ScenarioPage />} />
+              <Route path="/concetti" element={<ConceptLibrary />} />
+              <Route path="/metodo" element={<Method />} />
+              <Route path="/viaggio" element={<Journey />} />
+              {available && (
+                <>
+                  <Route path="/accedi" element={<SignIn />} />
+                  <Route path="/profilo" element={<Profile />} />
+                  <Route path="/privacy" element={<Privacy />} />
+                </>
+              )}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 font-mono text-xs text-ink-soft sm:px-6">

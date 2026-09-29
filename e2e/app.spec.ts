@@ -81,6 +81,23 @@ for (const path of ["/", `/s/${first.id}`, "/concetti", "/metodo", "/viaggio"]) 
   });
 }
 
+test("se una pagina non si carica compare il guasto sulla linea, e ricaricando si riparte", async ({
+  page,
+}) => {
+  await fresh(page);
+  await page.route(/\/assets\/Method-[^/]+\.js$/, (route) => route.abort());
+  await page.getByRole("navigation").getByRole("link", { name: "Metodo" }).click();
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Un guasto sulla linea" }),
+  ).toBeVisible();
+  await expect(page.getByRole("banner")).toBeVisible();
+  await page.unrouteAll();
+  await page.getByRole("button", { name: "Ricarica la pagina" }).click();
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Da dove vengono gli scenari" }),
+  ).toBeVisible();
+});
+
 test("le fermate sulla striscia della linea non si sovrappongono", async ({ page }) => {
   const byConcept = Map.groupBy(scenarios, (s) => s.concept);
   const longest = [...byConcept.values()].sort((a, b) => b.length - a.length)[0];
