@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.48 — 2026-09-29 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M11 stabilizzazione chiusa; decisioni per M12-M14, §16.13-16.14)
+Versione 0.49 — 2026-09-29 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M11 stabilizzazione chiusa; M12 aula e percorsi aperta, lotti 1-3 fatti, §16.13-16.15)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
