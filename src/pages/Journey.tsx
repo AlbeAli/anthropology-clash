@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { getConcepts, getScenarios } from "../engine/content";
+import { getCatalog, getConcepts } from "../engine/content";
 import { linesTouched, visitsInOrder } from "../engine/journey";
 import { useAppState } from "../state/AppState";
 import { useAccount } from "../state/Account";
@@ -12,7 +12,7 @@ export default function Journey() {
   const { t, i18n } = useTranslation();
   const { state, resetProgress } = useAppState();
   const { user, clearAccountProgress } = useAccount();
-  const scenarios = getScenarios(DEFAULT_LANG);
+  const scenarios = getCatalog(DEFAULT_LANG);
   const concepts = getConcepts(DEFAULT_LANG);
   const visits = visitsInOrder(state.completed, scenarios);
   const touched = linesTouched(visits);

@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import type { Concept, ConceptId, Scenario } from "../../schema/scenario.schema";
+import type { Concept, ConceptId } from "../../schema/scenario.schema";
+import type { CatalogEntry } from "../../engine/content";
 import type { Completion } from "../../engine/storage";
 import { lineColor, stopNumber } from "../../engine/lines";
 import { prefersReducedMotion } from "../../engine/motion";
@@ -9,7 +10,7 @@ import LineBullet from "./LineBullet";
 
 type Props = {
   concepts: Concept[];
-  scenarios: Scenario[];
+  scenarios: CatalogEntry[];
   completed: Record<string, Completion>;
   hereId: string | undefined;
   filter: ConceptId | null;
@@ -78,7 +79,7 @@ function Stops({
   fresh,
   withTrain,
 }: {
-  stops: Scenario[];
+  stops: CatalogEntry[];
   completed: Record<string, Completion>;
   hereId: string | undefined;
   fresh: string | null;
@@ -116,7 +117,7 @@ function Stops({
       )}
       {stops.map((s, j) => {
         const state = s.id === hereId ? "here" : s.id in completed ? "done" : "todo";
-        const hook = s.levels.neofita.hook ?? "";
+        const hook = s.hook ?? "";
         return (
           <li
             key={s.id}

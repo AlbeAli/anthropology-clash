@@ -4,7 +4,7 @@ import { readState, writeState, type StoredState, type Theme } from "../engine/s
 import { currentStreak, dayKey, markCompleted } from "../engine/progress";
 import { applyTheme, systemTheme } from "../engine/theme";
 import { track } from "../engine/analytics";
-import { getScenario } from "../engine/content";
+import { getEntry } from "../engine/content";
 import { mergeState, type RemoteProgress } from "../engine/sync";
 import { DEFAULT_LANG } from "../i18n";
 
@@ -35,7 +35,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
   const mergeRemote = useCallback((remote: RemoteProgress) => {
     setState((prev) => {
-      const next = mergeState(prev, remote, (id) => getScenario(DEFAULT_LANG, id)?.concept);
+      const next = mergeState(prev, remote, (id) => getEntry(DEFAULT_LANG, id)?.concept);
       writeState(next);
       return next;
     });

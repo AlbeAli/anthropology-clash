@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { getScenarios } from "./content";
+import { getCatalog } from "./content";
 import { linesTouched, visitsInOrder } from "./journey";
 
-const scenarios = getScenarios("it");
+const scenarios = getCatalog("it");
 
 describe("il tuo viaggio", () => {
   it("ordina le fermate per data di visita e poi per id", () => {

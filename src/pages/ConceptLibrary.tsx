@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { getConcepts, getScenarios } from "../engine/content";
+import { getCatalog, getConcepts } from "../engine/content";
 import { lineColor, stopNumber } from "../engine/lines";
 import { DEFAULT_LANG } from "../i18n";
 import { useAppState } from "../state/AppState";
@@ -10,7 +10,7 @@ export default function ConceptLibrary() {
   const { t } = useTranslation();
   const { state } = useAppState();
   const concepts = getConcepts(DEFAULT_LANG);
-  const scenarios = getScenarios(DEFAULT_LANG);
+  const scenarios = getCatalog(DEFAULT_LANG);
 
   return (
     <div className="mx-auto max-w-3xl">

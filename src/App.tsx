@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { AppStateProvider, useAppState } from "./state/AppState";
 import { AccountProvider, useAccount } from "./state/Account";
 import { applyTheme } from "./engine/theme";
-import { getScenario } from "./engine/content";
+import { getEntry } from "./engine/content";
 import { DEFAULT_LANG } from "./i18n";
 import AppBar from "./components/AppBar";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -37,7 +37,7 @@ function Shell() {
 
   useEffect(() => {
     const pageTitle = scenarioMatch
-      ? getScenario(DEFAULT_LANG, scenarioMatch.params.id ?? "")?.title
+      ? getEntry(DEFAULT_LANG, scenarioMatch.params.id ?? "")?.title
       : pathname === "/concetti"
         ? t("concepts.title")
         : pathname === "/viaggio"

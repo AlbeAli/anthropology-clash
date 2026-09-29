@@ -1,5 +1,4 @@
 import type { Lang, Scenario } from "../schema/scenario.schema";
-import { getScenarios } from "./content";
 
 type Deepen = NonNullable<Scenario["levels"]["studente"]["deepen"]>[number];
 
@@ -70,7 +69,7 @@ export function refKey(ref: string): string {
   return `${author}|${year}|${title}`;
 }
 
-export function buildBibliography(lang: Lang): BibliographyEntry[] {
+export function buildBibliography(scenarios: Scenario[], lang: Lang): BibliographyEntry[] {
   const byKey = new Map<string, BibliographyEntry>();
   const add = (cited: string, scenarioId: string, extra: Partial<BibliographyEntry> = {}) => {
     const ref = workOf(cited);
@@ -82,7 +81,7 @@ export function buildBibliography(lang: Lang): BibliographyEntry[] {
     if (extra.url && !entry.url) entry.url = extra.url;
     byKey.set(key, entry);
   };
-  for (const s of getScenarios(lang)) {
+  for (const s of scenarios) {
     for (const ref of splitSource(s.levels.studente.source)) add(ref, s.id);
     for (const d of s.levels.studente.deepen ?? []) {
       add(d.ref, s.id, { access: d.access, url: d.url });
