@@ -20,6 +20,17 @@ const SignIn = lazy(() => import("./pages/SignIn"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 
+const PAGE_TITLES: Record<string, string> = {
+  "/concetti": "concepts.title",
+  "/viaggio": "journey.title",
+  "/metodo": "method.title",
+};
+const ACCOUNT_TITLES: Record<string, string> = {
+  "/accedi": "account.title",
+  "/profilo": "account.titleSignedIn",
+  "/privacy": "privacyPage.title",
+};
+
 function Shell() {
   const { t } = useTranslation();
   const { theme } = useAppState();
@@ -36,23 +47,12 @@ function Shell() {
   }, [pathname]);
 
   useEffect(() => {
+    const key = PAGE_TITLES[pathname] ?? (available ? ACCOUNT_TITLES[pathname] : undefined);
     const pageTitle = scenarioMatch
       ? getEntry(DEFAULT_LANG, scenarioMatch.params.id ?? "")?.title
-      : pathname === "/concetti"
-        ? t("concepts.title")
-        : pathname === "/viaggio"
-          ? t("journey.title")
-          : pathname === "/metodo"
-            ? t("method.title")
-            : pathname === "/accedi"
-              ? t("account.title")
-              : pathname === "/profilo"
-                ? t("account.titleSignedIn")
-                : pathname === "/privacy"
-                  ? t("privacyPage.title")
-                  : undefined;
+      : key && t(key);
     document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
-  }, [pathname, scenarioMatch, t]);
+  }, [pathname, scenarioMatch, available, t]);
 
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">

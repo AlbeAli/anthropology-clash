@@ -27,6 +27,7 @@ test("senza configurazione di Supabase l'account e l'informativa non compaiono",
     await expect(
       page.getByRole("heading", { level: 1, name: "Questa fermata non esiste" }),
     ).toBeVisible();
+    await expect(page).toHaveTitle("Anthropology Clash");
   }
   await page.goto(`/s/${scenarios[0].id}`);
   expect(calls).toEqual([]);
