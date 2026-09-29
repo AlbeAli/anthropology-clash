@@ -9,13 +9,57 @@ import concepts from "../src/content/it/concepts.json";
 
 const REAL_CONTENT = fileURLToPath(new URL("../src/content", import.meta.url));
 
-function fixture(scenario: object, fileName = "scenario_001.json") {
+function fixture(
+  scenario: object,
+  fileName = "scenario_001.json",
+  itineraries: Record<string, object> = {},
+) {
   const root = mkdtempSync(join(tmpdir(), "ac-content-"));
   mkdirSync(join(root, "it", "scenarios"), { recursive: true });
   writeFileSync(join(root, "it", "concepts.json"), JSON.stringify(concepts));
   writeFileSync(join(root, "it", "scenarios", fileName), JSON.stringify(scenario));
+  if (Object.keys(itineraries).length > 0) {
+    mkdirSync(join(root, "it", "itineraries"));
+    for (const [name, it] of Object.entries(itineraries)) {
+      writeFileSync(join(root, "it", "itineraries", name), JSON.stringify(it));
+    }
+  }
   return root;
 }
+
+const scenario002 = { ...structuredClone(scenario001), id: "scenario_002" };
+
+function twoScenarios(itineraries: Record<string, object>) {
+  const root = fixture(scenario001, "scenario_001.json", itineraries);
+  writeFileSync(join(root, "it", "scenarios", "scenario_002.json"), JSON.stringify(scenario002));
+  return root;
+}
+
+const itinerary = {
+  id: "dono-e-debito",
+  lang: "it",
+  title: "Dono e debito",
+  description: "Due fermate sul dono.",
+  stops: ["scenario_001", "scenario_002"],
+};
+
+describe("validate-content: itinerari", () => {
+  it("accetta un itinerario con fermate esistenti", () => {
+    const { issues, itineraries } = validateAll(twoScenarios({ "dono-e-debito.json": itinerary }));
+    expect(issues).toEqual([]);
+    expect(itineraries).toBe(1);
+  });
+
+  it("segnala fermate inesistenti, ripetute e nome file diverso dall'id", () => {
+    const broken = { ...itinerary, stops: ["scenario_001", "scenario_001", "scenario_099"] };
+    const messages = validateAll(twoScenarios({ "altro.json": broken })).issues.map(
+      (i) => i.message,
+    );
+    expect(messages).toContainEqual(expect.stringContaining("scenario_099"));
+    expect(messages).toContainEqual(expect.stringContaining("ripetuta"));
+    expect(messages).toContainEqual(expect.stringContaining("nome file"));
+  });
+});
 
 describe("validate-content", () => {
   it("passa sui contenuti del repo", () => {

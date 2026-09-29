@@ -58,10 +58,13 @@ Contenuto statico, JSON versionato in `src/content/<lang>/`; il backend di M10 (
 Schema di riferimento: `src/schema/scenario.schema.ts` (Zod). Struttura:
 
 ```
-Scenario { id, lang, title, concept, concept_label, levels: { neofita, studente } }
+Scenario { id, lang, title, concept, concept_label, levels: { neofita, studente }, discuss?[2-3] }
 LevelContent { hook?, setup, choices[2-4]{id a-d, text}, feedback{<choiceId>: string}, source, deepen?[1-5]{ref, why, access, url?} }
 Concept { id, lang, label, definition }
+Itinerary { id (kebab-case), lang, title, description, stops[2-12] (id di scenario) }
 ```
+
+Itinerari in `src/content/<lang>/itineraries/<id>.json` (da M12).
 
 Vincoli oltre lo schema, verificati da `scripts/validate-content.ts`:
 
@@ -71,7 +74,9 @@ Vincoli oltre lo schema, verificati da `scripts/validate-content.ts`:
 - `deepen` obbligatorio nel livello studente (opzionale nello schema per non bloccare il neofita);
 - ogni chiave di `feedback` corrisponde a una scelta e viceversa; id scelta non duplicati;
 - neofita: esattamente 2 scelte; studente: 3-4 scelte;
-- `hook` presente in entrambi i livelli o in nessuno.
+- `hook` presente in entrambi i livelli o in nessuno;
+- ogni domanda di `discuss` finisce con `?` (nello schema);
+- itinerari: nome file uguale all'`id`, `lang` coerente, id univoci, fermate esistenti nella stessa lingua e non ripetute.
 
 Aggiungere un concetto richiede modifica a `ConceptId` nello schema e voce in `concepts.json`.
 
@@ -671,3 +676,9 @@ Decisioni dell'autore, 2026-09-29, su proposta dell'assistente:
 - Conteggio anonimo delle uscite scelte: resta escluso, perché farebbe contattare Supabase anche senza account.
 
 **Fase di rilascio** (dopo il piano, data da decidere). A cura dell'autore, in quest'ordine: registrare `anthropologyclash.app`; collegarlo a Vercel; attivare `privacy@anthropologyclash.app`; account Resend con dominio verificato (SPF, DKIM); SMTP di Resend in Supabase; Site URL e indirizzi di ritorno di Supabase sul dominio; Google Cloud (Branding con dominio e `/privacy`, client OAuth web con ritorno su `/auth/v1/callback` del progetto, pubblicazione) e credenziali Google in Supabase; bot Telegram con Client ID e Client Secret; revisione completa di `/privacy`. A cura dell'assistente: lotto 4 (Telegram, `custom:telegram`, solo `openid`); informativa aggiornata con Resend e Telegram e nuova data; dominio in README, manuale, `index.html` e riepilogo; variabili Supabase di nuovo in `.env.production`; prova dal vivo dei tre accessi; end-to-end; verifica sul sito pubblico; chiusura di M10. Decisione da prendere prima del lotto 4: account Telegram separato da quello con email (consigliato, nessun codice in più) oppure collegamento con `linkIdentity` (beta, un lotto in più).
+
+### 16.15 M12 — aula e percorsi (aperta 2026-09-29)
+
+Branch `m12`. Lotti proposti e approvati dall'autore: 1. regole e schema; 2. itinerari (`/percorsi`, `/percorso/:id`, itinerario personalizzato come link `/percorso?f=…`, senza salvare nulla); 3. modalità aula `/aula/:id`, caricata a richiesta; 4. scheda stampabile (stile di stampa, niente PDF generato); 5. domande `discuss` per i 21 scenari a gruppi di 5-6, validate dall'autore, poi `discuss` obbligatorio in `pnpm validate`, e 2-3 itinerari curati; 6. end-to-end, misure, merge e verifica sul sito pubblico. Formato scelto: `discuss` per scenario, non per livello, perché le domande non si riferiscono a singole scelte; itinerario personalizzato solo come link.
+
+Lotto 1, 2026-09-29: regole e schema. Nello schema `ScenarioId` condiviso, campo facoltativo `discuss` (2-3 domande di massimo 300 caratteri, ciascuna chiusa da `?`) e tipo `Itinerary` (`id` in kebab-case, `lang`, `title`, `description` fino a 400 caratteri, `stops` con 2-12 id di scenario). `scripts/validate-content.ts` legge `src/content/<lang>/itineraries/` se esiste e verifica nome file, lingua, id univoci, fermate esistenti e non ripetute; il messaggio finale conta scenari e itinerari. Regole in `CLAUDE.md` (contenuti, struttura, riga M12) e §5. Lo schema entra nel client solo come tipi, quindi il bundle non cambia (modulo principale 21,2 kB compressi). Test 51 (sei nuovi), lint, validate e typecheck verdi.

@@ -4,6 +4,14 @@ export const Lang = z.enum(["it", "en"]);
 export const Level = z.enum(["neofita", "studente"]);
 export const ConceptId = z.enum(["reciprocita", "parentela", "rituale", "relativismo", "consumo"]);
 
+export const ScenarioId = z.string().regex(/^scenario_\d{3}$/);
+
+const DiscussQuestion = z
+  .string()
+  .min(1)
+  .max(300)
+  .regex(/\?$/, "una domanda per la discussione finisce con il punto interrogativo");
+
 const Choice = z.object({
   id: z.string().regex(/^[a-d]$/),
   text: z.string().min(1).max(200),
@@ -35,7 +43,7 @@ const LevelContent = z
   });
 
 export const Scenario = z.object({
-  id: z.string().regex(/^scenario_\d{3}$/),
+  id: ScenarioId,
   lang: Lang,
   title: z.string().min(1).max(80),
   concept: ConceptId,
@@ -44,6 +52,15 @@ export const Scenario = z.object({
     neofita: LevelContent,
     studente: LevelContent,
   }),
+  discuss: z.array(DiscussQuestion).min(2).max(3).optional(),
+});
+
+export const Itinerary = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+  lang: Lang,
+  title: z.string().min(1).max(80),
+  description: z.string().min(1).max(400),
+  stops: z.array(ScenarioId).min(2).max(12),
 });
 
 export const Concept = z.object({
@@ -58,3 +75,4 @@ export type Level = z.infer<typeof Level>;
 export type ConceptId = z.infer<typeof ConceptId>;
 export type Scenario = z.infer<typeof Scenario>;
 export type Concept = z.infer<typeof Concept>;
+export type Itinerary = z.infer<typeof Itinerary>;
