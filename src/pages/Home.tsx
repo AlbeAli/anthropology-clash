@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { ConceptId } from "../schema/scenario.schema";
-import { getConcepts, getScenarios } from "../engine/content";
+import { getCatalog, getConcepts, prefetchScenario } from "../engine/content";
 import { nextInSequence } from "../engine/progress";
 import { lineColor, stopNumber } from "../engine/lines";
 import { DEFAULT_LANG } from "../i18n";
@@ -16,7 +16,7 @@ import CountUp from "../components/metro/CountUp";
 export default function Home() {
   const { t } = useTranslation();
   const { state, level, setLevel, recent, clearRecent } = useAppState();
-  const scenarios = getScenarios(DEFAULT_LANG);
+  const scenarios = getCatalog(DEFAULT_LANG);
   const concepts = getConcepts(DEFAULT_LANG);
   const ids = scenarios.map((s) => s.id);
   const visited = ids.filter((id) => id in state.completed).length;
@@ -28,6 +28,12 @@ export default function Home() {
   useEffect(() => {
     if (recent) clearRecent();
   }, [recent, clearRecent]);
+
+  useEffect(() => {
+    if (!next) return;
+    import("./Scenario").catch(() => {});
+    prefetchScenario(DEFAULT_LANG, next.id);
+  }, [next]);
 
   const toggle = (id: ConceptId) => setFilter((f) => (f === id ? null : id));
 

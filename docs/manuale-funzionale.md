@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.43 — 2026-09-28 — Stato: pubblicato (M1-M9 chiuse, §16.12; M10 account in analisi)
+Versione 0.47 — 2026-09-29 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M11 stabilizzazione chiusa, §16.13-16.14)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -53,7 +53,7 @@ Progressione: streak giornaliera (1 scenario al giorno consigliato, accesso libe
 
 ## 5. Modello dati
 
-Contenuto statico, JSON versionato in `src/content/<lang>/`, nessun backend nell'MVP. Un file per scenario, `scenario_NNN.json`, nome file uguale all'`id`. Tassonomia concetti in `concepts.json` (`reciprocita`, `parentela`, `rituale`, `relativismo`, `consumo`).
+Contenuto statico, JSON versionato in `src/content/<lang>/`; il backend di M10 (Supabase) conserva solo account e progressi, mai i contenuti. Un file per scenario, `scenario_NNN.json`, nome file uguale all'`id`. Tassonomia concetti in `concepts.json` (`reciprocita`, `parentela`, `rituale`, `relativismo`, `consumo`).
 
 Schema di riferimento: `src/schema/scenario.schema.ts` (Zod). Struttura:
 
@@ -90,10 +90,12 @@ Aggiungere un concetto richiede modifica a `ConceptId` nello schema e voce in `c
 | Accessibilità base           | Tastiera, focus visibile, contrasto AA                      | Media    | M2-M4                          |
 | Schema predisposto i18n      | `lang` nel JSON, `it`/`en` nei locales; UI solo in italiano | Media    | M1                             |
 | Condivisione risultato       | Riepilogo testuale copiabile a fine sessione                | Media    | M9, fatto nel lotto 4 (§16.12) |
+| Account facoltativo          | Link via email, Google, Telegram; progressi sincronizzati   | Alta     | M10 (§16.13)                   |
+| Profilo e privacy            | Profilo con esportazione e cancellazione; pagina `/privacy` | Alta     | M10 (§16.13)                   |
 
 ## 7. Roadmap post-MVP
 
-Backend con account e sync multi-dispositivo (Supabase, magic link, RLS); livelli aggiuntivi e percorsi per corso; UGC curato con stato editoriale `draft → in_review → published | rejected`; sfida giornaliera condivisibile; app nativa se la web app è validata.
+Account e sincronizzazione tra dispositivi: anticipati a M10 per decisione del 2026-09-28 (§16.13). Livelli aggiuntivi e percorsi per corso; UGC curato con stato editoriale `draft → in_review → published | rejected`; sfida giornaliera condivisibile; app nativa se la web app è validata.
 
 Rinviati a dopo M5 per decisione del 2026-09-21 (proposte esterne valutate, §16.7): interfaccia in inglese con selettore lingua attivo, da rilasciare solo insieme ai 15 scenari in inglese verificati sui testi originali (le citazioni da fonti inglesi vanno riprese verbatim, non ritradotte); pulsante di condivisione per scenario (§6 prevede il riepilogo di fine sessione); astrazione dello storage (`StorageAdapter`, fusione di stati) che ha senso solo con un backend reale.
 
@@ -110,7 +112,7 @@ Rinviati a dopo M5 per decisione del 2026-09-21 (proposte esterne valutate, §16
 | Routing               | React Router 7 (`react-router`)                 | Modalità dichiarativa (`BrowserRouter` + `Routes`)                                      |
 | Validazione contenuti | Zod 4.6                                         | La sintassi di §15.1 (`z.record(k, v)`, `code: "custom"`) è quella nativa di Zod 4      |
 | i18n                  | i18next 26 + react-i18next 17                   | `it` attivo e fallback; `en.json` vuoto, non tradotto                                   |
-| Test                  | Vitest 3                                        | Solo engine, schema e script di validazione                                             |
+| Test                  | Vitest 4                                        | Solo engine, schema e script di validazione                                             |
 | Qualità               | ESLint 9 flat + typescript-eslint 8, Prettier 3 | `id-denylist` per `correct`/`wrong`/`score`                                             |
 | Runtime               | Node 24 (`.nvmrc`), pnpm 12                     | pnpm 12 richiede `pnpm-workspace.yaml` con `allowBuilds: esbuild`                       |
 
@@ -133,18 +135,18 @@ Alternative scartate: Astro (app interattiva con stato), Next.js (SSR inutile, v
 vercel.json     rewrite SPA verso index.html
 ```
 
-Caricamento contenuti: `import.meta.glob` su `src/content/*/scenarios/*.json`, senza parsing nel browser dal lotto 1 di M9: la validazione Zod gira in `pnpm validate`, che `prebuild` esegue prima di ogni build, nei test e in CI, così Zod resta fuori dal bundle (circa 25 KB compressi in meno). Un JSON non valido fa fallire la build; in dev si vede con `pnpm validate`.
+Caricamento contenuti: `import.meta.glob` su `src/content/*/scenarios/*.json`, senza parsing nel browser dal lotto 1 di M9: la validazione Zod gira in `pnpm validate`, che `prebuild` esegue prima di ogni build, nei test e in CI, così Zod resta fuori dal bundle (circa 25 KB compressi in meno). Un JSON non valido fa fallire la build; in dev si vede con `pnpm validate`. Dal lotto 3b di M11 il bundle iniziale contiene solo il catalogo (`virtual:catalog`, generato da un plugin in `vite.config.ts` con id, lingua, titolo, concetto e aggancio del livello neofita); il testo completo di ogni scenario è un file a parte, caricato da `loadScenario` nella pagina dello scenario e da `loadScenarios` per la bibliografia di Metodo.
 
 ### 8.3 Dove risiedono i dati
 
-| Dato               | MVP                                            | Fase 2                                           |
-| ------------------ | ---------------------------------------------- | ------------------------------------------------ |
-| Scenari e concetti | JSON nel repo, asset statici                   | Invariato                                        |
-| Progressi utente   | `localStorage`, chiave `anthropology-clash.v1` | Postgres (`progress`), `localStorage` come cache |
-| Dati personali     | **Nessuno**                                    | Supabase Auth, magic link                        |
-| UGC                | Non previsto                                   | Tabella `submissions`                            |
+| Dato               | Senza account                                  | Con account (M10)                                                                    |
+| ------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Scenari e concetti | JSON nel repo, asset statici                   | Invariato                                                                            |
+| Progressi utente   | `localStorage`, chiave `anthropology-clash.v1` | Postgres su Supabase (regione UE, RLS), `localStorage` come copia locale             |
+| Dati personali     | **Nessuno**                                    | Solo identificativo dell'accesso: email (link, Google) o id Telegram, senza telefono |
+| UGC                | Non previsto                                   | Non previsto (fase successiva, tabella `submissions`)                                |
 
-Limite accettato e dichiarato nella UI: i progressi non si sincronizzano tra dispositivi e si perdono cancellando i dati del browser.
+Senza account resta il limite dichiarato nella UI: i progressi non si sincronizzano tra dispositivi e si perdono cancellando i dati del browser. L'account è facoltativo e non serve per giocare.
 
 ### 8.4 Hosting e rilascio
 
@@ -152,9 +154,12 @@ Limite accettato e dichiarato nella UI: i progressi non si sincronizzano tra dis
 - App pubblica: https://anthropology-clash.vercel.app (Vercel, deploy automatico a ogni push su `main`, anteprima per ogni branch).
 - CI GitHub Actions su push e pull request: `pnpm lint → validate → test → build` (Node da `.nvmrc`, `pnpm install --frozen-lockfile`), più il job `e2e` con Playwright e Chromium (M9).
 - Deploy: Vercel, build statica, anteprima per ogni branch. `vercel.json` già presente per il rewrite SPA. Collegamento del progetto Vercel: M4.
-- Dominio: da decidere.
+- Dominio: `anthropologyclash.app`, deciso il 2026-09-28 (§16.13); libero al registro RDAP alla stessa data, da registrare a cura dell'autore. Serve anche come mittente delle email di accesso.
+- Configurazione di Supabase (M10): `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`, pubbliche per costruzione, in `.env.production` nel repo come il Website ID di Umami (decisione del lotto 6); nessuna variabile da impostare su Vercel e nessun segreto su Vercel. Gli end-to-end usano un indirizzo di prova impostato da Playwright.
 
 ### 8.5 Analytics e privacy
+
+Account (M10): facoltativo; dati limitati all'identificativo dell'accesso e ai progressi; nessuna password; ai provider si chiede il minimo (per Telegram solo `openid`, senza `profile` né `phone`); cancellazione dal profilo con tutti i progressi; informativa in `/privacy` con titolare, finalità, base giuridica, conservazione, diritti e fornitori (Supabase, servizio SMTP, Google, Telegram); età minima 14 anni per il consenso ai servizi online in Italia. La sessione di Supabase sta nel browser come dato tecnico dell'accesso, non come tracciamento.
 
 Plausible o Umami: metriche aggregate, senza cookie, nessun banner. Google Analytics escluso. Eventi minimi: apertura app, livello scelto, scenario iniziato, scenario completato, ritorno.
 
@@ -189,7 +194,8 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 | Nome prodotto                         | Provvisorio: Anthropology Clash (candidati in §12)                                                                                                                     |
 | Numero scenari MVP                    | Deciso: 15 (§13)                                                                                                                                                       |
 | Fonti primarie non ad accesso aperto  | Risolto: lette direttamente con la ricerca interna di Internet Archive (§16.7); Geertz 1972 e Douglas 1972 sono OA su JSTOR, Kroeber 1909 e Leathem 2023 sono aperti   |
-| Dominio, monetizzazione               | Da decidere, non bloccanti; ripresi alla chiusura di M9 (§16.12)                                                                                                       |
+| Dominio                               | Deciso il 2026-09-28: `anthropologyclash.app` (§8.4, §16.13)                                                                                                           |
+| Monetizzazione                        | Da decidere; il piano Hobby di Vercel esclude pubblicità e pagamenti, ammette le donazioni (§16.13)                                                                    |
 | Licenza                               | Decisa il 2026-09-25: codice MIT (`LICENSE`), testi di `src/content` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`); le citazioni dalle fonti restano dei titolari dei diritti |
 | Pre-commit hook (lint + validate)     | Da valutare: aggiunge una dipendenza; la CI copre già il caso. In sospeso fino alla chiusura di M9 (§16.12)                                                            |
 | Identità visiva (font, palette, tono) | Applicata (§16.2); kicker in Home deciso il 2026-09-25: «Dilemmi dal campo, domande di oggi», modificabile in `home.kicker`                                            |
@@ -581,4 +587,77 @@ Opzioni confrontate e proposte all'autore il 2026-09-28, con prezzi letti sulle 
 
 Decisione dell'autore: **Supabase**, regione UE, con tre metodi di accesso: link via email, Google, Telegram. L'app continua a funzionare senza account; al primo accesso i progressi di `localStorage` si uniscono a quelli remoti.
 
-Da decidere con l'autore prima del codice: modalità di Telegram (accesso con Telegram tramite OpenID Connect, gratuito e senza numero di telefono, oppure codice inviato su Telegram tramite Telegram Gateway, 0,01 $ a codice e numero di telefono obbligatorio); dominio, necessario per inviare le email di accesso con un servizio SMTP esterno, perché quello integrato di Supabase invia 2 messaggi l'ora e solo ai membri del team.
+Telegram: due modalità proposte, l'accesso con Telegram tramite OpenID Connect (gratuito, senza numero di telefono, configurabile in Supabase come provider personalizzato `custom:telegram`; il piano gratuito ne ammette tre) e il codice inviato su Telegram tramite Telegram Gateway (0,01 $ a codice, numero di telefono obbligatorio, funzione di invio da scrivere). Decisione dell'autore, 2026-09-28: **accesso con Telegram tramite OpenID Connect**, con il solo scope `openid`. L'account Telegram nasce senza email (`email_optional`); il collegamento di più metodi allo stesso account va verificato sulla documentazione di Supabase prima del lotto del profilo.
+
+Dominio, 2026-09-28: **`anthropologyclash.app`**, libero al registro RDAP alla stessa data. Serve come mittente delle email di accesso: l'email integrata di Supabase invia 2 messaggi l'ora e solo ai membri del team, quindi serve un SMTP esterno (Resend nel confronto: 3.000 email al mese e 100 al giorno gratis). La registrazione del dominio spetta all'autore.
+
+Lotti, ciascuno con commit, test e verifica:
+
+1. Regole: `CLAUDE.md`, `PRODUCT.md` e questo manuale (§5, §6, §7, §8.3, §8.4, §8.5, §11).
+2. Client Supabase, migrazione della tabella dei progressi con RLS, unione con `localStorage`, con test unitari.
+3. Accesso con link via email e Google.
+4. Accesso con Telegram.
+5. Profilo (`/profilo`: metodo di accesso, sincronizzazione, esportazione, uscita, cancellazione tramite Edge Function) e informativa `/privacy`.
+6. End-to-end con Supabase simulato; variabili su Vercel; verifica sul sito pubblico.
+
+Da fare a cura dell'autore, fuori dal codice: registrare il dominio; creare il progetto Supabase (fatto il 2026-09-28: `anthropology-clash`, `eu-west-1`); progetto Google Cloud con schermata di consenso; bot Telegram con Client ID e Client Secret da BotFather; account SMTP con il dominio verificato. I segreti si inseriscono solo nel dashboard di Supabase.
+
+Lotto 1, 2026-09-28: regole aggiornate. In `CLAUDE.md` la regola «nessun dato personale» diventa «account facoltativo, dati minimi», con metodi di accesso, cancellazione e informativa; nuova regola sui segreti (nel client solo URL e chiave pubblica, RLS su ogni tabella); `localStorage` resta la copia locale e al primo accesso si unisce ai progressi remoti senza sovrascriverli; il divieto di backend diventa «nessun backend oltre Supabase»; riga M10 nella tabella delle milestone; `pnpm e2e` tra i comandi. Stessi punti in `PRODUCT.md` e qui.
+
+Progetto Supabase, 2026-09-28: creato dall'autore come `anthropology-clash` nella regione **`eu-west-1` (Irlanda)**, non a Francoforte come previsto; la regione non si cambia dopo la creazione e resta nell'Unione europea, quindi l'autore ha deciso di tenerla. Nel client si usa la chiave pubblicabile nuova (`sb_publishable_…`, variabile `VITE_SUPABASE_PUBLISHABLE_KEY`), che Supabase indica per le applicazioni nuove al posto della chiave anonima.
+
+Lotto 2, 2026-09-28: schema remoto e unione dei progressi, senza ancora interfaccia di accesso. Migrazione `supabase/migrations/20260928141952_progress.sql`, applicata al progetto: tabelle `progress` (utente, scenario, livello, scelta, giorno; chiave utente + scenario) e `streaks` (serie e ultimo giorno), entrambe con cancellazione a cascata quando si elimina l'utente, vincoli sui valori (`scenario_NNN`, livello, scelta a-d), RLS attiva, quattro regole per tabella limitate al ruolo `authenticated` e al proprio `user_id`, nessun permesso al ruolo `anon`. Verificato sul database: RLS attiva, nessun privilegio per `anon`, nessun avviso di sicurezza o di prestazioni dagli advisor di Supabase. `src/engine/sync.ts` unisce stato locale e remoto: fermate unite con la data più vecchia (a parità vince quella locale), serie più lunga valutata all'ultimo giorno noto, concetti visti ricavati dalle fermate; livello, tema e lingua restano locali. `src/engine/remote.ts` crea il client solo se le due variabili esistono e lo carica con un import dinamico, così chi non usa l'account non scarica `@supabase/supabase-js` (dipendenza aggiunta, 2.117.2). Cinque test nuovi, 46 in tutto.
+
+Prova del link via email, 2026-09-28: richiesta dall'autore e inviata con l'email integrata di Supabase a `albertoalioto1@gmail.com`, membro del team; il log di Supabase registra l'invio. Indirizzi di ritorno inseriti dall'autore in Supabase (sito pubblico, `localhost:5173`, anteprime Vercel).
+
+Decisione dell'autore, 2026-09-28: la configurazione su Google Cloud (Branding, domini autorizzati, permessi, client OAuth, pubblicazione) si completa vicino al rilascio, insieme a dominio, Resend e bot Telegram: il consenso di Google richiede dominio e pagina `/privacy`, che ancora non esistono. Il progetto Google è creato sull'account `alberto.alioto@gmail.com`. Nel codice il pulsante Google resta nascosto finché il provider non è attivo su Supabase.
+
+Lotto 3, 2026-09-28: pagina `/accedi` con link via email e sincronizzazione. `src/state/Account.tsx` (contesto React dentro `AppStateProvider`) carica `@supabase/supabase-js` solo se nel browser esiste una sessione o se si torna da un link di accesso; senza account nessuna pagina contatta Supabase, e un test end-to-end lo verifica. Anche la lettura dei provider attivi (endpoint pubblico `/auth/v1/settings`) avviene solo dentro `/accedi`: il pulsante «Continua con Google» compare quando Google è attivo su Supabase. Il link porta a `/accedi` con flusso PKCE, quindi va aperto nello stesso browser in cui è stato chiesto; se non è valido o scade, la pagina lo dice dopo 8 secondi. All'accesso i progressi remoti si uniscono a quelli locali con le regole del lotto 2, poi ogni fermata viene inviata dopo 400 ms; lo stato della sincronizzazione (in corso, sincronizzato, non riuscito) è calcolato e mostrato nella pagina. «Esci» chiude la sessione solo in questo browser, e le fermate restano. «Azzera i progressi» con l'account cancella anche le righe remote; se Supabase non risponde non azzera nulla e lo dice. Nella barra un'icona porta ad `/accedi` (piena con l'account attivo), visibile solo se le due variabili sono configurate. Il piè di pagina ora dice «Account facoltativo, nessun cookie di tracciamento». Supabase finisce in un file a parte (circa 59 kB compressi) che il bundle iniziale non carica. Test 46, end-to-end 28, lint e validate verdi.
+
+Prova dell'autore, 2026-09-28, su `localhost:5173` con l'email integrata di Supabase: link ricevuto e aperto, accesso riuscito in due browser, fermata `scenario_006` visitata con l'account e ritrovata nel database (`progress`, livello neofita, 2026-09-28) insieme alla serie (1 giorno). Nei log di Supabase tutte le richieste hanno avuto risposta 200 o 201. I progressi locali sono separati per indirizzo: quelli del sito pubblico non si vedono da `localhost`.
+
+Decisioni dell'autore, 2026-09-28, per il lotto 5: contatto per la privacy provvisorio `privacy@anthropologyclash.app`, da attivare con il dominio (fino ad allora la casella non esiste, e il rilascio è bloccato su questo punto); cancellazione per inattività lasciata all'assistente tra 12 e 24 mesi, scelti **24 mesi** perché chi studia torna spesso su un tema all'anno accademico successivo e 12 mesi cancellerebbero account tra un corso e l'altro, restando comunque un limite definito.
+
+Verifiche sulla documentazione di Supabase prima del lotto: l'eliminazione di un utente richiede la chiave segreta (`auth.admin.deleteUser`), disponibile nelle Edge Function come variabile predefinita; le identità con la stessa email si collegano da sole allo stesso utente, quindi Google con la stessa email ritrova l'account del link via email, mentre Telegram, senza email, crea un utente separato salvo collegamento manuale (`linkIdentity`, in beta, da attivare nel progetto), da valutare nel lotto 4; `pg_cron` è disponibile e si attiva con `create extension pg_cron with schema pg_catalog`.
+
+Lotto 5, 2026-09-28: profilo, eliminazione dell'account, conservazione e informativa. Migrazione `20260928152838_retention.sql`, applicata: `pg_cron` attivo; colonna `streaks.updated_at` aggiornata da un trigger a ogni sincronizzazione; funzione `private.delete_inactive_accounts()` in uno schema non esposto, eseguibile solo dall'amministratore, che cancella gli utenti senza accessi né sincronizzazioni da 24 mesi (a cascata anche fermate e serie); job mensile `delete-inactive-accounts` il primo del mese alle 3. Verificato sul database: job attivo, nessun account oggi cancellabile, trigger funzionante per il ruolo `authenticated`, funzione non eseguibile da `authenticated` e `anon`. Edge Function `delete-account` (sorgente in `supabase/functions/delete-account`, pubblicata con il connettore): verifica il token con `getUser` sul servizio di accesso ed elimina l'utente; senza token o con un token falso risponde 401 (provato). Pagina `/profilo`: email, metodo di accesso, stato della sincronizzazione, «Scarica i miei dati» (JSON con account, fermate e serie letti dal server), «Esci», «Elimina l'account» con conferma. Chi ha fatto l'accesso e apre `/accedi` passa a `/profilo`, e l'icona della barra porta lì. Pagina `/privacy`: titolare, dati senza e con account, finalità e base giuridica (art. 6, par. 1, lett. b GDPR), dove stanno i dati e chi li gestisce, conservazione, diritti e reclamo al Garante, età minima 14 anni, cookie; raggiungibile dal piè di pagina, da Metodo, da `/accedi` e da `/profilo`. Sezione privacy di Metodo riscritta: non dice più «l'app non ha account». Advisor di sicurezza: un solo avviso, sulla protezione dalle password compromesse, che non riguarda l'app perché l'accesso non usa password. Test 46, end-to-end 30 (due nuovi: informativa dal piè di pagina, profilo senza account), lint e validate verdi.
+
+Pacchetto pre-rilascio, voci aggiunte dal lotto 5: attivare la casella `privacy@anthropologyclash.app`; quando le email partiranno da Resend e quando si aggiungerà Telegram, aggiornare la sezione «Dove sono e chi li gestisce» dell'informativa e la data di aggiornamento; **revisione completa dell'informativa `/privacy` da parte dell'autore** (richiesta dell'autore, 2026-09-28), prima del merge su `main`.
+
+Prova dell'autore del lotto 5, 2026-09-28, su `localhost:5173`: profilo, esportazione dei dati ed eliminazione dell'account riuscite. Il log di Supabase registra la cancellazione dell'utente di prova da parte della Edge Function (risposta 200); un nuovo accesso ha creato un utente nuovo.
+
+Lotto 6, 2026-09-28: end-to-end con Supabase simulato e configurazione di produzione. Playwright compila il sito con un indirizzo di prova (`https://e2e.supabase.test`) e una chiave finta, uguali in locale e in CI, e `e2e/account.spec.ts` risponde al posto di Supabase con `page.route`, partendo da una sessione finta salvata nel browser. Sei percorsi, su desktop e telefono: il link via email parte e Google resta nascosto; il pulsante Google compare quando il provider è attivo; fermate locali e remote si uniscono e vengono inviate, e il profilo mostra «sincronizzate»; azzerare con l'account cancella anche le righe remote; se Supabase non risponde l'azzeramento non cancella nulla; eliminare l'account chiama la funzione e chiude la sessione. Controllo che i test sappiano fallire: con `clearAccountProgress` che non chiama Supabase, il test dell'azzeramento diventa rosso. Configurazione di produzione: URL e chiave pubblicabile in `.env.production`, come il Website ID di Umami, così nessuna variabile va impostata a mano su Vercel e anche le anteprime della branch `m10` hanno l'accesso attivo; le variabili impostate da Playwright hanno la precedenza sui file `.env`. Test 46, end-to-end 42, lint e validate verdi.
+
+Criterio di chiusura: vedi riga M10 in `CLAUDE.md`.
+
+Decisione dell'autore, 2026-09-29: la chiusura di M10 è rinviata alla **fase di rilascio** (§16.14). Prima si stabilizza e si migliora l'applicazione. Il codice dell'account resta com'è; restano aperti il lotto 4 e le attività esterne.
+
+### 16.14 Piano dopo M10 (proposto 2026-09-29)
+
+Revisione del codice e dei contenuti, 2026-09-29. Limiti rilevati: ogni scenario ha un solo bivio e, dopo la prima visita, poco invita a tornare; chi insegna, uno dei tre pubblici di `PRODUCT.md`, ha solo la leggibilità in proiezione; nessun error boundary, quindi un errore di rendering lascia la pagina bianca; `nextScenarioId` in `src/engine/sequence.ts` non è usato dall'app; lo schema ammette ancora l'accesso `verificare`, che nessuna voce usa più; `m10` è avanti di 12 commit su `main`, e il merge non può avvenire così com'è perché in produzione l'accesso partirebbe con l'email integrata di Supabase (2 messaggi l'ora, solo al team) e l'informativa rimanda a una casella che non esiste ancora.
+
+Sequenza proposta:
+
+1. **M11 — stabilizzazione.** `m10` su `main` con l'account spento in produzione finché non arriva la fase di rilascio: senza le variabili Supabase in `.env.production` l'icona di accesso non compare e l'app non contatta Supabase, mentre gli end-to-end continuano con l'indirizzo di prova di Playwright. Poi error boundary con pagina di ripiego, pulizia di `nextScenarioId` e dell'accesso `verificare`, audit di accessibilità e prestazioni sul sito pubblico con le correzioni, aggiornamento controllato delle dipendenze.
+2. **M12 — aula e percorsi.** Modalità aula (`/aula/:id`, testo grande, uscite svelate una alla volta), itinerari curati in JSON validato, itinerario personalizzato come link, domande per la discussione (`discuss`), scheda stampabile.
+3. **M13 — gioco.** Timbri e capolinea per linea (mai punteggi), fermata del giorno condivisibile, stazioni di interscambio (`also`), diario di campo locale; «cosa accadde davvero» solo se approvato, presentato come fatto storico con pagina.
+4. **M14 — profondità.** App installabile e offline, glossario con fonti, scenario pilota a più bivi.
+5. **Contenuti in parallelo**, uno scenario per sessione verso 30 fermate (6 per linea).
+
+Decisione dell'autore, 2026-09-29: M11 parte subito; durante M11 la parte dell'account è nascosta in produzione, informativa compresa.
+
+Lotto 1 di M11, 2026-09-29, sulla branch `m11` (aperta da `m10`): le variabili Supabase in `.env.production` sono commentate, con l'indicazione per riattivarle. Senza di esse l'icona di accesso non compare, `/accedi`, `/profilo` e `/privacy` danno la pagina 404, il piè di pagina e la sezione privacy di Metodo tornano ai testi senza account (`app.footerLocal`, `method.privacy.bodyLocal`, identici a quelli oggi su `main`) e l'app non contatta Supabase. In locale `.env.local` tiene l'account attivo. Gli end-to-end hanno un secondo server sulla porta 4174, compilato con le variabili vuote in `dist-local`, e un test che verifica tutto questo; il primo server resta quello con Supabase simulato. Test 46, end-to-end 44, lint verdi.
+
+Lotto 2 di M11, 2026-09-29: error boundary attorno alle pagine (`src/components/ErrorBoundary.tsx`). Un errore di rendering, o un modulo della pagina che non si scarica (per esempio dopo un aggiornamento dell'app a pagina aperta), mostra «Un guasto sulla linea» con «Ricarica la pagina» e il ritorno alla pagina iniziale, invece della pagina bianca; barra e piè di pagina restano, e cambiando indirizzo il guasto si azzera. Un end-to-end blocca il modulo di Metodo, verifica la pagina di ripiego e poi la ricarica. Pulizie: tolti `nextScenarioId` e il suo test, mai usati dall'app, e l'accesso `verificare` dallo schema e da `it.json`, così un'etichetta che nessuna voce usa più non può ricomparire. Test 43, end-to-end 46, lint e validate verdi.
+
+Lotto 3 di M11, 2026-09-29: audit con Lighthouse sulla build con l'account spento, su telefono simulato, in tema chiaro e scuro (Home, scenario dopo la scelta, Viaggio, Concetti, Metodo). Accessibilità 100 ovunque tranne «Il tuo viaggio» (96): le linee non ancora percorse sul biglietto erano attenuate con l'opacità e il testo scendeva a contrasto 2,19. Ora hanno bordo tratteggiato e testo `ink-soft`, e per i lettori di schermo l'indicazione «non ancora percorsa». SEO da 82 a 100: aggiunti meta description, anteprima per la condivisione (Open Graph senza immagine e senza URL, finché il dominio non è deciso), favicon SVG con i cinque colori di linea e `robots.txt`; prima `robots.txt` e `favicon` restituivano la pagina HTML. Il suggerimento `llms.txt` è facoltativo e non è stato seguito.
+
+Prestazioni, su telefono simulato con 4G lenta e CPU rallentata di 4 volte, con i file compressi come su Vercel: i caratteri caricati da Google (CSS da `fonts.googleapis.com`, poi i file da `fonts.gstatic.com`) erano il percorso critico più lungo, e LCP della Home era di circa 13 s. Archivo e Atkinson Hyperlegible sono ora serviti dal sito con `@fontsource` (licenza OFL, solo il sottoinsieme latino, sei file tra 14 e 18 kB): LCP intorno ai 5 s. Effetto anche sulla privacy: l'indirizzo IP di chi visita non va più a Google. Il `preload` dei due file principali è stato provato e scartato, perché non cambiava LCP e sottraeva banda al JavaScript. Resta il collo di bottiglia vero: il JavaScript iniziale, circa 180 kB compressi, di cui circa 61 kB sono il testo completo dei 21 scenari, caricato anche dove servono solo titolo, linea e aggancio (circa 8 kB), e destinato a crescere con ogni fermata. Proposta: separare il catalogo (id, titolo, concetto, aggancio) dal testo, caricato solo nella pagina dello scenario e in Metodo. Test 43, end-to-end 46, lint verdi.
+
+Lotto 3b di M11, 2026-09-29, approvato dall'autore: catalogo separato dal testo. Un plugin di Vite genera il modulo `virtual:catalog` leggendo i JSON in fase di build; `src/engine/content.ts` espone `getCatalog` e `getEntry` (sincroni, per Home, mappa, striscia della linea, Concetti, Viaggio, titoli e unione dei progressi) e `loadScenario` e `loadScenarios` (asincroni, con cache e nuovo tentativo dopo un errore). La pagina dello scenario mostra subito striscia, cartello e livello, e il racconto arriva con `use` e `Suspense`; la bibliografia di Metodo si carica nella sua sezione mentre il resto della pagina è già visibile, e `buildBibliography` riceve gli scenari invece di leggerli da sé. Precaricamenti: dalla Home il modulo della pagina scenario e la prossima fermata del tabellone; dopo una scelta, la fermata successiva. Misure: JavaScript iniziale da 178,9 a 121,2 kB compressi (−32%), modulo principale da 78,7 a 21,1 kB; ogni scenario pesa 3-4 kB e non grava più sulla Home, che finora cresceva di circa 3 kB a fermata. LCP della Home, stessa procedura: 4,85 s contro 5,2-5,5 s; il resto dipende ora dai caratteri, scoperti solo dopo il CSS, e da React (86 kB). Test 45, end-to-end 46, lint e typecheck verdi.
+
+Lotto 4 di M11, 2026-09-29: dipendenze. Aggiornate entro la stessa versione principale: prettier 3.9.9, react-i18next 17.0.15, tsx 4.23.15, typescript-eslint 8.70.1; `@types/node` da 22 a 24, per allinearlo a Node 24 di `.nvmrc`. `pnpm audit` segnalava due vulnerabilità moderate in Vitest (lettura di file arbitrari tramite `@vitest/mocker`, GHSA-82fw-gwwq-j7x9), che riguardano solo i test e non l'app: Vitest passa a 4.1.11, compatibile con Vite 6, e l'audit non trova più nulla. Non aggiornate, perché cambierebbero lo stack fissato in `CLAUDE.md` o ne dipendono: Vite 8, TypeScript 7, React Router 8, `@vitejs/plugin-react` 6, ESLint 10 con `@eslint/js` 10 ed `eslint-plugin-react-hooks` 7. Vanno decise dall'autore, con una milestone propria. Test 45, end-to-end 46, lint, validate e build verdi.
+
+Decisioni aperte: ordine di M12 e M13; «cosa accadde davvero»; diario solo locale o sincronizzato; sesto concetto (escluso in M9); conteggio anonimo delle uscite scelte, sconsigliato perché farebbe contattare Supabase anche senza account.
+
+**Fase di rilascio** (dopo il piano, data da decidere). A cura dell'autore, in quest'ordine: registrare `anthropologyclash.app`; collegarlo a Vercel; attivare `privacy@anthropologyclash.app`; account Resend con dominio verificato (SPF, DKIM); SMTP di Resend in Supabase; Site URL e indirizzi di ritorno di Supabase sul dominio; Google Cloud (Branding con dominio e `/privacy`, client OAuth web con ritorno su `/auth/v1/callback` del progetto, pubblicazione) e credenziali Google in Supabase; bot Telegram con Client ID e Client Secret; revisione completa di `/privacy`. A cura dell'assistente: lotto 4 (Telegram, `custom:telegram`, solo `openid`); informativa aggiornata con Resend e Telegram e nuova data; dominio in README, manuale, `index.html` e riepilogo; variabili Supabase di nuovo in `.env.production`; prova dal vivo dei tre accessi; end-to-end; verifica sul sito pubblico; chiusura di M10. Decisione da prendere prima del lotto 4: account Telegram separato da quello con email (consigliato, nessun codice in più) oppure collegamento con `linkIdentity` (beta, un lotto in più).

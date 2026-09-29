@@ -1,42 +1,75 @@
+import catalog from "virtual:catalog";
 import type { Concept, Lang, Scenario } from "../schema/scenario.schema";
 
-const scenarioFiles = import.meta.glob("../content/*/scenarios/*.json", {
-  eager: true,
+export type CatalogEntry = Pick<Scenario, "id" | "lang" | "title" | "concept" | "concept_label"> & {
+  hook?: string;
+};
+
+const scenarioFiles = import.meta.glob<Scenario>("../content/*/scenarios/*.json", {
   import: "default",
 });
-const conceptFiles = import.meta.glob("../content/*/concepts.json", {
+const conceptFiles = import.meta.glob<Concept[]>("../content/*/concepts.json", {
   eager: true,
   import: "default",
 });
 
-function langOf(path: string): string {
-  return path.split("/content/")[1].split("/")[0];
+const catalogByLang = new Map<string, CatalogEntry[]>();
+for (const entry of catalog) {
+  const list = catalogByLang.get(entry.lang) ?? [];
+  list.push(entry);
+  catalogByLang.set(entry.lang, list);
 }
-
-const scenariosByLang = new Map<string, Scenario[]>();
-for (const [path, raw] of Object.entries(scenarioFiles)) {
-  const lang = langOf(path);
-  const list = scenariosByLang.get(lang) ?? [];
-  list.push(raw as Scenario);
-  scenariosByLang.set(lang, list);
-}
-for (const list of scenariosByLang.values()) {
+for (const list of catalogByLang.values()) {
   list.sort((a, b) => a.id.localeCompare(b.id));
 }
 
-const conceptsByLang = new Map<string, Concept[]>();
-for (const [path, raw] of Object.entries(conceptFiles)) {
-  conceptsByLang.set(langOf(path), raw as Concept[]);
+export function getCatalog(lang: Lang): CatalogEntry[] {
+  return catalogByLang.get(lang) ?? [];
 }
 
-export function getScenarios(lang: Lang): Scenario[] {
-  return scenariosByLang.get(lang) ?? [];
-}
-
-export function getScenario(lang: Lang, id: string): Scenario | undefined {
-  return getScenarios(lang).find((s) => s.id === id);
+export function getEntry(lang: Lang, id: string): CatalogEntry | undefined {
+  return getCatalog(lang).find((s) => s.id === id);
 }
 
 export function getConcepts(lang: Lang): Concept[] {
-  return conceptsByLang.get(lang) ?? [];
+  return conceptFiles[`../content/${lang}/concepts.json`] ?? [];
+}
+
+const loading = new Map<string, Promise<Scenario | undefined>>();
+
+export function loadScenario(lang: Lang, id: string): Promise<Scenario | undefined> {
+  const key = `../content/${lang}/scenarios/${id}.json`;
+  let promise = loading.get(key);
+  if (!promise) {
+    const load = scenarioFiles[key];
+    promise = load
+      ? load().catch((error: unknown) => {
+          loading.delete(key);
+          throw error;
+        })
+      : Promise.resolve(undefined);
+    loading.set(key, promise);
+  }
+  return promise;
+}
+
+export function prefetchScenario(lang: Lang, id: string): void {
+  loadScenario(lang, id).catch(() => {});
+}
+
+const loadingAll = new Map<Lang, Promise<Scenario[]>>();
+
+export function loadScenarios(lang: Lang): Promise<Scenario[]> {
+  let promise = loadingAll.get(lang);
+  if (!promise) {
+    promise = Promise.all(getCatalog(lang).map((e) => loadScenario(lang, e.id))).then(
+      (list) => list.filter((s): s is Scenario => s !== undefined),
+      (error: unknown) => {
+        loadingAll.delete(lang);
+        throw error;
+      },
+    );
+    loadingAll.set(lang, promise);
+  }
+  return promise;
 }

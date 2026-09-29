@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useAppState } from "../state/AppState";
+import { useAccount } from "../state/Account";
 import ThemeToggle from "./ThemeToggle";
 import StreakBadge from "./StreakBadge";
 
@@ -11,6 +12,7 @@ const navClass = ({ isActive }: { isActive: boolean }) =>
 export default function AppBar() {
   const { t } = useTranslation();
   const { state, theme, setTheme, streak } = useAppState();
+  const { available, user } = useAccount();
   const visited = Object.keys(state.completed).length;
 
   return (
@@ -49,6 +51,35 @@ export default function AppBar() {
         </nav>
         <div className="order-2 flex items-center sm:order-3">
           <StreakBadge count={streak} />
+          {available && (
+            <NavLink
+              to={user ? "/profilo" : "/accedi"}
+              aria-label={user ? t("nav.account") : t("nav.signIn")}
+              title={user ? t("nav.account") : t("nav.signIn")}
+              className={({ isActive }) =>
+                "inline-grid size-11 place-items-center rounded-sm transition-colors " +
+                (isActive ? "bg-bar-ink text-bar" : "text-bar-ink hover:bg-white/15")
+              }
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5">
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="4"
+                  fill={user ? "currentColor" : "none"}
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"
+                  fill={user ? "currentColor" : "none"}
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </NavLink>
+          )}
           <ThemeToggle theme={theme} onChange={setTheme} />
         </div>
       </div>

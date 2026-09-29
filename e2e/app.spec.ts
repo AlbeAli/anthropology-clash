@@ -81,6 +81,23 @@ for (const path of ["/", `/s/${first.id}`, "/concetti", "/metodo", "/viaggio"]) 
   });
 }
 
+test("se una pagina non si carica compare il guasto sulla linea, e ricaricando si riparte", async ({
+  page,
+}) => {
+  await fresh(page);
+  await page.route(/\/assets\/Method-[^/]+\.js$/, (route) => route.abort());
+  await page.getByRole("navigation").getByRole("link", { name: "Metodo" }).click();
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Un guasto sulla linea" }),
+  ).toBeVisible();
+  await expect(page.getByRole("banner")).toBeVisible();
+  await page.unrouteAll();
+  await page.getByRole("button", { name: "Ricarica la pagina" }).click();
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Da dove vengono gli scenari" }),
+  ).toBeVisible();
+});
+
 test("le fermate sulla striscia della linea non si sovrappongono", async ({ page }) => {
   const byConcept = Map.groupBy(scenarios, (s) => s.concept);
   const longest = [...byConcept.values()].sort((a, b) => b.length - a.length)[0];
@@ -97,6 +114,34 @@ test("le fermate sulla striscia della linea non si sovrappongono", async ({ page
     expect(b.clipped).toBe(false);
     if (i > 0) expect(b.left).toBeGreaterThanOrEqual(boxes[i - 1].right - 0.5);
   });
+});
+
+test("senza account nessuna pagina contatta Supabase, e la pagina di accesso esiste", async ({
+  page,
+}) => {
+  const calls: string[] = [];
+  page.on("request", (req) => {
+    if (req.url().includes("supabase")) calls.push(req.url());
+  });
+  await fresh(page);
+  for (const path of [`/s/${first.id}`, "/concetti", "/viaggio", "/metodo"]) {
+    await page.goto(path);
+  }
+  expect(calls).toEqual([]);
+  await page.goto("/accedi");
+  await expect(page.getByRole("heading", { level: 1, name: "Accedi" })).toBeVisible();
+});
+
+test("l'informativa sulla privacy si apre dal piè di pagina e il profilo chiede l'accesso", async ({
+  page,
+}) => {
+  await fresh(page);
+  await page.getByRole("contentinfo").getByRole("link", { name: "Privacy" }).click();
+  await expect(page.getByRole("heading", { level: 1, name: "Privacy" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Per quanto tempo" })).toBeVisible();
+  await expect(page.getByText("privacy@anthropologyclash.app").first()).toBeVisible();
+  await page.goto("/profilo");
+  await expect(page.getByRole("heading", { level: 1, name: "Il tuo account" })).toBeVisible();
 });
 
 test.describe("tema", () => {

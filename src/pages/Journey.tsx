@@ -1,16 +1,18 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { getConcepts, getScenarios } from "../engine/content";
+import { getCatalog, getConcepts } from "../engine/content";
 import { linesTouched, visitsInOrder } from "../engine/journey";
 import { useAppState } from "../state/AppState";
+import { useAccount } from "../state/Account";
 import { DEFAULT_LANG } from "../i18n";
 import LineBullet from "../components/metro/LineBullet";
 
 export default function Journey() {
   const { t, i18n } = useTranslation();
   const { state, resetProgress } = useAppState();
-  const scenarios = getScenarios(DEFAULT_LANG);
+  const { user, clearAccountProgress } = useAccount();
+  const scenarios = getCatalog(DEFAULT_LANG);
   const concepts = getConcepts(DEFAULT_LANG);
   const visits = visitsInOrder(state.completed, scenarios);
   const touched = linesTouched(visits);
@@ -57,9 +59,14 @@ export default function Journey() {
     }
   }
 
-  function reset() {
+  async function reset() {
     if (!confirming) {
       setConfirming(true);
+      return;
+    }
+    if (!(await clearAccountProgress())) {
+      setConfirming(false);
+      setNotice(t("journey.resetFailed"));
       return;
     }
     resetProgress();
@@ -100,12 +107,17 @@ export default function Journey() {
               <li
                 key={c.id}
                 className={
-                  "inline-flex items-center gap-2 rounded-full border-2 border-ink py-1 pr-3 pl-1 font-display text-sm font-bold " +
-                  (touched.includes(c.id) ? "" : "opacity-35")
+                  "inline-flex items-center gap-2 rounded-full border-2 py-1 pr-3 pl-1 font-display text-sm font-bold " +
+                  (touched.includes(c.id)
+                    ? "border-ink"
+                    : "border-dashed border-line text-ink-soft")
                 }
               >
                 <LineBullet concept={c.id} size="sm" />
                 {t(`lines.${c.id}.name`)}
+                {!touched.includes(c.id) && (
+                  <span className="sr-only"> ({t("journey.lineUntouched")})</span>
+                )}
               </li>
             ))}
           </ul>
@@ -180,7 +192,9 @@ export default function Journey() {
 
       {visits.length > 0 && (
         <div className="mt-10 border-t border-line pt-5">
-          <p className="mb-3 text-sm text-ink-soft">{t("journey.resetNote")}</p>
+          <p className="mb-3 text-sm text-ink-soft">
+            {user ? t("journey.resetNoteAccount") : t("journey.resetNote")}
+          </p>
           <div className="flex flex-wrap gap-2.5">
             <button
               type="button"

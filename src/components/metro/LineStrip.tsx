@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import type { Scenario } from "../../schema/scenario.schema";
 import type { Completion } from "../../engine/storage";
-import { getScenarios } from "../../engine/content";
+import { getCatalog, type CatalogEntry } from "../../engine/content";
 import { prefersReducedMotion } from "../../engine/motion";
 import { DEFAULT_LANG } from "../../i18n";
 
-type Props = { scenario: Scenario; completed: Record<string, Completion> };
+type Props = { scenario: CatalogEntry; completed: Record<string, Completion> };
 
 export default function LineStrip({ scenario, completed }: Props) {
   const { t } = useTranslation();
-  const stops = getScenarios(DEFAULT_LANG).filter((s) => s.concept === scenario.concept);
+  const stops = getCatalog(DEFAULT_LANG).filter((s) => s.concept === scenario.concept);
   const idx = stops.findIndex((s) => s.id === scenario.id);
   const pos = (k: number) => (stops.length === 1 ? 50 : (k / (stops.length - 1)) * 100);
   const [left, setLeft] = useState(() => pos(prefersReducedMotion() ? idx : Math.max(0, idx - 1)));

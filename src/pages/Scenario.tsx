@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, use, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { Level, Scenario } from "../schema/scenario.schema";
-import { getScenario, getScenarios } from "../engine/content";
+import { getCatalog, getEntry, loadScenario, prefetchScenario } from "../engine/content";
 import { nextInSequence } from "../engine/progress";
 import { lineColor, stopNumber } from "../engine/lines";
 import { DEFAULT_LANG } from "../i18n";
@@ -22,7 +22,7 @@ export default function ScenarioPage() {
   const { t } = useTranslation();
   const { id = "" } = useParams();
   const { level, setLevel, state } = useAppState();
-  const scenario = getScenario(DEFAULT_LANG, id);
+  const scenario = getEntry(DEFAULT_LANG, id);
 
   if (!scenario) {
     return <NotFound />;
@@ -56,9 +56,16 @@ export default function ScenarioPage() {
       <div className="mb-7">
         <LevelToggle level={level} onChange={setLevel} />
       </div>
-      <ScenarioPlay key={`${scenario.id}-${level}`} scenario={scenario} level={level} />
+      <Suspense fallback={<div className="min-h-96" />}>
+        <ScenarioBody key={`${scenario.id}-${level}`} id={scenario.id} level={level} />
+      </Suspense>
     </div>
   );
+}
+
+function ScenarioBody({ id, level }: { id: string; level: Level }) {
+  const scenario = use(loadScenario(DEFAULT_LANG, id));
+  return scenario ? <ScenarioPlay scenario={scenario} level={level} /> : <NotFound />;
 }
 
 function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level }) {
@@ -78,9 +85,13 @@ function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level })
     complete({ scenarioId: scenario.id, concept: scenario.concept, choice });
   }
 
-  const ids = getScenarios(DEFAULT_LANG).map((s) => s.id);
+  const ids = getCatalog(DEFAULT_LANG).map((s) => s.id);
   const allDone = ids.every((i) => i in state.completed);
-  const next = getScenario(DEFAULT_LANG, nextInSequence(state, ids) ?? ids[0]);
+  const next = getEntry(DEFAULT_LANG, nextInSequence(state, ids) ?? ids[0]);
+
+  useEffect(() => {
+    if (choiceId && next) prefetchScenario(DEFAULT_LANG, next.id);
+  }, [choiceId, next]);
 
   return (
     <>

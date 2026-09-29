@@ -29,16 +29,16 @@ Every scenario rests on a real, verified ethnographic source (author, year, page
 ## Operating Context
 
 - Italian UI, content in `src/content/it/`; English prepared but not translated.
-- 20 scenarios, 5 concepts (reciprocità, parentela, rituale, relativismo, consumo), 4 per concept; two levels per scenario (`neofita` 2 choices, `studente` 3-4 choices plus `deepen` readings).
+- 21 scenarios, 5 concepts (reciprocità, parentela, rituale, relativismo, consumo), 4 per concept and 5 for consumo; two levels per scenario (`neofita` 2 choices, `studente` 3-4 choices plus `deepen` readings).
 - Views: Home, Scenario (`/s/:id`), Concept library (`/concetti`), Method and sources with generated bibliography (`/metodo`).
-- Progress, level, theme and streak live in `localStorage` only.
+- Progress, level, theme and streak live in `localStorage`; from M10 an optional account (Supabase, EU) syncs progress across devices.
 - Live at https://anthropology-clash.vercel.app
 
 ## Capabilities and Constraints
 
-- Stack fixed: TypeScript, Vite 6, React 19, Tailwind CSS 4, React Router 7, Zod, i18next. No backend, no auth, no database, no state libraries.
+- Stack fixed: TypeScript, Vite 6, React 19, Tailwind CSS 4, React Router 7, Zod, i18next. No state libraries. Backend limited to Supabase (Auth, Postgres with RLS, Edge Functions) from M10; no own servers.
 - No visible strings in components: everything through `src/locales/it.json`.
-- No personal data, no tracking cookies; analytics only Umami.
+- Account optional, never required to play. Minimal personal data: only the sign-in identifier (email for magic link and Google, Telegram id without phone) and progress; account deletion from the profile. No passwords, no tracking cookies; analytics only Umami.
 - `localStorage` always in try/catch; the app works without persistence.
 - Vocabulary ban in copy, UI and code: no `correct`, `wrong`, `score`, and no colour that implies a verdict on a choice.
 - Feedback on all options after the choice; source always reachable.

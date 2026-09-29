@@ -18,10 +18,24 @@ export default defineConfig({
     },
     { name: "telefono", use: { ...devices["Pixel 5"] } },
   ],
-  webServer: {
-    command: "pnpm build && pnpm preview --port 4173 --strictPort",
-    url: "http://localhost:4173",
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  webServer: [
+    {
+      command: "pnpm build && pnpm preview --port 4173 --strictPort",
+      url: "http://localhost:4173",
+      env: {
+        VITE_SUPABASE_URL: "https://e2e.supabase.test",
+        VITE_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_e2e",
+      },
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
+    {
+      command:
+        "pnpm exec vite build --outDir dist-local && pnpm exec vite preview --outDir dist-local --port 4174 --strictPort",
+      url: "http://localhost:4174",
+      env: { VITE_SUPABASE_URL: "", VITE_SUPABASE_PUBLISHABLE_KEY: "" },
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
+  ],
 });

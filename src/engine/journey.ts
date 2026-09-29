@@ -1,11 +1,12 @@
-import type { ConceptId, Scenario } from "../schema/scenario.schema";
+import type { ConceptId } from "../schema/scenario.schema";
+import type { CatalogEntry } from "./content";
 import type { Completion } from "./storage";
 
-export type Visit = { scenario: Scenario; completion: Completion };
+export type Visit = { scenario: CatalogEntry; completion: Completion };
 
 export function visitsInOrder(
   completed: Record<string, Completion>,
-  scenarios: Scenario[],
+  scenarios: CatalogEntry[],
 ): Visit[] {
   return scenarios
     .filter((s) => s.id in completed)
