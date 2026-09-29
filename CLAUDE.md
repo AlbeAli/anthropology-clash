@@ -26,11 +26,11 @@ pnpm e2e        # Playwright, build + preview su 4173
 
 ```
 src/components   ScenarioCard, ChoiceButton, FeedbackPanel, LevelToggle
-src/engine       selezione scenario, stato progressi, copertura concetti; sync.ts, remote.ts, account.ts (Supabase)
+src/engine       selezione scenario, stato progressi, copertura concetti; itineraries.ts (percorsi curati e su misura); sync.ts, remote.ts, account.ts (Supabase)
 src/content      it/scenarios/*.json, it/itineraries/*.json, it/concepts.json, en/...
 src/locales      it.json (fonte di verità), en.json
 src/schema       scenario.schema.ts
-src/pages        Home, Scenario, ConceptLibrary, Method, Journey, SignIn (/accedi), Profile (/profilo), Privacy
+src/pages        Home, Scenario, ConceptLibrary, Method, Journey, Itineraries (/percorsi), Itinerary (/percorso/:id, /percorso?f=), SignIn (/accedi), Profile (/profilo), Privacy
 src/state        AppState.tsx (livello, tema, progressi, streak), Account.tsx (sessione e sincronizzazione)
 scripts          validate-content.ts
 supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifica), functions/delete-account

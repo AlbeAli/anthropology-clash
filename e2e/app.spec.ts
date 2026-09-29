@@ -71,7 +71,15 @@ test("un indirizzo inesistente porta alla pagina 404", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Questa fermata non esiste" })).toBeVisible();
 });
 
-for (const path of ["/", `/s/${first.id}`, "/concetti", "/metodo", "/viaggio"]) {
+for (const path of [
+  "/",
+  `/s/${first.id}`,
+  "/concetti",
+  "/metodo",
+  "/viaggio",
+  "/percorsi",
+  "/percorso?f=1-6-11",
+]) {
   test(`nessuno scroll orizzontale su ${path}`, async ({ page }) => {
     await fresh(page, path);
     const overflow = await page.evaluate(

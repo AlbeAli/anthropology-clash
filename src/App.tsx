@@ -19,9 +19,12 @@ const Journey = lazy(() => import("./pages/Journey"));
 const SignIn = lazy(() => import("./pages/SignIn"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Privacy = lazy(() => import("./pages/Privacy"));
+const Itineraries = lazy(() => import("./pages/Itineraries"));
+const ItineraryPage = lazy(() => import("./pages/Itinerary"));
 
 const PAGE_TITLES: Record<string, string> = {
   "/concetti": "concepts.title",
+  "/percorsi": "itineraries.title",
   "/viaggio": "journey.title",
   "/metodo": "method.title",
 };
@@ -37,6 +40,8 @@ function Shell() {
   const { available } = useAccount();
   const { pathname } = useLocation();
   const scenarioMatch = useMatch("/s/:id");
+  const itineraryMatch = useMatch("/percorso/:id");
+  const selfTitled = Boolean(itineraryMatch) || pathname === "/percorso";
 
   useEffect(() => {
     applyTheme(theme);
@@ -47,12 +52,13 @@ function Shell() {
   }, [pathname]);
 
   useEffect(() => {
+    if (selfTitled) return;
     const key = PAGE_TITLES[pathname] ?? (available ? ACCOUNT_TITLES[pathname] : undefined);
     const pageTitle = scenarioMatch
       ? getEntry(DEFAULT_LANG, scenarioMatch.params.id ?? "")?.title
       : key && t(key);
     document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
-  }, [pathname, scenarioMatch, available, t]);
+  }, [pathname, scenarioMatch, selfTitled, available, t]);
 
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">
@@ -75,6 +81,9 @@ function Shell() {
               <Route path="/" element={<Home />} />
               <Route path="/s/:id" element={<ScenarioPage />} />
               <Route path="/concetti" element={<ConceptLibrary />} />
+              <Route path="/percorsi" element={<Itineraries />} />
+              <Route path="/percorso" element={<ItineraryPage />} />
+              <Route path="/percorso/:id" element={<ItineraryPage />} />
               <Route path="/metodo" element={<Method />} />
               <Route path="/viaggio" element={<Journey />} />
               {available && (

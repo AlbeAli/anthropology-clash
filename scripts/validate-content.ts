@@ -182,10 +182,11 @@ export function validateAll(contentDir: string) {
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const { issues, count, itineraries } = validateAll(CONTENT_DIR);
+  const summary = `${count} scenari, ${itineraries} ${itineraries === 1 ? "itinerario" : "itinerari"}`;
   if (issues.length > 0) {
     for (const i of issues) console.error(`✗ ${i.file}: ${i.message}`);
-    console.error(`\n${issues.length} problemi in ${count} scenari e ${itineraries} itinerari`);
+    console.error(`\n${issues.length} problemi (${summary})`);
     process.exit(1);
   }
-  console.log(`✓ ${count} scenari e ${itineraries} itinerari validi`);
+  console.log(`✓ contenuti validi: ${summary}`);
 }

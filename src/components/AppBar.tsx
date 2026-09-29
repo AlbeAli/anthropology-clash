@@ -35,6 +35,9 @@ export default function AppBar() {
           <NavLink to="/concetti" className={navClass}>
             {t("nav.concepts")}
           </NavLink>
+          <NavLink to="/percorsi" className={navClass}>
+            {t("nav.itineraries")}
+          </NavLink>
           <NavLink to="/viaggio" className={navClass}>
             <span className="sm:hidden">{t("nav.journeyShort")}</span>
             <span className="hidden sm:inline">{t("nav.journey")}</span>
