@@ -205,6 +205,7 @@
     "count_one": "{{count}} fermata visitata su {{total}}",
     "count_other": "{{count}} fermate visitate su {{total}}",
     "lines": "Linee toccate",
+    "lineUntouched": "non ancora percorsa",
     "stops": "Fermate, in ordine di visita",
     "empty": "Ancora nessuna fermata. Parti dalla mappa.",
     "copy": "Copia il riepilogo",

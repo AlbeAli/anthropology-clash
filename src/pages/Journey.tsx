@@ -107,12 +107,17 @@ export default function Journey() {
               <li
                 key={c.id}
                 className={
-                  "inline-flex items-center gap-2 rounded-full border-2 border-ink py-1 pr-3 pl-1 font-display text-sm font-bold " +
-                  (touched.includes(c.id) ? "" : "opacity-35")
+                  "inline-flex items-center gap-2 rounded-full border-2 py-1 pr-3 pl-1 font-display text-sm font-bold " +
+                  (touched.includes(c.id)
+                    ? "border-ink"
+                    : "border-dashed border-line text-ink-soft")
                 }
               >
                 <LineBullet concept={c.id} size="sm" />
                 {t(`lines.${c.id}.name`)}
+                {!touched.includes(c.id) && (
+                  <span className="sr-only"> ({t("journey.lineUntouched")})</span>
+                )}
               </li>
             ))}
           </ul>
