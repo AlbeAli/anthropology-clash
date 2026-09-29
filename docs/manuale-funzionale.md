@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.45 — 2026-09-29 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio, §16.13-16.14)
+Versione 0.46 — 2026-09-29 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M11 stabilizzazione aperta, §16.13-16.14)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -643,6 +643,10 @@ Sequenza proposta:
 3. **M13 — gioco.** Timbri e capolinea per linea (mai punteggi), fermata del giorno condivisibile, stazioni di interscambio (`also`), diario di campo locale; «cosa accadde davvero» solo se approvato, presentato come fatto storico con pagina.
 4. **M14 — profondità.** App installabile e offline, glossario con fonti, scenario pilota a più bivi.
 5. **Contenuti in parallelo**, uno scenario per sessione verso 30 fermate (6 per linea).
+
+Decisione dell'autore, 2026-09-29: M11 parte subito; durante M11 la parte dell'account è nascosta in produzione, informativa compresa.
+
+Lotto 1 di M11, 2026-09-29, sulla branch `m11` (aperta da `m10`): le variabili Supabase in `.env.production` sono commentate, con l'indicazione per riattivarle. Senza di esse l'icona di accesso non compare, `/accedi`, `/profilo` e `/privacy` danno la pagina 404, il piè di pagina e la sezione privacy di Metodo tornano ai testi senza account (`app.footerLocal`, `method.privacy.bodyLocal`, identici a quelli oggi su `main`) e l'app non contatta Supabase. In locale `.env.local` tiene l'account attivo. Gli end-to-end hanno un secondo server sulla porta 4174, compilato con le variabili vuote in `dist-local`, e un test che verifica tutto questo; il primo server resta quello con Supabase simulato. Test 46, end-to-end 44, lint verdi.
 
 Decisioni aperte: ordine di M12 e M13; «cosa accadde davvero»; diario solo locale o sincronizzato; sesto concetto (escluso in M9); conteggio anonimo delle uscite scelte, sconsigliato perché farebbe contattare Supabase anche senza account.
 
