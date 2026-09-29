@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { Link, Route, Routes, useLocation, useMatch } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppStateProvider, useAppState } from "./state/AppState";
-import { AccountProvider } from "./state/Account";
+import { AccountProvider, useAccount } from "./state/Account";
 import { applyTheme } from "./engine/theme";
 import { getScenario } from "./engine/content";
 import { DEFAULT_LANG } from "./i18n";
@@ -22,6 +22,7 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 function Shell() {
   const { t } = useTranslation();
   const { theme } = useAppState();
+  const { available } = useAccount();
   const { pathname } = useLocation();
   const scenarioMatch = useMatch("/s/:id");
 
@@ -74,23 +75,29 @@ function Shell() {
             <Route path="/concetti" element={<ConceptLibrary />} />
             <Route path="/metodo" element={<Method />} />
             <Route path="/viaggio" element={<Journey />} />
-            <Route path="/accedi" element={<SignIn />} />
-            <Route path="/profilo" element={<Profile />} />
-            <Route path="/privacy" element={<Privacy />} />
+            {available && (
+              <>
+                <Route path="/accedi" element={<SignIn />} />
+                <Route path="/profilo" element={<Profile />} />
+                <Route path="/privacy" element={<Privacy />} />
+              </>
+            )}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 font-mono text-xs text-ink-soft sm:px-6">
-          <p>{t("app.footer")}</p>
+          <p>{t(available ? "app.footer" : "app.footerLocal")}</p>
           <div className="flex gap-x-5">
             <Link to="/metodo" className="uppercase tracking-widest hover:text-accent">
               {t("nav.method")}
             </Link>
-            <Link to="/privacy" className="uppercase tracking-widest hover:text-accent">
-              {t("nav.privacy")}
-            </Link>
+            {available && (
+              <Link to="/privacy" className="uppercase tracking-widest hover:text-accent">
+                {t("nav.privacy")}
+              </Link>
+            )}
           </div>
         </div>
       </footer>

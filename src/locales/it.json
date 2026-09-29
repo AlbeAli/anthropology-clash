@@ -2,7 +2,8 @@
   "app": {
     "name": "Anthropology Clash",
     "tagline": "Scenari a bivio ispirati a casi etnografici reali",
-    "footer": "Un progetto di Alberto Alioto (AlbeAli). Nome provvisorio. Account facoltativo, nessun cookie di tracciamento: senza account i progressi restano nel tuo browser."
+    "footer": "Un progetto di Alberto Alioto (AlbeAli). Nome provvisorio. Account facoltativo, nessun cookie di tracciamento: senza account i progressi restano nel tuo browser.",
+    "footerLocal": "Un progetto di Alberto Alioto (AlbeAli). Nome provvisorio. Nessun account e nessun cookie: i progressi restano nel tuo browser."
   },
   "nav": {
     "label": "Navigazione",
@@ -151,6 +152,10 @@
       "body": [
         "Senza account l'app non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi.",
         "L'account è facoltativo e serve solo a ritrovare le fermate visitate su un altro dispositivo. Con l'account conserviamo l'email con cui accedi e le fermate visitate, su server nell'Unione europea; si elimina dal profilo, e dopo 24 mesi di inattività viene cancellato automaticamente.",
+        "Le statistiche d'uso aggregate (quante persone aprono l'app, quanti scenari vengono completati) sono raccolte con Umami, uno strumento senza cookie e senza identificatori personali. Per questo non c'è alcun banner da accettare."
+      ],
+      "bodyLocal": [
+        "L'app non ha account e non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi, e non si sincronizzano tra dispositivi.",
         "Le statistiche d'uso aggregate (quante persone aprono l'app, quanti scenari vengono completati) sono raccolte con Umami, uno strumento senza cookie e senza identificatori personali. Per questo non c'è alcun banner da accettare."
       ]
     },

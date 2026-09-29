@@ -5,6 +5,7 @@ import { buildBibliography } from "../engine/bibliography";
 import { getScenario } from "../engine/content";
 import { DEFAULT_LANG } from "../i18n";
 import LineBullet from "../components/metro/LineBullet";
+import { useAccount } from "../state/Account";
 
 const SECTIONS = ["origin", "criteria", "limits", "ethics", "privacy", "bibliography"] as const;
 
@@ -24,6 +25,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
 
 export default function Method() {
   const { t } = useTranslation();
+  const { available } = useAccount();
   const paragraphs = (key: string) => t(key, { returnObjects: true }) as string[];
   const bibliography = buildBibliography(DEFAULT_LANG);
 
@@ -65,12 +67,14 @@ export default function Method() {
 
       {(["limits", "ethics", "privacy"] as const).map((id) => (
         <Section key={id} id={id} title={t(`method.${id}.title`)}>
-          {paragraphs(`method.${id}.body`).map((p, i) => (
+          {paragraphs(
+            id === "privacy" && !available ? "method.privacy.bodyLocal" : `method.${id}.body`,
+          ).map((p, i) => (
             <p key={i} className="max-w-[65ch] leading-relaxed">
               {p}
             </p>
           ))}
-          {id === "privacy" && (
+          {id === "privacy" && available && (
             <p>
               <Link to="/privacy" className="font-bold underline underline-offset-4">
                 {t("method.privacy.link")}
