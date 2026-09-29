@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.44 — 2026-09-28 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, §16.13)
+Versione 0.45 — 2026-09-29 — Stato: pubblicato (M1-M9 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio, §16.13-16.14)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -629,3 +629,21 @@ Prova dell'autore del lotto 5, 2026-09-28, su `localhost:5173`: profilo, esporta
 Lotto 6, 2026-09-28: end-to-end con Supabase simulato e configurazione di produzione. Playwright compila il sito con un indirizzo di prova (`https://e2e.supabase.test`) e una chiave finta, uguali in locale e in CI, e `e2e/account.spec.ts` risponde al posto di Supabase con `page.route`, partendo da una sessione finta salvata nel browser. Sei percorsi, su desktop e telefono: il link via email parte e Google resta nascosto; il pulsante Google compare quando il provider è attivo; fermate locali e remote si uniscono e vengono inviate, e il profilo mostra «sincronizzate»; azzerare con l'account cancella anche le righe remote; se Supabase non risponde l'azzeramento non cancella nulla; eliminare l'account chiama la funzione e chiude la sessione. Controllo che i test sappiano fallire: con `clearAccountProgress` che non chiama Supabase, il test dell'azzeramento diventa rosso. Configurazione di produzione: URL e chiave pubblicabile in `.env.production`, come il Website ID di Umami, così nessuna variabile va impostata a mano su Vercel e anche le anteprime della branch `m10` hanno l'accesso attivo; le variabili impostate da Playwright hanno la precedenza sui file `.env`. Test 46, end-to-end 42, lint e validate verdi.
 
 Criterio di chiusura: vedi riga M10 in `CLAUDE.md`.
+
+Decisione dell'autore, 2026-09-29: la chiusura di M10 è rinviata alla **fase di rilascio** (§16.14). Prima si stabilizza e si migliora l'applicazione. Il codice dell'account resta com'è; restano aperti il lotto 4 e le attività esterne.
+
+### 16.14 Piano dopo M10 (proposto 2026-09-29)
+
+Revisione del codice e dei contenuti, 2026-09-29. Limiti rilevati: ogni scenario ha un solo bivio e, dopo la prima visita, poco invita a tornare; chi insegna, uno dei tre pubblici di `PRODUCT.md`, ha solo la leggibilità in proiezione; nessun error boundary, quindi un errore di rendering lascia la pagina bianca; `nextScenarioId` in `src/engine/sequence.ts` non è usato dall'app; lo schema ammette ancora l'accesso `verificare`, che nessuna voce usa più; `m10` è avanti di 12 commit su `main`, e il merge non può avvenire così com'è perché in produzione l'accesso partirebbe con l'email integrata di Supabase (2 messaggi l'ora, solo al team) e l'informativa rimanda a una casella che non esiste ancora.
+
+Sequenza proposta:
+
+1. **M11 — stabilizzazione.** `m10` su `main` con l'account spento in produzione finché non arriva la fase di rilascio: senza le variabili Supabase in `.env.production` l'icona di accesso non compare e l'app non contatta Supabase, mentre gli end-to-end continuano con l'indirizzo di prova di Playwright. Poi error boundary con pagina di ripiego, pulizia di `nextScenarioId` e dell'accesso `verificare`, audit di accessibilità e prestazioni sul sito pubblico con le correzioni, aggiornamento controllato delle dipendenze.
+2. **M12 — aula e percorsi.** Modalità aula (`/aula/:id`, testo grande, uscite svelate una alla volta), itinerari curati in JSON validato, itinerario personalizzato come link, domande per la discussione (`discuss`), scheda stampabile.
+3. **M13 — gioco.** Timbri e capolinea per linea (mai punteggi), fermata del giorno condivisibile, stazioni di interscambio (`also`), diario di campo locale; «cosa accadde davvero» solo se approvato, presentato come fatto storico con pagina.
+4. **M14 — profondità.** App installabile e offline, glossario con fonti, scenario pilota a più bivi.
+5. **Contenuti in parallelo**, uno scenario per sessione verso 30 fermate (6 per linea).
+
+Decisioni aperte: ordine di M12 e M13; «cosa accadde davvero»; diario solo locale o sincronizzato; sesto concetto (escluso in M9); conteggio anonimo delle uscite scelte, sconsigliato perché farebbe contattare Supabase anche senza account.
+
+**Fase di rilascio** (dopo il piano, data da decidere). A cura dell'autore, in quest'ordine: registrare `anthropologyclash.app`; collegarlo a Vercel; attivare `privacy@anthropologyclash.app`; account Resend con dominio verificato (SPF, DKIM); SMTP di Resend in Supabase; Site URL e indirizzi di ritorno di Supabase sul dominio; Google Cloud (Branding con dominio e `/privacy`, client OAuth web con ritorno su `/auth/v1/callback` del progetto, pubblicazione) e credenziali Google in Supabase; bot Telegram con Client ID e Client Secret; revisione completa di `/privacy`. A cura dell'assistente: lotto 4 (Telegram, `custom:telegram`, solo `openid`); informativa aggiornata con Resend e Telegram e nuova data; dominio in README, manuale, `index.html` e riepilogo; variabili Supabase di nuovo in `.env.production`; prova dal vivo dei tre accessi; end-to-end; verifica sul sito pubblico; chiusura di M10. Decisione da prendere prima del lotto 4: account Telegram separato da quello con email (consigliato, nessun codice in più) oppure collegamento con `linkIdentity` (beta, un lotto in più).
