@@ -276,6 +276,24 @@
       "edit": "Modifica il percorso"
     }
   },
+  "aula": {
+    "open": "Modalità aula",
+    "openItinerary": "In aula",
+    "title": "Aula",
+    "sign": "Aula · Linea {{line}} · fermata {{n}}",
+    "choices": "Quale uscita prendereste?",
+    "exit": "Uscita {{n}}",
+    "discuss": "Per la discussione",
+    "controls": "Comandi della presentazione",
+    "prev": "Indietro",
+    "next": "Avanti",
+    "position": "Passo {{index}} di {{total}}",
+    "nextStop": "Prossima fermata",
+    "fullscreen": "Schermo intero",
+    "exitFullscreen": "Esci dallo schermo intero",
+    "leave": "Esci dall'aula",
+    "hint": "Frecce, barra spaziatrice o telecomando per andare avanti e indietro. In aula nessuna visita viene registrata."
+  },
   "account": {
     "title": "Accedi",
     "titleSignedIn": "Il tuo account",

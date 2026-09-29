@@ -1,12 +1,18 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
-type Level = { choices: { id: string; text: string }[]; deepen?: unknown[] };
+type Level = {
+  setup: string;
+  choices: { id: string; text: string }[];
+  feedback: Record<string, string>;
+  deepen?: unknown[];
+};
 export type ScenarioFile = {
   id: string;
   title: string;
   concept: string;
   levels: { neofita: Level; studente: Level };
+  discuss?: string[];
 };
 
 const dir = join(process.cwd(), "src/content/it/scenarios");

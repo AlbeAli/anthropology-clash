@@ -21,6 +21,7 @@ const Profile = lazy(() => import("./pages/Profile"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Itineraries = lazy(() => import("./pages/Itineraries"));
 const ItineraryPage = lazy(() => import("./pages/Itinerary"));
+const Aula = lazy(() => import("./pages/Aula"));
 
 const PAGE_TITLES: Record<string, string> = {
   "/concetti": "concepts.title",
@@ -40,6 +41,7 @@ function Shell() {
   const { available } = useAccount();
   const { pathname } = useLocation();
   const scenarioMatch = useMatch("/s/:id");
+  const aulaMatch = useMatch("/aula/:id");
   const itineraryMatch = useMatch("/percorso/:id");
   const selfTitled = Boolean(itineraryMatch) || pathname === "/percorso";
 
@@ -54,11 +56,14 @@ function Shell() {
   useEffect(() => {
     if (selfTitled) return;
     const key = PAGE_TITLES[pathname] ?? (available ? ACCOUNT_TITLES[pathname] : undefined);
+    const aulaTitle = aulaMatch && getEntry(DEFAULT_LANG, aulaMatch.params.id ?? "")?.title;
     const pageTitle = scenarioMatch
       ? getEntry(DEFAULT_LANG, scenarioMatch.params.id ?? "")?.title
-      : key && t(key);
+      : aulaTitle
+        ? `${t("aula.title")} · ${aulaTitle}`
+        : key && t(key);
     document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
-  }, [pathname, scenarioMatch, selfTitled, available, t]);
+  }, [pathname, scenarioMatch, aulaMatch, selfTitled, available, t]);
 
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">
@@ -80,6 +85,7 @@ function Shell() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/s/:id" element={<ScenarioPage />} />
+              <Route path="/aula/:id" element={<Aula />} />
               <Route path="/concetti" element={<ConceptLibrary />} />
               <Route path="/percorsi" element={<Itineraries />} />
               <Route path="/percorso" element={<ItineraryPage />} />

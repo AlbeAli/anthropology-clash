@@ -90,6 +90,9 @@ export default function ItineraryPage() {
           {t(`itineraries.${action}`)}
           <span aria-hidden="true">→</span>
         </Link>
+        <Link to={`/aula/${trip.stops[0]}${trip.search}`} className={outline}>
+          {t("aula.openItinerary")}
+        </Link>
         {!trip.id && (
           <>
             <Link to={`/percorsi${trip.search}#componi`} className={outline}>

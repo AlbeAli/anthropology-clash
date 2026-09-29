@@ -499,3 +499,16 @@
     transform: none;
   }
 }
+
+@layer components {
+  .aula:fullscreen {
+    overflow-y: auto;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 2rem clamp(1rem, 4vw, 4rem);
+  }
+}
+
+.aula:fullscreen > div {
+  min-height: 100%;
+}

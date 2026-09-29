@@ -79,6 +79,8 @@ for (const path of [
   "/viaggio",
   "/percorsi",
   "/percorso?f=1-6-11",
+  `/aula/${first.id}`,
+  `/aula/${first.id}?passo=4`,
 ]) {
   test(`nessuno scroll orizzontale su ${path}`, async ({ page }) => {
     await fresh(page, path);
