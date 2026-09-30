@@ -512,3 +512,31 @@
 .aula:fullscreen > div {
   min-height: 100%;
 }
+
+@media print {
+  body > div > a,
+  header.sticky,
+  footer,
+  .metro-wipe,
+  .no-print {
+    display: none !important;
+  }
+  html,
+  body,
+  body > div {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .sheet * {
+    color: #000 !important;
+  }
+  .sheet-block {
+    break-inside: avoid;
+  }
+  @page {
+    margin: 1.6cm;
+  }
+}

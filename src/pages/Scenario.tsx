@@ -79,13 +79,21 @@ export default function ScenarioPage() {
       </header>
       <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
         <LevelToggle level={level} onChange={setLevel} />
-        <Link
-          to={`/aula/${scenario.id}${trip?.search ?? ""}`}
-          className="inline-flex min-h-11 items-center gap-2 font-display text-[15px] font-bold underline decoration-2 underline-offset-4 hover:text-accent"
-        >
-          {t("aula.open")}
-          <span aria-hidden="true">→</span>
-        </Link>
+        <span className="flex flex-wrap gap-x-5">
+          <Link
+            to={`/aula/${scenario.id}${trip?.search ?? ""}`}
+            className="inline-flex min-h-11 items-center gap-2 font-display text-[15px] font-bold underline decoration-2 underline-offset-4 hover:text-accent"
+          >
+            {t("aula.open")}
+            <span aria-hidden="true">→</span>
+          </Link>
+          <Link
+            to={`/scheda/${scenario.id}`}
+            className="inline-flex min-h-11 items-center gap-2 font-display text-[15px] font-bold underline decoration-2 underline-offset-4 hover:text-accent"
+          >
+            {t("sheet.open")}
+          </Link>
+        </span>
       </div>
       <Suspense fallback={<div className="min-h-96" />}>
         <ScenarioBody key={`${scenario.id}-${level}`} id={scenario.id} level={level} trip={trip} />

@@ -294,6 +294,14 @@
     "leave": "Esci dall'aula",
     "hint": "Frecce, barra spaziatrice o telecomando per andare avanti e indietro. In aula nessuna visita viene registrata."
   },
+  "sheet": {
+    "open": "Scheda stampabile",
+    "title": "Scheda",
+    "print": "Stampa la scheda",
+    "back": "Torna allo scenario",
+    "sign": "Linea {{line}} · fermata {{n}} · {{concept}} · livello {{level}}",
+    "outcomes": "Dove porta ogni uscita"
+  },
   "account": {
     "title": "Accedi",
     "titleSignedIn": "Il tuo account",
