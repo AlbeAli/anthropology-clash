@@ -3,10 +3,12 @@ import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { ConceptId } from "../schema/scenario.schema";
 import { getCatalog, getConcepts, prefetchScenario } from "../engine/content";
+import { dailyStop } from "../engine/daily";
 import { nextInSequence } from "../engine/progress";
 import { lineColor, stopNumber } from "../engine/lines";
 import { DEFAULT_LANG } from "../i18n";
 import { useAppState } from "../state/AppState";
+import DailyStop from "../components/DailyStop";
 import LevelToggle from "../components/LevelToggle";
 import LineBullet from "../components/metro/LineBullet";
 import LineMap from "../components/metro/LineMap";
@@ -24,6 +26,7 @@ export default function Home() {
   const visited = ids.filter((id) => id in state.completed).length;
   const allDone = ids.length > 0 && visited === ids.length;
   const next = scenarios.find((s) => s.id === (nextInSequence(state, ids) ?? ids[0]));
+  const daily = dailyStop(scenarios);
   const [filter, setFilter] = useState<ConceptId | null>(null);
   const [fresh] = useState(recent);
 
@@ -108,6 +111,8 @@ export default function Home() {
           filter={filter}
           onFilter={setFilter}
         />
+
+        {daily && <DailyStop stop={daily} visited={daily.id in state.completed} />}
 
         <a
           href="#linee"

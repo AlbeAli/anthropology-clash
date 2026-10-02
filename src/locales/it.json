@@ -217,6 +217,17 @@
       "letter": "C"
     }
   },
+  "daily": {
+    "label": "Fermata del giorno · {{date}}",
+    "line": "Linea {{line}} · fermata {{n}}",
+    "visited": "già visitata",
+    "open": "Apri la fermata",
+    "share": "Condividi",
+    "shareText": "La fermata del giorno, {{date}}: {{title}}",
+    "copied": "Link copiato",
+    "copyFallback": "Seleziona e copia il link qui sotto",
+    "linkArea": "Link della fermata"
+  },
   "journey": {
     "title": "Il tuo viaggio",
     "lede": "Un biglietto con le fermate visitate e le linee toccate. Nessun punteggio: solo dove sei passato.",

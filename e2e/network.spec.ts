@@ -79,3 +79,28 @@ test("«Continua» porta dalla rete alle linee", async ({ page }) => {
   await page.getByRole("link", { name: "Continua" }).click();
   await expect(page.getByRole("group", { name: "Isola una linea sulla mappa" })).toBeInViewport();
 });
+
+test("la fermata del giorno si apre e si condivide con il link dello scenario", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    (window as unknown as { shared: unknown[] }).shared = [];
+    navigator.share = async (data) => {
+      (window as unknown as { shared: unknown[] }).shared.push(data);
+    };
+  });
+  await fresh(page);
+  const band = page.getByRole("region", { name: /Fermata del giorno/ });
+  const open = band.getByRole("link", { name: "Apri la fermata" });
+  const href = await open.getAttribute("href");
+  expect(href).toMatch(/^\/s\/scenario_\d+$/);
+  await band.getByRole("button", { name: "Condividi" }).click();
+  const shared = await page.evaluate(
+    () => (window as unknown as { shared: { url: string; title: string }[] }).shared,
+  );
+  expect(shared).toHaveLength(1);
+  expect(shared[0].url).toBe(`${new URL(page.url()).origin}${href}`);
+  expect(shared[0].title).not.toBe("");
+  await open.click();
+  await expect(page).toHaveURL(href!);
+});
