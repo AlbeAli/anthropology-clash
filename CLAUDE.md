@@ -63,6 +63,7 @@ supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifi
 
 ## Convenzioni
 
+- **Risposte in modalità caveman ultra** (skill `anthropic-skills:caveman`, argomento `ultra`), attivata a inizio sessione. Vale anche per agenti e subagenti: ogni prompt passato a un agente chiede di caricare la skill e di rispondere in quella modalità. Non si applica a scenari, testi dell'interfaccia, manuale e messaggi di commit, che restano in prosa normale.
 - Conventional Commits: `feat:`, `fix:`, `content:`, `docs:`, `chore:`.
 - **Autore del progetto: Alberto Alioto (AlbeAli).** Ogni documento (README, manuale, `package.json`, `index.html`, footer dell'app) lo indica come autore.
 - **Licenze:** codice MIT (`LICENSE`), testi di `src/content/` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`). Le citazioni dalle fonti restano dei titolari: citare solo quanto serve alla discussione.
