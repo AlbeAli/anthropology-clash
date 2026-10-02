@@ -9,8 +9,14 @@
       "hook": "Per festeggiare una promozione offri la cena a tutto il gruppo. Al tavolo un amico scherza: «Speriamo che basti, con quello che guadagni adesso». Ridono tutti. Tu un po' meno: volevi solo fare una cosa gentile, e ti ritrovi preso in giro proprio per quella.",
       "setup": "Sei un ricercatore e vivi da più di un anno con i Ju/'hoansi (!Kung), cacciatori-raccoglitori del deserto del Kalahari, in Botswana. È dicembre. Per ringraziare tutti, compri il bue più grosso della zona e annunci che lo offrirai per la festa di Natale. Ti aspetti entusiasmo. Invece, uno dopo l'altro, vengono a dirti che il bue è vecchio, magro, 'un sacco d'ossa', che non basterà per nessuno e che la gente litigherà per la carne. Cosa fai?",
       "choices": [
-        { "id": "a", "text": "Ti offendi: cerchi un altro bue o rinunci alla festa" },
-        { "id": "b", "text": "Vai avanti con la festa, poi chiedi a un anziano perché hanno parlato così" }
+        {
+          "id": "a",
+          "text": "Ti offendi: cerchi un altro bue o rinunci alla festa"
+        },
+        {
+          "id": "b",
+          "text": "Vai avanti con la festa, poi chiedi a un anziano perché hanno parlato così"
+        }
       ],
       "feedback": {
         "a": "Il bue era grasso: alla macellazione lo vedi con i tuoi occhi. Le critiche non riguardavano l'animale. Rinunciando, resti fuori da un gioco che tutti conoscono tranne te. È la reazione più comune di chi legge un'altra cultura con le proprie regole: prendere alla lettera qualcosa che in quel contesto ha un altro senso.",
@@ -22,10 +28,22 @@
       "hook": "Porti in ufficio i pasticcini per festeggiare il nuovo incarico. Un collega li guarda e dice: «Tutto qui? Adesso che sei responsabile?». Gli altri sorridono, qualcuno rincara. Non sembra cattiveria, e non sembra nemmeno un caso. Ti chiedi cosa stiano facendo, esattamente, quando prendono in giro chi offre.",
       "setup": "Dobe, Botswana nord-occidentale, dicembre, anni Sessanta. Sei Richard Lee: da oltre un anno studi l'ecologia della sussistenza dei Ju/'hoansi (!Kung) e, per non alterare i loro pattern alimentari, non hai mai condiviso cibo con loro. Per Natale decidi di ricambiare l'ospitalità: compri da un allevatore un bue di circa 550 chili, il più grosso disponibile. Nei giorni seguenti ogni persona che incontri ti dice che è vecchio, magro, 'un sacco d'ossa', che farà arrabbiare tutti. Alla macellazione lo strato di grasso è spesso. La festa riesce. Cosa fai di quello che è successo?",
       "choices": [
-        { "id": "a", "text": "Lo consideri un malinteso e lo lasci fuori dalle note di campo" },
-        { "id": "b", "text": "Lo interpreti come ostilità verso di te, l'estraneo che si è tenuto il cibo per un anno" },
-        { "id": "c", "text": "Interroghi i tuoi interlocutori sul senso della derisione e la colleghi ad altre pratiche osservate" },
-        { "id": "d", "text": "Concludi che il dono era stato letto come un tentativo di comprare status, e rivedi il tuo ruolo di donatore" }
+        {
+          "id": "a",
+          "text": "Lo consideri un malinteso e lo lasci fuori dalle note di campo"
+        },
+        {
+          "id": "b",
+          "text": "Lo interpreti come ostilità verso di te, l'estraneo che si è tenuto il cibo per un anno"
+        },
+        {
+          "id": "c",
+          "text": "Interroghi i tuoi interlocutori sul senso della derisione e la colleghi ad altre pratiche osservate"
+        },
+        {
+          "id": "d",
+          "text": "Concludi che il dono era stato letto come un tentativo di comprare status, e rivedi il tuo ruolo di donatore"
+        }
       ],
       "feedback": {
         "a": "Perderesti il dato più ricco dell'anno. Lee lo racconta come esempio di ciò che l'etnografia spesso produce: l'antropologo scopre le regole del gioco nel momento in cui le viola. Ignorare l'episodio significa anche non interrogare il proprio disagio, che in quel caso era il segnale che il tuo modello della situazione non tornava.",
@@ -35,11 +53,34 @@
       },
       "source": "Lee, 'Eating Christmas in the Kalahari', Natural History 78(10), 1969; Woodburn, 'Egalitarian Societies', Man 17(3), 1982; Mauss, Essai sur le don, 1925",
       "deepen": [
-        { "ref": "Lee, 'Eating Christmas in the Kalahari', 1969", "why": "Testo integrale, breve: da rileggere annotando chi dice cosa e in quale momento della vicenda", "access": "OA" },
-        { "ref": "Lee, The !Kung San: Men, Women and Work in a Foraging Society, 1979", "why": "La monografia da cui l'episodio proviene: dati su condivisione, caccia e proprietà della preda", "access": "NON-OA" },
-        { "ref": "Woodburn, 'Egalitarian Societies', Man 17(3), 1982", "why": "Il quadro teorico: società a ritorno immediato e meccanismi di livellamento", "access": "NON-OA", "url": "https://doi.org/10.2307/2801707" },
-        { "ref": "Wilmsen, Land Filled with Flies, 1989 e la replica di Lee & Guenther, Current Anthropology 32(5), 1991", "why": "Il 'dibattito sul Kalahari': quanto i Ju/'hoansi fossero davvero isolati cacciatori-raccoglitori; ridimensiona ogni lettura idealizzante", "access": "NON-OA", "url": "https://doi.org/10.1086/204006" }
+        {
+          "ref": "Lee, 'Eating Christmas in the Kalahari', 1969",
+          "why": "Testo integrale, breve: da rileggere annotando chi dice cosa e in quale momento della vicenda",
+          "access": "OA"
+        },
+        {
+          "ref": "Lee, The !Kung San: Men, Women and Work in a Foraging Society, 1979",
+          "why": "La monografia da cui l'episodio proviene: dati su condivisione, caccia e proprietà della preda",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Woodburn, 'Egalitarian Societies', Man 17(3), 1982",
+          "why": "Il quadro teorico: società a ritorno immediato e meccanismi di livellamento",
+          "access": "NON-OA",
+          "url": "https://doi.org/10.2307/2801707"
+        },
+        {
+          "ref": "Wilmsen, Land Filled with Flies, 1989 e la replica di Lee & Guenther, Current Anthropology 32(5), 1991",
+          "why": "Il 'dibattito sul Kalahari': quanto i Ju/'hoansi fossero davvero isolati cacciatori-raccoglitori; ridimensiona ogni lettura idealizzante",
+          "access": "NON-OA",
+          "url": "https://doi.org/10.1086/204006"
+        }
       ]
     }
-  }
+  },
+  "discuss": [
+    "I Ju/'hoansi prendono in giro la carne di chi ha ucciso una grande preda. Quali forme di livellamento riconosci nei gruppi di cui fai parte, e a chi servono?",
+    "Lee legge il suo bue come un tentativo di riscattarsi da un anno senza condividere cibo. Che cosa cambia nell'analisi se l'antropologo si considera parte dello scambio invece che esterno?",
+    "L'articolo si chiude dicendo che non esistono atti totalmente generosi. Sei d'accordo, e a quali condizioni un dono resta un dono?"
+  ]
 }

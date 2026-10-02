@@ -1,8 +1,9 @@
 import { Suspense, use, useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useParams, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { Level, Scenario } from "../schema/scenario.schema";
 import { getCatalog, getEntry, loadScenario, prefetchScenario } from "../engine/content";
+import { nextInTrip, tripFromSearch, type Trip } from "../engine/itineraries";
 import { nextInSequence } from "../engine/progress";
 import { lineColor, stopNumber } from "../engine/lines";
 import { DEFAULT_LANG } from "../i18n";
@@ -21,6 +22,7 @@ import NotFound from "./NotFound";
 export default function ScenarioPage() {
   const { t } = useTranslation();
   const { id = "" } = useParams();
+  const [params] = useSearchParams();
   const { level, setLevel, state } = useAppState();
   const scenario = getEntry(DEFAULT_LANG, id);
 
@@ -29,9 +31,31 @@ export default function ScenarioPage() {
   }
 
   const line = t(`lines.${scenario.concept}.name`);
+  const found = tripFromSearch(DEFAULT_LANG, params);
+  const trip = found?.stops.includes(scenario.id) ? found : undefined;
 
   return (
     <div className="mx-auto max-w-3xl" style={{ ["--lc" as string]: lineColor(scenario.concept) }}>
+      {trip && (
+        <Link
+          to={trip.href}
+          className="mb-3 flex flex-wrap items-baseline gap-x-2 rounded-xl border-[3px] border-ink px-4 py-2.5 font-display text-sm font-bold transition-colors hover:bg-surface"
+        >
+          {trip.title && (
+            <span className="tracking-wider text-ink-soft uppercase">
+              {t("itineraries.banner")}
+            </span>
+          )}
+          <span>{trip.title ?? t("itineraries.custom.title")}</span>
+          <span className="whitespace-nowrap text-ink-soft">
+            ·{" "}
+            {t("itineraries.bannerPosition", {
+              index: trip.stops.indexOf(scenario.id) + 1,
+              total: trip.stops.length,
+            })}
+          </span>
+        </Link>
+      )}
       <LineStrip key={scenario.id} scenario={scenario} completed={state.completed} />
       <header className="relative mb-6 flex items-center gap-4 overflow-hidden rounded-xl bg-panel ring-1 ring-(--panel-ring) px-5 py-5 text-white sm:gap-5 sm:px-6">
         <LineBullet concept={scenario.concept} />
@@ -53,22 +77,47 @@ export default function ScenarioPage() {
           className="sign-bar absolute inset-x-0 bottom-0 h-1.5 bg-(--lc)"
         />
       </header>
-      <div className="mb-7">
+      <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
         <LevelToggle level={level} onChange={setLevel} />
+        <span className="flex flex-wrap gap-x-5">
+          <Link
+            to={`/aula/${scenario.id}${trip?.search ?? ""}`}
+            className="inline-flex min-h-11 items-center gap-2 font-display text-[15px] font-bold underline decoration-2 underline-offset-4 hover:text-accent"
+          >
+            {t("aula.open")}
+            <span aria-hidden="true">→</span>
+          </Link>
+          <Link
+            to={`/scheda/${scenario.id}`}
+            className="inline-flex min-h-11 items-center gap-2 font-display text-[15px] font-bold underline decoration-2 underline-offset-4 hover:text-accent"
+          >
+            {t("sheet.open")}
+          </Link>
+        </span>
       </div>
       <Suspense fallback={<div className="min-h-96" />}>
-        <ScenarioBody key={`${scenario.id}-${level}`} id={scenario.id} level={level} />
+        <ScenarioBody key={`${scenario.id}-${level}`} id={scenario.id} level={level} trip={trip} />
       </Suspense>
     </div>
   );
 }
 
-function ScenarioBody({ id, level }: { id: string; level: Level }) {
+type BodyProps = { id: string; level: Level; trip?: Trip };
+
+function ScenarioBody({ id, level, trip }: BodyProps) {
   const scenario = use(loadScenario(DEFAULT_LANG, id));
-  return scenario ? <ScenarioPlay scenario={scenario} level={level} /> : <NotFound />;
+  return scenario ? <ScenarioPlay scenario={scenario} level={level} trip={trip} /> : <NotFound />;
 }
 
-function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level }) {
+function ScenarioPlay({
+  scenario,
+  level,
+  trip,
+}: {
+  scenario: Scenario;
+  level: Level;
+  trip?: Trip;
+}) {
   const { t } = useTranslation();
   const { state, complete } = useAppState();
   const [choiceId, setChoiceId] = useState<string | null>(null);
@@ -87,7 +136,8 @@ function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level })
 
   const ids = getCatalog(DEFAULT_LANG).map((s) => s.id);
   const allDone = ids.every((i) => i in state.completed);
-  const next = getEntry(DEFAULT_LANG, nextInSequence(state, ids) ?? ids[0]);
+  const nextId = trip ? nextInTrip(trip, scenario.id) : (nextInSequence(state, ids) ?? ids[0]);
+  const next = nextId ? getEntry(DEFAULT_LANG, nextId) : undefined;
 
   useEffect(() => {
     if (choiceId && next) prefetchScenario(DEFAULT_LANG, next.id);
@@ -108,7 +158,7 @@ function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level })
         {choiceId && (
           <>
             <FeedbackPanel content={scenario.levels[level]} level={level} choiceId={choiceId} />
-            {next && (
+            {(next || trip) && (
               <section className="leg" data-main="" aria-labelledby="arrival-heading">
                 <h2 id="arrival-heading" className={legTag}>
                   {t("scenario.legs.arrival")}
@@ -121,20 +171,31 @@ function ScenarioPlay({ scenario, level }: { scenario: Scenario; level: Level })
                   <div className="grid items-center gap-4 rounded-xl bg-panel ring-1 ring-(--panel-ring) p-5 text-white sm:grid-cols-[minmax(0,1fr)_auto]">
                     <div className="min-w-0">
                       <p className="mb-1.5 font-display text-sm font-bold opacity-80">
-                        {allDone
-                          ? t("scenario.allDone")
-                          : t("scenario.nextStop", {
-                              line: t(`lines.${next.concept}.name`),
-                              n: stopNumber(next.id),
-                            })}
+                        {trip
+                          ? next
+                            ? t("itineraries.next", {
+                                index: trip.stops.indexOf(next.id) + 1,
+                                total: trip.stops.length,
+                              })
+                            : t("itineraries.end", { count: trip.stops.length })
+                          : allDone
+                            ? t("scenario.allDone")
+                            : next &&
+                              t("scenario.nextStop", {
+                                line: t(`lines.${next.concept}.name`),
+                                n: stopNumber(next.id),
+                              })}
                       </p>
-                      <SplitFlap text={next.title} className="text-lg leading-snug sm:text-2xl" />
+                      <SplitFlap
+                        text={next?.title ?? trip?.title ?? t("itineraries.custom.title")}
+                        className="text-lg leading-snug sm:text-2xl"
+                      />
                     </div>
                     <Link
-                      to={`/s/${next.id}`}
+                      to={next ? `/s/${next.id}${trip?.search ?? ""}` : (trip?.href ?? "/")}
                       className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-white px-5 font-display font-extrabold text-[#1a1a1a] transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
                     >
-                      {t("scenario.go")}
+                      {next ? t("scenario.go") : t("itineraries.back")}
                       <span aria-hidden="true">→</span>
                     </Link>
                   </div>

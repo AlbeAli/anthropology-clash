@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { Concept, Lang, Level, Scenario } from "../src/schema/scenario.schema";
+import { Concept, Itinerary, Lang, Level, Scenario } from "../src/schema/scenario.schema";
 
 const CONTENT_DIR = fileURLToPath(new URL("../src/content", import.meta.url));
 const STUDENTE_SOURCE = /\p{Lu}\p{L}+.*\b(1[5-9]|20)\d{2}\b/u;
@@ -19,7 +19,54 @@ function readJson(path: string): unknown {
   return JSON.parse(readFileSync(path, "utf8"));
 }
 
-export function validateLang(lang: Lang, dir: string): { issues: Issue[]; count: number } {
+function jsonFiles(dir: string): string[] {
+  return existsSync(dir)
+    ? readdirSync(dir)
+        .filter((f) => f.endsWith(".json"))
+        .sort()
+    : [];
+}
+
+function validateItineraries(lang: Lang, dir: string, scenarioIds: Set<string>) {
+  const issues: Issue[] = [];
+  const files = jsonFiles(join(dir, "itineraries"));
+  const seenIds = new Set<string>();
+
+  for (const file of files) {
+    const label = `${lang}/itineraries/${file}`;
+    const parsed = Itinerary.safeParse(readJson(join(dir, "itineraries", file)));
+    if (!parsed.success) {
+      issues.push(...formatZodIssues(label, parsed.error.issues));
+      continue;
+    }
+    const it = parsed.data;
+    if (basename(file, ".json") !== it.id) {
+      issues.push({ file: label, message: `nome file diverso dall'id "${it.id}"` });
+    }
+    if (it.lang !== lang) {
+      issues.push({ file: label, message: `lang "${it.lang}" diverso dalla cartella "${lang}"` });
+    }
+    if (seenIds.has(it.id)) {
+      issues.push({ file: label, message: `id duplicato "${it.id}"` });
+    }
+    seenIds.add(it.id);
+    if (new Set(it.stops).size !== it.stops.length) {
+      issues.push({ file: label, message: "stops: fermata ripetuta" });
+    }
+    for (const stop of it.stops) {
+      if (!scenarioIds.has(stop)) {
+        issues.push({ file: label, message: `stops: "${stop}" non esiste in ${lang}/scenarios` });
+      }
+    }
+  }
+
+  return { issues, count: files.length };
+}
+
+export function validateLang(
+  lang: Lang,
+  dir: string,
+): { issues: Issue[]; count: number; itineraries: number } {
   const issues: Issue[] = [];
   const conceptsPath = join(dir, "concepts.json");
   const conceptIds = new Set<string>();
@@ -44,11 +91,7 @@ export function validateLang(lang: Lang, dir: string): { issues: Issue[]; count:
   }
 
   const scenariosDir = join(dir, "scenarios");
-  const files = existsSync(scenariosDir)
-    ? readdirSync(scenariosDir)
-        .filter((f) => f.endsWith(".json"))
-        .sort()
-    : [];
+  const files = jsonFiles(scenariosDir);
   const seenIds = new Set<string>();
 
   for (const file of files) {
@@ -114,30 +157,42 @@ export function validateLang(lang: Lang, dir: string): { issues: Issue[]; count:
     if (!s.levels.studente.deepen) {
       issues.push({ file: label, message: "levels.studente.deepen è obbligatorio" });
     }
+    if (!s.discuss) {
+      issues.push({
+        file: label,
+        message: "discuss è obbligatorio: 2-3 domande per la discussione",
+      });
+    }
   }
 
-  return { issues, count: files.length };
+  const itineraries = validateItineraries(lang, dir, seenIds);
+  issues.push(...itineraries.issues);
+
+  return { issues, count: files.length, itineraries: itineraries.count };
 }
 
 export function validateAll(contentDir: string) {
   const issues: Issue[] = [];
   let count = 0;
+  let itineraries = 0;
   for (const lang of Lang.options) {
     const dir = join(contentDir, lang);
     if (!existsSync(dir)) continue;
     const r = validateLang(lang, dir);
     issues.push(...r.issues);
     count += r.count;
+    itineraries += r.itineraries;
   }
-  return { issues, count };
+  return { issues, count, itineraries };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { issues, count } = validateAll(CONTENT_DIR);
+  const { issues, count, itineraries } = validateAll(CONTENT_DIR);
+  const summary = `${count} scenari, ${itineraries} ${itineraries === 1 ? "itinerario" : "itinerari"}`;
   if (issues.length > 0) {
     for (const i of issues) console.error(`✗ ${i.file}: ${i.message}`);
-    console.error(`\n${issues.length} problemi in ${count} scenari`);
+    console.error(`\n${issues.length} problemi (${summary})`);
     process.exit(1);
   }
-  console.log(`✓ ${count} scenari validi`);
+  console.log(`✓ contenuti validi: ${summary}`);
 }

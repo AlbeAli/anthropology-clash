@@ -26,11 +26,11 @@ pnpm e2e        # Playwright, build + preview su 4173
 
 ```
 src/components   ScenarioCard, ChoiceButton, FeedbackPanel, LevelToggle
-src/engine       selezione scenario, stato progressi, copertura concetti; sync.ts, remote.ts, account.ts (Supabase)
-src/content      it/scenarios/*.json, it/concepts.json, en/...
+src/engine       selezione scenario, stato progressi, copertura concetti; itineraries.ts (percorsi curati e su misura); aula.ts (passi della modalità aula); sync.ts, remote.ts, account.ts (Supabase)
+src/content      it/scenarios/*.json, it/itineraries/*.json, it/concepts.json, en/...
 src/locales      it.json (fonte di verità), en.json
 src/schema       scenario.schema.ts
-src/pages        Home, Scenario, ConceptLibrary, Method, Journey, SignIn (/accedi), Profile (/profilo), Privacy
+src/pages        Home, Scenario, ConceptLibrary, Method, Journey, Itineraries (/percorsi), Itinerary (/percorso/:id, /percorso?f=), Aula (/aula/:id), Sheet (/scheda/:id), SignIn (/accedi), Profile (/profilo), Privacy
 src/state        AppState.tsx (livello, tema, progressi, streak), Account.tsx (sessione e sincronizzazione)
 scripts          validate-content.ts
 supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifica), functions/delete-account
@@ -56,6 +56,8 @@ supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifi
 - Concetti ammessi: `reciprocita`, `parentela`, `rituale`, `relativismo`, `consumo`. Aggiungerne uno richiede modifica a `ConceptId` nello schema e voce in `concepts.json`.
 - Campo `hook` opzionale in ogni livello (max 400 caratteri): l'aggancio a una situazione contemporanea che apre lo scenario prima del `setup` etnografico. O in entrambi i livelli o in nessuno, verificato da `pnpm validate`.
 - **Un `hook` non è un caso di studio.** È un'illustrazione in seconda persona e non contiene affermazioni fattuali su gruppi, quantità o singole persone. Se la situazione contemporanea è a sua volta etnografata, la si cita in `source` e vale come qualunque altra fonte: verificata sul testo.
+- Campo `discuss` a livello di scenario (vale per entrambi i livelli): 2-3 domande per la discussione in classe, ciascuna chiusa da `?`. Nessuna affermazione fattuale oltre quanto già dicono scenario e fonte; nessuna domanda che indichi un'uscita preferibile o citi una scelta come migliore. Le scrive l'assistente, le valida l'autore. Obbligatorio in `pnpm validate` (facoltativo solo nello schema Zod).
+- Itinerari curati: `src/content/it/itineraries/<id>.json` (`id` in kebab-case uguale al nome file, `lang`, `title`, `description`, `stops` con 2-12 id di scenari esistenti, senza ripetizioni), verificati da `pnpm validate`. Un itinerario è una sequenza, non un giudizio: la descrizione dice cosa lega le fermate, non cosa si deve concludere.
 - Commit per nuovi scenari: `content: aggiunge scenario_NNN (titolo)`.
 
 ## Convenzioni
@@ -84,6 +86,7 @@ supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifi
 | M9 | Redesign «Le linee della metro» in produzione; riepilogo di fine sessione copiabile; test end-to-end in CI; scenario da Kroeber 1919 validato |
 | M10 | Account facoltativo su Supabase UE con link via email, Google e Telegram; progressi sincronizzati e uniti a `localStorage`; profilo con cancellazione; informativa `/privacy`; e2e verdi con Supabase simulato; dominio `anthropologyclash.app` |
 | M11 | Stabilizzazione: `m10` su `main` con l'account spento in produzione (fino alla fase di rilascio, manuale §16.14); error boundary; pulizie; audit di accessibilità e prestazioni con correzioni; dipendenze aggiornate; CI verde |
+| M12 | Aula e percorsi: modalità aula `/aula/:id`; itinerari curati (JSON validato) e personalizzati come link; `discuss` in tutti gli scenari, validato con l'autore e obbligatorio in `pnpm validate`; scheda stampabile; JS iniziale misurato prima e dopo; e2e e CI verdi |
 
 ## Cosa non fare
 

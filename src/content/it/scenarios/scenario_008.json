@@ -9,8 +9,14 @@
       "hook": "Racconti la trama di un film che ti sembra chiarissima, e chi ascolta la capisce in un altro modo: non gli manca un dettaglio, gli sembra che il protagonista si comporti in modo assurdo. Provi a spiegare, e ogni spiegazione ne chiede un'altra. A un certo punto non sai più se stai raccontando la storia o le tue regole.",
       "setup": "Nigeria centrale, tra i Tiv, intorno al 1950. Sei un'antropologa americana e vivi nella fattoria di un anziano; le paludi sono salite, le cerimonie si sono fermate e la birra di miglio gira dall'alba. Gli anziani ti chiedono una storia del tuo paese e tu racconti l'Amleto, sicura che almeno la trama sia chiara ovunque. Arrivi al punto: il fratello del re morto ha sposato la vedova un mese dopo il funerale. 'Ha fatto bene', dice il vecchio, raggiante: 'anche da noi il fratello minore sposa la vedova del maggiore e diventa il padre dei suoi figli'. Come vai avanti?",
       "choices": [
-        { "id": "a", "text": "Spieghi che da voi è una vergogna: risposarsi così presto, e col cognato" },
-        { "id": "b", "text": "Lasci correre e chiedi: da voi conta se i due fratelli avevano la stessa madre?" }
+        {
+          "id": "a",
+          "text": "Spieghi che da voi è una vergogna: risposarsi così presto, e col cognato"
+        },
+        {
+          "id": "b",
+          "text": "Lasci correre e chiedi: da voi conta se i due fratelli avevano la stessa madre?"
+        }
       ],
       "feedback": {
         "a": "Ci prova anche Bohannan (1966): dice che da noi una vedova aspetta due anni di lutto. La moglie del vecchio replica: 'Due anni sono troppi. Chi zapperà i tuoi campi mentre non hai marito?'. Nessuno è convinto: qui una vedova senza marito è una casa senza braccia, e il fratello che la sposa non è un usurpatore ma un padre per i figli del morto. Il vecchio aveva già tratto la sua conclusione: 'se sapessimo di più degli europei, scopriremmo che sono proprio come noi'. Il disgusto di Amleto per le nozze frettolose, che per te regge tutta la tragedia, qui non ha nulla su cui poggiare. Bohannan era partita da Oxford convinta che 'la natura umana è più o meno la stessa in tutto il mondo'; un amico l'aveva avvertita che 'si può fraintendere l'universale fraintendendo il particolare'.",
@@ -22,10 +28,22 @@
       "hook": "Spieghi a qualcuno una vicenda di famiglia — chi ha fatto cosa, chi doveva intervenire — e l'altro ti interrompe per sistemarla: secondo lui il pezzo importante l'hai messo nel posto sbagliato. Non è distratto, sta usando un'altra idea di chi deve rispondere a chi. Insistere ti farebbe vincere la discussione e perdere l'ascolto.",
       "setup": "Tivland, Nigeria centrale, intorno al 1950. Sei nei panni di Laura Bohannan, al secondo periodo di campo tra i Tiv, ospite nella fattoria di un anziano a capo di circa centoquaranta persone, 'tutti suoi parenti stretti o le loro mogli e i loro figli'. Le paludi sono salite, le cerimonie si sono fermate, la birra gira dall'alba. Gli anziani vogliono una storia del tuo paese e tu racconti l'Amleto, certa che 'la trama e le motivazioni delle grandi tragedie' siano chiare ovunque. Vanno storte diverse cose: il fratello che sposa la vedova 'ha fatto bene'; lo spettro non può parlare, è un presagio mandato da uno stregone; la follia viene solo dalla stregoneria o dagli esseri della foresta, e possono stregare Amleto solo i parenti in linea maschile: dunque Claudio. Ora sei al punto in cui Amleto deve vendicare il padre. Il vecchio, rivolto ai giovani seduti dietro gli anziani, sentenzia: 'Se il fratello di tuo padre ha ucciso tuo padre, devi rivolgerti ai coetanei di tuo padre: possono vendicarlo loro. Nessuno può usare violenza contro i propri parenti anziani'. Come prosegui il racconto?",
       "choices": [
-        { "id": "a", "text": "Insisti: lo spettro ha chiesto vendetta al figlio, e Amleto deve compierla di sua mano" },
-        { "id": "b", "text": "Accogli la loro versione: Claudio ha stregato Amleto e lo ha reso pazzo, per questo Amleto lo uccide" },
-        { "id": "c", "text": "Torni indietro e rispondi alla domanda del vecchio: il padre e lo zio di Amleto avevano la stessa madre?" },
-        { "id": "d", "text": "Smetti di raccontare, tiri fuori il taccuino e chiedi come funziona la stregoneria tra parenti" }
+        {
+          "id": "a",
+          "text": "Insisti: lo spettro ha chiesto vendetta al figlio, e Amleto deve compierla di sua mano"
+        },
+        {
+          "id": "b",
+          "text": "Accogli la loro versione: Claudio ha stregato Amleto e lo ha reso pazzo, per questo Amleto lo uccide"
+        },
+        {
+          "id": "c",
+          "text": "Torni indietro e rispondi alla domanda del vecchio: il padre e lo zio di Amleto avevano la stessa madre?"
+        },
+        {
+          "id": "d",
+          "text": "Smetti di raccontare, tiri fuori il taccuino e chiedi come funziona la stregoneria tra parenti"
+        }
       ],
       "feedback": {
         "a": "Gli anziani sono scandalizzati: 'Che un uomo alzi la mano contro il fratello di suo padre, colui che è diventato suo padre: è una cosa terribile. Gli anziani dovrebbero lasciare che un uomo simile venga stregato' (Bohannan 1966). Nella società tiv, senza re né capi tradizionali e fatta di lignaggi patrilineari segmentari (Bohannan 1958; Sahlins 1961), il fratello del padre è un agnato anziano: la vendetta spetta ai coetanei del morto, e un torto dentro il lignaggio si porta davanti agli anziani, non si regola col machete. Il 'grande capo' della storia è una traduzione di comodo: i capi che il vecchio conosce, tra lettere e ricevute delle tasse, sono coloniali. La tua fedeltà a Shakespeare ha fatto di Amleto, per loro, un criminale: la trama regge, col segno rovesciato.",
@@ -35,11 +53,35 @@
       },
       "source": "Bohannan, 'Shakespeare in the Bush', Natural History 75, 1966, pp. 28-33 (Natural History Magazine); Bohannan & Bohannan, The Tiv of Central Nigeria, 1953; Bohannan, 'Political Aspects of Tiv Social Organization', in Middleton & Tait (a cura di), Tribes Without Rulers, 1958; Bohannan, 'A Genealogical Charter', Africa 22(4), 1952, DOI 10.2307/1156915; Sahlins, 'The Segmentary Lineage: An Organization of Predatory Expansion', American Anthropologist 63(2), 1961, DOI 10.1525/aa.1961.63.2.02a00050; Radcliffe-Brown, Introduzione a African Systems of Kinship and Marriage, 1950",
       "deepen": [
-        { "ref": "Bohannan, 'Shakespeare in the Bush', Natural History 75, 1966, pp. 28-33", "why": "Il testo integrale sul sito della rivista: da leggere per primo, fermandosi a ogni punto in cui gli anziani correggono la trama", "access": "OA", "url": "https://www.naturalhistorymag.com/picks-from-the-past/12476/shakespeare-in-the-bush" },
-        { "ref": "Bohannan, 'A Genealogical Charter', Africa 22(4), 1952", "why": "L'articolo di Laura Bohannan sulle genealogie tiv, nella rivista dell'International African Institute", "access": "NON-OA", "url": "https://doi.org/10.2307/1156915" },
-        { "ref": "Bohannan & Bohannan, The Tiv of Central Nigeria, 1953", "why": "La descrizione etnografica di base: fattoria, lignaggio, eredità delle vedove, tsav e stregoneria", "access": "NON-OA" },
-        { "ref": "Sahlins, 'The Segmentary Lineage: An Organization of Predatory Expansion', American Anthropologist 63(2), 1961", "why": "Il modello del lignaggio segmentario costruito su Tiv e Nuer: perché senza capi la vendetta e l'alleanza seguono la genealogia", "access": "NON-OA", "url": "https://doi.org/10.1525/aa.1961.63.2.02a00050" }
+        {
+          "ref": "Bohannan, 'Shakespeare in the Bush', Natural History 75, 1966, pp. 28-33",
+          "why": "Il testo integrale sul sito della rivista: da leggere per primo, fermandosi a ogni punto in cui gli anziani correggono la trama",
+          "access": "OA",
+          "url": "https://www.naturalhistorymag.com/picks-from-the-past/12476/shakespeare-in-the-bush"
+        },
+        {
+          "ref": "Bohannan, 'A Genealogical Charter', Africa 22(4), 1952",
+          "why": "L'articolo di Laura Bohannan sulle genealogie tiv, nella rivista dell'International African Institute",
+          "access": "NON-OA",
+          "url": "https://doi.org/10.2307/1156915"
+        },
+        {
+          "ref": "Bohannan & Bohannan, The Tiv of Central Nigeria, 1953",
+          "why": "La descrizione etnografica di base: fattoria, lignaggio, eredità delle vedove, tsav e stregoneria",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Sahlins, 'The Segmentary Lineage: An Organization of Predatory Expansion', American Anthropologist 63(2), 1961",
+          "why": "Il modello del lignaggio segmentario costruito su Tiv e Nuer: perché senza capi la vendetta e l'alleanza seguono la genealogia",
+          "access": "NON-OA",
+          "url": "https://doi.org/10.1525/aa.1961.63.2.02a00050"
+        }
       ]
     }
-  }
+  },
+  "discuss": [
+    "Bohannan racconta l'Amleto certa che le motivazioni delle grandi tragedie siano chiare ovunque. Quali presupposti daresti per scontati raccontando una storia a persone di un'altra cultura?",
+    "Per il vecchio conta se il padre e lo zio di Amleto avessero una sola madre. Quali dettagli di parentela, che tu trascuri, decidono in altri contesti che cosa è lecito fare?",
+    "Nel racconto un fraintendimento diventa dato etnografico. Quando un fraintendimento apre la conversazione e quando la chiude?"
+  ]
 }

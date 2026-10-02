@@ -1,7 +1,7 @@
 {
   "id": "scenario_017",
   "lang": "it",
-  "title": "Cinquecento bacinelle",
+  "title": "Le bacinelle di Sabo",
   "concept": "consumo",
   "concept_label": "Consumo e cultura materiale",
   "levels": {
@@ -76,5 +76,10 @@
         }
       ]
     }
-  }
+  },
+  "discuss": [
+    "Una donna che ne possiede cinquecento ne dà cinquanta in dote a una figlia affidata, e la dote è proporzionata agli anni di servizio della ragazza. Che cosa si scambia in questa dote, e tra chi?",
+    "Gli uomini del quartiere si lamentano che per le bacinelle non si trova più posto nemmeno per la preghiera del mattino. Chi guadagna e chi perde, in un quartiere, dalla scelta di tenere i guadagni in un solo tipo di oggetto?",
+    "Se dovessi spiegare le bacinelle a chi non conosce Sabo, da quale parola partiresti: spreco, status, risparmio o linguaggio? Che cosa nasconderebbe?"
+  ]
 }
