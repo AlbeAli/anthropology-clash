@@ -308,6 +308,110 @@
   }
 }
 
+@layer components {
+  .net-rail {
+    fill: none;
+    stroke: var(--lc);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: net-draw 0.9s var(--ease-out-expo) forwards;
+    animation-delay: calc(0.15s + var(--i, 0) * 0.1s);
+  }
+  .net-mini .net-rail {
+    stroke-width: 22;
+  }
+  .net-stop {
+    animation: metro-in 0.45s var(--ease-out-expo) backwards;
+    animation-delay: calc(0.45s + var(--i, 0) * 0.1s + var(--j, 0) * 0.08s);
+  }
+  .net-term {
+    animation: metro-in 0.45s var(--ease-out-expo) backwards;
+    animation-delay: calc(0.9s + var(--i, 0) * 0.1s);
+  }
+  .net-term text {
+    font: 800 15px var(--font-display);
+  }
+  .net-hit {
+    fill: transparent;
+  }
+  .net-dot {
+    fill: var(--bg);
+    stroke: var(--ink);
+    stroke-width: 4;
+    transition: stroke-width 0.2s;
+  }
+  .net-mini .net-dot {
+    stroke-width: 7;
+  }
+  .net-stop[data-state="done"] .net-dot {
+    fill: var(--ink);
+  }
+  .net-stop[data-state="here"] .net-dot {
+    fill: var(--lc);
+  }
+  .net-ping {
+    fill: none;
+    stroke: var(--lc);
+    stroke-width: 3;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: metro-ping 1.8s var(--ease-out-expo) infinite;
+  }
+  .net-label {
+    font: 700 15px var(--font-display);
+    fill: var(--ink);
+    paint-order: stroke;
+    stroke: var(--bg);
+    stroke-width: 4px;
+    stroke-linejoin: round;
+  }
+  .net-stop:focus-visible {
+    outline: none;
+  }
+  .net-stop:hover .net-dot,
+  .net-stop:focus-visible .net-dot {
+    stroke-width: 6;
+  }
+  .net-stop:focus-visible .net-dot {
+    stroke: var(--focus);
+  }
+  .net-stop:hover .net-label,
+  .net-stop:focus-visible .net-label {
+    text-decoration: underline;
+  }
+  .net-line {
+    transition: opacity 0.3s;
+  }
+  .net-line[data-dim] {
+    opacity: 0.14;
+  }
+  .net-hub rect {
+    fill: var(--bg);
+    stroke: var(--ink);
+    stroke-width: 5;
+  }
+  .net-mini .net-hub rect {
+    stroke-width: 10;
+  }
+  .net-mini .net-hub text {
+    font-size: 30px;
+    letter-spacing: 0.04em;
+  }
+  .net-hub text {
+    font: 800 18px var(--font-display);
+    letter-spacing: 0.08em;
+    fill: var(--ink);
+  }
+}
+
+@keyframes net-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @keyframes flap-flip {
   50% {
     transform: scaleY(0.15);

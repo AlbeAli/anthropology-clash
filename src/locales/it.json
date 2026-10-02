@@ -57,6 +57,21 @@
       "visited": "visitata · {{level}}",
       "todo": "fermata {{n}}",
       "peek": "Oggi"
+    },
+    "network": {
+      "label": "La rete: tutte le linee partono da Oggi",
+      "hub": "OGGI",
+      "hint": "Tutte le linee partono da Oggi. Passa su una fermata per leggere l'aggancio di oggi, sceglila per partire.",
+      "status": "Linea {{line}} · fermata {{n}} · {{title}}",
+      "stop": "Fermata {{n}}, {{title}}, linea {{line}}, {{state}}",
+      "state": {
+        "here": "sei qui",
+        "done": "visitata",
+        "todo": "da visitare"
+      },
+      "mini": "La rete in miniatura: tocca per isolare una linea.",
+      "miniCurrent": "Linea isolata: {{line}}.",
+      "continue": "Continua"
     }
   },
   "scenario": {

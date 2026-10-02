@@ -12,6 +12,8 @@ import LineBullet from "../components/metro/LineBullet";
 import LineMap from "../components/metro/LineMap";
 import SplitFlap from "../components/metro/SplitFlap";
 import CountUp from "../components/metro/CountUp";
+import NetworkMap from "../components/metro/NetworkMap";
+import { prefersReducedMotion } from "../engine/motion";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -39,57 +41,91 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-6xl">
-      <p className="mb-3 font-display text-sm font-bold tracking-wide text-ink-soft">
-        {t("home.kicker")}
-      </p>
-      <h1 className="mb-3 font-display text-4xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl">
-        {t("home.title", { lines: concepts.length, stops: scenarios.length })}
-      </h1>
-      <p className="mb-7 max-w-[46ch] text-lg text-ink-soft sm:text-xl">{t("home.lede")}</p>
-
-      <div className="mb-10 grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
-        {next && (
-          <Link
-            to={`/s/${next.id}`}
-            className="group relative grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4 overflow-hidden rounded-xl bg-panel ring-1 ring-(--panel-ring) p-5 pb-7 text-white transition-transform duration-300 ease-out-expo hover:-translate-y-0.5 sm:gap-5 sm:p-6 sm:pb-8"
-          >
-            <LineBullet concept={next.concept} />
-            <span className="min-w-0">
-              <small className="mb-2 block font-display text-sm font-bold opacity-80">
-                {allDone
-                  ? t("home.board.again", { line: t(`lines.${next.concept}.name`) })
-                  : t("home.board.label", {
-                      line: t(`lines.${next.concept}.name`),
-                      n: stopNumber(next.id),
-                    })}
-              </small>
-              <SplitFlap
-                text={next.title}
-                className="text-xl leading-snug sm:text-3xl lg:text-4xl"
-              />
-              <span className="mt-2.5 flex items-center gap-2 font-display text-sm font-bold opacity-85">
-                <b aria-hidden="true" className="metro-blink size-2.5 rounded-full bg-[#f7a600]" />
-                {t("home.board.eta")}
+      <section aria-labelledby="home-title" className="mb-12 grid gap-6">
+        <div className="grid items-end gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+          <div>
+            <p className="mb-3 font-display text-sm font-bold tracking-wide text-ink-soft">
+              {t("home.kicker")}
+            </p>
+            <h1
+              id="home-title"
+              className="mb-3 font-display text-4xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl"
+            >
+              {t("home.title", { lines: concepts.length, stops: scenarios.length })}
+            </h1>
+            <p className="max-w-[46ch] text-lg text-ink-soft sm:text-xl">{t("home.lede")}</p>
+          </div>
+          {next && (
+            <Link
+              to={`/s/${next.id}`}
+              className="group relative grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4 overflow-hidden rounded-xl bg-panel ring-1 ring-(--panel-ring) p-5 pb-7 text-white transition-transform duration-300 ease-out-expo hover:-translate-y-0.5 sm:gap-5 sm:p-6 sm:pb-8"
+            >
+              <LineBullet concept={next.concept} />
+              <span className="min-w-0">
+                <small className="mb-2 block font-display text-sm font-bold opacity-80">
+                  {allDone
+                    ? t("home.board.again", { line: t(`lines.${next.concept}.name`) })
+                    : t("home.board.label", {
+                        line: t(`lines.${next.concept}.name`),
+                        n: stopNumber(next.id),
+                      })}
+                </small>
+                <SplitFlap
+                  text={next.title}
+                  className="text-xl leading-snug sm:text-3xl lg:text-4xl"
+                />
+                <span className="mt-2.5 flex items-center gap-2 font-display text-sm font-bold opacity-85">
+                  <b
+                    aria-hidden="true"
+                    className="metro-blink size-2.5 rounded-full bg-[#f7a600]"
+                  />
+                  {t("home.board.eta")}
+                </span>
               </span>
-            </span>
-            <span className="col-span-2 inline-flex min-h-12 items-center gap-2.5 justify-self-start rounded-md bg-white px-5 font-display font-extrabold text-[#1a1a1a]">
-              {t("home.board.go")}
-              <b
+              <span className="col-span-2 inline-flex min-h-12 items-center gap-2.5 justify-self-start rounded-md bg-white px-5 font-display font-extrabold text-[#1a1a1a]">
+                {t("home.board.go")}
+                <b
+                  aria-hidden="true"
+                  className="transition-transform duration-300 ease-out-expo group-hover:translate-x-1"
+                >
+                  →
+                </b>
+              </span>
+              <span
                 aria-hidden="true"
-                className="transition-transform duration-300 ease-out-expo group-hover:translate-x-1"
-              >
-                →
-              </b>
-            </span>
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-1.5"
-              style={{ background: lineColor(next.concept) }}
-            />
-          </Link>
-        )}
+                className="absolute inset-x-0 bottom-0 h-1.5"
+                style={{ background: lineColor(next.concept) }}
+              />
+            </Link>
+          )}
+        </div>
 
-        <section className="grid content-start gap-4 rounded-xl bg-surface p-5 sm:p-6">
+        <NetworkMap
+          concepts={concepts}
+          scenarios={scenarios}
+          completed={state.completed}
+          hereId={next?.id}
+          filter={filter}
+          onFilter={setFilter}
+        />
+
+        <a
+          href="#linee"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById("linee")
+              ?.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth" });
+          }}
+          className="inline-flex min-h-12 items-center gap-2.5 justify-self-center rounded-md border-2 border-ink px-5 font-display font-extrabold"
+        >
+          {t("home.network.continue")}
+          <b aria-hidden="true">↓</b>
+        </a>
+      </section>
+
+      <div id="linee" className="mb-10 scroll-mt-6">
+        <section className="grid content-start gap-4 rounded-xl bg-surface p-5 sm:p-6 lg:grid-cols-[auto_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-8">
           <p className="font-display text-5xl leading-none font-extrabold tabular-nums">
             <CountUp to={visited} />
             <small className="ml-2 text-base font-bold text-ink-soft">
@@ -131,7 +167,7 @@ export default function Home() {
               );
             })}
           </div>
-          <div className="grid gap-2 border-t border-line pt-4">
+          <div className="grid gap-2 border-t border-line pt-4 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
             <p className="font-display text-sm font-bold">{t("home.levelHeading")}</p>
             <div>
               <LevelToggle level={level} onChange={setLevel} />
