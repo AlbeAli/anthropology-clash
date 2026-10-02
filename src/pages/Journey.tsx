@@ -2,11 +2,12 @@ import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, getConcepts } from "../engine/content";
-import { linesTouched, visitsInOrder } from "../engine/journey";
+import { lineStamps, visitsInOrder } from "../engine/journey";
 import { useAppState } from "../state/AppState";
 import { useAccount } from "../state/Account";
 import { DEFAULT_LANG } from "../i18n";
 import LineBullet from "../components/metro/LineBullet";
+import LineStamp from "../components/metro/LineStamp";
 
 export default function Journey() {
   const { t, i18n } = useTranslation();
@@ -15,7 +16,11 @@ export default function Journey() {
   const scenarios = getCatalog(DEFAULT_LANG);
   const concepts = getConcepts(DEFAULT_LANG);
   const visits = visitsInOrder(state.completed, scenarios);
-  const touched = linesTouched(visits);
+  const stamps = lineStamps(
+    visits,
+    scenarios,
+    concepts.map((c) => c.id),
+  ).filter((s) => s.seen > 0);
   const [confirming, setConfirming] = useState(false);
   const [notice, setNotice] = useState("");
   const [fallback, setFallback] = useState("");
@@ -26,8 +31,20 @@ export default function Journey() {
       month: "long",
     });
 
+  const short = (day: string) =>
+    new Date(`${day}T12:00:00`)
+      .toLocaleDateString(i18n.language, { day: "numeric", month: "short" })
+      .toUpperCase();
+
   function summary(): string {
-    const lines = touched.map((c) => t(`lines.${c}.name`)).join(", ") || t("journey.summary.none");
+    const lines =
+      stamps
+        .map(
+          (s) =>
+            t(`lines.${s.concept}.name`) +
+            (s.terminus ? ` (${t("journey.stamp.terminus").toLowerCase()})` : ""),
+        )
+        .join(", ") || t("journey.summary.none");
     return [
       t("journey.summary.head", { app: t("app.name") }),
       t("journey.count", { count: visits.length, total: scenarios.length }),
@@ -102,24 +119,22 @@ export default function Journey() {
           <h2 className="mb-3 font-display text-sm font-extrabold tracking-wide text-ink-soft uppercase">
             {t("journey.lines")}
           </h2>
-          <ul className="flex flex-wrap gap-2">
-            {concepts.map((c) => (
-              <li
-                key={c.id}
-                className={
-                  "inline-flex items-center gap-2 rounded-full border-2 py-1 pr-3 pl-1 font-display text-sm font-bold " +
-                  (touched.includes(c.id)
-                    ? "border-ink"
-                    : "border-dashed border-line text-ink-soft")
-                }
-              >
-                <LineBullet concept={c.id} size="sm" />
-                {t(`lines.${c.id}.name`)}
-                {!touched.includes(c.id) && (
-                  <span className="sr-only"> ({t("journey.lineUntouched")})</span>
-                )}
-              </li>
-            ))}
+          <ul className="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-x-3 gap-y-5">
+            {concepts.map((c, i) => {
+              const stamp = stamps.find((x) => x.concept === c.id);
+              return (
+                <li key={c.id} className="grid min-w-0 justify-items-start">
+                  {stamp ? (
+                    <LineStamp stamp={stamp} index={i} date={date} short={short} />
+                  ) : (
+                    <p className="grid h-21 w-full max-w-37 content-center gap-1 rounded-md border-2 border-dashed border-line px-3.5 font-display text-ink-soft">
+                      <span className="text-sm font-extrabold">{t(`lines.${c.id}.name`)}</span>
+                      <span className="text-xs font-bold">{t("journey.lineUntouched")}</span>
+                    </p>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </section>
         <div aria-hidden="true" className="mx-5 border-t-[3px] border-dashed border-line" />

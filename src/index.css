@@ -111,6 +111,10 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .punch,
+    .ticket-row {
+      animation: none !important;
+    }
     *,
     *::before,
     *::after {
@@ -590,9 +594,20 @@
   .ticket-print {
     animation: ticket-print 0.9s var(--ease-out-expo) both;
   }
+  .punch {
+    animation: metro-punch 0.45s var(--ease-out-expo) backwards;
+    animation-delay: calc(0.7s + var(--j, 0) * 0.1s);
+  }
   .ticket-row {
     animation: metro-in 0.4s var(--ease-out-expo) backwards;
     animation-delay: calc(0.5s + var(--j, 0) * 0.06s);
+  }
+}
+
+@keyframes metro-punch {
+  from {
+    opacity: 0;
+    scale: 1.25;
   }
 }
 

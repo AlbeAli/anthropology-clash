@@ -225,6 +225,12 @@
     "count_other": "{{count}} fermate visitate su {{total}}",
     "lines": "Linee toccate",
     "lineUntouched": "non ancora percorsa",
+    "stamp": {
+      "touched": "Toccata",
+      "terminus": "Capolinea",
+      "touchedAria": "{{line}}, linea toccata il {{date}}",
+      "terminusAria": "{{line}}, capolinea raggiunto il {{date}}"
+    },
     "stops": "Fermate, in ordine di visita",
     "empty": "Ancora nessuna fermata. Parti dalla mappa.",
     "copy": "Copia il riepilogo",
