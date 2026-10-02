@@ -87,6 +87,7 @@ supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifi
 | M10 | Account facoltativo su Supabase UE con link via email, Google e Telegram; progressi sincronizzati e uniti a `localStorage`; profilo con cancellazione; informativa `/privacy`; e2e verdi con Supabase simulato; dominio `anthropologyclash.app` |
 | M11 | Stabilizzazione: `m10` su `main` con l'account spento in produzione (fino alla fase di rilascio, manuale §16.14); error boundary; pulizie; audit di accessibilità e prestazioni con correzioni; dipendenze aggiornate; CI verde |
 | M12 | Aula e percorsi: modalità aula `/aula/:id`; itinerari curati (JSON validato) e personalizzati come link; `discuss` in tutti gli scenari, validato con l'autore e obbligatorio in `pnpm validate`; scheda stampabile; JS iniziale misurato prima e dopo; e2e e CI verdi |
+| M13 | Rete della metro: mappa schematica con snodo «Oggi» da 768 px, elenco con miniatura della rete sotto; interscambi `also` verificati sul testo e validati con l'autore; timbri e capolinea senza punteggi; fermata del giorno condivisibile; JS iniziale misurato prima e dopo; e2e e CI verdi |
 
 ## Cosa non fare
 
