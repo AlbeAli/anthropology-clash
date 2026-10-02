@@ -3,7 +3,7 @@ import { aulaSteps, stepIndex } from "./aula";
 import { Scenario } from "../schema/scenario.schema";
 import raw from "../content/it/scenarios/scenario_001.json";
 
-const scenario = Scenario.parse(raw);
+const scenario = Scenario.parse({ ...raw, discuss: undefined });
 
 describe("passi della modalità aula", () => {
   it("vanno dal titolo alla fonte svelando un'uscita per passo", () => {
