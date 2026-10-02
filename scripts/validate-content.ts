@@ -157,6 +157,12 @@ export function validateLang(
     if (!s.levels.studente.deepen) {
       issues.push({ file: label, message: "levels.studente.deepen è obbligatorio" });
     }
+    if (!s.discuss) {
+      issues.push({
+        file: label,
+        message: "discuss è obbligatorio: 2-3 domande per la discussione",
+      });
+    }
   }
 
   const itineraries = validateItineraries(lang, dir, seenIds);

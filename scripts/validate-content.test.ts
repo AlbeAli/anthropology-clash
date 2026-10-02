@@ -84,6 +84,15 @@ describe("validate-content", () => {
   });
 });
 
+describe("validate-content: domande per la discussione", () => {
+  it("segnala uno scenario senza discuss", () => {
+    const broken: { discuss?: unknown } = structuredClone(scenario001);
+    delete broken.discuss;
+    const messages = validateAll(fixture(broken)).issues.map((i) => i.message);
+    expect(messages).toContainEqual(expect.stringContaining("discuss è obbligatorio"));
+  });
+});
+
 describe("validate-content: aggancio contemporaneo", () => {
   it("segnala un hook presente in un solo livello", () => {
     const broken = structuredClone(scenario001);
