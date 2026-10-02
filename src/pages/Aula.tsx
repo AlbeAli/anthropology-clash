@@ -284,7 +284,9 @@ function Slide({ scenario, level, step }: { scenario: Scenario; level: Level; st
             {scenario.discuss?.map((q, i) => (
               <li key={q} className="flex items-start gap-4">
                 <Badge n={i + 1} />
-                <span className="max-w-[60ch] text-xl leading-snug text-pretty sm:text-2xl lg:text-3xl [@media(max-height:800px)]:lg:text-2xl">{q}</span>
+                <span className="max-w-[60ch] text-xl leading-snug text-pretty sm:text-2xl lg:text-3xl [@media(max-height:800px)]:lg:text-2xl">
+                  {q}
+                </span>
               </li>
             ))}
           </ol>
