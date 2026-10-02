@@ -1,4 +1,4 @@
-import { Suspense, use, useEffect, useRef, useState } from "react";
+import { Suspense, use, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { Level, Scenario } from "../schema/scenario.schema";
@@ -67,7 +67,7 @@ function AulaShow({ scenario }: { scenario: Scenario }) {
 
   const goRef = useRef(go);
   const indexRef = useRef(index);
-  useEffect(() => {
+  useLayoutEffect(() => {
     goRef.current = go;
     indexRef.current = index;
   });

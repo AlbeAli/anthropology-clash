@@ -44,8 +44,13 @@ test("la modalità aula si apre dallo scenario e svela una tappa alla volta", as
 
   await page.keyboard.press("End");
   await expect(position(page)).toHaveText(`Passo ${total} di ${total}`);
-  await expect(page.getByRole("heading", { name: "Fonte" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Avanti" })).toBeDisabled();
+  if (first.discuss) {
+    await expect(page.getByRole("heading", { name: "Per la discussione" })).toBeVisible();
+    for (const q of first.discuss) await expect(page.getByText(q)).toBeVisible();
+    await page.keyboard.press("ArrowLeft");
+  }
+  await expect(page.getByRole("heading", { name: "Fonte" })).toBeVisible();
   await page.keyboard.press("Home");
   await expect(position(page)).toHaveText(`Passo 1 di ${total}`);
 
@@ -64,6 +69,8 @@ test("in aula il livello studente mostra tutte le sue uscite e le letture", asyn
   await page.getByRole("button", { name: "Studente" }).click();
   await expect(position(page)).toHaveText(`Passo 1 di ${total}`);
   await page.keyboard.press("End");
+  await expect(position(page)).toHaveText(`Passo ${total} di ${total}`);
+  if (first.discuss) await page.keyboard.press("ArrowLeft");
   await expect(page.getByRole("heading", { name: "Per approfondire" })).toBeVisible();
 });
 
