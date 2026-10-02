@@ -47,6 +47,33 @@ test("sul telefono la rete in miniatura isola una linea e l'elenco resta sotto",
   await expect(page.locator(".metro-stop:visible")).toHaveCount(line.length);
 });
 
+test("un interscambio si legge sulla rete, nelle colonne e sul cartello dello scenario", async ({
+  page,
+}) => {
+  const change = scenarios.find((s) => s.also?.length)!;
+  const names: Record<string, string> = {
+    reciprocita: "Dono",
+    parentela: "Parentela",
+    rituale: "Rituale",
+    relativismo: "Relativismo",
+    consumo: "Consumo",
+  };
+  const lines = change.also!.map((c) => names[c]).join(", ");
+  await fresh(page);
+  if (!isPhone(page)) {
+    const net = page.getByRole("navigation", { name: "La rete: tutte le linee partono da Oggi" });
+    await expect(
+      net.getByRole("link", { name: new RegExp(`${change.title}.*cambio per la linea ${lines}`) }),
+    ).toBeVisible();
+  }
+  await page
+    .locator(".metro-stop")
+    .getByRole("link", { name: new RegExp(`${change.title}.*cambio per la linea ${lines}`) })
+    .click();
+  await expect(page).toHaveURL(`/s/${change.id}`);
+  await expect(page.getByText(`Interscambio: cambio per la linea ${lines}`)).toBeVisible();
+});
+
 test("«Continua» porta dalla rete alle linee", async ({ page }) => {
   await fresh(page);
   await page.getByRole("link", { name: "Continua" }).click();

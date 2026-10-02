@@ -333,6 +333,9 @@
   .net-term text {
     font: 800 15px var(--font-display);
   }
+  .net-badge text {
+    font: 800 11px var(--font-display);
+  }
   .net-hit {
     fill: transparent;
   }

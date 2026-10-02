@@ -115,6 +115,12 @@ function FullMap({
                 n: stopNumber(entry.id),
                 title: entry.title,
               })}
+              {entry.also?.length
+                ? " · " +
+                  t("home.network.change", {
+                    lines: entry.also.map((c) => t(`lines.${c}.name`)).join(", "),
+                  })
+                : ""}
             </b>
             {entry.hook && (entry.hook.length > 150 ? `${entry.hook.slice(0, 150)}…` : entry.hook)}
           </>
@@ -183,12 +189,50 @@ function Lines({
       </g>
       {line.stations.map((s, k) => {
         const state = stateOf(s.id);
+        const change = s.badges.length > 0;
+        const pill = 2 * r + (mini ? 22 : 14);
+        const badge = mini ? 30 : 18;
         const dot = (
           <>
             {state === "here" && <circle className="net-ping" cx={s.x} cy={s.y} r={r} />}
-            <circle className="net-dot" cx={s.x} cy={s.y} r={r} />
+            {change ? (
+              <rect
+                className="net-dot"
+                x={s.x - pill / 2}
+                y={s.y - r}
+                width={pill}
+                height={2 * r}
+                rx={r}
+                transform={line.pillRotate ? `rotate(${line.pillRotate} ${s.x} ${s.y})` : undefined}
+              />
+            ) : (
+              <circle className="net-dot" cx={s.x} cy={s.y} r={r} />
+            )}
+            {s.badges.map((b) => (
+              <g key={b.concept} className="net-badge" aria-hidden="true">
+                <rect
+                  x={b.x - badge / 2}
+                  y={b.y - badge / 2}
+                  width={badge}
+                  height={badge}
+                  rx={mini ? 6 : 4}
+                  fill={lineColor(b.concept)}
+                />
+                {!mini && (
+                  <text x={b.x} y={b.y + 4} textAnchor="middle" fill={lineInk(b.concept)}>
+                    {t(`lines.${b.concept}.letter`)}
+                  </text>
+                )}
+              </g>
+            ))}
           </>
         );
+        const changeText = change
+          ? ", " +
+            t("home.network.change", {
+              lines: s.badges.map((b) => t(`lines.${b.concept}.name`)).join(", "),
+            })
+          : "";
         if (mini) {
           return (
             <g key={s.id} className="net-stop" data-state={state} style={{ ["--j" as string]: k }}>
@@ -204,12 +248,14 @@ function Lines({
             className="net-stop"
             data-state={state}
             style={{ ["--j" as string]: k }}
-            aria-label={t("home.network.stop", {
-              n: stopNumber(s.id),
-              title: s.title,
-              line: t(`lines.${line.concept}.name`),
-              state: t(`home.network.state.${state}`),
-            })}
+            aria-label={
+              t("home.network.stop", {
+                n: stopNumber(s.id),
+                title: s.title,
+                line: t(`lines.${line.concept}.name`),
+                state: t(`home.network.state.${state}`),
+              }) + changeText
+            }
             onClick={(e) => go(e, s.id)}
             onMouseEnter={() => onActive?.(s.id)}
             onFocus={() => onActive?.(s.id)}

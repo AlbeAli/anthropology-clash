@@ -50,7 +50,8 @@
       "lineLabel": "Linea {{line}}",
       "legendVisited": "visitata",
       "legendHere": "sei qui",
-      "legendTodo": "da visitare"
+      "legendTodo": "da visitare",
+      "legendChange": "interscambio: si cambia per un'altra linea"
     },
     "stop": {
       "here": "sei qui",
@@ -71,6 +72,7 @@
       },
       "mini": "La rete in miniatura: tocca per isolare una linea.",
       "miniCurrent": "Linea isolata: {{line}}.",
+      "change": "cambio per la linea {{lines}}",
       "continue": "Continua"
     }
   },
@@ -85,6 +87,7 @@
       "nav": "Fermate della linea"
     },
     "sign": "Linea {{line}} · fermata {{n}} · {{concept}}",
+    "change": "Interscambio: cambio per la linea {{lines}}",
     "hintScroll": "Scorri: il percorso si accende tappa dopo tappa.",
     "hintVisited": "Fermata già visitata: puoi scegliere di nuovo.",
     "live": "Uscita scelta. Sotto trovi dove porta ogni uscita.",

@@ -42,6 +42,17 @@ describe("buildNetwork", () => {
     for (const l of net.lines) expect(inside(net, l.terminus.x, l.terminus.y)).toBe(true);
   });
 
+  it("segna gli interscambi con il simbolo di ogni altra linea, dentro il riquadro", () => {
+    const net = buildNetwork(scenarios, order);
+    const stations = net.lines.flatMap((l) => l.stations);
+    for (const s of scenarios) {
+      const st = stations.find((x) => x.id === s.id)!;
+      expect(st.badges.map((b) => b.concept)).toEqual(s.also ?? []);
+      for (const b of st.badges) expect(inside(net, b.x, b.y)).toBe(true);
+    }
+    expect(stations.some((s) => s.badges.length > 0)).toBe(true);
+  });
+
   it("regge sei fermate per linea, l'obiettivo delle 30", () => {
     const many = order.flatMap((concept: ConceptId) =>
       Array.from({ length: 6 }, (_, k) => ({

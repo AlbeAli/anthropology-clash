@@ -2,11 +2,18 @@ import type { ConceptId } from "../schema/scenario.schema";
 
 export type Point = { x: number; y: number };
 export type NetLabel = Point & { anchor: "start" | "end"; rotate: number };
-export type NetStation = Point & { id: string; title: string; label: NetLabel };
+export type NetBadge = Point & { concept: ConceptId };
+export type NetStation = Point & {
+  id: string;
+  title: string;
+  label: NetLabel;
+  badges: NetBadge[];
+};
 export type NetLine = {
   concept: ConceptId;
   path: Point[];
   terminus: Point;
+  pillRotate: number;
   stations: NetStation[];
 };
 export type Box = { x: number; y: number; width: number; height: number };
@@ -21,7 +28,10 @@ type Ray = {
   dir: Point;
   first: number;
   step: number;
-  label: (p: Point) => NetLabel;
+  label: (p: Point, e: number) => NetLabel;
+  badge: Point;
+  badgeStep: Point;
+  pillRotate: number;
 };
 
 const D = Math.SQRT1_2;
@@ -31,37 +41,54 @@ const RAYS: Record<ConceptId, Ray> = {
     dir: { x: -1, y: 0 },
     first: 80,
     step: 80,
-    label: (p) => ({ x: p.x - 10, y: p.y - 12, anchor: "end", rotate: 45 }),
+    label: (p, e) => ({ x: p.x - 10 - e / 2, y: p.y - 12 - e, anchor: "end", rotate: 45 }),
+    badge: { x: 0, y: 28 },
+    badgeStep: { x: 0, y: 20 },
+    pillRotate: 90,
   },
   parentela: {
     dir: { x: 0, y: -1 },
     first: 120,
     step: 60,
-    label: (p) => ({ x: p.x - 18, y: p.y + 5, anchor: "end", rotate: 0 }),
+    label: (p, e) => ({ x: p.x - 18 - e, y: p.y + 5, anchor: "end", rotate: 0 }),
+    badge: { x: 28, y: 0 },
+    badgeStep: { x: 20, y: 0 },
+    pillRotate: 0,
   },
   rituale: {
     dir: { x: 1, y: 0 },
     first: 80,
     step: 80,
-    label: (p) => ({ x: p.x + 10, y: p.y - 12, anchor: "start", rotate: -45 }),
+    label: (p, e) => ({ x: p.x + 10 + e / 2, y: p.y - 12 - e, anchor: "start", rotate: -45 }),
+    badge: { x: 0, y: 28 },
+    badgeStep: { x: 0, y: 20 },
+    pillRotate: 90,
   },
   relativismo: {
     dir: { x: 0, y: 1 },
     first: 80,
     step: 70,
-    label: (p) => ({ x: p.x + 18, y: p.y + 5, anchor: "start", rotate: 0 }),
+    label: (p, e) => ({ x: p.x + 18 + e, y: p.y + 5, anchor: "start", rotate: 0 }),
+    badge: { x: -28, y: 0 },
+    badgeStep: { x: -20, y: 0 },
+    pillRotate: 0,
   },
   consumo: {
     dir: { x: -D, y: D },
     first: 78,
     step: 78,
-    label: (p) => ({ x: p.x - 18, y: p.y + 5, anchor: "end", rotate: 0 }),
+    label: (p, e) => ({ x: p.x - 18 - e, y: p.y + 5, anchor: "end", rotate: 0 }),
+    badge: { x: 20, y: 20 },
+    badgeStep: { x: 20, y: 0 },
+    pillRotate: 45,
   },
 };
 
 const HUB = { width: 124, height: 48 };
 const TERMINUS_GAP = 42;
 const TERMINUS_SIZE = 28;
+const BADGE_SIZE = 18;
+const CHANGE_GAP = 9;
 const CHAR_WIDTH = 8.4;
 const LABEL_HEIGHT = 16;
 const MARGIN = 16;
@@ -76,7 +103,7 @@ function labelEnd(label: NetLabel, title: string): Point {
 }
 
 export function buildNetwork(
-  entries: { id: string; concept: ConceptId; title: string }[],
+  entries: { id: string; concept: ConceptId; title: string; also?: ConceptId[] }[],
   order: ConceptId[],
 ): Network {
   const lines: NetLine[] = order.map((concept) => {
@@ -84,22 +111,34 @@ export function buildNetwork(
     const stops = entries.filter((e) => e.concept === concept);
     const stations = stops.map((e, k) => {
       const p = at(ray, ray.first + ray.step * k);
-      return { id: e.id, title: e.title, ...p, label: ray.label(p) };
+      const badges = (e.also ?? []).map((c, j) => ({
+        concept: c,
+        x: p.x + ray.badge.x + ray.badgeStep.x * j,
+        y: p.y + ray.badge.y + ray.badgeStep.y * j,
+      }));
+      const label = ray.label(p, badges.length ? CHANGE_GAP : 0);
+      return { id: e.id, title: e.title, ...p, label, badges };
     });
     const terminus = at(ray, ray.first + ray.step * Math.max(0, stops.length - 1) + TERMINUS_GAP);
-    return { concept, path: [{ x: 0, y: 0 }, terminus], terminus, stations };
+    return {
+      concept,
+      path: [{ x: 0, y: 0 }, terminus],
+      terminus,
+      pillRotate: ray.pillRotate,
+      stations,
+    };
   });
 
   const points: Point[] = [
     { x: -HUB.width / 2, y: -HUB.height / 2 },
     { x: HUB.width / 2, y: HUB.height / 2 },
   ];
+  const square = (p: Point, size: number) => {
+    points.push({ x: p.x - size / 2, y: p.y - size / 2 }, { x: p.x + size / 2, y: p.y + size / 2 });
+  };
   for (const line of lines) {
-    const t = TERMINUS_SIZE / 2;
-    points.push(
-      { x: line.terminus.x - t, y: line.terminus.y - t },
-      { x: line.terminus.x + t, y: line.terminus.y + t },
-    );
+    square(line.terminus, TERMINUS_SIZE);
+    for (const s of line.stations) for (const b of s.badges) square(b, BADGE_SIZE);
   }
   const core = boxOf(points, MARGIN * 2);
   for (const line of lines) {

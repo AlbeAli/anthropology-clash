@@ -208,6 +208,10 @@ export default function Home() {
           {t("home.map.legendHere")}
         </Legend>
         <Legend kind="todo">{t("home.map.legendTodo")}</Legend>
+        <span className="inline-flex items-center gap-2">
+          <span aria-hidden="true" className="h-3.5 w-6 rounded-full border-[3px] border-ink" />
+          {t("home.map.legendChange")}
+        </span>
       </p>
     </div>
   );
