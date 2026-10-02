@@ -4,6 +4,7 @@
   "title": "Piangere al ritorno",
   "concept": "rituale",
   "concept_label": "Rituale",
+  "also": ["reciprocita"],
   "levels": {
     "neofita": {
       "hook": "Vai a prendere all'aeroporto una persona cara che non vedi da mesi. La vedi uscire, vi abbracciate, e ti accorgi di avere gli occhi lucidi. Più tardi ci ripensi e non sai bene come chiamarle, quelle lacrime: gioia, sollievo, stanchezza? Ti sembrano solo tue, venute da sole.",

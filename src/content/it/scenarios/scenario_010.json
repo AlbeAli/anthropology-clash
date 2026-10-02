@@ -4,6 +4,7 @@
   "title": "La soglia",
   "concept": "rituale",
   "concept_label": "Rituale",
+  "also": ["reciprocita"],
   "levels": {
     "neofita": {
       "hook": "Ti presenti a casa di gente che non conosci: la famiglia della persona con cui stai. Sulla porta ti offrono qualcosa da bere e insistono finché non accetti. Non hai sete, e però capisci che rifiutare peserebbe. Bevi, e qualcosa cambia: da quel momento sei uno che è entrato.",
