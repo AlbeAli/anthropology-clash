@@ -11,30 +11,7 @@ Web app che insegna concetti antropologici tramite scenari a bivio ispirati a ca
 
 ## Comandi
 
-```
-pnpm dev        # dev server
-pnpm build      # build statica
-pnpm validate   # valida tutti i JSON in src/content contro lo schema Zod
-pnpm test       # Vitest, solo engine e schema
-pnpm lint       # ESLint + Prettier check
-pnpm e2e        # Playwright, build + preview su 4173
-```
-
-`pnpm validate` deve passare prima di ogni commit che tocca `src/content/`.
-
-## Struttura
-
-```
-src/components   ScenarioCard, ChoiceButton, FeedbackPanel, LevelToggle
-src/engine       selezione scenario, stato progressi, copertura concetti; itineraries.ts (percorsi curati e su misura); aula.ts (passi della modalità aula); network.ts (rete della metro in Home); sync.ts, remote.ts, account.ts (Supabase)
-src/content      it/scenarios/*.json, it/itineraries/*.json, it/concepts.json, en/...
-src/locales      it.json (fonte di verità), en.json
-src/schema       scenario.schema.ts
-src/pages        Home, Scenario, ConceptLibrary, Method, Journey, Itineraries (/percorsi), Itinerary (/percorso/:id, /percorso?f=), Aula (/aula/:id), Sheet (/scheda/:id), SignIn (/accedi), Profile (/profilo), Privacy
-src/state        AppState.tsx (livello, tema, progressi, streak), Account.tsx (sessione e sincronizzazione)
-scripts          validate-content.ts
-supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifica), functions/delete-account
-```
+Script in `package.json`. `pnpm validate` deve passare prima di ogni commit che tocca `src/content/`. `pnpm e2e` compila e serve l'anteprima sulla porta 4173. Su Windows `pnpm` va aggiunto al PATH (`$env:APPDATA\npm`).
 
 ## Regole vincolanti
 
@@ -75,20 +52,10 @@ supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifi
 
 ## Milestone
 
+M1-M9, M11 e M12 chiuse; M10 (account) nel codice, chiusura rinviata alla fase di rilascio. Criteri e storia di ogni milestone: `docs/manuale-funzionale.md` §15.5 e §16.
+
 | M | Fatto quando |
 |---|---|
-| M1 | `pnpm validate` passa; `pnpm dev` renderizza scenario_001 da JSON |
-| M2 | Scenari 01-03 giocabili da cima a fondo in entrambi i livelli |
-| M3 | Livello, progressi e streak sopravvivono alla chiusura del browser |
-| M4 | URL pubblico su Vercel; eventi visibili in Plausible/Umami; CI verde |
-| M5 | 15 scenari validati |
-| M6 | Concetto `consumo` e campo `hook` in produzione; 3 scenari sul consumo che partono da un caso contemporaneo |
-| M7 | `hook` contemporaneo in tutti i 18 scenari, in entrambi i livelli, validato con l'autore |
-| M8 | 20 scenari, 4 per concetto: uno in più per `rituale` e uno per `consumo` |
-| M9 | Redesign «Le linee della metro» in produzione; riepilogo di fine sessione copiabile; test end-to-end in CI; scenario da Kroeber 1919 validato |
-| M10 | Account facoltativo su Supabase UE con link via email, Google e Telegram; progressi sincronizzati e uniti a `localStorage`; profilo con cancellazione; informativa `/privacy`; e2e verdi con Supabase simulato; dominio `anthropologyclash.app` |
-| M11 | Stabilizzazione: `m10` su `main` con l'account spento in produzione (fino alla fase di rilascio, manuale §16.14); error boundary; pulizie; audit di accessibilità e prestazioni con correzioni; dipendenze aggiornate; CI verde |
-| M12 | Aula e percorsi: modalità aula `/aula/:id`; itinerari curati (JSON validato) e personalizzati come link; `discuss` in tutti gli scenari, validato con l'autore e obbligatorio in `pnpm validate`; scheda stampabile; JS iniziale misurato prima e dopo; e2e e CI verdi |
 | M13 | Rete della metro: mappa schematica con snodo «Oggi» da 768 px, elenco con miniatura della rete sotto; interscambi `also` verificati sul testo e validati con l'autore; timbri e capolinea senza punteggi; fermata del giorno condivisibile; JS iniziale misurato prima e dopo; e2e e CI verdi |
 
 ## Cosa non fare
