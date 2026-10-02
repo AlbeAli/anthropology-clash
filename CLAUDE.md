@@ -30,7 +30,7 @@ src/engine       selezione scenario, stato progressi, copertura concetti; itiner
 src/content      it/scenarios/*.json, it/itineraries/*.json, it/concepts.json, en/...
 src/locales      it.json (fonte di verità), en.json
 src/schema       scenario.schema.ts
-src/pages        Home, Scenario, ConceptLibrary, Method, Journey, Itineraries (/percorsi), Itinerary (/percorso/:id, /percorso?f=), Aula (/aula/:id), SignIn (/accedi), Profile (/profilo), Privacy
+src/pages        Home, Scenario, ConceptLibrary, Method, Journey, Itineraries (/percorsi), Itinerary (/percorso/:id, /percorso?f=), Aula (/aula/:id), Sheet (/scheda/:id), SignIn (/accedi), Profile (/profilo), Privacy
 src/state        AppState.tsx (livello, tema, progressi, streak), Account.tsx (sessione e sincronizzazione)
 scripts          validate-content.ts
 supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifica), functions/delete-account
