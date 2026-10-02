@@ -280,11 +280,11 @@ function Slide({ scenario, level, step }: { scenario: Scenario; level: Level; st
       return (
         <div>
           <h2 className={kicker}>{t("aula.discuss")}</h2>
-          <ol className="grid gap-6">
+          <ol className="grid gap-5">
             {scenario.discuss?.map((q, i) => (
               <li key={q} className="flex items-start gap-4">
                 <Badge n={i + 1} />
-                <span className={big}>{q}</span>
+                <span className="max-w-[60ch] text-xl leading-snug text-pretty sm:text-2xl lg:text-3xl [@media(max-height:800px)]:lg:text-2xl">{q}</span>
               </li>
             ))}
           </ol>
