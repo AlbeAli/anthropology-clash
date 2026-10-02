@@ -26,7 +26,7 @@ pnpm e2e        # Playwright, build + preview su 4173
 
 ```
 src/components   ScenarioCard, ChoiceButton, FeedbackPanel, LevelToggle
-src/engine       selezione scenario, stato progressi, copertura concetti; itineraries.ts (percorsi curati e su misura); aula.ts (passi della modalità aula); sync.ts, remote.ts, account.ts (Supabase)
+src/engine       selezione scenario, stato progressi, copertura concetti; itineraries.ts (percorsi curati e su misura); aula.ts (passi della modalità aula); network.ts (rete della metro in Home); sync.ts, remote.ts, account.ts (Supabase)
 src/content      it/scenarios/*.json, it/itineraries/*.json, it/concepts.json, en/...
 src/locales      it.json (fonte di verità), en.json
 src/schema       scenario.schema.ts
