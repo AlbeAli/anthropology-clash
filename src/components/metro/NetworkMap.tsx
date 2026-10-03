@@ -105,7 +105,7 @@ function FullMap({
       </svg>
       <p
         aria-hidden="true"
-        className="mx-auto mt-3 min-h-[3.25rem] max-w-[62ch] text-center text-[15px] text-ink-soft"
+        className="mx-auto mt-3 min-h-[3.25rem] max-w-[62ch] text-center text-base text-ink-soft"
       >
         {entry ? (
           <>

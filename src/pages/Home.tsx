@@ -136,7 +136,7 @@ export default function Home() {
                   type="button"
                   aria-pressed={filter === c.id}
                   onClick={() => toggle(c.id)}
-                  className="grid min-h-9 grid-cols-[6.5rem_minmax(0,1fr)_auto] items-center gap-2.5 text-left font-display text-sm font-bold aria-pressed:underline aria-pressed:underline-offset-4"
+                  className="grid min-h-11 grid-cols-[6.5rem_minmax(0,1fr)_auto] items-center gap-2.5 text-left font-display text-sm font-bold aria-pressed:underline aria-pressed:underline-offset-4"
                 >
                   <span>{t(`lines.${c.id}.name`)}</span>
                   <span
@@ -174,7 +174,7 @@ export default function Home() {
       <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="font-display text-2xl font-extrabold">{t("home.map.title")}</h2>
-          <p className="mt-1 text-[15px] text-ink-soft">{t("home.map.hint")}</p>
+          <p className="mt-1 text-base text-ink-soft">{t("home.map.hint")}</p>
         </div>
         {filter && (
           <button
@@ -196,7 +196,7 @@ export default function Home() {
         fresh={fresh}
       />
 
-      <p className="mt-6 flex flex-wrap gap-5 text-[15px] text-ink-soft">
+      <p className="mt-6 flex flex-wrap gap-5 text-base text-ink-soft">
         <Legend kind="done">{t("home.map.legendVisited")}</Legend>
         <Legend kind="here" color={next ? lineColor(next.concept) : undefined}>
           {t("home.map.legendHere")}

@@ -104,3 +104,16 @@ test("la fermata del giorno si apre e si condivide con il link dello scenario", 
   await open.click();
   await expect(page).toHaveURL(href!);
 });
+
+test("con il movimento ridotto le fermate sono visibili subito", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await fresh(page);
+  await page.waitForTimeout(150);
+  const hidden = await page.evaluate(
+    () =>
+      [...document.querySelectorAll(".net-stop, .net-term, .metro-stop")].filter(
+        (el) => el.getClientRects().length > 0 && Number(getComputedStyle(el).opacity) < 1,
+      ).length,
+  );
+  expect(hidden).toBe(0);
+});

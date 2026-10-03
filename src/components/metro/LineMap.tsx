@@ -129,7 +129,7 @@ function Stops({
             <span aria-hidden="true" className="metro-dot" />
             <Link
               to={`/s/${s.id}`}
-              className="inline-block leading-tight font-bold decoration-2 underline-offset-4 hover:underline"
+              className="inline-block py-0.5 leading-snug font-bold decoration-2 underline-offset-4 hover:underline"
             >
               {s.title}
               {s.also?.length ? (
@@ -145,7 +145,7 @@ function Stops({
               <span
                 key={c}
                 aria-hidden="true"
-                className="ml-1.5 inline-grid size-[18px] place-items-center rounded-[4px] align-[2px] font-display text-[11px] font-extrabold"
+                className="ml-1.5 inline-grid size-[18px] place-items-center rounded-[4px] align-[2px] font-display text-xs font-extrabold"
                 style={{ background: lineColor(c), color: lineInk(c) }}
               >
                 {t(`lines.${c}.letter`)}

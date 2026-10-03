@@ -18,7 +18,7 @@
   --panel-ring: transparent;
   --l-reciprocita: #e2231a;
   --l-parentela: #0065b3;
-  --l-rituale: #008c44;
+  --l-rituale: #007a3b;
   --l-relativismo: #f7a600;
   --l-consumo: #7b3f98;
   color-scheme: light;
@@ -111,16 +111,14 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .punch,
-    .ticket-row {
-      animation: none !important;
-    }
     *,
     *::before,
     *::after {
       animation-duration: 0.001ms !important;
+      animation-delay: 0s !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
+      transition-delay: 0s !important;
       scroll-behavior: auto !important;
     }
   }
@@ -379,7 +377,11 @@
     stroke-width: 6;
   }
   .net-stop:focus-visible .net-dot {
-    stroke: var(--focus);
+    stroke: var(--ink);
+  }
+  .net-stop:focus-visible .net-hit {
+    stroke: var(--ink);
+    stroke-width: 3;
   }
   .net-stop:hover .net-label,
   .net-stop:focus-visible .net-label {

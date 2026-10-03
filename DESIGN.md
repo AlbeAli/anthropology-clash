@@ -11,7 +11,7 @@ colors:
   focus: "#0065b3"
   line-dono: "#e2231a"
   line-parentela: "#0065b3"
-  line-rituale: "#008c44"
+  line-rituale: "#007a3b"
   line-relativismo: "#f7a600"
   line-consumo: "#7b3f98"
   lamp: "#ffd54a"
@@ -123,7 +123,7 @@ Neutri netti più cinque colori di linea a piena saturazione.
 
 - **Fondo** `#ffffff`, **superficie** `#f2f2f0` per pannelli chiari e uscite, **inchiostro** `#1a1a1a`, **inchiostro tenue** `#55554f` per testo secondario, **filetto** `#d9d9d6`.
 - **Pannello** `#1a1a1a`: cartelli, tabellone, biglietto. Nel tema scuro diventa `#000000` con un bordo `#ffffff26` per staccarsi dal fondo `#121212`.
-- **Linee**: Dono `#e2231a`, Parentela `#0065b3`, Rituale `#008c44`, Relativismo `#f7a600` (con testo scuro), Consumo `#7b3f98`. Riempiono simboli, rotaie, barre e il fondo leggero dell'uscita scelta; non colorano mai testo lungo.
+- **Linee**: Dono `#e2231a`, Parentela `#0065b3`, Rituale `#007a3b`, Relativismo `#f7a600` (con testo scuro), Consumo `#7b3f98`. Riempiono simboli, rotaie, barre e il fondo leggero dell'uscita scelta; non colorano mai testo lungo.
 - **Lampada** `#ffd54a`: solo i fari del treno e l'etichetta «Oggi» nell'anteprima.
 - **Fuoco** `#0065b3` (scuro `#5aa9f0`): anello di 3 px su ogni elemento interattivo.
 
