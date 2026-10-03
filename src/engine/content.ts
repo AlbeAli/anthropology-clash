@@ -1,7 +1,10 @@
 import catalog from "virtual:catalog";
 import type { Concept, Lang, Scenario } from "../schema/scenario.schema";
 
-export type CatalogEntry = Pick<Scenario, "id" | "lang" | "title" | "concept" | "concept_label"> & {
+export type CatalogEntry = Pick<
+  Scenario,
+  "id" | "lang" | "title" | "concept" | "concept_label" | "also"
+> & {
   hook?: string;
 };
 

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import type { Concept, ConceptId } from "../../schema/scenario.schema";
 import type { CatalogEntry } from "../../engine/content";
 import type { Completion } from "../../engine/storage";
-import { lineColor, stopNumber } from "../../engine/lines";
+import { lineColor, lineInk, stopNumber } from "../../engine/lines";
 import { prefersReducedMotion } from "../../engine/motion";
 import LineBullet from "./LineBullet";
 
@@ -129,10 +129,28 @@ function Stops({
             <span aria-hidden="true" className="metro-dot" />
             <Link
               to={`/s/${s.id}`}
-              className="inline-block leading-tight font-bold decoration-2 underline-offset-4 hover:underline"
+              className="inline-block py-0.5 leading-snug font-bold decoration-2 underline-offset-4 hover:underline"
             >
               {s.title}
+              {s.also?.length ? (
+                <span className="sr-only">
+                  {", " +
+                    t("home.network.change", {
+                      lines: s.also.map((c) => t(`lines.${c}.name`)).join(", "),
+                    })}
+                </span>
+              ) : null}
             </Link>
+            {s.also?.map((c) => (
+              <span
+                key={c}
+                aria-hidden="true"
+                className="ml-1.5 inline-grid size-[18px] place-items-center rounded-[4px] align-[2px] font-display text-xs font-extrabold"
+                style={{ background: lineColor(c), color: lineInk(c) }}
+              >
+                {t(`lines.${c}.letter`)}
+              </span>
+            ))}
             <small
               className={
                 "block text-sm " + (state === "here" ? "font-bold text-ink" : "text-ink-soft")

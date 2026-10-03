@@ -150,9 +150,10 @@ test("azzerare i progressi con l'account cancella anche le righe remote", async 
   const calls = await mockSupabase(page);
   await signedIn(page);
   await page.goto("/viaggio");
+  await page.getByText("Gestisci i progressi").click();
   await page.getByRole("button", { name: "Azzera i progressi" }).click();
   await page.getByRole("button", { name: "Conferma: azzera i progressi" }).click();
-  await expect(page.getByRole("link", { name: local.title })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: local.title, exact: true })).toHaveCount(0);
   const deleted = calls.filter((c) => c.method === "DELETE").map((c) => c.path);
   expect(deleted.sort()).toEqual(["/rest/v1/progress", "/rest/v1/streaks"]);
 });
@@ -161,6 +162,7 @@ test("se Supabase non risponde l'azzeramento non cancella nulla", async ({ page 
   await mockSupabase(page, { failDelete: true });
   await signedIn(page);
   await page.goto("/viaggio");
+  await page.getByText("Gestisci i progressi").click();
   await page.getByRole("button", { name: "Azzera i progressi" }).click();
   await page.getByRole("button", { name: "Conferma: azzera i progressi" }).click();
   await expect(page.getByText("Non riesco a raggiungere il tuo account")).toBeVisible();

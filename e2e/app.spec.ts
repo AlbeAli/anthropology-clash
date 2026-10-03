@@ -52,9 +52,44 @@ test("i progressi restano dopo il ricaricamento e finiscono nel viaggio", async 
   await page.goto("/viaggio");
   await page.reload();
   await expect(page.getByRole("link", { name: first.title })).toBeVisible();
+  await page.getByText("Gestisci i progressi").click();
   await page.getByRole("button", { name: "Azzera i progressi" }).click();
   await page.getByRole("button", { name: "Conferma: azzera i progressi" }).click();
-  await expect(page.getByRole("link", { name: first.title })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: first.title, exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: /Parti dalla prima fermata/ })).toBeVisible();
+});
+
+test("il viaggio timbra le linee toccate e segna il capolinea con tutte le fermate", async ({
+  page,
+}) => {
+  const line = scenarios.filter((s) => s.concept === first.concept);
+  const other = scenarios.find((s) => s.concept !== first.concept)!;
+  const completed = Object.fromEntries(
+    [...line, other].map((s, i) => [
+      s.id,
+      { level: "neofita", choice: "a", at: `2026-10-0${i + 1}` },
+    ]),
+  );
+  await page.goto("/");
+  await page.evaluate((c) => {
+    localStorage.setItem(
+      "anthropology-clash.v1",
+      JSON.stringify({
+        version: 1,
+        lang: "it",
+        level: "neofita",
+        completed: c,
+        streak: { count: 0, lastDay: null },
+        seenConcepts: [],
+      }),
+    );
+  }, completed);
+  await page.goto("/viaggio");
+  const stamps = page.getByRole("img", { name: /linea toccata|capolinea raggiunto/ });
+  await expect(stamps).toHaveCount(2);
+  await expect(page.getByRole("img", { name: /capolinea raggiunto il/ })).toHaveCount(1);
+  await expect(page.getByRole("img", { name: /linea toccata il/ })).toHaveCount(1);
+  await expect(page.getByText("non ancora percorsa")).toHaveCount(3);
 });
 
 test("la bibliografia non ha voci doppie", async ({ page }) => {

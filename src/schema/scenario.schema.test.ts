@@ -17,6 +17,22 @@ describe("Scenario schema: domande per la discussione", () => {
   });
 });
 
+describe("Scenario schema: interscambi", () => {
+  const withAlso = (also: string[]) => ({ ...structuredClone(scenario001), also });
+
+  it("accetta una o due linee diverse da quella principale", () => {
+    expect(Scenario.safeParse(withAlso(["rituale"])).success).toBe(true);
+    expect(Scenario.safeParse(withAlso(["rituale", "consumo"])).success).toBe(true);
+  });
+
+  it("rifiuta la linea principale, le ripetizioni, tre linee e un concetto fuori tassonomia", () => {
+    expect(Scenario.safeParse(withAlso(["reciprocita"])).success).toBe(false);
+    expect(Scenario.safeParse(withAlso(["rituale", "rituale"])).success).toBe(false);
+    expect(Scenario.safeParse(withAlso(["rituale", "consumo", "parentela"])).success).toBe(false);
+    expect(Scenario.safeParse(withAlso(["economia"])).success).toBe(false);
+  });
+});
+
 describe("Itinerary schema", () => {
   const base = {
     id: "dono-e-debito",

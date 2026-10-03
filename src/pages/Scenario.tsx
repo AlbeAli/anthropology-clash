@@ -70,6 +70,16 @@ export default function ScenarioPage() {
           <h1 className="font-display text-3xl leading-tight font-extrabold tracking-tight text-balance sm:text-5xl">
             {scenario.title}
           </h1>
+          {scenario.also?.length ? (
+            <p className="mt-2 flex flex-wrap items-center gap-2 font-display text-sm font-bold opacity-85">
+              {scenario.also.map((c) => (
+                <LineBullet key={c} concept={c} size="sm" />
+              ))}
+              {t("scenario.change", {
+                lines: scenario.also.map((c) => t(`lines.${c}.name`)).join(", "),
+              })}
+            </p>
+          ) : null}
         </div>
         <span
           key={scenario.id}

@@ -42,18 +42,33 @@ const LevelContent = z
     }
   });
 
-export const Scenario = z.object({
-  id: ScenarioId,
-  lang: Lang,
-  title: z.string().min(1).max(80),
-  concept: ConceptId,
-  concept_label: z.string().min(1),
-  levels: z.object({
-    neofita: LevelContent,
-    studente: LevelContent,
-  }),
-  discuss: z.array(DiscussQuestion).min(2).max(3).optional(),
-});
+export const Scenario = z
+  .object({
+    id: ScenarioId,
+    lang: Lang,
+    title: z.string().min(1).max(80),
+    concept: ConceptId,
+    concept_label: z.string().min(1),
+    also: z.array(ConceptId).min(1).max(2).optional(),
+    levels: z.object({
+      neofita: LevelContent,
+      studente: LevelContent,
+    }),
+    discuss: z.array(DiscussQuestion).min(2).max(3).optional(),
+  })
+  .superRefine((s, ctx) => {
+    if (!s.also) return;
+    if (s.also.includes(s.concept)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["also"],
+        message: "also non ripete il concetto principale",
+      });
+    }
+    if (new Set(s.also).size !== s.also.length) {
+      ctx.addIssue({ code: "custom", path: ["also"], message: "also senza ripetizioni" });
+    }
+  });
 
 export const Itinerary = z.object({
   id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),

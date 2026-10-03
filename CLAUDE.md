@@ -11,30 +11,7 @@ Web app che insegna concetti antropologici tramite scenari a bivio ispirati a ca
 
 ## Comandi
 
-```
-pnpm dev        # dev server
-pnpm build      # build statica
-pnpm validate   # valida tutti i JSON in src/content contro lo schema Zod
-pnpm test       # Vitest, solo engine e schema
-pnpm lint       # ESLint + Prettier check
-pnpm e2e        # Playwright, build + preview su 4173
-```
-
-`pnpm validate` deve passare prima di ogni commit che tocca `src/content/`.
-
-## Struttura
-
-```
-src/components   ScenarioCard, ChoiceButton, FeedbackPanel, LevelToggle
-src/engine       selezione scenario, stato progressi, copertura concetti; itineraries.ts (percorsi curati e su misura); aula.ts (passi della modalità aula); sync.ts, remote.ts, account.ts (Supabase)
-src/content      it/scenarios/*.json, it/itineraries/*.json, it/concepts.json, en/...
-src/locales      it.json (fonte di verità), en.json
-src/schema       scenario.schema.ts
-src/pages        Home, Scenario, ConceptLibrary, Method, Journey, Itineraries (/percorsi), Itinerary (/percorso/:id, /percorso?f=), Aula (/aula/:id), Sheet (/scheda/:id), SignIn (/accedi), Profile (/profilo), Privacy
-src/state        AppState.tsx (livello, tema, progressi, streak), Account.tsx (sessione e sincronizzazione)
-scripts          validate-content.ts
-supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifica), functions/delete-account
-```
+Script in `package.json`. `pnpm validate` deve passare prima di ogni commit che tocca `src/content/`. `pnpm e2e` compila e serve l'anteprima sulla porta 4173. Su Windows `pnpm` va aggiunto al PATH (`$env:APPDATA\npm`).
 
 ## Regole vincolanti
 
@@ -57,11 +34,13 @@ supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifi
 - Campo `hook` opzionale in ogni livello (max 400 caratteri): l'aggancio a una situazione contemporanea che apre lo scenario prima del `setup` etnografico. O in entrambi i livelli o in nessuno, verificato da `pnpm validate`.
 - **Un `hook` non è un caso di studio.** È un'illustrazione in seconda persona e non contiene affermazioni fattuali su gruppi, quantità o singole persone. Se la situazione contemporanea è a sua volta etnografata, la si cita in `source` e vale come qualunque altra fonte: verificata sul testo.
 - Campo `discuss` a livello di scenario (vale per entrambi i livelli): 2-3 domande per la discussione in classe, ciascuna chiusa da `?`. Nessuna affermazione fattuale oltre quanto già dicono scenario e fonte; nessuna domanda che indichi un'uscita preferibile o citi una scelta come migliore. Le scrive l'assistente, le valida l'autore. Obbligatorio in `pnpm validate` (facoltativo solo nello schema Zod).
+- Campo `also` facoltativo a livello di scenario: 1-2 concetti diversi da `concept`, cioè un interscambio sulla rete della metro. Solo se il testo dello scenario tratta esplicitamente anche quel concetto, con passi che lo mostrano; verificato sul testo, validato dall'autore. Non è un concetto «affine»: una parola chiave in comune non basta. La fermata resta sulla sua linea e nel suo conteggio.
 - Itinerari curati: `src/content/it/itineraries/<id>.json` (`id` in kebab-case uguale al nome file, `lang`, `title`, `description`, `stops` con 2-12 id di scenari esistenti, senza ripetizioni), verificati da `pnpm validate`. Un itinerario è una sequenza, non un giudizio: la descrizione dice cosa lega le fermate, non cosa si deve concludere.
 - Commit per nuovi scenari: `content: aggiunge scenario_NNN (titolo)`.
 
 ## Convenzioni
 
+- **Risposte in modalità caveman ultra** (skill `anthropic-skills:caveman`, argomento `ultra`), attivata a inizio sessione. Vale anche per agenti e subagenti: ogni prompt passato a un agente chiede di caricare la skill e di rispondere in quella modalità. Non si applica a scenari, testi dell'interfaccia, manuale e messaggi di commit, che restano in prosa normale.
 - Conventional Commits: `feat:`, `fix:`, `content:`, `docs:`, `chore:`.
 - **Autore del progetto: Alberto Alioto (AlbeAli).** Ogni documento (README, manuale, `package.json`, `index.html`, footer dell'app) lo indica come autore.
 - **Licenze:** codice MIT (`LICENSE`), testi di `src/content/` CC BY-NC-SA 4.0 (`LICENSE-CONTENT.md`). Le citazioni dalle fonti restano dei titolari: citare solo quanto serve alla discussione.
@@ -73,20 +52,8 @@ supabase         migrations/*.sql (schema remoto, RLS; una migrazione per modifi
 
 ## Milestone
 
-| M | Fatto quando |
-|---|---|
-| M1 | `pnpm validate` passa; `pnpm dev` renderizza scenario_001 da JSON |
-| M2 | Scenari 01-03 giocabili da cima a fondo in entrambi i livelli |
-| M3 | Livello, progressi e streak sopravvivono alla chiusura del browser |
-| M4 | URL pubblico su Vercel; eventi visibili in Plausible/Umami; CI verde |
-| M5 | 15 scenari validati |
-| M6 | Concetto `consumo` e campo `hook` in produzione; 3 scenari sul consumo che partono da un caso contemporaneo |
-| M7 | `hook` contemporaneo in tutti i 18 scenari, in entrambi i livelli, validato con l'autore |
-| M8 | 20 scenari, 4 per concetto: uno in più per `rituale` e uno per `consumo` |
-| M9 | Redesign «Le linee della metro» in produzione; riepilogo di fine sessione copiabile; test end-to-end in CI; scenario da Kroeber 1919 validato |
-| M10 | Account facoltativo su Supabase UE con link via email, Google e Telegram; progressi sincronizzati e uniti a `localStorage`; profilo con cancellazione; informativa `/privacy`; e2e verdi con Supabase simulato; dominio `anthropologyclash.app` |
-| M11 | Stabilizzazione: `m10` su `main` con l'account spento in produzione (fino alla fase di rilascio, manuale §16.14); error boundary; pulizie; audit di accessibilità e prestazioni con correzioni; dipendenze aggiornate; CI verde |
-| M12 | Aula e percorsi: modalità aula `/aula/:id`; itinerari curati (JSON validato) e personalizzati come link; `discuss` in tutti gli scenari, validato con l'autore e obbligatorio in `pnpm validate`; scheda stampabile; JS iniziale misurato prima e dopo; e2e e CI verdi |
+M1-M9 e M11-M13 chiuse; M10 (account) nel codice, chiusura rinviata alla fase di rilascio. Criteri e storia di ogni milestone: `docs/manuale-funzionale.md` §15.5 e §16.
+
 
 ## Cosa non fare
 

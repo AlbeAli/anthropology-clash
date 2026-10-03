@@ -1,0 +1,562 @@
+<title>Linee che si incrociano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+/>
+<style>
+  /* Layout: una colonna; scelta della linea da seguire, due mappe una sotto l'altra, poi il confronto */
+  :root {
+    --ground: #ffffff;
+    --surface: #f2f2f0;
+    --ink: #1a1a1a;
+    --ink-soft: #55554f;
+    --rule: #d9d9d6;
+    --focus: #0065b3;
+    --dono: #e2231a;
+    --parentela: #0065b3;
+    --rituale: #008c44;
+    --relativismo: #f7a600;
+    --consumo: #7b3f98;
+    --display: "Archivo", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #121212;
+      --surface: #1e1e1d;
+      --ink: #f2f2ee;
+      --ink-soft: #b5b4ad;
+      --rule: #3a3a36;
+      --focus: #5aa9f0;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #121212;
+    --surface: #1e1e1d;
+    --ink: #f2f2ee;
+    --ink-soft: #b5b4ad;
+    --rule: #3a3a36;
+    --focus: #5aa9f0;
+    color-scheme: dark;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--body);
+  }
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 28px 64px;
+  }
+  @media (min-width: 640px) {
+    .wrap {
+      padding-inline: 24px;
+    }
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    line-height: 1.08;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: clamp(2.1rem, 5.5vw, 3.25rem);
+    letter-spacing: -0.025em;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .kicker {
+    font: 700 0.875rem/1.3 var(--display);
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+    letter-spacing: 0.02em;
+  }
+  .lede {
+    max-width: 64ch;
+    color: var(--ink-soft);
+    margin: 12px 0 0;
+    text-wrap: pretty;
+  }
+  .trace {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--ground);
+    padding-block: 12px;
+    border-bottom: 2px solid var(--ink);
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .trace b {
+    font: 800 0.9375rem var(--display);
+    margin-right: 6px;
+  }
+  .chip {
+    min-height: 40px;
+    border-radius: 999px;
+    border: 2px solid var(--rule);
+    background: var(--ground);
+    color: var(--ink);
+    font: 700 0.875rem/1 var(--display);
+    padding: 0 12px 0 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+  }
+  .chip i {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    font-style: normal;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 0.75rem;
+  }
+  .chip[aria-pressed="true"] {
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+  .chip:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  .map {
+    margin-top: 32px;
+  }
+  .map header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .tag {
+    font: 800 0.75rem/1 var(--display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--surface);
+  }
+  .scroller {
+    overflow-x: auto;
+    margin-top: 8px;
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 680px;
+  }
+  svg .rail {
+    fill: none;
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  svg .dot {
+    fill: var(--ground);
+    stroke: var(--ink);
+    stroke-width: 4;
+  }
+  svg .lab {
+    font: 700 14px var(--display);
+    fill: var(--ink);
+    paint-order: stroke;
+    stroke: var(--ground);
+    stroke-width: 4px;
+    stroke-linejoin: round;
+  }
+  svg .hub rect {
+    fill: var(--ground);
+    stroke: var(--ink);
+    stroke-width: 5;
+  }
+  svg .hub text {
+    font: 800 17px var(--display);
+    fill: var(--ink);
+    letter-spacing: 0.08em;
+  }
+  svg .term text,
+  svg .badge text {
+    font: 800 13px var(--display);
+  }
+  svg .badge text {
+    font-size: 10px;
+  }
+  svg [data-line] {
+    transition: opacity 0.25s;
+  }
+  svg [data-line].dim {
+    opacity: 0.12;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    svg [data-line] {
+      transition: none;
+    }
+  }
+  .compare {
+    margin-top: 44px;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+  .card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 18px 20px;
+    min-width: 0;
+  }
+  .card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 8px;
+  }
+  .card ul {
+    margin: 0;
+    padding-left: 1.1em;
+    display: grid;
+    gap: 6px;
+    font-size: 0.96875rem;
+    line-height: 1.5;
+  }
+  .verdict {
+    margin-top: 24px;
+    border-left: 6px solid var(--ink);
+    padding: 4px 0 4px 16px;
+    max-width: 70ch;
+  }
+  .verdict p {
+    margin: 6px 0 0;
+  }
+</style>
+
+<div class="wrap">
+  <p class="kicker">M13 · LOTTO 2 · ESEMPIO, NON NEL CODICE</p>
+  <h1>Linee che si incrociano</h1>
+  <p class="lede">
+    Gli stessi 21 scenari e gli stessi 5 interscambi validati, disegnati in due modi. Sopra la
+    Raggiera di oggi, con le capsule. Sotto una rete in cui le linee passano davvero dalle fermate
+    condivise. Scegli una linea qui sotto e seguila con l'occhio sulle due mappe: è il modo più
+    rapido per capire quanto resta leggibile.
+  </p>
+
+  <div class="trace" role="group" aria-label="Segui una linea">
+    <b>Segui una linea</b>
+    <span id="chips"></span>
+  </div>
+
+  <section class="map" aria-labelledby="a-title">
+    <header>
+      <h2 id="a-title">A · Raggiera con capsule</h2>
+      <span class="tag">ora su m13</span>
+    </header>
+    <p class="lede" style="margin-top: 4px">
+      Ogni linea va dritta dallo snodo al capolinea; l'interscambio è la capsula con il simbolo
+      dell'altra linea.
+    </p>
+    <div class="scroller">
+      <svg id="mapA" role="img" aria-label="Mappa A: raggiera con capsule"></svg>
+    </div>
+  </section>
+
+  <section class="map" aria-labelledby="b-title">
+    <header>
+      <h2 id="b-title">B · Rete intrecciata</h2>
+      <span class="tag">esempio</span>
+    </header>
+    <p class="lede" style="margin-top: 4px">
+      Dono e Parentela diventano linee passanti, con due capolinea, e attraversano Oggi. Le fermate
+      condivise sono una sola stazione su due linee.
+    </p>
+    <div class="scroller">
+      <svg id="mapB" role="img" aria-label="Mappa B: rete intrecciata"></svg>
+    </div>
+  </section>
+
+  <div class="compare">
+    <div class="card">
+      <h3>Cosa guadagna B</h3>
+      <ul>
+        <li>
+          È una rete vera: un interscambio è un punto dove due linee si incontrano, come in
+          metropolitana.
+        </li>
+        <li>Si vede a colpo d'occhio che La soglia e Piangere al ritorno legano Rituale e Dono.</li>
+        <li>Più «mappa di città», meno diagramma.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Cosa costa B</h3>
+      <ul>
+        <li>
+          Tre tratti in cui due linee corrono affiancate (Rituale e Relativismo da Oggi ai Nacirema,
+          Parentela e Consumo fino alle Asce, Dono sopra Rituale).
+        </li>
+        <li>
+          Dono fa un arco per non fermarsi a 011 e 012; Parentela scende da nord a sud-est passando
+          per Oggi.
+        </li>
+        <li>
+          Coordinate a mano: ogni fermata o interscambio nuovo va ridisegnato, verso le 30 fermate.
+        </li>
+        <li>Sul telefono la miniatura diventa un groviglio.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Cosa resta uguale</h3>
+      <ul>
+        <li>Ordine delle fermate su ogni linea, numeri, colori.</li>
+        <li>
+          Interscambi solo se validati sul testo: B non ne inventa, li rende visibili in un altro
+          modo.
+        </li>
+        <li>Incroci senza fermata comune: esclusi in entrambe, non dicono nulla.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>La mia lettura</h3>
+    <p>
+      A 21 fermate e 5 interscambi B regge, ma a fatica: si legge seguendo una linea alla volta, non
+      a colpo d'occhio. A ogni scenario nuovo va ridisegnata, e con più interscambi i tratti
+      affiancati crescono. Consiglio A nella Home e di riconsiderare B quando la rete sarà vicina
+      alle 30 fermate, magari come pagina a parte «La rete», lasciando la Raggiera come apertura.
+    </p>
+  </div>
+</div>
+
+<script>
+  const LINES = {
+    reciprocita: { name: "Dono", letter: "D", color: "var(--dono)", ink: "#fff" },
+    parentela: { name: "Parentela", letter: "P", color: "var(--parentela)", ink: "#fff" },
+    rituale: { name: "Rituale", letter: "R", color: "var(--rituale)", ink: "#fff" },
+    relativismo: { name: "Relativismo", letter: "E", color: "var(--relativismo)", ink: "#1a1a1a" },
+    consumo: { name: "Consumo", letter: "C", color: "var(--consumo)", ink: "#fff" },
+  };
+  const ORDER = Object.keys(LINES);
+  const STOPS = [
+    ["001", "reciprocita", "La collana che non si può tenere"],
+    ["002", "reciprocita", "La carne è troppo magra"],
+    ["004", "reciprocita", "Bruciare la ricchezza"],
+    ["005", "reciprocita", "Lo spirito della cosa donata"],
+    ["006", "parentela", "Cugino o fratello?"],
+    ["007", "parentela", "L'eredità va al nipote"],
+    ["008", "parentela", "Amleto tra i Tiv"],
+    ["009", "parentela", "Sposare un fantasma"],
+    ["010", "rituale", "La soglia", ["reciprocita"]],
+    ["011", "rituale", "Il combattimento di galli"],
+    ["012", "rituale", "L'animale abominevole"],
+    ["019", "rituale", "Piangere al ritorno", ["reciprocita"]],
+    ["003", "relativismo", "I riti del corpo dei Nacirema", ["rituale"]],
+    ["013", "relativismo", "Ordinare il museo"],
+    ["014", "relativismo", "Non pubblicarlo"],
+    ["015", "relativismo", "Il tempo delle mucche", ["parentela"]],
+    ["016", "consumo", "Il gusto classifica chi classifica"],
+    ["017", "consumo", "Le bacinelle di Sabo"],
+    ["018", "consumo", "Zucchero nel tè"],
+    ["020", "consumo", "Asce d'acciaio", ["parentela"]],
+    ["021", "consumo", "Il pendolo della moda"],
+  ];
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  let focus = null;
+
+  /* A: stessa logica di src/engine/network.ts */
+  const D = Math.SQRT1_2;
+  const RAYS = {
+    reciprocita: {
+      dir: [-1, 0],
+      first: 80,
+      step: 80,
+      lab: (x, y, e) => [x - 10 - e / 2, y - 12 - e, "end", 45],
+      badge: [0, 28],
+      pill: 90,
+    },
+    parentela: {
+      dir: [0, -1],
+      first: 120,
+      step: 60,
+      lab: (x, y, e) => [x - 18 - e, y + 5, "end", 0],
+      badge: [28, 0],
+      pill: 0,
+    },
+    rituale: {
+      dir: [1, 0],
+      first: 80,
+      step: 80,
+      lab: (x, y, e) => [x + 10 + e / 2, y - 12 - e, "start", -45],
+      badge: [0, 28],
+      pill: 90,
+    },
+    relativismo: {
+      dir: [0, 1],
+      first: 80,
+      step: 70,
+      lab: (x, y, e) => [x + 18 + e, y + 5, "start", 0],
+      badge: [-28, 0],
+      pill: 0,
+    },
+    consumo: {
+      dir: [-D, D],
+      first: 78,
+      step: 78,
+      lab: (x, y, e) => [x - 18 - e, y + 5, "end", 0],
+      badge: [20, 20],
+      pill: 45,
+    },
+  };
+  function mapA() {
+    let rails = "",
+      tops = "";
+    for (const c of ORDER) {
+      const r = RAYS[c],
+        L = LINES[c];
+      const stops = STOPS.filter((s) => s[1] === c);
+      const end = r.first + r.step * (stops.length - 1) + 42;
+      const tx = r.dir[0] * end,
+        ty = r.dir[1] * end;
+      rails +=
+        `<g data-line="${c}"><path class="rail" stroke="${L.color}" d="M0 0 L${tx} ${ty}"/>` +
+        term(tx, ty, c) +
+        `</g>`;
+      let g = `<g data-line="${c}">`;
+      stops.forEach((s, k) => {
+        const d = r.first + r.step * k,
+          x = r.dir[0] * d,
+          y = r.dir[1] * d;
+        const also = s[3] || [];
+        const [lx, ly, a, rot] = r.lab(x, y, also.length ? 9 : 0);
+        g += also.length
+          ? pill(x, y, 9, 23, r.pill)
+          : `<circle class="dot" cx="${x}" cy="${y}" r="9"/>`;
+        also.forEach((o) => (g += badge(x + r.badge[0], y + r.badge[1], o)));
+        g += label(lx, ly, a, rot, s[2]);
+      });
+      tops += g + `</g>`;
+    }
+    return { vb: "-500 -380 990 760", body: rails + hub(0, 0, 124, 48) + tops };
+  }
+
+  /* B: coordinate disegnate a mano */
+  function mapB() {
+    const rails = {
+      relativismo: "M512 387 L512 715",
+      rituale: "M528 387 L528 440 L1140 440",
+      reciprocita: "M130 360 L760 360 L840 440 L880 400 L1040 400 L1080 440 L1120 400 L1190 400",
+      parentela: "M520 45 L520 333 M500 385 L258 613 L295 650 L600 650",
+      consumo: "M480 378 L150 708",
+    };
+    const pos = {
+      "005": [200, 360, -10, -12, "end", 45],
+      "004": [280, 360, -10, -12, "end", 45],
+      "002": [360, 360, -10, -12, "end", 45],
+      "001": [440, 360, -10, -12, "end", 45],
+      "006": [520, 280, -18, 5, "end", 0],
+      "007": [520, 220, -18, 5, "end", 0],
+      "008": [520, 160, -18, 5, "end", 0],
+      "009": [520, 100, -18, 5, "end", 0],
+      "011": [920, 440, 8, 14, "start", 45],
+      "012": [1000, 440, 8, 14, "start", 45],
+      "013": [512, 510, 18, 5, "start", 0],
+      "014": [512, 580, 18, 5, "start", 0],
+      "016": [434, 424, -18, 5, "end", 0],
+      "017": [374, 484, -18, 5, "end", 0],
+      "018": [314, 544, -18, 5, "end", 0],
+      "021": [194, 664, -18, 5, "end", 0],
+    };
+    const shared = [
+      { id: "003", x: 520, y: 440, w: 34, rot: 0, lab: [548, 427, "start", 0] },
+      { id: "010", x: 840, y: 440, w: 20, rot: 0, circle: true, lab: [848, 456, "start", 45] },
+      { id: "019", x: 1080, y: 440, w: 20, rot: 0, circle: true, lab: [1088, 456, "start", 45] },
+      { id: "020", x: 254, y: 609, w: 34, rot: 45, lab: [222, 600, "end", 0] },
+      { id: "015", x: 512, y: 650, w: 20, rot: 0, circle: true, lab: [530, 678, "start", 0] },
+    ];
+    const terms = [
+      ["reciprocita", 130, 360],
+      ["reciprocita", 1190, 400],
+      ["parentela", 520, 45],
+      ["parentela", 600, 650],
+      ["rituale", 1140, 440],
+      ["relativismo", 512, 715],
+      ["consumo", 150, 708],
+    ];
+    let out = "";
+    for (const c of ORDER)
+      out += `<g data-line="${c}"><path class="rail" stroke="${LINES[c].color}" d="${rails[c]}"/></g>`;
+    for (const [c, x, y] of terms) out += `<g data-line="${c}">${term(x, y, c)}</g>`;
+    out += hub(520, 360, 150, 54);
+    for (const s of STOPS) {
+      const p = pos[s[0]];
+      if (!p) continue;
+      out += `<g data-line="${s[1]}"><circle class="dot" cx="${p[0]}" cy="${p[1]}" r="9"/>${label(p[0] + p[2], p[1] + p[3], p[4], p[5], s[2])}</g>`;
+    }
+    for (const sh of shared) {
+      const s = STOPS.find((x) => x[0] === sh.id);
+      const lines = [s[1], ...s[3]].join(" ");
+      const shape = sh.circle
+        ? `<circle class="dot" cx="${sh.x}" cy="${sh.y}" r="12" style="stroke-width:5"/>`
+        : pill(sh.x, sh.y, 10, sh.w, sh.rot);
+      out += `<g data-line="${lines}">${shape}${label(sh.lab[0], sh.lab[1], sh.lab[2], sh.lab[3], s[2])}</g>`;
+    }
+    return { vb: "40 20 1240 720", body: out };
+  }
+
+  function term(x, y, c) {
+    const L = LINES[c];
+    return `<g class="term"><rect x="${x - 14}" y="${y - 14}" width="28" height="28" rx="7" fill="${L.color}"/><text x="${x}" y="${y + 5}" text-anchor="middle" fill="${L.ink}">${L.letter}</text></g>`;
+  }
+  function badge(x, y, c) {
+    const L = LINES[c];
+    return `<g class="badge"><rect x="${x - 9}" y="${y - 9}" width="18" height="18" rx="4" fill="${L.color}"/><text x="${x}" y="${y + 3.5}" text-anchor="middle" fill="${L.ink}">${L.letter}</text></g>`;
+  }
+  function pill(x, y, r, w, rot) {
+    return `<rect class="dot" x="${x - w / 2 - r}" y="${y - r}" width="${w + 2 * r - 4}" height="${2 * r}" rx="${r}"${rot ? ` transform="rotate(${rot} ${x} ${y})"` : ""}/>`;
+  }
+  function label(x, y, a, rot, t) {
+    return `<text class="lab" x="${x}" y="${y}" text-anchor="${a}"${rot ? ` transform="rotate(${rot} ${x} ${y})"` : ""}>${esc(t)}</text>`;
+  }
+  function hub(x, y, w, h) {
+    return `<g class="hub"><rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="${h / 2}"/><text x="${x}" y="${y + 6}" text-anchor="middle">OGGI</text></g>`;
+  }
+
+  function render() {
+    for (const [id, m] of [
+      ["mapA", mapA()],
+      ["mapB", mapB()],
+    ]) {
+      const svg = document.getElementById(id);
+      svg.setAttribute("viewBox", m.vb);
+      svg.innerHTML = m.body;
+      svg.querySelectorAll("[data-line]").forEach((g) => {
+        g.classList.toggle("dim", !!focus && !g.dataset.line.split(" ").includes(focus));
+      });
+    }
+    document.getElementById("chips").innerHTML = ORDER.map(
+      (c) =>
+        `<button class="chip" type="button" data-c="${c}" aria-pressed="${focus === c}"><i style="background:${LINES[c].color};color:${LINES[c].ink}">${LINES[c].letter}</i>${LINES[c].name}</button>`,
+    ).join(" ");
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".chip");
+    if (!b) return;
+    focus = focus === b.dataset.c ? null : b.dataset.c;
+    render();
+  });
+  render();
+</script>

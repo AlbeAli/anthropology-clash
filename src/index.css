@@ -18,7 +18,7 @@
   --panel-ring: transparent;
   --l-reciprocita: #e2231a;
   --l-parentela: #0065b3;
-  --l-rituale: #008c44;
+  --l-rituale: #007a3b;
   --l-relativismo: #f7a600;
   --l-consumo: #7b3f98;
   color-scheme: light;
@@ -115,8 +115,10 @@
     *::before,
     *::after {
       animation-duration: 0.001ms !important;
+      animation-delay: 0s !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
+      transition-delay: 0s !important;
       scroll-behavior: auto !important;
     }
   }
@@ -303,8 +305,116 @@
     transform: scaleX(0);
     animation: metro-wipe 0.7s var(--ease-out-expo) forwards;
   }
-  .metro-blink {
-    animation: metro-blink 1.2s steps(2) infinite;
+}
+
+@layer components {
+  .net-rail {
+    fill: none;
+    stroke: var(--lc);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: net-draw 0.9s var(--ease-out-expo) forwards;
+    animation-delay: calc(0.15s + var(--i, 0) * 0.1s);
+  }
+  .net-mini .net-rail {
+    stroke-width: 22;
+  }
+  .net-stop {
+    animation: metro-in 0.45s var(--ease-out-expo) backwards;
+    animation-delay: calc(0.45s + var(--i, 0) * 0.1s + var(--j, 0) * 0.08s);
+  }
+  .net-term {
+    animation: metro-in 0.45s var(--ease-out-expo) backwards;
+    animation-delay: calc(0.9s + var(--i, 0) * 0.1s);
+  }
+  .net-term text {
+    font: 800 15px var(--font-display);
+  }
+  .net-badge text {
+    font: 800 11px var(--font-display);
+  }
+  .net-hit {
+    fill: transparent;
+  }
+  .net-dot {
+    fill: var(--bg);
+    stroke: var(--ink);
+    stroke-width: 4;
+    transition: stroke-width 0.2s;
+  }
+  .net-mini .net-dot {
+    stroke-width: 7;
+  }
+  .net-stop[data-state="done"] .net-dot {
+    fill: var(--ink);
+  }
+  .net-stop[data-state="here"] .net-dot {
+    fill: var(--lc);
+  }
+  .net-ping {
+    fill: none;
+    stroke: var(--lc);
+    stroke-width: 3;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: metro-ping 1.8s var(--ease-out-expo) infinite;
+  }
+  .net-label {
+    font: 700 15px var(--font-display);
+    fill: var(--ink);
+    paint-order: stroke;
+    stroke: var(--bg);
+    stroke-width: 4px;
+    stroke-linejoin: round;
+  }
+  .net-stop:focus-visible {
+    outline: none;
+  }
+  .net-stop:hover .net-dot,
+  .net-stop:focus-visible .net-dot {
+    stroke-width: 6;
+  }
+  .net-stop:focus-visible .net-dot {
+    stroke: var(--ink);
+  }
+  .net-stop:focus-visible .net-hit {
+    stroke: var(--ink);
+    stroke-width: 3;
+  }
+  .net-stop:hover .net-label,
+  .net-stop:focus-visible .net-label {
+    text-decoration: underline;
+  }
+  .net-line {
+    transition: opacity 0.3s;
+  }
+  .net-line[data-dim] {
+    opacity: 0.14;
+  }
+  .net-hub rect {
+    fill: var(--bg);
+    stroke: var(--ink);
+    stroke-width: 5;
+  }
+  .net-mini .net-hub rect {
+    stroke-width: 10;
+  }
+  .net-mini .net-hub text {
+    font-size: 30px;
+    letter-spacing: 0.04em;
+  }
+  .net-hub text {
+    font: 800 18px var(--font-display);
+    letter-spacing: 0.08em;
+    fill: var(--ink);
+  }
+}
+
+@keyframes net-draw {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
@@ -369,12 +479,6 @@
     transform-origin: right;
   }
 }
-@keyframes metro-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
 @layer components {
   .route {
     position: relative;
@@ -483,9 +587,20 @@
   .ticket-print {
     animation: ticket-print 0.9s var(--ease-out-expo) both;
   }
+  .punch {
+    animation: metro-punch 0.45s var(--ease-out-expo) backwards;
+    animation-delay: calc(0.7s + var(--j, 0) * 0.1s);
+  }
   .ticket-row {
     animation: metro-in 0.4s var(--ease-out-expo) backwards;
     animation-delay: calc(0.5s + var(--j, 0) * 0.06s);
+  }
+}
+
+@keyframes metro-punch {
+  from {
+    opacity: 0;
+    scale: 1.25;
   }
 }
 

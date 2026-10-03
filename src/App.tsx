@@ -114,11 +114,17 @@ function Shell() {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 font-mono text-xs text-ink-soft sm:px-6">
           <p>{t(available ? "app.footer" : "app.footerLocal")}</p>
           <div className="flex gap-x-5">
-            <Link to="/metodo" className="uppercase tracking-widest hover:text-accent">
+            <Link
+              to="/metodo"
+              className="inline-block py-1 uppercase tracking-widest hover:text-accent"
+            >
               {t("nav.method")}
             </Link>
             {available && (
-              <Link to="/privacy" className="uppercase tracking-widest hover:text-accent">
+              <Link
+                to="/privacy"
+                className="inline-block py-1 uppercase tracking-widest hover:text-accent"
+              >
                 {t("nav.privacy")}
               </Link>
             )}

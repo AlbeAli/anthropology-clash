@@ -4,6 +4,7 @@
   "title": "Asce d'acciaio",
   "concept": "consumo",
   "concept_label": "Consumo e cultura materiale",
+  "also": ["parentela"],
   "levels": {
     "neofita": {
       "hook": "Qualcuno ti regala uno strumento nuovo, più moderno di quello che usavi: un telefono migliore, un computer più veloce. Te lo presentano come un progresso, e sei d'accordo: fa le stesse cose, ma meglio. Però un oggetto non vive da solo. Che cosa cambierà, esattamente, nella tua giornata e nelle persone intorno a te?",

@@ -30,7 +30,6 @@
     "board": {
       "label": "Prossima partenza · Linea {{line}} · fermata {{n}}",
       "again": "Tutte le fermate visitate · si riparte dalla linea {{line}}",
-      "eta": "In partenza",
       "go": "Parti"
     },
     "visited_one": "fermata visitata su {{total}}",
@@ -50,13 +49,30 @@
       "lineLabel": "Linea {{line}}",
       "legendVisited": "visitata",
       "legendHere": "sei qui",
-      "legendTodo": "da visitare"
+      "legendTodo": "da visitare",
+      "legendChange": "interscambio: si cambia per un'altra linea"
     },
     "stop": {
       "here": "sei qui",
       "visited": "visitata · {{level}}",
       "todo": "fermata {{n}}",
       "peek": "Oggi"
+    },
+    "network": {
+      "label": "La rete: tutte le linee partono da Oggi",
+      "hub": "OGGI",
+      "hint": "Tutte le linee partono da Oggi. Passa su una fermata per leggere l'aggancio di oggi, sceglila per partire.",
+      "status": "Linea {{line}} · fermata {{n}} · {{title}}",
+      "stop": "Fermata {{n}}, {{title}}, linea {{line}}, {{state}}",
+      "state": {
+        "here": "sei qui",
+        "done": "visitata",
+        "todo": "da visitare"
+      },
+      "mini": "La rete in miniatura: tocca per isolare una linea.",
+      "miniCurrent": "Linea isolata: {{line}}.",
+      "change": "cambio per la linea {{lines}}",
+      "continue": "Continua"
     }
   },
   "scenario": {
@@ -70,6 +86,7 @@
       "nav": "Fermate della linea"
     },
     "sign": "Linea {{line}} · fermata {{n}} · {{concept}}",
+    "change": "Interscambio: cambio per la linea {{lines}}",
     "hintScroll": "Scorri: il percorso si accende tappa dopo tappa.",
     "hintVisited": "Fermata già visitata: puoi scegliere di nuovo.",
     "live": "Uscita scelta. Sotto trovi dove porta ogni uscita.",
@@ -199,6 +216,17 @@
       "letter": "C"
     }
   },
+  "daily": {
+    "label": "Fermata del giorno · {{date}}",
+    "line": "Linea {{line}} · fermata {{n}}",
+    "visited": "già visitata",
+    "open": "Apri la fermata",
+    "share": "Condividi",
+    "shareText": "La fermata del giorno, {{date}}: {{title}}",
+    "copied": "Link copiato",
+    "copyFallback": "Seleziona e copia il link qui sotto",
+    "linkArea": "Link della fermata"
+  },
   "journey": {
     "title": "Il tuo viaggio",
     "lede": "Un biglietto con le fermate visitate e le linee toccate. Nessun punteggio: solo dove sei passato.",
@@ -207,9 +235,19 @@
     "count_other": "{{count}} fermate visitate su {{total}}",
     "lines": "Linee toccate",
     "lineUntouched": "non ancora percorsa",
+    "stamp": {
+      "touched": "Toccata",
+      "terminus": "Capolinea",
+      "legend": "Toccata: almeno una fermata della linea visitata. Capolinea: tutte le fermate della linea visitate.",
+      "touchedAria": "{{line}}, linea toccata il {{date}}",
+      "terminusAria": "{{line}}, capolinea raggiunto il {{date}}"
+    },
     "stops": "Fermate, in ordine di visita",
-    "empty": "Ancora nessuna fermata. Parti dalla mappa.",
-    "copy": "Copia il riepilogo",
+    "since": "dal {{date}}",
+    "stampsEmpty": "Alla prima fermata di una linea qui compare il suo timbro.",
+    "start": "Parti dalla prima fermata: {{title}}",
+    "manage": "Gestisci i progressi",
+    "copy": "Condividi il riepilogo",
     "copied": "Riepilogo copiato",
     "copyFallback": "Seleziona e copia il testo qui sotto",
     "copyArea": "Testo del riepilogo",
