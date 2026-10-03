@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.59 — 2026-10-03 — Stato: pubblicato (M1-M9, M11 e M12 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M13 rete della metro aperta, §16.13-16.16)
+Versione 0.60 — 2026-10-03 — Stato: pubblicato (M1-M9 e M11-M13 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio, §16.13-16.16)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -728,3 +728,5 @@ Critique e audit, 2026-10-03, con la skill impeccable su Home e «Il tuo viaggio
 - **Il tuo viaggio**: legenda di «Toccata» e «Capolinea»; timbri centrati (tre più due su desktop); stato vuoto con «Parti dalla prima fermata» al posto dei cinque riquadri tratteggiati; in testa al biglietto la data della prima visita invece di quella di oggi; «Condividi il riepilogo» con la condivisione del browser e gli appunti come ripiego; azzeramento dentro «Gestisci i progressi».
 
 Misure: JavaScript iniziale da 126,2 a **126,2 kB**. Test 76, end-to-end 86 verdi (2 saltati per dimensione dello schermo). Restano da decidere con l'autore: ridondanza della Home (tabellone, rete, fermata del giorno, pannello e colonne portano agli stessi 21 scenari), miniatura su telefono che filtra invece di aprire, leggibilità della rete proiettata a 1280×720.
+
+Chiusura di M13, 2026-10-03: merge `--no-ff` di `m13` su `main`, con conferma dell'autore prima della messa in produzione; prima del merge lint, `pnpm validate` (21 scenari, 3 itinerari), test 76, end-to-end 86 verdi (2 saltati per dimensione dello schermo), JavaScript iniziale 126,2 kB contro 122,8 kB all'apertura della milestone (+3,4 kB). Criteri soddisfatti: rete con snodo «Oggi» da 768 px e miniatura sotto; 5 interscambi `also` verificati sul testo e validati dall'autore; timbri e capolinea senza punteggi; fermata del giorno condivisibile; critique e audit con correzioni. Rimandati a M14: ridotto numero di ingressi della Home, miniatura su telefono, rete proiettata, rete intrecciata a 30 fermate, diario di campo e «cosa accadde davvero».

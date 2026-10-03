@@ -52,11 +52,8 @@ Script in `package.json`. `pnpm validate` deve passare prima di ogni commit che 
 
 ## Milestone
 
-M1-M9, M11 e M12 chiuse; M10 (account) nel codice, chiusura rinviata alla fase di rilascio. Criteri e storia di ogni milestone: `docs/manuale-funzionale.md` §15.5 e §16.
+M1-M9 e M11-M13 chiuse; M10 (account) nel codice, chiusura rinviata alla fase di rilascio. Criteri e storia di ogni milestone: `docs/manuale-funzionale.md` §15.5 e §16.
 
-| M | Fatto quando |
-|---|---|
-| M13 | Rete della metro: mappa schematica con snodo «Oggi» da 768 px, elenco con miniatura della rete sotto; interscambi `also` verificati sul testo e validati con l'autore; timbri e capolinea senza punteggi; fermata del giorno condivisibile; JS iniziale misurato prima e dopo; e2e e CI verdi |
 
 ## Cosa non fare
 
