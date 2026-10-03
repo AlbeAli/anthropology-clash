@@ -52,9 +52,11 @@ test("i progressi restano dopo il ricaricamento e finiscono nel viaggio", async 
   await page.goto("/viaggio");
   await page.reload();
   await expect(page.getByRole("link", { name: first.title })).toBeVisible();
+  await page.getByText("Gestisci i progressi").click();
   await page.getByRole("button", { name: "Azzera i progressi" }).click();
   await page.getByRole("button", { name: "Conferma: azzera i progressi" }).click();
-  await expect(page.getByRole("link", { name: first.title })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: first.title, exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: /Parti dalla prima fermata/ })).toBeVisible();
 });
 
 test("il viaggio timbra le linee toccate e segna il capolinea con tutte le fermate", async ({

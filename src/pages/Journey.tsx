@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, getConcepts } from "../engine/content";
 import { lineStamps, visitsInOrder } from "../engine/journey";
+import { nextInSequence } from "../engine/progress";
 import { useAppState } from "../state/AppState";
 import { useAccount } from "../state/Account";
 import { DEFAULT_LANG } from "../i18n";
@@ -21,6 +22,14 @@ export default function Journey() {
     scenarios,
     concepts.map((c) => c.id),
   ).filter((s) => s.seen > 0);
+  const next = scenarios.find(
+    (s) =>
+      s.id ===
+      (nextInSequence(
+        state,
+        scenarios.map((x) => x.id),
+      ) ?? scenarios[0]?.id),
+  );
   const [confirming, setConfirming] = useState(false);
   const [notice, setNotice] = useState("");
   const [fallback, setFallback] = useState("");
@@ -62,17 +71,24 @@ export default function Journey() {
     ].join("\n");
   }
 
-  function copy() {
+  async function share() {
     const text = summary();
-    const manual = () => {
+    try {
+      if ("share" in navigator) {
+        await navigator.share({ title: t("journey.summary.head", { app: t("app.name") }), text });
+        return;
+      }
+    } catch (e) {
+      if (e instanceof DOMException && e.name === "AbortError") return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      setFallback("");
+      setNotice(t("journey.copied"));
+    } catch {
       setFallback(text);
       setNotice(t("journey.copyFallback"));
       requestAnimationFrame(() => area.current?.select());
-    };
-    try {
-      navigator.clipboard.writeText(text).then(() => setNotice(t("journey.copied")), manual);
-    } catch {
-      manual();
     }
   }
 
@@ -107,35 +123,48 @@ export default function Journey() {
           <p className="font-display text-xl font-extrabold sm:text-2xl">
             {t("journey.count", { count: visits.length, total: scenarios.length })}
           </p>
-          <p className="font-display text-sm font-bold opacity-85">
-            {new Date().toLocaleDateString(i18n.language, {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </p>
+          {visits.length > 0 && (
+            <p className="font-display text-sm font-bold opacity-85">
+              {t("journey.since", {
+                date: new Date(`${visits[0].completion.at}T12:00:00`).toLocaleDateString(
+                  i18n.language,
+                  { day: "numeric", month: "long", year: "numeric" },
+                ),
+              })}
+            </p>
+          )}
         </div>
         <section className="px-5 py-5 sm:px-6">
           <h2 className="mb-3 font-display text-sm font-extrabold tracking-wide text-ink-soft uppercase">
             {t("journey.lines")}
           </h2>
-          <ul className="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-x-3 gap-y-5">
-            {concepts.map((c, i) => {
-              const stamp = stamps.find((x) => x.concept === c.id);
-              return (
-                <li key={c.id} className="grid min-w-0 justify-items-start">
-                  {stamp ? (
-                    <LineStamp stamp={stamp} index={i} date={date} short={short} />
-                  ) : (
-                    <p className="grid h-21 w-full max-w-37 content-center gap-1 rounded-md border-2 border-dashed border-line px-3.5 font-display text-ink-soft">
-                      <span className="text-sm font-extrabold">{t(`lines.${c.id}.name`)}</span>
-                      <span className="text-xs font-bold">{t("journey.lineUntouched")}</span>
-                    </p>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          {stamps.length === 0 ? (
+            <p className="text-ink-soft">{t("journey.stampsEmpty")}</p>
+          ) : (
+            <>
+              <p className="mb-4 text-sm text-ink-soft">{t("journey.stamp.legend")}</p>
+              <ul className="mx-auto flex max-w-120 flex-wrap justify-center gap-x-3 gap-y-5">
+                {concepts.map((c, i) => {
+                  const stamp = stamps.find((x) => x.concept === c.id);
+                  return (
+                    <li
+                      key={c.id}
+                      className="grid w-[calc(50%-0.375rem)] min-w-0 justify-items-center sm:w-37"
+                    >
+                      {stamp ? (
+                        <LineStamp stamp={stamp} index={i} date={date} short={short} />
+                      ) : (
+                        <p className="grid h-21 w-full max-w-37 content-center gap-1 rounded-md border-2 border-dashed border-line px-3.5 font-display text-ink-soft">
+                          <span className="text-sm font-extrabold">{t(`lines.${c.id}.name`)}</span>
+                          <span className="text-xs font-bold">{t("journey.lineUntouched")}</span>
+                        </p>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
         </section>
         <div aria-hidden="true" className="mx-5 border-t-[3px] border-dashed border-line" />
         <section className="px-5 py-5 sm:px-6">
@@ -143,11 +172,14 @@ export default function Journey() {
             {t("journey.stops")}
           </h2>
           {visits.length === 0 ? (
-            <p>
-              <Link to="/" className="font-bold underline underline-offset-4">
-                {t("journey.empty")}
+            next && (
+              <Link
+                to={`/s/${next.id}`}
+                className="inline-flex min-h-12 items-center rounded-md bg-ink px-5 font-display font-extrabold text-bg"
+              >
+                {t("journey.start", { title: next.title })}
               </Link>
-            </p>
+            )
           ) : (
             <ol className="grid gap-2.5">
               {visits.map((v, j) => (
@@ -176,14 +208,15 @@ export default function Journey() {
       </article>
 
       <div className="mt-6 flex flex-wrap gap-2.5">
-        <button
-          type="button"
-          onClick={copy}
-          disabled={visits.length === 0}
-          className="inline-flex min-h-12 items-center rounded-md bg-ink px-5 font-display font-extrabold text-bg transition-transform duration-200 ease-out-expo hover:-translate-y-0.5 disabled:opacity-40"
-        >
-          {t("journey.copy")}
-        </button>
+        {visits.length > 0 && (
+          <button
+            type="button"
+            onClick={share}
+            className="inline-flex min-h-12 items-center rounded-md bg-ink px-5 font-display font-extrabold text-bg transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
+          >
+            {t("journey.copy")}
+          </button>
+        )}
         <Link
           to="/"
           className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
@@ -206,8 +239,11 @@ export default function Journey() {
       )}
 
       {visits.length > 0 && (
-        <div className="mt-10 border-t border-line pt-5">
-          <p className="mb-3 text-sm text-ink-soft">
+        <details className="mt-10 border-t border-line pt-3">
+          <summary className="cursor-pointer py-3 font-display text-sm font-bold text-ink-soft">
+            {t("journey.manage")}
+          </summary>
+          <p className="mt-2 mb-3 text-sm text-ink-soft">
             {user ? t("journey.resetNoteAccount") : t("journey.resetNote")}
           </p>
           <div className="flex flex-wrap gap-2.5">
@@ -228,7 +264,7 @@ export default function Journey() {
               </button>
             )}
           </div>
-        </div>
+        </details>
       )}
     </div>
   );

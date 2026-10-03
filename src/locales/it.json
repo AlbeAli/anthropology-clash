@@ -238,12 +238,16 @@
     "stamp": {
       "touched": "Toccata",
       "terminus": "Capolinea",
+      "legend": "Toccata: almeno una fermata della linea visitata. Capolinea: tutte le fermate della linea visitate.",
       "touchedAria": "{{line}}, linea toccata il {{date}}",
       "terminusAria": "{{line}}, capolinea raggiunto il {{date}}"
     },
     "stops": "Fermate, in ordine di visita",
-    "empty": "Ancora nessuna fermata. Parti dalla mappa.",
-    "copy": "Copia il riepilogo",
+    "since": "dal {{date}}",
+    "stampsEmpty": "Alla prima fermata di una linea qui compare il suo timbro.",
+    "start": "Parti dalla prima fermata: {{title}}",
+    "manage": "Gestisci i progressi",
+    "copy": "Condividi il riepilogo",
     "copied": "Riepilogo copiato",
     "copyFallback": "Seleziona e copia il testo qui sotto",
     "copyArea": "Testo del riepilogo",
