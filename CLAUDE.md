@@ -54,7 +54,6 @@ Script in `package.json`. `pnpm validate` deve passare prima di ogni commit che 
 
 M1-M9 e M11-M13 chiuse; M10 (account) nel codice, chiusura rinviata alla fase di rilascio. Criteri e storia di ogni milestone: `docs/manuale-funzionale.md` §15.5 e §16.
 
-
 ## Cosa non fare
 
 - Nessun backend oltre Supabase (Auth, Postgres, Edge Function): niente server propri, API routes di Vercel o altri servizi dati. Nuove tabelle solo con migrazione nel repo e RLS.
