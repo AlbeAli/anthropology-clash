@@ -1,11 +1,12 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 import type { ConceptId, Level } from "../schema/scenario.schema";
-import { readState, writeState, type StoredState, type Theme } from "../engine/storage";
+import { canPersist, readState, writeState, type StoredState, type Theme } from "../engine/storage";
 import { currentStreak, dayKey, markCompleted } from "../engine/progress";
 import { applyTheme, systemTheme } from "../engine/theme";
 import { track } from "../engine/analytics";
 import { getEntry } from "../engine/content";
 import { mergeState, type RemoteProgress } from "../engine/sync";
+import { withNote } from "../engine/diary";
 import { DEFAULT_LANG } from "../i18n";
 
 type AppState = {
@@ -15,7 +16,10 @@ type AppState = {
   streak: number;
   recent: string | null;
   clearRecent: () => void;
-  resetProgress: () => void;
+  persisted: boolean;
+  resetProgress: (options?: { notes?: boolean }) => void;
+  setNote: (scenarioId: string, text: string) => void;
+  clearNotes: () => void;
   mergeRemote: (remote: RemoteProgress) => void;
   setLevel: (level: Level) => void;
   setTheme: (theme: Theme) => void;
@@ -27,16 +31,25 @@ const Ctx = createContext<AppState | null>(null);
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<StoredState>(readState);
   const [recent, setRecent] = useState<string | null>(null);
+  const [persisted, setPersisted] = useState(canPersist);
 
   const update = useCallback((next: StoredState) => {
     setState(next);
-    writeState(next);
+    setPersisted(writeState(next));
   }, []);
 
   const mergeRemote = useCallback((remote: RemoteProgress) => {
     setState((prev) => {
       const next = mergeState(prev, remote, (id) => getEntry(DEFAULT_LANG, id)?.concept);
       writeState(next);
+      return next;
+    });
+  }, []);
+
+  const setNote = useCallback((scenarioId: string, text: string) => {
+    setState((prev) => {
+      const next = withNote(prev, scenarioId, text, new Date());
+      setPersisted(writeState(next));
       return next;
     });
   }, []);
@@ -52,10 +65,19 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       streak: currentStreak(state.streak, dayKey(new Date())),
       recent,
       clearRecent: () => setRecent(null),
-      resetProgress: () => {
+      persisted,
+      resetProgress: (options) => {
         setRecent(null);
-        update({ ...state, completed: {}, streak: { count: 0, lastDay: null }, seenConcepts: [] });
+        update({
+          ...state,
+          completed: {},
+          streak: { count: 0, lastDay: null },
+          seenConcepts: [],
+          notes: options?.notes ? undefined : state.notes,
+        });
       },
+      setNote,
+      clearNotes: () => update({ ...state, notes: undefined }),
       mergeRemote,
       setLevel: (next) => {
         track("level_chosen", { level: next });
@@ -73,7 +95,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         );
       },
     }),
-    [state, level, theme, recent, update, mergeRemote],
+    [state, level, theme, recent, persisted, update, mergeRemote, setNote],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

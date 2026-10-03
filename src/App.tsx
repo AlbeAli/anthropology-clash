@@ -16,6 +16,7 @@ const ConceptLibrary = lazy(() => import("./pages/ConceptLibrary"));
 const Method = lazy(() => import("./pages/Method"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Journey = lazy(() => import("./pages/Journey"));
+const Diary = lazy(() => import("./pages/Diary"));
 const SignIn = lazy(() => import("./pages/SignIn"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Privacy = lazy(() => import("./pages/Privacy"));
@@ -28,6 +29,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/concetti": "concepts.title",
   "/percorsi": "itineraries.title",
   "/viaggio": "journey.title",
+  "/diario": "diary.title",
   "/metodo": "method.title",
 };
 const ACCOUNT_TITLES: Record<string, string> = {
@@ -98,6 +100,7 @@ function Shell() {
               <Route path="/percorso/:id" element={<ItineraryPage />} />
               <Route path="/metodo" element={<Method />} />
               <Route path="/viaggio" element={<Journey />} />
+              <Route path="/diario" element={<Diary />} />
               {available && (
                 <>
                   <Route path="/accedi" element={<SignIn />} />

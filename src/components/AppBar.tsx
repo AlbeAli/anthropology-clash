@@ -48,6 +48,9 @@ export default function AppBar() {
               {visited}
             </span>
           </NavLink>
+          <NavLink to="/diario" className={navClass}>
+            {t("nav.diary")}
+          </NavLink>
           <NavLink to="/metodo" className={navClass}>
             {t("nav.methodShort")}
           </NavLink>

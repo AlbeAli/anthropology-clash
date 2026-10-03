@@ -92,6 +92,8 @@ export default function Journey() {
     }
   }
 
+  const [withNotes, setWithNotes] = useState(false);
+
   async function reset() {
     if (!confirming) {
       setConfirming(true);
@@ -102,8 +104,9 @@ export default function Journey() {
       setNotice(t("journey.resetFailed"));
       return;
     }
-    resetProgress();
+    resetProgress({ notes: withNotes });
     setConfirming(false);
+    setWithNotes(false);
     setFallback("");
     setNotice(t("journey.resetDone"));
   }
@@ -246,6 +249,17 @@ export default function Journey() {
           <p className="mt-2 mb-3 text-sm text-ink-soft">
             {user ? t("journey.resetNoteAccount") : t("journey.resetNote")}
           </p>
+          {confirming && state.notes && (
+            <label className="mb-3 flex min-h-11 items-center gap-2.5 font-display text-sm font-bold">
+              <input
+                type="checkbox"
+                checked={withNotes}
+                onChange={(e) => setWithNotes(e.target.checked)}
+                className="size-5 accent-(--ink)"
+              />
+              {t("journey.resetNotes")}
+            </label>
+          )}
           <div className="flex flex-wrap gap-2.5">
             <button
               type="button"
