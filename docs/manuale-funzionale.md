@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.58 — 2026-10-03 — Stato: pubblicato (M1-M9, M11 e M12 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M13 rete della metro aperta, §16.13-16.16)
+Versione 0.59 — 2026-10-03 — Stato: pubblicato (M1-M9, M11 e M12 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M13 rete della metro aperta, §16.13-16.16)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -646,7 +646,7 @@ Sequenza proposta:
 1. **M11 — stabilizzazione.** `m10` su `main` con l'account spento in produzione finché non arriva la fase di rilascio: senza le variabili Supabase in `.env.production` l'icona di accesso non compare e l'app non contatta Supabase, mentre gli end-to-end continuano con l'indirizzo di prova di Playwright. Poi error boundary con pagina di ripiego, pulizia di `nextScenarioId` e dell'accesso `verificare`, audit di accessibilità e prestazioni sul sito pubblico con le correzioni, aggiornamento controllato delle dipendenze.
 2. **M12 — aula e percorsi.** Modalità aula (`/aula/:id`, testo grande, uscite svelate una alla volta), itinerari curati in JSON validato, itinerario personalizzato come link, domande per la discussione (`discuss`), scheda stampabile.
 3. **M13 — gioco.** Timbri e capolinea per linea (mai punteggi), fermata del giorno condivisibile, stazioni di interscambio (`also`), diario di campo locale; «cosa accadde davvero» solo se approvato, presentato come fatto storico con pagina.
-4. **M14 — profondità.** App installabile e offline, glossario con fonti, scenario pilota a più bivi. In sospeso fino a 30 fermate (decisione del 2026-10-02, §16.16): rete intrecciata con linee che si incrociano sugli interscambi, prototipo in `docs/prototipi/linee-incrociate.html`.
+4. **M14 — profondità.** Dalla critique del 2026-10-03 (§16.16): ridondanza della Home (cinque ingressi agli stessi 21 scenari: tabellone, rete, fermata del giorno, pannello, colonne; ipotesi: fermata del giorno nel tabellone, interruttore «Mappa | Elenco», pannello senza barre), miniatura su telefono che filtra invece di aprire (ipotesi: non toccabile più chip da 44 px), rete proiettata a 1280×720 con etichette a circa 13,7 px (tocca il calcolo di `network.ts`). App installabile e offline, glossario con fonti, scenario pilota a più bivi. In sospeso fino a 30 fermate (decisione del 2026-10-02, §16.16): rete intrecciata con linee che si incrociano sugli interscambi, prototipo in `docs/prototipi/linee-incrociate.html`.
 5. **Contenuti in parallelo**, uno scenario per sessione verso 30 fermate (6 per linea).
 
 Decisione dell'autore, 2026-09-29: M11 parte subito; durante M11 la parte dell'account è nascosta in produzione, informativa compresa.

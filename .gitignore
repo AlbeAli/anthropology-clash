@@ -8,3 +8,4 @@ dist-local
 .impeccable/questions/
 test-results
 playwright-report
+.impeccable/critique/
