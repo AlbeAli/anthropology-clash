@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* schermi larghi e bassi (proiettori, portatili): la rete sale accanto al titolo */
+@custom-variant wide-short (@media (min-width: 80rem) and (max-height: 56.25rem));
+
 :root {
   --bg: #ffffff;
   --surface: #f2f2f0;

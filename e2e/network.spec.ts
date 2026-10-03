@@ -127,3 +127,13 @@ test("con il movimento ridotto le fermate sono visibili subito", async ({ page }
   );
   expect(hidden).toBe(0);
 });
+
+test("proiettata a 1280×720 la rete mostra lo snodo Oggi nella prima schermata", async ({
+  page,
+}) => {
+  test.skip(isPhone(page), "la rete intera compare da 768 px");
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await fresh(page);
+  const net = page.getByRole("navigation", { name: "La rete: tutte le linee partono da Oggi" });
+  await expect(net.locator(".net-hub")).toBeInViewport({ ratio: 1 });
+});

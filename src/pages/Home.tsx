@@ -57,8 +57,11 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-6xl">
-      <section aria-labelledby="home-title" className="mb-12 grid gap-6">
-        <div className="overflow-hidden rounded-xl bg-panel text-white ring-1 ring-(--panel-ring)">
+      <section
+        aria-labelledby="home-title"
+        className="mb-12 grid gap-6 wide-short:grid-cols-[17rem_minmax(0,1fr)] wide-short:gap-x-10"
+      >
+        <div className="overflow-hidden rounded-xl bg-panel text-white ring-1 ring-(--panel-ring) wide-short:col-span-2">
           {next && (
             <Link
               to={`/s/${next.id}`}
@@ -95,14 +98,14 @@ export default function Home() {
           {daily && <DailyStop stop={daily} visited={daily.id in state.completed} />}
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-end lg:gap-10">
+        <div className="grid gap-6 self-start lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-end lg:gap-10 wide-short:grid-cols-1">
           <div>
             <p className="mb-3 font-display text-sm font-bold tracking-wide text-ink-soft">
               {t("home.kicker")}
             </p>
             <h1
               id="home-title"
-              className="mb-3 font-display text-4xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl"
+              className="mb-3 font-display text-4xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl wide-short:text-5xl"
             >
               {t("home.title", { lines: concepts.length, stops: scenarios.length })}
             </h1>

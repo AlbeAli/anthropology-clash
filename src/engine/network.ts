@@ -40,7 +40,7 @@ const RAYS: Record<ConceptId, Ray> = {
   reciprocita: {
     dir: { x: -1, y: 0 },
     first: 80,
-    step: 80,
+    step: 56,
     label: (p, e) => ({ x: p.x - 10 - e / 2, y: p.y - 12 - e, anchor: "end", rotate: 45 }),
     badge: { x: 0, y: 28 },
     badgeStep: { x: 0, y: 20 },
@@ -49,7 +49,7 @@ const RAYS: Record<ConceptId, Ray> = {
   parentela: {
     dir: { x: 0, y: -1 },
     first: 120,
-    step: 60,
+    step: 44,
     label: (p, e) => ({ x: p.x - 18 - e, y: p.y + 5, anchor: "end", rotate: 0 }),
     badge: { x: 28, y: 0 },
     badgeStep: { x: 20, y: 0 },
@@ -58,7 +58,7 @@ const RAYS: Record<ConceptId, Ray> = {
   rituale: {
     dir: { x: 1, y: 0 },
     first: 80,
-    step: 80,
+    step: 56,
     label: (p, e) => ({ x: p.x + 10 + e / 2, y: p.y - 12 - e, anchor: "start", rotate: -45 }),
     badge: { x: 0, y: 28 },
     badgeStep: { x: 0, y: 20 },
@@ -67,7 +67,7 @@ const RAYS: Record<ConceptId, Ray> = {
   relativismo: {
     dir: { x: 0, y: 1 },
     first: 80,
-    step: 70,
+    step: 50,
     label: (p, e) => ({ x: p.x + 18 + e, y: p.y + 5, anchor: "start", rotate: 0 }),
     badge: { x: -28, y: 0 },
     badgeStep: { x: -20, y: 0 },
@@ -76,7 +76,7 @@ const RAYS: Record<ConceptId, Ray> = {
   consumo: {
     dir: { x: -D, y: D },
     first: 78,
-    step: 78,
+    step: 60,
     label: (p, e) => ({ x: p.x - 18 - e, y: p.y + 5, anchor: "end", rotate: 0 }),
     badge: { x: 20, y: 20 },
     badgeStep: { x: 20, y: 0 },
@@ -90,16 +90,23 @@ const TERMINUS_SIZE = 28;
 const BADGE_SIZE = 18;
 const CHANGE_GAP = 9;
 const CHAR_WIDTH = 8.4;
-const LABEL_HEIGHT = 16;
+const ASCENT = 12;
+const DESCENT = 4;
 const MARGIN = 16;
 
 const at = (ray: Ray, d: number): Point => ({ x: ray.dir.x * d, y: ray.dir.y * d });
 
-function labelEnd(label: NetLabel, title: string): Point {
-  const length = title.length * CHAR_WIDTH;
+export function labelPolygon(label: NetLabel, title: string): Point[] {
   const a = (label.rotate * Math.PI) / 180;
   const sign = label.anchor === "start" ? 1 : -1;
-  return { x: label.x + sign * Math.cos(a) * length, y: label.y + sign * Math.sin(a) * length };
+  const length = title.length * CHAR_WIDTH;
+  const end = {
+    x: label.x + sign * Math.cos(a) * length,
+    y: label.y + sign * Math.sin(a) * length,
+  };
+  const n = { x: -Math.sin(a), y: Math.cos(a) };
+  const off = (p: Point, d: number) => ({ x: p.x + n.x * d, y: p.y + n.y * d });
+  return [off(label, -ASCENT), off(end, -ASCENT), off(end, DESCENT), off(label, DESCENT)];
 }
 
 export function buildNetwork(
@@ -142,15 +149,7 @@ export function buildNetwork(
   }
   const core = boxOf(points, MARGIN * 2);
   for (const line of lines) {
-    for (const s of line.stations) {
-      const end = labelEnd(s.label, s.title);
-      points.push(
-        { x: s.label.x, y: s.label.y - LABEL_HEIGHT },
-        { x: s.label.x, y: s.label.y + LABEL_HEIGHT / 2 },
-        { x: end.x, y: end.y - LABEL_HEIGHT },
-        { x: end.x, y: end.y + LABEL_HEIGHT / 2 },
-      );
-    }
+    for (const s of line.stations) points.push(...labelPolygon(s.label, s.title));
   }
   return { box: boxOf(points, MARGIN), core, hub: { x: 0, y: 0, ...HUB }, lines };
 }
