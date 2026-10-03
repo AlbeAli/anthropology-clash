@@ -13,59 +13,89 @@ type Props = {
   scenarios: CatalogEntry[];
   completed: Record<string, Completion>;
   hereId: string | undefined;
-  filter: ConceptId | null;
   fresh: string | null;
+  open: ConceptId[];
+  onToggle: (id: ConceptId, open: boolean) => void;
 };
 
-export default function LineMap({ concepts, scenarios, completed, hereId, filter, fresh }: Props) {
+export default function LineMap({
+  concepts,
+  scenarios,
+  completed,
+  hereId,
+  fresh,
+  open,
+  onToggle,
+}: Props) {
   const { t } = useTranslation();
   const hereLine = scenarios.find((s) => s.id === hereId)?.concept;
-  const maxStops = Math.max(
-    0,
-    ...concepts.map((c) => scenarios.filter((s) => s.concept === c.id).length),
-  );
 
   return (
-    <div className="grid grid-cols-1 gap-x-6 gap-y-8 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-y-0">
+    <div className="border-t-2 border-ink">
       {concepts.map((c, i) => {
         const stops = scenarios.filter((s) => s.concept === c.id);
         const done = stops.filter((s) => s.id in completed).length;
-        const dimmed = filter !== null && filter !== c.id;
+        const isOpen = open.includes(c.id);
         return (
-          <section
+          <details
             key={c.id}
-            aria-label={t("home.map.lineLabel", { line: t(`lines.${c.id}.name`) })}
-            className={
-              "map-line min-w-0 transition-[opacity,filter] duration-300 " +
-              (dimmed ? "max-sm:hidden sm:opacity-15 sm:grayscale" : "")
-            }
-            style={{
-              ["--lc" as string]: lineColor(c.id),
-              ["--i" as string]: i,
-              ["--rows" as string]: maxStops + 1,
+            id={`linea-${c.id}`}
+            open={isOpen}
+            onToggle={(e) => {
+              if (e.currentTarget.open !== isOpen) onToggle(c.id, e.currentTarget.open);
             }}
+            className="group scroll-mt-4 border-b border-line"
+            style={{ ["--lc" as string]: lineColor(c.id) }}
           >
-            <div className="mb-3.5 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2.5 gap-y-0.5">
-              <span className="row-span-2">
-                <LineBullet concept={c.id} />
+            <summary className="grid min-h-18 cursor-pointer list-none grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-x-3 py-2 sm:grid-cols-[auto_minmax(0,14rem)_minmax(0,1fr)_auto_auto] sm:gap-x-5 [&::-webkit-details-marker]:hidden">
+              <LineBullet concept={c.id} />
+              <span className="min-w-0">
+                <span className="block font-display text-xl leading-tight font-extrabold">
+                  {t(`lines.${c.id}.name`)}
+                </span>
+                <span className="block text-sm leading-snug text-ink-soft">{c.label}</span>
               </span>
-              <h3 className="font-display text-xl leading-tight font-extrabold">
-                {t(`lines.${c.id}.name`)}
-              </h3>
-              <p className="text-sm leading-snug text-ink-soft">
-                {t("home.map.lineCount", { count: done, total: stops.length })}
-                <br />
-                {c.label}
-              </p>
+              <span
+                aria-hidden="true"
+                className="hidden grid-flow-col gap-1 [grid-auto-columns:minmax(0,1fr)] sm:grid"
+                style={{ ["--c" as string]: lineColor(c.id) }}
+              >
+                {stops.map((s, k) => (
+                  <i
+                    key={s.id}
+                    className={
+                      "relative h-2.5 overflow-hidden rounded-full bg-line " +
+                      (s.id in completed ? "metro-seg" : "")
+                    }
+                    style={{ ["--d" as string]: `${0.4 + i * 0.08 + k * 0.06}s` }}
+                  />
+                ))}
+              </span>
+              <span className="font-display text-sm font-bold text-ink-soft tabular-nums">
+                <span aria-hidden="true">
+                  {done}/{stops.length}
+                </span>
+                <span className="sr-only">
+                  {t("home.map.lineCount", { count: done, total: stops.length })}
+                </span>
+              </span>
+              <span
+                aria-hidden="true"
+                className="font-display text-2xl leading-none font-extrabold transition-transform duration-300 ease-out-expo group-open:rotate-90"
+              >
+                ›
+              </span>
+            </summary>
+            <div className="pb-6 sm:pl-14">
+              <Stops
+                stops={stops}
+                completed={completed}
+                hereId={hereId}
+                fresh={fresh}
+                withTrain={isOpen && hereLine === c.id}
+              />
             </div>
-            <Stops
-              stops={stops}
-              completed={completed}
-              hereId={hereId}
-              fresh={fresh}
-              withTrain={hereLine === c.id}
-            />
-          </section>
+          </details>
         );
       })}
     </div>
@@ -105,8 +135,8 @@ function Stops({
   return (
     <ol
       ref={list}
-      className="map-stops metro-rail relative m-0 list-none py-0 pr-0 pl-5"
-      style={{ ["--stops" as string]: stops.length }}
+      className="metro-rail relative m-0 max-w-2xl list-none py-0 pr-0 pl-5"
+      style={{ ["--i" as string]: 0 }}
     >
       {withTrain && (
         <span

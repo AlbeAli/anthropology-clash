@@ -167,3 +167,26 @@ function boxOf(points: Point[], margin: number): Box {
     height: Math.ceil(Math.max(...ys) + margin - y),
   };
 }
+
+function segmentDistance(p: Point, a: Point, b: Point): number {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = dx * dx + dy * dy;
+  const t = len ? Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / len)) : 0;
+  return Math.hypot(p.x - (a.x + t * dx), p.y - (a.y + t * dy));
+}
+
+export function nearestLine(net: Network, p: Point): ConceptId | null {
+  let best: ConceptId | null = null;
+  let min = Infinity;
+  for (const line of net.lines) {
+    for (let i = 1; i < line.path.length; i++) {
+      const d = segmentDistance(p, line.path[i - 1], line.path[i]);
+      if (d < min) {
+        min = d;
+        best = line.concept;
+      }
+    }
+  }
+  return best;
+}

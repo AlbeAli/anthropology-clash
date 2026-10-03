@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Concept, ConceptId, Scenario } from "../schema/scenario.schema";
-import { buildNetwork, type Network } from "./network";
+import { buildNetwork, nearestLine, type Network } from "./network";
 
 const scenarios = Object.values(
   import.meta.glob<Scenario>("../content/it/scenarios/*.json", { eager: true, import: "default" }),
@@ -65,6 +65,17 @@ describe("buildNetwork", () => {
     expect(net.lines.every((l) => l.stations.length === 6)).toBe(true);
     for (const s of net.lines.flatMap((l) => l.stations)) {
       expect(inside(net, s.label.x, s.label.y)).toBe(true);
+    }
+  });
+});
+
+describe("nearestLine", () => {
+  it("riconosce la linea di ogni fermata e del suo capolinea, anche un po' fuori dalla rotaia", () => {
+    const net = buildNetwork(scenarios, order);
+    for (const line of net.lines) {
+      for (const s of [...line.stations, line.terminus]) {
+        expect(nearestLine(net, { x: s.x + 12, y: s.y - 12 })).toBe(line.concept);
+      }
     }
   });
 });
