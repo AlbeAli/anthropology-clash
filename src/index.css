@@ -307,9 +307,6 @@
     transform: scaleX(0);
     animation: metro-wipe 0.7s var(--ease-out-expo) forwards;
   }
-  .metro-blink {
-    animation: metro-blink 1.2s steps(2) infinite;
-  }
 }
 
 @layer components {
@@ -480,12 +477,6 @@
     transform-origin: right;
   }
 }
-@keyframes metro-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
 @layer components {
   .route {
     position: relative;

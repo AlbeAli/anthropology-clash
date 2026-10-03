@@ -45,62 +45,51 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-6xl">
       <section aria-labelledby="home-title" className="mb-12 grid gap-6">
-        <div className="grid items-end gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-          <div>
-            <p className="mb-3 font-display text-sm font-bold tracking-wide text-ink-soft">
-              {t("home.kicker")}
-            </p>
-            <h1
-              id="home-title"
-              className="mb-3 font-display text-4xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl"
-            >
-              {t("home.title", { lines: concepts.length, stops: scenarios.length })}
-            </h1>
-            <p className="max-w-[46ch] text-lg text-ink-soft sm:text-xl">{t("home.lede")}</p>
-          </div>
-          {next && (
-            <Link
-              to={`/s/${next.id}`}
-              className="group relative grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4 overflow-hidden rounded-xl bg-panel ring-1 ring-(--panel-ring) p-5 pb-7 text-white transition-transform duration-300 ease-out-expo hover:-translate-y-0.5 sm:gap-5 sm:p-6 sm:pb-8"
-            >
-              <LineBullet concept={next.concept} />
-              <span className="min-w-0">
-                <small className="mb-2 block font-display text-sm font-bold opacity-80">
-                  {allDone
-                    ? t("home.board.again", { line: t(`lines.${next.concept}.name`) })
-                    : t("home.board.label", {
-                        line: t(`lines.${next.concept}.name`),
-                        n: stopNumber(next.id),
-                      })}
-                </small>
-                <SplitFlap
-                  text={next.title}
-                  className="text-xl leading-snug sm:text-3xl lg:text-4xl"
-                />
-                <span className="mt-2.5 flex items-center gap-2 font-display text-sm font-bold opacity-85">
-                  <b
-                    aria-hidden="true"
-                    className="metro-blink size-2.5 rounded-full bg-[#f7a600]"
-                  />
-                  {t("home.board.eta")}
-                </span>
-              </span>
-              <span className="col-span-2 inline-flex min-h-12 items-center gap-2.5 justify-self-start rounded-md bg-white px-5 font-display font-extrabold text-[#1a1a1a]">
-                {t("home.board.go")}
-                <b
-                  aria-hidden="true"
-                  className="transition-transform duration-300 ease-out-expo group-hover:translate-x-1"
-                >
-                  →
-                </b>
-              </span>
-              <span
+        {next && (
+          <Link
+            to={`/s/${next.id}`}
+            className="group relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 overflow-hidden rounded-xl bg-panel px-4 pt-3.5 pb-5 text-white ring-1 ring-(--panel-ring) transition-transform duration-300 ease-out-expo hover:-translate-y-0.5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-x-5 sm:px-5"
+          >
+            <LineBullet concept={next.concept} />
+            <span className="min-w-0">
+              <small className="mb-1 block font-display text-sm font-bold opacity-80">
+                {allDone
+                  ? t("home.board.again", { line: t(`lines.${next.concept}.name`) })
+                  : t("home.board.label", {
+                      line: t(`lines.${next.concept}.name`),
+                      n: stopNumber(next.id),
+                    })}
+              </small>
+              <SplitFlap text={next.title} className="text-lg leading-snug sm:text-2xl" />
+            </span>
+            <span className="col-span-2 inline-flex min-h-12 items-center gap-2.5 justify-self-start rounded-md bg-white px-5 font-display font-extrabold text-[#1a1a1a] sm:col-span-1">
+              {t("home.board.go")}
+              <b
                 aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-1.5"
-                style={{ background: lineColor(next.concept) }}
-              />
-            </Link>
-          )}
+                className="transition-transform duration-300 ease-out-expo group-hover:translate-x-1"
+              >
+                →
+              </b>
+            </span>
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-1"
+              style={{ background: lineColor(next.concept) }}
+            />
+          </Link>
+        )}
+
+        <div>
+          <p className="mb-3 font-display text-sm font-bold tracking-wide text-ink-soft">
+            {t("home.kicker")}
+          </p>
+          <h1
+            id="home-title"
+            className="mb-3 font-display text-4xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl"
+          >
+            {t("home.title", { lines: concepts.length, stops: scenarios.length })}
+          </h1>
+          <p className="max-w-[52ch] text-lg text-ink-soft sm:text-xl">{t("home.lede")}</p>
         </div>
 
         <NetworkMap

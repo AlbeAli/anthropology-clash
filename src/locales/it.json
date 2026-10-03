@@ -30,7 +30,6 @@
     "board": {
       "label": "Prossima partenza · Linea {{line}} · fermata {{n}}",
       "again": "Tutte le fermate visitate · si riparte dalla linea {{line}}",
-      "eta": "In partenza",
       "go": "Parti"
     },
     "visited_one": "fermata visitata su {{total}}",
