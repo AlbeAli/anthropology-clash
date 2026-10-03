@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.60 — 2026-10-03 — Stato: pubblicato (M1-M9 e M11-M13 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio, §16.13-16.16)
+Versione 0.61 — 2026-10-03 — Stato: pubblicato (M1-M9 e M11-M13 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M14 aperta, §16.13-16.17)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -730,3 +730,15 @@ Critique e audit, 2026-10-03, con la skill impeccable su Home e «Il tuo viaggio
 Misure: JavaScript iniziale da 126,2 a **126,2 kB**. Test 76, end-to-end 86 verdi (2 saltati per dimensione dello schermo). Restano da decidere con l'autore: ridondanza della Home (tabellone, rete, fermata del giorno, pannello e colonne portano agli stessi 21 scenari), miniatura su telefono che filtra invece di aprire, leggibilità della rete proiettata a 1280×720.
 
 Chiusura di M13, 2026-10-03: merge `--no-ff` di `m13` su `main`, con conferma dell'autore prima della messa in produzione; prima del merge lint, `pnpm validate` (21 scenari, 3 itinerari), test 76, end-to-end 86 verdi (2 saltati per dimensione dello schermo), JavaScript iniziale 126,2 kB contro 122,8 kB all'apertura della milestone (+3,4 kB). Criteri soddisfatti: rete con snodo «Oggi» da 768 px e miniatura sotto; 5 interscambi `also` verificati sul testo e validati dall'autore; timbri e capolinea senza punteggi; fermata del giorno condivisibile; critique e audit con correzioni. Rimandati a M14: ridotto numero di ingressi della Home, miniatura su telefono, rete proiettata, rete intrecciata a 30 fermate, diario di campo e «cosa accadde davvero».
+
+### 16.17 M14 — Home e rete (aperta 2026-10-03)
+
+Branch `m14`. Tre perimetri proposti all'autore il 2026-10-03: A, Home e rete (i rimandi della critique di M13 e il diario di campo); B, profondità (cosa accadde davvero, glossario con fonti, scenario a più bivi, app installabile); C, fase di rilascio di M10, che dipende da attività esterne a cura dell'autore. **Scelta dell'autore: A.** «Cosa accadde davvero» passa a una milestone di contenuti, insieme agli scenari verso le 30 fermate, perché chiede la stessa verifica sul testo; la rete intrecciata resta in attesa delle 30 fermate.
+
+Lotti:
+
+1. Home con meno ingressi: oggi tabellone, rete, fermata del giorno, pannello e colonne portano agli stessi 21 scenari. Prototipi a confronto, scelta dell'autore, poi costruzione.
+2. Miniatura su telefono: oggi isola una linea al tocco invece di aprire le fermate.
+3. Rete proiettata a 1280×720: nomi delle fermate intorno ai 13,7 px, calcolo in `network.ts`.
+4. Diario di campo solo locale (`localStorage`, esportabile nel riepilogo), con i vincoli di §16.14.
+5. End-to-end, misure, merge e verifica sul sito pubblico.
