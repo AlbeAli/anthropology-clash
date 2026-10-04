@@ -222,6 +222,12 @@ function ScenarioPlay({
                     >
                       {t("nav.journey")}
                     </Link>
+                    <Link
+                      to={`/diario#${scenario.id}`}
+                      className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
+                    >
+                      {t("scenario.writeDiary")}
+                    </Link>
                   </div>
                 </div>
               </section>

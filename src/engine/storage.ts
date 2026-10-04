@@ -7,6 +7,9 @@ export type Theme = "light" | "dark";
 
 export type Completion = { level: Level; choice: string; at: string };
 export type Streak = { count: number; lastDay: string | null };
+export type Note = { text: string; at: string };
+
+export const NOTE_MAX = 2000;
 
 export type StoredState = {
   version: typeof STORAGE_VERSION;
@@ -16,6 +19,7 @@ export type StoredState = {
   streak: Streak;
   seenConcepts: ConceptId[];
   theme?: Theme;
+  notes?: Record<string, Note>;
 };
 
 export function emptyState(): StoredState {
@@ -47,7 +51,19 @@ function sanitize(raw: unknown): StoredState {
         : base.streak,
     seenConcepts: Array.isArray(raw.seenConcepts) ? (raw.seenConcepts as ConceptId[]) : [],
     theme: raw.theme === "light" || raw.theme === "dark" ? raw.theme : undefined,
+    notes: sanitizeNotes(raw.notes),
   };
+}
+
+function sanitizeNotes(raw: unknown): Record<string, Note> | undefined {
+  if (!isRecord(raw)) return undefined;
+  const notes: Record<string, Note> = {};
+  for (const [id, note] of Object.entries(raw)) {
+    if (!/^scenario_\d{3}$/.test(id) || !isRecord(note)) continue;
+    if (typeof note.text !== "string" || typeof note.at !== "string" || !note.text.trim()) continue;
+    notes[id] = { text: note.text.slice(0, NOTE_MAX), at: note.at };
+  }
+  return Object.keys(notes).length ? notes : undefined;
 }
 
 export function readState(storage: Pick<Storage, "getItem"> | undefined = globalStorage()) {
@@ -62,11 +78,26 @@ export function readState(storage: Pick<Storage, "getItem"> | undefined = global
 export function writeState(
   state: StoredState,
   storage: Pick<Storage, "setItem"> | undefined = globalStorage(),
-): void {
+): boolean {
   try {
-    storage?.setItem(STORAGE_KEY, JSON.stringify(state));
+    if (!storage) return false;
+    storage.setItem(STORAGE_KEY, JSON.stringify(state));
+    return true;
   } catch {
     /* persistenza non disponibile: l'app continua senza */
+    return false;
+  }
+}
+
+export function canPersist(storage: Storage | undefined = globalStorage()): boolean {
+  try {
+    if (!storage) return false;
+    const key = `${STORAGE_KEY}.prova`;
+    storage.setItem(key, "1");
+    storage.removeItem(key);
+    return true;
+  } catch {
+    return false;
   }
 }
 

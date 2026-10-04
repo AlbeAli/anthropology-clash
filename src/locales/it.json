@@ -16,7 +16,8 @@
     "journeyShort": "Viaggio",
     "signIn": "Accedi",
     "account": "Il tuo account",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "diary": "Diario"
   },
   "level": {
     "label": "Livello",
@@ -34,16 +35,16 @@
     },
     "visited_one": "fermata visitata su {{total}}",
     "visited_other": "fermate visitate su {{total}}",
-    "isolate": "Isola una linea sulla mappa",
     "levelHeading": "Livello",
     "levels": {
       "neofita": "Linguaggio comune, due scelte, spiegazione breve. Per chi parte da zero.",
       "studente": "Contesto etnografico, tre o quattro scelte, riferimenti teorici e letture per approfondire."
     },
+    "lines": {
+      "title": "Le linee",
+      "hint": "Apri una linea per vederne le fermate: ogni fermata apre uno scenario."
+    },
     "map": {
-      "title": "La mappa",
-      "hint": "Ogni fermata apre uno scenario. Con il mouse, passandoci sopra leggi l'aggancio di oggi.",
-      "showAll": "Mostra tutte le linee",
       "lineCount_one": "{{count}} fermata visitata su {{total}}",
       "lineCount_other": "{{count}} fermate visitate su {{total}}",
       "lineLabel": "Linea {{line}}",
@@ -69,10 +70,8 @@
         "done": "visitata",
         "todo": "da visitare"
       },
-      "mini": "La rete in miniatura: tocca per isolare una linea.",
-      "miniCurrent": "Linea isolata: {{line}}.",
       "change": "cambio per la linea {{lines}}",
-      "continue": "Continua"
+      "miniHint": "Tocca una linea per aprirne le fermate."
     }
   },
   "scenario": {
@@ -102,7 +101,8 @@
     "nextStop": "Prossima fermata · Linea {{line}} · fermata {{n}}",
     "allDone": "Tutte le fermate visitate. Si riparte da",
     "go": "Prosegui",
-    "backToMap": "Torna alla mappa"
+    "backToMap": "Torna alla mappa",
+    "writeDiary": "Scrivi nel diario"
   },
   "theme": {
     "switchTo": {
@@ -167,12 +167,12 @@
       "title": "Dati e privacy",
       "link": "Leggi l'informativa sulla privacy",
       "body": [
-        "Senza account l'app non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi.",
-        "L'account è facoltativo e serve solo a ritrovare le fermate visitate su un altro dispositivo. Con l'account conserviamo l'email con cui accedi e le fermate visitate, su server nell'Unione europea; si elimina dal profilo, e dopo 24 mesi di inattività viene cancellato automaticamente.",
+        "Senza account l'app non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) e gli appunti del diario restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi.",
+        "L'account è facoltativo e serve solo a ritrovare le fermate visitate su un altro dispositivo. Con l'account conserviamo l'email con cui accedi e le fermate visitate, su server nell'Unione europea; gli appunti del diario restano solo nel browser; si elimina dal profilo, e dopo 24 mesi di inattività viene cancellato automaticamente.",
         "Le statistiche d'uso aggregate (quante persone aprono l'app, quanti scenari vengono completati) sono raccolte con Umami, uno strumento senza cookie e senza identificatori personali. Per questo non c'è alcun banner da accettare."
       ],
       "bodyLocal": [
-        "L'app non ha account e non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi, e non si sincronizzano tra dispositivi.",
+        "L'app non ha account e non raccoglie dati personali. I progressi (livello scelto, scenari completati, serie di giorni) e gli appunti del diario restano nel tuo browser e non lasciano il dispositivo: cancellando i dati del sito vengono persi, e non si sincronizzano tra dispositivi.",
         "Le statistiche d'uso aggregate (quante persone aprono l'app, quanti scenari vengono completati) sono raccolte con Umami, uno strumento senza cookie e senza identificatori personali. Per questo non c'è alcun banner da accettare."
       ]
     },
@@ -264,7 +264,8 @@
       "item": "· {{title}} (linea {{line}}, {{level}})"
     },
     "resetNoteAccount": "Cancella fermate visitate e serie da questo browser e dal tuo account. Livello e tema restano.",
-    "resetFailed": "Non riesco a raggiungere il tuo account: i progressi non sono stati azzerati. Riprova tra poco."
+    "resetFailed": "Non riesco a raggiungere il tuo account: i progressi non sono stati azzerati. Riprova tra poco.",
+    "resetNotes": "Cancella anche il diario"
   },
   "itineraries": {
     "title": "Percorsi",
@@ -391,7 +392,7 @@
   },
   "privacyPage": {
     "title": "Privacy",
-    "updated": "Ultimo aggiornamento: 28 settembre 2026",
+    "updated": "Ultimo aggiornamento: 4 ottobre 2026",
     "contact": "privacy@anthropologyclash.app",
     "sections": [
       {
@@ -403,7 +404,7 @@
       {
         "title": "Senza account",
         "body": [
-          "Senza account l'app non raccoglie dati personali. Livello, tema, fermate visitate e serie di giorni restano nella memoria del tuo browser e non lasciano il dispositivo.",
+          "Senza account l'app non raccoglie dati personali. Livello, tema, fermate visitate, serie di giorni e appunti del diario restano nella memoria del tuo browser e non lasciano il dispositivo.",
           "Le statistiche d'uso sono aggregate e raccolte con Umami, senza cookie e senza identificatori personali. Come per ogni sito, le pagine sono servite da Vercel, che riceve i dati tecnici delle richieste, per esempio l'indirizzo IP."
         ]
       },
@@ -411,7 +412,8 @@
         "title": "Con account",
         "body": [
           "Se crei un account conserviamo: l'indirizzo email con cui accedi (o quello del tuo account Google, se entri con Google), le fermate visitate con livello, scelta e giorno, la serie di giorni e la data dell'ultima sincronizzazione.",
-          "Il servizio di accesso registra anche la data di creazione dell'account e dell'ultimo accesso e, nei suoi registri tecnici, dati come l'indirizzo IP delle richieste. Non chiediamo nome, foto né numero di telefono e non usiamo i dati per profilazione."
+          "Il servizio di accesso registra anche la data di creazione dell'account e dell'ultimo accesso e, nei suoi registri tecnici, dati come l'indirizzo IP delle richieste. Non chiediamo nome, foto né numero di telefono e non usiamo i dati per profilazione.",
+          "Gli appunti del diario di campo non fanno parte dell'account: restano solo nel browser in cui li scrivi e non vengono mai inviati."
         ]
       },
       {
@@ -453,5 +455,32 @@
         ]
       }
     ]
+  },
+  "diary": {
+    "title": "Diario di campo",
+    "lede": "Un appunto per ogni fermata visitata: che cosa ti ha fatto pensare, che cosa riconosci nella vita di oggi.",
+    "privacy": "Gli appunti restano in questo browser. Non vengono inviati a nessuno, nemmeno con l'account, e non compaiono in aula né nella scheda stampabile.",
+    "noStorage": "Questo browser non salva i dati del sito: gli appunti restano finché la pagina è aperta. Scaricali prima di chiuderla.",
+    "empty": "Il diario si riempie con le fermate visitate: dopo ogni scelta trovi «Scrivi nel diario».",
+    "emptyLink": "Torna alla mappa",
+    "meta": "Linea {{line}} · fermata {{n}}",
+    "visitedOn": "visitata il {{date}}",
+    "notVisited": "non più tra le fermate visitate",
+    "choice": "La tua uscita: {{text}}",
+    "write": "Scrivi un appunto",
+    "label": "Appunto su «{{title}}»",
+    "prompts": "Spunti: le domande per la discussione",
+    "promptHint": "Un tocco copia la domanda in testa all'appunto.",
+    "saved": "Salvato in questo browser",
+    "notSaved": "Non salvato: questo browser non conserva i dati del sito",
+    "left": "{{count}} caratteri disponibili",
+    "download": "Scarica il diario",
+    "fileHead": "Diario di campo · {{app}}",
+    "fileName": "diario-di-campo",
+    "clear": "Cancella il diario",
+    "clearConfirm": "Conferma: cancella tutti gli appunti",
+    "clearCancel": "Annulla",
+    "cleared": "Diario cancellato",
+    "clearNote": "Cancella tutti gli appunti da questo browser. Le fermate visitate restano."
   }
 }

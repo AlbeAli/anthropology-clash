@@ -1,10 +1,10 @@
-import { useMemo, useState, type MouseEvent } from "react";
+import { useMemo, useState, type MouseEvent, type PointerEvent } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { Concept, ConceptId } from "../../schema/scenario.schema";
 import { prefetchScenario, type CatalogEntry } from "../../engine/content";
 import type { Completion } from "../../engine/storage";
-import { buildNetwork, type Box, type Network } from "../../engine/network";
+import { buildNetwork, nearestLine, type Box, type Network } from "../../engine/network";
 import { lineColor, lineInk, stopNumber } from "../../engine/lines";
 import { DEFAULT_LANG } from "../../i18n";
 
@@ -13,22 +13,14 @@ type Props = {
   scenarios: CatalogEntry[];
   completed: Record<string, Completion>;
   hereId: string | undefined;
-  filter: ConceptId | null;
-  onFilter: (id: ConceptId | null) => void;
+  onLine: (id: ConceptId) => void;
 };
 
 type State = "here" | "done" | "todo";
 
 const viewBox = (b: Box) => `${b.x} ${b.y} ${b.width} ${b.height}`;
 
-export default function NetworkMap({
-  concepts,
-  scenarios,
-  completed,
-  hereId,
-  filter,
-  onFilter,
-}: Props) {
+export default function NetworkMap({ concepts, scenarios, completed, hereId, onLine }: Props) {
   const { t } = useTranslation();
   const net = useMemo(
     () =>
@@ -41,32 +33,34 @@ export default function NetworkMap({
   const stateOf = (id: string): State =>
     id === hereId ? "here" : id in completed ? "done" : "todo";
 
-  const cycle = () => {
-    const i = concepts.findIndex((c) => c.id === filter);
-    onFilter(i === concepts.length - 1 ? null : concepts[i + 1].id);
+  const pick = (e: PointerEvent<SVGSVGElement>) => {
+    const m = e.currentTarget.getScreenCTM();
+    if (!m) return;
+    const line = nearestLine(net, new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()));
+    if (line) onLine(line);
   };
 
   return (
     <>
-      <FullMap net={net} scenarios={scenarios} stateOf={stateOf} filter={filter} />
-      <button
-        type="button"
-        onClick={cycle}
-        aria-label={
-          t("home.network.mini") +
-          (filter ? " " + t("home.network.miniCurrent", { line: t(`lines.${filter}.name`) }) : "")
-        }
-        className="block w-full rounded-xl bg-surface p-3 md:hidden"
-      >
+      <FullMap net={net} scenarios={scenarios} stateOf={stateOf} />
+      <div className="rounded-xl bg-surface p-3 md:hidden">
         <svg
           viewBox={viewBox(net.core)}
           aria-hidden="true"
-          className="net net-mini block h-auto w-full"
+          data-testid="net-mini"
+          onPointerUp={pick}
+          className="net net-mini block h-auto w-full cursor-pointer"
         >
-          <Lines net={net} stateOf={stateOf} filter={filter} mini />
+          <Lines net={net} stateOf={stateOf} mini />
           <Hub net={net} label={t("home.network.hub")} />
         </svg>
-      </button>
+        <p
+          aria-hidden="true"
+          className="mt-2 text-center font-display text-sm font-bold text-ink-soft"
+        >
+          {t("home.network.miniHint")}
+        </p>
+      </div>
     </>
   );
 }
@@ -75,12 +69,10 @@ function FullMap({
   net,
   scenarios,
   stateOf,
-  filter,
 }: {
   net: Network;
   scenarios: CatalogEntry[];
   stateOf: (id: string) => State;
-  filter: ConceptId | null;
 }) {
   const { t } = useTranslation();
   const [active, setActive] = useState<string | null>(null);
@@ -95,7 +87,6 @@ function FullMap({
         <Lines
           net={net}
           stateOf={stateOf}
-          filter={filter}
           onActive={(id) => {
             setActive(id);
             prefetchScenario(DEFAULT_LANG, id);
@@ -116,13 +107,14 @@ function FullMap({
                 title: entry.title,
               })}
               {entry.also?.length
-                ? " · " +
+                ? " Â· " +
                   t("home.network.change", {
                     lines: entry.also.map((c) => t(`lines.${c}.name`)).join(", "),
                   })
                 : ""}
             </b>
-            {entry.hook && (entry.hook.length > 150 ? `${entry.hook.slice(0, 150)}…` : entry.hook)}
+            {entry.hook &&
+              (entry.hook.length > 150 ? `${entry.hook.slice(0, 150)}â€¦` : entry.hook)}
           </>
         ) : (
           t("home.network.hint")
@@ -135,13 +127,11 @@ function FullMap({
 function Lines({
   net,
   stateOf,
-  filter,
   mini = false,
   onActive,
 }: {
   net: Network;
   stateOf: (id: string) => State;
-  filter: ConceptId | null;
   mini?: boolean;
   onActive?: (id: string) => void;
 }) {
@@ -159,7 +149,6 @@ function Lines({
     <g
       key={line.concept}
       className="net-line"
-      data-dim={filter && filter !== line.concept ? "" : undefined}
       style={{ ["--lc" as string]: lineColor(line.concept), ["--i" as string]: i }}
     >
       <path

@@ -181,3 +181,26 @@ test("eliminare l'account chiama la funzione e chiude la sessione", async ({ pag
   );
   await expect(page.getByText("Non hai fatto l'accesso.")).toBeVisible();
 });
+
+test("con l'account gli appunti del diario non vengono mai inviati", async ({ page }) => {
+  const calls = await mockSupabase(page);
+  await signedIn(page);
+  const secret = "Appunto che deve restare nel browser";
+  await page.goto(`/diario#${local.id}`);
+  await page.getByLabel(`Appunto su «${local.title}»`).fill(secret);
+  await expect(page.getByText("Salvato in questo browser")).toBeVisible();
+  await page.goto(`/s/${scenarios[1].id}`);
+  await page.locator('[aria-labelledby="choices-heading"] button').first().click();
+  await expect
+    .poll(() =>
+      calls.some(
+        (c) =>
+          c.path === "/rest/v1/progress" &&
+          c.method === "POST" &&
+          JSON.stringify(c.body).includes(scenarios[1].id),
+      ),
+    )
+    .toBe(true);
+  expect(calls.length).toBeGreaterThan(0);
+  expect(calls.filter((c) => JSON.stringify(c.body ?? "").includes(secret))).toEqual([]);
+});

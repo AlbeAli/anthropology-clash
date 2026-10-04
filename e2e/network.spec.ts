@@ -31,20 +31,35 @@ test("la rete apre la Home: tutte le fermate partono da Oggi e portano allo scen
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(last.title);
 });
 
-test("sul telefono la rete in miniatura isola una linea e l'elenco resta sotto", async ({
+const lineOf = (concept: string) => scenarios.filter((s) => s.concept === concept);
+
+test("Le linee: si apre la linea di «sei qui», le altre si aprono a richiesta", async ({
   page,
 }) => {
+  await fresh(page);
+  await expect(page.locator(".metro-stop:visible")).toHaveCount(lineOf(first.concept).length);
+  await page.locator(`#linea-${last.concept} summary`).click();
+  await expect(page.locator(".metro-stop:visible")).toHaveCount(
+    lineOf(first.concept).length + lineOf(last.concept).length,
+  );
+  await page.getByRole("link", { name: last.title, exact: true }).click();
+  await expect(page).toHaveURL(`/s/${last.id}`);
+});
+
+test("sul telefono toccare una linea della miniatura apre le sue fermate", async ({ page }) => {
   test.skip(!isPhone(page), "la miniatura compare solo sotto i 768 px");
   await fresh(page);
   await expect(
     page.getByRole("navigation", { name: "La rete: tutte le linee partono da Oggi" }),
   ).toBeHidden();
-  const mini = page.getByRole("button", { name: /La rete in miniatura/ });
-  await expect(page.locator(".metro-stop:visible")).toHaveCount(scenarios.length);
-  await mini.click();
-  await expect(mini).toHaveAccessibleName(/Linea isolata: Dono/);
-  const line = scenarios.filter((s) => s.concept === first.concept);
-  await expect(page.locator(".metro-stop:visible")).toHaveCount(line.length);
+  await page
+    .getByTestId("net-mini")
+    .locator(`.net-line[style*="--l-${last.concept}"] .net-term`)
+    .click();
+  await expect(page.locator(`#linea-${last.concept}`)).toHaveAttribute("open");
+  await expect(page.locator(`#linea-${first.concept}`)).not.toHaveAttribute("open");
+  await expect(page.locator(".metro-stop:visible")).toHaveCount(lineOf(last.concept).length);
+  await expect(page.locator(`#linea-${last.concept} summary`)).toBeInViewport();
 });
 
 test("un interscambio si legge sulla rete, nelle colonne e sul cartello dello scenario", async ({
@@ -66,18 +81,13 @@ test("un interscambio si legge sulla rete, nelle colonne e sul cartello dello sc
       net.getByRole("link", { name: new RegExp(`${change.title}.*cambio per la linea ${lines}`) }),
     ).toBeVisible();
   }
+  await page.locator(`#linea-${change.concept} summary`).click();
   await page
     .locator(".metro-stop")
     .getByRole("link", { name: new RegExp(`${change.title}.*cambio per la linea ${lines}`) })
     .click();
   await expect(page).toHaveURL(`/s/${change.id}`);
   await expect(page.getByText(`Interscambio: cambio per la linea ${lines}`)).toBeVisible();
-});
-
-test("«Continua» porta dalla rete alle linee", async ({ page }) => {
-  await fresh(page);
-  await page.getByRole("link", { name: "Continua" }).click();
-  await expect(page.getByRole("group", { name: "Isola una linea sulla mappa" })).toBeInViewport();
 });
 
 test("la fermata del giorno si apre e si condivide con il link dello scenario", async ({
@@ -116,4 +126,14 @@ test("con il movimento ridotto le fermate sono visibili subito", async ({ page }
       ).length,
   );
   expect(hidden).toBe(0);
+});
+
+test("proiettata a 1280×720 la rete mostra lo snodo Oggi nella prima schermata", async ({
+  page,
+}) => {
+  test.skip(isPhone(page), "la rete intera compare da 768 px");
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await fresh(page);
+  const net = page.getByRole("navigation", { name: "La rete: tutte le linee partono da Oggi" });
+  await expect(net.locator(".net-hub")).toBeInViewport({ ratio: 1 });
 });

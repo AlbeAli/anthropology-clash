@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* schermi larghi e bassi (proiettori, portatili): la rete sale accanto al titolo */
+@custom-variant wide-short (@media (min-width: 80rem) and (max-height: 56.25rem));
+
 :root {
   --bg: #ffffff;
   --surface: #f2f2f0;
@@ -214,19 +217,6 @@
   .metro-stop:focus-within {
     z-index: 30;
   }
-  @media (min-width: 1024px) {
-    .map-line {
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-row: span var(--rows);
-    }
-    .map-stops {
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-row: span var(--stops);
-      align-self: start;
-    }
-  }
   .metro-peek {
     position: absolute;
     left: 14px;
@@ -386,12 +376,6 @@
   .net-stop:hover .net-label,
   .net-stop:focus-visible .net-label {
     text-decoration: underline;
-  }
-  .net-line {
-    transition: opacity 0.3s;
-  }
-  .net-line[data-dim] {
-    opacity: 0.14;
   }
   .net-hub rect {
     fill: var(--bg);

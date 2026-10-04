@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { CatalogEntry } from "../engine/content";
-import { stopNumber } from "../engine/lines";
+import { lineColor, stopNumber } from "../engine/lines";
 import LineBullet from "./metro/LineBullet";
+import SplitFlap from "./metro/SplitFlap";
 
 type Props = { stop: CatalogEntry; visited: boolean };
 
@@ -38,40 +39,30 @@ export default function DailyStop({ stop, visited }: Props) {
   return (
     <section
       aria-labelledby="daily-label"
-      className="grid gap-3 rounded-xl border-[3px] border-ink p-4 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:gap-5 sm:p-5"
+      className="relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 border-t border-white/20 px-4 pt-3.5 pb-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-x-5 sm:px-5"
     >
       <LineBullet concept={stop.concept} />
       <div className="min-w-0">
-        <p
-          id="daily-label"
-          className="font-display text-sm font-extrabold tracking-wide text-ink-soft uppercase"
-        >
-          {t("daily.label", { date })}
-        </p>
-        <p className="font-display text-xl leading-snug font-extrabold">
-          <Link to={`/s/${stop.id}`} className="underline-offset-4 hover:underline">
-            {stop.title}
-          </Link>
-        </p>
-        <p className="text-sm text-ink-soft">
-          {t("daily.line", { line, n: stopNumber(stop.id) })}
+        <p id="daily-label" className="mb-1 font-display text-sm font-bold opacity-80">
+          {t("daily.label", { date })} · {t("daily.line", { line, n: stopNumber(stop.id) })}
           {visited && ` · ${t("daily.visited")}`}
         </p>
-        <p className="font-display text-sm font-bold" role="status">
+        <SplitFlap text={stop.title} className="text-lg leading-snug sm:text-2xl" />
+        <p className={"font-display text-sm font-bold" + (notice ? " mt-2" : "")} role="status">
           {notice}
         </p>
       </div>
-      <div className="flex flex-wrap gap-2.5">
+      <div className="col-span-2 flex flex-wrap gap-2.5 sm:col-span-1">
         <Link
           to={`/s/${stop.id}`}
-          className="inline-flex min-h-12 items-center rounded-md bg-ink px-5 font-display font-extrabold text-bg"
+          className="inline-flex min-h-12 items-center rounded-md border-2 border-white px-5 font-display font-extrabold"
         >
           {t("daily.open")}
         </Link>
         <button
           type="button"
           onClick={share}
-          className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold"
+          className="inline-flex min-h-12 items-center rounded-md border-2 border-white px-5 font-display font-extrabold"
         >
           {t("daily.share")}
         </button>
@@ -82,9 +73,14 @@ export default function DailyStop({ stop, visited }: Props) {
           value={fallback}
           aria-label={t("daily.linkArea")}
           onFocus={(e) => e.currentTarget.select()}
-          className="w-full rounded-lg border-2 border-line bg-bg p-3 text-sm sm:col-span-3"
+          className="col-span-2 w-full rounded-lg border-2 border-line bg-bg p-3 text-sm text-ink sm:col-span-3"
         />
       )}
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-1"
+        style={{ background: lineColor(stop.concept) }}
+      />
     </section>
   );
 }
