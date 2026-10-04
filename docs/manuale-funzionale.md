@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.61 — 2026-10-03 — Stato: pubblicato (M1-M9 e M11-M13 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio; M14 aperta, §16.13-16.17)
+Versione 0.62 — 2026-10-05 — Stato: pubblicato (M1-M9 e M11-M14 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio, §16.13-16.17)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -731,7 +731,7 @@ Misure: JavaScript iniziale da 126,2 a **126,2 kB**. Test 76, end-to-end 86 verd
 
 Chiusura di M13, 2026-10-03: merge `--no-ff` di `m13` su `main`, con conferma dell'autore prima della messa in produzione; prima del merge lint, `pnpm validate` (21 scenari, 3 itinerari), test 76, end-to-end 86 verdi (2 saltati per dimensione dello schermo), JavaScript iniziale 126,2 kB contro 122,8 kB all'apertura della milestone (+3,4 kB). Criteri soddisfatti: rete con snodo «Oggi» da 768 px e miniatura sotto; 5 interscambi `also` verificati sul testo e validati dall'autore; timbri e capolinea senza punteggi; fermata del giorno condivisibile; critique e audit con correzioni. Rimandati a M14: ridotto numero di ingressi della Home, miniatura su telefono, rete proiettata, rete intrecciata a 30 fermate, diario di campo e «cosa accadde davvero».
 
-### 16.17 M14 — Home e rete (aperta 2026-10-03)
+### 16.17 M14 — Home e rete (aperta 2026-10-03, chiusa 2026-10-05)
 
 Branch `m14`. Tre perimetri proposti all'autore il 2026-10-03: A, Home e rete (i rimandi della critique di M13 e il diario di campo); B, profondità (cosa accadde davvero, glossario con fonti, scenario a più bivi, app installabile); C, fase di rilascio di M10, che dipende da attività esterne a cura dell'autore. **Scelta dell'autore: A.** «Cosa accadde davvero» passa a una milestone di contenuti, insieme agli scenari verso le 30 fermate, perché chiede la stessa verifica sul testo; la rete intrecciata resta in attesa delle 30 fermate.
 
@@ -774,3 +774,5 @@ Lotto 5, 2026-10-04: verifiche finali. End-to-end ripetuti tre volte di seguito 
 **Rimandato alla prossima milestone, decisione dell'autore del 2026-10-04**: sul telefono la barra in alto, con «Diario», va su tre righe e insieme al tabellone a due righe riempie la prima schermata a 360×800, lasciando titolo e rete sotto la piega. Soluzione scelta: menu «Altro» sul telefono, con Viaggio e Diario in vista e Concetti, Percorsi e Metodo nel menu; da valutare insieme un tabellone più basso.
 
 Misure finali della milestone, stessa build con l'account spento e lo stesso script: pagina della Home a 360×800 da 4171 a **2412 px**, a 1280×720 da 2502 a **1908 px**; a 1280×720 nomi della rete da 12,4 a **14,6 px** e snodo da 821 (lotto 1) a **646 px**, nella prima schermata; JavaScript iniziale da 126,2 a **127,4 kB** (+1,2 kB, quasi tutto testi del diario e dell'informativa); CSS da 46,8 a 46,5 kB non compressi. Test 84, end-to-end 95 verdi (3 saltati per dimensione dello schermo), lint e typecheck verdi.
+
+Chiusura di M14, 2026-10-05: merge `--no-ff` di `m14` su `main` (8846d56), con conferma dell'autore prima della messa in produzione. CI verde con i job check ed e2e. Verifica sul sito pubblico, a 1280×720 e 360×800: Home con le cinque righe di «Le linee» e i 21 link della rete; a 1280×720 lo snodo «Oggi» finisce a 646 px, nella prima schermata; sul telefono la riga d'invito sotto la miniatura e il tocco sulla linea Consumo che ne apre la riga; voce «Diario» nella barra e pagina `/diario` con il titolo giusto; nessuno scroll orizzontale, nessun errore in console, richieste solo al sito e a Umami. Criteri soddisfatti: Home con tre ingressi al posto di cinque, miniatura che apre le fermate, rete leggibile in proiezione, diario di campo solo locale, verifiche e misure. Rimandati: menu «Altro» per la barra sul telefono (decisione del 2026-10-04), rete intrecciata a 30 fermate, «cosa accadde davvero» con gli scenari verso le 30 fermate. M14 chiusa.
