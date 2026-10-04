@@ -42,8 +42,7 @@
     },
     "lines": {
       "title": "Le linee",
-      "hint": "Apri una linea per vederne le fermate: ogni fermata apre uno scenario.",
-      "hintMini": "Puoi anche toccare una linea sulla rete qui sopra."
+      "hint": "Apri una linea per vederne le fermate: ogni fermata apre uno scenario."
     },
     "map": {
       "lineCount_one": "{{count}} fermata visitata su {{total}}",
@@ -71,7 +70,8 @@
         "done": "visitata",
         "todo": "da visitare"
       },
-      "change": "cambio per la linea {{lines}}"
+      "change": "cambio per la linea {{lines}}",
+      "miniHint": "Tocca una linea per aprirne le fermate."
     }
   },
   "scenario": {

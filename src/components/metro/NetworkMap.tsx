@@ -54,6 +54,12 @@ export default function NetworkMap({ concepts, scenarios, completed, hereId, onL
           <Lines net={net} stateOf={stateOf} mini />
           <Hub net={net} label={t("home.network.hub")} />
         </svg>
+        <p
+          aria-hidden="true"
+          className="mt-2 text-center font-display text-sm font-bold text-ink-soft"
+        >
+          {t("home.network.miniHint")}
+        </p>
       </div>
     </>
   );

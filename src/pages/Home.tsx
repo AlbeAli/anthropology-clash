@@ -129,23 +129,33 @@ export default function Home() {
           </div>
         </div>
 
-        <NetworkMap
-          concepts={concepts}
-          scenarios={scenarios}
-          completed={state.completed}
-          hereId={next?.id}
-          onLine={openFromMap}
-        />
+        <div className="grid min-w-0 gap-4">
+          <NetworkMap
+            concepts={concepts}
+            scenarios={scenarios}
+            completed={state.completed}
+            hereId={next?.id}
+            onLine={openFromMap}
+          />
+          <p className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-base text-ink-soft">
+            <Legend kind="done">{t("home.map.legendVisited")}</Legend>
+            <Legend kind="here" color={next ? lineColor(next.concept) : undefined}>
+              {t("home.map.legendHere")}
+            </Legend>
+            <Legend kind="todo">{t("home.map.legendTodo")}</Legend>
+            <span className="inline-flex items-center gap-2">
+              <span aria-hidden="true" className="h-3.5 w-6 rounded-full border-[3px] border-ink" />
+              {t("home.map.legendChange")}
+            </span>
+          </p>
+        </div>
       </section>
 
       <section aria-labelledby="lines-title">
         <h2 id="lines-title" className="font-display text-2xl font-extrabold">
           {t("home.lines.title")}
         </h2>
-        <p className="mt-1 mb-5 text-base text-ink-soft">
-          {t("home.lines.hint")}
-          <span className="md:hidden"> {t("home.lines.hintMini")}</span>
-        </p>
+        <p className="mt-1 mb-5 text-base text-ink-soft">{t("home.lines.hint")}</p>
 
         <LineMap
           concepts={concepts}
@@ -156,18 +166,6 @@ export default function Home() {
           open={open}
           onToggle={toggle}
         />
-
-        <p className="mt-6 flex flex-wrap gap-5 text-base text-ink-soft">
-          <Legend kind="done">{t("home.map.legendVisited")}</Legend>
-          <Legend kind="here" color={next ? lineColor(next.concept) : undefined}>
-            {t("home.map.legendHere")}
-          </Legend>
-          <Legend kind="todo">{t("home.map.legendTodo")}</Legend>
-          <span className="inline-flex items-center gap-2">
-            <span aria-hidden="true" className="h-3.5 w-6 rounded-full border-[3px] border-ink" />
-            {t("home.map.legendChange")}
-          </span>
-        </p>
       </section>
     </div>
   );

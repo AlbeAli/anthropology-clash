@@ -53,7 +53,9 @@ export default function LineMap({
                 <span className="block font-display text-xl leading-tight font-extrabold">
                   {t(`lines.${c.id}.name`)}
                 </span>
-                <span className="block text-sm leading-snug text-ink-soft">{c.label}</span>
+                {c.label !== t(`lines.${c.id}.name`) && (
+                  <span className="block text-sm leading-snug text-ink-soft">{c.label}</span>
+                )}
               </span>
               <span
                 aria-hidden="true"
