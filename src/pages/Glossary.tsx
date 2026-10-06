@@ -35,7 +35,9 @@ export default function Glossary() {
       <h1 className="mb-3 font-display text-4xl leading-tight font-extrabold tracking-tight text-balance sm:text-5xl">
         {t("glossary.title")}
       </h1>
-      <p className="mb-9 max-w-[58ch] text-lg text-ink-soft">{t("glossary.lead")}</p>
+      <p className="mb-9 max-w-2xl text-justify text-lg hyphens-auto text-ink-soft">
+        {t("glossary.lead")}
+      </p>
 
       {KINDS.map((kind) => {
         const group = sorted.filter((e) => e.kind === kind);
@@ -55,10 +57,12 @@ export default function Glossary() {
                   <li
                     key={e.id}
                     id={e.id}
-                    className="scroll-mt-32 rounded-lg border-l-4 border-transparent target:border-accent target:bg-surface target:p-4"
+                    className="scroll-mt-32 rounded-lg target:-mx-4 target:bg-surface target:px-4 target:py-3 target:shadow-[inset_4px_0_0_var(--color-accent)]"
                   >
                     <h3 className="font-display text-xl font-extrabold">{e.term}</h3>
-                    <p className="mt-1 max-w-[65ch] leading-relaxed text-pretty">{e.text}</p>
+                    <p className="mt-1 max-w-2xl text-justify leading-relaxed hyphens-auto">
+                      {e.text}
+                    </p>
                     <p className="mt-2 text-sm text-ink-soft">
                       <span className="font-bold">
                         {t("glossary.source", { count: e.source.length })}:
