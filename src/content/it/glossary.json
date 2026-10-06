@@ -51,6 +51,31 @@
     ]
   },
   {
+    "id": "hausa",
+    "lang": "it",
+    "term": "Hausa",
+    "kind": "popolo",
+    "forms": [
+      "Hausa",
+      "hausa"
+    ],
+    "text": "Il nome indica in origine una lingua e, per estensione, chi la parla come lingua madre. Gli Hausa vivono nella savana del nord della Nigeria e nel vicino Niger e, per le grandi migrazioni, in comunità in varie città africane, fino alla costa atlantica. L'hausa è una lingua ciadica della famiglia afroasiatica, con una tradizione letteraria secolare, ed è anche la lingua del commercio. La nazione hausa si è formata nei secoli incorporando popoli diversi, uniti da una lingua e da una religione comuni, l'Islam; dal 1804 il potere sugli stati hausa passò ai Fulani.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Hausa», di Deborah Pellow, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "ibadan",
+    "lang": "it",
+    "term": "Ibadan",
+    "kind": "luogo",
+    "text": "Città del sud-ovest della Nigeria, circa 145 km a nord-nord-est di Lagos, capitale dello stato di Oyo. Nacque negli anni Trenta dell'Ottocento come base militare yoruba: fu uno dei due nuovi stati fondati da profughi di guerra quando il regno di Oyo declinò. È un centro del commercio regionale di cacao e cotone; nel 2002 se ne stimavano circa 3 milioni di abitanti.",
+    "source": [
+      "World Encyclopedia, voce «Ibadan», Oxford University Press (consultata su Encyclopedia.com)",
+      "Encyclopedia of World Cultures, voce «Yoruba», di Sandra T. Barnes, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
     "id": "isole-andamane",
     "lang": "it",
     "term": "Isole Andamane",
@@ -194,6 +219,30 @@
     "source": [
       "Hertz, «Contribution à une étude sur la représentation collective de la mort», L'Année sociologique X, 1907, p. 101, nota",
       "Worldmark Encyclopedia of Cultures and Daily Life, voce «Ngaju Dayak», rivista da A. J. Abalahin, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "yir-yoront",
+    "lang": "it",
+    "term": "Yir Yoront",
+    "kind": "popolo",
+    "text": "Popolo aborigeno australiano della costa del golfo di Carpentaria, nella penisola di Capo York, nel Queensland: un territorio di circa 1.300 km² che va dalla foce del fiume Coleman fino alle tre foci del Mitchell. Il primo contatto con europei fu probabilmente con esploratori olandesi nel 1623; più importante fu l'incontro con un gruppo di mandriani nel 1864, ricordato come «battaglia del fiume Mitchell». Nel 1915 fu fondata una missione anglicana appena a sud del loro territorio. Vivevano di caccia, pesca e raccolta; gran parte della cultura tradizionale durò fino agli anni Quaranta.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Yir Yoront», Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "yoruba",
+    "lang": "it",
+    "term": "Yoruba",
+    "kind": "popolo",
+    "forms": [
+      "Yoruba",
+      "yoruba"
+    ],
+    "text": "Il nome sembra dato dai vicini al regno di Oyo e fu adottato dai missionari a metà Ottocento per una più ampia famiglia di popoli della stessa lingua; tra loro si usano soprattutto i nomi dei sottogruppi. Vivono in gran parte del sud-ovest della Nigeria e in parte del Benin e del Togo. Non furono mai uniti politicamente: al contatto con gli europei erano organizzati in centinaia di villaggi, città-stato e regni. Per molti di loro la vita urbana era un modo di vivere. All'inizio del Novecento tutti gli Yoruba erano stati inclusi nell'impero britannico.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Yoruba», di Sandra T. Barnes, Gale (consultata su Encyclopedia.com)"
     ]
   }
 ]
