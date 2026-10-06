@@ -24,10 +24,11 @@ test("un percorso curato si apre dalla barra e guida da una fermata all'altra fi
   const total = curated.stops.length;
 
   await fresh(page);
-  await page
-    .getByRole("navigation", { name: "Navigazione" })
-    .getByRole("link", { name: "Percorsi" })
-    .click();
+  const nav = page.getByRole("navigation", { name: "Navigazione" });
+  if ((page.viewportSize()?.width ?? 1280) < 640) {
+    await nav.getByRole("button", { name: "Altro" }).click();
+  }
+  await nav.getByRole("link", { name: "Percorsi" }).click();
   await page.getByRole("link", { name: curated.title }).click();
   await expect(page).toHaveURL(`/percorso/${curated.id}`);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(curated.title);

@@ -9,6 +9,14 @@ async function fresh(page: Page, path = "/") {
   await page.goto(path);
 }
 
+const isPhone = (page: Page) => (page.viewportSize()?.width ?? 1280) < 640;
+
+async function openFromBar(page: Page, name: string) {
+  const nav = page.getByRole("navigation", { name: "Navigazione" });
+  if (isPhone(page)) await nav.getByRole("button", { name: "Altro" }).click();
+  await nav.getByRole("link", { name }).click();
+}
+
 async function choose(page: Page, index = 0) {
   await page.locator('[aria-labelledby="choices-heading"] button').nth(index).click();
   await expect(page.getByRole("heading", { name: "Dove porta la tua uscita" })).toBeVisible();
@@ -24,6 +32,69 @@ test("la Home mostra tutte le linee e tutte le fermate", async ({ page }) => {
     "href",
     `/s/${first.id}`,
   );
+});
+
+test("sul telefono la barra sta su due righe e Concetti, Percorsi e Metodo sono nel menu Altro", async ({
+  page,
+}) => {
+  test.skip(!isPhone(page), "il menu Altro compare solo sotto i 640 px");
+  await fresh(page);
+  const nav = page.getByRole("navigation", { name: "Navigazione" });
+  const more = nav.getByRole("button", { name: "Altro" });
+  await expect(nav.getByRole("link")).toHaveText([/^Viaggio/, "Diario"], { useInnerText: true });
+  expect((await page.getByRole("banner").boundingBox())!.height).toBeLessThan(130);
+
+  await more.click();
+  await expect(more).toHaveAttribute("aria-expanded", "true");
+  await expect(nav.getByRole("link")).toHaveText(
+    [/^Viaggio/, "Diario", "Concetti", "Percorsi", "Metodo"],
+    {
+      useInnerText: true,
+    },
+  );
+  await page.keyboard.press("Escape");
+  await expect(more).toHaveAttribute("aria-expanded", "false");
+  await expect(more).toBeFocused();
+
+  await more.click();
+  await page.getByRole("heading", { level: 1 }).click();
+  await expect(more).toHaveAttribute("aria-expanded", "false");
+
+  await more.click();
+  await nav.getByRole("link", { name: "Percorsi" }).click();
+  await expect(page).toHaveURL("/percorsi");
+  await expect(more).toHaveAttribute("aria-expanded", "false");
+  await expect(nav.getByRole("link", { name: "Percorsi" })).toBeHidden();
+});
+
+test("sul telefono il tabellone ha solo la prossima partenza e la fermata del giorno scende sotto la rete", async ({
+  page,
+}) => {
+  await fresh(page);
+  const daily = page.getByRole("region", { name: /^Fermata del giorno/ });
+  const title = page.getByRole("heading", { level: 1 });
+  await expect(daily).toHaveCount(1);
+  await expect(page.getByRole("link", { name: /Parti/ })).toBeVisible();
+  const dailyTop = (await daily.boundingBox())!.y;
+  const titleTop = (await title.boundingBox())!.y;
+  if (isPhone(page)) {
+    await expect(title).toBeInViewport();
+    const net = (await page.getByTestId("net-mini").boundingBox())!;
+    expect(dailyTop).toBeGreaterThan(net.y + net.height);
+  } else {
+    expect(dailyTop).toBeLessThan(titleTop);
+  }
+});
+
+test("da 640 px la barra mostra tutte le voci e nessun menu Altro", async ({ page }) => {
+  test.skip(isPhone(page), "sotto i 640 px le voci stanno nel menu Altro");
+  await fresh(page);
+  const nav = page.getByRole("navigation", { name: "Navigazione" });
+  await expect(nav.getByRole("link")).toHaveText(
+    ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo"],
+    { useInnerText: true },
+  );
+  await expect(nav.getByRole("button", { name: "Altro" })).toBeHidden();
 });
 
 test("uno scenario mostra gli esiti di tutte le uscite e la fonte", async ({ page }) => {
@@ -131,7 +202,7 @@ test("se una pagina non si carica compare il guasto sulla linea, e ricaricando s
 }) => {
   await fresh(page);
   await page.route(/\/assets\/Method-[^/]+\.js$/, (route) => route.abort());
-  await page.getByRole("navigation").getByRole("link", { name: "Metodo" }).click();
+  await openFromBar(page, "Metodo");
   await expect(
     page.getByRole("heading", { level: 1, name: "Un guasto sulla linea" }),
   ).toBeVisible();

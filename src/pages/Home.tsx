@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { ConceptId } from "../schema/scenario.schema";
@@ -17,8 +17,17 @@ import CountUp from "../components/metro/CountUp";
 import NetworkMap from "../components/metro/NetworkMap";
 import { prefersReducedMotion } from "../engine/motion";
 
+const WIDE = "(min-width: 40rem)";
+const isWide = () => window.matchMedia?.(WIDE).matches ?? true;
+const onWideChange = (cb: () => void) => {
+  const m = window.matchMedia?.(WIDE);
+  m?.addEventListener("change", cb);
+  return () => m?.removeEventListener("change", cb);
+};
+
 export default function Home() {
   const { t } = useTranslation();
+  const wide = useSyncExternalStore(onWideChange, isWide);
   const { state, level, setLevel, recent, clearRecent } = useAppState();
   const scenarios = getCatalog(DEFAULT_LANG);
   const concepts = getConcepts(DEFAULT_LANG);
@@ -55,17 +64,21 @@ export default function Home() {
     );
   };
 
+  const panel =
+    "overflow-hidden rounded-xl bg-panel text-white ring-1 ring-(--panel-ring) [&>*+*]:border-t [&>*+*]:border-white/20";
+  const dailyStopEl = daily && <DailyStop stop={daily} visited={daily.id in state.completed} />;
+
   return (
     <div className="mx-auto max-w-6xl">
       <section
         aria-labelledby="home-title"
         className="mb-12 grid gap-6 wide-short:grid-cols-[17rem_minmax(0,1fr)] wide-short:gap-x-10"
       >
-        <div className="overflow-hidden rounded-xl bg-panel text-white ring-1 ring-(--panel-ring) wide-short:col-span-2">
+        <div className={panel + " wide-short:col-span-2"}>
           {next && (
             <Link
               to={`/s/${next.id}`}
-              className="group relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 px-4 pt-3.5 pb-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-x-5 sm:px-5"
+              className="group relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 px-4 pt-3.5 pb-5 sm:gap-x-5 sm:px-5"
             >
               <LineBullet concept={next.concept} />
               <span className="min-w-0">
@@ -79,8 +92,8 @@ export default function Home() {
                 </small>
                 <SplitFlap text={next.title} className="text-lg leading-snug sm:text-2xl" />
               </span>
-              <span className="col-span-2 inline-flex min-h-12 items-center gap-2.5 justify-self-start rounded-md bg-white px-5 font-display font-extrabold text-[#1a1a1a] sm:col-span-1">
-                {t("home.board.go")}
+              <span className="inline-flex size-12 items-center justify-center rounded-md bg-white font-display font-extrabold text-[#1a1a1a] sm:size-auto sm:min-h-12 sm:gap-2.5 sm:px-5">
+                <span className="max-sm:sr-only">{t("home.board.go")}</span>
                 <b
                   aria-hidden="true"
                   className="transition-transform duration-300 ease-out-expo group-hover:translate-x-1"
@@ -95,7 +108,7 @@ export default function Home() {
               />
             </Link>
           )}
-          {daily && <DailyStop stop={daily} visited={daily.id in state.completed} />}
+          {wide && dailyStopEl}
         </div>
 
         <div className="grid gap-6 self-start lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-end lg:gap-10 wide-short:grid-cols-1">
@@ -149,6 +162,8 @@ export default function Home() {
             </span>
           </p>
         </div>
+
+        {!wide && dailyStopEl && <div className={panel}>{dailyStopEl}</div>}
       </section>
 
       <section aria-labelledby="lines-title">
