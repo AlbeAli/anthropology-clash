@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import { validateAll } from "./validate-content";
 import scenario001 from "../src/content/it/scenarios/scenario_001.json";
 import concepts from "../src/content/it/concepts.json";
+import glossary from "../src/content/it/glossary.json";
 
 const REAL_CONTENT = fileURLToPath(new URL("../src/content", import.meta.url));
 
@@ -17,6 +18,7 @@ function fixture(
   const root = mkdtempSync(join(tmpdir(), "ac-content-"));
   mkdirSync(join(root, "it", "scenarios"), { recursive: true });
   writeFileSync(join(root, "it", "concepts.json"), JSON.stringify(concepts));
+  writeFileSync(join(root, "it", "glossary.json"), JSON.stringify(glossary));
   writeFileSync(join(root, "it", "scenarios", fileName), JSON.stringify(scenario));
   if (Object.keys(itineraries).length > 0) {
     mkdirSync(join(root, "it", "itineraries"));
