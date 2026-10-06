@@ -132,7 +132,7 @@
   },
   "glossary": {
     "title": "Glossario",
-    "lead": "Popoli, luoghi e pratiche che compaiono negli scenari, ciascuno con una nota breve e la sua fonte. Le note danno il contesto minimo, chi, dove, quando; per tutto il resto vale la fonte di ogni scenario.",
+    "lead": "Popoli, luoghi e pratiche che compaiono negli scenari. Le note danno il contesto minimo, chi, dove, quando; per tutto il resto vale la fonte di ogni scenario.",
     "kinds": {
       "popolo": "Popoli",
       "luogo": "Luoghi",

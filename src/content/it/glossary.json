@@ -21,6 +21,75 @@
     ]
   },
   {
+    "id": "fort-rupert",
+    "lang": "it",
+    "term": "Fort Rupert",
+    "kind": "luogo",
+    "text": "Posto della Compagnia della Baia di Hudson fondato nel 1849. Negli anni Cinquanta dell'Ottocento vi si riunirono quattro gruppi kwakwaka'wakw, che i commercianti di pellicce cominciarono a chiamare tutti Kwakiutl. Per molti decenni fu il centro economico e cerimoniale dei Kwakiutl meridionali e del commercio di pellicce della regione. Gli eccessi percepiti nel potlatch e nel bere divisero la comunità, e molti si spostarono ad Alert Bay, dove negli anni Settanta un missionario anglicano aveva raccolto i suoi convertiti.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Kwakiutl», di Donald Mitchell, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "isole-trobriand",
+    "lang": "it",
+    "term": "Isole Trobriand",
+    "kind": "luogo",
+    "forms": [
+      "Isole Trobriand",
+      "isole Trobriand"
+    ],
+    "text": "Arcipelago di atolli e isolotti nella parte settentrionale del Massim, a circa 384 km via mare da Port Moresby, capitale della Papua Nuova Guinea. Prende il nome da Denis de Trobriand, ufficiale di una fregata della spedizione di D'Entrecasteaux, che lo avvistò nel 1793. L'isola più grande e popolata è Kiriwina; la lingua è il kilivila. Oggi le isole fanno parte della provincia di Milne Bay. All'inizio del Novecento vi abitavano circa 8.000 persone, nel 1990 circa 20.000. Malinowski vi rimase per due anni tra il 1915 e il 1918.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Trobriand Islands», di Annette B. Weiner, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "ju-hoansi",
+    "lang": "it",
+    "term": "Ju/'hoansi",
+    "kind": "popolo",
+    "text": "Uno dei popoli San del Kalahari, in Africa australe; nelle etnografie sono detti per lo più Kung o Juwasi. I segni ! e / nei nomi, come in !Kung e Ju/'hoansi, indicano consonanti click. Vivono nel nord-ovest del Botswana, nella savana semiarida del Ngamiland, e nelle zone vicine della Namibia. San non indica un solo gruppo etnico, ma i popoli che parlano lingue con consonanti click e vivevano di caccia e raccolta. «Bushmen», il nome di un tempo, è oggi considerato razzista dalla maggior parte degli studiosi.",
+    "source": [
+      "Worldmark Encyclopedia of Cultures and Daily Life, voce «San», di M. Njoroge, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "kula",
+    "lang": "it",
+    "term": "Kula",
+    "kind": "pratica",
+    "text": "Lo scambio cerimoniale descritto da Malinowski (1922), praticato da comunità di un ampio anello di isole a nord e a est dell'estremità orientale della Nuova Guinea. Lungo questo circuito chiuso viaggiano solo due tipi di oggetti: le collane di conchiglia rossa (soulava) in senso orario, i bracciali di conchiglia bianca (mwali) in senso antiorario. Nessuno li tiene a lungo, e il legame tra due partner dura tutta la vita. Nelle Trobriand il kula era ancora intenso nel 1990; conchiglie e partner passano a un figlio o al figlio della sorella.",
+    "source": [
+      "Malinowski, Argonauts of the Western Pacific, 1922, cap. III, pp. 81-83",
+      "Encyclopedia of World Cultures, voce «Trobriand Islands», di Annette B. Weiner, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "kwakwakawakw",
+    "lang": "it",
+    "term": "Kwakwaka'wakw",
+    "kind": "popolo",
+    "text": "Popolo della Columbia Britannica, in Canada: l'isola di Vancouver, la terraferma vicina e le isole in mezzo. La lingua è il kwakwala. «Kwakiutl» era in origine il nome di un solo gruppo locale, poi esteso da commercianti, missionari, funzionari ed etnologi a tutti i gruppi di lingue affini. Attorno al 1835 erano circa 8.575, già ridotti dalle malattie; quando Boas iniziò i suoi studi erano circa 2.000, nel 1929 la metà. Chiesa e governo repressero il potlatch con arresti e confische delle insegne cerimoniali.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Kwakiutl», di Donald Mitchell, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "maori",
+    "lang": "it",
+    "term": "Maori",
+    "kind": "popolo",
+    "forms": [
+      "Maori",
+      "maori"
+    ],
+    "text": "Popolo polinesiano dell'Isola del Nord e dell'Isola del Sud della Nuova Zelanda; i loro antenati vi arrivarono da quella che oggi è la Polinesia francese. Il nome riunisce più di cento gruppi tribali (iwi) che si considerano ben distinti. La presenza europea stabile comincia con James Cook nel 1769. Nel 1840 circa 500 capi firmarono con i britannici il Trattato di Waitangi, che prometteva loro terre e beni; poi le terre furono confiscate e, tra guerre e malattie, nel 1896 i Maori erano 42.000. Al censimento del 2006 erano oltre 565.000, circa il 15% della popolazione.",
+    "source": [
+      "Worldmark Encyclopedia of Cultures and Daily Life, voce «Maori», di J. Williams, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
     "id": "olo-ngadju",
     "lang": "it",
     "term": "Olo Ngadju",

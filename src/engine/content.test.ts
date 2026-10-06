@@ -8,7 +8,7 @@ describe("content loader", () => {
     expect(ids).toEqual([...ids].sort());
     expect(ids.length).toBeGreaterThanOrEqual(3);
     expect(Object.keys(catalog[0]).sort()).toEqual(
-      ["concept", "concept_label", "hook", "id", "lang", "title"].sort(),
+      ["concept", "concept_label", "glossary", "hook", "id", "lang", "title"].sort(),
     );
   });
 

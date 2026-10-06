@@ -1,8 +1,14 @@
 import { expect, test, type Page } from "@playwright/test";
 import { glossary, scenarios } from "./content";
 
-const scenario = scenarios.find((s) => s.glossary?.length)!;
-const entry = glossary.find((e) => e.id === scenario.glossary![0])!;
+const { scenario, entry } = scenarios
+  .flatMap((scenario) =>
+    (scenario.glossary ?? []).map((id) => ({
+      scenario,
+      entry: glossary.find((e) => e.id === id)!,
+    })),
+  )
+  .find(({ scenario, entry }) => scenario.levels.neofita.setup.includes(entry.term))!;
 
 async function fresh(page: Page, path = "/") {
   await page.goto("/");
