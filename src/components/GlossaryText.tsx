@@ -34,10 +34,26 @@ export default function GlossaryText({ text, entries, className }: Props) {
   const hintId = `${baseId}-hint`;
   const segments = useMemo(() => markTerms(text, entries), [text, entries]);
   const open = entries.find((e) => e.id === openId);
+  const sheet = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const note = sheet.current;
+    const term = opener.current;
+    if (!note || !term || getComputedStyle(note).position !== "fixed") return;
+    const covered = term.getBoundingClientRect().bottom + 16 - note.getBoundingClientRect().top;
+    if (covered > 0) window.scrollBy(0, covered);
+    function outside(e: PointerEvent) {
+      const target = e.target as Element;
+      if (note!.contains(target) || target.closest(`[aria-controls="${noteId}"]`)) return;
+      setOpenId(null);
+    }
+    document.addEventListener("pointerdown", outside);
+    return () => document.removeEventListener("pointerdown", outside);
+  }, [openId, noteId]);
 
   function close() {
     setOpenId(null);
-    opener.current?.focus();
+    opener.current?.focus({ preventScroll: true });
   }
 
   return (
@@ -74,8 +90,9 @@ export default function GlossaryText({ text, entries, className }: Props) {
       <div id={noteId}>
         {open && (
           <aside
+            ref={sheet}
             aria-labelledby={`${noteId}-term`}
-            className="mt-4 max-w-[62ch] rounded-lg border border-line border-l-4 border-l-accent bg-surface p-4 sm:p-5"
+            className="fixed inset-x-0 bottom-0 z-30 max-h-[50dvh] overflow-y-auto rounded-t-xl border-t-4 border-t-accent bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_rgb(0_0_0/0.18)] sm:static sm:mt-4 sm:max-h-none sm:max-w-[62ch] sm:overflow-visible sm:rounded-lg sm:border sm:border-line sm:border-l-4 sm:border-l-accent sm:p-5 sm:shadow-none"
           >
             <div className="flex items-start justify-between gap-4">
               <h3 id={`${noteId}-term`} className="font-display text-lg font-extrabold">
@@ -90,7 +107,7 @@ export default function GlossaryText({ text, entries, className }: Props) {
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <p className="mt-2 leading-relaxed">{open.text}</p>
+            <p className="mt-2 text-lg leading-relaxed sm:text-base">{open.text}</p>
             <p className="mt-3 text-sm text-ink-soft">
               <span className="font-bold">
                 {t("glossary.source", { count: open.source.length })}:
@@ -103,6 +120,10 @@ export default function GlossaryText({ text, entries, className }: Props) {
             >
               {t("glossary.all")} →
             </Link>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none sticky -bottom-4 -mx-4 -mb-4 h-10 bg-linear-to-t from-surface sm:hidden"
+            />
           </aside>
         )}
       </div>
