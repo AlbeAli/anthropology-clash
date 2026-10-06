@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { Level, Scenario } from "../schema/scenario.schema";
 import ChoiceButton from "./ChoiceButton";
+import GlossaryText, { useGlossary } from "./GlossaryText";
 import { legTag } from "./metro/legTag";
 
 type Props = {
@@ -13,6 +14,7 @@ type Props = {
 export default function ScenarioCard({ scenario, level, choiceId, onSelect }: Props) {
   const { t } = useTranslation();
   const content = scenario.levels[level];
+  const glossary = useGlossary(scenario.lang, scenario.glossary);
 
   return (
     <>
@@ -34,9 +36,12 @@ export default function ScenarioCard({ scenario, level, choiceId, onSelect }: Pr
           <em className="font-bold text-ink-soft not-italic">{scenario.concept_label}</em>
         </h2>
         <div className="leg-body">
-          <p className="max-w-[62ch] text-lg leading-relaxed text-pretty sm:text-xl">
-            {content.setup}
-          </p>
+          <GlossaryText
+            key={level}
+            text={content.setup}
+            entries={glossary}
+            className="max-w-[62ch] text-lg leading-relaxed text-pretty sm:text-xl"
+          />
         </div>
       </section>
 

@@ -1,9 +1,9 @@
 import catalog from "virtual:catalog";
-import type { Concept, Lang, Scenario } from "../schema/scenario.schema";
+import type { Concept, GlossaryEntry, Lang, Scenario } from "../schema/scenario.schema";
 
 export type CatalogEntry = Pick<
   Scenario,
-  "id" | "lang" | "title" | "concept" | "concept_label" | "also"
+  "id" | "lang" | "title" | "concept" | "concept_label" | "also" | "glossary"
 > & {
   hook?: string;
 };
@@ -15,6 +15,15 @@ const conceptFiles = import.meta.glob<Concept[]>("../content/*/concepts.json", {
   eager: true,
   import: "default",
 });
+
+const glossaryFiles = import.meta.glob<GlossaryEntry[]>("../content/*/glossary.json", {
+  import: "default",
+});
+
+export function loadGlossary(lang: Lang): Promise<GlossaryEntry[]> {
+  const load = glossaryFiles[`../content/${lang}/glossary.json`];
+  return load ? load() : Promise.resolve([]);
+}
 
 const catalogByLang = new Map<string, CatalogEntry[]>();
 for (const entry of catalog) {

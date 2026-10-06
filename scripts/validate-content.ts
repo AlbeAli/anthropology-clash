@@ -1,7 +1,15 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { Concept, Itinerary, Lang, Level, Scenario } from "../src/schema/scenario.schema";
+import { markedIds } from "../src/engine/glossary";
+import {
+  Concept,
+  GlossaryEntry,
+  Itinerary,
+  Lang,
+  Level,
+  Scenario,
+} from "../src/schema/scenario.schema";
 
 const CONTENT_DIR = fileURLToPath(new URL("../src/content", import.meta.url));
 const STUDENTE_SOURCE = /\p{Lu}\p{L}+.*\b(1[5-9]|20)\d{2}\b/u;
@@ -63,6 +71,30 @@ function validateItineraries(lang: Lang, dir: string, scenarioIds: Set<string>) 
   return { issues, count: files.length };
 }
 
+function validateGlossary(lang: Lang, dir: string) {
+  const issues: Issue[] = [];
+  const entries = new Map<string, GlossaryEntry>();
+  const path = join(dir, "glossary.json");
+  if (!existsSync(path)) return { issues, entries };
+  const label = `${lang}/glossary.json`;
+  const parsed = GlossaryEntry.array().safeParse(readJson(path));
+  if (!parsed.success) {
+    issues.push(...formatZodIssues(label, parsed.error.issues));
+    return { issues, entries };
+  }
+  for (const e of parsed.data) {
+    if (entries.has(e.id)) issues.push({ file: label, message: `id duplicato "${e.id}"` });
+    if (e.lang !== lang) {
+      issues.push({
+        file: label,
+        message: `voce ${e.id}: lang "${e.lang}" diverso dalla cartella "${lang}"`,
+      });
+    }
+    entries.set(e.id, e);
+  }
+  return { issues, entries };
+}
+
 export function validateLang(
   lang: Lang,
   dir: string,
@@ -89,6 +121,9 @@ export function validateLang(
   } else {
     issues.push({ file: `${lang}/concepts.json`, message: "file mancante" });
   }
+
+  const glossary = validateGlossary(lang, dir);
+  issues.push(...glossary.issues);
 
   const scenariosDir = join(dir, "scenarios");
   const files = jsonFiles(scenariosDir);
@@ -156,6 +191,22 @@ export function validateLang(
     }
     if (!s.levels.studente.deepen) {
       issues.push({ file: label, message: "levels.studente.deepen è obbligatorio" });
+    }
+    const own = (s.glossary ?? []).flatMap((id) => glossary.entries.get(id) ?? []);
+    const marked = Level.options.map((level) => markedIds(s.levels[level].setup, own));
+    for (const id of s.glossary ?? []) {
+      const e = glossary.entries.get(id);
+      if (!e) {
+        issues.push({
+          file: label,
+          message: `glossary: "${id}" non esiste in ${lang}/glossary.json`,
+        });
+      } else if (!marked.some((ids) => ids.has(id))) {
+        issues.push({
+          file: label,
+          message: `glossary: "${e.term}" non compare nel setup di nessun livello`,
+        });
+      }
     }
     if (!s.discuss) {
       issues.push({
