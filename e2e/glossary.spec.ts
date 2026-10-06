@@ -40,6 +40,10 @@ test("un termine del setup apre la sua nota di contesto, Esc la chiude e la nota
   await expect(page).toHaveURL(`/glossario#${entry.id}`);
   await expect(page.getByRole("heading", { level: 1, name: "Glossario" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: entry.term })).toBeInViewport();
+  await expect(page.locator(`li#${entry.id}`)).not.toHaveCSS(
+    "background-color",
+    "rgba(0, 0, 0, 0)",
+  );
   await page.getByRole("link", { name: scenario.title }).first().click();
   await expect(page).toHaveURL(`/s/${scenario.id}`);
 });

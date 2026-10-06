@@ -23,10 +23,12 @@ export default function Glossary() {
     };
   }, []);
 
+  const current = decodeURIComponent(hash.slice(1));
+
   useEffect(() => {
-    if (!entries || !hash) return;
-    document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView();
-  }, [entries, hash]);
+    if (!entries || !current) return;
+    document.getElementById(current)?.scrollIntoView();
+  }, [entries, current]);
 
   const sorted = [...(entries ?? [])].sort((a, b) => a.term.localeCompare(b.term, i18n.language));
 
@@ -57,7 +59,8 @@ export default function Glossary() {
                   <li
                     key={e.id}
                     id={e.id}
-                    className="scroll-mt-32 rounded-lg target:-mx-4 target:bg-surface target:px-4 target:py-3 target:shadow-[inset_4px_0_0_var(--color-accent)]"
+                    data-current={e.id === current || undefined}
+                    className="scroll-mt-32 rounded-lg data-current:-mx-4 data-current:bg-surface data-current:px-4 data-current:py-3 data-current:shadow-[inset_4px_0_0_var(--color-accent)]"
                   >
                     <h3 className="font-display text-xl font-extrabold">{e.term}</h3>
                     <p className="mt-1 max-w-2xl text-justify leading-relaxed hyphens-auto">
