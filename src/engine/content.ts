@@ -1,5 +1,6 @@
 import catalog from "virtual:catalog";
 import type { Concept, GlossaryEntry, Lang, Scenario } from "../schema/scenario.schema";
+import type { AuthorsData } from "./authors";
 
 export type CatalogEntry = Pick<
   Scenario,
@@ -23,6 +24,12 @@ const glossaryFiles = import.meta.glob<GlossaryEntry[]>("../content/*/glossary.j
 export function loadGlossary(lang: Lang): Promise<GlossaryEntry[]> {
   const load = glossaryFiles[`../content/${lang}/glossary.json`];
   return load ? load() : Promise.resolve([]);
+}
+
+const EMPTY_AUTHORS: AuthorsData = { schools: [], authors: [] };
+
+export function loadAuthors(lang: Lang): Promise<AuthorsData> {
+  return import("virtual:authors").then((m) => m.default[lang] ?? EMPTY_AUTHORS);
 }
 
 const catalogByLang = new Map<string, CatalogEntry[]>();

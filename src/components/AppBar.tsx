@@ -16,6 +16,7 @@ const more = [
   { to: "/concetti", key: "nav.concepts" },
   { to: "/percorsi", key: "nav.itineraries" },
   { to: "/metodo", key: "nav.methodShort" },
+  { to: "/autori", key: "nav.authors" },
 ] as const;
 
 function MoreMenu() {

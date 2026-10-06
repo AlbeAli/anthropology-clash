@@ -102,6 +102,30 @@ export const GlossaryEntry = z.object({
   source: z.array(z.string().min(1).max(300)).min(1).max(4),
 });
 
+const Year = z.number().int().min(1500).max(2100);
+
+export const Author = z
+  .object({
+    id: Slug,
+    lang: Lang,
+    name: z.string().min(1).max(80),
+    surname: z.string().min(1).max(40),
+    born: Year,
+    died: Year.optional(),
+    school: Slug,
+    text: z.string().min(1).max(600),
+    source: z.array(z.string().min(1).max(300)).min(1).max(4),
+  })
+  .refine((a) => a.died === undefined || a.died > a.born, {
+    path: ["died"],
+    message: "died viene dopo born",
+  });
+
+export const AuthorsFile = z.object({
+  schools: z.array(z.object({ id: Slug, label: z.string().min(1).max(60) })).min(1),
+  authors: z.array(Author),
+});
+
 export type Lang = z.infer<typeof Lang>;
 export type Level = z.infer<typeof Level>;
 export type ConceptId = z.infer<typeof ConceptId>;
@@ -110,3 +134,5 @@ export type Concept = z.infer<typeof Concept>;
 export type Itinerary = z.infer<typeof Itinerary>;
 export type GlossaryKind = z.infer<typeof GlossaryKind>;
 export type GlossaryEntry = z.infer<typeof GlossaryEntry>;
+export type Author = z.infer<typeof Author>;
+export type AuthorsFile = z.infer<typeof AuthorsFile>;

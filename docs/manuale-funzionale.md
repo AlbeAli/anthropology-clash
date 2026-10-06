@@ -2,7 +2,7 @@
 
 Autore: Alberto Alioto (AlbeAli)
 
-Versione 0.67 — 2026-10-06 — Stato: pubblicato (M1-M9 e M11-M15 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio, §16.13-16.18; scenari verso 30 fermate, §16.19; M16 glossario su main, in estensione per linea, §16.20)
+Versione 0.68 — 2026-10-06 — Stato: pubblicato (M1-M9 e M11-M15 chiuse; M10 account aperta, chiusura rinviata alla fase di rilascio, §16.13-16.18; scenari verso 30 fermate, §16.19; M16 glossario su main, note in revisione con l'autore, §16.20; M17 autori aperta, §16.21)
 
 Questo file è la versione viva del documento funzionale. Le versioni fino alla 0.6 (2026-09-16) sono state redatte fuori dal repository; da qui in poi si aggiorna nel repository, con un commit `docs:` a ogni cambiamento di scope, decisione o chiusura di milestone. Le regole vincolanti per chi scrive codice e contenuti sono riassunte in [CLAUDE.md](../CLAUDE.md), che deriva da questo documento e non lo sostituisce.
 
@@ -815,4 +815,20 @@ Estensione, linee Relativismo e Consumo (2026-10-06): quattro voci nuove, Hausa,
 
 Pagina Glossario, su richiesta dell'autore (2026-10-06): le voci erano rientrate di 4 px rispetto ai titoli per un bordo sinistro trasparente, ora tolto (la voce aperta da un link si evidenzia con un'ombra interna che non sposta il testo); testo introduttivo e note giustificati con sillabazione italiana e stessa larghezza (42rem), così coincidono anche i bordi destri; dal testo introduttivo tolta la frase «ciascuno con una nota breve e la sua fonte». Pagina da 1,03 a 1,06 kB gzip.
 
+Revisione dell'autore (2026-10-06): confermate le note degli scenari 001-008; chiesto Seneca sempre con la maiuscola, anche come aggettivo, in `scenario_006`; verificata su Bohannan 1966 (Natural History, pagina 3 della versione in rete: «Only his relatives in the male line could bewitch him… it had to be Claudius») la frase di `scenario_008` sulla stregoneria dei parenti in linea maschile, che resta com'è. Restano da confermare le note degli scenari 009-022.
+
 Da decidere con l'autore dopo la prova: estensione a tutti gli scenari; termini anche nelle uscite e nei riscontri, oltre al setup; voce «Glossario» nel menu «Altro»; note nella scheda stampabile e in aula.
+
+### 16.21 M17 — autori e linea del tempo (aperta 2026-10-06)
+
+Richiesta dell'autore, 2026-10-06: una nota sugli autori citati, con una biografia minima, una visione diacronica e i filoni di studio. Valutazione: gli scenari citano 19 autori principali, dal 1871 al 1985, di cui lo studente vede solo cognome e anno. Scelta: una pagina a sé, `/autori`, non il glossario, che spiega popoli, luoghi e pratiche dello scenario; la linea del tempo ha bisogno di spazio proprio. M17 si apre con M16 ancora in revisione.
+
+Branch `m17`. Dati: `src/content/it/authors.json`, con i filoni (`schools`: id ed etichetta) e le schede (`authors`: id, nome, cognome come compare nelle fonti, anno di nascita e, se c'è, di morte, filone, nota di massimo 600 caratteri, 1-4 fonti). Opere citate e scenari non si scrivono a mano: un modulo virtuale di Vite (`virtual:authors`) li ricava dalle fonti del livello studente, riconoscendo il cognome prima della prima virgola di ogni riferimento (anche nelle opere a più mani, `A & B`), e toglie capitoli e pagine come la bibliografia del Metodo. `pnpm validate` controlla schema, id e cognomi unici, filone esistente, morte dopo la nascita e che ogni autore apra almeno un riferimento nelle fonti.
+
+Pagina `/autori`, dal piè di pagina e, sul telefono, dal menu «Altro»: linea del tempo con una riga per autore, divisa per filone in ordine cronologico; la barra copre la vita, i punti segnano gli anni delle opere citate; ogni riga porta alla scheda. Sotto, le schede per filone con anni, nota, opere citate, scenari e fonte; la scheda aperta da un link si evidenzia come nel glossario. Nel riscontro dello scenario il cognome nella fonte diventa un collegamento alla scheda, solo per gli autori che ne hanno una; aula e scheda stampabile restano invariate.
+
+Primo blocco, cinque schede, ciascuna verificata sulla voce dell'International Encyclopedia of the Social Sciences letta per intero su Encyclopedia.com: Morgan (Leslie A. White), Boas (Alexander Lesser), Mauss (Steven Lukes), Malinowski (Rhoda Métraux), Radcliffe-Brown (W. E. H. Stanner). Filoni del blocco: evoluzionismo culturale, scuola di Boas, scuola di Durkheim, antropologia sociale britannica; ogni attribuzione si appoggia alla stessa voce. Hertz passa al blocco successivo, perché su Encyclopedia.com non ha una voce.
+
+Misure, gzip: JavaScript iniziale da 28,39 a 28,68 kB (rotta, voce di menu, collegamento nel piè di pagina, testi); pagina dello scenario da 5,89 a 6,14 kB (collegamenti nella fonte); CSS da 10,69 a 10,89 kB; pagina Autori (1,93 kB) e dati degli autori (2,54 kB) in file a parte, caricati solo quando servono. Test 97 (3 sul motore degli autori, 3 sul validatore), end-to-end 114 verdi (6 saltati per dimensione dello schermo), con 3 test nuovi e `/autori` tra le pagine senza scroll orizzontale. Controllo visivo a 393×851 e 1280×900.
+
+Prossimi blocchi, da confermare con l'autore come le note del glossario: Hertz, van Gennep, Kroeber, Evans-Pritchard, Bohannan (Laura e Paul sono due autori con lo stesso cognome: servirà un modo per distinguerli), Douglas, Miner, Lee, Cohen, Geertz, Bourdieu, Mintz, Sharp, Cassell.

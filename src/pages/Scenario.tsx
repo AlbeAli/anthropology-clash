@@ -167,7 +167,12 @@ function ScenarioPlay({
         <ScenarioCard scenario={scenario} level={level} choiceId={choiceId} onSelect={select} />
         {choiceId && (
           <>
-            <FeedbackPanel content={scenario.levels[level]} level={level} choiceId={choiceId} />
+            <FeedbackPanel
+              content={scenario.levels[level]}
+              lang={scenario.lang}
+              level={level}
+              choiceId={choiceId}
+            />
             {(next || trip) && (
               <section className="leg" data-main="" aria-labelledby="arrival-heading">
                 <h2 id="arrival-heading" className={legTag}>

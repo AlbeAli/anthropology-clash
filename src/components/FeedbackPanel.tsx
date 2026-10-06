@@ -1,16 +1,18 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import type { Level, Scenario } from "../schema/scenario.schema";
+import type { Lang, Level, Scenario } from "../schema/scenario.schema";
 import { prefersReducedMotion } from "../engine/motion";
 import { legTag } from "./metro/legTag";
+import SourceText from "./SourceText";
 
 type Props = {
   content: Scenario["levels"][Level];
+  lang: Lang;
   level: Level;
   choiceId: string;
 };
 
-export default function FeedbackPanel({ content, level, choiceId }: Props) {
+export default function FeedbackPanel({ content, lang, level, choiceId }: Props) {
   const { t } = useTranslation();
   const heading = useRef<HTMLHeadingElement>(null);
   const number = (id: string) => content.choices.findIndex((c) => c.id === id) + 1;
@@ -97,7 +99,7 @@ export default function FeedbackPanel({ content, level, choiceId }: Props) {
           {t("scenario.source")}
         </h2>
         <p className="leg-body rounded-xl bg-surface px-5 py-4 text-[15px] leading-relaxed">
-          {content.source}
+          <SourceText source={content.source} lang={lang} />
         </p>
       </section>
     </>

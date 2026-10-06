@@ -1,0 +1,75 @@
+{
+  "schools": [
+    { "id": "evoluzionismo", "label": "Evoluzionismo culturale" },
+    { "id": "boas", "label": "Scuola di Boas" },
+    { "id": "durkheim", "label": "Scuola di Durkheim" },
+    { "id": "britannica", "label": "Antropologia sociale britannica" }
+  ],
+  "authors": [
+    {
+      "id": "morgan",
+      "lang": "it",
+      "name": "Lewis Henry Morgan",
+      "surname": "Morgan",
+      "born": 1818,
+      "died": 1881,
+      "school": "evoluzionismo",
+      "text": "Avvocato a Rochester, nello Stato di New York, non lavorò mai in un'università o in un istituto scientifico. Studiò gli Irochesi, soprattutto i Seneca, che lo adottarono nel 1846, e ne scrisse in League of the Ho-dé-no-sau-nee, or Iroquois (1851). Dal confronto dei termini di parentela, raccolti sul campo e con questionari spediti in paesi lontani, nacquero Systems of Consanguinity and Affinity of the Human Family (1871) e una teoria dell'evoluzione della famiglia per stadi. In Ancient Society (1877) divise la storia umana in stato selvaggio, barbarie e civiltà.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Morgan, Lewis Henry» di Leslie A. White (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "boas",
+      "lang": "it",
+      "name": "Franz Boas",
+      "surname": "Boas",
+      "born": 1858,
+      "died": 1942,
+      "school": "boas",
+      "text": "Nato a Minden, in Germania, si formò in fisica e geografia; dopo una spedizione nella Terra di Baffin (1883-1884) scelse l'antropologia. Dal 1886 studiò per tutta la vita i popoli della British Columbia, soprattutto i Kwakiutl. Trasferito a New York nel 1887, insegnò alla Columbia University dal 1896 al 1936 e formò generazioni di antropologi, tra cui Kroeber, Benedict e Mead. Criticò l'evoluzionismo unilineare dell'Ottocento, mettendo al centro la storia di ogni cultura, e si batté per tutta la vita contro il razzismo.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Boas, Franz» di Alexander Lesser (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "mauss",
+      "lang": "it",
+      "name": "Marcel Mauss",
+      "surname": "Mauss",
+      "born": 1872,
+      "died": 1950,
+      "school": "durkheim",
+      "text": "Nato a Épinal, in Lorena, era nipote di Émile Durkheim, che a Bordeaux ne seguì gli studi di filosofia. Lavorò a stretto contatto con lo zio e con il gruppo dell'Année sociologique; dal 1901 tenne all'École Pratique des Hautes Études la cattedra di storia delle religioni dei popoli «non civilizzati». Dopo la prima guerra mondiale, che decimò il gruppo, e la morte di Durkheim ne prese la guida e curò opere postume di Hertz e di altri. Il suo capolavoro è l'Essai sur le don (1925). Non fece ricerca sul campo, salvo un breve viaggio in Marocco.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Mauss, Marcel» di Steven Lukes (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "malinowski",
+      "lang": "it",
+      "name": "Bronisław Malinowski",
+      "surname": "Malinowski",
+      "born": 1884,
+      "died": 1942,
+      "school": "britannica",
+      "text": "Nato a Cracovia, allora nell'Impero austro-ungarico, nel 1910 andò a Londra per studiare alla London School of Economics. Dopo una prima spedizione tra i Mailu visse nelle Isole Trobriand nel 1915-1916 e nel 1917-1918, fino a seguire le conversazioni e prendere appunti nella lingua locale. Per lui l'etnografo deve cogliere il punto di vista del nativo (Argonauts of the Western Pacific, 1922); fu l'iniziatore di un approccio funzionalista alla cultura. Nel 1927 ebbe la prima cattedra di antropologia dell'Università di Londra; dal 1939 insegnò a Yale.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Malinowski, Bronislaw» di Rhoda Métraux (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "radcliffe-brown",
+      "lang": "it",
+      "name": "Alfred Reginald Radcliffe-Brown",
+      "surname": "Radcliffe-Brown",
+      "born": 1881,
+      "died": 1955,
+      "school": "britannica",
+      "text": "Inglese, studiò a Cambridge, dove Haddon e Rivers lo avviarono all'antropologia. Le sue sole lunghe ricerche sul campo furono nelle Isole Andamane (1906-1908), da cui The Andaman Islanders (1922), e nel nord-ovest dell'Australia Occidentale (1910-1912). Ebbe cattedre di antropologia sociale a Città del Capo, Sydney, Chicago e Oxford. Riprese idee di Durkheim, sottoponendole alla prova dei fatti, e spostò l'antropologia sociale dalla ricostruzione storica allo studio comparato delle strutture sociali.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Radcliffe-Brown, A. R.» di W. E. H. Stanner (consultata su Encyclopedia.com)"
+      ]
+    }
+  ]
+}

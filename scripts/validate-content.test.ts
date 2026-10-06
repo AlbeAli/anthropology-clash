@@ -123,6 +123,52 @@ describe("validate-content: vincoli sui livelli", () => {
   });
 });
 
+describe("validate-content: autori", () => {
+  const author = {
+    id: "malinowski",
+    lang: "it",
+    name: "Bronisław Malinowski",
+    surname: "Malinowski",
+    born: 1884,
+    died: 1942,
+    school: "britannica",
+    text: "Nota di prova.",
+    source: ["Fonte, 2000"],
+  };
+
+  function withAuthors(authors: object[]) {
+    const root = fixture(scenario001);
+    const file = {
+      schools: [{ id: "britannica", label: "Antropologia sociale britannica" }],
+      authors,
+    };
+    writeFileSync(join(root, "it", "authors.json"), JSON.stringify(file));
+    return root;
+  }
+
+  it("accetta un autore citato nelle fonti dello scenario", () => {
+    expect(validateAll(withAuthors([author])).issues).toEqual([]);
+  });
+
+  it("segnala un autore mai citato, un filone inesistente e un cognome ripetuto", () => {
+    const ghost = { ...author, id: "nessuno", surname: "Nessuno", school: "altro" };
+    const twin = { ...author, id: "malinowski-bis" };
+    const messages = validateAll(withAuthors([author, ghost, twin])).issues.map((i) => i.message);
+    expect(messages).toContainEqual(
+      expect.stringContaining('"Nessuno" non apre nessun riferimento'),
+    );
+    expect(messages).toContainEqual(expect.stringContaining('filone "altro"'));
+    expect(messages).toContainEqual(expect.stringContaining('cognome duplicato "Malinowski"'));
+  });
+
+  it("segnala una morte prima della nascita", () => {
+    const messages = validateAll(withAuthors([{ ...author, died: 1800 }])).issues.map(
+      (i) => i.message,
+    );
+    expect(messages).toContainEqual(expect.stringContaining("died viene dopo born"));
+  });
+});
+
 describe("validate-content: glossario", () => {
   const entry = {
     id: "trobriand",
