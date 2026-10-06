@@ -4,6 +4,9 @@
   "title": "Cugino o fratello?",
   "concept": "parentela",
   "concept_label": "Parentela",
+  "glossary": [
+    "seneca"
+  ],
   "levels": {
     "neofita": {
       "hook": "Da bambino chiamavi «zia» la migliore amica di tua madre, anche se non era tua parente. Un amico che viene da un altro paese ti chiede perché, e ti accorgi di non saperlo spiegare: era zia e basta. Poi ti viene in mente il cugino con cui sei cresciuto, che tutti in famiglia chiamano «tuo fratello».",
