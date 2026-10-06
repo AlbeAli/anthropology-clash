@@ -1,11 +1,15 @@
 import { useTranslation } from "react-i18next";
 
-export default function StreakBadge({ count }: { count: number }) {
+type Props = { count: number; className?: string };
+
+export default function StreakBadge({ count, className = "" }: Props) {
   const { t } = useTranslation();
   return (
     <span
       title={t("streak.title", { count })}
-      className="inline-flex min-h-11 items-center gap-2 px-2 font-display text-sm font-bold"
+      className={
+        "inline-flex min-h-11 items-center gap-2 px-2 font-display text-sm font-bold " + className
+      }
     >
       <span
         aria-hidden="true"
