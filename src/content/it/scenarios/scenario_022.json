@@ -1,0 +1,87 @@
+{
+  "id": "scenario_022",
+  "lang": "it",
+  "title": "Il secondo funerale",
+  "concept": "rituale",
+  "concept_label": "Rituale",
+  "levels": {
+    "neofita": {
+      "hook": "Una persona a cui tenevi è morta da qualche mese. Il funerale c'è stato, i fiori sono appassiti, eppure ti capita ancora di prendere il telefono per scriverle, o di contare su di lei per una cosa da fare. Con i riti hai chiuso; con lei, non ancora. Quando, esattamente, è morta per te?",
+      "setup": "Borneo sud-orientale, Ottocento, tra gli Olo Ngadju, uno dei popoli Dayak. Robert Hertz, sull'Année sociologique di Durkheim (1907), ricostruisce dai resoconti scritti come vi si tratta un morto. Il corpo non va subito nella tomba: chiuso in una bara sigillata, resta in una piccola casa di legno su pali, spesso isolata nella foresta. Di solito passano circa due anni, a volte quattro, sei o anche dieci. Intanto i parenti più stretti vivono sotto divieti: non lasciano il villaggio, non fanno visite, chi è rimasto vedovo non può risposarsi. Poi arriva il Tiwah, una grande festa: le ossa vengono portate nella tomba di famiglia, l'anima accompagnata nel paese dei morti, e il lutto finisce. Perché aspettare così a lungo?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Servono soldi: la festa costa e la famiglia deve mettere da parte"
+        },
+        {
+          "id": "b",
+          "text": "Per loro la morte non è finita: dura finché del corpo restano le ossa"
+        }
+      ],
+      "feedback": {
+        "a": "Hertz (1907) prende sul serio questa ragione. La festa chiede preparativi che da soli durano spesso un anno o più, e risorse, animali da sacrificare, cibo, bevande, che di rado ci sono e che la famiglia deve prima accumulare; spesso le spese la riducono in miseria, e per dividerle gli Olo Ngadju celebrano di solito il Tiwah per più morti insieme. Ma per Hertz queste cause spiegano i lunghi ritardi, 'non bastano a spiegare la necessità di un periodo di attesa'. Anche con tutto pronto, le esequie definitive non potrebbero aver luogo subito dopo la morte: 'conviene infatti aspettare che la decomposizione del cadavere sia terminata e che non restino più che le ossa'.",
+        "b": "È la lettura di Hertz (1907). Da noi, scrive, si pensa che 'la morte si compia in un istante'; tra gli Olo Ngadju dura quanto la sepoltura provvisoria, e cambia insieme lo stato di tre soggetti. Il corpo si decompone; l'anima, 'triste e come perduta', non ha ancora un posto tra i morti e torna a vagare vicino alla bara; i parenti più stretti, impuri, restano separati dagli altri. Il Tiwah chiude le tre attese: dà alle ossa la sepoltura definitiva, porta l'anima nel paese dei morti, scioglie i vivi dal lutto. La parola stessa, secondo il dizionario di Hardeland citato da Hertz, vuol dire 'essere liberi, sciolti dal divieto'. Il perché, per Hertz, è che 'non riusciamo a pensare il morto come morto al primo colpo'."
+      },
+      "source": "Hertz, «Contribution à une étude sur la représentation collective de la mort», L'Année sociologique, 1907"
+    },
+    "studente": {
+      "hook": "Dopo un lutto, il tuo calendario si riempie di date che nessuno ha scritto: il primo compleanno senza quella persona, il primo anniversario. Per mesi non svuoti il suo armadio e non togli il suo nome dal campanello. Poi un giorno lo fai. Che cosa è cambiato, quel giorno: in te, o intorno a te?",
+      "setup": "Borneo sud-orientale, Ottocento. Sei nei panni di Robert Hertz, che nel 1907, sull'Année sociologique di Durkheim, studia la doppia sepoltura degli Olo Ngadju, uno dei popoli Dayak, sui resoconti scritti: la fonte migliore, per te, è Hardeland, che ha pubblicato i canti recitati dalle sacerdotesse durante il Tiwah. Il corpo non va subito nella sepoltura definitiva. Chiuso in una bara con le fessure sigillate, i liquidi della decomposizione raccolti in un vaso di terra o drenati nel suolo, resta in una piccola casa su pali, spesso isolata nella foresta: di solito circa due anni, a volte dieci. L'anima arriva già il giorno dopo nella città celeste delle anime, ma non vi ha un posto e torna spesso a vagare vicino alla bara. I parenti lontani sono impuri per pochi giorni; i più stretti finché dura la sepoltura provvisoria: non lasciano il villaggio, chi è vedovo non si risposa. Poi il Tiwah, una festa di più giorni, di solito per più morti insieme: le ossa vanno nel sandong, la casa funeraria di famiglia in legno di ferro; sacerdoti e sacerdotesse accompagnano l'anima nella città dei morti; i vivi sono sciolti dai divieti. Devi spiegare l'attesa.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Un ritardo pratico: la festa costa e la famiglia deve accumulare le risorse"
+        },
+        {
+          "id": "b",
+          "text": "Una misura d'igiene: tenere lontani il cadavere e il suo odore"
+        },
+        {
+          "id": "c",
+          "text": "Il dolore di chi resta: ogni famiglia ha bisogno del suo tempo per staccarsi"
+        },
+        {
+          "id": "d",
+          "text": "Un passaggio che dura: corpo, anima e vivi cambiano stato insieme"
+        }
+      ],
+      "feedback": {
+        "a": "Hertz (1907) la considera e la mette da parte. La festa costa: preparativi che durano spesso un anno o più, animali da sacrificare, cibo e bevande che la famiglia deve prima accumulare (p. 53); spese che spesso la riducono in miseria, e una fonte cita Dayak che si erano impegnati come schiavi per pagarle (p. 87). Ma queste 'cause d'ordine esterno' spiegano i lunghi ritardi e 'non bastano a spiegare la necessità di un periodo di attesa' (p. 53). Anche con tutto pronto, bisogna aspettare che del cadavere restino solo le ossa. Tra gli Olo Ngadju questo motivo resta in secondo piano per l'ampiezza della festa; presso altre tribù è la causa diretta del ritardo e ne fissa la durata. Di norma l'attesa corrisponde al tempo giudicato necessario perché il corpo diventi scheletro (pp. 53-54).",
+        "b": "È la lettura del governo olandese, che 'per ragioni d'igiene' aveva vietato, in alcuni distretti, di tenere i morti in casa fino alle esequie definitive (pp. 50-51). Hertz (1907) la esclude: sigillare la bara e raccogliere i liquidi non risponde a una 'preoccupazione d'igiene (nel senso in cui prendiamo questa parola)', né soltanto al bisogno di allontanare l'odore. Lo mostra una formula recitata più volte durante il Tiwah: la putrefazione vi è assimilata alla 'folgore pietrificante', perché minaccia di morte improvvisa chi vive nella casa (p. 54). L'influenza malefica del cadavere non deve spandersi fuori; e il morto stesso, man mano che le ossa si seccano, va liberato dall'infezione (p. 55). Al Tiwah il vaso è rotto e i cocci vanno con le ossa nella sepoltura definitiva (p. 55).",
+        "c": "Hertz (1907) non nega il dolore: parla di un 'processo psicologico doloroso' (p. 129). Ma non è un fatto privato. L'emozione suscitata da una morte varia molto secondo il ruolo sociale del defunto: alla morte di un capo il panico si impadronisce di tutto il gruppo, quella di uno straniero, di uno schiavo o di un bambino 'passerà quasi inosservata' (p. 122). Presso gli Olo Maanjan un bambino sotto i sette anni è portato vicino alla tomba di famiglia il giorno stesso, un sacrificio basta perché l'anima entri subito nella città dei morti, e il lutto dei genitori dura una settimana (p. 132). La morte non chiude solo una vita: distrugge 'l'essere sociale innestato sull'individualità fisica', che la società aveva costituito con energie 'proporzionate al valore sociale del defunto' (p. 123).",
+        "d": "È la tesi di Hertz (1907). Corpo, anima e vivi attraversano insieme un periodo intermedio: il bando sui parenti più stretti coincide 'precisamente' con la durata della sepoltura provvisoria (p. 64), e il Tiwah ha un 'triplice oggetto': sepoltura definitiva, accesso dell'anima al paese dei morti, fine del lutto per i vivi (p. 88). La morte è un cambiamento di stato, come l'iniziazione, il matrimonio, la nascita: 'una specie particolare di un fenomeno generale' (p. 129). Richiede tempo perché la società, scossa, 'deve ritrovare a poco a poco il suo equilibrio' (p. 130). Il corpo dà al dramma un supporto materiale: ridotto a ossa quasi immutabili, ormai 'simile a quelli degli antenati', segnala che l'anima può entrare nella loro comunione (p. 131)."
+      },
+      "source": "Hertz, «Contribution à une étude sur la représentation collective de la mort», L'Année sociologique X (1905-1906), 1907, pp. 48-137: introduzione (p. 49), cap. I «La période intermédiaire» (pp. 50-64), cap. II «La cérémonie finale» (pp. 87-88, 96, 101) e cap. III «Conclusion» (pp. 122-133); Durkheim, Les formes élémentaires de la vie religieuse, 1912, libro III, cap. V (p. 575, nota); van Gennep, Les rites de passage, 1909",
+      "deepen": [
+        {
+          "ref": "Hertz, «Contribution à une étude sur la représentation collective de la mort», L'Année sociologique X, 1907, pp. 48-137",
+          "why": "Il saggio intero: la doppia sepoltura nell'arcipelago malese, i confronti con altre regioni e la conclusione sulla morte come passaggio, pp. 122-137. Testo integrale, pubblico dominio",
+          "access": "PD (fr)",
+          "url": "https://archive.org/details/lannesociologiq01unkngoog"
+        },
+        {
+          "ref": "Hertz, Death and the Right Hand, Free Press, 1960",
+          "why": "La traduzione inglese del saggio sulla morte, insieme a quello sulla preminenza della mano destra (1909)",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Durkheim, Les formes élémentaires de la vie religieuse, 1912, libro III, cap. V",
+          "why": "Il lutto come dovere imposto dal gruppo; in nota (p. 575) Durkheim rimanda a Hertz: i funerali, spesso molto lunghi, 'prolungano e mantengono il turbamento morale determinato dalla morte'",
+          "access": "PD (fr)",
+          "url": "https://archive.org/details/Les_Formes_elementaires_de_la_vie_religieuse"
+        },
+        {
+          "ref": "van Gennep, Les rites de passage, 1909",
+          "why": "Due anni dopo Hertz, i funerali tra i riti di passaggio, con la sequenza separazione, margine, aggregazione",
+          "access": "PD (fr)",
+          "url": "http://classiques.uqac.ca/classiques/gennep_arnold_van/rites_de_passage/rites_de_passage.html"
+        }
+      ]
+    }
+  },
+  "discuss": [
+    "Tra gli Olo Ngadju il lutto dei parenti più stretti dura quanto la sepoltura provvisoria e finisce con una festa. Nei lutti che conosci, che cosa ne segna la fine, e chi lo decide?",
+    "Secondo Hertz la morte di un capo scuote tutto il gruppo, quella di un bambino o di uno straniero passa quasi inosservata. Da che cosa dipende quanto spazio pubblico riceve una morte, nella società in cui vivi?",
+    "Hertz accosta la morte all'iniziazione, al matrimonio e alla nascita, passaggi che richiedono tempo. Quali passaggi della tua vita hanno avuto un periodo di mezzo, in cui non eri più una cosa e non ancora l'altra?"
+  ]
+}
