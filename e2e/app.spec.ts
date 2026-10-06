@@ -67,6 +67,25 @@ test("sul telefono la barra sta su due righe e Concetti, Percorsi e Metodo sono 
   await expect(nav.getByRole("link", { name: "Percorsi" })).toBeHidden();
 });
 
+test("sul telefono il tabellone ha solo la prossima partenza e la fermata del giorno scende sotto la rete", async ({
+  page,
+}) => {
+  await fresh(page);
+  const daily = page.getByRole("region", { name: /^Fermata del giorno/ });
+  const title = page.getByRole("heading", { level: 1 });
+  await expect(daily).toHaveCount(1);
+  await expect(page.getByRole("link", { name: /Parti/ })).toBeVisible();
+  const dailyTop = (await daily.boundingBox())!.y;
+  const titleTop = (await title.boundingBox())!.y;
+  if (isPhone(page)) {
+    await expect(title).toBeInViewport();
+    const net = (await page.getByTestId("net-mini").boundingBox())!;
+    expect(dailyTop).toBeGreaterThan(net.y + net.height);
+  } else {
+    expect(dailyTop).toBeLessThan(titleTop);
+  }
+});
+
 test("da 640 px la barra mostra tutte le voci e nessun menu Altro", async ({ page }) => {
   test.skip(isPhone(page), "sotto i 640 px le voci stanno nel menu Altro");
   await fresh(page);

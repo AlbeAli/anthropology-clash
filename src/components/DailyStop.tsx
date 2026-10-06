@@ -39,7 +39,7 @@ export default function DailyStop({ stop, visited }: Props) {
   return (
     <section
       aria-labelledby="daily-label"
-      className="relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 border-t border-white/20 px-4 pt-3.5 pb-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-x-5 sm:px-5"
+      className="relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 px-4 pt-3.5 pb-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-x-5 sm:px-5"
     >
       <LineBullet concept={stop.concept} />
       <div className="min-w-0">
