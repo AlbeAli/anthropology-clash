@@ -36,6 +36,7 @@ function scenarioCatalog(): Plugin {
             concept: s.concept,
             concept_label: s.concept_label,
             also: s.also,
+            glossary: s.glossary,
             hook: s.levels.neofita.hook,
           });
         }

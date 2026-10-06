@@ -5,6 +5,7 @@ export const Level = z.enum(["neofita", "studente"]);
 export const ConceptId = z.enum(["reciprocita", "parentela", "rituale", "relativismo", "consumo"]);
 
 export const ScenarioId = z.string().regex(/^scenario_\d{3}$/);
+const Slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 
 const DiscussQuestion = z
   .string()
@@ -55,8 +56,12 @@ export const Scenario = z
       studente: LevelContent,
     }),
     discuss: z.array(DiscussQuestion).min(2).max(3).optional(),
+    glossary: z.array(Slug).min(1).max(8).optional(),
   })
   .superRefine((s, ctx) => {
+    if (s.glossary && new Set(s.glossary).size !== s.glossary.length) {
+      ctx.addIssue({ code: "custom", path: ["glossary"], message: "glossary senza ripetizioni" });
+    }
     if (!s.also) return;
     if (s.also.includes(s.concept)) {
       ctx.addIssue({
@@ -71,7 +76,7 @@ export const Scenario = z
   });
 
 export const Itinerary = z.object({
-  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+  id: Slug,
   lang: Lang,
   title: z.string().min(1).max(80),
   description: z.string().min(1).max(400),
@@ -85,9 +90,23 @@ export const Concept = z.object({
   definition: z.string().max(600),
 });
 
+export const GlossaryKind = z.enum(["popolo", "luogo", "pratica"]);
+
+export const GlossaryEntry = z.object({
+  id: Slug,
+  lang: Lang,
+  term: z.string().min(1).max(60),
+  kind: GlossaryKind,
+  forms: z.array(z.string().min(1).max(60)).min(1).max(6).optional(),
+  text: z.string().min(1).max(600),
+  source: z.array(z.string().min(1).max(300)).min(1).max(4),
+});
+
 export type Lang = z.infer<typeof Lang>;
 export type Level = z.infer<typeof Level>;
 export type ConceptId = z.infer<typeof ConceptId>;
 export type Scenario = z.infer<typeof Scenario>;
 export type Concept = z.infer<typeof Concept>;
 export type Itinerary = z.infer<typeof Itinerary>;
+export type GlossaryKind = z.infer<typeof GlossaryKind>;
+export type GlossaryEntry = z.infer<typeof GlossaryEntry>;

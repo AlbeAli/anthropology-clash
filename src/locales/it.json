@@ -18,7 +18,8 @@
     "account": "Il tuo account",
     "privacy": "Privacy",
     "diary": "Diario",
-    "more": "Altro"
+    "more": "Altro",
+    "glossary": "Glossario"
   },
   "level": {
     "label": "Livello",
@@ -128,6 +129,21 @@
     "intro": "Cinque concetti, ciascuno con gli scenari che lo mettono alla prova. Puoi aprire qualsiasi scenario, in qualsiasi ordine, con il livello che preferisci.",
     "noScenarios": "Nessuno scenario ancora disponibile",
     "jump": "Vai a una linea"
+  },
+  "glossary": {
+    "title": "Glossario",
+    "lead": "Popoli, luoghi e pratiche che compaiono negli scenari, ciascuno con una nota breve e la sua fonte. Le note danno il contesto minimo, chi, dove, quando; per tutto il resto vale la fonte di ogni scenario.",
+    "kinds": {
+      "popolo": "Popoli",
+      "luogo": "Luoghi",
+      "pratica": "Pratiche"
+    },
+    "hint": "apre una nota di contesto",
+    "close": "Chiudi la nota",
+    "source_one": "Fonte",
+    "source_other": "Fonti",
+    "usedIn": "Negli scenari",
+    "all": "Tutte le voci nel glossario"
   },
   "method": {
     "title": "Da dove vengono gli scenari",

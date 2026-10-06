@@ -120,3 +120,36 @@ describe("validate-content: vincoli sui livelli", () => {
     expect(messages).toContainEqual(expect.stringContaining("3-4 scelte"));
   });
 });
+
+describe("validate-content: glossario", () => {
+  const entry = {
+    id: "trobriand",
+    lang: "it",
+    term: "Trobriand",
+    kind: "luogo",
+    text: "Nota di prova.",
+    source: ["Fonte, 2000"],
+  };
+
+  function withGlossary(scenario: object, entries: object[]) {
+    const root = fixture(scenario);
+    writeFileSync(join(root, "it", "glossary.json"), JSON.stringify(entries));
+    return root;
+  }
+
+  it("accetta una voce che esiste e compare nel setup", () => {
+    const ok = { ...structuredClone(scenario001), glossary: ["trobriand"] };
+    expect(validateAll(withGlossary(ok, [entry])).issues).toEqual([]);
+  });
+
+  it("segnala una voce inesistente, una che non compare nel setup e un id doppio", () => {
+    const broken = { ...structuredClone(scenario001), glossary: ["trobriand", "nuer", "potlatch"] };
+    const potlatch = { ...entry, id: "potlatch", term: "Potlatch" };
+    const messages = validateAll(withGlossary(broken, [entry, entry, potlatch])).issues.map(
+      (i) => i.message,
+    );
+    expect(messages).toContainEqual(expect.stringContaining('"nuer" non esiste'));
+    expect(messages).toContainEqual(expect.stringContaining('"Potlatch" non compare nel setup'));
+    expect(messages).toContainEqual(expect.stringContaining('id duplicato "trobriand"'));
+  });
+});

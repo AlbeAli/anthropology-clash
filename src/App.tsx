@@ -24,6 +24,7 @@ const Itineraries = lazy(() => import("./pages/Itineraries"));
 const ItineraryPage = lazy(() => import("./pages/Itinerary"));
 const Aula = lazy(() => import("./pages/Aula"));
 const Sheet = lazy(() => import("./pages/Sheet"));
+const Glossary = lazy(() => import("./pages/Glossary"));
 
 const PAGE_TITLES: Record<string, string> = {
   "/concetti": "concepts.title",
@@ -31,6 +32,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/viaggio": "journey.title",
   "/diario": "diary.title",
   "/metodo": "method.title",
+  "/glossario": "glossary.title",
 };
 const ACCOUNT_TITLES: Record<string, string> = {
   "/accedi": "account.title",
@@ -99,6 +101,7 @@ function Shell() {
               <Route path="/percorso" element={<ItineraryPage />} />
               <Route path="/percorso/:id" element={<ItineraryPage />} />
               <Route path="/metodo" element={<Method />} />
+              <Route path="/glossario" element={<Glossary />} />
               <Route path="/viaggio" element={<Journey />} />
               <Route path="/diario" element={<Diary />} />
               {available && (
@@ -122,6 +125,12 @@ function Shell() {
               className="inline-block py-1 uppercase tracking-widest hover:text-accent"
             >
               {t("nav.method")}
+            </Link>
+            <Link
+              to="/glossario"
+              className="inline-block py-1 uppercase tracking-widest hover:text-accent"
+            >
+              {t("nav.glossary")}
             </Link>
             {available && (
               <Link

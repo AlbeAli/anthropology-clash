@@ -182,6 +182,7 @@ for (const path of [
   `/s/${first.id}`,
   "/concetti",
   "/metodo",
+  "/glossario",
   "/viaggio",
   "/percorsi",
   "/percorso?f=1-6-11",

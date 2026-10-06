@@ -13,6 +13,7 @@ export type ScenarioFile = {
   concept: string;
   levels: { neofita: Level; studente: Level };
   discuss?: string[];
+  glossary?: string[];
 };
 
 const dir = join(process.cwd(), "src/content/it/scenarios");
@@ -32,3 +33,9 @@ export const itineraries: ItineraryFile[] = readdirSync(itineraryDir)
   .filter((f) => f.endsWith(".json"))
   .sort()
   .map((f) => JSON.parse(readFileSync(join(itineraryDir, f), "utf8")) as ItineraryFile);
+
+export type GlossaryFile = { id: string; term: string; text: string; source: string[] };
+
+export const glossary = JSON.parse(
+  readFileSync(join(process.cwd(), "src/content/it/glossary.json"), "utf8"),
+) as GlossaryFile[];
