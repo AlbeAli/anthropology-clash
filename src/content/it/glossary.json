@@ -1,5 +1,15 @@
 [
   {
+    "id": "bali",
+    "lang": "it",
+    "term": "Bali",
+    "kind": "luogo",
+    "text": "Isola dell'Indonesia di 5.808 km², tra Giava a ovest e Lombok a est. La sua cultura si distingue da quella prevalente nel paese soprattutto per la religione, una forma locale di induismo. Dagli anni Quaranta dell'Ottocento gli olandesi intervennero sempre più negli affari dell'isola; tra il 1894 e il 1908 sottomisero i regni del sud, la cui resistenza finì nei puputan, assalti suicidi contro il fuoco olandese. Nel 1965-66 i massacri anticomunisti fecero sull'isola 100.000 vittime. Il regime di Suharto (1966-1998) la promosse come meta del turismo internazionale.",
+    "source": [
+      "Worldmark Encyclopedia of Cultures and Daily Life, voce «Balinese», rivista da A. J. Abalahin, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
     "id": "borneo-sud-orientale",
     "lang": "it",
     "term": "Borneo sud-orientale",
@@ -8,6 +18,16 @@
     "source": [
       "Hertz, «Contribution à une étude sur la représentation collective de la mort», L'Année sociologique X, 1907, pp. 50-51 e 88",
       "Worldmark Encyclopedia of Cultures and Daily Life, voce «Ngaju Dayak», rivista da A. J. Abalahin, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "chaga",
+    "lang": "it",
+    "term": "Chaga",
+    "kind": "popolo",
+    "text": "Popolo di lingua kichagga, una lingua bantu, che vive sul monte Kilimangiaro, nel nord della Tanzania. Nell'Ottocento era diviso in molti piccoli capitanati autonomi, spesso in guerra tra loro e con i vicini, che commerciavano con i popoli intorno alla montagna, tra cui i Maasai, e con le carovane della costa. Il primo europeo a raggiungere la montagna fu il missionario Johannes Rebmann, nel 1848. Nel 1886 Germania e Gran Bretagna si divisero le sfere d'influenza in Africa orientale e il Kilimangiaro toccò ai tedeschi; negli anni Novanta tutti i Chaga erano stati sottomessi.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Chagga», di Sally Falk Moore, Gale (consultata su Encyclopedia.com)"
     ]
   },
   {
@@ -28,6 +48,20 @@
     "text": "Posto della Compagnia della Baia di Hudson fondato nel 1849. Negli anni Cinquanta dell'Ottocento vi si riunirono quattro gruppi kwakwaka'wakw, che i commercianti di pellicce cominciarono a chiamare tutti Kwakiutl. Per molti decenni fu il centro economico e cerimoniale dei Kwakiutl meridionali e del commercio di pellicce della regione. Gli eccessi percepiti nel potlatch e nel bere divisero la comunità, e molti si spostarono ad Alert Bay, dove negli anni Settanta un missionario anglicano aveva raccolto i suoi convertiti.",
     "source": [
       "Encyclopedia of World Cultures, voce «Kwakiutl», di Donald Mitchell, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "isole-andamane",
+    "lang": "it",
+    "term": "Isole Andamane",
+    "kind": "luogo",
+    "forms": [
+      "Isole Andamane",
+      "Grandi Andamane"
+    ],
+    "text": "Arcipelago di 348 isole nel golfo del Bengala, coperto in gran parte da foresta pluviale; oggi è un territorio dell'India. Nel 1908 il nome «andamanesi» indicava tredici gruppi tribali di cacciatori-raccoglitori, ciascuno con un proprio dialetto e territorio; oggi ne restano quattro, tra cui i Grandi Andamanesi dell'isola Strait. Stimati in circa 3.575 nel 1800, erano 1.895 nel 1901 e 269 nel 1983, anche per le malattie portate da fuori. Nel 1859 i britannici fondarono Port Blair, una colonia penale, nelle Andamane centrali.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Andamanese», di Vishvajit Pandya, Gale (consultata su Encyclopedia.com)"
     ]
   },
   {
@@ -87,6 +121,20 @@
     "text": "Popolo polinesiano dell'Isola del Nord e dell'Isola del Sud della Nuova Zelanda; i loro antenati vi arrivarono da quella che oggi è la Polinesia francese. Il nome riunisce più di cento gruppi tribali (iwi) che si considerano ben distinti. La presenza europea stabile comincia con James Cook nel 1769. Nel 1840 circa 500 capi firmarono con i britannici il Trattato di Waitangi, che prometteva loro terre e beni; poi le terre furono confiscate e, tra guerre e malattie, nel 1896 i Maori erano 42.000. Al censimento del 2006 erano oltre 565.000, circa il 15% della popolazione.",
     "source": [
       "Worldmark Encyclopedia of Cultures and Daily Life, voce «Maori», di J. Williams, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "masai",
+    "lang": "it",
+    "term": "Masai",
+    "kind": "popolo",
+    "forms": [
+      "Masai",
+      "masai"
+    ],
+    "text": "Altra grafia di Maasai: una federazione di sezioni tribali di pastori nomadi, ciascuna autonoma e con usanze proprie, che parlano il maa, una lingua paranilotica. Vivono su circa 100.000 km² tra il sud del Kenya, dove abita la maggior parte, e il nord della Tanzania. Secondo le loro tradizioni orali arrivarono da nord, probabilmente prima del 1800. Dopo un'epidemia del bestiame e una carestia negli anni Ottanta dell'Ottocento le sezioni si fecero guerra; la fermò l'intervento coloniale, che divise la regione tra britannici e tedeschi, oggi Kenya e Tanzania.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Maasai», di Paul Spencer, Gale (consultata su Encyclopedia.com)"
     ]
   },
   {

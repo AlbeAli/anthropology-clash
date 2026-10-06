@@ -4,6 +4,7 @@
   "title": "Il combattimento di galli",
   "concept": "rituale",
   "concept_label": "Rituale",
+  "glossary": ["bali"],
   "levels": {
     "neofita": {
       "hook": "Sei da poco in un posto dove nessuno ti considera: presente, salutato, mai coinvolto. Poi succede qualcosa che mette tutti nei guai insieme — una figura barbina, un controllo, una fuga — e tu scappi con loro invece di tirartene fuori. Il giorno dopo, per la prima volta, ti prendono in giro.",
