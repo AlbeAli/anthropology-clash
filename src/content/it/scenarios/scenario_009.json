@@ -4,6 +4,9 @@
   "title": "Sposare un fantasma",
   "concept": "parentela",
   "concept_label": "Parentela",
+  "glossary": [
+    "nuer"
+  ],
   "levels": {
     "neofita": {
       "hook": "In famiglia si dice che un nome non deve finire. C'è un parente morto giovane, e a ogni nascita qualcuno propone di dare quel nome. Ti sembra un gesto affettuoso e niente più, finché non ti accorgi che chi lo propone parla di un posto da riempire, non di un ricordo da tenere.",

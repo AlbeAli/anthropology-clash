@@ -90,6 +90,20 @@
     ]
   },
   {
+    "id": "nuer",
+    "lang": "it",
+    "term": "Nuer",
+    "kind": "popolo",
+    "forms": [
+      "Nuer",
+      "nuer"
+    ],
+    "text": "Popolo del Sudan meridionale, nella pianura alluvionale del Sudd lungo il Nilo Bianco; vivevano di bestiame e coltivazioni e nella stagione secca si spostavano verso i pascoli vicino ai fiumi. All'inizio del Novecento erano stimati in circa mezzo milione. Britannici ed egiziani conquistarono il Sudan nel 1898, ma la resistenza nuer durò fino alla fine degli anni Venti, quando la Royal Air Force bombardò i villaggi e gli invasori ne confiscarono il bestiame. Evans-Pritchard spiegò la loro organizzazione senza capi centrali con il concetto di lignaggio segmentario.",
+    "source": [
+      "Worldmark Encyclopedia of Cultures and Daily Life, voce «Nuer», rivista da M. Njoroge, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
     "id": "olo-ngadju",
     "lang": "it",
     "term": "Olo Ngadju",
@@ -97,6 +111,30 @@
     "text": "Popolo Dayak del Kalimantan Centrale, nel Borneo. Nelle fonti recenti il nome si scrive Ngaju e significa «a monte», in opposizione a ngawa, «a valle». Dalla valle del fiume Kahayan si sono estesi a ovest fino a quella del Seruyan e fino alla foce del Kapuas. Nel 1957, dopo una piccola guerriglia contro il governo centrale, ottennero nell'Indonesia indipendente una provincia propria, il Kalimantan Centrale; al censimento del 2000 vi erano 334.000 su 1,86 milioni di abitanti.",
     "source": [
       "Worldmark Encyclopedia of Cultures and Daily Life, voce «Ngaju Dayak», rivista da A. J. Abalahin, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "seneca",
+    "lang": "it",
+    "term": "Seneca",
+    "kind": "popolo",
+    "forms": [
+      "Seneca",
+      "seneca"
+    ],
+    "text": "Una delle nazioni fondatrici della Lega irochese, o Confederazione delle Cinque Nazioni, e la più occidentale: tra il lago Ontario, il lago Seneca, l'alto corso dell'Allegheny e del Susquehanna e il lago Erie. Nel Consiglio della Lega avevano otto dei cinquanta seggi ereditari di sachem. Alleati dei britannici nella rivoluzione americana, molti emigrarono poi in Canada; nel 1797 quelli rimasti nello Stato di New York dovettero cedere agli Stati Uniti tutte le terre tranne una riserva di 200.000 acri, in gran parte persa con un trattato nel 1838.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Seneca», Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "tiv",
+    "lang": "it",
+    "term": "Tiv",
+    "kind": "popolo",
+    "text": "Popolo della Nigeria che vive sulle due rive del fiume Benue, a circa 220 km dalla confluenza con il Niger. Tiv è il nome dell'antenato comune da cui tutti si dicono discendenti; in hausa sono chiamati Munshi. Parlano un'unica lingua, della famiglia Niger-Congo. Erano circa 800.000 nel 1950 e oltre un milione nel 1990. Gli inglesi entrarono nella regione da est nel 1906, nel sud solo nel 1911. Nel 1950 vivevano in gruppi di capanne da 12 a 120 persone, in cui l'83% degli uomini apparteneva al lignaggio patrilineare legato al luogo.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Tiv», di Paul Bohannan, Gale (consultata su Encyclopedia.com)"
     ]
   },
   {

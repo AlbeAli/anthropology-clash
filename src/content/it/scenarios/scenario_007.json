@@ -4,6 +4,10 @@
   "title": "L'eredità va al nipote",
   "concept": "parentela",
   "concept_label": "Parentela",
+  "glossary": [
+    "isole-trobriand",
+    "kula"
+  ],
   "levels": {
     "neofita": {
       "hook": "Tuo nonno decide di intestare la casa a un nipote mentre è ancora vivo, e in famiglia si storce il naso: c'è una regola non scritta su a chi tocca, e nessuno l'ha mai messa per iscritto. Lui dice che i suoi beni li dà a chi vuole. Gli altri dicono che non funziona così. Ti chiedi chi abbia ragione, e in base a che cosa.",

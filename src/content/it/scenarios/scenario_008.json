@@ -4,6 +4,9 @@
   "title": "Amleto tra i Tiv",
   "concept": "parentela",
   "concept_label": "Parentela",
+  "glossary": [
+    "tiv"
+  ],
   "levels": {
     "neofita": {
       "hook": "Racconti la trama di un film che ti sembra chiarissima, e chi ascolta la capisce in un altro modo: non gli manca un dettaglio, gli sembra che il protagonista si comporti in modo assurdo. Provi a spiegare, e ogni spiegazione ne chiede un'altra. A un certo punto non sai più se stai raccontando la storia o le tue regole.",
