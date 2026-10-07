@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, loadAuthors } from "../engine/content";
 import { DEFAULT_LANG } from "../i18n";
 import type { AuthorProfile, AuthorsData } from "../engine/authors";
 import AuthorLines, { schoolColor } from "../components/AuthorLines";
+import AuthorTimeline from "../components/AuthorTimeline";
 
 export default function Authors() {
   const { t } = useTranslation();
   const { hash } = useLocation();
+  const [search] = useSearchParams();
   const [data, setData] = useState<AuthorsData | null>(null);
   const scenarios = getCatalog(DEFAULT_LANG);
   const current = decodeURIComponent(hash.slice(1));
@@ -58,7 +60,11 @@ export default function Authors() {
           >
             {t("authors.timeline")}
           </h2>
-          <AuthorLines authors={data!.authors} schools={data!.schools} life={life} />
+          {search.get("vista") === "orizzontale" ? (
+            <AuthorTimeline authors={data!.authors} schools={data!.schools} life={life} />
+          ) : (
+            <AuthorLines authors={data!.authors} schools={data!.schools} life={life} />
+          )}
         </section>
       )}
 

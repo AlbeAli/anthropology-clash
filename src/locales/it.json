@@ -153,6 +153,8 @@
     "order": "Ogni fermata è un decennio di nascita; il colore indica il filone, il nome porta alla scheda.",
     "decade": "{{decade}}",
     "stop": "{{name}}, {{life}}",
+    "earlier": "Indietro nel tempo",
+    "later": "Avanti nel tempo",
     "life": "{{born}}-{{died}}",
     "lifeOpen": "n. {{born}}",
     "works": "Opere citate",
