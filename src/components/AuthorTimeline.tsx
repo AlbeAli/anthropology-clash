@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { AuthorProfile, AuthorsData } from "../engine/authors";
-import { schoolColor } from "./AuthorLines";
+import { schoolColor } from "./palette";
 
 type Stop = { a: AuthorProfile; at: number };
 

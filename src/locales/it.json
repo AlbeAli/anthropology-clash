@@ -150,8 +150,6 @@
     "title": "Autori",
     "lead": "Autrici e autori delle opere da cui nascono gli scenari, nel tempo e per filone di studio.",
     "timeline": "Linea del tempo",
-    "order": "Ogni fermata è un decennio di nascita; il colore indica il filone, il nome porta alla scheda.",
-    "decade": "{{decade}}",
     "stop": "{{name}}, {{life}}",
     "earlier": "Indietro nel tempo",
     "later": "Avanti nel tempo",
