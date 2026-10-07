@@ -21,7 +21,7 @@ test("la pagina Autori mostra la linea del tempo e una scheda per autore", async
   await expect(page.getByText(/^Font[ei]:$/)).toHaveCount(authors.length);
 
   const last = authors.at(-1)!;
-  await page.getByRole("link", { name: last.name, exact: true }).click();
+  await page.getByRole("link", { name: new RegExp(`^${last.name}, `) }).click();
   await expect(page).toHaveURL(`/autori#${last.id}`);
   await expect(page.getByRole("heading", { level: 3, name: last.name })).toBeInViewport();
   await expect(page.locator(`li#${last.id}`)).not.toHaveCSS("background-color", "rgba(0, 0, 0, 0)");

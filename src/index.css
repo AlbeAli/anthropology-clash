@@ -192,20 +192,6 @@
       transform 0.25s var(--ease-out-expo),
       background 0.3s;
   }
-  .metro-tick {
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 18px;
-    height: 6px;
-    border-radius: 0 3px 3px 0;
-    background: var(--tc, var(--ink));
-    transition: width 0.25s var(--ease-out-expo);
-  }
-  .metro-stop:hover .metro-tick,
-  .metro-stop:focus-within .metro-tick {
-    width: 26px;
-  }
   .metro-year {
     position: absolute;
     left: 0;
