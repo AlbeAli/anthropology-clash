@@ -1,0 +1,80 @@
+{
+  "id": "scenario_023",
+  "lang": "it",
+  "title": "Il granaio che cade",
+  "concept": "relativismo",
+  "concept_label": "Relativismo ed etnocentrismo",
+  "glossary": ["azande"],
+  "levels": {
+    "neofita": {
+      "hook": "Un cornicione si stacca proprio mentre passi. Sai perché i cornicioni si staccano: acqua, gelo, vecchiaia. Quello che non ti torna è un'altra cosa: perché è successo a te, e proprio adesso?",
+      "setup": "Sudan anglo-egiziano, fine degli anni Venti. Sei un ricercatore britannico ospite in una fattoria degli Azande. Il granaio è una struttura pesante di travi e argilla, e nelle ore calde è anche il posto dove ci si siede all'ombra a chiacchierare, giocare o lavorare. Un vecchio granaio cede e ferisce chi c'è seduto sotto. Tu sai perché: le termiti hanno mangiato i sostegni. Lo sanno anche i presenti. Resta una domanda: perché è crollato proprio adesso, e proprio su di loro? Cosa fai?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Spieghi che è solo una coincidenza: le termiti da una parte, il caldo dall'altra"
+        },
+        {
+          "id": "b",
+          "text": "Chiedi che spiegazione danno loro del fatto che fosse proprio quel momento"
+        }
+      ],
+      "feedback": {
+        "a": "È la risposta che darebbe chiunque abbia la tua formazione. Evans-Pritchard (1937) la mette in chiaro: «Diciamo che il granaio è crollato perché le termiti ne avevano mangiato i sostegni», e che le persone erano sedute lì per il caldo. «Alla nostra mente l'unico rapporto tra questi due fatti, causati in modo indipendente, è la loro coincidenza nel tempo e nello spazio». Ma per gli Azande la domanda resta aperta: «La filosofia zande può fornire l'anello mancante». Se rispondi «coincidenza», dai una risposta corretta a una domanda che loro non stanno facendo.",
+        "b": "Fai la domanda che fa la differenza. Evans-Pritchard (1937): lo Zande sa che le termiti avevano minato i sostegni e che le persone erano sotto il granaio per ripararsi dal caldo e dal sole, «ma sa inoltre perché questi due eventi si siano verificati nello stesso identico momento e luogo. È dovuto all'azione della stregoneria». Senza stregoneria, spiega, o la gente sarebbe stata seduta lì e il granaio non sarebbe caduto, o sarebbe caduto senza nessuno sotto. «La stregoneria spiega la coincidenza dei due fatti». Non sostituisce le termiti: sta accanto a loro, come seconda causa."
+      },
+      "source": "Evans-Pritchard, Witchcraft, Oracles and Magic among the Azande, 1937, cap. IV"
+    },
+    "studente": {
+      "hook": "Dopo un incidente cerchi la causa: una perizia dice cosa si è rotto e come. Ma la domanda che ti torna di notte è un'altra: perché a me, perché proprio quel giorno? Nessuna perizia risponde a quella.",
+      "setup": "Sei Evans-Pritchard dopo la ricerca tra gli Azande del Sudan (1926-1930) e scrivi il capitolo IV del libro che uscirà nel 1937. Nei tuoi appunti c'è il granaio che cede: vecchio, con i sostegni mangiati dalle termiti, e sotto persone sedute all'ombra nell'ora calda, a chiacchierare, a giocare o a lavorare. Tu sai che gli Azande conoscono le termiti. Ma tu stesso ti chiedi se la loro credenza nella stregoneria non sia una credenza nella causazione mistica di fenomeni ed eventi, con l'esclusione di ogni causa naturale. Devi dire cosa fa, per loro, la stregoneria in questa storia, senza ridurla a ignoranza e senza farne la nostra scienza. Come la formuli?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "È ignoranza: gli Azande non conoscono le cause naturali e le sostituiscono con la stregoneria"
+        },
+        {
+          "id": "b",
+          "text": "È la causa di ogni cosa: per gli Azande tutto ciò che accade è prodotto dalla stregoneria"
+        },
+        {
+          "id": "c",
+          "text": "Spiega l'incontro: le cause naturali spiegano il crollo e la presenza delle persone, la stregoneria il fatto che coincidano"
+        },
+        {
+          "id": "d",
+          "text": "È una scusa: serve a scaricare su altri la responsabilità di chi sbaglia"
+        }
+      ],
+      "feedback": {
+        "a": "I tuoi appunti la contraddicono. Evans-Pritchard (1937, p. 70): «Lo Zande sa che i sostegni erano stati minati dalle termiti e che le persone sedevano sotto il granaio per ripararsi dal caldo e dal sole». Le cause naturali ci sono, e le conoscono. A p. 74 la stregoneria è la «seconda lancia», come nella caccia: se un uomo è ucciso da un elefante, «l'elefante è la prima lancia, la stregoneria la seconda, e insieme l'hanno ucciso». Due cause, non una al posto dell'altra. Alla domanda che ti sei posto a p. 65, il capitolo risponde mostrando le cause naturali che gli Azande riconoscono.",
+        "b": "Il capitolo lo esclude: «daremmo un resoconto falso della filosofia zande se dicessimo che credono che la stregoneria sia la sola causa dei fenomeni» (p. 68). L'idea zande afferma soltanto che la stregoneria «porta un uomo in rapporto con eventi in modo tale che subisca un danno». Gli Azande, aggiunge a p. 74, riconoscono «una pluralità di cause» e la situazione sociale indica quella pertinente: per questo la dottrina non spiega ogni insuccesso e ogni disgrazia. Non tutto è stregoneria: l'idea riguarda gli eventi che, come il crollo del granaio, fanno del male a qualcuno.",
+        "c": "È la formulazione del capitolo. Alla nostra mente, scrive Evans-Pritchard (1937, p. 70), i due fatti, causati in modo indipendente, hanno come «unico rapporto» la coincidenza nel tempo e nello spazio, e non spieghiamo perché «le due catene di causazione» si siano incrociate: «la filosofia zande può fornire l'anello mancante». Lo Zande sa delle termiti e del caldo, ma sa anche perché i due fatti coincidono: «È dovuto all'azione della stregoneria». Senza stregoneria non ci sarebbe stato l'incontro. A p. 74 la metafora della caccia lo dice: prima lancia e seconda lancia, insieme.",
+        "d": "Nel capitolo il caso è l'opposto. Evans-Pritchard (1937, p. 74): la dottrina non vale quando la situazione sociale chiede un giudizio di buon senso e non mistico. Se dici una bugia, commetti adulterio, rubi o inganni il tuo principe e vieni scoperto, «non puoi sfuggire alla punizione dicendo che eri stregato»: «La stregoneria non fa dire le bugie». Una sola volta ha sentito uno Zande appellarsi alla stregoneria dopo una colpa, quando mentì a lui, e anche allora tutti i presenti «risero di lui». Lo dice già il titolo del capitolo: la stregoneria spiega gli eventi sfortunati."
+      },
+      "source": "Evans-Pritchard, Witchcraft, Oracles and Magic among the Azande, Clarendon Press, Oxford, 1937, cap. IV 'The Notion of Witchcraft Explains Unfortunate Events', pp. 65, 68-70 e 74",
+      "deepen": [
+        {
+          "ref": "Evans-Pritchard, Witchcraft, Oracles and Magic among the Azande, Clarendon Press, 1937, cap. IV",
+          "why": "Il capitolo del granaio e della seconda lancia: la stregoneria come spiegazione della coincidenza, accanto alle cause naturali e dentro la situazione sociale",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Middleton, voce «Evans-Pritchard, E. E.», in Encyclopedia of Religion",
+          "why": "Dove sta il libro nell'opera di Evans-Pritchard: le domande di Lévy-Bruhl su pensiero primitivo e pensiero scientifico, e la tesi che le idee zande sono razionali e sistematiche",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Voce «Azande», in Worldmark Encyclopedia of Cultures and Daily Life",
+          "why": "Chi sono gli Azande tra Sudan, Congo e Repubblica Centrafricana, dai regni distrutti nell'epoca coloniale ai cambiamenti del Novecento",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  },
+  "discuss": [
+    "Dopo un incidente, che cosa ti interessa di più: capire come è successo o perché è successo a te, proprio in quel momento? Le due domande hanno la stessa risposta?",
+    "Il capitolo accosta cause naturali e stregoneria come la prima e la seconda lancia di una caccia. In quali situazioni della tua vita usi due spiegazioni insieme per lo stesso evento?",
+    "Per Evans-Pritchard davanti a una bugia o a un furto non ci si difende dicendo di essere stati stregati. Quali spiegazioni, nella tua cerchia, valgono davanti a una disgrazia e non valgono davanti a una colpa?"
+  ]
+}
