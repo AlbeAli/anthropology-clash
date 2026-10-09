@@ -1,8 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import type { Lang, Level, Scenario } from "../schema/scenario.schema";
+import type { GlossaryEntry, Lang, Level, Scenario } from "../schema/scenario.schema";
 import { prefersReducedMotion } from "../engine/motion";
+import { markedIds } from "../engine/glossary";
 import { legTag } from "./metro/legTag";
+import GlossaryText, { useGlossary } from "./GlossaryText";
 import SourceText from "./SourceText";
 
 type Props = {
@@ -10,14 +12,33 @@ type Props = {
   lang: Lang;
   level: Level;
   choiceId: string;
+  glossary?: string[];
 };
 
-export default function FeedbackPanel({ content, lang, level, choiceId }: Props) {
+export default function FeedbackPanel({ content, lang, level, choiceId, glossary }: Props) {
   const { t } = useTranslation();
   const heading = useRef<HTMLHeadingElement>(null);
   const number = (id: string) => content.choices.findIndex((c) => c.id === id) + 1;
   const chosen = content.choices.find((c) => c.id === choiceId);
   const others = content.choices.filter((c) => c.id !== choiceId);
+  const entries = useGlossary(lang, glossary);
+  const marks = useMemo(() => {
+    const seen = markedIds(content.setup, entries);
+    const byChoice = new Map<string, GlossaryEntry[]>();
+    const order = [...content.choices].sort(
+      (a, b) => Number(b.id === choiceId) - Number(a.id === choiceId),
+    );
+    for (const c of order) {
+      const fresh = entries.filter((e) => !seen.has(e.id));
+      const hit = markedIds(content.feedback[c.id], fresh);
+      byChoice.set(
+        c.id,
+        fresh.filter((e) => hit.has(e.id)),
+      );
+      hit.forEach((id) => seen.add(id));
+    }
+    return byChoice;
+  }, [content, choiceId, entries]);
 
   useEffect(() => {
     heading.current?.focus({ preventScroll: true });
@@ -41,7 +62,11 @@ export default function FeedbackPanel({ content, lang, level, choiceId }: Props)
           </h2>
           <article className="leg-body rounded-xl border-[3px] border-ink p-5 sm:p-6">
             <Header n={number(chosen.id)} text={chosen.text} filled />
-            <p className="text-lg leading-relaxed text-pretty">{content.feedback[chosen.id]}</p>
+            <GlossaryText
+              text={content.feedback[chosen.id]}
+              entries={marks.get(chosen.id) ?? []}
+              className="text-lg leading-relaxed text-pretty"
+            />
           </article>
         </section>
       )}
@@ -53,7 +78,11 @@ export default function FeedbackPanel({ content, lang, level, choiceId }: Props)
           </h2>
           <article className="leg-body rounded-xl border-[3px] border-line p-5 sm:p-6">
             <Header n={number(c.id)} text={c.text} />
-            <p className="leading-relaxed text-pretty">{content.feedback[c.id]}</p>
+            <GlossaryText
+              text={content.feedback[c.id]}
+              entries={marks.get(c.id) ?? []}
+              className="leading-relaxed text-pretty"
+            />
           </article>
         </section>
       ))}

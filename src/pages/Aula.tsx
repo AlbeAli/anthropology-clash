@@ -10,6 +10,8 @@ import { DEFAULT_LANG } from "../i18n";
 import { useAppState } from "../state/AppState";
 import LevelToggle from "../components/LevelToggle";
 import LineBullet from "../components/metro/LineBullet";
+import ContextNotes from "../components/ContextNotes";
+import { useGlossary } from "../components/GlossaryText";
 import NotFound from "./NotFound";
 
 const primary =
@@ -201,6 +203,8 @@ function AulaShow({ scenario }: { scenario: Scenario }) {
 function Slide({ scenario, level, step }: { scenario: Scenario; level: Level; step: AulaStep }) {
   const { t } = useTranslation();
   const content = scenario.levels[level];
+  const glossary = useGlossary(scenario.lang, scenario.glossary);
+  const [notes, setNotes] = useState(false);
   const big = "max-w-[40ch] text-2xl leading-snug text-pretty sm:text-3xl lg:text-4xl";
 
   switch (step.kind) {
@@ -224,6 +228,28 @@ function Slide({ scenario, level, step }: { scenario: Scenario; level: Level; st
         <div>
           <h2 className={kicker}>{t("scenario.legs.field")}</h2>
           <p className={big}>{content.setup}</p>
+          {glossary.length > 0 && (
+            <div className="mt-8">
+              <button
+                type="button"
+                aria-expanded={notes}
+                aria-controls="aula-notes"
+                onClick={() => setNotes(!notes)}
+                className={outline}
+              >
+                {t("glossary.notesCount", { count: glossary.length })}
+                <span aria-hidden="true">{notes ? "▴" : "▾"}</span>
+              </button>
+              <div id="aula-notes">
+                {notes && (
+                  <ContextNotes
+                    entries={glossary}
+                    className="mt-5 max-w-[70ch] rounded-lg border-l-8 border-(--lc) bg-surface p-5 text-lg"
+                  />
+                )}
+              </div>
+            </div>
+          )}
         </div>
       );
     case "choices":

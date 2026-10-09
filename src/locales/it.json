@@ -144,7 +144,9 @@
     "source_one": "Fonte",
     "source_other": "Fonti",
     "usedIn": "Negli scenari",
-    "all": "Tutte le voci nel glossario"
+    "all": "Tutte le voci nel glossario",
+    "notes": "Note di contesto",
+    "notesCount": "Note di contesto ({{count}})"
   },
   "authors": {
     "title": "Autori",

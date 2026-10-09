@@ -172,6 +172,7 @@ function ScenarioPlay({
               lang={scenario.lang}
               level={level}
               choiceId={choiceId}
+              glossary={scenario.glossary}
             />
             {(next || trip) && (
               <section className="leg" data-main="" aria-labelledby="arrival-heading">
