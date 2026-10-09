@@ -12,6 +12,11 @@ declare module "virtual:catalog" {
   export default catalog;
 }
 
+declare module "virtual:author-ids" {
+  const ids: Record<string, Record<string, string>>;
+  export default ids;
+}
+
 declare module "virtual:authors" {
   const authors: Record<string, import("./engine/authors").AuthorsData>;
   export default authors;

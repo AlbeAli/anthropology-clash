@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { loadAuthors } from "../engine/content";
+import { loadAuthorIds } from "../engine/content";
 import { splitSource } from "../engine/bibliography";
 import type { Lang } from "../schema/scenario.schema";
 
@@ -9,8 +9,8 @@ function useAuthorIds(lang: Lang): Map<string, string> {
 
   useEffect(() => {
     let live = true;
-    loadAuthors(lang)
-      .then((data) => live && setIds(new Map(data.authors.map((a) => [a.surname, a.id]))))
+    loadAuthorIds(lang)
+      .then((map) => live && setIds(map))
       .catch(() => {});
     return () => {
       live = false;
