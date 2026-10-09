@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { GlossaryEntry } from "../schema/scenario.schema";
-import { markedIds, markTerms } from "./glossary";
+import { freshTerms, markedIds, markTerms } from "./glossary";
 
 const entry = (id: string, term: string, forms?: string[]): GlossaryEntry => ({
   id,
@@ -48,5 +48,26 @@ describe("markTerms", () => {
 
   it("senza voci restituisce il testo intero", () => {
     expect(markTerms("Testo.", [])).toEqual(["Testo."]);
+  });
+});
+
+describe("freshTerms", () => {
+  const kula = entry("kula", "Kula");
+  const texts = { a: "Il Kula e i Dayak.", b: "Ancora il Kula.", c: "Niente." };
+
+  it("lascia fuori i termini già segnati nel setup", () => {
+    const marks = freshTerms("Nel setup i Dayak.", texts, ["a", "b", "c"], [dayak, kula]);
+    expect(marks.get("a")).toEqual([kula]);
+  });
+
+  it("segna ogni termine una volta sola, nel primo riscontro in cui compare", () => {
+    const marks = freshTerms("Setup.", texts, ["b", "a", "c"], [dayak, kula]);
+    expect(marks.get("b")).toEqual([kula]);
+    expect(marks.get("a")).toEqual([dayak]);
+    expect(marks.get("c")).toEqual([]);
+  });
+
+  it("senza voci non segna nulla", () => {
+    expect(freshTerms("Setup.", texts, ["a"], []).get("a")).toEqual([]);
   });
 });

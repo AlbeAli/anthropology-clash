@@ -11,13 +11,14 @@ const itemClass = (isActive: boolean) =>
   (isActive ? "bg-bar-ink text-bar" : "text-bar-ink hover:bg-white/15");
 const navClass = ({ isActive }: { isActive: boolean }) => itemClass(isActive);
 const wideClass = (state: { isActive: boolean }) => navClass(state) + " max-sm:hidden";
+const xlClass = (state: { isActive: boolean }) => navClass(state) + " max-xl:hidden";
 
 const more = [
-  { to: "/concetti", key: "nav.concepts" },
-  { to: "/percorsi", key: "nav.itineraries" },
-  { to: "/metodo", key: "nav.methodShort" },
-  { to: "/glossario", key: "nav.glossary" },
-  { to: "/autori", key: "nav.authors" },
+  { to: "/concetti", key: "nav.concepts", phoneOnly: true },
+  { to: "/percorsi", key: "nav.itineraries", phoneOnly: true },
+  { to: "/metodo", key: "nav.methodShort", phoneOnly: true },
+  { to: "/glossario", key: "nav.glossary", phoneOnly: false },
+  { to: "/autori", key: "nav.authors", phoneOnly: false },
 ] as const;
 
 function MoreMenu() {
@@ -50,7 +51,7 @@ function MoreMenu() {
   return (
     <div
       ref={wrap}
-      className="relative sm:hidden"
+      className="relative sm:max-lg:hidden xl:hidden"
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setOpenAt(null);
       }}
@@ -78,8 +79,8 @@ function MoreMenu() {
           onClick={() => setOpenAt(null)}
           className="absolute top-full right-0 z-50 mt-1 grid min-w-44 gap-0.5 rounded-md bg-bar p-1 shadow-lg ring-1 ring-white/15"
         >
-          {more.map(({ to, key }) => (
-            <li key={to}>
+          {more.map(({ to, key, phoneOnly }) => (
+            <li key={to} className={phoneOnly ? "sm:hidden" : undefined}>
               <NavLink to={to} className={(s) => navClass(s) + " w-full"}>
                 {t(key)}
               </NavLink>
@@ -135,6 +136,12 @@ export default function AppBar() {
           </NavLink>
           <NavLink to="/metodo" className={wideClass}>
             {t("nav.methodShort")}
+          </NavLink>
+          <NavLink to="/glossario" className={xlClass}>
+            {t("nav.glossary")}
+          </NavLink>
+          <NavLink to="/autori" className={xlClass}>
+            {t("nav.authors")}
           </NavLink>
           <MoreMenu />
           <StreakBadge count={streak} className="ml-auto sm:hidden" />

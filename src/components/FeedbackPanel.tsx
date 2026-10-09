@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import type { GlossaryEntry, Lang, Level, Scenario } from "../schema/scenario.schema";
+import type { Lang, Level, Scenario } from "../schema/scenario.schema";
 import { prefersReducedMotion } from "../engine/motion";
-import { markedIds } from "../engine/glossary";
+import { freshTerms } from "../engine/glossary";
 import { legTag } from "./metro/legTag";
 import GlossaryText, { useGlossary } from "./GlossaryText";
 import SourceText from "./SourceText";
@@ -23,22 +23,9 @@ export default function FeedbackPanel({ content, lang, level, choiceId, glossary
   const others = content.choices.filter((c) => c.id !== choiceId);
   const entries = useGlossary(lang, glossary);
   const marks = useMemo(() => {
-    const seen = markedIds(content.setup, entries);
-    const byChoice = new Map<string, GlossaryEntry[]>();
-    const order = [...content.choices].sort(
-      (a, b) => Number(b.id === choiceId) - Number(a.id === choiceId),
-    );
-    for (const c of order) {
-      const fresh = entries.filter((e) => !seen.has(e.id));
-      const hit = markedIds(content.feedback[c.id], fresh);
-      byChoice.set(
-        c.id,
-        fresh.filter((e) => hit.has(e.id)),
-      );
-      hit.forEach((id) => seen.add(id));
-    }
-    return byChoice;
-  }, [content, choiceId, entries]);
+    const order = [choiceId, ...others.map((c) => c.id)];
+    return freshTerms(content.setup, content.feedback, order, entries);
+  }, [content, choiceId, others, entries]);
 
   useEffect(() => {
     heading.current?.focus({ preventScroll: true });

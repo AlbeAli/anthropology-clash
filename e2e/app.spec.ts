@@ -91,7 +91,7 @@ test("da 640 px la barra mostra tutte le voci e nessun menu Altro", async ({ pag
   await fresh(page);
   const nav = page.getByRole("navigation", { name: "Navigazione" });
   await expect(nav.getByRole("link")).toHaveText(
-    ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo"],
+    ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo", "Glossario", "Autori"],
     { useInnerText: true },
   );
   await expect(nav.getByRole("button", { name: "Altro" })).toBeHidden();
@@ -269,4 +269,24 @@ test.describe("tema", () => {
     await fresh(page);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   });
+});
+
+test("tra 1024 e 1279 px la barra sta su una riga e Glossario e Autori sono nel menu Altro", async ({
+  page,
+}) => {
+  test.skip(isPhone(page), "il caso intermedio si prova solo con la finestra da desktop");
+  await page.setViewportSize({ width: 1100, height: 800 });
+  await fresh(page);
+  const nav = page.getByRole("navigation", { name: "Navigazione" });
+  const more = nav.getByRole("button", { name: "Altro" });
+  await expect(nav.getByRole("link")).toHaveText(
+    ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo"],
+    { useInnerText: true },
+  );
+  expect((await page.getByRole("banner").boundingBox())!.height).toBeLessThan(80);
+  await more.click();
+  await expect(nav.getByRole("link")).toHaveText(
+    ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo", "Glossario", "Autori"],
+    { useInnerText: true },
+  );
 });
