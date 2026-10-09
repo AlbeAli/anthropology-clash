@@ -43,7 +43,7 @@ test("la pagina Autori si apre dal piè di pagina e, sul telefono, dal menu Altr
 }) => {
   await fresh(page);
   const width = page.viewportSize()?.width ?? 1280;
-  if (width < 640) {
+  if (width < 768) {
     const nav = page.getByRole("navigation", { name: "Navigazione" });
     await nav.getByRole("button", { name: "Altro" }).click();
     await nav.getByRole("link", { name: "Autori" }).click();

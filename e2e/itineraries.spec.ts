@@ -25,7 +25,7 @@ test("un percorso curato si apre dalla barra e guida da una fermata all'altra fi
 
   await fresh(page);
   const nav = page.getByRole("navigation", { name: "Navigazione" });
-  if ((page.viewportSize()?.width ?? 1280) < 640) {
+  if ((page.viewportSize()?.width ?? 1280) < 768) {
     await nav.getByRole("button", { name: "Altro" }).click();
   }
   await nav.getByRole("link", { name: "Percorsi" }).click();

@@ -52,7 +52,7 @@ test("il glossario si apre dal piè di pagina e, sul telefono, dal menu Altro e 
   page,
 }) => {
   await fresh(page);
-  if ((page.viewportSize()?.width ?? 1280) < 640) {
+  if ((page.viewportSize()?.width ?? 1280) < 768) {
     const nav = page.getByRole("navigation", { name: "Navigazione" });
     await nav.getByRole("button", { name: "Altro" }).click();
     await nav.getByRole("link", { name: "Glossario" }).click();
