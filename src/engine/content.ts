@@ -32,6 +32,10 @@ export function loadAuthors(lang: Lang): Promise<AuthorsData> {
   return import("virtual:authors").then((m) => m.default[lang] ?? EMPTY_AUTHORS);
 }
 
+export function loadAuthorIds(lang: Lang): Promise<Map<string, string>> {
+  return import("virtual:author-ids").then((m) => new Map(Object.entries(m.default[lang] ?? {})));
+}
+
 const catalogByLang = new Map<string, CatalogEntry[]>();
 for (const entry of catalog) {
   const list = catalogByLang.get(entry.lang) ?? [];

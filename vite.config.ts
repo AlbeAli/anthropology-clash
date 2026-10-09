@@ -6,9 +6,11 @@ import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { buildAuthors, type AuthorsData } from "./src/engine/authors";
+import type { AuthorsFile } from "./src/schema/scenario.schema";
 
 const CATALOG = "virtual:catalog";
 const AUTHORS = "virtual:authors";
+const AUTHOR_IDS = "virtual:author-ids";
 const contentDir = fileURLToPath(new URL("./src/content", import.meta.url));
 
 function scenarioCatalog(): Plugin {
@@ -50,10 +52,22 @@ function scenarioCatalog(): Plugin {
 
 function authorProfiles(): Plugin {
   const resolved = "\0" + AUTHORS;
+  const resolvedIds = "\0" + AUTHOR_IDS;
   return {
     name: "author-profiles",
-    resolveId: (id) => (id === AUTHORS ? resolved : undefined),
+    resolveId: (id) => (id === AUTHORS ? resolved : id === AUTHOR_IDS ? resolvedIds : undefined),
     load(id) {
+      if (id === resolvedIds) {
+        const idsByLang: Record<string, Record<string, string>> = {};
+        for (const lang of readdirSync(contentDir)) {
+          const path = join(contentDir, lang, "authors.json");
+          if (!existsSync(path)) continue;
+          this.addWatchFile(path);
+          const file: AuthorsFile = JSON.parse(readFileSync(path, "utf8"));
+          idsByLang[lang] = Object.fromEntries(file.authors.map((a) => [a.surname, a.id]));
+        }
+        return `export default ${JSON.stringify(idsByLang)};`;
+      }
       if (id !== resolved) return;
       const byLang: Record<string, AuthorsData> = {};
       for (const lang of readdirSync(contentDir)) {
