@@ -2,7 +2,7 @@ import type { CatalogEntry } from "./content";
 
 const DAY_MS = 86_400_000;
 
-export function dayNumber(date: Date): number {
+function dayNumber(date: Date): number {
   return Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / DAY_MS);
 }
 

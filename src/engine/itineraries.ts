@@ -23,7 +23,7 @@ export function getItineraries(lang: Lang): Itinerary[] {
     .sort((a, b) => a.title.localeCompare(b.title, lang));
 }
 
-export function getItinerary(lang: Lang, id: string): Itinerary | undefined {
+function getItinerary(lang: Lang, id: string): Itinerary | undefined {
   const it = itineraryFiles[`../content/${lang}/itineraries/${id}.json`];
   return it?.lang === lang ? it : undefined;
 }

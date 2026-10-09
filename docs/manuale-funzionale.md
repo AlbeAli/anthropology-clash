@@ -828,6 +828,8 @@ Misure, gzip, rispetto a `main`: pagina dello scenario da 6,14 a 4,97 kB (il com
 
 Rinviato: dati del glossario divisi per scenario. Tutte le voci stanno in un solo file; da rivalutare verso 30 fermate. Il file pesa 6,45 kB gzip e si carica solo negli scenari con note.
 
+Pulizia del codice (2026-10-09, branch `pulizia`): analisi con `knip` (lanciato una volta senza aggiungerlo al progetto), chiavi di testo e classi CSS verificate con due script a perdere. Trovato e tolto: la funzione `analyticsEnabled`, mai usata; la chiave `app.tagline`, mai letta; la classe `.metro-year`, rimasta dalla linea del tempo verticale; l'`export` di otto simboli usati solo nel proprio file. Nessun falso allarme da correggere: i due «file inutilizzati» di `knip` sono lo script dell'hook e la funzione di cancellazione dell'account, che partono fuori da Vite. In `FeedbackPanel` il `useMemo` delle voci si ricalcolava a ogni disegno (dipendeva da un array ricreato) e l'elenco vuoto era un array nuovo a ogni disegno: ora la dipendenza è stabile. Peso totale, JavaScript e CSS in gzip: da 332.728 a 332.641 byte (-87), cioè quasi nulla: il codice era già pulito. Test 100, end-to-end 121 verdi.
+
 ### 16.21 M17 — autori e linea del tempo (aperta 2026-10-06, chiusa 2026-10-09)
 
 Richiesta dell'autore, 2026-10-06: una nota sugli autori citati, con una biografia minima, una visione diacronica e i filoni di studio. Valutazione: gli scenari citano 19 autori principali, dal 1871 al 1985, di cui lo studente vede solo cognome e anno. Scelta: una pagina a sé, `/autori`, non il glossario, che spiega popoli, luoghi e pratiche dello scenario; la linea del tempo ha bisogno di spazio proprio. M17 si apre con M16 ancora in revisione.

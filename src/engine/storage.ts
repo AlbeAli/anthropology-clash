@@ -1,7 +1,7 @@
 import type { ConceptId, Lang, Level } from "../schema/scenario.schema";
 
 export const STORAGE_KEY = "anthropology-clash.v1";
-export const STORAGE_VERSION = 1;
+const STORAGE_VERSION = 1;
 
 export type Theme = "light" | "dark";
 

@@ -4,7 +4,7 @@ export const Lang = z.enum(["it", "en"]);
 export const Level = z.enum(["neofita", "studente"]);
 export const ConceptId = z.enum(["reciprocita", "parentela", "rituale", "relativismo", "consumo"]);
 
-export const ScenarioId = z.string().regex(/^scenario_\d{3}$/);
+const ScenarioId = z.string().regex(/^scenario_\d{3}$/);
 const Slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 
 const DiscussQuestion = z
