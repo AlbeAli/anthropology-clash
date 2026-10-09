@@ -7,6 +7,8 @@ import { stopNumber } from "../engine/lines";
 import { DEFAULT_LANG } from "../i18n";
 import { useAppState } from "../state/AppState";
 import LevelToggle from "../components/LevelToggle";
+import ContextNotes from "../components/ContextNotes";
+import { useGlossary } from "../components/GlossaryText";
 import NotFound from "./NotFound";
 
 export default function Sheet() {
@@ -29,6 +31,7 @@ function SheetPage({ scenario }: { scenario: Scenario }) {
   const { t } = useTranslation();
   const { level, setLevel } = useAppState();
   const content = scenario.levels[level];
+  const glossary = useGlossary(scenario.lang, scenario.glossary);
   const h2 = "mb-2 font-display text-sm font-extrabold tracking-wider text-ink-soft uppercase";
 
   return (
@@ -101,6 +104,12 @@ function SheetPage({ scenario }: { scenario: Scenario }) {
         <h2 className={h2}>{t("scenario.source")}</h2>
         <p className="text-[15px] leading-relaxed">{content.source}</p>
       </section>
+      {glossary.length > 0 && (
+        <section className="mb-5">
+          <h2 className={h2}>{t("glossary.notes")}</h2>
+          <ContextNotes entries={glossary} className="text-[15px]" />
+        </section>
+      )}
       {scenario.discuss && (
         <section className="sheet-block mb-5">
           <h2 className={h2}>{t("aula.discuss")}</h2>

@@ -38,6 +38,26 @@ export function markTerms(text: string, entries: GlossaryEntry[]): Segment[] {
   return segments;
 }
 
+export function freshTerms(
+  setup: string,
+  texts: Record<string, string>,
+  order: string[],
+  entries: GlossaryEntry[],
+): Map<string, GlossaryEntry[]> {
+  const seen = markedIds(setup, entries);
+  const byKey = new Map<string, GlossaryEntry[]>();
+  for (const key of order) {
+    const fresh = entries.filter((e) => !seen.has(e.id));
+    const hit = markedIds(texts[key], fresh);
+    byKey.set(
+      key,
+      fresh.filter((e) => hit.has(e.id)),
+    );
+    hit.forEach((id) => seen.add(id));
+  }
+  return byKey;
+}
+
 export function markedIds(text: string, entries: GlossaryEntry[]): Set<string> {
   return new Set(markTerms(text, entries).flatMap((s) => (typeof s === "string" ? [] : [s.id])));
 }
