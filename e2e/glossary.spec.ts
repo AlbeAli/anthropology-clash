@@ -48,11 +48,17 @@ test("un termine del setup apre la sua nota di contesto, Esc la chiude e la nota
   await expect(page).toHaveURL(`/s/${scenario.id}`);
 });
 
-test("il glossario si apre dal piè di pagina e mostra tutte le voci con la fonte", async ({
+test("il glossario si apre dal piè di pagina e, sul telefono, dal menu Altro e mostra tutte le voci con la fonte", async ({
   page,
 }) => {
   await fresh(page);
-  await page.getByRole("contentinfo").getByRole("link", { name: "Glossario" }).click();
+  if ((page.viewportSize()?.width ?? 1280) < 640) {
+    const nav = page.getByRole("navigation", { name: "Navigazione" });
+    await nav.getByRole("button", { name: "Altro" }).click();
+    await nav.getByRole("link", { name: "Glossario" }).click();
+  } else {
+    await page.getByRole("contentinfo").getByRole("link", { name: "Glossario" }).click();
+  }
   await expect(page).toHaveTitle(/^Glossario · /);
   await expect(page.getByRole("heading", { level: 3 })).toHaveCount(glossary.length);
   await expect(page.getByText(/^Font[ei]:$/)).toHaveCount(glossary.length);

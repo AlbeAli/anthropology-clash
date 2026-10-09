@@ -34,7 +34,7 @@ test("la Home mostra tutte le linee e tutte le fermate", async ({ page }) => {
   );
 });
 
-test("sul telefono la barra sta su due righe e Concetti, Percorsi, Metodo e Autori sono nel menu Altro", async ({
+test("sul telefono la barra sta su due righe e Concetti, Percorsi, Metodo, Glossario e Autori sono nel menu Altro", async ({
   page,
 }) => {
   test.skip(!isPhone(page), "il menu Altro compare solo sotto i 640 px");
@@ -47,7 +47,7 @@ test("sul telefono la barra sta su due righe e Concetti, Percorsi, Metodo e Auto
   await more.click();
   await expect(more).toHaveAttribute("aria-expanded", "true");
   await expect(nav.getByRole("link")).toHaveText(
-    [/^Viaggio/, "Diario", "Concetti", "Percorsi", "Metodo", "Autori"],
+    [/^Viaggio/, "Diario", "Concetti", "Percorsi", "Metodo", "Glossario", "Autori"],
     {
       useInnerText: true,
     },
