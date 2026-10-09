@@ -7,7 +7,7 @@
   "glossary": ["azande"],
   "levels": {
     "neofita": {
-      "hook": "Un cornicione si stacca proprio mentre passi. Sai perché i cornicioni si staccano: acqua, gelo, vecchiaia. Quello che non ti torna è un'altra cosa: perché è successo a te, e proprio adesso?",
+      "hook": "L'auto si ferma proprio la mattina del colloquio che aspettavi da mesi. Il meccanico ti spiega la cinghia e perché si è rotta, e ti torna tutto. Eppure continui a chiederti: perché oggi, perché a me?",
       "setup": "Sudan anglo-egiziano, fine degli anni Venti. Sei un ricercatore britannico ospite in una fattoria degli Azande. Il granaio è una struttura pesante di travi e argilla, e nelle ore calde è anche il posto dove ci si siede all'ombra a chiacchierare, giocare o lavorare. Un vecchio granaio cede e ferisce chi c'è seduto sotto. Tu sai perché: le termiti hanno mangiato i sostegni. Lo sanno anche i presenti. Resta una domanda: perché è crollato proprio adesso, e proprio su di loro? Cosa fai?",
       "choices": [
         {
@@ -26,7 +26,7 @@
       "source": "Evans-Pritchard, Witchcraft, Oracles and Magic among the Azande, 1937, cap. IV"
     },
     "studente": {
-      "hook": "Dopo un incidente cerchi la causa: una perizia dice cosa si è rotto e come. Ma la domanda che ti torna di notte è un'altra: perché a me, perché proprio quel giorno? Nessuna perizia risponde a quella.",
+      "hook": "La perizia dice che cosa si è rotto e come. Ma nessuna perizia dice perché si è rotto proprio quella mattina, con te al volante. Per quella domanda cerchi una spiegazione, accanto alla prima.",
       "setup": "Sei Evans-Pritchard dopo la ricerca tra gli Azande del Sudan (1926-1930) e scrivi il capitolo IV del libro che uscirà nel 1937. Nei tuoi appunti c'è il granaio che cede: vecchio, con i sostegni mangiati dalle termiti, e sotto persone sedute all'ombra nell'ora calda, a chiacchierare, a giocare o a lavorare. Tu sai che gli Azande conoscono le termiti. Ma tu stesso ti chiedi se la loro credenza nella stregoneria non sia una credenza nella causazione mistica di fenomeni ed eventi, con l'esclusione di ogni causa naturale. Devi dire cosa fa, per loro, la stregoneria in questa storia, senza ridurla a ignoranza e senza farne la nostra scienza. Come la formuli?",
       "choices": [
         {
