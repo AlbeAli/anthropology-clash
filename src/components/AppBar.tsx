@@ -10,15 +10,14 @@ const itemClass = (isActive: boolean) =>
   "inline-flex min-h-11 items-center rounded-sm px-2.5 font-display sm:px-3 text-[15px] font-bold transition-colors " +
   (isActive ? "bg-bar-ink text-bar" : "text-bar-ink hover:bg-white/15");
 const navClass = ({ isActive }: { isActive: boolean }) => itemClass(isActive);
-const wideClass = (state: { isActive: boolean }) => navClass(state) + " max-sm:hidden";
-const xlClass = (state: { isActive: boolean }) => navClass(state) + " max-xl:hidden";
+const wideClass = (state: { isActive: boolean }) => navClass(state) + " max-md:hidden";
 
 const more = [
-  { to: "/concetti", key: "nav.concepts", phoneOnly: true },
-  { to: "/percorsi", key: "nav.itineraries", phoneOnly: true },
-  { to: "/metodo", key: "nav.methodShort", phoneOnly: true },
-  { to: "/glossario", key: "nav.glossary", phoneOnly: false },
-  { to: "/autori", key: "nav.authors", phoneOnly: false },
+  { to: "/concetti", key: "nav.concepts" },
+  { to: "/percorsi", key: "nav.itineraries" },
+  { to: "/metodo", key: "nav.methodShort" },
+  { to: "/glossario", key: "nav.glossary" },
+  { to: "/autori", key: "nav.authors" },
 ] as const;
 
 function MoreMenu() {
@@ -51,7 +50,7 @@ function MoreMenu() {
   return (
     <div
       ref={wrap}
-      className="relative sm:max-lg:hidden xl:hidden"
+      className="relative md:hidden"
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setOpenAt(null);
       }}
@@ -79,8 +78,8 @@ function MoreMenu() {
           onClick={() => setOpenAt(null)}
           className="absolute top-full right-0 z-50 mt-1 grid min-w-44 gap-0.5 rounded-md bg-bar p-1 shadow-lg ring-1 ring-white/15"
         >
-          {more.map(({ to, key, phoneOnly }) => (
-            <li key={to} className={phoneOnly ? "sm:hidden" : undefined}>
+          {more.map(({ to, key }) => (
+            <li key={to}>
               <NavLink to={to} className={(s) => navClass(s) + " w-full"}>
                 {t(key)}
               </NavLink>
@@ -113,7 +112,7 @@ export default function AppBar() {
         </Link>
         <nav
           aria-label={t("nav.label")}
-          className="order-3 flex flex-wrap items-center gap-0.5 max-sm:w-full sm:order-2 sm:ml-auto sm:gap-1"
+          className="order-3 flex w-full flex-wrap items-center gap-0.5 sm:gap-1 min-[1150px]:order-2 min-[1150px]:ml-auto min-[1150px]:w-auto"
         >
           <NavLink to="/concetti" className={wideClass}>
             {t("nav.concepts")}
@@ -137,16 +136,16 @@ export default function AppBar() {
           <NavLink to="/metodo" className={wideClass}>
             {t("nav.methodShort")}
           </NavLink>
-          <NavLink to="/glossario" className={xlClass}>
+          <NavLink to="/glossario" className={wideClass}>
             {t("nav.glossary")}
           </NavLink>
-          <NavLink to="/autori" className={xlClass}>
+          <NavLink to="/autori" className={wideClass}>
             {t("nav.authors")}
           </NavLink>
           <MoreMenu />
           <StreakBadge count={streak} className="ml-auto sm:hidden" />
         </nav>
-        <div className="order-2 flex items-center sm:order-3">
+        <div className="order-2 flex items-center min-[1150px]:order-3">
           <StreakBadge count={streak} className="max-sm:hidden" />
           {available && (
             <NavLink

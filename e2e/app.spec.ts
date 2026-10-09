@@ -9,7 +9,7 @@ async function fresh(page: Page, path = "/") {
   await page.goto(path);
 }
 
-const isPhone = (page: Page) => (page.viewportSize()?.width ?? 1280) < 640;
+const isPhone = (page: Page) => (page.viewportSize()?.width ?? 1280) < 768;
 
 async function openFromBar(page: Page, name: string) {
   const nav = page.getByRole("navigation", { name: "Navigazione" });
@@ -37,7 +37,7 @@ test("la Home mostra tutte le linee e tutte le fermate", async ({ page }) => {
 test("sul telefono la barra sta su due righe e Concetti, Percorsi, Metodo, Glossario e Autori sono nel menu Altro", async ({
   page,
 }) => {
-  test.skip(!isPhone(page), "il menu Altro compare solo sotto i 640 px");
+  test.skip(!isPhone(page), "il menu Altro compare solo sotto i 768 px");
   await fresh(page);
   const nav = page.getByRole("navigation", { name: "Navigazione" });
   const more = nav.getByRole("button", { name: "Altro" });
@@ -86,8 +86,8 @@ test("sul telefono il tabellone ha solo la prossima partenza e la fermata del gi
   }
 });
 
-test("da 640 px la barra mostra tutte le voci e nessun menu Altro", async ({ page }) => {
-  test.skip(isPhone(page), "sotto i 640 px le voci stanno nel menu Altro");
+test("da 1280 px la barra mostra tutte le voci e nessun menu Altro", async ({ page }) => {
+  test.skip(isPhone(page), "sotto i 768 px le voci stanno nel menu Altro");
   await fresh(page);
   const nav = page.getByRole("navigation", { name: "Navigazione" });
   await expect(nav.getByRole("link")).toHaveText(
@@ -271,22 +271,40 @@ test.describe("tema", () => {
   });
 });
 
-test("tra 1024 e 1279 px la barra sta su una riga e Glossario e Autori sono nel menu Altro", async ({
-  page,
-}) => {
-  test.skip(isPhone(page), "il caso intermedio si prova solo con la finestra da desktop");
-  await page.setViewportSize({ width: 1100, height: 800 });
+const ALL = ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo", "Glossario", "Autori"];
+
+test("da 1150 px la barra sta su una riga con tutte le voci", async ({ page }) => {
+  test.skip(isPhone(page), "il caso si prova solo con la finestra da desktop");
+  await page.setViewportSize({ width: 1150, height: 800 });
   await fresh(page);
   const nav = page.getByRole("navigation", { name: "Navigazione" });
-  const more = nav.getByRole("button", { name: "Altro" });
-  await expect(nav.getByRole("link")).toHaveText(
-    ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo"],
-    { useInnerText: true },
-  );
+  await expect(nav.getByRole("link")).toHaveText(ALL, { useInnerText: true });
   expect((await page.getByRole("banner").boundingBox())!.height).toBeLessThan(80);
-  await more.click();
+});
+
+test("tra 768 e 1149 px le voci stanno su una seconda riga, tutte visibili", async ({ page }) => {
+  test.skip(isPhone(page), "il caso si prova solo con la finestra da desktop");
+  await page.setViewportSize({ width: 800, height: 800 });
+  await fresh(page);
+  const nav = page.getByRole("navigation", { name: "Navigazione" });
+  await expect(nav.getByRole("link")).toHaveText(ALL, { useInnerText: true });
+  await expect(nav.getByRole("button", { name: "Altro" })).toBeHidden();
+  expect((await page.getByRole("banner").boundingBox())!.height).toBeLessThan(130);
+});
+
+test("sotto i 768 px le voci in più stanno nel menu Altro", async ({ page }) => {
+  test.skip(isPhone(page), "il caso si prova solo con la finestra da desktop");
+  await page.setViewportSize({ width: 700, height: 800 });
+  await fresh(page);
+  const nav = page.getByRole("navigation", { name: "Navigazione" });
+  await expect(nav.getByRole("link")).toHaveText([/^Il tuo viaggio/, "Diario"], {
+    useInnerText: true,
+  });
+  await nav.getByRole("button", { name: "Altro" }).click();
   await expect(nav.getByRole("link")).toHaveText(
-    ["Concetti", "Percorsi", /^Il tuo viaggio/, "Diario", "Metodo", "Glossario", "Autori"],
-    { useInnerText: true },
+    [/^Il tuo viaggio/, "Diario", "Concetti", "Percorsi", "Metodo", "Glossario", "Autori"],
+    {
+      useInnerText: true,
+    },
   );
 });
