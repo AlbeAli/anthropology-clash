@@ -192,6 +192,29 @@
       transform 0.25s var(--ease-out-expo),
       background 0.3s;
   }
+  .metro-rail-x {
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: metro-rail-x 1.1s var(--ease-out-expo) 0.2s forwards;
+  }
+  @keyframes metro-rail-x {
+    to {
+      transform: scaleX(1);
+    }
+  }
+  .metro-year {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    transform: translateX(-50%);
+    padding: 1px 6px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+  }
   .metro-stop:hover .metro-dot,
   .metro-stop:focus-within .metro-dot {
     transform: translateX(-50%) scale(1.2);

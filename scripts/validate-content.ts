@@ -1,8 +1,10 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { citedWorks } from "../src/engine/authors";
 import { markedIds } from "../src/engine/glossary";
 import {
+  AuthorsFile,
   Concept,
   GlossaryEntry,
   Itinerary,
@@ -95,6 +97,45 @@ function validateGlossary(lang: Lang, dir: string) {
   return { issues, entries };
 }
 
+function validateAuthors(lang: Lang, dir: string, scenarios: { id: string; source: string }[]) {
+  const issues: Issue[] = [];
+  const path = join(dir, "authors.json");
+  if (!existsSync(path)) return issues;
+  const label = `${lang}/authors.json`;
+  const parsed = AuthorsFile.safeParse(readJson(path));
+  if (!parsed.success) return formatZodIssues(label, parsed.error.issues);
+  const schools = new Set(parsed.data.schools.map((s) => s.id));
+  const ids = new Set<string>();
+  const surnames = new Set<string>();
+  for (const a of parsed.data.authors) {
+    if (ids.has(a.id)) issues.push({ file: label, message: `id duplicato "${a.id}"` });
+    if (surnames.has(a.surname)) {
+      issues.push({ file: label, message: `cognome duplicato "${a.surname}"` });
+    }
+    ids.add(a.id);
+    surnames.add(a.surname);
+    if (a.lang !== lang) {
+      issues.push({
+        file: label,
+        message: `autore ${a.id}: lang "${a.lang}" diverso dalla cartella "${lang}"`,
+      });
+    }
+    if (!schools.has(a.school)) {
+      issues.push({
+        file: label,
+        message: `autore ${a.id}: filone "${a.school}" assente in schools`,
+      });
+    }
+    if (citedWorks(a.surname, scenarios).length === 0) {
+      issues.push({
+        file: label,
+        message: `autore ${a.id}: "${a.surname}" non apre nessun riferimento nelle fonti studente`,
+      });
+    }
+  }
+  return issues;
+}
+
 export function validateLang(
   lang: Lang,
   dir: string,
@@ -128,6 +169,7 @@ export function validateLang(
   const scenariosDir = join(dir, "scenarios");
   const files = jsonFiles(scenariosDir);
   const seenIds = new Set<string>();
+  const citing: { id: string; source: string }[] = [];
 
   for (const file of files) {
     const label = `${lang}/scenarios/${file}`;
@@ -147,6 +189,7 @@ export function validateLang(
       issues.push({ file: label, message: `id duplicato "${s.id}"` });
     }
     seenIds.add(s.id);
+    citing.push({ id: s.id, source: s.levels.studente.source });
     if (!conceptIds.has(s.concept)) {
       issues.push({ file: label, message: `concept "${s.concept}" assente in concepts.json` });
     }
@@ -215,6 +258,8 @@ export function validateLang(
       });
     }
   }
+
+  issues.push(...validateAuthors(lang, dir, citing));
 
   const itineraries = validateItineraries(lang, dir, seenIds);
   issues.push(...itineraries.issues);

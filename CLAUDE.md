@@ -38,6 +38,7 @@ Script in `package.json`. `pnpm validate` deve passare prima di ogni commit che 
 - Campo `also` facoltativo a livello di scenario: 1-2 concetti diversi da `concept`, cioè un interscambio sulla rete della metro. Solo se il testo dello scenario tratta esplicitamente anche quel concetto, con passi che lo mostrano; verificato sul testo, validato dall'autore. Non è un concetto «affine»: una parola chiave in comune non basta. La fermata resta sulla sua linea e nel suo conteggio.
 - Itinerari curati: `src/content/it/itineraries/<id>.json` (`id` in kebab-case uguale al nome file, `lang`, `title`, `description`, `stops` con 2-12 id di scenari esistenti, senza ripetizioni), verificati da `pnpm validate`. Un itinerario è una sequenza, non un giudizio: la descrizione dice cosa lega le fermate, non cosa si deve concludere.
 - Glossario: `src/content/it/glossary.json`, voci con `id` in kebab-case, `lang`, `term`, `kind` (`popolo`, `luogo`, `pratica`), `forms` facoltativo (le grafie da cercare nel testo), `text` (max 600 caratteri), `source` (1-4 fonti). Ogni frase di una nota è verificata su una fonte, come negli scenari. Campo `glossary` facoltativo nello scenario: 1-8 id di voci; l'app segna la prima occorrenza nel `setup` e apre la nota sul posto, e `pnpm validate` controlla che ogni voce esista e compaia nel setup di almeno un livello. Pagina `/glossario` con tutte le voci. Pilota su `scenario_022`, ora in estensione per linea (M16): estese a tutte le linee; scenari senza persone o luoghi da spiegare restano senza voci.
+- Autori: `src/content/it/authors.json`, filoni (`schools`) e schede (`authors`: `id`, `name`, `surname` come compare nelle fonti, `born`, `died` facoltativo, `school`, `text` max 600 caratteri, `source` 1-4). Ogni frase verificata su una fonte, come le note del glossario. Opere citate e scenari si ricavano dalle fonti studente (`virtual:authors`), non si scrivono a mano; `pnpm validate` controlla che ogni autore apra almeno un riferimento. Pagina `/autori` con linea del tempo per filone; nel riscontro il cognome nella fonte porta alla scheda (M17).
 - Commit per nuovi scenari: `content: aggiunge scenario_NNN (titolo)`.
 
 ## Convenzioni
@@ -54,7 +55,7 @@ Script in `package.json`. `pnpm validate` deve passare prima di ogni commit che 
 
 ## Milestone
 
-M1-M9 e M11-M15 chiuse; M10 (account) nel codice, chiusura rinviata alla fase di rilascio. Criteri e storia di ogni milestone: `docs/manuale-funzionale.md` §15.5 e §16.
+M1-M9 e M11-M15 chiuse; M10 (account) nel codice, chiusura rinviata alla fase di rilascio; M16 (glossario) su main, note in revisione con l'autore; M17 (autori) chiusa con venti schede. Criteri e storia di ogni milestone: `docs/manuale-funzionale.md` §15.5 e §16.
 
 ## Cosa non fare
 

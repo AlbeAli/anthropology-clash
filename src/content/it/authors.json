@@ -1,0 +1,276 @@
+{
+  "schools": [
+    { "id": "evoluzionismo", "label": "Evoluzionismo culturale" },
+    { "id": "boas", "label": "Scuola di Boas" },
+    { "id": "durkheim", "label": "Scuola di Durkheim" },
+    { "id": "britannica", "label": "Antropologia sociale britannica" },
+    { "id": "francese", "label": "Etnologia e sociologia francese" },
+    { "id": "nordamericana", "label": "Antropologia nordamericana dopo Boas" }
+  ],
+  "authors": [
+    {
+      "id": "morgan",
+      "lang": "it",
+      "name": "Lewis Henry Morgan",
+      "surname": "Morgan",
+      "born": 1818,
+      "died": 1881,
+      "school": "evoluzionismo",
+      "text": "Avvocato a Rochester, nello Stato di New York, non lavorò mai in un'università o in un istituto scientifico. Studiò gli Irochesi, soprattutto i Seneca, che lo adottarono nel 1846, e ne scrisse in League of the Ho-dé-no-sau-nee, or Iroquois (1851). Dal confronto dei termini di parentela, raccolti sul campo e con questionari spediti in paesi lontani, nacquero Systems of Consanguinity and Affinity of the Human Family (1871) e una teoria dell'evoluzione della famiglia per stadi. In Ancient Society (1877) divise la storia umana in stato selvaggio, barbarie e civiltà.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Morgan, Lewis Henry» di Leslie A. White (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "boas",
+      "lang": "it",
+      "name": "Franz Boas",
+      "surname": "Boas",
+      "born": 1858,
+      "died": 1942,
+      "school": "boas",
+      "text": "Nato a Minden, in Germania, si formò in fisica e geografia; dopo una spedizione nella Terra di Baffin (1883-1884) scelse l'antropologia. Dal 1886 studiò per tutta la vita i popoli della British Columbia, soprattutto i Kwakiutl. Trasferito a New York nel 1887, insegnò alla Columbia University dal 1896 al 1936 e formò generazioni di antropologi, tra cui Kroeber, Benedict e Mead. Criticò l'evoluzionismo unilineare dell'Ottocento, mettendo al centro la storia di ogni cultura, e si batté per tutta la vita contro il razzismo.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Boas, Franz» di Alexander Lesser (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "mauss",
+      "lang": "it",
+      "name": "Marcel Mauss",
+      "surname": "Mauss",
+      "born": 1872,
+      "died": 1950,
+      "school": "durkheim",
+      "text": "Nato a Épinal, in Lorena, era nipote di Émile Durkheim, che a Bordeaux ne seguì gli studi di filosofia. Lavorò a stretto contatto con lo zio e con il gruppo dell'Année sociologique; dal 1901 tenne all'École Pratique des Hautes Études la cattedra di storia delle religioni dei popoli «non civilizzati». Dopo la prima guerra mondiale, che decimò il gruppo, e la morte di Durkheim ne prese la guida e curò opere postume di Hertz e di altri. Il suo capolavoro è l'Essai sur le don (1925). Non fece ricerca sul campo, salvo un breve viaggio in Marocco.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Mauss, Marcel» di Steven Lukes (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "malinowski",
+      "lang": "it",
+      "name": "Bronisław Malinowski",
+      "surname": "Malinowski",
+      "born": 1884,
+      "died": 1942,
+      "school": "britannica",
+      "text": "Nato a Cracovia, allora nell'Impero austro-ungarico, nel 1910 andò a Londra per studiare alla London School of Economics. Dopo una prima spedizione tra i Mailu visse nelle Isole Trobriand nel 1915-1916 e nel 1917-1918, fino a seguire le conversazioni e prendere appunti nella lingua locale. Per lui l'etnografo deve cogliere il punto di vista del nativo (Argonauts of the Western Pacific, 1922); fu l'iniziatore di un approccio funzionalista alla cultura. Nel 1927 ebbe la prima cattedra di antropologia dell'Università di Londra; dal 1939 insegnò a Yale.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Malinowski, Bronislaw» di Rhoda Métraux (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "radcliffe-brown",
+      "lang": "it",
+      "name": "Alfred Reginald Radcliffe-Brown",
+      "surname": "Radcliffe-Brown",
+      "born": 1881,
+      "died": 1955,
+      "school": "britannica",
+      "text": "Inglese, studiò a Cambridge, dove Haddon e Rivers lo avviarono all'antropologia. Le sue sole lunghe ricerche sul campo furono nelle Isole Andamane (1906-1908), da cui The Andaman Islanders (1922), e nel nord-ovest dell'Australia Occidentale (1910-1912). Ebbe cattedre di antropologia sociale a Città del Capo, Sydney, Chicago e Oxford. Riprese idee di Durkheim, sottoponendole alla prova dei fatti, e spostò l'antropologia sociale dalla ricostruzione storica allo studio comparato delle strutture sociali.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Radcliffe-Brown, A. R.» di W. E. H. Stanner (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "van-gennep",
+      "lang": "it",
+      "name": "Arnold van Gennep",
+      "surname": "van Gennep",
+      "born": 1873,
+      "died": 1957,
+      "school": "francese",
+      "text": "Nato a Ludwigsburg, nel Württemberg, crebbe in Francia e studiò a Parigi all'École Pratique des Hautes Études e all'École des Langues Orientales. Visse ai margini delle istituzioni accademiche: insegnò etnologia a Neuchâtel dal 1912 al 1915 e non fu mai accolto nella cerchia di Durkheim. In Les rites de passage (1909) mostrò che i riti che accompagnano il passaggio da uno stato all'altro seguono tre fasi: separazione, margine e aggregazione. Si dedicò poi all'etnografia e al folklore della Francia, con il Manuel de folklore français contemporain (1937-1958).",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Gennep, Arnold van» di Solon T. Kimball (consultata su Encyclopedia.com)",
+        "Encyclopedia of Religion, voce «Gennep, Arnold van» di Nicole Belmont (consultata su Encyclopedia.com)",
+        "Macmillan Encyclopedia of Death and Dying, voce «Gennep, Arnold van» di Douglas J. Davies (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "kroeber",
+      "lang": "it",
+      "name": "Alfred Louis Kroeber",
+      "surname": "Kroeber",
+      "born": 1876,
+      "died": 1960,
+      "school": "boas",
+      "text": "Nato a Hoboken, nel New Jersey, studiò letteratura inglese al Columbia College e passò all'antropologia dopo aver conosciuto Franz Boas; fu il secondo in Nord America a ottenere un dottorato in antropologia (tesi sugli Arapaho, 1901). Fondò il dipartimento di antropologia dell'Università della California a Berkeley e ne diresse il museo. Nel 1917 descrisse la cultura come «superorganica», indipendente dagli individui. Dal 1911 fece vivere al museo Ishi, ultimo superstite di un gruppo indigeno della California, come «esposizione vivente»: vicenda oggi controversa.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Kroeber, Alfred Louis» di Pamela Stern (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "hertz",
+      "lang": "it",
+      "name": "Robert Hertz",
+      "surname": "Hertz",
+      "born": 1881,
+      "died": 1915,
+      "school": "durkheim",
+      "text": "Nato in una famiglia ebrea vicino a Parigi, a diciannove anni entrò nel gruppo di Durkheim e Mauss dell'Année sociologique; fu anche un socialista impegnato in politica. Studiò il simbolismo della destra e della sinistra, il peccato e l'espiazione, il mito e la morte. Il suo saggio più noto, sulla rappresentazione collettiva della morte (1907), distingue nella doppia sepoltura una fase «umida», legata al cadavere che si decompone, e una «secca», che riguarda le ossa e accoglie il morto nella nuova identità. Partito volontario nella prima guerra mondiale, morì in combattimento nel 1915.",
+      "source": [
+        "Macmillan Encyclopedia of Death and Dying, voce «Hertz, Robert» di Douglas J. Davies (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "evans-pritchard",
+      "lang": "it",
+      "name": "Edward Evan Evans-Pritchard",
+      "surname": "Evans-Pritchard",
+      "born": 1902,
+      "died": 1973,
+      "school": "britannica",
+      "text": "Figlio di un pastore della Chiesa d'Inghilterra, si laureò in storia a Oxford e nel 1927 ottenne il dottorato in antropologia a Londra con C. G. Seligman. Fece ricerca tra gli Azande del Sudan (1926-1930) e, a intervalli tra il 1930 e il 1935, tra i Nuer, a cui dedicò una trilogia: The Nuer (1940), Kinship and Marriage among the Nuer (1951) e Nuer Religion (1956). In Witchcraft, Oracles, and Magic among the Azande (1937) mostrò che le idee zande su magia e stregoneria sono razionali e sistematiche. Nel 1946 succedette a Radcliffe-Brown nella cattedra di antropologia sociale di Oxford.",
+      "source": [
+        "Encyclopedia of Religion, voce «Evans-Pritchard, E. E.» di John Middleton (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "sharp",
+      "lang": "it",
+      "name": "Lauriston Sharp",
+      "surname": "Sharp",
+      "born": 1907,
+      "died": 1993,
+      "school": "nordamericana",
+      "text": "Nato a Madison, studiò filosofia all'Università del Wisconsin ed etnologia del Sud-est asiatico a Vienna. Dopo due anni di ricerca tra gli aborigeni australiani ottenne il dottorato a Harvard (1937). Dal 1936 fu il primo docente di antropologia della Cornell University, dove nel 1947 avviò lo studio di Bang Chan, un villaggio agricolo vicino a Bangkok, e fondò e diresse il programma di studi sul Sud-est asiatico (1950-1960). Fu tra i fondatori della Society for Applied Anthropology. Tra i suoi scritti divenuti classici c'è «Steel Axes for Stone-Age Australians» (1952).",
+      "source": [
+        "A. Thomas Kirsch, «Lauriston Sharp (1907-1993)», necrologio, The Journal of Asian Studies, DOI 10.1017/S0021911800045538"
+      ]
+    },
+    {
+      "id": "miner",
+      "lang": "it",
+      "name": "Horace Mitchell Miner",
+      "surname": "Miner",
+      "born": 1912,
+      "died": 1993,
+      "school": "nordamericana",
+      "text": "Nato a St. Paul, nel Minnesota, si laureò all'Università del Kentucky (1933) e ottenne il dottorato all'Università di Chicago (1937). Insegnò alla Wayne University dal 1939 al 1941. Nella seconda guerra mondiale servì nel Counter Intelligence Corps dell'esercito statunitense in Nordafrica e in Europa. Dal 1946 fu professore di sociologia e di antropologia all'Università del Michigan e ricercatore del suo museo di antropologia, fino al ritiro nel 1980. Nel 1956 pubblicò su American Anthropologist «Body Ritual among the Nacirema».",
+      "source": [
+        "University of Michigan, William L. Clements Library, «Horace Miner collection, 1941-1992», nota biografica (findingaids.lib.umich.edu)",
+        "Miner, «Body Ritual among the Nacirema», American Anthropologist 58(3), 1956, DOI 10.1525/aa.1956.58.3.02a00080"
+      ]
+    },
+    {
+      "id": "p-bohannan",
+      "lang": "it",
+      "name": "Paul Bohannan",
+      "surname": "Bohannan P.",
+      "born": 1920,
+      "died": 2007,
+      "school": "britannica",
+      "text": "Nato a Lincoln, nel Nebraska, studiò a Oxford come borsista Rhodes. All'inizio degli anni Cinquanta visse con la moglie Laura tra i Tiv della Nigeria, fino ad allora poco studiati: per quasi cinque anni ne documentarono la vita con scritti e più di mille fotografie. Passò poi un anno tra i Wanga del Kenya. Insegnò antropologia a Oxford, a Princeton, alla Northwestern University e, dal 1976, in California, fino al ritiro nel 1987. Negli Stati Uniti studiò soprattutto il divorzio nella classe media. Scrisse o curò più di trenta libri, spesso con Laura Bohannan.",
+      "source": [
+        "Contemporary Authors, «Bohannan, Paul 1920-2007», necrologio, Gale (consultato su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "douglas",
+      "lang": "it",
+      "name": "Mary Douglas",
+      "surname": "Douglas",
+      "born": 1921,
+      "died": 2007,
+      "school": "britannica",
+      "text": "Nata a Sanremo ed educata da cattolica in Inghilterra, studiò a Oxford con E. E. Evans-Pritchard, di cui scrisse poi la biografia. Per il dottorato (1951) studiò i Lele del Kasai, nel Congo belga. Insegnò per molti anni all'University College di Londra; dal 1977 lavorò negli Stati Uniti, alla Russell Sage Foundation, a Northwestern e a Princeton. Da Durkheim riprese l'idea che il pensiero abbia una base sociale. In Purity and Danger (1966) legò lo sporco al posto delle cose nelle nostre classificazioni; in The World of Goods (1979), con Baron Isherwood, trattò i beni come segni sociali.",
+      "source": [
+        "Encyclopedia of World Biography, voce «Mary Douglas», Gale (consultata su Encyclopedia.com)",
+        "British Academy, Biographical Memoirs of Fellows, «Douglas, Margaret Mary, 1921-2007» di Richard Fardon (thebritishacademy.ac.uk)"
+      ]
+    },
+    {
+      "id": "cohen",
+      "lang": "it",
+      "name": "Abner Cohen",
+      "surname": "Cohen",
+      "born": 1921,
+      "died": 2001,
+      "school": "britannica",
+      "text": "Nato in Iraq, si trasferì poi con la famiglia in Israele, dove fu ispettore delle scuole in lingua araba. Negli anni Cinquanta andò a Manchester, dove Max Gluckman ne seguì il dottorato. Dall'inizio degli anni Sessanta insegnò alla School of Oriental and African Studies di Londra, dove nel 1972 divenne professore di antropologia africana. Fece ricerca in Israele, in Nigeria (Custom and Politics in Urban Africa), in Sierra Leone, sul carnevale di Notting Hill e infine sulle cappelle gallesi. È noto soprattutto per gli studi sull'etnicità e sulle dimensioni culturali dell'azione politica.",
+      "source": [
+        "Marcus Banks, «Abner Cohen (1921-2001)», necrologio, Journal of the Anthropological Society of Oxford 30(2), pp. 95-96 (Oxford University Research Archive)"
+      ]
+    },
+    {
+      "id": "mintz",
+      "lang": "it",
+      "name": "Sidney Wilfred Mintz",
+      "surname": "Mintz",
+      "born": 1922,
+      "died": 2015,
+      "school": "nordamericana",
+      "text": "Si laureò in psicologia al Brooklyn College (1943) e ottenne il dottorato in antropologia alla Columbia University (1951). Dal 1948 lavorò a Porto Rico in un progetto collettivo diretto da Julian Steward, studiando le piantagioni di zucchero; negli anni Cinquanta e Sessanta seguirono ricerche in Giamaica e ad Haiti. Mostrò come regioni e popoli in apparenza distinti si plasmino a vicenda nel mondo moderno. In Sweetness and Power (1985) unì lo sguardo dalle piantagioni dei Caraibi a quello sui lavoratori e consumatori europei, mettendo in discussione la separazione tra produzione e consumo.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Mintz, Sidney W.» di Charles V. Carnegie (consultata su Encyclopedia.com)",
+        "Johns Hopkins University, «Groundbreaking anthropologist Sidney Mintz dies at age 93», The Hub, 29 dicembre 2015"
+      ]
+    },
+    {
+      "id": "l-bohannan",
+      "lang": "it",
+      "name": "Laura Bohannan",
+      "surname": "Bohannan L.",
+      "born": 1922,
+      "died": 2002,
+      "school": "britannica",
+      "text": "Nata Laura Smith, crebbe in Arizona e studiò all'Università dell'Arizona, dove conobbe Paul Bohannan, che sposò nel 1943. Nella seconda guerra mondiale decifrò codici al Pentagono. Dopo il dottorato a Oxford (1951) passò con il marito gran parte degli anni Cinquanta in Nigeria e in Kenya, soprattutto tra i Tiv, su cui scrissero insieme The Tiv of Central Nigeria (1953). Con lo pseudonimo Elenore Smith Bowen pubblicò il romanzo Return to Laughter, sul lavoro sul campo in Africa; nel saggio «Shakespeare in the Bush» racconta il tentativo di spiegare Amleto a un gruppo di ascoltatori africani.",
+      "source": [
+        "Contemporary Authors, «Bohannan, Laura 1922-2002», Gale (consultato su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "geertz",
+      "lang": "it",
+      "name": "Clifford Geertz",
+      "surname": "Geertz",
+      "born": 1926,
+      "died": 2006,
+      "school": "nordamericana",
+      "text": "Nato a San Francisco, dopo la Marina nella seconda guerra mondiale studiò all'Antioch College e a Harvard, dove ottenne il dottorato nel 1956 con ricerche a Giava. Lavorò sul campo anche a Bali e in Marocco. Insegnò all'Università di Chicago dal 1960 al 1970, poi all'Institute for Advanced Study di Princeton. In The Interpretation of Cultures (1973) descrisse la cultura, con Max Weber, come le reti di significati che l'uomo stesso ha tessuto, da studiare con una scienza interpretativa in cerca di significato e non di leggi. Classico il suo saggio sul combattimento di galli a Bali.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Geertz, Clifford» di Jerry D. Moore (consultata su Encyclopedia.com)",
+        "Encyclopedia of World Biography, voce «Clifford Geertz», Gale (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "cassell",
+      "lang": "it",
+      "name": "Joan Cassell",
+      "surname": "Cassell",
+      "born": 1929,
+      "school": "nordamericana",
+      "text": "Statunitense, lavorò anche come copywriter pubblicitaria. Fu ricercatrice in centri di ricerca sociale di San Francisco, New York e Filadelfia e, dal 1987, ricercatrice associata di antropologia alla Washington University di St. Louis. Fece ricerca sul campo in Giamaica (1969) e a New York e dintorni (1971-1973). Curò con M. L. Wax un volume sulle questioni etiche della ricerca sociale (1979) e con S. Jacobs un manuale sulle questioni etiche in antropologia (1987). Scrisse sul movimento femminista (A Group Called Women, 1977) e sul lavoro dei chirurghi (Expected Miracles, 1991).",
+      "source": [
+        "The Writers Directory, «Cassell, Joan», Gale (consultato su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "bourdieu",
+      "lang": "it",
+      "name": "Pierre Bourdieu",
+      "surname": "Bourdieu",
+      "born": 1930,
+      "died": 2002,
+      "school": "francese",
+      "text": "Figlio di un impiegato delle poste, crebbe in una cittadina del sud-ovest della Francia parlando guascone; studiò all'École Normale Supérieure. Il servizio militare lo portò in Algeria, allora colonia francese, dove insegnò; il suo primo studio fu Sociologie de l'Algérie (1958). Tornato nel 1960, insegnò alla Sorbona e all'École des Hautes Études en Sciences Sociales; dal 1981 tenne la cattedra di sociologia al Collège de France. Propose le nozioni di habitus e capitale simbolico; in La distinction mostrò che i gusti nascono dalla competizione per il capitale culturale, simbolico ed economico.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Bourdieu, Pierre» di Gustav Peebles (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "lee",
+      "lang": "it",
+      "name": "Richard Borshay Lee",
+      "surname": "Lee",
+      "born": 1937,
+      "school": "nordamericana",
+      "text": "Canadese, si laureò in antropologia all'Università di Toronto e ottenne il dottorato a Berkeley nel 1965. A partire dal 1963 visse più volte tra i !Kung San del Kalahari, in Botswana, con il Kalahari Research Group di Harvard, anche in uno studio di tre anni (1967-1970) con Irven DeVore. Dopo Harvard e Rutgers insegnò all'Università di Toronto, che nel 1999 lo nominò University Professor. Studiò cacciatori-raccoglitori anche in Tanzania, Namibia, Alaska, Australia e Canada, e poi i fattori sociali dell'AIDS nell'Africa meridionale. Il suo libro più noto è The !Kung San (1979).",
+      "source": [
+        "University of Toronto Archives, «Richard Lee fonds», nota biografica (discoverarchives.library.utoronto.ca)"
+      ]
+    }
+  ]
+}

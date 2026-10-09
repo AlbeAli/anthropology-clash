@@ -19,7 +19,8 @@
     "privacy": "Privacy",
     "diary": "Diario",
     "more": "Altro",
-    "glossary": "Glossario"
+    "glossary": "Glossario",
+    "authors": "Autori"
   },
   "level": {
     "label": "Livello",
@@ -144,6 +145,20 @@
     "source_other": "Fonti",
     "usedIn": "Negli scenari",
     "all": "Tutte le voci nel glossario"
+  },
+  "authors": {
+    "title": "Autori",
+    "lead": "Autrici e autori delle opere da cui nascono gli scenari, nel tempo e per filone di studio.",
+    "timeline": "Linea del tempo",
+    "stop": "{{name}}, {{life}}",
+    "earlier": "Indietro nel tempo",
+    "later": "Avanti nel tempo",
+    "life": "{{born}}-{{died}}",
+    "lifeOpen": "n. {{born}}",
+    "works": "Opere citate",
+    "usedIn": "Negli scenari",
+    "source_one": "Fonte",
+    "source_other": "Fonti"
   },
   "method": {
     "title": "Da dove vengono gli scenari",
