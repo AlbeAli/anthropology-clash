@@ -119,15 +119,15 @@ export default function AuthorTimeline({ authors, schools, life }: Props) {
                 <Link
                   to={{ hash: a.id }}
                   aria-label={t("authors.stop", { name: a.name, life: life(a) })}
-                  className="group block"
+                  className="group absolute -left-3 block h-full w-6"
                 >
                   <span
                     aria-hidden="true"
-                    className="absolute -left-[3px] h-6 w-1.5 rounded-sm transition-transform duration-300 ease-out-expo group-hover:scale-y-150 group-focus-visible:scale-y-150"
+                    className="absolute left-[9px] h-6 w-1.5 rounded-sm transition-transform duration-300 ease-out-expo group-hover:scale-y-150 group-focus-visible:scale-y-150"
                     style={{ top: RAIL - 12, background: schoolColor(schools, a.school) }}
                   />
                   <span
-                    className="absolute left-0 origin-bottom-left -rotate-45 font-bold whitespace-nowrap decoration-2 underline-offset-4 group-hover:underline"
+                    className="absolute left-3 origin-bottom-left -rotate-45 font-bold whitespace-nowrap decoration-2 underline-offset-4 group-hover:underline"
                     style={{ bottom: HEIGHT - RAIL + 18 }}
                   >
                     {a.surname}
