@@ -2,14 +2,14 @@ import type { ConceptId } from "../schema/scenario.schema";
 
 export type Point = { x: number; y: number };
 export type NetLabel = Point & { anchor: "start" | "end"; rotate: number };
-export type NetBadge = Point & { concept: ConceptId };
-export type NetStation = Point & {
+type NetBadge = Point & { concept: ConceptId };
+type NetStation = Point & {
   id: string;
   title: string;
   label: NetLabel;
   badges: NetBadge[];
 };
-export type NetLine = {
+type NetLine = {
   concept: ConceptId;
   path: Point[];
   terminus: Point;

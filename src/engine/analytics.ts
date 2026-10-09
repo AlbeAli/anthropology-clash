@@ -9,10 +9,6 @@ declare global {
   }
 }
 
-export function analyticsEnabled(): boolean {
-  return Boolean(import.meta.env.VITE_UMAMI_WEBSITE_ID && import.meta.env.VITE_UMAMI_SRC);
-}
-
 export function loadAnalytics(): void {
   const src = import.meta.env.VITE_UMAMI_SRC;
   const websiteId = import.meta.env.VITE_UMAMI_WEBSITE_ID;

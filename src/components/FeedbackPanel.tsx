@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import type { Lang, Level, Scenario } from "../schema/scenario.schema";
+import type { GlossaryEntry, Lang, Level, Scenario } from "../schema/scenario.schema";
 import { prefersReducedMotion } from "../engine/motion";
 import { freshTerms } from "../engine/glossary";
 import { legTag } from "./metro/legTag";
@@ -15,6 +15,8 @@ type Props = {
   glossary?: string[];
 };
 
+const NONE: GlossaryEntry[] = [];
+
 export default function FeedbackPanel({ content, lang, level, choiceId, glossary }: Props) {
   const { t } = useTranslation();
   const heading = useRef<HTMLHeadingElement>(null);
@@ -23,9 +25,10 @@ export default function FeedbackPanel({ content, lang, level, choiceId, glossary
   const others = content.choices.filter((c) => c.id !== choiceId);
   const entries = useGlossary(lang, glossary);
   const marks = useMemo(() => {
-    const order = [choiceId, ...others.map((c) => c.id)];
+    const order = [choiceId, ...content.choices.filter((c) => c.id !== choiceId).map((c) => c.id)];
     return freshTerms(content.setup, content.feedback, order, entries);
-  }, [content, choiceId, others, entries]);
+  }, [content, choiceId, entries]);
+  const marked = (id: string) => marks.get(id) ?? NONE;
 
   useEffect(() => {
     heading.current?.focus({ preventScroll: true });
@@ -51,7 +54,7 @@ export default function FeedbackPanel({ content, lang, level, choiceId, glossary
             <Header n={number(chosen.id)} text={chosen.text} filled />
             <GlossaryText
               text={content.feedback[chosen.id]}
-              entries={marks.get(chosen.id) ?? []}
+              entries={marked(chosen.id)}
               className="text-lg leading-relaxed text-pretty"
             />
           </article>
@@ -67,7 +70,7 @@ export default function FeedbackPanel({ content, lang, level, choiceId, glossary
             <Header n={number(c.id)} text={c.text} />
             <GlossaryText
               text={content.feedback[c.id]}
-              entries={marks.get(c.id) ?? []}
+              entries={marked(c.id)}
               className="leading-relaxed text-pretty"
             />
           </article>

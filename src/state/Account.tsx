@@ -19,7 +19,7 @@ import {
 } from "../engine/account";
 import { useAppState } from "./AppState";
 
-export type SyncStatus = "idle" | "syncing" | "synced" | "error";
+type SyncStatus = "idle" | "syncing" | "synced" | "error";
 export type LinkResult = "sent" | "rate" | "error";
 export type AccountUser = { id: string; email: string | null; provider: string | null };
 
