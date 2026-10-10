@@ -14,7 +14,7 @@
       "choices": [
         {
           "id": "a",
-          "text": "No: senza una coppia stabile che vive insieme non è matrimonio"
+          "text": "No: il matrimonio è l'unione di un uomo e una donna, e i figli sono figli legittimi di entrambi"
         },
         {
           "id": "b",
@@ -22,14 +22,14 @@
         }
       ],
       "feedback": {
-        "a": "Gough (1961) lo ammette per la definizione di Notes and Queries in Anthropology: come forma di matrimonio di gruppo, scrive, le istituzioni nayar «chiaramente non» vi rientrano. Ma l'istituzione «legittimava i figli», e questo le sembra «il criterio minimo necessario» per tutte le unioni che gli antropologi di solito chiamano matrimonio. Se tieni la coppia che vive insieme come condizione, il caso nayar resta fuori, anche se per Gough faceva ciò che il matrimonio fa altrove: legittimare i figli.",
+        "a": "È la definizione di Notes and Queries in Anthropology (1951), che Gough (1961) cita: «Il matrimonio è un'unione tra un uomo e una donna tale che i figli nati dalla donna sono i figli legittimi di entrambi i genitori». Come forma di matrimonio di gruppo, scrive, le istituzioni nayar «chiaramente non» vi rientrano. Ma «legittimavano i figli», e questo le sembra «il criterio minimo necessario» per tutte le unioni che gli antropologi di solito chiamano matrimonio. Con quella definizione il caso nayar resta fuori, anche se per Gough faceva ciò che il matrimonio fa altrove: legittimare i figli.",
         "b": "È la strada di Gough (1961): «Ho chiamato queste istituzioni nayar matrimonio perché limitavano e regolavano le relazioni sessuali e perché servivano a legittimare i figli». I doni dopo il parto erano segni legali e cerimoniali di poco valore economico, ma il loro passaggio, scrive, era «della massima importanza»: se nessun uomo accettava di farli, la donna era ritenuta aver avuto rapporti con un uomo di casta inferiore, un musulmano o un cristiano, e l'assemblea di casta scomunicava temporaneamente la sua famiglia, finché lei e il figlio non erano cacciati. Quei doni dicevano chi riconosceva il bambino e lo legittimavano."
       },
       "source": "Gough, «Nayar: Central Kerala», in Schneider e Gough (a cura di), Matrilineal Kinship, 1961"
     },
     "studente": {
       "hook": "Scrivi una definizione e subito arriva un caso che non ci sta. Puoi dire che quel caso non conta, oppure cambiare la definizione. Ognuna delle due strade dice qualcosa su di te.",
-      "setup": "Sei Kathleen Gough, nel 1959. Hai fatto ricerca in tre villaggi del Kerala tra il novembre 1947 e il luglio 1949 e conosci la tradizione dei Nayar. Hai davanti due istituzioni. Il tali: ogni dieci o dodici anni ogni lignaggio fa una grande cerimonia in cui tutte le bambine di una generazione, prima della pubertà, sono «sposate» ritualmente da uomini di lignaggi vicini, che dopo tre giorni se ne vanno senza altri obblighi. Il sambandham: la relazione con un marito che le visita di notte. Alla nascita di un figlio, uno o più uomini devono riconoscere la possibile paternità con dei doni. Il caso non rientra nella definizione di matrimonio di Notes and Queries in Anthropology. Come lo tratti?",
+      "setup": "Sei Kathleen Gough, nel 1959. Hai fatto ricerca in tre villaggi del Kerala tra il novembre 1947 e il luglio 1949 e conosci la tradizione dei Nayar. Hai davanti due istituzioni. Il tali: ogni dieci o dodici anni ogni lignaggio fa una grande cerimonia in cui tutte le bambine di una generazione, prima della pubertà, sono «sposate» ritualmente da uomini di lignaggi collegati al loro, che dopo tre giorni se ne vanno senza altri obblighi. Il sambandham: la relazione con un marito che le visita di notte. Alla nascita di un figlio, uno o più uomini devono riconoscere la possibile paternità con dei doni. Il caso non rientra nella definizione di matrimonio di Notes and Queries in Anthropology. Come lo tratti?",
       "choices": [
         {
           "id": "a",
@@ -37,7 +37,7 @@
         },
         {
           "id": "b",
-          "text": "Non è matrimonio: la parola richiede una coppia e un padre che risponde dei figli"
+          "text": "Non è matrimonio: la parola richiede l'unione di un uomo e una donna e figli legittimi di entrambi"
         },
         {
           "id": "c",
@@ -50,11 +50,11 @@
       ],
       "feedback": {
         "a": "Le tue note non la reggono. Interpreti il tali come cerimonia di matrimonio di gruppo (p. 329): la casta intera sposa le bambine di un lignaggio. Il «marito» del tali, scrivi, rinuncia subito ai suoi diritti come individuo, che diventano disponibili agli uomini della casta e delle caste superiori adatte come gruppo (p. 362). Poi dichiari il punto: «Ho chiamato queste istituzioni nayar matrimonio perché limitavano e regolavano le relazioni sessuali e perché servivano a legittimare i figli. Le disposizioni del tali e del sambandham erano dirette a questi fini» (Gough 1961, p. 362). Insieme, non il tali da solo.",
-        "b": "Gough non la segue per i Nayar. Scrive (1961, p. 363) che, come forma di matrimonio di gruppo, le istituzioni nayar «chiaramente non» rientrano nella definizione di Notes and Queries in Anthropology. Ma «legittimavano i figli», e questo, per lei, è «il criterio minimo necessario» valido per tutte le unioni che gli antropologi di solito chiamano matrimonio. Il «padre», nel suo racconto, è a p. 364 «qualsiasi marito della madre nel sambandham»: non un uomo solo che risponde dei figli.",
+        "b": "È la definizione di Notes and Queries in Anthropology che Gough cita in nota (1961, p. 363): «un'unione tra un uomo e una donna tale che i figli nati dalla donna sono i figli legittimi di entrambi i genitori» (1951, p. 110). Gough non la segue per i Nayar: come forma di matrimonio di gruppo le loro istituzioni «chiaramente non» vi rientrano, ma «legittimavano i figli», e questo per lei è «il criterio minimo necessario». Il «padre», nel suo racconto, è a p. 364 «qualsiasi marito della madre nel sambandham»: non un uomo solo che risponde dei figli.",
         "c": "È la sua soluzione (Gough 1961, p. 363): «Il matrimonio è una relazione tra una donna e una o più altre persone che stabilisce che un figlio nato dalla donna, in circostanze non vietate dalle regole della relazione, riceva pieni diritti di nascita nella sua società o nel suo strato sociale» (Gough 1959, p. 32). La definizione deve coprire i casi familiari, il caso nayar e altri casi insoliti che sono riconosciuti come matrimonio. Parte dal bambino, non dagli sposi.",
         "d": "Le note dicono il contrario. Intorno alla pubertà la ragazza può avere relazioni con uno o più uomini «della sua casta o di una casta superiore adatta», e l'uomo con donne della sua casta o di una casta nayar inferiore adatta (p. 329). Alla nascita di un figlio uno o più uomini devono riconoscere la possibile paternità con doni alla madre e all'ostetrica (pp. 359-360). Se nessuno li fa, la donna è ritenuta aver avuto rapporti con un uomo di casta inferiore, un musulmano o un cristiano, e l'assemblea di casta scomunica la sua famiglia. Relazioni con più persone, sì: ma con limiti di casta e un riconoscimento pubblico dei figli."
       },
-      "source": "Gough, «Nayar: Central Kerala», in Schneider e Gough (a cura di), Matrilineal Kinship, University of California Press, 1961, dal capitolo che inizia a p. 298 (pp. 299, 328-329, 359-360 e 362-364); la definizione è citata da Gough 1959, p. 32",
+      "source": "Gough, «Nayar: Central Kerala» (cap. 6, dalla p. 298), in Schneider e Gough (a cura di), Matrilineal Kinship, University of California Press, 1961, pp. 299, 328-329, 359-360 e 362-364; la definizione del 1959 (p. 32) e quella di Notes and Queries in Anthropology (1951, p. 110) sono citate in quelle pagine",
       "deepen": [
         {
           "ref": "Gough, «The Nayars and the Definition of Marriage», Journal of the Royal Anthropological Institute 89(1), 1959, pp. 23-34",
