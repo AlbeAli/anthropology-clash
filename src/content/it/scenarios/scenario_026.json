@@ -1,0 +1,77 @@
+{
+  "id": "scenario_026",
+  "lang": "it",
+  "title": "Maiali per gli antenati",
+  "concept": "rituale",
+  "concept_label": "Rituale",
+  "glossary": [
+    "tsembaga"
+  ],
+  "levels": {
+    "neofita": {
+      "hook": "Ogni tanto si fa una grande festa e si consuma quasi tutto ciò che si è accumulato per anni. Ti spiegano che è un rito. Ti chiedi se un rito possa servire anche a qualcosa di molto pratico, senza smettere di essere un rito.",
+      "setup": "Nuova Guinea, 1962. Vivi tra i Tsembaga, che coltivano patate dolci e allevano maiali. Dopo l'ultimo combattimento il gruppo ha piantato una pianta rituale, il rumbim: finché resta nel terreno c'è tregua con i nemici di quella lotta. Ora si sradica il rumbim e comincia il kaiko, una festa che dura un anno. A giugno la mandria conta 169 maiali; alla fine ne resteranno 60 giovani e 15 adulti, anche loro da uccidere. Nei riti si invitano gli antenati a mangiare i maiali uccisi per loro. Cosa fai?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ti basta ciò che dicono: i maiali sono per gli antenati"
+        },
+        {
+          "id": "b",
+          "text": "Conti anche le case, gli orti e il lavoro mentre la mandria cresce"
+        }
+      ],
+      "feedback": {
+        "a": "Rappaport (1968) riporta quelle parole: chi uccide il maiale per i morti invita gli antenati a mangiarlo e, a combattimento finito, li ringrazia per l'aiuto. I Tsembaga dicono anche che in un posto «buono» bastano pochi anni per avere abbastanza maiali, e in uno «cattivo» molto di più; un posto buono, dicono, è dove la gente sta bene. Rappaport ne deduce che in un posto «cattivo» ci si ammala e si muore più spesso, quindi si sacrificano più maiali (p. 155). Parte da qui, ma guarda anche altro.",
+        "b": "È ciò che fa Rappaport (1968). Con la mandria che cresce le persone si disperdono in piccoli villaggi di sottoclan e abitazioni sparse (p. 154), il lavoro aumenta e i maiali entrano negli orti, con danni e liti (p. 155). Il peso cade sulle donne: Rappaport ritiene ragionevole assumere che 100 delle 125 calorie spese in media ogni giorno per ogni maiale siano spese da loro (p. 157), e all'inizio del kaiko le 66 donne oltre i dieci anni accudivano 169 maiali (p. 158)."
+      },
+      "source": "Rappaport, Pigs for the Ancestors: Ritual in the Ecology of a New Guinea People, Yale University Press, 1968, sezioni «The Ax Fight», «The Truce Ritual: Planting the Rumbim», «The Duration of the Cycle» e «Pigs, Labor, and Women»"
+    },
+    "studente": {
+      "hook": "Chi compie una pratica ti dà una ragione. Chi la guarda da fuori ne vede un'altra. Ti viene da chiedere quale delle due sia quella vera, e se abbia senso chiederlo.",
+      "setup": "Sei Roy Rappaport e scrivi, nel 1968, il capitolo sul ciclo rituale dei Tsembaga della Nuova Guinea. Dai tuoi appunti: il kaiko, la festa di un anno che chiude il ciclo, comincia quando si sradica il rumbim piantato dopo l'ultimo combattimento, e per sradicarlo servono maiali «sufficienti»; la tregua con i nemici di quella lotta dura finché il rumbim resta nel terreno. A giugno 1962 la mandria conta 169 maiali, a novembre 1963 ne restano 60 giovani e 15 adulti da uccidere. I Tsembaga parlano di antenati e di luoghi «buoni» e «cattivi». La durata del ciclo, per te, sta tra dodici e quindici anni. A cosa serve il kaiko? Come lo formuli?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Serve agli antenati: la durata del ciclo segue gli obblighi verso i vivi e verso i morti"
+        },
+        {
+          "id": "b",
+          "text": "Regola la mandria: il ciclo dura finché i maiali non sono «sufficienti» per sradicare il rumbim, e la festa li riduce"
+        },
+        {
+          "id": "c",
+          "text": "Serve alla guerra: la durata del ciclo è quella della tregua con i nemici"
+        },
+        {
+          "id": "d",
+          "text": "È un meccanismo di equilibrio che funziona sempre allo stesso modo"
+        }
+      ],
+      "feedback": {
+        "a": "Rappaport la scarta come spiegazione del numero di maiali. Gli obblighi di presentare carne di maiale agli altri, scrive, «non definiscono il numero di maiali sufficiente» per sradicare il rumbim (p. 153), e la definizione di «sufficiente» va cercata «in ambiti diversi da quello dell'obbligo verso i vivi o verso i morti» (p. 154). I Tsembaga però parlano di antenati e di sfortuna: in un posto «buono» servono pochi anni per avere abbastanza maiali, in uno «cattivo» molti di più (p. 155).",
+        "b": "È la sua tesi. Rappaport (1968, p. 153): «La durata del ciclo rituale, e quindi la durata della tregua che dipende dal ciclo rituale, è in gran parte regolata dalle fortune demografiche della popolazione di maiali». Con la mandria cresce il lavoro, soprattutto delle donne (100 delle 125 calorie spese al giorno per ogni maiale, p. 157): all'inizio del kaiko le 66 donne oltre i dieci anni accudivano 169 maiali, da 0 a 8 a testa (p. 158). Crescono anche le liti per i danni agli orti e la dispersione delle case (pp. 154-155).",
+        "c": "Il testo la ribalta. La tregua con i nemici dell'ultimo combattimento vale «finché il rumbim resta nel terreno» (p. 155), e la sua durata «dipende dal ciclo rituale» (p. 153), che a sua volta è «in gran parte regolato» dalla mandria di maiali. Quando i maiali crescono e le case si disperdono, aggiunge, ci si espone ad attacchi di altri gruppi che non hanno il rumbim nel terreno (p. 155). Secondo Rappaport è la mandria a stabilire quando si sradica il rumbim.",
+        "d": "Rappaport è più cauto. Scrive (p. 232) che alcune funzioni proposte per i rituali, soprattutto sul contenimento dei conflitti, sono «interpretazioni a posteriori» probabilmente «difficili da convalidare empiricamente», e che il suo interesse principale è la funzione omeostatica del rito e i modi in cui collega i sottosistemi. A p. 157 ricorda che si conoscono cicli rituali «ben al di fuori» della media di dodici-quindici anni dei Tsembaga: nel 1963 Vayda riferì di gruppi che non avevano fatto un kaiko da oltre vent'anni; se le sfortune o la natalità dei maiali si discostano molto, la durata può cambiare molto."
+      },
+      "source": "Rappaport, Pigs for the Ancestors: Ritual in the Ecology of a New Guinea People, Yale University Press, New Haven, 1968, sez. «Subsistence» (p. 57), sezioni «The Duration of the Cycle» e «Pigs, Labor, and Women», pp. 153-158, cap. «Ritual and the Regulation of Ecological Systems» (p. 232)",
+      "deepen": [
+        {
+          "ref": "Rappaport, Pigs for the Ancestors: Ritual in the Ecology of a New Guinea People, Yale University Press, 1968, cap. «The Ritual Cycle»",
+          "why": "Il ciclo dei Tsembaga dal combattimento al kaiko, la mandria di maiali, il lavoro delle donne e la durata della tregua: la parte del libro da cui vengono i numeri dello scenario",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Voce «Maring», in Encyclopedia of World Cultures",
+          "why": "Un profilo dei Maring, di cui i Tsembaga fanno parte: le due valli, il Simbai e il Jimi, l'allevamento dei maiali e il kaiko come serie di eventi rituali che tradizionalmente termina con l'inizio di una guerra",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  },
+  "discuss": [
+    "Un rito può avere una ragione che chi lo compie dichiara e un'altra che un osservatore vede da fuori. Come si decide quale delle due spiega meglio, o se bastano tutte e due?",
+    "Il lavoro dei maiali ricade soprattutto sulle donne. Chi, in una pratica che conosci, sostiene i costi e chi ne raccoglie i frutti?",
+    "I Tsembaga legano la durata dell'attesa a luoghi «buoni» e «cattivi». Quali spiegazioni dai alle attese lunghe e a quelle brevi nelle cose che conosci?"
+  ]
+}
