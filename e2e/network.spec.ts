@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { scenarios } from "./content";
 
 const first = scenarios[0];
-const last = scenarios.at(-1)!;
+const last = scenarios.findLast((s) => s.concept !== first.concept)!;
 
 async function fresh(page: Page) {
   await page.goto("/");
