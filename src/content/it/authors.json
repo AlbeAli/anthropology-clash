@@ -6,7 +6,8 @@
     { "id": "britannica", "label": "Antropologia sociale britannica" },
     { "id": "francese", "label": "Etnologia e sociologia francese" },
     { "id": "nordamericana", "label": "Antropologia nordamericana dopo Boas" },
-    { "id": "economia", "label": "Economia e storia sociale" }
+    { "id": "economia", "label": "Economia e storia sociale" },
+    { "id": "esploratori", "label": "Naturalisti ed esploratori" }
   ],
   "authors": [
     {
@@ -405,6 +406,103 @@
       "text": "Nato a Cato, nel Wisconsin, sesto di dodici figli di immigrati norvegesi, crebbe in fattorie di sussistenza del Wisconsin e del Minnesota. Si laureò al Carleton College nel 1880 e si addottorò in filosofia a Yale nel 1884; dal 1891 studiò economia a Cornell e poi insegnò a Chicago, a Stanford e in Missouri. La teoria della classe agiata (1899), il suo primo libro, analizza il «consumo cospicuo» come simbolo di status. Lasciò l'università nel 1918; si ritirò in una capanna in California nel 1926 e vi morì tre anni dopo, povero e sconosciuto.",
       "source": [
         "International Encyclopedia of the Social Sciences, voce «Veblen, Thorstein» di Arthur K. Davis (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "powell",
+      "lang": "it",
+      "name": "John Wesley Powell",
+      "surname": "Powell",
+      "born": 1834,
+      "died": 1902,
+      "school": "evoluzionismo",
+      "text": "Nato a Mount Morris, nello Stato di New York, studiò in varie scuole lavorando per mantenersi, ma non completò mai un titolo. Fu ufficiale di artiglieria dell'Unione nella guerra civile e nel 1869 guidò un'esplorazione dei fiumi Green e Colorado. Evoluzionista convinto, fu il primo direttore del Bureau of Ethnology (1879), nato per organizzare la ricerca antropologica negli Stati Uniti, e diresse lo U.S. Geological Survey (1881-1894). Nel dibattito di Science del 1887 con Boas sostenne che un museo ordinato per tribù era impossibile, perché le tribù mutano. Morì a Haven, nel Maine, nel 1902.",
+      "source": [
+        "Complete Dictionary of Scientific Biography, voce «Powell, John Wesley» di Clifford M. Nelson (consultata su Encyclopedia.com)",
+        "Environmental Encyclopedia, voce «Powell, John Wesley (1834-1902)» di Gerald L. Young (consultata su Encyclopedia.com)",
+        "Dictionary of American History, voce «Anthropology and Ethnology» di Julia E. Liss (consultata su Encyclopedia.com)",
+        "George W. Stocking Jr., «Dogmatism, Pragmatism, Essentialism, Relativism: The Boas/Mason Museum Debate Revisited», History of Anthropology Newsletter 21(1-2), giugno 1994 (University of Pennsylvania, ScholarlyCommons)"
+      ]
+    },
+    {
+      "id": "mason",
+      "lang": "it",
+      "name": "Otis Tufton Mason",
+      "surname": "Mason",
+      "born": 1838,
+      "died": 1908,
+      "school": "evoluzionismo",
+      "text": "Dal 1861 al 1884 insegnò alla Columbian University, fino a «professore di antropologia». Nel 1872 Joseph Henry lo introdusse allo Smithsonian: per dodici anni collaborò senza compenso con Spencer F. Baird, ordinando e catalogando le collezioni etnologiche dello U.S. National Museum. Nel 1884 ne divenne il primo curatore di etnologia a tempo pieno. Nel 1887 difese contro Boas, su Science, una classificazione per concetti (tra cui l'evoluzione) con vetrine a scacchiera; poi passò dalle sequenze evolutive alle aree culturali. Dal 1905 diresse il dipartimento di antropologia. Morì nel 1908.",
+      "source": [
+        "Smithsonian Institution, National Anthropological Archives, «Guide to the Otis Tufton Mason papers, 1862, 1881-1905» (NAA.1973-23), nota biografica",
+        "George W. Stocking Jr., «Dogmatism, Pragmatism, Essentialism, Relativism: The Boas/Mason Museum Debate Revisited», History of Anthropology Newsletter 21(1-2), giugno 1994 (University of Pennsylvania, ScholarlyCommons)"
+      ]
+    },
+    {
+      "id": "dall",
+      "lang": "it",
+      "name": "William Healey Dall",
+      "surname": "Dall",
+      "born": 1845,
+      "died": 1927,
+      "school": "esploratori",
+      "text": "Nato a Boston il 21 agosto 1845, figlio di un pastore missionario e di Caroline Wells Healey, attivista per i diritti delle donne, non ebbe studi universitari: da ragazzo Louis Agassiz lo guidò nello studio dei molluschi. Nel 1865 entrò come naturalista nella spedizione telegrafica della Western Union in Alaska, di cui fu direttore scientifico dal 1866; tra il 1868 e il 1870 studiò le raccolte allo Smithsonian e pubblicò Alaska and Its Resources. Lavorò per la Coast Survey e lo U.S. Geological Survey, e dal 1881 fu curatore onorario allo Smithsonian. Morì a Washington il 27 marzo 1927.",
+      "source": [
+        "Complete Dictionary of Scientific Biography, voce «Dall, William Healey» di Elizabeth Noble Shor (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "thomson",
+      "lang": "it",
+      "name": "Joseph Thomson",
+      "surname": "Thomson",
+      "born": 1858,
+      "died": 1895,
+      "school": "esploratori",
+      "text": "Nato il 14 febbraio 1858 a Penpont, nel Dumfriesshire, quinto figlio di un muratore, studiò scienze naturali a Edimburgo. Nel 1878 fu geologo e naturalista di una spedizione della Royal Geographical Society nell'Africa orientale e, morto nel 1879 il capo Keith Johnston, ne prese la guida. Nel 1882 partì dalla costa con una carovana di centoquaranta uomini per aprire una via verso il lago Vittoria attraverso il paese dei Masai; ne scrisse Through Masai Land (1885). Lavorò poi in Sudan, in Marocco e per la British South Africa Company. Morì a Londra il 2 agosto 1895.",
+      "source": [
+        "Dictionary of National Biography, 1885-1900, vol. 56, voce «Thomson, Joseph» di Hugh Alexander Webster, 1898 (Wikisource)"
+      ]
+    },
+    {
+      "id": "best",
+      "lang": "it",
+      "name": "Elsdon Best",
+      "surname": "Best",
+      "born": 1856,
+      "died": 1931,
+      "school": "evoluzionismo",
+      "text": "Nato a Tawa Flat, in Nuova Zelanda, il 30 giugno 1856, fu impiegato, bracciante, soldato e segatore prima di diventare etnografo. Socio fondatore della Polynesian Society (1892), dal 1895 lavorò tra i Tūhoe dell'Urewera: fu il primo etnografo professionista del paese. Nel 1910 gli fu creato un posto al Dominion Museum di Wellington, dove scrisse bollettini sulla vita sociale e la cultura materiale dei Maori prima degli europei. Le sue premesse evoluzioniste e razziali ne riducono il valore etnologico. Morì a Wellington il 9 settembre 1931.",
+      "source": [
+        "Jeffrey Sissons, «Best, Elsdon», Dictionary of New Zealand Biography, 1993 (Te Ara, copia Wayback Machine)"
+      ]
+    },
+    {
+      "id": "thompson",
+      "lang": "it",
+      "name": "E. P. Thompson",
+      "surname": "Thompson",
+      "born": 1924,
+      "died": 1993,
+      "school": "economia",
+      "text": "Nato a Boar's Hill, presso Oxford, da madre americana, missionaria metodista in India, e da padre inglese, studiò a Cambridge e in guerra fu tenente di una compagnia di carri in Nord Africa e in Italia. Insegnò inglese a corsi per adulti all'Università di Leeds e vi scrisse The Making of the English Working Class (1963), che presenta la classe come un processo storico. Lasciò il Partito comunista nel 1956 e nel 1960 contribuì a fondare la New Left Review. Nel saggio «Time, Work-Discipline, and Industrial Capitalism» (1967) usò studi antropologici su società non capitaliste. Morì nel 1993.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Thompson, Edward P.» di Christopher J. Lamping (consultata su Encyclopedia.com)",
+        "Encyclopedia of European Social History, voce «Thompson, E. P. (1924-1993)» di Mohammed Arkawi (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "woodburn",
+      "lang": "it",
+      "name": "James Woodburn",
+      "surname": "Woodburn",
+      "born": 1934,
+      "died": 2022,
+      "school": "britannica",
+      "text": "Dopo storia a Cambridge e il servizio militare, durante il quale seguì un corso di russo come interprete, tornò a Cambridge per archeologia e antropologia, spinto da un incontro con Meyer Fortes. Dal 1957 fece quasi tre anni di ricerca tra gli Hadza della Tanganica; il dottorato (1964) riguardò la loro organizzazione sociale. Partecipò al convegno «Man the Hunter» (Chicago, 1966). Il suo articolo più citato, «Egalitarian societies» (1982), distingue società a ritorno immediato e a ritorno differito. Insegnò per tutta la carriera alla London School of Economics. Morì nel giugno 2022, a 88 anni.",
+      "source": [
+        "Camilla Power, «James Woodburn (1934-2022)», necrologio, Association of Social Anthropologists (theasa.org)",
+        "London School of Economics, Department of Anthropology, «James Woodburn», annuncio della morte (lse.ac.uk)"
       ]
     }
   ]
