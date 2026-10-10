@@ -1,0 +1,78 @@
+{
+  "id": "scenario_025",
+  "lang": "it",
+  "title": "Gonne e fasci di foglie",
+  "concept": "reciprocita",
+  "concept_label": "Reciprocità e dono",
+  "glossary": [
+    "isole-trobriand"
+  ],
+  "levels": {
+    "neofita": {
+      "hook": "Ogni anno gli stessi parenti ti portano lo stesso regalo. Ringrazi, lo accetti, e a un certo punto ti chiedi se sia una cortesia, un obbligo o l'inizio di un conto da saldare.",
+      "setup": "Kiriwina, nelle isole Trobriand, giugno 1971. Sei una ricercatrice appena arrivata: volevi studiare gli intagli di legno che gli uomini fanno per i turisti, e vivi nel villaggio di Kwaibwaga. La mattina dopo due ragazze ti dicono che andrete a una cerimonia funebre delle donne in un altro villaggio. Per cinque ore le donne lanciano gonne di fibra e fasci di foglie di banana essiccate nello spiazzo centrale, mentre altre corrono a raccoglierli. Una donna di Kwaibwaga ti dà dei fasci e ti tira con sé al centro; le altre ridono forte. Tu non sai cosa sta succedendo. Cosa fai?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ti ritrai: sei venuta per gli intagli, non per questo"
+        },
+        {
+          "id": "b",
+          "text": "Ti lasci portare al centro e poi chiedi cosa sono quei fasci"
+        }
+      ],
+      "feedback": {
+        "a": "Il tuo progetto non c'entra con questa scena, e Weiner (1976) lo dice: il suo «non riguardava lo studio delle donne». Ma lei non si ritrasse: a volte una donna di Kwaibwaga le dava dei fasci e la tirava con sé al centro, le altre «ridevano fragorosamente», e lei era «francamente imbarazzata, senza capire cosa stesse succedendo». Tornata nel tardo pomeriggio, cercò in Malinowski le parole nuove: trovò accenni generali all'importanza delle donne nei riti funebri, ma nulla sulle gonne e sui fasci. «Fin dal primo giorno» seppe che le donne facevano «qualcosa di importante» che «apparentemente era sfuggito» alle osservazioni di Malinowski.",
+        "b": "È quello che fece Weiner (1976). Le donne di Kwaibwaga le insegnarono a fare la ricchezza delle donne e a distribuirla nelle cerimonie funebri; quando morì qualcuno nel villaggio, ricevette dei fasci di foglie di banana «come pagamento per far parte del gruppo in lutto», e da allora partecipò alle cerimonie come donna. Scrive che la cerimonia fu un «vaso di Pandora»: apriva «l'intera questione dei rapporti tra uomini e donne», perché quegli scambi «davano tante informazioni sui vivi quante sui morti». Un fascio vale un centesimo australiano, ma non è insolito che se ne distribuiscano trentamila in un giorno."
+      },
+      "source": "Weiner, Women of Value, Men of Renown: New Perspectives in Trobriand Exchange, University of Texas Press, 1976, Introduzione e cap. 1"
+    },
+    "studente": {
+      "hook": "Vedi una persona dare ogni anno qualcosa a un'altra e non vedi niente tornare indietro. Concludi che è un tributo, un favore o un debito? Dipende da dove guardi e da che cosa conti come «in cambio».",
+      "setup": "Sei Annette Weiner e scrivi, nel 1976, il capitolo su ignami e ricchezza delle donne. Malinowski (1929) ha scritto che il matrimonio trobriandese mette «la famiglia della moglie sotto un obbligo tributario permanente verso il marito»: anno dopo anno i parenti di lei devono produrre con il proprio lavoro una quantità di ignami per la famiglia della loro parente, circa metà del consumo annuo di una famiglia media. Tu hai visto, nelle cerimonie funebri delle donne, migliaia di fasci di foglie di banana e di gonne di fibra passare di mano, e uomini lavorare per mesi, dalla mattina a tarda notte, per accumularne per le mogli. Come leggi il dono annuale di ignami?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "È un tributo: la famiglia della moglie lavora ogni anno e dal marito non torna niente"
+        },
+        {
+          "id": "b",
+          "text": "È uno scambio: il marito restituisce ricchezza alla moglie e, tramite lei, ai suoi parenti"
+        },
+        {
+          "id": "c",
+          "text": "È un debito tra uomini: il marito risponde ai fratelli della moglie"
+        },
+        {
+          "id": "d",
+          "text": "La restituzione è solo di facciata: gonne e fasci non valgono niente"
+        }
+      ],
+      "feedback": {
+        "a": "È la lettura di Malinowski, che Weiner cita (1929; Weiner 1976, p. 195). Lei la riconosce in parte: «In un certo senso questo processo sembra sensazionale come lo descrisse Malinowski». Ma «il matrimonio trobriandese è assai più complesso di quanto risulti» dalla sua affermazione: gli ignami ricevuti «possono essere usati» dal marito, «ma alla fine egli deve ricambiare» (p. 197).",
+        "b": "È la tesi di Weiner (1976). A p. 208: «Un uomo restituisce ricchezza alla moglie e, attraverso la moglie, ai suoi parenti». Per tutta la vita matrimoniale «lavora continuamente per la moglie per sostenere la sua posizione economica». A p. 198: «un uomo ricambia i doni annuali di ignami convertendo la propria ricchezza maschile in ricchezza femminile per la moglie. La ricchezza della moglie, a sua volta, viene distribuita a nome dei suoi parenti, compreso il padre».",
+        "c": "Weiner lo esclude. Gli ignami annuali «sono coltivati da un parente di lei in un orto contrassegnato con il suo nome»; quando sono disposti davanti alla casa degli ignami del marito, «sono presentati a suo nome». «In senso titolare, lei è la proprietaria degli ignami». Perciò, ricevendoli, «un uomo non è obbligato verso i parenti della moglie, ma verso di lei direttamente» (p. 197). Il debito passa da lei, non dai suoi fratelli.",
+        "d": "Un fascio, uno per uno, vale poco: «un centesimo australiano», scrive Weiner. Ma non è insolito che se ne distribuiscano trentamila in un giorno, e il marito lavora per mesi, dalla mattina a tarda notte, per accumularne per la moglie. I suoi grandi cesti pieni all'inizio della distribuzione e la sua capacità di contribuire con fasci a ogni scambio della giornata sono, a p. 198, «dichiarazioni pubbliche del sostegno e della ricchezza del marito»."
+      },
+      "source": "Weiner, Women of Value, Men of Renown: New Perspectives in Trobriand Exchange, University of Texas Press, Austin, 1976, Introduzione, cap. 1 e cap. 8 «Yams and Women's Wealth», pp. 195, 197-198 e 208 (cita Malinowski, The Sexual Life of Savages in North-Western Melanesia, 1929, cap. V, sezione «The Economic Tribute from the Wife's Family»)",
+      "deepen": [
+        {
+          "ref": "Weiner, Women of Value, Men of Renown: New Perspectives in Trobriand Exchange, University of Texas Press, 1976, cap. 8 «Yams and Women's Wealth»",
+          "why": "Il capitolo dove il dono annuale di ignami incontra la ricchezza delle donne: cosa torna al marito, a chi, e come Weiner risponde a Malinowski",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Malinowski, The Sexual Life of Savages in North-Western Melanesia, 1929, cap. V «Marriage», sezione «The Economic Tribute from the Wife's Family»",
+          "why": "Il passo che Weiner discute: il matrimonio come obbligo tributario permanente della famiglia della moglie, con la quota di consumo familiare che copre",
+          "access": "PD",
+          "url": "https://archive.org/details/sexuallifeofsava00mali"
+        }
+      ]
+    }
+  },
+  "discuss": [
+    "Quando dai qualcosa a qualcuno ogni anno, che cosa conti come «in cambio»: una restituzione dello stesso tipo, un aiuto, un riconoscimento?",
+    "Weiner era venuta per studiare gli intagli e si trovò a una cerimonia funebre delle donne. Che cosa può restare fuori da una ricerca decisa prima di arrivare?",
+    "I cesti pieni di una moglie sono, per Weiner, una dichiarazione pubblica del sostegno del marito. Dove, nella tua vita, un dono privato diventa una dichiarazione pubblica?"
+  ]
+}
