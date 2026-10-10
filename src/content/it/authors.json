@@ -5,7 +5,8 @@
     { "id": "durkheim", "label": "Scuola di Durkheim" },
     { "id": "britannica", "label": "Antropologia sociale britannica" },
     { "id": "francese", "label": "Etnologia e sociologia francese" },
-    { "id": "nordamericana", "label": "Antropologia nordamericana dopo Boas" }
+    { "id": "nordamericana", "label": "Antropologia nordamericana dopo Boas" },
+    { "id": "economia", "label": "Economia e storia sociale" }
   ],
   "authors": [
     {
@@ -309,6 +310,101 @@
       "text": "Newyorkese e albergatore diplomato, aveva quasi quarant'anni quando iniziò gli studi di antropologia alla Columbia University. Dopo aver contribuito a definire l'ecologia umana antropologica, fece ricerca tra i Maring dell'altopiano della Nuova Guinea: in Pigs for the Ancestors (1968) esplora la regolazione rituale dei rapporti con l'ambiente. Dal 1965 fu al dipartimento di antropologia dell'Università del Michigan, che diresse dal 1975 al 1980, e dal 1987 al 1989 presiedette l'American Anthropological Association. Poi studiò la struttura interna del rito e i principi di santità.",
       "source": [
         "Encyclopedia of Religion, voce «Rappaport, Roy A.», di Ellen Messer, 2005 (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "durkheim",
+      "lang": "it",
+      "name": "Émile Durkheim",
+      "surname": "Durkheim",
+      "born": 1858,
+      "died": 1917,
+      "school": "durkheim",
+      "text": "Primogenito di una famiglia di lunga tradizione rabbinica, lasciò la casa di Épinal, in Lorena, e da adolescente abbandonò la pratica religiosa ebraica. Studiò all'École Normale Supérieure di Parigi (1879-1882) e dal 1887 insegnò scienze sociali e pedagogia a Bordeaux, dove scrisse La divisione del lavoro sociale (1893), Le regole del metodo sociologico (1895) e Il suicidio (1897). Organizzò L'année sociologique con l'aiuto del nipote Marcel Mauss. Dal 1902 fu alla Sorbona, dove pubblicò Le forme elementari della vita religiosa (1912). Morì nel 1917, dopo la morte del figlio André in guerra.",
+      "source": [
+        "Encyclopedia of Religion, voce «Durkheim, Émile» di Ivan Strenski, 2005 (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "levi-strauss",
+      "lang": "it",
+      "name": "Claude Lévi-Strauss",
+      "surname": "Lévi-Strauss",
+      "born": 1908,
+      "died": 2009,
+      "school": "francese",
+      "text": "Nato a Bruxelles il 28 novembre 1908 da genitori francesi di origine ebraica, crebbe in Francia e studiò filosofia alla Sorbona. Fu professore di sociologia all'Università di San Paolo, in Brasile, e fece ricerca sul campo tra gli indigeni del paese. Durante la guerra insegnò a New York, alla New School for Social Research. Tornato in Francia, fu vicedirettore del Musée de l'Homme e poi professore di antropologia sociale al Collège de France. Figura di punta dello strutturalismo, famoso per Tristes tropiques (1955); fu eletto all'Académie française nel 1973. Morì nel 2009, a cento anni.",
+      "source": [
+        "Encyclopedia of World Biography, voce «Claude Gustave Lévi-Strauss» (consultata su Encyclopedia.com)",
+        "International Encyclopedia of the Social Sciences, voce «Lévi-Strauss, Claude» di Neni Panourgiá (consultata su Encyclopedia.com)",
+        "Associated Press, «French anthropologist Claude Levi-Strauss dies at 100», 3 novembre 2009 (HeraldNet)"
+      ]
+    },
+    {
+      "id": "sahlins",
+      "lang": "it",
+      "name": "Marshall Sahlins",
+      "surname": "Sahlins",
+      "born": 1930,
+      "died": 2021,
+      "school": "nordamericana",
+      "text": "Nato a Chicago il 27 dicembre 1930, studiò all'Università del Michigan, dove ebbe come maestro Leslie White, e si addottorò alla Columbia nel 1954. Insegnò al Michigan e poi a Chicago, dove fu professore emerito. Studiò la storia e l'etnografia di comunità delle Hawaii, delle Fiji e di altre isole del Pacifico. Con Stone Age Economics (1972) criticò la graduatoria evoluzionista delle società e sostenne, sulla scia di Karl Polanyi, che i sistemi economici sono ordinati culturalmente. Discusse con Gananath Obeyesekere sul capitano Cook alle Hawaii. Morì il 5 aprile 2021, a 90 anni.",
+      "source": [
+        "Contemporary Authors, New Revision Series, voce «Sahlins, Marshall 1930–» (consultata su Encyclopedia.com)",
+        "International Encyclopedia of the Social Sciences, voce «Sahlins, Marshall» di Ira Bashkow (consultata su Encyclopedia.com)",
+        "University of Chicago News, Max Witynski, «Marshall D. Sahlins, titan of anthropology, 1930–2021», 12 aprile 2021"
+      ]
+    },
+    {
+      "id": "firth",
+      "lang": "it",
+      "name": "Raymond Firth",
+      "surname": "Firth",
+      "born": 1901,
+      "died": 2002,
+      "school": "britannica",
+      "text": "Nato in Nuova Zelanda e cresciuto ai margini di Auckland, si laureò in economia all'Auckland University College nel 1921. Nel 1924 andò alla London School of Economics per un dottorato in economia, ma l'influenza di Malinowski gli fece cambiare strada: la tesi, sull'economia dei Maori, uscì nel 1929. Nel 1928 partì per Tikopia, piccola isola polinesiana delle Salomone, dove tornò più volte: ne nacque We, the Tikopia (1936). Insegnò alla LSE dal 1932 (professore dal 1944) fino al ritiro nel 1968 e fu nominato cavaliere nel 1973. Morì nel febbraio 2002.",
+      "source": [
+        "Encyclopedia of Religion, voce «Firth, Raymond» di Judith Macdonald, 2005 (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "murdock",
+      "lang": "it",
+      "name": "George Peter Murdock",
+      "surname": "Murdock",
+      "born": 1897,
+      "died": 1985,
+      "school": "nordamericana",
+      "text": "Nato in una fattoria di Meriden, nel Connecticut, si laureò in storia a Yale nel 1919; lasciati gli studi di diritto a Harvard e fatto un lungo viaggio intorno al mondo, scelse l'antropologia e si addottorò a Yale nel 1925 con Albert G. Keller. Dal 1928 insegnò a Yale, dove nel 1938 divenne direttore del dipartimento di antropologia, e dal 1960 a Pittsburgh. Negli anni Trenta avviò il Cross-Cultural Survey, da cui nacquero gli Human Relations Area Files; in Social Structure (1949) analizzò un campione di 250 culture. Presiedette l'American Anthropological Association nel 1955. Morì nel 1985.",
+      "source": [
+        "Ward H. Goodenough, «George Peter Murdock», Biographical Memoirs of the National Academy of Sciences 64, 1994 (National Academies Press, DOI 10.17226/4547)"
+      ]
+    },
+    {
+      "id": "turner",
+      "lang": "it",
+      "name": "Victor Turner",
+      "surname": "Turner",
+      "born": 1920,
+      "died": 1983,
+      "school": "britannica",
+      "text": "Nato a Glasgow il 28 maggio 1920, studiò a Londra e si addottorò a Manchester nel 1955, nel gruppo di Max Gluckman. Con la moglie Edith fece ricerca tra i Ndembu dell'allora Rodesia del Nord (oggi Zambia), in periodi tra il 1950 e il 1954, soprattutto nel villaggio di Mukanza. Ne trasse una serie di etnografie e studi sul rituale e sui simboli, tra cui The Forest of Symbols (1967) e The Ritual Process (1969), dove riprese la liminalità di van Gennep e parlò di communitas. Dal 1964 insegnò negli Stati Uniti, a Cornell, Chicago e Virginia, fino alla morte nel 1983.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Turner, Victor» di Parker Shipton (consultata su Encyclopedia.com)"
+      ]
+    },
+    {
+      "id": "veblen",
+      "lang": "it",
+      "name": "Thorstein Veblen",
+      "surname": "Veblen",
+      "born": 1857,
+      "died": 1929,
+      "school": "economia",
+      "text": "Nato a Cato, nel Wisconsin, sesto di dodici figli di immigrati norvegesi, crebbe in fattorie di sussistenza del Wisconsin e del Minnesota. Si laureò al Carleton College nel 1880 e si addottorò in filosofia a Yale nel 1884; dal 1891 studiò economia a Cornell e poi insegnò a Chicago, a Stanford e in Missouri. La teoria della classe agiata (1899), il suo primo libro, analizza il «consumo cospicuo» come simbolo di status. Lasciò l'università nel 1918; si ritirò in una capanna in California nel 1926 e vi morì tre anni dopo, povero e sconosciuto.",
+      "source": [
+        "International Encyclopedia of the Social Sciences, voce «Veblen, Thorstein» di Arthur K. Davis (consultata su Encyclopedia.com)"
       ]
     }
   ]
