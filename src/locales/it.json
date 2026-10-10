@@ -161,6 +161,7 @@
     "later": "Avanti nel tempo",
     "life": "{{born}}-{{died}}",
     "lifeOpen": "n. {{born}}",
+    "lifeUnknown": "date non reperite nelle fonti",
     "works": "Opere citate",
     "usedIn": "Negli scenari",
     "source_one": "Fonte",

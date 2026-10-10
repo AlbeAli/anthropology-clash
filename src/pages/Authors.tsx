@@ -7,6 +7,13 @@ import type { AuthorProfile, AuthorsData } from "../engine/authors";
 import AuthorTimeline from "../components/AuthorTimeline";
 import { schoolColor } from "../components/palette";
 
+const byBorn = (a: AuthorProfile, b: AuthorProfile) =>
+  (a.born ?? Infinity) === (b.born ?? Infinity)
+    ? 0
+    : (a.born ?? Infinity) < (b.born ?? Infinity)
+      ? -1
+      : 1;
+
 export default function Authors() {
   const { t } = useTranslation();
   const { hash } = useLocation();
@@ -30,17 +37,19 @@ export default function Authors() {
   }, [data, current]);
 
   const life = (a: AuthorProfile) =>
-    a.died
-      ? t("authors.life", { born: a.born, died: a.died })
-      : t("authors.lifeOpen", { born: a.born });
+    a.born === undefined
+      ? t("authors.lifeUnknown")
+      : a.died
+        ? t("authors.life", { born: a.born, died: a.died })
+        : t("authors.lifeOpen", { born: a.born });
 
   const groups = (data?.schools ?? [])
     .map((school) => ({
       school,
-      authors: data!.authors.filter((a) => a.school === school.id).sort((a, b) => a.born - b.born),
+      authors: data!.authors.filter((a) => a.school === school.id).sort(byBorn),
     }))
     .filter((g) => g.authors.length > 0)
-    .sort((a, b) => a.authors[0].born - b.authors[0].born);
+    .sort((a, b) => byBorn(a.authors[0], b.authors[0]));
 
   return (
     <div className="mx-auto max-w-3xl">

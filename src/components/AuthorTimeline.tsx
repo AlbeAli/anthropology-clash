@@ -4,9 +4,10 @@ import { useTranslation } from "react-i18next";
 import type { AuthorProfile, AuthorsData } from "../engine/authors";
 import { schoolColor } from "./palette";
 
-type Stop = { a: AuthorProfile; at: number };
+type Dated = AuthorProfile & { born: number };
+type Stop = { a: Dated; at: number };
 
-function layout(sorted: AuthorProfile[]) {
+function layout(sorted: Dated[]) {
   const stops: Stop[] = [];
   const breaks: number[] = [];
   for (const a of sorted) {
@@ -55,11 +56,13 @@ const HEIGHT = 176;
 export default function AuthorTimeline({ authors, schools, life }: Props) {
   const { t } = useTranslation();
   const track = useRef<HTMLDivElement>(null);
-  const sorted = [...authors].sort((a, b) => a.born - b.born);
+  const sorted = authors
+    .filter((a): a is AuthorProfile & { born: number } => a.born !== undefined)
+    .sort((a, b) => a.born - b.born);
   if (sorted.length === 0) return null;
 
   const { stops, breaks, ticks, width } = layout(sorted);
-  const used = schools.filter((s) => authors.some((a) => a.school === s.id));
+  const used = schools.filter((s) => sorted.some((a) => a.school === s.id));
 
   function slide(direction: 1 | -1) {
     const el = track.current;

@@ -6,7 +6,7 @@
     { "id": "britannica", "label": "Antropologia sociale britannica" },
     { "id": "francese", "label": "Etnologia e sociologia francese" },
     { "id": "nordamericana", "label": "Antropologia nordamericana dopo Boas" },
-    { "id": "economia", "label": "Economia e storia sociale" },
+    { "id": "economia", "label": "Storia ed economia" },
     { "id": "esploratori", "label": "Naturalisti ed esploratori" }
   ],
   "authors": [
@@ -321,7 +321,7 @@
       "born": 1858,
       "died": 1917,
       "school": "durkheim",
-      "text": "Primogenito di una famiglia di lunga tradizione rabbinica, lasciò la casa di Épinal, in Lorena, e da adolescente abbandonò la pratica religiosa ebraica. Studiò all'École Normale Supérieure di Parigi (1879-1882) e dal 1887 insegnò scienze sociali e pedagogia a Bordeaux, dove scrisse La divisione del lavoro sociale (1893), Le regole del metodo sociologico (1895) e Il suicidio (1897). Organizzò L'année sociologique con l'aiuto del nipote Marcel Mauss. Dal 1902 fu alla Sorbona, dove pubblicò Le forme elementari della vita religiosa (1912). Morì nel 1917, dopo la morte del figlio André in guerra.",
+      "text": "Figlio maggiore di una famiglia di lunga tradizione rabbinica, lasciò la casa di Épinal, in Lorena, e da adolescente abbandonò la pratica religiosa ebraica. Studiò all'École Normale Supérieure (1879-1882) e dal 1887 insegnò scienze sociali e pedagogia a Bordeaux, dove scrisse La divisione del lavoro sociale (1893), Le regole del metodo sociologico (1895) e Il suicidio (1897). Organizzò L'année sociologique con l'aiuto del nipote Marcel Mauss. Dal 1902 fu alla Sorbona, dove pubblicò Le forme elementari della vita religiosa (1912). Morì nel 1917, dopo la morte del figlio André in guerra.",
       "source": [
         "Encyclopedia of Religion, voce «Durkheim, Émile» di Ivan Strenski, 2005 (consultata su Encyclopedia.com)"
       ]
@@ -377,7 +377,7 @@
       "born": 1897,
       "died": 1985,
       "school": "nordamericana",
-      "text": "Nato in una fattoria di Meriden, nel Connecticut, si laureò in storia a Yale nel 1919; lasciati gli studi di diritto a Harvard e fatto un lungo viaggio intorno al mondo, scelse l'antropologia e si addottorò a Yale nel 1925 con Albert G. Keller. Dal 1928 insegnò a Yale, dove nel 1938 divenne direttore del dipartimento di antropologia, e dal 1960 a Pittsburgh. Negli anni Trenta avviò il Cross-Cultural Survey, da cui nacquero gli Human Relations Area Files; in Social Structure (1949) analizzò un campione di 250 culture. Presiedette l'American Anthropological Association nel 1955. Morì nel 1985.",
+      "text": "Cresciuto in una fattoria di Meriden, nel Connecticut, si laureò in storia a Yale nel 1919; lasciato diritto a Harvard e fatto un lungo viaggio intorno al mondo, scelse l'antropologia e si addottorò a Yale nel 1925 con Albert G. Keller. Dal 1928 insegnò a Yale, dove nel 1938 divenne direttore del dipartimento di antropologia, e dal 1960 a Pittsburgh. Negli anni Trenta avviò il Cross-Cultural Survey, da cui nacquero gli Human Relations Area Files; in Social Structure (1949) analizzò un campione di 250 culture. Presiedette l'American Anthropological Association nel 1955. Morì nel 1985.",
       "source": [
         "Ward H. Goodenough, «George Peter Murdock», Biographical Memoirs of the National Academy of Sciences 64, 1994 (National Academies Press, DOI 10.17226/4547)"
       ]
@@ -390,7 +390,7 @@
       "born": 1920,
       "died": 1983,
       "school": "britannica",
-      "text": "Nato a Glasgow il 28 maggio 1920, studiò a Londra e si addottorò a Manchester nel 1955, nel gruppo di Max Gluckman. Con la moglie Edith fece ricerca tra i Ndembu dell'allora Rodesia del Nord (oggi Zambia), in periodi tra il 1950 e il 1954, soprattutto nel villaggio di Mukanza. Ne trasse una serie di etnografie e studi sul rituale e sui simboli, tra cui The Forest of Symbols (1967) e The Ritual Process (1969), dove riprese la liminalità di van Gennep e parlò di communitas. Dal 1964 insegnò negli Stati Uniti, a Cornell, Chicago e Virginia, fino alla morte nel 1983.",
+      "text": "Nato a Glasgow il 28 maggio 1920, studiò a Londra e si addottorò a Manchester nel 1955, nel gruppo di Max Gluckman. Con la moglie Edith fece ricerca tra i Ndembu dell'allora Rodesia del Nord (oggi Zambia), in periodi tra il 1950 e il 1954, soprattutto nel villaggio di Mukanza. Scrisse etnografie e studi sul rituale e sui simboli, tra cui The Forest of Symbols (1967) e The Ritual Process (1969), dove riprese la liminalità di van Gennep e parlò di communitas. Dal 1964 insegnò negli Stati Uniti, a Cornell, Chicago e Virginia, fino alla morte nel 1983.",
       "source": [
         "International Encyclopedia of the Social Sciences, voce «Turner, Victor» di Parker Shipton (consultata su Encyclopedia.com)"
       ]
@@ -416,7 +416,7 @@
       "born": 1834,
       "died": 1902,
       "school": "evoluzionismo",
-      "text": "Nato a Mount Morris, nello Stato di New York, studiò in varie scuole lavorando per mantenersi, ma non completò mai un titolo. Fu ufficiale di artiglieria dell'Unione nella guerra civile e nel 1869 guidò un'esplorazione dei fiumi Green e Colorado. Evoluzionista convinto, fu il primo direttore del Bureau of Ethnology (1879), nato per organizzare la ricerca antropologica negli Stati Uniti, e diresse lo U.S. Geological Survey (1881-1894). Nel dibattito di Science del 1887 con Boas sostenne che un museo ordinato per tribù era impossibile, perché le tribù mutano. Morì a Haven, nel Maine, nel 1902.",
+      "text": "Nato a Mount Morris, nello Stato di New York, studiò in varie scuole lavorando per mantenersi, ma non completò mai un titolo. Fu ufficiale di artiglieria dell'Unione nella guerra civile e nel 1869 guidò un'esplorazione dei fiumi Green e Colorado. Evoluzionista convinto, fu il primo direttore del Bureau of Ethnology, fondato nel 1879 per organizzare la ricerca antropologica negli USA, e diresse lo U.S. Geological Survey (1881-1894). Nel dibattito di Science del 1887 con Boas sostenne che un museo ordinato per tribù era impossibile, perché le tribù mutano. Morì a Haven, nel Maine, nel 1902.",
       "source": [
         "Complete Dictionary of Scientific Biography, voce «Powell, John Wesley» di Clifford M. Nelson (consultata su Encyclopedia.com)",
         "Environmental Encyclopedia, voce «Powell, John Wesley (1834-1902)» di Gerald L. Young (consultata su Encyclopedia.com)",
@@ -459,7 +459,7 @@
       "born": 1858,
       "died": 1895,
       "school": "esploratori",
-      "text": "Nato il 14 febbraio 1858 a Penpont, nel Dumfriesshire, quinto figlio di un muratore, studiò scienze naturali a Edimburgo. Nel 1878 fu geologo e naturalista di una spedizione della Royal Geographical Society nell'Africa orientale e, morto nel 1879 il capo Keith Johnston, ne prese la guida. Nel 1882 partì dalla costa con una carovana di centoquaranta uomini per aprire una via verso il lago Vittoria attraverso il paese dei Masai; ne scrisse Through Masai Land (1885). Lavorò poi in Sudan, in Marocco e per la British South Africa Company. Morì a Londra il 2 agosto 1895.",
+      "text": "Nato il 14 febbraio 1858 a Penpont, nel Dumfriesshire, quinto figlio di uno scalpellino, studiò scienze naturali a Edimburgo. Nel 1878 fu geologo e naturalista di una spedizione della Royal Geographical Society nell'Africa orientale e, morto nel 1879 il capo Keith Johnston, ne prese la guida. Nel 1882 partì dalla costa con una carovana di centoquaranta uomini per aprire una via verso il lago Vittoria attraverso il paese dei Masai; ne scrisse Through Masai Land (1885). Lavorò poi in Sudan, in Marocco e per la British South Africa Company. Morì a Londra il 2 agosto 1895.",
       "source": [
         "Dictionary of National Biography, 1885-1900, vol. 56, voce «Thomson, Joseph» di Hugh Alexander Webster, 1898 (Wikisource)"
       ]
@@ -472,7 +472,7 @@
       "born": 1856,
       "died": 1931,
       "school": "evoluzionismo",
-      "text": "Nato a Tawa Flat, in Nuova Zelanda, il 30 giugno 1856, fu impiegato, bracciante, soldato e segatore prima di diventare etnografo. Socio fondatore della Polynesian Society (1892), dal 1895 lavorò tra i Tūhoe dell'Urewera: fu il primo etnografo professionista del paese. Nel 1910 gli fu creato un posto al Dominion Museum di Wellington, dove scrisse bollettini sulla vita sociale e la cultura materiale dei Maori prima degli europei. Le sue premesse evoluzioniste e razziali ne riducono il valore etnologico. Morì a Wellington il 9 settembre 1931.",
+      "text": "Nato a Tawa Flat, in Nuova Zelanda, il 30 giugno 1856, fu impiegato, bracciante, soldato e gestore di una segheria prima di diventare etnografo. Socio fondatore della Polynesian Society (1892), dal 1895 lavorò tra i Tūhoe dell'Urewera: fu il primo etnografo professionista del paese. Nel 1910 gli fu creato un posto al Dominion Museum di Wellington, dove scrisse bollettini sulla vita sociale e la cultura materiale dei Maori prima degli europei. Le sue premesse evoluzioniste e razziali ne riducono il valore etnologico. Morì a Wellington il 9 settembre 1931.",
       "source": [
         "Jeffrey Sissons, «Best, Elsdon», Dictionary of New Zealand Biography, 1993 (Te Ara, copia Wayback Machine)"
       ]
@@ -513,7 +513,7 @@
       "born": 1917,
       "died": 2009,
       "school": "boas",
-      "text": "Nata a Winnipeg il 10 settembre 1917, si trasferì nel 1919 in Minnesota. Si laureò all'Università del Minnesota nel 1939 e ottenne il dottorato in antropologia alla Columbia nel 1950, studiando con Ruth Benedict. Insegnò al Vassar (1946-1953) e alla Brandeis (1964-1982), dove fu preside della scuola di dottorato (1974-1977). Fece ricerca tra i Kwakwaka'wakw nel 1951 e nel 1955 e nel 1950 pubblicò Fighting with Property, sul potlatch e la guerra. Nel 1959 andò in Ruanda: ne uscì The Biography of an African Society (1973). Nel 1966 curò il Kwakiutl Ethnography inedito di Boas. Morì nel 2009.",
+      "text": "Nata a Winnipeg il 10 settembre 1917, si trasferì nel 1919 in Minnesota. Si laureò all'Università del Minnesota nel 1939 e ottenne il dottorato in antropologia alla Columbia nel 1950, studiando con Ruth Benedict. Insegnò al Vassar (1946-1953) e alla Brandeis (1964-1982), dove fu preside della Graduate School (1974-1977). Fece ricerca tra i Kwakwaka'wakw nel 1951 e nel 1955 e nel 1950 pubblicò Fighting with Property, sul potlatch e la guerra. Nel 1959 andò in Ruanda: ne uscì The Biography of an African Society (1973). Nel 1966 curò il Kwakiutl Ethnography inedito di Boas. Morì nel 2009.",
       "source": [
         "Museum of Anthropology, University of British Columbia, Audrey and Harry Hawthorn Library and Archives, scheda d'autorità «Helen Frances Codere» (1917-2009)"
       ]
@@ -539,7 +539,7 @@
       "surname": "Trautmann",
       "born": 1940,
       "school": "nordamericana",
-      "text": "Statunitense, nato nel 1940, si laureò al Beloit College nel 1962 e conseguì il dottorato all'Università di Londra nel 1968. Dal 1965 al 1968 fu lettore di storia antica dell'Asia meridionale alla School of Oriental and African Studies; dal 1968 insegnò all'Università del Michigan, come professore di storia dal 1977 e di antropologia dal 1984, ed è oggi professore emerito di entrambe le discipline. Tra i suoi libri Kautilya and the Arthasastra (1971), Dravidian Kinship (1982), Lewis Henry Morgan and the Invention of Kinship e Aryans and British India (1997).",
+      "text": "Statunitense, nato nel 1940, si laureò al Beloit College nel 1962 e conseguì il dottorato all'Università di Londra nel 1968. Dal 1965 al 1968 fu docente di storia antica dell'Asia meridionale alla School of Oriental and African Studies; dal 1968 insegnò all'Università del Michigan, come professore di storia dal 1977 e di antropologia dal 1984, ed è oggi professore emerito di entrambe le discipline. Tra i suoi libri Kautilya and the Arthasastra (1971), Dravidian Kinship (1982), Lewis Henry Morgan and the Invention of Kinship e Aryans and British India (1997).",
       "source": [
         "Writers Directory 2005, voce «Trautmann, Thomas R(oger)» (consultata su Encyclopedia.com)",
         "University of Michigan, Department of Anthropology, scheda «Thomas R. Trautmann», professore emerito"
@@ -552,10 +552,33 @@
       "surname": "Leathem",
       "born": 1988,
       "school": "nordamericana",
-      "text": "Di Evanston, nell'Illinois (1988), si occupa di antropologia del patrimonio culturale e scrive. Ha un dottorato in antropologia dell'Università di Chicago, con una tesi su furto, spettri e patrimonio monumentale a Oaxaca, in Messico (History (Dis)Possessed). Ha svolto ricerche a Maynooth University e all'EHESS di Parigi. Studia come popoli zapotechi e mixtechi creano relazioni sociali ed emotive con i siti del patrimonio, tra possesso statale ed espropriazione indigena. Nel 2023 ha pubblicato su American Anthropologist un commento a «Return to Acirema».",
+      "text": "Di Evanston, nell'Illinois (1988), si occupa di antropologia del patrimonio culturale e scrive. Ha un dottorato in antropologia dell'Università di Chicago, con una tesi su infestazione, furto e costruzione del patrimonio monumentale a Oaxaca, in Messico (History (Dis)Possessed). Ha avuto fellowship di ricerca a Maynooth University e all'EHESS di Parigi. Studia come attori zapotechi e mixtechi creano relazioni sociali ed emotive con i siti del patrimonio, tra possesso statale e spossessamento indigeno. Nel 2023 ha pubblicato su American Anthropologist un commento a «Return to Acirema».",
       "source": [
         "Imagining Futures, scheda «Hilary Morgan V. Leathem» (imaginingfutures.world)",
         "Hilary Morgan V. Leathem, «Comments on a found text: Return to Acirema», American Anthropologist, 2023, DOI 10.1111/aman.13871"
+      ]
+    },
+    {
+      "id": "chaikin",
+      "lang": "it",
+      "name": "Ira Chaikin",
+      "surname": "Chaikin",
+      "school": "economia",
+      "text": "Studiò alla Simon Fraser University e alla McGill. Con lo storico Douglas Cole scrisse An Iron Hand upon the People (1990), sulla legge contro il potlatch sulla costa nord-occidentale del Pacifico. Dopo la morte di Cole firmò l'avviso per la borsa di studio in cultura storica istituita in sua memoria. La data di nascita non risulta nelle fonti consultate.",
+      "source": [
+        "ABC BookWorld, voce «Chaikin Ira» (abcbookworld.com)",
+        "BC Studies, avviso «Douglas Lowell Cole Memorial Entrance Scholarship in Cultural History», firmato da Ira Chaikin (ojs.library.ubc.ca)"
+      ]
+    },
+    {
+      "id": "isherwood",
+      "lang": "it",
+      "name": "Baron Isherwood",
+      "surname": "Isherwood",
+      "school": "economia",
+      "text": "Economista inglese, specialista di comportamento dei consumatori. Con l'antropologa Mary Douglas scrisse The World of Goods (1979), sull'antropologia del consumo. La nota sugli autori dell'edizione lo dice allora in servizio al Department of Health and Social Security britannico. Date di nascita e di morte non risultano nelle fonti consultate.",
+      "source": [
+        "Routledge, nota sugli autori di The World of Goods (routledge.com)"
       ]
     }
   ]

@@ -41,7 +41,7 @@ export const glossary = JSON.parse(
   readFileSync(join(process.cwd(), "src/content/it/glossary.json"), "utf8"),
 ) as GlossaryFile[];
 
-export type AuthorFile = { id: string; name: string; surname: string; born: number; text: string };
+export type AuthorFile = { id: string; name: string; surname: string; born?: number; text: string };
 
 export const authors = (
   JSON.parse(readFileSync(join(process.cwd(), "src/content/it/authors.json"), "utf8")) as {

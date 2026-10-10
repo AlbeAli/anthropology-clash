@@ -110,13 +110,13 @@ export const Author = z
     lang: Lang,
     name: z.string().min(1).max(80),
     surname: z.string().min(1).max(40),
-    born: Year,
+    born: Year.optional(),
     died: Year.optional(),
     school: Slug,
     text: z.string().min(1).max(600),
     source: z.array(z.string().min(1).max(300)).min(1).max(4),
   })
-  .refine((a) => a.died === undefined || a.died > a.born, {
+  .refine((a) => a.died === undefined || a.born === undefined || a.died > a.born, {
     path: ["died"],
     message: "died viene dopo born",
   });

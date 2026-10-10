@@ -20,7 +20,7 @@ test("la pagina Autori mostra la linea del tempo e una scheda per autore", async
   }
   await expect(page.getByText(/^Font[ei]:$/)).toHaveCount(authors.length);
 
-  const last = authors.at(-1)!;
+  const last = authors.filter((a) => a.born !== undefined).at(-1)!;
   await page.getByRole("link", { name: new RegExp(`^${last.name}, `) }).click();
   await expect(page).toHaveURL(`/autori#${last.id}`);
   await expect(page.getByRole("heading", { level: 3, name: last.name })).toBeInViewport();
@@ -64,7 +64,7 @@ test("la legenda porta al filone e un'ancora nella stessa pagina non rifà l'ani
   await expect(page).toHaveURL("/autori#school-nordamericana");
   await expect(page.locator("#school-nordamericana")).toBeInViewport();
   await expect(page.locator(".metro-wipe")).toHaveCount(0);
-  const last = authors.at(-1)!;
+  const last = authors.filter((a) => a.born !== undefined).at(-1)!;
   await page.getByRole("link", { name: new RegExp(`^${last.name}, `) }).click();
   await expect(page.locator(".metro-wipe")).toHaveCount(0);
 });
