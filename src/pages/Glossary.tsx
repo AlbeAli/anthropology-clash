@@ -7,10 +7,13 @@ import type { GlossaryEntry, GlossaryKind } from "../schema/scenario.schema";
 
 const KINDS: readonly GlossaryKind[] = ["popolo", "luogo", "pratica"];
 
+const plain = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
 export default function Glossary() {
   const { t, i18n } = useTranslation();
   const { hash } = useLocation();
   const [entries, setEntries] = useState<GlossaryEntry[] | null>(null);
+  const [query, setQuery] = useState("");
   const scenarios = getCatalog(DEFAULT_LANG);
 
   useEffect(() => {
@@ -30,7 +33,13 @@ export default function Glossary() {
     document.getElementById(current)?.scrollIntoView();
   }, [entries, current]);
 
-  const sorted = [...(entries ?? [])].sort((a, b) => a.term.localeCompare(b.term, i18n.language));
+  const needle = plain(query.trim());
+  const sorted = [...(entries ?? [])]
+    .filter(
+      (e) => !needle || plain([e.term, ...(e.forms ?? []), e.text].join(" ")).includes(needle),
+    )
+    .sort((a, b) => a.term.localeCompare(b.term, i18n.language));
+  const kinds = KINDS.filter((kind) => sorted.some((e) => e.kind === kind));
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -41,14 +50,49 @@ export default function Glossary() {
         {t("glossary.lead")}
       </p>
 
-      {KINDS.map((kind) => {
+      <div className="mb-8 grid gap-4">
+        <div>
+          <label htmlFor="glossary-search" className="mb-1 block text-sm font-bold">
+            {t("glossary.search")}
+          </label>
+          <input
+            id="glossary-search"
+            type="search"
+            value={query}
+            onChange={(ev) => setQuery(ev.target.value)}
+            placeholder={t("glossary.searchHint")}
+            className="w-full rounded-md border-2 border-ink bg-surface px-3 py-2 text-base"
+          />
+          <p role="status" className="mt-1 min-h-5 text-sm text-ink-soft">
+            {needle && t("glossary.results", { count: sorted.length })}
+          </p>
+        </div>
+        {kinds.length > 1 && (
+          <nav aria-label={t("glossary.index")}>
+            <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm font-bold">
+              {kinds.map((kind) => (
+                <li key={kind}>
+                  <Link
+                    to={{ hash: `kind-${kind}` }}
+                    className="underline decoration-2 underline-offset-4 hover:text-accent"
+                  >
+                    {t(`glossary.kinds.${kind}`)} ({sorted.filter((e) => e.kind === kind).length})
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+      </div>
+
+      {kinds.map((kind) => {
         const group = sorted.filter((e) => e.kind === kind);
         if (group.length === 0) return null;
         return (
           <section key={kind} aria-labelledby={`kind-${kind}`} className="mb-10">
             <h2
               id={`kind-${kind}`}
-              className="mb-4 border-b-[3px] border-ink pb-2 font-display text-2xl font-extrabold"
+              className="mb-4 scroll-mt-32 border-b-[3px] border-ink pb-2 font-display text-2xl font-extrabold"
             >
               {t(`glossary.kinds.${kind}`)}
             </h2>

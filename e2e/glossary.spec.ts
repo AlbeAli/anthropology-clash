@@ -127,3 +127,25 @@ test("in aula le note di contesto si aprono dal pulsante sulla diapositiva del s
   await expect(button).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByText(notes[0].text, { exact: true })).toBeVisible();
 });
+
+test("la ricerca filtra le voci per termine e l'indice porta alla categoria", async ({ page }) => {
+  await fresh(page, "/glossario");
+  await expect(page.getByRole("heading", { level: 3 })).toHaveCount(glossary.length);
+  await page
+    .getByRole("navigation", { name: "Categorie del glossario" })
+    .getByRole("link")
+    .first()
+    .click();
+  await expect(page).toHaveURL(/#kind-/);
+  await expect(page.locator(".metro-wipe")).toHaveCount(0);
+
+  const search = page.getByRole("searchbox", { name: "Cerca nel glossario" });
+  await search.fill(glossary[0].term.toUpperCase());
+  await expect(page.getByRole("heading", { level: 3, name: glossary[0].term })).toBeVisible();
+  await expect(page.getByRole("status")).toContainText(/voc[ei] trovat[ae]/);
+  await expect(page.getByRole("heading", { level: 3 }).first()).toBeVisible();
+
+  await search.fill("zzzzqqq");
+  await expect(page.getByRole("heading", { level: 3 })).toHaveCount(0);
+  await expect(page.getByRole("status")).toContainText("0 voci trovate");
+});

@@ -138,6 +138,11 @@
       "luogo": "Luoghi",
       "pratica": "Pratiche"
     },
+    "search": "Cerca nel glossario",
+    "searchHint": "Un popolo, un luogo, una pratica",
+    "results_one": "{{count}} voce trovata",
+    "results_other": "{{count}} voci trovate",
+    "index": "Categorie del glossario",
     "hint": "apre una nota di contesto",
     "close": "Chiudi la nota",
     "source_one": "Fonte",
