@@ -67,7 +67,7 @@ export default function Authors() {
         <section key={school.id} aria-labelledby={`school-${school.id}`} className="mb-10">
           <h2
             id={`school-${school.id}`}
-            className="mb-4 flex items-center gap-3 border-b-[3px] border-ink pb-2 font-display text-2xl font-extrabold"
+            className="mb-4 flex scroll-mt-32 items-center gap-3 border-b-[3px] border-ink pb-2 font-display text-2xl font-extrabold"
           >
             <span
               aria-hidden="true"

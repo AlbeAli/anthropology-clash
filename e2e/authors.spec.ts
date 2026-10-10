@@ -53,3 +53,18 @@ test("la pagina Autori si apre dal piè di pagina e, sul telefono, dal menu Altr
   await expect(page).toHaveURL("/autori");
   await expect(page.getByRole("heading", { level: 1, name: "Autori" })).toBeVisible();
 });
+
+test("la legenda porta al filone e un'ancora nella stessa pagina non rifà l'animazione", async ({
+  page,
+}) => {
+  await fresh(page, "/autori");
+  await expect(page.locator(".metro-wipe")).toHaveCount(0, { timeout: 5000 });
+  const link = page.getByRole("link", { name: "Antropologia nordamericana dopo Boas" }).first();
+  await link.click();
+  await expect(page).toHaveURL("/autori#school-nordamericana");
+  await expect(page.locator("#school-nordamericana")).toBeInViewport();
+  await expect(page.locator(".metro-wipe")).toHaveCount(0);
+  const last = authors.at(-1)!;
+  await page.getByRole("link", { name: new RegExp(`^${last.name}, `) }).click();
+  await expect(page.locator(".metro-wipe")).toHaveCount(0);
+});

@@ -70,13 +70,18 @@ export default function AuthorTimeline({ authors, schools, life }: Props) {
     <>
       <ul className="mb-4 flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
         {used.map((s) => (
-          <li key={s.id} className="flex items-center gap-2">
-            <span
-              aria-hidden="true"
-              className="h-1.5 w-5 rounded-full"
-              style={{ background: schoolColor(schools, s.id) }}
-            />
-            {s.label}
+          <li key={s.id}>
+            <Link
+              to={{ hash: `school-${s.id}` }}
+              className="flex items-center gap-2 underline-offset-4 hover:underline"
+            >
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-5 rounded-full"
+                style={{ background: schoolColor(schools, s.id) }}
+              />
+              {s.label}
+            </Link>
           </li>
         ))}
       </ul>
