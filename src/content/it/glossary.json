@@ -1,5 +1,16 @@
 [
   {
+    "id": "azande",
+    "lang": "it",
+    "term": "Azande",
+    "kind": "popolo",
+    "forms": ["Azande", "Zande"],
+    "text": "Nome con cui si chiama un gruppo di popoli culturalmente diversi che negli ultimi 200 anni sono stati riuniti sotto diversi regni; gli altri li chiamano semplicemente Zande. Vivono dal bacino del Nilo superiore, nel Sudan meridionale, ai margini della foresta pluviale in Congo, e anche nella Repubblica Centrafricana. Gli antenati vennero da ovest, forse 300 anni fa; il grande regno azande fu distrutto da belgi, francesi, mahdisti del Sudan e infine britannici. Nell'epoca precoloniale le fattorie erano sparse. Le credenze tradizionali ruotano attorno a mangu, la stregoneria.",
+    "source": [
+      "Worldmark Encyclopedia of Cultures and Daily Life, voce «Azande», Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
     "id": "bali",
     "lang": "it",
     "term": "Bali",
