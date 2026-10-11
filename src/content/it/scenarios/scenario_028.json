@@ -1,0 +1,66 @@
+{
+  "id": "scenario_028",
+  "lang": "it",
+  "title": "L'invito di un ex amico",
+  "concept": "reciprocita",
+  "concept_label": "Reciprocità e dono",
+  "levels": {
+    "neofita": {
+      "hook": "Ti arriva l'invito alle nozze di qualcuno che non c'era quando ne avevi bisogno. Andare vuol dire far finta di niente, non andare è già dire qualcosa. Ti chiedi come si dice a una persona che con lei hai chiuso, senza che gli altri invitati lo fraintendano.",
+      "setup": "Cina del nord, 1991. Nel villaggio di Xiajia l'antropologo Yan Yunxiang, che vi ha vissuto da giovane, passa sei mesi a studiare lo scambio di doni. Una sera di luglio il suo amico Li riceve l'invito di Gao, vicepresidente del governo locale, a un matrimonio. Le due famiglie avevano un rapporto di doni: l'ultimo scambio è del 1983, quando Gao ha dato dieci yuan per le nozze del primo figlio di Li. Poi nel 1988 Li, costretto a lasciare la carica in paese, ha celebrato le nozze del secondo figlio, e Gao non si è presentato. Ora Li propone di non andare. Che cosa fanno lui e la moglie?",
+      "choices": [
+        { "id": "a", "text": "Vanno alle nozze con il dono dovuto, come se nulla fosse" },
+        { "id": "b", "text": "Non vanno e non portano nulla, così Gao capirà" }
+      ],
+      "feedback": {
+        "a": "La moglie di Li è contraria al piano di non ricambiare: anche se tra le famiglie non ci sono più buoni sentimenti, lo scambio di doni è continuato, e lei si sentirebbe a disagio a non ricambiare. Ma per Li il punto è un altro: dice di voler far sapere a Gao che non vuole più un rapporto fatto di doni. E Yan osserva che per la coppia l'invito di Gao, inviato anni dopo senza alcuno sforzo in più, era troppo poco per un rapporto spezzato. Di una scelta di questo tipo il testo non racconta l'esito.",
+        "b": "È il piano di Li: non ricambiare per mandare un messaggio a Gao, che lo ha ferito. La moglie, pur condividendo il giudizio su Gao, lo avverte che in paese non tutti conoscono il torto e potrebbero pensare che sia troppo avaro per fare il dono, o che non sappia mantenere il guanxi, cioè i legami, con gli amici. Yan scrive che ritirarsi dalla rete di scambio è la strategia più semplice ma non la più adatta. Nella realtà la coppia scelse una terza via: Li non andò, ma la moglie fece portare un dono a Gao e ne portò un altro alla famiglia della sposa, che abitava davanti a casa di Gao."
+      },
+      "source": "Yan, The Flow of Gifts: Reciprocity and Social Networks in a Chinese Village, Stanford University Press, 1996"
+    },
+    "studente": {
+      "hook": "Ti arriva l'invito a un matrimonio da una persona che non c'era quando contava. Sai quanto vale il dono che ci si aspetta da te e sai che qualcuno noterà se manca. Ti chiedi se un regalo possa anche dire a qualcuno che con lui hai chiuso.",
+      "setup": "Xiajia, nel Heilongjiang, 1991: 1.564 abitanti in 365 famiglie secondo il registro del 1990. Yan Yunxiang, che ci ha vissuto da contadino dal 1971 al 1978, vi torna per sei mesi di ricerca sullo scambio di doni. Per gli abitanti il dono è un impegno pesante: un amico di Yan, Huang, riceve tre inviti nello stesso giorno, spende settanta yuan e si indebita. Una sera di metà luglio l'invito di Gao, vicepresidente del governo locale, a un matrimonio arriva a Li, uno dei migliori amici di Yan. La conversazione parte da una domanda inattesa: andare o no? L'ultimo scambio tra le famiglie è del 1983, quando Gao diede dieci yuan alle nozze del primo figlio di Li: il ricambio sarebbe di circa venti. Nella primavera del 1988 Li era stato costretto a dimettersi dalla carica in paese; alle nozze del secondo figlio molti andarono per mostrare simpatia e rispetto, Gao no. Li non vuole vendetta, dice, ma non vuole più un rapporto di doni con lui, e vuole che Gao lo sappia. La moglie è d'accordo su Gao, non sul piano: ricambiare è per lei un dovere, e gli altri potrebbero giudicarli avari o incapaci di mantenere i legami. Che cosa fanno?",
+      "choices": [
+        { "id": "a", "text": "Vanno e danno i venti yuan dovuti: il dono si restituisce comunque" },
+        { "id": "b", "text": "Non vanno e non danno nulla: ritirarsi dalla rete è il messaggio" },
+        { "id": "c", "text": "Rispettano la regola del dono, ma in un modo che lasci capire il loro malcontento" },
+        { "id": "d", "text": "Decidono per convenienza: Gao ha più potere, meglio non inimicarselo" }
+      ],
+      "feedback": {
+        "a": "Il testo non racconta questa strada, ma ne mostra le ragioni. La moglie di Li ricorda che lo scambio è continuato anche senza buoni sentimenti e che non ricambiare la metterebbe a disagio. Yan scrive che l'obbligo di dare e ricevere prevale sulle opinioni individuali. Ma per i Li un invito di pura forma, arrivato senza alcuno sforzo in più, non basta a ricucire un rapporto rotto: ciò che li ha feriti è la mancanza di un comportamento adeguato nel dono, non il rango di Gao (p. 87). Li dice di voler far sapere a Gao che non vuole più continuare (p. 86).",
+        "b": "È il piano di Li: non ricambiare per mandare un messaggio (p. 86). La moglie obietta che in paese non tutti conoscono il torto di Gao e che potrebbero giudicarli avari o inabili a mantenere il guanxi (p. 86). Yan scrive che ritirarsi dalla rete è la strategia più semplice ma non la più appropriata, e che più spesso gli abitanti continuano a dare mostrando il malcontento (p. 85). In un altro caso osserva che non offrire un dono in un contesto rituale a un cugino farebbe con ogni probabilità finire il rapporto (p. 84).",
+        "c": "È ciò che accadde. Li non andò; la moglie fece portare dieci yuan a Gao e, il giorno delle nozze, portò venti yuan alla famiglia d'origine della nuora di Gao, che abitava proprio di fronte a casa sua, in modo che tutti capissero che distanza sociale e dissidio le impedivano di consegnare il dono di persona (pp. 86-87). Per Yan rispettò la regola e mostrò il malcontento; dal punto di vista strumentale la scelta non fu razionale, perché persero denaro e rapporto, ma nella prospettiva di un'economia morale la loro condotta fu del tutto ragionevole, e vi ebbe parte anche un calcolo delle reazioni pubbliche (p. 87).",
+        "d": "Yan non legge così il caso: i Li riconoscevano il rango e il potere di Gao ma non misero le considerazioni utilitaristiche prima di quelle morali ed emotive; protestando persero denaro e rapporto (p. 87). Precisa però che un calcolo c'era, in forma complementare. E contesta le letture che riducono il guanxi a gioco di potere individuale: per lui è insieme gioco di potere e stile di vita, con sociabilità, moralità e affetto (p. 88). Che un pensiero di convenienza non abbia guidato questa coppia non dice quanto pesi altrove."
+      },
+      "source": "Yan, The Flow of Gifts: Reciprocity and Social Networks in a Chinese Village, Stanford University Press, Stanford, 1996, cap. 2 (pp. 22-23), cap. 4 «The Gift Economy and Guanxi Networks» (pp. 74-77, 84-88) e cap. 5 (p. 100)",
+      "deepen": [
+        {
+          "ref": "Yan, The Flow of Gifts: Reciprocity and Social Networks in a Chinese Village, Stanford University Press, Stanford, 1996",
+          "why": "Il libro intero: la classificazione dei doni di Xiajia, le liste dei doni e i casi di rete in rottura, oltre a quello di Li e Gao.",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Sahlins, Stone Age Economics, Aldine-Atherton, Chicago, 1972",
+          "why": "La tipologia di reciprocità generalizzata, bilanciata e negativa, che Yan discute (p. 100) criticando la distanza di parentela come variabile principale.",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Yang, «The Gift Economy and State Power in China», Comparative Studies in Society and History 31(1), 1989, pp. 25-54",
+          "why": "Una delle letture del guanxi come arte di costruire relazioni personali, che Yan cita (p. 88) insieme al gioco di potere tra gli studi centrati sulle strategie dell'attore individuale, a cui oppone la sua.",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Scott, The Moral Economy of the Peasant: Rebellion and Subsistence in Southeast Asia, Yale University Press, New Haven, 1976",
+          "why": "Yan lo cita (p. 35 dell'opera) per leggere la partecipazione costosa ai doni come modo di trasferire il rischio economico a un'istituzione accessibile (p. 88).",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  },
+  "discuss": [
+    "Yan sapeva già quindici anni prima che Li e Gao erano amici, e partecipa alla discussione con Li e la moglie. Che cosa permette a chi ha vissuto nel villaggio di capire quella serata, e che cosa potrebbe invece nascondergli?",
+    "Yan scrive che per i Li contava il comportamento nel dono più del rango di Gao. Come si può distinguere, osservando un caso, una ragione morale da una di convenienza?",
+    "La moglie di Li teme ciò che penseranno gli altri in paese. Che ruolo ha chi guarda in uno scambio di doni, e che cosa cambierebbe se nessuno lo sapesse?"
+  ]
+}
