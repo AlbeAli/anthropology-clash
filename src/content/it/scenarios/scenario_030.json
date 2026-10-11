@@ -1,0 +1,84 @@
+{
+  "id": "scenario_030",
+  "lang": "it",
+  "title": "La terapia di Lia",
+  "concept": "relativismo",
+  "concept_label": "Relativismo culturale",
+  "levels": {
+    "neofita": {
+      "hook": "Rispettare le idee di un'altra persona è facile finché le conseguenze ricadono solo su di lei. Ti domandi che cosa cambia quando a pagarle può essere qualcuno che non ha scelto.",
+      "setup": "Merced, California, primavera 1985. Lia Lee ha quasi tre anni e soffre di epilessia. I genitori, Foua Yang e Nao Kao Lee, sono rifugiati hmong del Laos. Il pediatra Neil Ernst le prescrive dei farmaci, ma gli esami del sangue mostrano che a casa ne riceve meno del dovuto, almeno in parte per ragioni culturali o religiose di cui Neil è solo vagamente consapevole. Neil ha aspettato il più a lungo possibile prima di chiamare i servizi di protezione dell'infanzia. Che cosa fa?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Chiede che Lia sia affidata a un'altra famiglia"
+        },
+        {
+          "id": "b",
+          "text": "Cerca un'altra strada, per esempio un'infermiera a casa o l'aiuto dei capi della comunità"
+        }
+      ],
+      "feedback": {
+        "a": "È ciò che accadde: Neil chiese l'affido di Lia. Il 2 maggio 1985 Lia fu affidata a una famiglia per due settimane e poi, dal 26 giugno, per almeno sei mesi (pp. 81-82). Nao Kao ricorda che, secondo quelli che per lui erano poliziotti, per sei mesi Lia era «proprietà del governo» (p. 82). Quasi nessuno degli specializzandi dell'ospedale sapeva dell'affido finché Fadiman non glielo raccontò; tutti dissero di non condividere la decisione di Neil, ma nessuno seppe proporre un'alternativa migliore (p. 82).",
+        "b": "Neil le ha considerate solo a posteriori: allora gli sembravano avere ostacoli burocratici insormontabili, oppure non gli vennero in mente (p. 79). Il testo non racconta che cosa sarebbe accaduto. Una supervisione a casa ci fu nel 1986, ma mentre Lia era ancora in affido e con una terapia semplificata: durante le visite a casa un'assistente sociale supervisionò la famiglia tre volte al giorno e gli esami del sangue mostrarono dosi adeguate (pp. 90-92)."
+      },
+      "source": "Fadiman, The Spirit Catches You and You Fall Down: A Hmong Child, Her American Doctors, and the Collision of Two Cultures, Farrar, Straus and Giroux, New York, 1997"
+    },
+    "studente": {
+      "hook": "Rispettare le convinzioni di qualcuno è facile finché le conseguenze ricadono solo su di lui. Ti domandi che cosa cambia quando a pagarle può essere un'altra persona, che non ha scelto.",
+      "setup": "Merced, California, primavera 1985. Lia Lee, nata il 19 luglio 1982, ha una forma complessa di epilessia (p. 81). I genitori, Foua Yang e Nao Kao Lee, rifugiati hmong del Laos, vivono di 790 dollari al mese di assistenza più 84 di sussidio di invalidità per Lia (p. 87). Non danno i farmaci come prescritto, almeno in parte per ragioni culturali o religiose di cui il pediatra Neil Ernst, del Merced Community Medical Center, è solo vagamente consapevole (p. 80); gli esami del sangue mostrano dosi inferiori a quelle prescritte (p. 81). Neil non applicherebbe due standard di cura, uno agli americani e uno agli hmong (p. 78). Allora vedeva così il suo compito: praticare buona medicina, mentre i Lee dovevano seguirla (p. 79). Ha rimandato la chiamata ai servizi di protezione dell'infanzia (CPS) il più a lungo possibile (p. 79). Che cosa fa?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Chiede ai servizi di protezione dell'infanzia di affidare Lia a un'altra famiglia"
+        },
+        {
+          "id": "b",
+          "text": "Organizza un'infermiera che vada a casa a darle la medicina tre volte al giorno"
+        },
+        {
+          "id": "c",
+          "text": "Coinvolge i capi della comunità hmong per convincere i genitori"
+        },
+        {
+          "id": "d",
+          "text": "Accetta uno standard più basso, come fa un altro medico, Roger Fife, invece di imporre il proprio"
+        }
+      ],
+      "feedback": {
+        "a": "È ciò che accadde. Il 2 maggio 1985 Lia fu affidata per due settimane a due sorelle mennonite; dopo il rientro gli esami mostravano ancora dosi inferiori, e la CPS presentò la petizione #15270 (p. 81). Il 26 giugno fu portata via per almeno sei mesi (p. 82). Dopo una settimana a casa a settembre, secondo la petizione della CPS nel sangue non c'erano tracce di farmaci (p. 90); il 18 dicembre il tribunale negò il rientro (p. 89). I Lee credevano che l'affido l'avesse peggiorata; per Neil e Peggy Philp il declino era iniziato prima ed era stato aggravato dalle crisi dopo la settimana di settembre senza farmaci (p. 110). Quasi nessuno degli specializzandi lo sapeva finché Fadiman non glielo disse; tutti dissero di non condividere la scelta di Neil, senza saper proporre di meglio (p. 82).",
+        "b": "Neil la considera solo a posteriori: allora gli sembrava avere ostacoli burocratici insormontabili, oppure non gli venne in mente (p. 79). Il testo non dice che cosa sarebbe accaduto. Una supervisione a casa ci fu nel 1986, ma dentro l'affido, con la terapia ridotta al solo Depakene (pp. 90-91): la caseworker Jeanine Hilt supervisionò tre volte al giorno i periodi di Lia a casa, Foua imparò a usare la siringa e gli esami del sangue mostrarono livelli adeguati (pp. 91-92).",
+        "c": "Neil la considera solo a posteriori (p. 79): o gli sembrava avere ostacoli burocratici insormontabili, o non gli venne in mente. Il testo non dice che cosa sarebbe accaduto. Fadiman riporta altri punti di vista: per l'interprete Kia Lee, in Laos i genitori hanno «cento per cento» di responsabilità sul figlio (p. 83); nella sintesi di Culhane-Pera, citata da Fadiman, i genitori hmong ritengono che anche i capi di lignaggio rispettati aiutino i genitori nelle decisioni difficili (p. 83). Fadiman osserva che finché medici e genitori negoziano il conflitto resta fra sistemi di credenze; con polizia e ordini del tribunale, scrive Culhane-Pera, «le differenze non riguardano più le credenze, riguardano il potere» (p. 84).",
+        "d": "Roger Fife, medico di famiglia, di norma non faceva pressioni sui pazienti hmong e, interrogato, rispondeva «è il loro corpo»: i pazienti lo cercavano, gli specializzandi dell'ospedale pensavano che il suo standard fosse inferiore (pp. 76-77). Neil si chiede ancora se la sua intransigenza abbia danneggiato Lia (p. 78). Fadiman pone l'alternativa così: che cosa fosse più discriminatorio, privare Lia della cura ottimale che avrebbe avuto un altro bambino o non adattarla perché la famiglia la seguisse (p. 78). Negli Stati Uniti, per un minore lo Stato ha il diritto e l'obbligo di imporre una cura salvavita, anche se la religione della famiglia la vieta (p. 80). Neil non prese mai seriamente in considerazione di abbassare lo standard (p. 79); il testo non dice che cosa sarebbe accaduto a Lia."
+      },
+      "source": "Fadiman, The Spirit Catches You and You Fall Down: A Hmong Child, Her American Doctors, and the Collision of Two Cultures, Farrar, Straus and Giroux, New York, 1997, cap. 6 «High-Velocity Transcortical Lead Therapy», pp. 76-77, cap. 7 «Government Property», pp. 78-92, cap. 9 «A Little Medicine and a Little Neeb», p. 110 (pagine dell'edizione tascabile del 1998)",
+      "deepen": [
+        {
+          "ref": "Fadiman, The Spirit Catches You and You Fall Down: A Hmong Child, Her American Doctors, and the Collision of Two Cultures, Farrar, Straus and Giroux, New York, 1997",
+          "why": "Il libro intero: la storia di Lia e dei suoi medici, e al cap. 17 le otto domande di Kleinman per capire come un paziente spiega la propria malattia.",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Kleinman, The Illness Narratives: Suffering, Healing, and the Human Condition, Basic Books, New York, 1988",
+          "why": "Fadiman consiglia a chi vuole approfondire la medicina interculturale di cominciare da Kleinman, di cui cita anche Patients and Healers in the Context of Culture (note al cap. 18).",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Kleinman et al., «Culture, Illness, and Care: Clinical Lessons from Anthropologic and Cross-Cultural Research»",
+          "why": "Fadiman scrive che qui compare la prima versione delle otto domande di Kleinman (note al cap. 17).",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Culhane-Pera, «Analysis of Cultural Beliefs and Power Dynamics in Disagreements about Health Care of Hmong Children», tesi di laurea magistrale in antropologia",
+          "why": "Fadiman la cita (pp. 83-84) per l'atteggiamento hmong verso la responsabilità dei genitori e per il passaggio da conflitto di credenze a conflitto di potere.",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  },
+  "discuss": [
+    "Fadiman riporta due letture diverse del peggioramento di Lia, quella dei Lee e quella di Neil e Peggy Philp. Su quali elementi si potrebbe decidere tra le due, e chi avrebbe l'autorità per farlo?",
+    "Fadiman chiede che cosa sarebbe stato più discriminatorio: togliere a Lia la cura ottimale o non adattarla alla famiglia. Che cosa significa trattare allo stesso modo due pazienti con convinzioni diverse?",
+    "Fadiman raccolse le testimonianze dei protagonisti anni dopo i fatti, arrivando a Merced nel 1988. In che modo questo condiziona ciò che sappiamo dell'episodio?"
+  ]
+}
