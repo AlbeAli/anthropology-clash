@@ -1,0 +1,66 @@
+{
+  "id": "scenario_029",
+  "lang": "it",
+  "title": "Un figlio per la sorella",
+  "concept": "parentela",
+  "concept_label": "Parentela",
+  "levels": {
+    "neofita": {
+      "hook": "Una persona a cui vuoi bene ti dice, con delicatezza, che nella sua casa manca un bambino. Non può chiedertelo come un diritto e lo sa. Ti domandi che cosa renda una richiesta una cortesia e non una pretesa.",
+      "setup": "Langkawi, un'isola della Malesia, anni Ottanta. L'antropologa Janet Carsten vi vive in un villaggio di pescatori, la cui identità nel libro è camuffata, e studia come gli abitanti diventano parenti. Non di rado un bambino cresce in casa di un parente stretto e non dei genitori. Immagina una coppia del villaggio con quattro figli: la sorella della moglie, sposata e senza figli, vorrebbe crescerne uno. È una situazione che Carsten descrive nelle sue pagine sull'affido, non un episodio con nomi e date. Che cosa fanno?",
+      "choices": [
+        { "id": "a", "text": "Danno alla sorella uno dei figli" },
+        { "id": "b", "text": "Tengono tutti i figli in casa: sono i loro" }
+      ],
+      "feedback": {
+        "a": "È una strada che Carsten descrive tra parenti stretti. Dopo i nonni, la sorella della madre è la persona a cui gli abitanti dicono di dare più volentieri un figlio (p. 247). Quando i figli sono molti o la madre è sovraccarica di lavoro, alla nascita di un altro bambino a partire è di solito un figlio più grande (p. 247). Darlo a una parente stretta evita anche la vergogna di darlo via (p. 247). Il bambino può continuare a visitare i genitori (p. 245), e chi è cresciuto da piccolo in un'altra casa si ritiene prenda l'aspetto e il carattere di chi lo cresce (p. 246).",
+        "b": "È la priorità che Carsten registra: il desiderio dei genitori di tenere i propri figli viene prima delle pretese degli altri parenti, che anche senza figli non hanno diritti assoluti su un bambino (p. 247). Si dice pure che nessun parente può pretenderne uno (p. 241). Ma quando la coppia ha già tre o quattro figli, il desiderio di una sorella sposata senza figli viene preso sul serio (p. 247). In queste pagine Carsten non racconta l'esito di un rifiuto."
+      },
+      "source": "Carsten, The Heat of the Hearth: The Process of Kinship in a Malay Fishing Community, Clarendon Press, Oxford, 1997"
+    },
+    "studente": {
+      "hook": "Qualcuno a cui sei vicino ti dice, con delicatezza, che nella sua casa manca un bambino. Non può chiedertelo come un diritto e lo sa. Ti domandi che cosa passi tra due case quando un bambino cambia tetto.",
+      "setup": "Langkawi, Malesia, 1980-1982 e 1988-1989. Janet Carsten studia un villaggio di pescatori la cui identità è camuffata e che chiama Sungai Cantik, di circa 3.000 persone nel 1980 e in grande maggioranza malesi. Per gli abitanti la parentela si fa anche col nutrire: «se bevi lo stesso latte diventi parente»; per Carsten anche i pasti di riso cotti sullo stesso focolare implicano una sostanza comune, in senso più debole (pp. 110-111). Su 143 bambini e giovani sotto i 23 anni non sposati, 111 vivevano con entrambi i genitori, 32 no; 17 con nessuno dei due (p. 245). L'adozione formale è vietata dall'Islam e rara (p. 244, nota). Immagina una coppia con quattro figli: la sorella della moglie, sposata e senza figli, vorrebbe crescerne uno. È la situazione che Carsten descrive nelle pagine sull'affido, non un episodio singolo. Che cosa fanno?",
+      "choices": [
+        { "id": "a", "text": "Danno alla sorella un figlio più grande" },
+        { "id": "b", "text": "Rifiutano: i figli restano tutti in casa" },
+        { "id": "c", "text": "Lasciano che sia il bambino a scegliere dove stare" },
+        { "id": "d", "text": "Non fissano nulla: il bambino alterna tra le due case" }
+      ],
+      "feedback": {
+        "a": "Il testo non racconta questo caso ma descrive la pratica. Quando i figli sono molti o così ravvicinati da sovraccaricare la madre, alla nascita di un altro bambino a partire è di solito un figlio più grande, soprattutto verso parenti che non hanno bambini piccoli (p. 247). Dopo i nonni, la sorella della madre è la persona a cui gli abitanti dicono di dare più volentieri un figlio, e i legami per via femminile sono giudicati emotivamente più forti (p. 247). Darlo a una parente stretta evita la vergogna (malu) di darlo via (p. 247). Se la sostanza comune nasce dal consumo condiviso, scrive Carsten, le donne vi hanno un ruolo decisivo con cucina e alimentazione (p. 248).",
+        "b": "Carsten registra questa priorità: il desiderio dei genitori di tenere i propri figli viene prima delle pretese degli altri parenti, che anche senza figli non hanno diritti assoluti su un bambino (p. 247). Nessun parente può pretenderne uno (p. 241), e l'affido si presenta come voluto ed emotivo più che come diritto o dovere (p. 247). Ma con tre o quattro figli la richiesta di una sorella sposata senza figli viene presa sul serio (p. 247). In queste pagine Carsten non racconta l'esito di un rifiuto.",
+        "c": "Gli adulti dicono che un bambino vive con i nonni o con altri parenti perché lo vuole lui (pp. 241, 248). Carsten nota però che in diversi casi a lei noti non era chiaro che fosse così (p. 241). Siti, seconda figlia di Mariah e Din (nomi di fantasia), fu trasferita ai nonni paterni in un momento di rottura tra case: gli adulti dissero che lo voleva lei, ma sembrava poco contenta e chiedeva di tornare; nel 1988 viveva di nuovo con i genitori (p. 240). Per Carsten quel trasferimento rispondeva alla necessità di riaffermare i rapporti tra le due coppie di nonni, non al desiderio di Siti (p. 249).",
+        "d": "Carsten lo descrive per i bambini presso i nonni: la loro residenza è detta «non fissa» (tak tentu) e l'alternanza tra la casa dei genitori e quella dei nonni è espressa con berulang, lo stesso termine usato per l'alternanza tra le case dei genitori di lei e di lui nei primi tempi di matrimonio (p. 248). La durata varia, per gran parte dell'infanzia, per qualche mese o per anni, con visite più o meno frequenti ai genitori (p. 245). Per una zia il testo non dice che valga lo stesso. Carsten collega l'incertezza della residenza all'accento sul carattere volontario e contingente (pp. 248-249)."
+      },
+      "source": "Carsten, The Heat of the Hearth: The Process of Kinship in a Malay Fishing Community, Clarendon Press, Oxford, 1997, Introduzione e ringraziamenti; pp. 110-111, 240-241 e 244-249",
+      "deepen": [
+        {
+          "ref": "Carsten, The Heat of the Hearth: The Process of Kinship in a Malay Fishing Community, Clarendon Press, Oxford, 1997",
+          "why": "Il libro intero: la casa come luogo in cui si crea la parentela e, nella seconda parte, le relazioni tra case; l'affido è trattato nel capitolo 8, tra gli altri modi in cui si diventa parenti.",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Carsten, «Children in Between: Fostering and the Process of Kinship on Pulau Langkawi, Malaysia», Man (N.S.) 26, 1991, pp. 425-443",
+          "why": "L'articolo da cui Carsten dice di attingere per le pagine sull'affido (p. 244).",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "Schneider, A Critique of the Study of Kinship, University of Michigan Press, Ann Arbor, 1984",
+          "why": "Carsten lo riprende nella Conclusione per mettere in questione la definizione convenzionale di parentela, fondata sulla distinzione tra biologico e sociale, che a Langkawi ha poco senso.",
+          "access": "NON-OA"
+        },
+        {
+          "ref": "McKinley, «A Knife Cutting Water: Child Transfers and Siblingship among Urban Malays», tesi di dottorato non pubblicata, University of Michigan, 1975",
+          "why": "Carsten lo cita (pp. 244, 248) sul «bambino trasferito» e sul fatto che i bambini trasferiti dicono che i genitori adottivi sono quelli veri, perché li hanno nutriti.",
+          "access": "NON-OA"
+        }
+      ]
+    }
+  },
+  "discuss": [
+    "Carsten racconta di essere stata lei stessa nutrita e accolta come figlia in una famiglia del villaggio. Che cosa può capire della parentela chi la vive dall'interno di una casa, e che cosa potrebbe invece non vedere?",
+    "Gli abitanti dicono che il bambino sta dove vuole stare, ma Carsten nota che non sempre era così. Come si può distinguere, osservando un caso, ciò che si dichiara da ciò che accade?",
+    "Se «chi beve lo stesso latte diventa parente», che cosa conta come parentela: il sangue, il nutrimento o il tempo passato insieme? Come cambierebbe la tua risposta in un altro contesto?"
+  ]
+}
