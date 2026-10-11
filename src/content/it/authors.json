@@ -7,7 +7,7 @@
     { "id": "francese", "label": "Etnologia e sociologia francese" },
     { "id": "nordamericana", "label": "Antropologia nordamericana dopo Boas" },
     { "id": "economia", "label": "Storia ed economia" },
-    { "id": "esploratori", "label": "Naturalisti ed esploratori" }
+    { "id": "esploratori", "label": "Osservatori non antropologi" }
   ],
   "authors": [
     {
@@ -616,6 +616,19 @@
       "source": [
         "University of Edinburgh, School of Social and Political Science, pagina di Janet Carsten (sps.ed.ac.uk)",
         "Academia Europaea, Janet Carsten, Curriculum Vitae (ae-info.org)"
+      ]
+    },
+    {
+      "id": "fadiman",
+      "lang": "it",
+      "name": "Anne Fadiman",
+      "surname": "Fadiman",
+      "born": 1953,
+      "school": "esploratori",
+      "text": "Nata a New York il 7 agosto 1953, figlia dello scrittore ed editor Clifton Fadiman e della giornalista Annalee Whitmore Jacoby Fadiman; B.A. a Harvard nel 1975. Lavorò nove anni come editor e staff writer di Life e per tre anni fu editor-at-large e columnist di Civilization; dal 1998 al 2004 fu editor di American Scholar. A Yale è Francis Writer-in-Residence e professor in the practice di inglese. The Spirit Catches You and You Fall Down (1997), il suo primo libro, vinse il National Book Critics Circle Award per la saggistica.",
+      "source": [
+        "Contemporary Authors, New Revision Series, voce «Fadiman, Anne 1953–» (consultata su Encyclopedia.com)",
+        "Yale University, Department of English, scheda di Anne Fadiman (english.yale.edu)"
       ]
     }
   ]
