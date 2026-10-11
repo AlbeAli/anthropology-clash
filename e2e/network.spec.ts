@@ -42,7 +42,8 @@ test("Le linee: si apre la linea di «sei qui», le altre si aprono a richiesta"
   await expect(page.locator(".metro-stop:visible")).toHaveCount(
     lineOf(first.concept).length + lineOf(last.concept).length,
   );
-  await page.getByRole("link", { name: last.title, exact: true }).click();
+  const escaped = last.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  await page.getByRole("link", { name: new RegExp(`^${escaped}`) }).click();
   await expect(page).toHaveURL(`/s/${last.id}`);
 });
 
