@@ -161,6 +161,13 @@ describe("validate-content: autori", () => {
     expect(messages).toContainEqual(expect.stringContaining('cognome duplicato "Malinowski"'));
   });
 
+  it("accetta un autore senza data di nascita", () => {
+    const undated: Record<string, unknown> = { ...author };
+    delete undated.born;
+    delete undated.died;
+    expect(validateAll(withAuthors([undated])).issues).toEqual([]);
+  });
+
   it("segnala una morte prima della nascita", () => {
     const messages = validateAll(withAuthors([{ ...author, died: 1800 }])).issues.map(
       (i) => i.message,
