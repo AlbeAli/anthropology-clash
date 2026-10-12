@@ -4,7 +4,7 @@ import { itineraries, scenarios } from "./content";
 const first = scenarios[0];
 const curated = itineraries[0];
 const stepsOf = (s: (typeof scenarios)[number], level: "neofita" | "studente") =>
-  3 + s.levels[level].choices.length + 1 + (s.discuss ? 1 : 0);
+  3 + s.levels[level].choices.length + 1 + (s.happened ? 1 : 0) + (s.discuss ? 1 : 0);
 
 async function fresh(page: Page, path = "/") {
   await page.goto("/");
@@ -72,6 +72,22 @@ test("in aula il livello studente mostra tutte le sue uscite e le letture", asyn
   await expect(position(page)).toHaveText(`Passo ${total} di ${total}`);
   if (first.discuss) await page.keyboard.press("ArrowLeft");
   await expect(page.getByRole("heading", { name: "Per approfondire" })).toBeVisible();
+});
+
+test("in aula «Cosa accadde davvero» compare tra le uscite e la fonte, solo dove c'è", async ({
+  page,
+}) => {
+  const s = scenarios.find((x) => x.happened)!;
+  const total = stepsOf(s, "neofita");
+  await fresh(page, `/aula/${s.id}`);
+  const heading = page.getByRole("heading", { name: "Cosa accadde davvero" });
+  await expect(heading).toHaveCount(0);
+  const before = 3 + s.levels.neofita.choices.length;
+  await page.goto(`/aula/${s.id}?passo=${before + 1}`);
+  await expect(position(page)).toHaveText(`Passo ${before + 1} di ${total}`);
+  await expect(heading).toBeVisible();
+  await expect(page.getByText(s.happened!.text)).toBeVisible();
+  await expect(page.getByText(s.happened!.source)).toBeVisible();
 });
 
 test("un percorso si porta in aula e passa da una fermata all'altra", async ({ page }) => {

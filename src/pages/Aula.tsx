@@ -283,6 +283,18 @@ function Slide({ scenario, level, step }: { scenario: Scenario; level: Level; st
         </div>
       );
     }
+    case "happened":
+      return (
+        <div>
+          <h2 className={kicker}>{t("scenario.happened")}</h2>
+          <p className="max-w-[55ch] text-xl leading-relaxed text-pretty sm:text-2xl lg:text-3xl lg:leading-snug">
+            {scenario.happened?.text}
+          </p>
+          <p className="mt-6 max-w-[55ch] text-lg leading-relaxed text-ink-soft sm:text-xl">
+            {scenario.happened?.source}
+          </p>
+        </div>
+      );
     case "source":
       return (
         <div>

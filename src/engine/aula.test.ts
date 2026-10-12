@@ -30,6 +30,17 @@ describe("passi della modalità aula", () => {
     expect(steps.at(-1)).toEqual({ kind: "discuss" });
   });
 
+  it("il passo «cosa accadde davvero» segue le uscite e precede la fonte, solo se il campo c'è", () => {
+    const withHappened = {
+      ...scenario,
+      happened: { text: "Un fatto.", source: "Rossi, 1950, p. 3" },
+    };
+    const kinds = aulaSteps(withHappened, "neofita").map((s) => s.kind);
+    expect(kinds.at(-2)).toBe("happened");
+    expect(kinds.at(-1)).toBe("source");
+    expect(aulaSteps(scenario, "neofita").some((s) => s.kind === "happened")).toBe(false);
+  });
+
   it("il passo nell'indirizzo parte da 1 e resta nei limiti", () => {
     expect(stepIndex(null, 6)).toBe(0);
     expect(stepIndex("1", 6)).toBe(0);
