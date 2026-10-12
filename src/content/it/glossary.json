@@ -76,6 +76,17 @@
     ]
   },
   {
+    "id": "hmong",
+    "lang": "it",
+    "term": "Hmong",
+    "kind": "popolo",
+    "forms": ["hmong", "Hmong"],
+    "text": "Popolo migrato nel Sud-est asiatico dalle regioni montuose della Cina sud-occidentale, dove molti restano ancora. Le migrazioni cominciarono intorno al 1800; gli Hmong si sono stabiliti nelle regioni montuose del Laos settentrionale, del Vietnam settentrionale e della Thailandia settentrionale. Dopo la fine delle guerre d'Indocina molti rifugiati hmong dal Laos sono stati reinsediati in paesi occidentali, tra cui gli Stati Uniti. La religione hmong si basa sul culto domestico degli antenati e sullo sciamanesimo; lo sciamano cura la malattia, che diagnostica spesso come perdita dell'anima.",
+    "source": [
+      "Encyclopedia of World Cultures, voce «Hmong», di Nicholas Tapp, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
     "id": "ibadan",
     "lang": "it",
     "term": "Ibadan",
@@ -145,6 +156,17 @@
     "text": "Popolo della Columbia Britannica, in Canada: l'isola di Vancouver, la terraferma vicina e le isole in mezzo. La lingua è il kwakwala. «Kwakiutl» era in origine il nome di un solo gruppo locale, poi esteso da commercianti, missionari, funzionari ed etnologi a tutti i gruppi di lingue affini. Attorno al 1835 erano circa 8.575, già ridotti dalle malattie; quando Boas iniziò i suoi studi erano circa 2.000, nel 1929 la metà. Chiesa e governo repressero il potlatch con arresti e confische delle insegne cerimoniali.",
     "source": [
       "Encyclopedia of World Cultures, voce «Kwakiutl», di Donald Mitchell, Gale (consultata su Encyclopedia.com)"
+    ]
+  },
+  {
+    "id": "langkawi",
+    "lang": "it",
+    "term": "Langkawi",
+    "kind": "luogo",
+    "forms": ["Langkawi"],
+    "text": "Isola della Malesia (Pulau Langkawi), a circa trenta miglia dalla costa occidentale del paese, appena a sud del confine con la Thailandia (p. 1). Qui Janet Carsten fece ricerca sul campo dal 1980 e tornò alla fine del 1988 per quattro mesi (pp. 1, 4). In quasi ogni casa gli abitanti ricordavano antenati recenti venuti dalla Malesia continentale, dalla Thailandia o dall'Indonesia: una mobilità notevole, ma «invisibile»: chi discende da migranti non si distingue per dialetto, abito o stile della casa (p. 4).",
+    "source": [
+      "Carsten, The Heat of the Hearth: The Process of Kinship in a Malay Fishing Community, Clarendon Press, Oxford, 1997, introduzione, pp. 1 e 4"
     ]
   },
   {
