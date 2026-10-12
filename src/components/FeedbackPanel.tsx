@@ -13,11 +13,19 @@ type Props = {
   level: Level;
   choiceId: string;
   glossary?: string[];
+  happened?: Scenario["happened"];
 };
 
 const NONE: GlossaryEntry[] = [];
 
-export default function FeedbackPanel({ content, lang, level, choiceId, glossary }: Props) {
+export default function FeedbackPanel({
+  content,
+  lang,
+  level,
+  choiceId,
+  glossary,
+  happened,
+}: Props) {
   const { t } = useTranslation();
   const heading = useRef<HTMLHeadingElement>(null);
   const number = (id: string) => content.choices.findIndex((c) => c.id === id) + 1;
@@ -76,6 +84,18 @@ export default function FeedbackPanel({ content, lang, level, choiceId, glossary
           </article>
         </section>
       ))}
+
+      {happened && (
+        <section className="leg" aria-labelledby="happened-heading">
+          <h2 id="happened-heading" className={legTag}>
+            {t("scenario.happened")}
+          </h2>
+          <div className="leg-body rounded-xl bg-surface px-5 py-4">
+            <p className="leading-relaxed text-pretty">{happened.text}</p>
+            <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{happened.source}</p>
+          </div>
+        </section>
+      )}
 
       {level === "studente" && content.deepen && (
         <section className="leg" aria-labelledby="deepen-heading">

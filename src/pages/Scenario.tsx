@@ -173,6 +173,7 @@ function ScenarioPlay({
               level={level}
               choiceId={choiceId}
               glossary={scenario.glossary}
+              happened={scenario.happened}
             />
             {(next || trip) && (
               <section className="leg" data-main="" aria-labelledby="arrival-heading">

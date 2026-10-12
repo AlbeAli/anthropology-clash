@@ -15,6 +15,7 @@ export type ScenarioFile = {
   levels: { neofita: Level; studente: Level };
   discuss?: string[];
   glossary?: string[];
+  happened?: { text: string; source: string };
 };
 
 const dir = join(process.cwd(), "src/content/it/scenarios");

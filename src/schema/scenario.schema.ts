@@ -25,6 +25,11 @@ const Deepen = z.object({
   url: z.url().optional(),
 });
 
+const Happened = z.object({
+  text: z.string().min(1).max(600),
+  source: z.string().min(1).max(300),
+});
+
 const LevelContent = z
   .object({
     hook: z.string().min(1).max(400).optional(),
@@ -56,6 +61,7 @@ export const Scenario = z
       studente: LevelContent,
     }),
     discuss: z.array(DiscussQuestion).min(2).max(3).optional(),
+    happened: Happened.optional(),
     glossary: z.array(Slug).min(1).max(8).optional(),
   })
   .superRefine((s, ctx) => {

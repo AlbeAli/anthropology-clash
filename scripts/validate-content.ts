@@ -257,6 +257,15 @@ export function validateLang(
         message: "discuss è obbligatorio: 2-3 domande per la discussione",
       });
     }
+    if (
+      s.happened &&
+      !(/[0-9]{4}/.test(s.happened.source) && /(^|[^a-z])pp?[.][ ]*[0-9]/.test(s.happened.source))
+    ) {
+      issues.push({
+        file: label,
+        message: "happened: la fonte indica autore, anno e pagina (p. o pp.)",
+      });
+    }
   }
 
   issues.push(...validateAuthors(lang, dir, citing));
