@@ -11,10 +11,18 @@ async function fresh(page: Page, path = "/") {
   await page.goto(path);
 }
 
+async function openAll(page: Page) {
+  await page.getByRole("heading", { level: 2, name: "Linea del tempo" }).waitFor();
+  const closed = page.locator("details:not([open]) > summary");
+  while (await closed.count()) await closed.first().click();
+}
+
 test("la pagina Autori mostra la linea del tempo e una scheda per autore", async ({ page }) => {
   await fresh(page, "/autori");
   await expect(page).toHaveTitle(/^Autori · /);
   await expect(page.getByRole("heading", { level: 2, name: "Linea del tempo" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3 })).toHaveCount(0);
+  await openAll(page);
   for (const a of authors) {
     await expect(page.getByRole("heading", { level: 3, name: a.name })).toBeVisible();
   }
@@ -75,6 +83,7 @@ test("la legenda filtra per filone: restano le schede del filone, la linea del t
   await button.click();
   await expect(page).toHaveURL(`/autori?filone=${school}`);
   await expect(button).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("details[open]")).toHaveCount(1);
   await expect(page.getByRole("heading", { level: 3 })).toHaveCount(inSchool.length);
   await expect(
     page.getByRole("heading", { level: 2, name: /Antropologia nordamericana/ }),
@@ -91,6 +100,8 @@ test("la legenda filtra per filone: restano le schede del filone, la linea del t
   await page.goBack();
   await page.getByRole("button", { name: "Tutti i filoni" }).click();
   await expect(page).toHaveURL("/autori");
+  await expect(page.locator("details[open]")).toHaveCount(0);
+  await openAll(page);
   await expect(page.getByRole("heading", { level: 3 })).toHaveCount(authors.length);
 });
 
@@ -98,7 +109,9 @@ test("dal fondo di un filone si risale alla linea del tempo, dal link del filone
   page,
 }) => {
   await fresh(page, "/autori");
+  await expect(page.getByRole("heading", { level: 2, name: "Linea del tempo" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Linea del tempo/ })).toHaveCount(0);
+  await openAll(page);
   await page
     .getByRole("link", { name: "Torna alla linea del tempo" })
     .last()
@@ -113,4 +126,30 @@ test("dal fondo di un filone si risale alla linea del tempo, dal link del filone
   await expect(up).toBeVisible();
   await up.click();
   await expect(page.getByRole("heading", { level: 2, name: "Linea del tempo" })).toBeInViewport();
+});
+
+test("le schede sono ripiegate per filone: si aprono col filtro, con un'ancora o con la tastiera e si chiudono a mano", async ({
+  page,
+}) => {
+  await fresh(page, "/autori");
+  const summaries = page.locator("details > summary");
+  await expect(summaries).toHaveCount(new Set(authors.map((a) => a.school)).size);
+  await expect(page.locator("details[open]")).toHaveCount(0);
+
+  await summaries.first().focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("details[open]")).toHaveCount(1);
+  await expect(page.getByRole("heading", { level: 3 }).first()).toBeVisible();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("details[open]")).toHaveCount(0);
+
+  const target = authors.filter((a) => a.born !== undefined).at(-1)!;
+  await fresh(page, `/autori#${target.id}`);
+  await expect(page.locator("details[open]")).toHaveCount(1);
+  await expect(page.getByRole("heading", { level: 3, name: target.name })).toBeInViewport();
+  await page.getByRole("link", { name: "Torna alla linea del tempo" }).click();
+  await expect(page).toHaveURL("/autori#timeline-heading");
+  await expect(page.locator("details[open]")).toHaveCount(1);
+  await page.locator("details[open] > summary").click();
+  await expect(page.locator("details[open]")).toHaveCount(0);
 });

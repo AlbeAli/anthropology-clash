@@ -20,6 +20,11 @@ export default function Authors() {
   const navigate = useNavigate();
   const [far, setFar] = useState(false);
   const [data, setData] = useState<AuthorsData | null>(null);
+  const [picked, setPicked] = useState<Record<string, boolean>>({});
+  const [seen, setSeen] = useState<{ active: string | null; nav: string | null }>({
+    active: null,
+    nav: null,
+  });
   const scenarios = getCatalog(DEFAULT_LANG);
   const current = decodeURIComponent(hash.slice(1));
 
@@ -62,6 +67,12 @@ export default function Authors() {
     (!currentAuthor || currentAuthor.school === asked)
       ? asked
       : null;
+  const nav = currentAuthor ? key : null;
+  if (seen.active !== active || (nav && seen.nav !== nav)) {
+    setSeen({ active, nav: nav ?? seen.nav });
+    const opened = active ?? currentAuthor?.school;
+    setPicked(opened ? { [opened]: true } : {});
+  }
   const pick = (school: string | null) =>
     navigate({ search: school ? `?filone=${school}` : "", hash: "" });
 
@@ -112,74 +123,99 @@ export default function Authors() {
         </section>
       )}
 
-      {shown.map(({ school, authors }) => (
-        <section key={school.id} aria-labelledby={`school-${school.id}`} className="mb-10">
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b-[3px] border-ink pb-2">
-            <h2
-              id={`school-${school.id}`}
-              className="flex scroll-mt-32 items-center gap-3 font-display text-2xl font-extrabold"
+      {shown.map(({ school, authors }) => {
+        const isOpen = picked[school.id] ?? false;
+        return (
+          <section key={school.id} aria-labelledby={`school-${school.id}`} className="mb-4">
+            <details
+              className="group"
+              open={isOpen}
+              onToggle={(e) => {
+                const o = e.currentTarget.open;
+                if (o !== isOpen) setPicked((p) => ({ ...p, [school.id]: o }));
+              }}
             >
-              <span
-                aria-hidden="true"
-                className="h-2.5 w-10 shrink-0 rounded-full"
-                style={{ background: schoolColor(data!.schools, school.id) }}
-              />
-              {school.label}
-            </h2>
-            <Link
-              to={{ search, hash: "timeline-heading" }}
-              className="text-sm font-bold underline decoration-2 underline-offset-4 hover:text-accent"
-            >
-              <span aria-hidden="true">↑ </span>
-              {t("authors.backToTimeline")}
-            </Link>
-          </div>
-          <ul className="grid gap-6">
-            {authors.map((a) => (
-              <li
-                key={a.id}
-                id={a.id}
-                data-current={a.id === current || undefined}
-                className="scroll-mt-32 rounded-lg data-current:-mx-4 data-current:bg-surface data-current:px-4 data-current:py-3 data-current:shadow-[inset_4px_0_0_var(--color-accent)]"
-              >
-                <h3 className="font-display text-xl font-extrabold">{a.name}</h3>
-                <p className="font-mono text-sm text-ink-soft tabular-nums">{life(a)}</p>
-                <p className="mt-2 max-w-2xl text-justify leading-relaxed hyphens-auto">{a.text}</p>
-                <p className="mt-2 text-sm">
-                  <span className="font-bold">{t("authors.works")}:</span>{" "}
-                  {a.works
-                    .map((w) =>
-                      w.ref.startsWith(`${a.surname}, `)
-                        ? w.ref.slice(a.surname.length + 2)
-                        : w.ref,
-                    )
-                    .join("; ")}
-                </p>
-                <p className="mt-2 text-sm">
-                  <span className="font-bold">{t("authors.usedIn")}:</span>{" "}
-                  {a.scenarios.map((id, i) => (
-                    <span key={id}>
-                      {i > 0 && ", "}
-                      <Link
-                        to={`/s/${id}`}
-                        className="font-bold underline decoration-2 underline-offset-4 hover:text-accent"
-                      >
-                        {scenarios.find((s) => s.id === id)?.title ?? id}
-                      </Link>
-                    </span>
-                  ))}
-                </p>
-                <p className="mt-2 text-sm text-ink-soft">
-                  <span className="font-bold">
-                    {t("authors.source", { count: a.source.length })}:
-                  </span>{" "}
-                  {a.source.join("; ")}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+              <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 border-b-[3px] border-ink pb-2 hover:text-accent [&::-webkit-details-marker]:hidden">
+                <span
+                  aria-hidden="true"
+                  className="h-2.5 w-6 shrink-0 rounded-full sm:w-10"
+                  style={{ background: schoolColor(data!.schools, school.id) }}
+                />
+                <h2
+                  id={`school-${school.id}`}
+                  className="min-w-0 flex-1 scroll-mt-32 font-display text-2xl font-extrabold"
+                >
+                  {school.label}
+                </h2>
+                <span className="shrink-0 font-mono text-sm text-ink-soft tabular-nums">
+                  {t("authors.count", { count: authors.length })}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="inline-block shrink-0 text-xl leading-none group-open:rotate-90"
+                >
+                  ▸
+                </span>
+              </summary>
+              <p className="my-3 text-right">
+                <Link
+                  to={{ search, hash: "timeline-heading" }}
+                  className="text-sm font-bold underline decoration-2 underline-offset-4 hover:text-accent"
+                >
+                  <span aria-hidden="true">↑ </span>
+                  {t("authors.backToTimeline")}
+                </Link>
+              </p>
+              <ul className="mb-6 grid gap-6">
+                {authors.map((a) => (
+                  <li
+                    key={a.id}
+                    id={a.id}
+                    data-current={a.id === current || undefined}
+                    className="scroll-mt-32 rounded-lg data-current:-mx-4 data-current:bg-surface data-current:px-4 data-current:py-3 data-current:shadow-[inset_4px_0_0_var(--color-accent)]"
+                  >
+                    <h3 className="font-display text-xl font-extrabold">{a.name}</h3>
+                    <p className="font-mono text-sm text-ink-soft tabular-nums">{life(a)}</p>
+                    <p className="mt-2 max-w-2xl text-justify leading-relaxed hyphens-auto">
+                      {a.text}
+                    </p>
+                    <p className="mt-2 text-sm">
+                      <span className="font-bold">{t("authors.works")}:</span>{" "}
+                      {a.works
+                        .map((w) =>
+                          w.ref.startsWith(`${a.surname}, `)
+                            ? w.ref.slice(a.surname.length + 2)
+                            : w.ref,
+                        )
+                        .join("; ")}
+                    </p>
+                    <p className="mt-2 text-sm">
+                      <span className="font-bold">{t("authors.usedIn")}:</span>{" "}
+                      {a.scenarios.map((id, i) => (
+                        <span key={id}>
+                          {i > 0 && ", "}
+                          <Link
+                            to={`/s/${id}`}
+                            className="font-bold underline decoration-2 underline-offset-4 hover:text-accent"
+                          >
+                            {scenarios.find((s) => s.id === id)?.title ?? id}
+                          </Link>
+                        </span>
+                      ))}
+                    </p>
+                    <p className="mt-2 text-sm text-ink-soft">
+                      <span className="font-bold">
+                        {t("authors.source", { count: a.source.length })}:
+                      </span>{" "}
+                      {a.source.join("; ")}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </section>
+        );
+      })}
       {far && (
         <Link
           to={{ search, hash: "timeline-heading" }}
