@@ -117,6 +117,23 @@ test("il livello studente ha le sue uscite e le letture per approfondire", async
   await expect(page.getByRole("heading", { name: "Per approfondire" })).toBeVisible();
 });
 
+test("dove la fonte racconta l'esito reale compare «Cosa accadde davvero», con la sua fonte", async ({
+  page,
+}) => {
+  const s = scenarios.find((x) => x.happened)!;
+  await fresh(page, `/s/${s.id}`);
+  await expect(page.getByRole("heading", { name: "Cosa accadde davvero" })).toHaveCount(0);
+  await choose(page);
+  await expect(page.getByRole("heading", { name: "Cosa accadde davvero" })).toBeVisible();
+  await expect(page.getByText(s.happened!.text)).toBeVisible();
+  await expect(page.getByText(s.happened!.source)).toBeVisible();
+  await fresh(page, `/s/${first.id}`);
+  await choose(page);
+  await expect(page.getByRole("heading", { name: "Cosa accadde davvero" })).toHaveCount(
+    first.happened ? 1 : 0,
+  );
+});
+
 test("i progressi restano dopo il ricaricamento e finiscono nel viaggio", async ({ page }) => {
   await fresh(page, `/s/${first.id}`);
   await choose(page);

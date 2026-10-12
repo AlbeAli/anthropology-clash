@@ -95,6 +95,19 @@ describe("validate-content: domande per la discussione", () => {
   });
 });
 
+describe("validate-content: cosa accadde davvero", () => {
+  it("segnala una fonte senza anno o senza pagina", () => {
+    const broken = structuredClone(scenario001);
+    const noPage = { ...broken, happened: { text: "Un fatto.", source: "Rossi, Titolo, 1950" } };
+    const messages = validateAll(fixture(noPage)).issues.map((i) => i.message);
+    expect(messages).toContainEqual(expect.stringContaining("happened: la fonte"));
+    const ok = { ...broken, happened: { text: "Un fatto.", source: "Rossi, Titolo, 1950, p. 3" } };
+    expect(validateAll(fixture(ok)).issues.map((i) => i.message)).not.toContainEqual(
+      expect.stringContaining("happened: la fonte"),
+    );
+  });
+});
+
 describe("validate-content: aggancio contemporaneo", () => {
   it("segnala un hook presente in un solo livello", () => {
     const broken = structuredClone(scenario001);
