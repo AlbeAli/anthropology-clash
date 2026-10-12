@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>La rete intrecciata</title>
+    <style>
+      :root {
+        --ground: #ffffff;
+        --ink: #1a1a1a;
+        --ink-soft: #55554f;
+        --rule: #d9d9d6;
+        --focus: #0065b3;
+        --dono: #e2231a;
+        --parentela: #0065b3;
+        --rituale: #007a3b;
+        --relativismo: #f7a600;
+        --consumo: #7b3f98;
+        --body: system-ui, "Segoe UI", sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --ground: #121212;
+          --ink: #f2f2ee;
+          --ink-soft: #b5b4ad;
+          --rule: #3a3a36;
+          --focus: #5aa9f0;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --ground: #121212;
+        --ink: #f2f2ee;
+        --ink-soft: #b5b4ad;
+        --rule: #3a3a36;
+        --focus: #5aa9f0;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font: 400 1rem/1.55 var(--body);
+      }
+      .wrap {
+        max-width: 88rem;
+        margin: 0 auto;
+        padding: 24px 16px 56px;
+      }
+      h1 {
+        font: 800 clamp(1.8rem, 4vw, 2.6rem)/1.1 var(--body);
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      h2 {
+        font: 800 1.2rem/1.2 var(--body);
+        margin: 28px 0 8px;
+      }
+      p,
+      li {
+        max-width: 68ch;
+        color: var(--ink-soft);
+      }
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 8px;
+        align-items: center;
+      }
+      .chip {
+        min-height: 40px;
+        border: 2px solid var(--rule);
+        border-radius: 999px;
+        background: var(--ground);
+        color: var(--ink);
+        font: 700 0.875rem/1 var(--body);
+        padding: 0 14px 0 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .chip i {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        display: grid;
+        place-items: center;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 12px;
+        color: #fff;
+      }
+      .chip[aria-pressed="true"] {
+        border-color: var(--ink);
+      }
+      .map {
+        overflow-x: auto;
+        border: 2px solid var(--ink);
+        border-radius: 12px;
+        padding: 8px;
+      }
+      svg {
+        display: block;
+        width: 100%;
+        min-width: 980px;
+        height: auto;
+      }
+      .rail {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .dot {
+        fill: var(--ground);
+        stroke: var(--ink);
+        stroke-width: 4;
+      }
+      .lab {
+        font: 700 15px var(--body);
+        fill: var(--ink);
+        paint-order: stroke;
+        stroke: var(--ground);
+        stroke-width: 4px;
+        stroke-linejoin: round;
+      }
+      .term text,
+      .badge text {
+        font: 800 15px var(--body);
+      }
+      .hub rect {
+        fill: var(--ground);
+        stroke: var(--ink);
+        stroke-width: 5;
+      }
+      .hub text {
+        font: 800 18px var(--body);
+        letter-spacing: 0.08em;
+        fill: var(--ink);
+      }
+      g[data-line] {
+        transition: opacity 0.2s;
+      }
+      .dim {
+        opacity: 0.14;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        g[data-line] {
+          transition: none;
+        }
+      }
+      .row {
+        display: grid;
+        gap: 20px;
+      }
+      @media (min-width: 800px) {
+        .row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      table {
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      td,
+      th {
+        border-bottom: 1px solid var(--rule);
+        padding: 4px 10px 4px 0;
+        text-align: left;
+        color: var(--ink-soft);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <p style="margin: 0; font-weight: 700">Prototipo · 2026-10-12</p>
+      <h1>La rete intrecciata a 30 fermate</h1>
+      <p>
+        Le linee passano davvero dalle fermate condivise. I 30 scenari sono quelli veri e gli
+        interscambi sono i 6 validati dall'autore (campo <code>also</code>). Scegli una linea per
+        seguirla; le altre si attenuano.
+      </p>
+      <div class="bar" id="chips" role="group" aria-label="Segui una linea"></div>
+      <div class="map">
+        <svg
+          id="map"
+          role="img"
+          aria-label="Rete intrecciata: cinque linee che partono da Oggi e si incontrano nelle fermate condivise"
+        ></svg>
+      </div>
+
+      <div class="row">
+        <div>
+          <h2>Cosa è cambiato rispetto al prototipo a 21 fermate</h2>
+          <ul>
+            <li>
+              Parentela porta tutte le sue sei fermate sul ramo nord; il ramo sud porta solo gli
+              interscambi con Consumo e Relativismo.
+            </li>
+            <li>
+              Dono sfiora Rituale in due fermate (La soglia, Piangere al ritorno) senza fermarsi in
+              mezzo, poi sale e gira sopra la rete fino a Parentela, dove chiude con «Tra i vicini e
+              i consuoceri».
+            </li>
+            <li>
+              Nessun incrocio senza fermata: in ogni punto in cui due linee si toccano c'è una
+              fermata, e ogni fermata condivisa è un cambio validato sul testo.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2>Cosa costa</h2>
+          <ul>
+            <li>
+              La rete è larga (circa 1460 × 1010 unità): sotto i 1000 px scorre in orizzontale; su
+              telefono resta l'elenco.
+            </li>
+            <li>Ogni fermata o interscambio nuovo chiede di ridisegnare le coordinate a mano.</li>
+            <li>
+              I nomi su due linee affiancate (Parentela e Consumo, Rituale e Relativismo) si leggono
+              con il segno del cambio.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const LINES = {
+        reciprocita: { name: "Dono", letter: "D", color: "var(--dono)", ink: "#fff" },
+        parentela: { name: "Parentela", letter: "P", color: "var(--parentela)", ink: "#fff" },
+        rituale: { name: "Rituale", letter: "R", color: "var(--rituale)", ink: "#fff" },
+        relativismo: {
+          name: "Relativismo",
+          letter: "E",
+          color: "var(--relativismo)",
+          ink: "#1a1a1a",
+        },
+        consumo: { name: "Consumo", letter: "C", color: "var(--consumo)", ink: "#fff" },
+      };
+      const ORDER = Object.keys(LINES);
+      const T = {
+        "001": ["reciprocita", "La collana che non si può tenere"],
+        "002": ["reciprocita", "La carne è troppo magra"],
+        "004": ["reciprocita", "Bruciare la ricchezza"],
+        "005": ["reciprocita", "Lo spirito della cosa donata"],
+        "025": ["reciprocita", "Gonne e fasci di foglie"],
+        "028": ["reciprocita", "L'invito di un ex amico"],
+        "006": ["parentela", "Cugino o fratello?"],
+        "007": ["parentela", "L'eredità va al nipote"],
+        "008": ["parentela", "Amleto tra i Tiv"],
+        "009": ["parentela", "Sposare un fantasma"],
+        "024": ["parentela", "Chi è il marito?"],
+        "029": ["parentela", "Tra i vicini e i consuoceri", ["reciprocita"]],
+        "010": ["rituale", "La soglia", ["reciprocita"]],
+        "011": ["rituale", "Il combattimento di galli"],
+        "012": ["rituale", "L'animale abominevole"],
+        "019": ["rituale", "Piangere al ritorno", ["reciprocita"]],
+        "022": ["rituale", "Il secondo funerale"],
+        "026": ["rituale", "Maiali per gli antenati"],
+        "003": ["relativismo", "I riti del corpo dei Nacirema", ["rituale"]],
+        "013": ["relativismo", "Ordinare il museo"],
+        "014": ["relativismo", "Non pubblicarlo"],
+        "015": ["relativismo", "Il tempo delle mucche", ["parentela"]],
+        "023": ["relativismo", "Il granaio che cade"],
+        "030": ["relativismo", "La terapia di Lia"],
+        "016": ["consumo", "Il gusto classifica chi classifica"],
+        "017": ["consumo", "Le bacinelle di Sabo"],
+        "018": ["consumo", "Zucchero nel tè"],
+        "020": ["consumo", "Asce d'acciaio", ["parentela"]],
+        "021": ["consumo", "Il pendolo della moda"],
+        "027": ["consumo", "Amore al supermercato"],
+      };
+      const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+      const RAILS = {
+        relativismo: "M512 387 L512 870",
+        rituale: "M528 387 L528 440 L1300 440",
+        reciprocita:
+          "M130 360 L720 360 L800 440 L840 400 L1040 400 L1080 440 L1120 400 L1120 -20 L440 -20",
+        parentela: "M520 -90 L520 333 M500 385 L262 623 L289 650 L600 650",
+        consumo: "M480 378 L96 762",
+      };
+      const TERMS = [
+        ["reciprocita", 130, 360],
+        ["reciprocita", 440, -20],
+        ["parentela", 520, -90],
+        ["parentela", 600, 650],
+        ["rituale", 1300, 440],
+        ["relativismo", 512, 870],
+        ["consumo", 96, 762],
+      ];
+      /* id: [x, y, dx, dy, anchor, rotate] */
+      const POS = {
+        "001": [440, 360, -10, -12, "end", 45],
+        "002": [360, 360, -10, -12, "end", 45],
+        "004": [280, 360, -10, -12, "end", 45],
+        "005": [200, 360, -10, -12, "end", 45],
+        "025": [1120, 330, -18, 5, "end", 0],
+        "028": [1120, 260, -18, 5, "end", 0],
+        "006": [520, 280, 18, 5, "start", 0],
+        "007": [520, 220, 18, 5, "start", 0],
+        "008": [520, 160, 18, 5, "start", 0],
+        "009": [520, 100, 18, 5, "start", 0],
+        "024": [520, 40, 18, 5, "start", 0],
+        "011": [880, 440, 8, 14, "start", 45],
+        "012": [960, 440, 8, 14, "start", 45],
+        "022": [1160, 440, 8, 14, "start", 45],
+        "026": [1240, 440, 8, 14, "start", 45],
+        "013": [512, 510, 18, 5, "start", 0],
+        "014": [512, 580, 18, 5, "start", 0],
+        "023": [512, 730, 18, 5, "start", 0],
+        "030": [512, 800, 18, 5, "start", 0],
+        "016": [434, 424, -18, 5, "end", 0],
+        "017": [374, 484, -18, 5, "end", 0],
+        "018": [314, 544, -18, 5, "end", 0],
+        "021": [194, 664, -18, 5, "end", 0],
+        "027": [134, 724, -18, 5, "end", 0],
+      };
+      /* fermate condivise: id: [x, y, forma, larghezza, rotazione, etichetta [x, y, ancora, rotazione]] */
+      const SHARED = {
+        "003": [520, 440, "pill", 34, 0, [548, 466, "start", 0]],
+        "010": [800, 440, "circle", 0, 0, [808, 456, "start", 45]],
+        "019": [1080, 440, "circle", 0, 0, [1088, 456, "start", 45]],
+        "020": [254, 617, "pill", 34, 45, [222, 600, "end", 0]],
+        "015": [512, 650, "circle", 0, 0, [530, 678, "start", 0]],
+        "029": [520, -20, "circle", 0, 0, [534, -38, "start", 0]],
+      };
+
+      function term(x, y, c) {
+        const L = LINES[c];
+        return `<g class="term"><rect x="${x - 14}" y="${y - 14}" width="28" height="28" rx="7" fill="${L.color}"/><text x="${x}" y="${y + 5}" text-anchor="middle" fill="${L.ink}">${L.letter}</text></g>`;
+      }
+      function label(x, y, a, rot, t) {
+        return `<text class="lab" x="${x}" y="${y}" text-anchor="${a}"${rot ? ` transform="rotate(${rot} ${x} ${y})"` : ""}>${esc(t)}</text>`;
+      }
+      function pill(x, y, r, w, rot) {
+        return `<rect class="dot" x="${x - w / 2 - r}" y="${y - r}" width="${w + 2 * r - 4}" height="${2 * r}" rx="${r}"${rot ? ` transform="rotate(${rot} ${x} ${y})"` : ""}/>`;
+      }
+
+      function build() {
+        let out = "";
+        for (const c of ORDER)
+          out += `<g data-line="${c}"><path class="rail" stroke="${LINES[c].color}" d="${RAILS[c]}"/></g>`;
+        for (const [c, x, y] of TERMS) out += `<g data-line="${c}">${term(x, y, c)}</g>`;
+        out += `<g class="hub"><rect x="445" y="333" width="150" height="54" rx="27"/><text x="520" y="366" text-anchor="middle">OGGI</text></g>`;
+        for (const [id, p] of Object.entries(POS)) {
+          const t = T[id];
+          out += `<g data-line="${t[0]}"><circle class="dot" cx="${p[0]}" cy="${p[1]}" r="9"/>${label(p[0] + p[2], p[1] + p[3], p[4], p[5], t[1])}</g>`;
+        }
+        for (const [id, s] of Object.entries(SHARED)) {
+          const t = T[id];
+          const lines = [t[0], ...(t[2] || [])].join(" ");
+          const shape =
+            s[2] === "circle"
+              ? `<circle class="dot" cx="${s[0]}" cy="${s[1]}" r="12" style="stroke-width:5"/>`
+              : pill(s[0], s[1], 10, s[3], s[4]);
+          out += `<g data-line="${lines}">${shape}${label(s[5][0], s[5][1], s[5][2], s[5][3], t[1])}</g>`;
+        }
+        return out;
+      }
+
+      const svg = document.getElementById("map");
+      svg.setAttribute("viewBox", "-120 -130 1560 1060");
+      svg.innerHTML = build();
+
+      const bar = document.getElementById("chips");
+      let on = null;
+      function paint() {
+        for (const g of svg.querySelectorAll("g[data-line]"))
+          g.classList.toggle("dim", !!on && !g.dataset.line.split(" ").includes(on));
+        for (const b of bar.children) b.setAttribute("aria-pressed", String(b.dataset.c === on));
+      }
+      for (const c of ORDER) {
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.dataset.c = c;
+        b.type = "button";
+        b.innerHTML = `<i style="background:${LINES[c].color};color:${LINES[c].ink}">${LINES[c].letter}</i>${LINES[c].name}`;
+        b.onclick = () => {
+          on = on === c ? null : c;
+          paint();
+        };
+        bar.append(b);
+      }
+      paint();
+    </script>
+  </body>
+</html>
