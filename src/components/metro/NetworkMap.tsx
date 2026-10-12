@@ -142,129 +142,128 @@ function Lines({
     e.preventDefault();
     navigate(`/s/${id}`);
   };
-  const r = mini ? 15 : 9;
+  const k = mini ? 1.6 : 1;
   const size = mini ? 48 : 28;
 
-  return net.lines.map((line, i) => (
-    <g
-      key={line.concept}
-      className="net-line"
-      style={{ ["--lc" as string]: lineColor(line.concept), ["--i" as string]: i }}
-    >
-      <path
-        className="net-rail"
-        pathLength={1}
-        d={`M${line.path.map((p) => `${p.x} ${p.y}`).join(" L")}`}
-      />
-      <g className="net-term" aria-hidden="true">
-        <rect
-          x={line.terminus.x - size / 2}
-          y={line.terminus.y - size / 2}
-          width={size}
-          height={size}
-          rx={mini ? 10 : 7}
-          fill={lineColor(line.concept)}
-        />
-        {!mini && (
-          <text
-            x={line.terminus.x}
-            y={line.terminus.y + 5.5}
-            textAnchor="middle"
-            fill={lineInk(line.concept)}
-          >
-            {t(`lines.${line.concept}.letter`)}
-          </text>
-        )}
-      </g>
-      {line.stations.map((s, k) => {
-        const state = stateOf(s.id);
-        const change = s.badges.length > 0;
-        const pill = 2 * r + (mini ? 22 : 14);
-        const badge = mini ? 30 : 18;
-        const dot = (
-          <>
-            {state === "here" && <circle className="net-ping" cx={s.x} cy={s.y} r={r} />}
-            {change ? (
+  return (
+    <>
+      {net.lines.map((line, i) => (
+        <g
+          key={line.concept}
+          className="net-line"
+          style={{ ["--lc" as string]: lineColor(line.concept), ["--i" as string]: i }}
+        >
+          <path
+            className="net-rail"
+            pathLength={1}
+            d={line.paths
+              .map((path) => `M${path.map((q) => `${q.x} ${q.y}`).join(" L")}`)
+              .join(" ")}
+          />
+          {line.termini.map((end) => (
+            <g key={`${end.x},${end.y}`} className="net-term" aria-hidden="true">
               <rect
-                className="net-dot"
-                x={s.x - pill / 2}
-                y={s.y - r}
-                width={pill}
-                height={2 * r}
-                rx={r}
-                transform={line.pillRotate ? `rotate(${line.pillRotate} ${s.x} ${s.y})` : undefined}
+                x={end.x - size / 2}
+                y={end.y - size / 2}
+                width={size}
+                height={size}
+                rx={mini ? 10 : 7}
+                fill={lineColor(line.concept)}
               />
-            ) : (
-              <circle className="net-dot" cx={s.x} cy={s.y} r={r} />
-            )}
-            {s.badges.map((b) => (
-              <g key={b.concept} className="net-badge" aria-hidden="true">
-                <rect
-                  x={b.x - badge / 2}
-                  y={b.y - badge / 2}
-                  width={badge}
-                  height={badge}
-                  rx={mini ? 6 : 4}
-                  fill={lineColor(b.concept)}
-                />
-                {!mini && (
-                  <text x={b.x} y={b.y + 4} textAnchor="middle" fill={lineInk(b.concept)}>
-                    {t(`lines.${b.concept}.letter`)}
-                  </text>
-                )}
-              </g>
-            ))}
-          </>
-        );
-        const changeText = change
-          ? ", " +
-            t("home.network.change", {
-              lines: s.badges.map((b) => t(`lines.${b.concept}.name`)).join(", "),
-            })
-          : "";
-        if (mini) {
-          return (
-            <g key={s.id} className="net-stop" data-state={state} style={{ ["--j" as string]: k }}>
-              {dot}
+              {!mini && (
+                <text x={end.x} y={end.y + 5.5} textAnchor="middle" fill={lineInk(line.concept)}>
+                  {t(`lines.${line.concept}.letter`)}
+                </text>
+              )}
             </g>
+          ))}
+        </g>
+      ))}
+      {net.lines.flatMap((line, i) =>
+        line.stations.map((s, j) => {
+          const state = stateOf(s.id);
+          const change = s.also.length > 0;
+          const r = (change ? 12 : 9) * k;
+          const dot = (
+            <>
+              {state === "here" && <circle className="net-ping" cx={s.x} cy={s.y} r={r} />}
+              {s.shape.kind === "pill" ? (
+                <rect
+                  className="net-dot net-change"
+                  x={s.x - (s.shape.width + 2 * r - 4) / 2}
+                  y={s.y - r}
+                  width={s.shape.width + 2 * r - 4}
+                  height={2 * r}
+                  rx={r}
+                  transform={s.shape.rotate ? `rotate(${s.shape.rotate} ${s.x} ${s.y})` : undefined}
+                />
+              ) : (
+                <circle
+                  className={change ? "net-dot net-change" : "net-dot"}
+                  cx={s.x}
+                  cy={s.y}
+                  r={r}
+                />
+              )}
+            </>
           );
-        }
-        const { label } = s;
-        return (
-          <a
-            key={s.id}
-            href={`/s/${s.id}`}
-            className="net-stop"
-            data-state={state}
-            style={{ ["--j" as string]: k }}
-            aria-label={
-              t("home.network.stop", {
-                n: stopNumber(s.id),
-                title: s.title,
-                line: t(`lines.${line.concept}.name`),
-                state: t(`home.network.state.${state}`),
-              }) + changeText
-            }
-            onClick={(e) => go(e, s.id)}
-            onMouseEnter={() => onActive?.(s.id)}
-            onFocus={() => onActive?.(s.id)}
-          >
-            <circle className="net-hit" cx={s.x} cy={s.y} r={22} />
-            {dot}
-            <text
-              className="net-label"
-              x={label.x}
-              y={label.y}
-              textAnchor={label.anchor}
-              transform={label.rotate ? `rotate(${label.rotate} ${label.x} ${label.y})` : undefined}
+          const style = {
+            ["--lc" as string]: lineColor(line.concept),
+            ["--i" as string]: i,
+            ["--j" as string]: j,
+          };
+          if (mini) {
+            return (
+              <g key={s.id} className="net-stop" data-state={state} style={style}>
+                {dot}
+              </g>
+            );
+          }
+          const changeText = change
+            ? ", " +
+              t("home.network.change", {
+                lines: s.also.map((c) => t(`lines.${c}.name`)).join(", "),
+              })
+            : "";
+          const { label } = s;
+          return (
+            <a
+              key={s.id}
+              href={`/s/${s.id}`}
+              className="net-stop"
+              data-state={state}
+              style={style}
+              aria-label={
+                t("home.network.stop", {
+                  n: stopNumber(s.id),
+                  title: s.title,
+                  line: t(`lines.${line.concept}.name`),
+                  state: t(`home.network.state.${state}`),
+                }) + changeText
+              }
+              onClick={(e) => go(e, s.id)}
+              onMouseEnter={() => onActive?.(s.id)}
+              onFocus={() => onActive?.(s.id)}
             >
-              {s.title}
-            </text>
-          </a>
-        );
-      })}
-    </g>
-  ));
+              <circle className="net-hit" cx={s.x} cy={s.y} r={22} />
+              {dot}
+              <text
+                className="net-label"
+                x={label.x}
+                y={label.y}
+                textAnchor={label.anchor}
+                transform={
+                  label.rotate ? `rotate(${label.rotate} ${label.x} ${label.y})` : undefined
+                }
+              >
+                {s.title}
+              </text>
+            </a>
+          );
+        }),
+      )}
+    </>
+  );
 }
 
 function Hub({ net, label }: { net: Network; label: string }) {
