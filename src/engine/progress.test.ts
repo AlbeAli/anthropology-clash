@@ -75,6 +75,31 @@ describe("markCompleted", () => {
     expect(second.seenConcepts).toEqual(["reciprocita"]);
     expect(Object.keys(first.completed)).toEqual(["scenario_001"]);
   });
+
+  it("rigiocare una fermata conserva scelta, livello e data della prima visita", () => {
+    const first = markCompleted(emptyState(), {
+      scenarioId: "scenario_001",
+      concept: "reciprocita",
+      level: "neofita",
+      choice: "a",
+      today: "2026-09-18",
+    });
+    const replay = markCompleted(first, {
+      scenarioId: "scenario_001",
+      concept: "reciprocita",
+      level: "studente",
+      choice: "c",
+      today: "2026-09-19",
+    });
+    expect(replay.completed.scenario_001).toEqual({
+      level: "neofita",
+      choice: "a",
+      at: "2026-09-18",
+    });
+    expect(replay.completed).toBe(first.completed);
+    expect(replay.seenConcepts).toEqual(["reciprocita"]);
+    expect(replay.streak).toEqual({ count: 2, lastDay: "2026-09-19" });
+  });
 });
 
 describe("nextInSequence", () => {

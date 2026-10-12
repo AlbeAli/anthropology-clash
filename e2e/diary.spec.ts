@@ -90,6 +90,23 @@ test("cancellare il diario svuota anche gli appunti di una fermata ancora visita
   await expect(page.getByLabel(`Appunto su «${first.title}»`)).toHaveValue("");
 });
 
+test("rigiocare una fermata con un'altra scelta lascia nel diario la prima uscita", async ({
+  page,
+}) => {
+  await fresh(page);
+  await visit(page, first.id);
+  const [firstChoice, otherChoice] = first.levels.neofita.choices;
+
+  await page.goto(`/s/${first.id}`);
+  await expect(page.getByText("Nel viaggio e nel diario resta la tua prima uscita.")).toBeVisible();
+  await page.locator('[aria-labelledby="choices-heading"] button').nth(1).click();
+  await expect(page.getByRole("heading", { name: "Dove porta la tua uscita" })).toBeVisible();
+
+  await page.goto(`/diario#${first.id}`);
+  await expect(page.getByText(`La tua uscita: ${firstChoice.text}`)).toBeVisible();
+  await expect(page.getByText(`La tua uscita: ${otherChoice.text}`)).toHaveCount(0);
+});
+
 test("l'aula e la scheda non mostrano il diario", async ({ page }) => {
   await fresh(page);
   await visit(page, first.id);
