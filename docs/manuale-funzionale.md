@@ -207,7 +207,7 @@ Aggancio contemporaneo (`hook`, dal 2026-09-22): uno scenario può aprirsi su un
 
 ## 12. Nome
 
-"Culture Clash" scartato (prodotti omonimi attivi). Candidati verificati via RDAP il 2026-09-16: Malinteso (.app libero, .com preso), Straniamento, Spaesamento, Sconfinare, Ethnoclash (.com preso). Il registro .it va verificato manualmente su nic.it. Nome di lavoro: **Anthropology Clash** (anthropologyclash.app/.com e anthroclash.app/.com liberi alla data). La ricerca resta aperta; la disponibilità di un dominio non equivale a disponibilità del marchio.
+"Culture Clash" scartato (prodotti omonimi attivi). Candidati verificati via RDAP il 2026-09-16: Malinteso (.app libero, .com preso), Straniamento, Spaesamento, Sconfinare, Ethnoclash (.com preso). Il registro .it va verificato manualmente su nic.it. Nome di lavoro: **Anthropology Clash** (anthropologyclash.app/.com e anthroclash.app/.com liberi alla data). La ricerca resta aperta; la disponibilità di un dominio non equivale a disponibilità del marchio. Confronto aggiornato al 2026-10-12 (domini controllati sui registri, candidati, costo del cambio, raccomandazione e verifiche da fare a mano): `docs/nome-2026-10-12.md`.
 
 ## 13. Backlog scenari MVP
 
