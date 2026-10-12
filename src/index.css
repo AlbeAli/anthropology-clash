@@ -344,6 +344,9 @@
     stroke-width: 4;
     transition: stroke-width 0.2s;
   }
+  .net-dot.net-change {
+    stroke-width: 5;
+  }
   .net-mini .net-dot {
     stroke-width: 7;
   }

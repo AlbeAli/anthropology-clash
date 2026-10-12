@@ -56,6 +56,7 @@ test("sul telefono toccare una linea della miniatura apre le sue fermate", async
   await page
     .getByTestId("net-mini")
     .locator(`.net-line[style*="--l-${last.concept}"] .net-term`)
+    .first()
     .click();
   await expect(page.locator(`#linea-${last.concept}`)).toHaveAttribute("open");
   await expect(page.locator(`#linea-${first.concept}`)).not.toHaveAttribute("open");
