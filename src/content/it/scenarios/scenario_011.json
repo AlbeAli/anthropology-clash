@@ -4,7 +4,9 @@
   "title": "Il combattimento di galli",
   "concept": "rituale",
   "concept_label": "Rituale",
-  "glossary": ["bali"],
+  "glossary": [
+    "bali"
+  ],
   "levels": {
     "neofita": {
       "hook": "Sei da poco in un posto dove nessuno ti considera: presente, salutato, mai coinvolto. Poi succede qualcosa che mette tutti nei guai insieme — una figura barbina, un controllo, una fuga — e tu scappi con loro invece di tirartene fuori. Il giorno dopo, per la prima volta, ti prendono in giro.",
@@ -82,5 +84,9 @@
     "Per chi fa ricerca, condividere un rischio con le persone che studia ha vantaggi e costi. Quali, e dove sta il limite?",
     "Il capo del villaggio organizza un combattimento illegale, viene multato e il villaggio raccoglie la multa insieme. Che cosa dice questo del rapporto tra norme ufficiali e pratiche locali?",
     "L'élite giudica il combattimento primitivo e arretrato. Su quali pratiche di oggi vengono pronunciati giudizi simili, e da chi?"
-  ]
+  ],
+  "happened": {
+    "text": "Il giorno dopo gli abitanti si divertirono a imitare la corsa sgraziata di Geertz e della moglie e quelle che dicevano essere le loro espressioni di panico. Perfino l'anziano sacerdote brahmana, che non sarebbe mai stato coinvolto in un combattimento di galli, li fece chiamare nel suo cortile per chiedere dell'accaduto, ridacchiando contento. Geertz scrive che forse non sarebbe mai arrivato a quel sacerdote e che il loro ospite casuale divenne uno dei suoi migliori informatori.",
+    "source": "Geertz, «Deep Play: Notes on the Balinese Cockfight», Daedalus 101(1), 1972, pp. 3-4"
+  }
 }
