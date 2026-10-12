@@ -163,6 +163,8 @@
     "shown_other": "{{count}} autori nel filone {{school}}.",
     "shownAll_one": "{{count}} autore, tutti i filoni.",
     "shownAll_other": "{{count}} autori, tutti i filoni.",
+    "count_one": "{{count}} scheda",
+    "count_other": "{{count}} schede",
     "backToTimeline": "Torna alla linea del tempo",
     "toTop": "Linea del tempo",
     "stop": "{{name}}, {{life}}",
