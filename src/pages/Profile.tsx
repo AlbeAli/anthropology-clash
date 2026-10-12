@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
+import { downloadBlob } from "../engine/download";
 import { useAccount } from "../state/Account";
+import { outline } from "../components/buttons";
 
 const primary =
   "inline-flex min-h-12 items-center justify-center rounded-md bg-ink px-5 font-display font-extrabold text-bg transition-transform duration-200 ease-out-expo hover:-translate-y-0.5";
-const secondary =
-  "inline-flex min-h-12 items-center justify-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5";
+const secondary = `${outline} justify-center`;
 
 export default function Profile() {
   const { t } = useTranslation();
@@ -21,12 +22,7 @@ export default function Profile() {
       setNotice(t("account.exportFailed"));
       return;
     }
-    const url = URL.createObjectURL(new Blob([json], { type: "application/json" }));
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = t("account.exportName");
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadBlob(json, "application/json", t("account.exportName"));
     setNotice(t("account.exportDone"));
   }
 

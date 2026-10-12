@@ -107,14 +107,13 @@ function FullMap({
                 title: entry.title,
               })}
               {entry.also?.length
-                ? " Â· " +
+                ? " · " +
                   t("home.network.change", {
                     lines: entry.also.map((c) => t(`lines.${c}.name`)).join(", "),
                   })
                 : ""}
             </b>
-            {entry.hook &&
-              (entry.hook.length > 150 ? `${entry.hook.slice(0, 150)}â€¦` : entry.hook)}
+            {entry.hook && (entry.hook.length > 150 ? `${entry.hook.slice(0, 150)}…` : entry.hook)}
           </>
         ) : (
           t("home.network.hint")

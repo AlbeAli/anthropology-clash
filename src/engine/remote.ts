@@ -20,6 +20,9 @@ export function getSupabase(): Promise<SupabaseClient | null> {
         { auth: { flowType: "pkce", persistSession: true, storageKey: AUTH_STORAGE_KEY } },
       ),
     )
-    .catch(() => null);
+    .catch(() => {
+      client = undefined;
+      return null;
+    });
   return client;
 }

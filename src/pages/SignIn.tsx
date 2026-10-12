@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useAccount, type LinkResult } from "../state/Account";
 import { callbackError, fetchProviders, isAuthCallback, type Providers } from "../engine/account";
+import { outline } from "../components/buttons";
 
 type Notice = LinkResult | "googleError" | "callbackError" | "";
 
 const primary =
   "inline-flex min-h-12 items-center justify-center rounded-md bg-ink px-5 font-display font-extrabold text-bg transition-transform duration-200 ease-out-expo hover:-translate-y-0.5 disabled:opacity-40";
-const secondary =
-  "inline-flex min-h-12 items-center justify-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5";
+const secondary = `${outline} justify-center`;
 
 export default function SignIn() {
   const { t } = useTranslation();

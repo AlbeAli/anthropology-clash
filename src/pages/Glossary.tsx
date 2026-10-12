@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, loadGlossary } from "../engine/content";
+import { hashTarget } from "../engine/hash";
 import { DEFAULT_LANG } from "../i18n";
 import type { GlossaryEntry, GlossaryKind } from "../schema/scenario.schema";
 
@@ -26,7 +27,7 @@ export default function Glossary() {
     };
   }, []);
 
-  const current = decodeURIComponent(hash.slice(1));
+  const current = hashTarget(hash);
 
   useEffect(() => {
     if (!entries || !current) return;

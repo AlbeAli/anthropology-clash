@@ -128,6 +128,33 @@ describe("storage", () => {
     expect(readState(s).theme).toBeUndefined();
   });
 
+  it("scarta le fermate e la serie malformate senza perdere le altre", () => {
+    const s = fakeStorage();
+    s.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        version: 1,
+        completed: {
+          scenario_001: { level: "neofita", choice: "a", at: "2026-10-01" },
+          scenario_002: { level: "neofita", choice: "z", at: "2026-10-01" },
+          scenario_003: { level: "esperto", choice: "a", at: "2026-10-01" },
+          scenario_004: { level: "neofita", choice: "a", at: 20261001 },
+          scenario_005: "x",
+          altro: { level: "neofita", choice: "a", at: "2026-10-01" },
+        },
+        streak: { count: -1, lastDay: "ieri" },
+      }),
+    );
+    const back = readState(s);
+    expect(Object.keys(back.completed)).toEqual(["scenario_001"]);
+    expect(back.streak).toEqual({ count: 0, lastDay: null });
+    s.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ version: 1, streak: { count: 3, lastDay: "2026-10-02" } }),
+    );
+    expect(readState(s).streak).toEqual({ count: 3, lastDay: "2026-10-02" });
+  });
+
   it("non lancia se lo storage rifiuta la scrittura", () => {
     const broken = {
       setItem: () => {

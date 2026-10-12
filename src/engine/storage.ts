@@ -44,15 +44,41 @@ function sanitize(raw: unknown): StoredState {
     ...base,
     lang: raw.lang === "en" ? "en" : "it",
     level: raw.level === "neofita" || raw.level === "studente" ? raw.level : null,
-    completed: isRecord(raw.completed) ? (raw.completed as Record<string, Completion>) : {},
-    streak:
-      isRecord(raw.streak) && typeof raw.streak.count === "number"
-        ? { count: raw.streak.count, lastDay: (raw.streak.lastDay as string | null) ?? null }
-        : base.streak,
+    completed: sanitizeCompleted(raw.completed),
+    streak: sanitizeStreak(raw.streak) ?? base.streak,
     seenConcepts: Array.isArray(raw.seenConcepts) ? (raw.seenConcepts as ConceptId[]) : [],
     theme: raw.theme === "light" || raw.theme === "dark" ? raw.theme : undefined,
     notes: sanitizeNotes(raw.notes),
   };
+}
+
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+function sanitizeCompleted(raw: unknown): Record<string, Completion> {
+  const completed: Record<string, Completion> = {};
+  if (!isRecord(raw)) return completed;
+  for (const [id, c] of Object.entries(raw)) {
+    if (!/^scenario_\d{3}$/.test(id) || !isRecord(c)) continue;
+    const { level, choice, at } = c;
+    if (level !== "neofita" && level !== "studente") continue;
+    if (typeof choice !== "string" || !/^[a-d]$/.test(choice)) continue;
+    if (typeof at !== "string" || !DAY.test(at)) continue;
+    completed[id] = { level, choice, at };
+  }
+  return completed;
+}
+
+function sanitizeStreak(raw: unknown): Streak | undefined {
+  if (!isRecord(raw) || !Number.isInteger(raw.count) || (raw.count as number) < 0) return undefined;
+  const { lastDay } = raw;
+  if (
+    lastDay !== null &&
+    lastDay !== undefined &&
+    (typeof lastDay !== "string" || !DAY.test(lastDay))
+  ) {
+    return undefined;
+  }
+  return { count: raw.count as number, lastDay: lastDay ?? null };
 }
 
 function sanitizeNotes(raw: unknown): Record<string, Note> | undefined {

@@ -10,10 +10,7 @@
   --ink-soft: #55554f;
   --line: #d9d9d6;
   --accent: #1a1a1a;
-  --accent-soft: #f2f2f0;
   --accent-strong: #000000;
-  --clay: #1a1a1a;
-  --clay-soft: #f2f2f0;
   --focus: #0065b3;
   --bar: #1a1a1a;
   --bar-ink: #ffffff;
@@ -35,10 +32,7 @@
     --ink-soft: #b5b4ad;
     --line: #3a3a36;
     --accent: #f2f2ee;
-    --accent-soft: #26262a;
     --accent-strong: #ffffff;
-    --clay: #f2f2ee;
-    --clay-soft: #26262a;
     --focus: #5aa9f0;
     --bar: #000000;
     --panel: #000000;
@@ -54,10 +48,7 @@
   --ink-soft: #b5b4ad;
   --line: #3a3a36;
   --accent: #f2f2ee;
-  --accent-soft: #26262a;
   --accent-strong: #ffffff;
-  --clay: #f2f2ee;
-  --clay-soft: #26262a;
   --focus: #5aa9f0;
   --bar: #000000;
   --panel: #000000;
@@ -72,16 +63,12 @@
   --color-ink-soft: var(--ink-soft);
   --color-line: var(--line);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
   --color-accent-strong: var(--accent-strong);
-  --color-clay: var(--clay);
-  --color-clay-soft: var(--clay-soft);
   --color-bar: var(--bar);
   --color-bar-ink: var(--bar-ink);
   --color-panel: var(--panel);
 
   --font-display: "Archivo", system-ui, -apple-system, sans-serif;
-  --font-serif: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
   --font-sans: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
   --font-mono: "Archivo", system-ui, -apple-system, sans-serif;
 
@@ -332,9 +319,6 @@
   .net-term text {
     font: 800 15px var(--font-display);
   }
-  .net-badge text {
-    font: 800 11px var(--font-display);
-  }
   .net-hit {
     fill: transparent;
   }
@@ -378,9 +362,6 @@
   .net-stop:hover .net-dot,
   .net-stop:focus-visible .net-dot {
     stroke-width: 6;
-  }
-  .net-stop:focus-visible .net-dot {
-    stroke: var(--ink);
   }
   .net-stop:focus-visible .net-hit {
     stroke: var(--ink);

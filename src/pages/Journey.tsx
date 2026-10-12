@@ -9,6 +9,7 @@ import { useAccount } from "../state/Account";
 import { DEFAULT_LANG } from "../i18n";
 import LineBullet from "../components/metro/LineBullet";
 import LineStamp from "../components/metro/LineStamp";
+import { outline } from "../components/buttons";
 
 export default function Journey() {
   const { t, i18n } = useTranslation();
@@ -220,10 +221,7 @@ export default function Journey() {
             {t("journey.copy")}
           </button>
         )}
-        <Link
-          to="/"
-          className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
-        >
+        <Link to="/" className={outline}>
           {t("journey.map")}
         </Link>
       </div>

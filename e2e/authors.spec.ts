@@ -1,15 +1,10 @@
 import { expect, test, type Page } from "@playwright/test";
 import { authors, scenarios } from "./content";
+import { fresh } from "./helpers";
 
 const { scenario, author } = scenarios
   .flatMap((scenario) => authors.map((author) => ({ scenario, author })))
   .find(({ scenario, author }) => scenario.levels.neofita.source.startsWith(`${author.surname},`))!;
-
-async function fresh(page: Page, path = "/") {
-  await page.goto("/");
-  await page.evaluate(() => localStorage.clear());
-  await page.goto(path);
-}
 
 async function openAll(page: Page) {
   await page.getByRole("heading", { level: 2, name: "Linea del tempo" }).waitFor();
@@ -152,4 +147,15 @@ test("le schede sono ripiegate per filone: si aprono col filtro, con un'ancora o
   await expect(page.locator("details[open]")).toHaveCount(1);
   await page.locator("details[open] > summary").click();
   await expect(page.locator("details[open]")).toHaveCount(0);
+});
+
+test("un'ancora con codifica malformata non rompe le pagine che la leggono", async ({ page }) => {
+  for (const [path, heading] of [
+    ["/autori#%", "Autori"],
+    ["/glossario#%", "Glossario"],
+    ["/diario#%", "Diario di campo"],
+  ]) {
+    await fresh(page, path);
+    await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
+  }
 });

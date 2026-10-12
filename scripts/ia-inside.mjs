@@ -3,14 +3,16 @@ import { mkdirSync, writeFileSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const [id, ...rest] = process.argv.slice(2);
-if (!id) {
+if (!id || !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(id)) {
   console.error("uso: node scripts/ia-inside.mjs <id-item> [--out dir] [--scarto N] [regex ...]");
   process.exit(2);
 }
-const oi = rest.indexOf("--out");
-const si = rest.indexOf("--scarto");
-const scarto = si >= 0 ? Number(rest.splice(si, 2)[1]) : 0;
-const outDir = oi >= 0 ? rest.splice(oi, 2)[1] : join(".ia-cache", id);
+const take = (flag) => {
+  const i = rest.indexOf(flag);
+  return i >= 0 ? rest.splice(i, 2)[1] : undefined;
+};
+const scarto = Number(take("--scarto") ?? 0);
+const outDir = take("--out") ?? join(".ia-cache", id);
 mkdirSync(outDir, { recursive: true });
 const cache = join(outDir, "paragrafi.json");
 

@@ -13,9 +13,7 @@ import { DEFAULT_LANG } from "../i18n";
 import { useAppState } from "../state/AppState";
 import LineBullet from "../components/metro/LineBullet";
 import CopyLink from "../components/itinerary/CopyLink";
-
-const outline =
-  "inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5";
+import { outline } from "../components/buttons";
 
 export default function Itineraries() {
   const { t } = useTranslation();
@@ -137,7 +135,7 @@ export default function Itineraries() {
               })}
             </ol>
           )}
-          <p aria-live="polite" className="mb-4 text-[15px] text-ink-soft empty:hidden">
+          <p aria-live="polite" className="mb-4 text-[15px] text-ink-soft empty:mb-0">
             {status}
           </p>
           {trip && (

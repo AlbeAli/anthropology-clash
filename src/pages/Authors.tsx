@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, loadAuthors } from "../engine/content";
+import { hashTarget } from "../engine/hash";
 import { DEFAULT_LANG } from "../i18n";
 import type { AuthorProfile, AuthorsData } from "../engine/authors";
 import AuthorTimeline from "../components/AuthorTimeline";
@@ -26,7 +27,7 @@ export default function Authors() {
     nav: null,
   });
   const scenarios = getCatalog(DEFAULT_LANG);
-  const current = decodeURIComponent(hash.slice(1));
+  const current = hashTarget(hash);
 
   useEffect(() => {
     let live = true;
