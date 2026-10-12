@@ -54,17 +54,63 @@ test("la pagina Autori si apre dal piè di pagina e, sul telefono, dal menu Altr
   await expect(page.getByRole("heading", { level: 1, name: "Autori" })).toBeVisible();
 });
 
-test("la legenda porta al filone e un'ancora nella stessa pagina non rifà l'animazione", async ({
-  page,
-}) => {
+test("un'ancora nella stessa pagina non rifà l'animazione", async ({ page }) => {
   await fresh(page, "/autori");
   await expect(page.locator(".metro-wipe")).toHaveCount(0, { timeout: 5000 });
-  const link = page.getByRole("link", { name: "Antropologia nordamericana dopo Boas" }).first();
-  await link.click();
-  await expect(page).toHaveURL("/autori#school-nordamericana");
-  await expect(page.locator("#school-nordamericana")).toBeInViewport();
-  await expect(page.locator(".metro-wipe")).toHaveCount(0);
   const last = authors.filter((a) => a.born !== undefined).at(-1)!;
   await page.getByRole("link", { name: new RegExp(`^${last.name}, `) }).click();
   await expect(page.locator(".metro-wipe")).toHaveCount(0);
+});
+
+test("la legenda filtra per filone: restano le schede del filone, la linea del tempo attenua gli altri e Indietro torna a tutti", async ({
+  page,
+}) => {
+  await fresh(page, "/autori");
+  const school = "nordamericana";
+  const inSchool = authors.filter((a) => a.school === school);
+  const other = authors.find((a) => a.school !== school && a.born !== undefined)!;
+  const button = page.getByRole("button", { name: "Antropologia nordamericana dopo Boas" });
+  await expect(button).toHaveAttribute("aria-pressed", "false");
+
+  await button.click();
+  await expect(page).toHaveURL(`/autori?filone=${school}`);
+  await expect(button).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("heading", { level: 3 })).toHaveCount(inSchool.length);
+  await expect(
+    page.getByRole("heading", { level: 2, name: /Antropologia nordamericana/ }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: new RegExp(`^${other.name}, `) })).toHaveAttribute(
+    "data-dim",
+    "",
+  );
+
+  await page.getByRole("link", { name: new RegExp(`^${other.name}, `) }).click();
+  await expect(page).toHaveURL(`/autori#${other.id}`);
+  await expect(page.getByRole("heading", { level: 3, name: other.name })).toBeVisible();
+
+  await page.goBack();
+  await page.getByRole("button", { name: "Tutti i filoni" }).click();
+  await expect(page).toHaveURL("/autori");
+  await expect(page.getByRole("heading", { level: 3 })).toHaveCount(authors.length);
+});
+
+test("dal fondo di un filone si risale alla linea del tempo, dal link del filone e dal pulsante in basso", async ({
+  page,
+}) => {
+  await fresh(page, "/autori");
+  await expect(page.getByRole("link", { name: /Linea del tempo/ })).toHaveCount(0);
+  await page
+    .getByRole("link", { name: "Torna alla linea del tempo" })
+    .last()
+    .scrollIntoViewIfNeeded();
+  await page.getByRole("link", { name: "Torna alla linea del tempo" }).last().click();
+  await expect(page).toHaveURL("/autori#timeline-heading");
+  await expect(page.getByRole("heading", { level: 2, name: "Linea del tempo" })).toBeInViewport();
+  await expect(page.getByRole("heading", { level: 2, name: "Linea del tempo" })).toBeFocused();
+
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  const up = page.getByRole("link", { name: "Linea del tempo", exact: true });
+  await expect(up).toBeVisible();
+  await up.click();
+  await expect(page.getByRole("heading", { level: 2, name: "Linea del tempo" })).toBeInViewport();
 });

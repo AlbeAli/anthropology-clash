@@ -43,6 +43,9 @@ type Props = {
   authors: AuthorProfile[];
   schools: AuthorsData["schools"];
   life: (a: AuthorProfile) => string;
+  active: string | null;
+  search: string;
+  onPick: (school: string | null) => void;
 };
 
 const PX = 12;
@@ -53,7 +56,7 @@ const LEAD = 56;
 const RAIL = 132;
 const HEIGHT = 176;
 
-export default function AuthorTimeline({ authors, schools, life }: Props) {
+export default function AuthorTimeline({ authors, schools, life, active, search, onPick }: Props) {
   const { t } = useTranslation();
   const track = useRef<HTMLDivElement>(null);
   const sorted = authors
@@ -71,12 +74,27 @@ export default function AuthorTimeline({ authors, schools, life }: Props) {
 
   return (
     <>
-      <ul className="mb-4 flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
+      <ul
+        aria-label={t("authors.filter")}
+        className="mb-4 flex flex-wrap gap-x-5 gap-y-1.5 text-sm"
+      >
+        <li>
+          <button
+            type="button"
+            aria-pressed={active === null}
+            onClick={() => onPick(null)}
+            className="cursor-pointer underline-offset-4 hover:underline aria-pressed:font-bold aria-pressed:underline aria-pressed:decoration-2"
+          >
+            {t("authors.allSchools")}
+          </button>
+        </li>
         {used.map((s) => (
           <li key={s.id}>
-            <Link
-              to={{ hash: `school-${s.id}` }}
-              className="flex items-center gap-2 underline-offset-4 hover:underline"
+            <button
+              type="button"
+              aria-pressed={active === s.id}
+              onClick={() => onPick(active === s.id ? null : s.id)}
+              className="flex cursor-pointer items-center gap-2 underline-offset-4 hover:underline aria-pressed:font-bold aria-pressed:underline aria-pressed:decoration-2"
             >
               <span
                 aria-hidden="true"
@@ -84,7 +102,7 @@ export default function AuthorTimeline({ authors, schools, life }: Props) {
                 style={{ background: schoolColor(schools, s.id) }}
               />
               {s.label}
-            </Link>
+            </button>
           </li>
         ))}
       </ul>
@@ -125,9 +143,10 @@ export default function AuthorTimeline({ authors, schools, life }: Props) {
                 style={{ left: at, height: HEIGHT, ["--j" as string]: j }}
               >
                 <Link
-                  to={{ hash: a.id }}
+                  to={{ search: !active || a.school === active ? search : "", hash: a.id }}
+                  data-dim={active && a.school !== active ? "" : undefined}
                   aria-label={t("authors.stop", { name: a.name, life: life(a) })}
-                  className="group absolute -left-3 block h-full w-6"
+                  className="group absolute -left-3 block h-full w-6 transition-opacity data-dim:opacity-30"
                 >
                   <span
                     aria-hidden="true"

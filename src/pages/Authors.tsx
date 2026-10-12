@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, loadAuthors } from "../engine/content";
 import { DEFAULT_LANG } from "../i18n";
@@ -16,7 +16,9 @@ const byBorn = (a: AuthorProfile, b: AuthorProfile) =>
 
 export default function Authors() {
   const { t } = useTranslation();
-  const { hash } = useLocation();
+  const { hash, search, key } = useLocation();
+  const navigate = useNavigate();
+  const [far, setFar] = useState(false);
   const [data, setData] = useState<AuthorsData | null>(null);
   const scenarios = getCatalog(DEFAULT_LANG);
   const current = decodeURIComponent(hash.slice(1));
@@ -33,8 +35,17 @@ export default function Authors() {
 
   useEffect(() => {
     if (!data || !current) return;
-    document.getElementById(current)?.scrollIntoView();
-  }, [data, current]);
+    const el = document.getElementById(current);
+    el?.scrollIntoView();
+    if (current === "timeline-heading") el?.focus({ preventScroll: true });
+  }, [data, current, key]);
+
+  useEffect(() => {
+    const onScroll = () => setFar(window.scrollY > window.innerHeight * 1.5);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const life = (a: AuthorProfile) =>
     a.born === undefined
@@ -43,6 +54,17 @@ export default function Authors() {
         ? t("authors.life", { born: a.born, died: a.died })
         : t("authors.lifeOpen", { born: a.born });
 
+  const asked = new URLSearchParams(search).get("filone");
+  const currentAuthor = data?.authors.find((a) => a.id === current);
+  const active =
+    asked &&
+    data?.schools.some((s) => s.id === asked) &&
+    (!currentAuthor || currentAuthor.school === asked)
+      ? asked
+      : null;
+  const pick = (school: string | null) =>
+    navigate({ search: school ? `?filone=${school}` : "", hash: "" });
+
   const groups = (data?.schools ?? [])
     .map((school) => ({
       school,
@@ -50,6 +72,8 @@ export default function Authors() {
     }))
     .filter((g) => g.authors.length > 0)
     .sort((a, b) => byBorn(a.authors[0], b.authors[0]));
+  const shown = groups.filter((g) => !active || g.school.id === active);
+  const shownCount = shown.reduce((n, g) => n + g.authors.length, 0);
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -64,27 +88,52 @@ export default function Authors() {
         <section aria-labelledby="timeline-heading" className="mb-12">
           <h2
             id="timeline-heading"
-            className="mb-2 border-b-[3px] border-ink pb-2 font-display text-2xl font-extrabold"
+            tabIndex={-1}
+            className="mb-2 scroll-mt-32 border-b-[3px] outline-none border-ink pb-2 font-display text-2xl font-extrabold"
           >
             {t("authors.timeline")}
           </h2>
-          <AuthorTimeline authors={data!.authors} schools={data!.schools} life={life} />
+          <AuthorTimeline
+            authors={data!.authors}
+            schools={data!.schools}
+            life={life}
+            active={active}
+            search={search}
+            onPick={pick}
+          />
+          <p className="sr-only" aria-live="polite">
+            {active
+              ? t("authors.shown", {
+                  count: shownCount,
+                  school: shown[0]?.school.label ?? "",
+                })
+              : t("authors.shownAll", { count: shownCount })}
+          </p>
         </section>
       )}
 
-      {groups.map(({ school, authors }) => (
+      {shown.map(({ school, authors }) => (
         <section key={school.id} aria-labelledby={`school-${school.id}`} className="mb-10">
-          <h2
-            id={`school-${school.id}`}
-            className="mb-4 flex scroll-mt-32 items-center gap-3 border-b-[3px] border-ink pb-2 font-display text-2xl font-extrabold"
-          >
-            <span
-              aria-hidden="true"
-              className="h-2.5 w-10 shrink-0 rounded-full"
-              style={{ background: schoolColor(data!.schools, school.id) }}
-            />
-            {school.label}
-          </h2>
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b-[3px] border-ink pb-2">
+            <h2
+              id={`school-${school.id}`}
+              className="flex scroll-mt-32 items-center gap-3 font-display text-2xl font-extrabold"
+            >
+              <span
+                aria-hidden="true"
+                className="h-2.5 w-10 shrink-0 rounded-full"
+                style={{ background: schoolColor(data!.schools, school.id) }}
+              />
+              {school.label}
+            </h2>
+            <Link
+              to={{ search, hash: "timeline-heading" }}
+              className="text-sm font-bold underline decoration-2 underline-offset-4 hover:text-accent"
+            >
+              <span aria-hidden="true">↑ </span>
+              {t("authors.backToTimeline")}
+            </Link>
+          </div>
           <ul className="grid gap-6">
             {authors.map((a) => (
               <li
@@ -131,6 +180,15 @@ export default function Authors() {
           </ul>
         </section>
       ))}
+      {far && (
+        <Link
+          to={{ search, hash: "timeline-heading" }}
+          className="fixed right-4 bottom-4 z-30 inline-flex min-h-11 items-center gap-2 rounded-md border-2 border-ink bg-bg px-4 font-display text-sm font-extrabold shadow-[0_4px_14px_rgb(0_0_0/0.2)] hover:bg-ink hover:text-bg"
+        >
+          <span aria-hidden="true">↑</span>
+          {t("authors.toTop")}
+        </Link>
+      )}
     </div>
   );
 }
