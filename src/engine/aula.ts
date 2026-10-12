@@ -5,6 +5,7 @@ export type AulaStep =
   | { kind: "setup" }
   | { kind: "choices" }
   | { kind: "exit"; choiceId: string; n: number }
+  | { kind: "happened" }
   | { kind: "source" }
   | { kind: "discuss" };
 
@@ -18,6 +19,7 @@ export function aulaSteps(scenario: Scenario, level: Level): AulaStep[] {
       choiceId: c.id,
       n: i + 1,
     })),
+    ...(scenario.happened ? [{ kind: "happened" as const }] : []),
     { kind: "source" },
     ...(scenario.discuss ? [{ kind: "discuss" as const }] : []),
   ];
