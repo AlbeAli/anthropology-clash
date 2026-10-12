@@ -25,6 +25,8 @@ export default defineConfig({
       env: {
         VITE_SUPABASE_URL: "https://e2e.supabase.test",
         VITE_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_e2e",
+        VITE_UMAMI_SRC: "",
+        VITE_UMAMI_WEBSITE_ID: "",
       },
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
@@ -33,7 +35,12 @@ export default defineConfig({
       command:
         "pnpm exec vite build --outDir dist-local && pnpm exec vite preview --outDir dist-local --port 4174 --strictPort",
       url: "http://localhost:4174",
-      env: { VITE_SUPABASE_URL: "", VITE_SUPABASE_PUBLISHABLE_KEY: "" },
+      env: {
+        VITE_SUPABASE_URL: "",
+        VITE_SUPABASE_PUBLISHABLE_KEY: "",
+        VITE_UMAMI_SRC: "",
+        VITE_UMAMI_WEBSITE_ID: "",
+      },
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
     },

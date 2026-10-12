@@ -13,25 +13,25 @@ const DiscussQuestion = z
   .max(300)
   .regex(/\?$/, "una domanda per la discussione finisce con il punto interrogativo");
 
-const Choice = z.object({
+const Choice = z.strictObject({
   id: z.string().regex(/^[a-d]$/),
   text: z.string().min(1).max(200),
 });
 
-const Deepen = z.object({
+const Deepen = z.strictObject({
   ref: z.string().min(1).max(200),
   why: z.string().min(1).max(300),
   access: z.enum(["PD", "PD (fr)", "OA", "NON-OA"]),
   url: z.url().optional(),
 });
 
-const Happened = z.object({
+const Happened = z.strictObject({
   text: z.string().min(1).max(600),
   source: z.string().min(1).max(300),
 });
 
 const LevelContent = z
-  .object({
+  .strictObject({
     hook: z.string().min(1).max(400).optional(),
     setup: z.string().min(1).max(1200),
     choices: z.array(Choice).min(2).max(4),
@@ -49,14 +49,14 @@ const LevelContent = z
   });
 
 export const Scenario = z
-  .object({
+  .strictObject({
     id: ScenarioId,
     lang: Lang,
     title: z.string().min(1).max(80),
     concept: ConceptId,
     concept_label: z.string().min(1),
     also: z.array(ConceptId).min(1).max(2).optional(),
-    levels: z.object({
+    levels: z.strictObject({
       neofita: LevelContent,
       studente: LevelContent,
     }),
@@ -81,7 +81,7 @@ export const Scenario = z
     }
   });
 
-export const Itinerary = z.object({
+export const Itinerary = z.strictObject({
   id: Slug,
   lang: Lang,
   title: z.string().min(1).max(80),
@@ -89,7 +89,7 @@ export const Itinerary = z.object({
   stops: z.array(ScenarioId).min(2).max(12),
 });
 
-export const Concept = z.object({
+export const Concept = z.strictObject({
   id: ConceptId,
   lang: Lang,
   label: z.string(),
@@ -98,7 +98,7 @@ export const Concept = z.object({
 
 export const GlossaryKind = z.enum(["popolo", "luogo", "pratica"]);
 
-export const GlossaryEntry = z.object({
+export const GlossaryEntry = z.strictObject({
   id: Slug,
   lang: Lang,
   term: z.string().min(1).max(60),
@@ -111,7 +111,7 @@ export const GlossaryEntry = z.object({
 const Year = z.number().int().min(1500).max(2100);
 
 export const Author = z
-  .object({
+  .strictObject({
     id: Slug,
     lang: Lang,
     name: z.string().min(1).max(80),
@@ -127,8 +127,8 @@ export const Author = z
     message: "died viene dopo born",
   });
 
-export const AuthorsFile = z.object({
-  schools: z.array(z.object({ id: Slug, label: z.string().min(1).max(60) })).min(1),
+export const AuthorsFile = z.strictObject({
+  schools: z.array(z.strictObject({ id: Slug, label: z.string().min(1).max(60) })).min(1),
   authors: z.array(Author),
 });
 

@@ -1,15 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
 import { lineCount, scenarios } from "./content";
+import { fresh, isPhone } from "./helpers";
 
 const first = scenarios[0];
-
-async function fresh(page: Page, path = "/") {
-  await page.goto("/");
-  await page.evaluate(() => localStorage.clear());
-  await page.goto(path);
-}
-
-const isPhone = (page: Page) => (page.viewportSize()?.width ?? 1280) < 768;
 
 async function openFromBar(page: Page, name: string) {
   const nav = page.getByRole("navigation", { name: "Navigazione" });

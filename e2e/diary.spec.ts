@@ -1,15 +1,10 @@
 import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 import { scenarios } from "./content";
+import { fresh } from "./helpers";
 
 const first = scenarios[0];
 const note = "Il tempo tra un dono e l'altro fa parte del legame: appunto di prova.";
-
-async function fresh(page: Page, path = "/") {
-  await page.goto("/");
-  await page.evaluate(() => localStorage.clear());
-  await page.goto(path);
-}
 
 async function visit(page: Page, id: string) {
   await page.goto(`/s/${id}`);
@@ -74,6 +69,25 @@ test("azzerare i progressi lascia il diario, salvo scelta; il diario si cancella
   await expect(page.getByText("Diario cancellato")).toBeVisible();
   await expect(page.getByLabel(`Appunto su «${first.title}»`)).toHaveCount(0);
   await expect(page.getByText("Il diario si riempie con le fermate visitate")).toBeVisible();
+});
+
+test("cancellare il diario svuota anche gli appunti di una fermata ancora visitata", async ({
+  page,
+}) => {
+  await fresh(page);
+  await visit(page, first.id);
+  await page.goto(`/diario#${first.id}`);
+  const area = page.getByLabel(`Appunto su «${first.title}»`);
+  await area.fill(note);
+  await expect(page.getByText("Salvato in questo browser")).toBeVisible();
+
+  await page.getByRole("button", { name: "Cancella il diario" }).click();
+  await page.getByRole("button", { name: "Conferma: cancella tutti gli appunti" }).click();
+  await expect(page.getByText("Diario cancellato")).toBeVisible();
+  await expect(area).toHaveValue("");
+
+  await page.reload();
+  await expect(page.getByLabel(`Appunto su «${first.title}»`)).toHaveValue("");
 });
 
 test("l'aula e la scheda non mostrano il diario", async ({ page }) => {

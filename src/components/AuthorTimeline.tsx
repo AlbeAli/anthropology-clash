@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { AuthorProfile, AuthorsData } from "../engine/authors";
+import { prefersReducedMotion } from "../engine/motion";
 import { schoolColor } from "./palette";
 
 type Dated = AuthorProfile & { born: number };
@@ -69,7 +70,11 @@ export default function AuthorTimeline({ authors, schools, life, active, search,
 
   function slide(direction: 1 | -1) {
     const el = track.current;
-    if (el) el.scrollBy({ left: direction * el.clientWidth * 0.7, behavior: "smooth" });
+    if (el)
+      el.scrollBy({
+        left: direction * el.clientWidth * 0.7,
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
+      });
   }
 
   return (
@@ -111,7 +116,7 @@ export default function AuthorTimeline({ authors, schools, life, active, search,
           ref={track}
           className="overflow-x-auto overscroll-x-contain [mask-image:linear-gradient(to_right,transparent,#000_24px,#000_calc(100%-24px),transparent)] [scrollbar-width:thin]"
         >
-          <ol className="relative m-0 list-none p-0" style={{ width, height: HEIGHT }}>
+          <div className="relative" style={{ width, height: HEIGHT }}>
             <span
               aria-hidden="true"
               className="metro-rail-x absolute h-2 rounded-full bg-ink"
@@ -136,33 +141,35 @@ export default function AuthorTimeline({ authors, schools, life, active, search,
                 {d}
               </span>
             ))}
-            {stops.map(({ a, at }, j) => (
-              <li
-                key={a.id}
-                className="metro-stop absolute top-0"
-                style={{ left: at, height: HEIGHT, ["--j" as string]: j }}
-              >
-                <Link
-                  to={{ search: !active || a.school === active ? search : "", hash: a.id }}
-                  data-dim={active && a.school !== active ? "" : undefined}
-                  aria-label={t("authors.stop", { name: a.name, life: life(a) })}
-                  className="group absolute -left-3 block h-full w-6 transition-opacity data-dim:opacity-30"
+            <ol className="absolute inset-0 m-0 list-none p-0">
+              {stops.map(({ a, at }, j) => (
+                <li
+                  key={a.id}
+                  className="metro-stop absolute top-0"
+                  style={{ left: at, height: HEIGHT, ["--j" as string]: j }}
                 >
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-[9px] h-6 w-1.5 rounded-sm transition-transform duration-300 ease-out-expo group-hover:scale-y-150 group-focus-visible:scale-y-150"
-                    style={{ top: RAIL - 12, background: schoolColor(schools, a.school) }}
-                  />
-                  <span
-                    className="absolute left-3 origin-bottom-left -rotate-45 font-bold whitespace-nowrap decoration-2 underline-offset-4 group-hover:underline"
-                    style={{ bottom: HEIGHT - RAIL + 18 }}
+                  <Link
+                    to={{ search: !active || a.school === active ? search : "", hash: a.id }}
+                    data-dim={active && a.school !== active ? "" : undefined}
+                    aria-label={t("authors.stop", { name: a.name, life: life(a) })}
+                    className="group absolute -left-3 block h-full w-6 transition-opacity data-dim:opacity-30"
                   >
-                    {a.surname}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ol>
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-[9px] h-6 w-1.5 rounded-sm transition-transform duration-300 ease-out-expo group-hover:scale-y-150 group-focus-visible:scale-y-150"
+                      style={{ top: RAIL - 12, background: schoolColor(schools, a.school) }}
+                    />
+                    <span
+                      className="absolute left-3 origin-bottom-left -rotate-45 font-bold whitespace-nowrap decoration-2 underline-offset-4 group-hover:underline"
+                      style={{ bottom: HEIGHT - RAIL + 18 }}
+                    >
+                      {a.surname}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
         <div className="mt-2 flex justify-end gap-2">
           {([-1, 1] as const).map((dir) => (

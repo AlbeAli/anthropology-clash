@@ -1,5 +1,6 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { glossary, scenarios } from "./content";
+import { fresh, isPhone } from "./helpers";
 
 const { scenario, entry } = scenarios
   .flatMap((scenario) =>
@@ -9,12 +10,6 @@ const { scenario, entry } = scenarios
     })),
   )
   .find(({ scenario, entry }) => scenario.levels.neofita.setup.includes(entry.term))!;
-
-async function fresh(page: Page, path = "/") {
-  await page.goto("/");
-  await page.evaluate(() => localStorage.clear());
-  await page.goto(path);
-}
 
 test("un termine del setup apre la sua nota di contesto, Esc la chiude e la nota porta al glossario", async ({
   page,
@@ -52,7 +47,7 @@ test("il glossario si apre dal piè di pagina e, sul telefono, dal menu Altro e 
   page,
 }) => {
   await fresh(page);
-  if ((page.viewportSize()?.width ?? 1280) < 768) {
+  if (isPhone(page)) {
     const nav = page.getByRole("navigation", { name: "Navigazione" });
     await nav.getByRole("button", { name: "Altro" }).click();
     await nav.getByRole("link", { name: "Glossario" }).click();

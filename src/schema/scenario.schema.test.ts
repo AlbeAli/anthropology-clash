@@ -82,3 +82,14 @@ describe("Scenario schema", () => {
     expect(Scenario.safeParse(broken).success).toBe(false);
   });
 });
+
+describe("Scenario schema: chiavi sconosciute", () => {
+  it("rifiuta un refuso nel nome di un campo, a livello di scenario e di livello", () => {
+    expect(
+      Scenario.safeParse({ ...structuredClone(scenario001), discus: ["Chi dà?"] }).success,
+    ).toBe(false);
+    const nested = structuredClone(scenario001);
+    (nested.levels.neofita as Record<string, unknown>).hok = "Oggi...";
+    expect(Scenario.safeParse(nested).success).toBe(false);
+  });
+});

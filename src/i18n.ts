@@ -15,5 +15,3 @@ void i18n.use(initReactI18next).init({
   supportedLngs: ["it", "en"],
   interpolation: { escapeValue: false },
 });
-
-export default i18n;

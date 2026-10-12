@@ -18,6 +18,7 @@ import SplitFlap from "../components/metro/SplitFlap";
 import { legTag } from "../components/metro/legTag";
 import { useRouteLights } from "../components/metro/useRouteLights";
 import NotFound from "./NotFound";
+import { outline } from "../components/buttons";
 
 export default function ScenarioPage() {
   const { t } = useTranslation();
@@ -217,22 +218,13 @@ function ScenarioPlay({
                     </Link>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-2.5">
-                    <Link
-                      to="/"
-                      className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
-                    >
+                    <Link to="/" className={outline}>
                       {t("scenario.backToMap")}
                     </Link>
-                    <Link
-                      to="/viaggio"
-                      className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
-                    >
+                    <Link to="/viaggio" className={outline}>
                       {t("nav.journey")}
                     </Link>
-                    <Link
-                      to={`/diario#${scenario.id}`}
-                      className="inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
-                    >
+                    <Link to={`/diario#${scenario.id}`} className={outline}>
                       {t("scenario.writeDiary")}
                     </Link>
                   </div>

@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, loadScenario } from "../engine/content";
 import { diaryEntries, diaryText, type DiaryEntry } from "../engine/diary";
+import { downloadBlob } from "../engine/download";
+import { hashTarget } from "../engine/hash";
 import { stopNumber } from "../engine/lines";
 import { NOTE_MAX, type Completion } from "../engine/storage";
 import { DEFAULT_LANG } from "../i18n";
@@ -16,11 +18,12 @@ export default function Diary() {
   const { t, i18n } = useTranslation();
   const { state, persisted, setNote, clearNotes } = useAppState();
   const { hash } = useLocation();
-  const target = decodeURIComponent(hash.slice(1));
+  const target = hashTarget(hash);
   const entries = diaryEntries(state, getCatalog(DEFAULT_LANG));
   const hasNotes = entries.some((e) => e.note);
   const [confirming, setConfirming] = useState(false);
   const [notice, setNotice] = useState("");
+  const [cleared, setCleared] = useState(0);
 
   const day = (at: string) =>
     new Date(`${at}T12:00:00`).toLocaleDateString(i18n.language, {
@@ -49,12 +52,11 @@ export default function Diary() {
         })),
     );
     const text = diaryText(t("diary.fileHead", { app: t("app.name") }), blocks);
-    const url = URL.createObjectURL(new Blob([text], { type: "text/plain;charset=utf-8" }));
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${t("diary.fileName")}-${new Date().toISOString().slice(0, 10)}.txt`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    downloadBlob(
+      text,
+      "text/plain;charset=utf-8",
+      `${t("diary.fileName")}-${new Date().toISOString().slice(0, 10)}.txt`,
+    );
   }
 
   function clear() {
@@ -63,6 +65,7 @@ export default function Diary() {
       return;
     }
     clearNotes();
+    setCleared((n) => n + 1);
     setConfirming(false);
     setNotice(t("diary.cleared"));
   }
@@ -88,7 +91,7 @@ export default function Diary() {
         <ol className="grid gap-8">
           {entries.map((e) => (
             <Entry
-              key={e.scenario.id}
+              key={`${e.scenario.id}-${cleared}`}
               entry={e}
               focus={e.scenario.id === target}
               meta={

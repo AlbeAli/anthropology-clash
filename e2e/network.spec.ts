@@ -1,16 +1,9 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { scenarios } from "./content";
+import { fresh, isPhone } from "./helpers";
 
 const first = scenarios[0];
 const last = scenarios.findLast((s) => s.concept !== first.concept)!;
-
-async function fresh(page: Page) {
-  await page.goto("/");
-  await page.evaluate(() => localStorage.clear());
-  await page.goto("/");
-}
-
-const isPhone = (page: Page) => (page.viewportSize()?.width ?? 1280) < 768;
 
 test("la rete apre la Home: tutte le fermate partono da Oggi e portano allo scenario", async ({
   page,

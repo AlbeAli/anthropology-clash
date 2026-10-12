@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { outline } from "../buttons";
 
 export default function CopyLink({ url }: { url: string }) {
   const { t } = useTranslation();
@@ -24,11 +25,7 @@ export default function CopyLink({ url }: { url: string }) {
 
   return (
     <div className="grid gap-2">
-      <button
-        type="button"
-        onClick={copy}
-        className="inline-flex min-h-12 items-center justify-self-start rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5"
-      >
+      <button type="button" onClick={copy} className={`${outline} justify-self-start`}>
         {t("itineraries.builder.copy")}
       </button>
       <p role="status" className="min-h-5 text-sm text-ink-soft">

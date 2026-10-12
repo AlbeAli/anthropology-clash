@@ -1,15 +1,10 @@
 import { expect, test, type Page } from "@playwright/test";
 import { itineraries, scenarios } from "./content";
+import { fresh, isPhone } from "./helpers";
 
 const curated = itineraries[0];
 const titleOf = (id: string) => scenarios.find((s) => s.id === id)!.title;
 const numberOf = (id: string) => String(Number(id.slice("scenario_".length)));
-
-async function fresh(page: Page, path = "/") {
-  await page.goto("/");
-  await page.evaluate(() => localStorage.clear());
-  await page.goto(path);
-}
 
 async function choose(page: Page) {
   await page.locator('[aria-labelledby="choices-heading"] button').first().click();
@@ -25,7 +20,7 @@ test("un percorso curato si apre dalla barra e guida da una fermata all'altra fi
 
   await fresh(page);
   const nav = page.getByRole("navigation", { name: "Navigazione" });
-  if ((page.viewportSize()?.width ?? 1280) < 768) {
+  if (isPhone(page)) {
     await nav.getByRole("button", { name: "Altro" }).click();
   }
   await nav.getByRole("link", { name: "Percorsi" }).click();

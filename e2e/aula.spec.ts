@@ -1,16 +1,11 @@
 import { expect, test, type Page } from "@playwright/test";
 import { itineraries, scenarios } from "./content";
+import { fresh } from "./helpers";
 
 const first = scenarios[0];
 const curated = itineraries[0];
 const stepsOf = (s: (typeof scenarios)[number], level: "neofita" | "studente") =>
   3 + s.levels[level].choices.length + 1 + (s.happened ? 1 : 0) + (s.discuss ? 1 : 0);
-
-async function fresh(page: Page, path = "/") {
-  await page.goto("/");
-  await page.evaluate(() => localStorage.clear());
-  await page.goto(path);
-}
 
 const position = (page: Page) =>
   page.getByRole("navigation", { name: "Comandi della presentazione" }).locator("p");

@@ -9,11 +9,10 @@ import { useAppState } from "../state/AppState";
 import CopyLink from "../components/itinerary/CopyLink";
 import StopList from "../components/itinerary/StopList";
 import NotFound from "./NotFound";
+import { outline } from "../components/buttons";
 
 const primary =
   "inline-flex min-h-12 items-center gap-2 rounded-md bg-ink px-5 font-display font-extrabold text-bg transition-transform duration-200 ease-out-expo hover:-translate-y-0.5";
-const outline =
-  "inline-flex min-h-12 items-center rounded-md border-[3px] border-ink px-5 font-display font-extrabold transition-transform duration-200 ease-out-expo hover:-translate-y-0.5";
 
 export default function ItineraryPage() {
   const { t } = useTranslation();
