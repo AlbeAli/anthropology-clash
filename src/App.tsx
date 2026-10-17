@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { Link, Route, Routes, useLocation, useMatch } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppStateProvider, useAppState } from "./state/AppState";
@@ -52,6 +52,8 @@ function Shell() {
   const sheetMatch = useMatch("/scheda/:id");
   const itineraryMatch = useMatch("/percorso/:id");
   const selfTitled = Boolean(itineraryMatch) || pathname === "/percorso";
+  const announcer = useRef<HTMLParagraphElement>(null);
+  const lastPath = useRef(pathname);
 
   useEffect(() => {
     applyTheme(theme);
@@ -76,6 +78,15 @@ function Shell() {
     document.title = pageTitle ? `${pageTitle} · ${t("app.name")}` : t("app.name");
   }, [pathname, scenarioMatch, aulaMatch, sheetMatch, selfTitled, available, t]);
 
+  useEffect(() => {
+    if (lastPath.current === pathname) return;
+    lastPath.current = pathname;
+    const main = document.getElementById("main-content");
+    const held = document.activeElement;
+    if (!main?.contains(held) || held === main) main?.focus({ preventScroll: true });
+    if (announcer.current) announcer.current.textContent = document.title;
+  }, [pathname]);
+
   return (
     <div className="flex min-h-dvh flex-col bg-bg text-ink">
       <a
@@ -86,6 +97,13 @@ function Shell() {
       </a>
       <AppBar />
       <RouteWipe />
+      <p
+        id="route-announcer"
+        ref={announcer}
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      />
       <main
         id="main-content"
         tabIndex={-1}
