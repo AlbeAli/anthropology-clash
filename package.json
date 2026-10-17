@@ -15,6 +15,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "validate": "tsx scripts/validate-content.ts",
+    "linkcheck": "tsx scripts/check-links.ts",
     "test": "vitest run",
     "lint": "eslint . && prettier --check .",
     "e2e": "playwright test",
