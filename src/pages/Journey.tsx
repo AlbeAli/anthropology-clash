@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type ChangeEvent } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getCatalog, getConcepts } from "../engine/content";
 import { lineStamps, visitsInOrder } from "../engine/journey";
-import { nextInSequence } from "../engine/progress";
+import { BACKUP_MAX_CHARS, exportProgress, parseProgress } from "../engine/backup";
+import { downloadBlob } from "../engine/download";
+import { dayKey, nextInSequence } from "../engine/progress";
 import { useAppState } from "../state/AppState";
 import { useAccount } from "../state/Account";
 import { DEFAULT_LANG } from "../i18n";
@@ -13,7 +15,7 @@ import { outline } from "../components/buttons";
 
 export default function Journey() {
   const { t, i18n } = useTranslation();
-  const { state, resetProgress } = useAppState();
+  const { state, resetProgress, mergeRemote } = useAppState();
   const { user, clearAccountProgress } = useAccount();
   const scenarios = getCatalog(DEFAULT_LANG);
   const concepts = getConcepts(DEFAULT_LANG);
@@ -35,6 +37,7 @@ export default function Journey() {
   const [notice, setNotice] = useState("");
   const [fallback, setFallback] = useState("");
   const area = useRef<HTMLTextAreaElement>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
   const date = (day: string) =>
     new Date(`${day}T12:00:00`).toLocaleDateString(i18n.language, {
       day: "numeric",
@@ -110,6 +113,39 @@ export default function Journey() {
     setWithNotes(false);
     setFallback("");
     setNotice(t("journey.resetDone"));
+  }
+
+  function save() {
+    downloadBlob(
+      exportProgress(state, new Date()),
+      "application/json",
+      t("journey.backup.fileName", { date: dayKey(new Date()) }),
+    );
+    setNotice(t("journey.backup.saved"));
+  }
+
+  async function restore(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    const ids = new Set(scenarios.map((x) => x.id));
+    let parsed = null;
+    try {
+      if (file.size <= BACKUP_MAX_CHARS * 3) {
+        parsed = parseProgress(await file.text(), (id) => ids.has(id));
+      }
+    } catch {
+      parsed = null;
+    }
+    if (!parsed) {
+      setNotice(t("journey.backup.invalid"));
+      return;
+    }
+    const added = Object.keys(parsed.completed).filter((id) => !(id in state.completed)).length;
+    mergeRemote(parsed);
+    setNotice(
+      added > 0 ? t("journey.backup.restored", { count: added }) : t("journey.backup.nothingNew"),
+    );
   }
 
   return (
@@ -239,45 +275,73 @@ export default function Journey() {
         />
       )}
 
-      {visits.length > 0 && (
-        <details className="mt-10 border-t border-line pt-3">
-          <summary className="cursor-pointer py-3 font-display text-sm font-bold text-ink-soft">
-            {t("journey.manage")}
-          </summary>
-          <p className="mt-2 mb-3 text-sm text-ink-soft">
-            {user ? t("journey.resetNoteAccount") : t("journey.resetNote")}
-          </p>
-          {confirming && state.notes && (
-            <label className="mb-3 flex min-h-11 items-center gap-2.5 font-display text-sm font-bold">
-              <input
-                type="checkbox"
-                checked={withNotes}
-                onChange={(e) => setWithNotes(e.target.checked)}
-                className="size-5 accent-(--ink)"
-              />
-              {t("journey.resetNotes")}
-            </label>
-          )}
-          <div className="flex flex-wrap gap-2.5">
+      <details className="mt-10 border-t border-line pt-3">
+        <summary className="cursor-pointer py-3 font-display text-sm font-bold text-ink-soft">
+          {t("journey.manage")}
+        </summary>
+        <p className="mt-2 mb-3 text-sm text-ink-soft">{t("journey.backup.note")}</p>
+        <div className="flex flex-wrap gap-2.5">
+          {visits.length > 0 && (
             <button
               type="button"
-              onClick={reset}
+              onClick={save}
               className="inline-flex min-h-11 items-center rounded-md border-2 border-ink px-4 font-display text-sm font-bold"
             >
-              {confirming ? t("journey.resetConfirm") : t("journey.reset")}
+              {t("journey.backup.save")}
             </button>
-            {confirming && (
+          )}
+          <button
+            type="button"
+            onClick={() => fileInput.current?.click()}
+            className="inline-flex min-h-11 items-center rounded-md border-2 border-ink px-4 font-display text-sm font-bold"
+          >
+            {t("journey.backup.restore")}
+          </button>
+          <input
+            ref={fileInput}
+            type="file"
+            accept="application/json,.json"
+            onChange={restore}
+            hidden
+          />
+        </div>
+        {visits.length > 0 && (
+          <div className="mt-6 border-t border-line pt-3">
+            <p className="mb-3 text-sm text-ink-soft">
+              {user ? t("journey.resetNoteAccount") : t("journey.resetNote")}
+            </p>
+            {confirming && state.notes && (
+              <label className="mb-3 flex min-h-11 items-center gap-2.5 font-display text-sm font-bold">
+                <input
+                  type="checkbox"
+                  checked={withNotes}
+                  onChange={(e) => setWithNotes(e.target.checked)}
+                  className="size-5 accent-(--ink)"
+                />
+                {t("journey.resetNotes")}
+              </label>
+            )}
+            <div className="flex flex-wrap gap-2.5">
               <button
                 type="button"
-                onClick={() => setConfirming(false)}
-                className="inline-flex min-h-11 items-center rounded-md px-4 font-display text-sm font-bold underline underline-offset-4"
+                onClick={reset}
+                className="inline-flex min-h-11 items-center rounded-md border-2 border-ink px-4 font-display text-sm font-bold"
               >
-                {t("journey.resetCancel")}
+                {confirming ? t("journey.resetConfirm") : t("journey.reset")}
               </button>
-            )}
+              {confirming && (
+                <button
+                  type="button"
+                  onClick={() => setConfirming(false)}
+                  className="inline-flex min-h-11 items-center rounded-md px-4 font-display text-sm font-bold underline underline-offset-4"
+                >
+                  {t("journey.resetCancel")}
+                </button>
+              )}
+            </div>
           </div>
-        </details>
-      )}
+        )}
+      </details>
     </div>
   );
 }

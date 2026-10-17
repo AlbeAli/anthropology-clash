@@ -315,7 +315,18 @@
     },
     "resetNoteAccount": "Cancella fermate visitate e serie da questo browser e dal tuo account. Livello e tema restano.",
     "resetFailed": "Non riesco a raggiungere il tuo account: i progressi non sono stati azzerati. Riprova tra poco.",
-    "resetNotes": "Cancella anche il diario"
+    "resetNotes": "Cancella anche il diario",
+    "backup": {
+      "note": "I progressi restano in questo browser. Salva un file per tenerne una copia o portarli su un altro dispositivo: contiene fermate e serie, non il diario.",
+      "save": "Salva i progressi in un file",
+      "restore": "Ripristina da un file",
+      "fileName": "anthropology-clash-progressi-{{date}}.json",
+      "saved": "File dei progressi salvato",
+      "restored_one": "Ripristinata {{count}} fermata",
+      "restored_other": "Ripristinate {{count}} fermate",
+      "nothingNew": "Nessuna fermata nuova: i progressi sono già qui",
+      "invalid": "Questo file non è un salvataggio dei progressi, oppure è danneggiato"
+    }
   },
   "itineraries": {
     "title": "Percorsi",

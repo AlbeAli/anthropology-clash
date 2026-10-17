@@ -34,7 +34,7 @@ export function emptyState(): StoredState {
   };
 }
 
-function isRecord(v: unknown): v is Record<string, unknown> {
+export function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);
 }
 
@@ -84,7 +84,7 @@ function sanitize(raw: unknown): StoredState {
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 
-function sanitizeCompleted(raw: unknown): Record<string, Completion> {
+export function sanitizeCompleted(raw: unknown): Record<string, Completion> {
   const completed: Record<string, Completion> = {};
   if (!isRecord(raw)) return completed;
   for (const [id, c] of Object.entries(raw)) {
@@ -98,7 +98,7 @@ function sanitizeCompleted(raw: unknown): Record<string, Completion> {
   return completed;
 }
 
-function sanitizeStreak(raw: unknown): Streak | undefined {
+export function sanitizeStreak(raw: unknown): Streak | undefined {
   if (!isRecord(raw) || !Number.isInteger(raw.count) || (raw.count as number) < 0) return undefined;
   const { lastDay } = raw;
   if (
