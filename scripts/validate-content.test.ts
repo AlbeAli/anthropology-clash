@@ -221,3 +221,48 @@ describe("validate-content: glossario", () => {
     expect(messages).toContainEqual(expect.stringContaining('id duplicato "trobriand"'));
   });
 });
+
+describe("validate-content: avvisi sul periodo", () => {
+  const withNeofitaSetup = (setup: string, id = "scenario_001") => {
+    const s = structuredClone(scenario001) as typeof scenario001;
+    s.levels.neofita.setup = setup;
+    return { ...s, id };
+  };
+  const warningsFor = (scenario: object, file = "scenario_001.json") =>
+    validateAll(fixture(scenario, file)).warnings.map((w) => w.message);
+
+  it("non segnala i setup che indicano un anno, un decennio o un secolo", () => {
+    for (const setup of [
+      "Nel 1915 sei un ricercatore tra i pescatori.",
+      "Negli anni Venti arrivi sull'isola.",
+      "All'inizio del Novecento parti per il Pacifico.",
+      "Nel XIX secolo un missionario scrive di loro.",
+    ]) {
+      expect(warningsFor(withNeofitaSetup(setup))).toEqual([]);
+    }
+  });
+
+  it("segnala un setup senza periodo, senza far fallire la validazione", () => {
+    const scenario = withNeofitaSetup(
+      "Sei un ricercatore e vivi da anni con un popolo del deserto.",
+    );
+    const { warnings } = validateAll(fixture(scenario));
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0].message).toContain("levels.neofita.setup");
+    expect(warnings[0].file).toBe("it/scenarios/scenario_001.json");
+  });
+
+  it("esenta lo scenario che nasconde di proposito il periodo", () => {
+    const scenario = withNeofitaSetup(
+      "Leggi la descrizione di un popolo del Nord America.",
+      "scenario_003",
+    );
+    expect(warningsFor(scenario, "scenario_003.json")).toEqual([]);
+  });
+
+  it("sui contenuti del repo gli avvisi riguardano solo il periodo", () => {
+    const { issues, warnings } = validateAll(REAL_CONTENT);
+    expect(issues).toEqual([]);
+    expect(warnings.every((w) => w.message.includes("nessun periodo"))).toBe(true);
+  });
+});

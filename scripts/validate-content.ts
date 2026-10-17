@@ -18,6 +18,10 @@ const STUDENTE_SOURCE = /\p{Lu}\p{L}+.*\b(1[5-9]|20)\d{2}\b/u;
 
 type Issue = { file: string; message: string };
 
+const PERIOD =
+  /\b(1[5-9]\d{2}|20\d{2})\b|\banni\s+(Dieci|Venti|Trenta|Quaranta|Cinquanta|Sessanta|Settanta|Ottanta|Novanta)\b|\b(Sei|Sette|Otto|Nove)cento\b|\bsecol[oi]\b|\bdecenn[io]\b/i;
+const PERIOD_EXEMPT = new Set(["scenario_003"]);
+
 function formatZodIssues(prefix: string, issues: { path: PropertyKey[]; message: string }[]) {
   return issues.map((i) => ({
     file: prefix,
@@ -139,8 +143,9 @@ function validateAuthors(lang: Lang, dir: string, scenarios: { id: string; sourc
 export function validateLang(
   lang: Lang,
   dir: string,
-): { issues: Issue[]; count: number; itineraries: number } {
+): { issues: Issue[]; warnings: Issue[]; count: number; itineraries: number } {
   const issues: Issue[] = [];
+  const warnings: Issue[] = [];
   const conceptsPath = join(dir, "concepts.json");
   const conceptIds = new Set<string>();
 
@@ -195,6 +200,12 @@ export function validateLang(
     }
     for (const level of Level.options) {
       const lvl = s.levels[level];
+      if (!PERIOD.test(lvl.setup) && !PERIOD_EXEMPT.has(s.id)) {
+        warnings.push({
+          file: label,
+          message: `levels.${level}.setup: nessun periodo (anno, decennio o secolo)`,
+        });
+      }
       const choiceIds = lvl.choices.map((c) => c.id);
       if (new Set(choiceIds).size !== choiceIds.length) {
         issues.push({ file: label, message: `levels.${level}.choices: id duplicati` });
@@ -273,11 +284,12 @@ export function validateLang(
   const itineraries = validateItineraries(lang, dir, seenIds);
   issues.push(...itineraries.issues);
 
-  return { issues, count: files.length, itineraries: itineraries.count };
+  return { issues, warnings, count: files.length, itineraries: itineraries.count };
 }
 
 export function validateAll(contentDir: string) {
   const issues: Issue[] = [];
+  const warnings: Issue[] = [];
   let count = 0;
   let itineraries = 0;
   for (const lang of Lang.options) {
@@ -285,14 +297,15 @@ export function validateAll(contentDir: string) {
     if (!existsSync(dir)) continue;
     const r = validateLang(lang, dir);
     issues.push(...r.issues);
+    warnings.push(...r.warnings);
     count += r.count;
     itineraries += r.itineraries;
   }
-  return { issues, count, itineraries };
+  return { issues, warnings, count, itineraries };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { issues, count, itineraries } = validateAll(CONTENT_DIR);
+  const { issues, warnings, count, itineraries } = validateAll(CONTENT_DIR);
   const summary = `${count} scenari, ${itineraries} ${itineraries === 1 ? "itinerario" : "itinerari"}`;
   if (issues.length > 0) {
     for (const i of issues) console.error(`✗ ${i.file}: ${i.message}`);
@@ -300,4 +313,6 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     process.exit(1);
   }
   console.log(`✓ contenuti validi: ${summary}`);
+  for (const w of warnings) console.log(`⚠ ${w.file}: ${w.message}`);
+  if (warnings.length > 0) console.log(`${warnings.length} avvisi (non bloccano)`);
 }
