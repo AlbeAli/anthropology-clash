@@ -90,7 +90,7 @@
     "sign": "Linea {{line}} · fermata {{n}} · {{concept}}",
     "change": "Interscambio: cambio per la linea {{lines}}",
     "hintScroll": "Scorri: il percorso si accende tappa dopo tappa.",
-    "hintVisited": "Fermata già visitata: puoi scegliere di nuovo.",
+    "hintVisited": "Fermata già visitata: puoi scegliere di nuovo. Nel viaggio e nel diario resta la tua prima uscita.",
     "live": "Uscita scelta. Sotto trovi dove porta ogni uscita.",
     "legs": {
       "start": "partenza",

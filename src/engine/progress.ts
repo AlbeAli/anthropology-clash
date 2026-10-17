@@ -35,10 +35,13 @@ export type CompletionInput = {
 export function markCompleted(state: StoredState, input: CompletionInput): StoredState {
   return {
     ...state,
-    completed: {
-      ...state.completed,
-      [input.scenarioId]: { level: input.level, choice: input.choice, at: input.today },
-    },
+    completed:
+      input.scenarioId in state.completed
+        ? state.completed
+        : {
+            ...state.completed,
+            [input.scenarioId]: { level: input.level, choice: input.choice, at: input.today },
+          },
     streak: bumpStreak(state.streak, input.today),
     seenConcepts: state.seenConcepts.includes(input.concept)
       ? state.seenConcepts
