@@ -1,6 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { bumpStreak, currentStreak, dayKey, markCompleted, nextInSequence } from "./progress";
-import { emptyState, readState, writeState, STORAGE_KEY } from "./storage";
+import {
+  BACKUP_KEY,
+  clearBackup,
+  emptyState,
+  migrateState,
+  readState,
+  writeState,
+  STORAGE_KEY,
+} from "./storage";
 
 describe("streak", () => {
   it("parte da 1 alla prima chiusura", () => {
@@ -103,6 +111,9 @@ describe("storage", () => {
       setItem: (k: string, v: string) => {
         data[k] = v;
       },
+      removeItem: (k: string) => {
+        delete data[k];
+      },
       data,
     };
   }
@@ -115,6 +126,48 @@ describe("storage", () => {
   it("azzera dichiaratamente uno stato con version diversa", () => {
     const s = fakeStorage({ [STORAGE_KEY]: JSON.stringify({ version: 0, level: "studente" }) });
     expect(readState(s).level).toBeNull();
+  });
+
+  it("conserva una copia di ciò che scarta: JSON corrotto, versione ignota, valore non oggetto", () => {
+    for (const raw of ["{non json", JSON.stringify({ version: 9, level: "studente" }), "[1,2]"]) {
+      const s = fakeStorage({ [STORAGE_KEY]: raw });
+      expect(readState(s)).toEqual(emptyState());
+      expect(s.data[BACKUP_KEY]).toBe(raw);
+    }
+  });
+
+  it("non crea la copia se lo stato è valido o assente", () => {
+    const s = fakeStorage({ [STORAGE_KEY]: JSON.stringify({ version: 1, level: "studente" }) });
+    readState(s);
+    readState(fakeStorage());
+    expect(s.data[BACKUP_KEY]).toBeUndefined();
+  });
+
+  it("resta vuoto, senza eccezioni, se la copia non si può scrivere", () => {
+    const s = {
+      getItem: () => "{non json",
+      setItem: () => {
+        throw new Error("QuotaExceededError");
+      },
+    };
+    expect(readState(s)).toEqual(emptyState());
+  });
+
+  it("clearBackup toglie la copia e non fallisce senza storage", () => {
+    const s = fakeStorage({ [BACKUP_KEY]: "x" });
+    clearBackup(s);
+    expect(s.data[BACKUP_KEY]).toBeUndefined();
+    expect(() => clearBackup(undefined)).not.toThrow();
+  });
+
+  it("scarta da seenConcepts i valori che non sono concetti", () => {
+    const s = fakeStorage({
+      [STORAGE_KEY]: JSON.stringify({
+        version: 1,
+        seenConcepts: ["rituale", "constructor", 3, null, "consumo"],
+      }),
+    });
+    expect(readState(s).seenConcepts).toEqual(["rituale", "consumo"]);
   });
 
   it("scrive e rilegge lo stato, scartando campi non validi", () => {
@@ -162,5 +215,34 @@ describe("storage", () => {
       },
     };
     expect(() => writeState(emptyState(), broken)).not.toThrow();
+  });
+});
+
+describe("migrateState", () => {
+  const to2 = (raw: Record<string, unknown>) => ({ ...raw, version: 2, extra: [] });
+  const to3 = (raw: Record<string, unknown>) => ({ ...raw, version: 3 });
+
+  it("lascia passare lo stato già alla versione corrente", () => {
+    const raw = { version: 2, a: 1 };
+    expect(migrateState(raw, 2, {})).toBe(raw);
+  });
+
+  it("applica i passi in catena fino alla versione richiesta", () => {
+    expect(migrateState({ version: 1, a: 1 }, 3, { 1: to2, 2: to3 })).toEqual({
+      version: 3,
+      a: 1,
+      extra: [],
+    });
+  });
+
+  it("restituisce null se manca un passo, se la versione è futura o non è un intero", () => {
+    expect(migrateState({ version: 1 }, 2, {})).toBeNull();
+    expect(migrateState({ version: 3 }, 2, { 1: to2 })).toBeNull();
+    expect(migrateState({ version: "1" }, 2, { 1: to2 })).toBeNull();
+    expect(migrateState({}, 2, { 1: to2 })).toBeNull();
+  });
+
+  it("interrompe una migrazione che non fa avanzare la versione", () => {
+    expect(migrateState({ version: 1 }, 2, { 1: (raw) => raw })).toBeNull();
   });
 });
