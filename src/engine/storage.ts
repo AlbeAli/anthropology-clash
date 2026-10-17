@@ -1,6 +1,7 @@
 import type { ConceptId, Lang, Level } from "../schema/scenario.schema";
 
 export const STORAGE_KEY = "anthropology-clash.v1";
+export const BACKUP_KEY = `${STORAGE_KEY}.backup`;
 const STORAGE_VERSION = 1;
 
 export type Theme = "light" | "dark";
@@ -37,6 +38,33 @@ function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);
 }
 
+const CONCEPTS: Record<ConceptId, true> = {
+  reciprocita: true,
+  parentela: true,
+  rituale: true,
+  relativismo: true,
+  consumo: true,
+};
+const CONCEPT_SET = new Set<unknown>(Object.keys(CONCEPTS));
+
+type Migration = (raw: Record<string, unknown>) => Record<string, unknown>;
+const MIGRATIONS: Record<number, Migration> = {};
+
+export function migrateState(
+  raw: Record<string, unknown>,
+  target: number = STORAGE_VERSION,
+  table: Record<number, Migration> = MIGRATIONS,
+): Record<string, unknown> | null {
+  let current = raw;
+  while (Number.isInteger(current.version) && (current.version as number) < target) {
+    const from = current.version as number;
+    const next = table[from]?.(current);
+    if (!next || !Number.isInteger(next.version) || (next.version as number) <= from) return null;
+    current = next;
+  }
+  return current.version === target ? current : null;
+}
+
 function sanitize(raw: unknown): StoredState {
   const base = emptyState();
   if (!isRecord(raw) || raw.version !== STORAGE_VERSION) return base;
@@ -46,7 +74,9 @@ function sanitize(raw: unknown): StoredState {
     level: raw.level === "neofita" || raw.level === "studente" ? raw.level : null,
     completed: sanitizeCompleted(raw.completed),
     streak: sanitizeStreak(raw.streak) ?? base.streak,
-    seenConcepts: Array.isArray(raw.seenConcepts) ? (raw.seenConcepts as ConceptId[]) : [],
+    seenConcepts: Array.isArray(raw.seenConcepts)
+      ? (raw.seenConcepts.filter((c) => CONCEPT_SET.has(c)) as ConceptId[])
+      : [],
     theme: raw.theme === "light" || raw.theme === "dark" ? raw.theme : undefined,
     notes: sanitizeNotes(raw.notes),
   };
@@ -92,12 +122,41 @@ function sanitizeNotes(raw: unknown): Record<string, Note> | undefined {
   return Object.keys(notes).length ? notes : undefined;
 }
 
-export function readState(storage: Pick<Storage, "getItem"> | undefined = globalStorage()) {
+export function readState(
+  storage:
+    (Pick<Storage, "getItem"> & Partial<Pick<Storage, "setItem">>) | undefined = globalStorage(),
+) {
+  let raw: string | null | undefined;
   try {
-    const raw = storage?.getItem(STORAGE_KEY);
-    return raw ? sanitize(JSON.parse(raw)) : emptyState();
+    raw = storage?.getItem(STORAGE_KEY);
+    if (!raw) return emptyState();
+    const parsed: unknown = JSON.parse(raw);
+    const migrated = isRecord(parsed) ? migrateState(parsed) : null;
+    if (migrated) return sanitize(migrated);
   } catch {
-    return emptyState();
+    /* JSON non valido o storage non leggibile: stato vuoto */
+  }
+  keepBackup(storage, raw);
+  return emptyState();
+}
+
+function keepBackup(
+  storage: Partial<Pick<Storage, "setItem">> | undefined,
+  raw: string | null | undefined,
+) {
+  if (!storage?.setItem || !raw) return;
+  try {
+    storage.setItem(BACKUP_KEY, raw);
+  } catch {
+    /* quota piena o storage bloccato: nessuna copia */
+  }
+}
+
+export function clearBackup(storage: Pick<Storage, "removeItem"> | undefined = globalStorage()) {
+  try {
+    storage?.removeItem(BACKUP_KEY);
+  } catch {
+    /* storage bloccato: niente da togliere */
   }
 }
 

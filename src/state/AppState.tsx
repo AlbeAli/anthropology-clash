@@ -1,6 +1,13 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 import type { ConceptId, Level } from "../schema/scenario.schema";
-import { canPersist, readState, writeState, type StoredState, type Theme } from "../engine/storage";
+import {
+  canPersist,
+  clearBackup,
+  readState,
+  writeState,
+  type StoredState,
+  type Theme,
+} from "../engine/storage";
 import { currentStreak, dayKey, markCompleted } from "../engine/progress";
 import { applyTheme, systemTheme } from "../engine/theme";
 import { track } from "../engine/analytics";
@@ -68,6 +75,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       persisted,
       resetProgress: (options) => {
         setRecent(null);
+        clearBackup();
         update({
           ...state,
           completed: {},
@@ -77,7 +85,10 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         });
       },
       setNote,
-      clearNotes: () => update({ ...state, notes: undefined }),
+      clearNotes: () => {
+        clearBackup();
+        update({ ...state, notes: undefined });
+      },
       mergeRemote,
       setLevel: (next) => {
         track("level_chosen", { level: next });

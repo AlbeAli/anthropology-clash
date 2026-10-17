@@ -951,3 +951,9 @@ Segnalato e non applicato, in attesa dell'autore:
 - La Bibliografia in `/metodo` carica tutti i file degli scenari per costruirsi; potrebbe essere un modulo generato in build, come `virtual:authors`.
 - `scrollTo(0, 0)` della barra di navigazione in un effetto del genitore potrebbe annullare lo scorrimento all'ancora di `/diario#id` quando il file della pagina è già in cache: non riprodotto.
 - Hook di sincronizzazione (`.claude/hooks/git-sync.mjs`): `git fetch` senza timeout. Non toccato.
+
+### 16.23 Stato locale: copia di salvaguardia e migrazioni (2026-10-17, branch `stato-migrazioni`)
+
+Proposta S2+S3 della valutazione di stabilità, approvata dall'autore. `readState` non perde più in silenzio ciò che scarta: JSON corrotto, valore non oggetto o `version` senza migrazione disponibile vengono copiati in `anthropology-clash.v1.backup` prima che la prima scrittura sovrascriva la chiave principale. La copia resta solo nel browser, non viene letta dall'app e si cancella con «Azzera i progressi» e «Cancella il diario». `migrateState` applica in catena i passi di `MIGRATIONS` (oggi vuota, `version` vale 1): al primo cambio di versione basta aggiungere il passo, senza azzerare i progressi. `seenConcepts` scarta i valori che non sono concetti; `Record<ConceptId, true>` fa fallire `tsc` se si aggiunge un concetto senza aggiornare l'elenco. Misura: JavaScript iniziale da 30,34 a 30,56 kB gzip (+0,22).
+
+Scartata: unione dello stato al momento della scrittura per le schede multiple, perché riporterebbe in vita progressi e appunti cancellati. Restano aperti il listener `storage` tra schede (S1-lite) e le voci account (S4).
