@@ -11,7 +11,7 @@
   "levels": {
     "neofita": {
       "hook": "Il giorno del tuo diploma tuo padre ti consegna l'orologio del nonno. Non è costoso e non funziona nemmeno benissimo, ma tutti in famiglia sanno chi l'ha portato e in quali occasioni. Tuo padre ti dice solo: «Adesso ce l'hai tu». Capisci che non è un regalo come gli altri. Ma allora che cos'è?",
-      "setup": "Sei ospite nelle isole Trobriand, nel Pacifico, negli anni Venti. Un uomo arriva in canoa da un'isola vicina e ti porge una lunga collana di conchiglie rosse. È un oggetto famoso: ha un nome proprio, e tutti sanno chi l'ha avuta prima di te. Non è in vendita e non è un regalo qualsiasi. Cosa fai?",
+      "setup": "Sei ospite nelle isole Trobriand, nel Pacifico, tra il 1915 e il 1918. Un uomo arriva in canoa da un'isola vicina e ti porge una lunga collana di conchiglie rosse. È un oggetto famoso: ha un nome proprio, e tutti sanno chi l'ha avuta prima di te. Non è in vendita e non è un regalo qualsiasi. Cosa fai?",
       "choices": [
         {
           "id": "a",
@@ -30,7 +30,7 @@
     },
     "studente": {
       "hook": "Ti affidano l'orologio del nonno. Un orologiaio ti dice quanto vale, e la cifra ti sembra del tutto fuori luogo: il suo valore è nei polsi su cui è passato, nelle storie che lo accompagnano. Non lo venderesti, ma non ti sembra nemmeno del tutto tuo. Sai che un giorno toccherà a te decidere a chi passarlo. Nessuno lo ha scritto: da dove viene quell'obbligo?",
-      "setup": "Isole Trobriand, arcipelago del Massim, Nuova Guinea orientale, primi anni Venti. Sei a Sinaketa, sull'isola di Kiriwina. Un partner di Kula arriva da Dobu con una spedizione di canoe e ti consegna un soulava, una lunga collana di dischi di spondilo rosso. Ha un nome proprio e una storia nota. I soulava circolano tra le isole in senso orario, i mwali (bracciali di conchiglia bianca) in senso antiorario. Il partner non ti chiede nulla in cambio, adesso. Sai che la relazione con lui è di lunga durata, forse ereditata dal tuo predecessore. Come rispondi?",
+      "setup": "Isole Trobriand, arcipelago del Massim, Nuova Guinea orientale, tra il 1915 e il 1918. Sei a Sinaketa, nel sud di Boyowa, l'isola principale delle Trobriand. Un partner di Kula arriva da Dobu con una spedizione di canoe e ti consegna un soulava, una lunga collana di dischi di spondilo rosso. Ha un nome proprio e una storia nota. I soulava circolano tra le isole in senso orario, i mwali (bracciali di conchiglia bianca) in senso antiorario. Il partner non ti chiede nulla in cambio, adesso. Sai che la relazione con lui è di lunga durata: tra partner di Kula dura tutta la vita. Come rispondi?",
       "choices": [
         {
           "id": "a",
@@ -51,7 +51,7 @@
       ],
       "feedback": {
         "a": "Il Kula esclude la contrattazione e la simultaneità. Malinowski distingue il dono d'apertura (vaga) dal dono di ritorno (yotile), separati nel tempo; chi non può ricambiare adeguatamente offre un dono intermedio (basi) come pegno. Restituire subito un equivalente assimila il Kula al gimwali, il baratto di beni d'uso, e 'fare il Kula come fosse gimwali' è una delle offese più gravi tra partner. Mauss (1925) leggerà proprio questo intervallo temporale come ciò che distingue il dono dallo scambio mercantile: il tempo del debito è il tempo del legame.",
-        "b": "Nel Kula il possesso è temporaneo per definizione. Malinowski riporta il principio 'una volta nel Kula, sempre nel Kula': gli oggetti di valore (vaygu'a) non escono dal circuito. Trattenerli a lungo espone all'accusa di essere 'lenti' o 'duri' nel Kula e fa perdere partner. Il prestigio deriva dall'aver posseduto oggetti celebri e dall'averli fatti circolare, non dall'accumularli: è la logica che Mauss chiamerà obbligo di ricambiare.",
+        "b": "Nel Kula il possesso è temporaneo per definizione. Malinowski riporta il principio 'una volta nel Kula, sempre nel Kula': gli oggetti di valore (vaygu'a), salvo rarissime eccezioni, non escono dal circuito. Trattenerli a lungo espone all'accusa di essere 'lenti' o 'duri' nel Kula e fa perdere partner. Il prestigio deriva dall'aver posseduto oggetti celebri e dall'averli fatti circolare, non dall'accumularli: è la logica che Mauss chiamerà obbligo di ricambiare.",
         "c": "È la condotta del partner affidabile. Il soulava sosta, viene mostrato, poi riparte verso l'isola successiva in senso orario; dal partner arriverà, con i suoi tempi, un mwali in senso inverso. Malinowski descrive il Kula come scambio cerimoniale intertribale in cui la circolazione produce fama, alleanze e sicurezza nei viaggi, mentre lo scambio utilitario (gimwali) avviene in parallelo ma resta distinto. Le tre obbligazioni di Mauss (dare, ricevere, ricambiare) sono qui tutte in gioco.",
         "d": "I vaygu'a non sono convertibili in beni d'uso: appartengono a una sfera di scambio separata. Bohannan (1955), studiando i Tiv della Nigeria, chiamerà 'sfere di scambio' questa non convertibilità tra categorie di beni. Scambiare un soulava contro cibo lo degrada di sfera e rompe la relazione con il partner che te lo ha affidato. Sarebbe letto come gimwali fatto con il bene sbagliato."
       },
