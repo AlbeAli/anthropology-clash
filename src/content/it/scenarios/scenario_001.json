@@ -11,7 +11,7 @@
   "levels": {
     "neofita": {
       "hook": "Il giorno del tuo diploma tuo padre ti consegna l'orologio del nonno. Non è costoso e non funziona nemmeno benissimo, ma tutti in famiglia sanno chi l'ha portato e in quali occasioni. Tuo padre ti dice solo: «Adesso ce l'hai tu». Capisci che non è un regalo come gli altri. Ma allora che cos'è?",
-      "setup": "Sei ospite nelle isole Trobriand, nel Pacifico, tra il 1915 e il 1918. Un uomo arriva in canoa da un'isola vicina e ti porge una lunga collana di conchiglie rosse. È un oggetto famoso: ha un nome proprio, e tutti sanno chi l'ha avuta prima di te. Non è in vendita e non è un regalo qualsiasi. Cosa fai?",
+      "setup": "Sei ospite nelle isole Trobriand, nel Pacifico, tra il 1915 e il 1918. Un uomo arriva in canoa da un'isola vicina e ti porge una lunga collana di conchiglie rosse. È un oggetto famoso: ha un nome proprio, e tutti sanno chi l'ha avuta prima di te. Non è un regalo qualsiasi. Cosa fai?",
       "choices": [
         {
           "id": "a",
