@@ -10,7 +10,7 @@
   "levels": {
     "neofita": {
       "hook": "Per festeggiare una promozione offri la cena a tutto il gruppo. Al tavolo un amico scherza: «Speriamo che basti, con quello che guadagni adesso». Ridono tutti. Tu un po' meno: volevi solo fare una cosa gentile, e ti ritrovi preso in giro proprio per quella.",
-      "setup": "Sei un ricercatore e vivi da anni con i Ju/'hoansi (!Kung), cacciatori-raccoglitori del deserto del Kalahari. È dicembre. Per ringraziare tutti, compri il bue più grosso che i soldi possano comprare e annunci che lo offrirai per la festa di Natale. Ti aspetti entusiasmo. Invece, uno dopo l'altro, vengono a dirti che il bue è vecchio, magro, 'un sacco d'ossa', che non basterà per tutti e che per la carne si rischia una lite. Cosa fai?",
+      "setup": "Sei un ricercatore e vivi da anni con i Ju/'hoansi (!Kung), cacciatori-raccoglitori del deserto del Kalahari. È dicembre del 1968. Per ringraziare tutti, compri il bue più grosso che i soldi possano comprare e annunci che lo offrirai per la festa di Natale. Ti aspetti entusiasmo. Invece, uno dopo l'altro, vengono a dirti che il bue è vecchio, magro, 'un sacco d'ossa', che non basterà per tutti e che per la carne si rischia una lite. Cosa fai?",
       "choices": [
         {
           "id": "a",
@@ -29,7 +29,7 @@
     },
     "studente": {
       "hook": "Porti in ufficio i pasticcini per festeggiare il nuovo incarico. Un collega li guarda e dice: «Tutto qui? Adesso che sei responsabile?». Gli altri sorridono, qualcuno rincara. Non sembra cattiveria, e non sembra nemmeno un caso. Ti chiedi cosa stiano facendo, esattamente, quando prendono in giro chi offre.",
-      "setup": "/ai/ai, nel deserto del Kalahari, dicembre. Sei Richard Lee: da anni studi l'economia di sussistenza di caccia e raccolta dei Ju/'hoansi (!Kung) e, per non interferire con la loro raccolta del cibo, eviti di condividere il tuo cibo con loro. Per Natale decidi di ringraziarli della collaborazione dell'anno: compri da un allevatore un bue di circa 550 chili, il più grosso disponibile. Nei giorni seguenti molte persone ti dicono che è vecchio, magro, 'un sacco d'ossa', e che non basterà per tutti. Alla macellazione lo strato di grasso è spesso. La festa riesce. Cosa fai di quello che è successo?",
+      "setup": "/ai/ai, nel deserto del Kalahari, dicembre 1968. Sei Richard Lee: da anni studi l'economia di sussistenza di caccia e raccolta dei Ju/'hoansi (!Kung) e, per non interferire con la loro raccolta del cibo, eviti di condividere il tuo cibo con loro. Per Natale decidi di ringraziarli della collaborazione dell'anno: compri da un allevatore un bue di circa 550 chili, il più grosso disponibile. Nei giorni seguenti molte persone ti dicono che è vecchio, magro, 'un sacco d'ossa', e che non basterà per tutti. Alla macellazione lo strato di grasso è spesso. La festa riesce. Cosa fai di quello che è successo?",
       "choices": [
         {
           "id": "a",
@@ -54,7 +54,7 @@
         "c": "È il percorso che segue Lee: interroga Hakekgose, /gaugo e Tomazo. /gaugo descrive la pratica: chi torna da una caccia non annuncia la preda ma aspetta che qualcuno gli chieda cosa ha visto e risponde di aver visto solo «uno piccolissimo»; chi va a prendere la carne grida che è un mucchio di ossa, e a tutto questo si risponde nello stesso tono. La si può collegare ad altre pratiche che il testo mostra: la modestia richiesta al cacciatore e la condivisione della carne, che secondo Lee i !Kung si riservano tra loro ogni giorno. Lee chiude paragonando i !Kung al buon soldato Schweik, per il loro scetticismo verso le buone intenzioni: il quadro più ampio delle società egualitarie (Woodburn, 1982) è tra le letture per approfondire.",
         "d": "È la lettura che Lee dà del proprio ruolo. Agli occhi dei !Kung, il suo rifiuto di condividere il cibo lo faceva passare per avaro; il bue doveva essere il suo modo di ringraziare per la collaborazione dell'anno, l'unico atto totalmente generoso e senza risparmio di quell'anno. Il messaggio che ne ricevette, scrive, fu che non esistono atti totalmente generosi, che ogni «atto» ha un elemento di calcolo e che un bue ucciso a Natale non cancella un anno di attenta manipolazione di doni dati per i propri fini. Si può metterla in rapporto con Mauss (1925) sul dono, che l'articolo non cita."
       },
-      "source": "Lee, 'Eating Christmas in the Kalahari', Natural History 78(10), 1969; Woodburn, 'Egalitarian Societies', Man 17(3), 1982; Mauss, Essai sur le don, 1925",
+      "source": "Lee, 'Eating Christmas in the Kalahari', Natural History 78(10), 1969; Lee, The !Kung San, Cambridge University Press, 1979, p. 23; Woodburn, 'Egalitarian Societies', Man 17(3), 1982; Mauss, Essai sur le don, 1925",
       "deepen": [
         {
           "ref": "Lee, 'Eating Christmas in the Kalahari', 1969",

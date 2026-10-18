@@ -10,7 +10,7 @@
   "levels": {
     "neofita": {
       "hook": "Compili un modulo e arrivi alla casella «stato civile». Le opzioni sono poche e nessuna descrive esattamente la tua situazione. Ti chiedi che cosa conti davvero per dire che due persone sono sposate.",
-      "setup": "Stai prendendo appunti a un seminario di antropologia. Chi parla descrive i Nayar del Kerala, in India, nella loro società tradizionale. Una bambina, prima della pubertà, viene «sposata» in una cerimonia: un uomo le lega al collo un ornamento d'oro e dopo tre giorni se ne va, senza altri obblighi. Più avanti avrà relazioni con uno o più uomini di casta adatta, che la visitano di notte. Quando nasce un figlio, uno o più di quegli uomini devono riconoscere la possibile paternità con dei doni alla madre e all'ostetrica. Poi qualcuno chiede: si può chiamare matrimonio? Cosa dici?",
+      "setup": "Stai prendendo appunti a un seminario di antropologia. Chi parla descrive i Nayar del Kerala, in India, nella loro società tradizionale, secondo la ricerca sul campo di Kathleen Gough, svolta tra il novembre 1947 e il luglio 1949. Una bambina, prima della pubertà, viene «sposata» in una cerimonia: un uomo le lega al collo un ornamento d'oro e dopo tre giorni se ne va, senza altri obblighi. Più avanti avrà relazioni con uno o più uomini di casta adatta, che la visitano di notte. Quando nasce un figlio, uno o più di quegli uomini devono riconoscere la possibile paternità con dei doni alla madre e all'ostetrica. Poi qualcuno chiede: si può chiamare matrimonio? Cosa dici?",
       "choices": [
         {
           "id": "a",

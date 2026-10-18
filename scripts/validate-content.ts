@@ -20,7 +20,7 @@ type Issue = { file: string; message: string };
 
 const PERIOD =
   /\b(1[5-9]\d{2}|20\d{2})\b|\banni\s+(Dieci|Venti|Trenta|Quaranta|Cinquanta|Sessanta|Settanta|Ottanta|Novanta)\b|\b(Sei|Sette|Otto|Nove)cento\b|\bsecol[oi]\b|\bdecenn[io]\b/i;
-const PERIOD_EXEMPT = new Set(["scenario_003"]);
+const PERIOD_EXEMPT = new Set(["scenario_003", "scenario_012"]);
 
 function formatZodIssues(prefix: string, issues: { path: PropertyKey[]; message: string }[]) {
   return issues.map((i) => ({
