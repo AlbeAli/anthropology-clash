@@ -260,6 +260,14 @@ describe("validate-content: avvisi sul periodo", () => {
     expect(warningsFor(scenario, "scenario_003.json")).toEqual([]);
   });
 
+  it("esenta scenario_012, il cui livello neofita commenta un testo antico", () => {
+    const scenario = withNeofitaSetup(
+      "Un'aula, oggi. Devi spiegare un capitolo del Levitico.",
+      "scenario_012",
+    );
+    expect(warningsFor(scenario, "scenario_012.json")).toEqual([]);
+  });
+
   it("sui contenuti del repo gli avvisi riguardano solo il periodo", () => {
     const { issues, warnings } = validateAll(REAL_CONTENT);
     expect(issues).toEqual([]);
