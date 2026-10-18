@@ -23,7 +23,7 @@
       ],
       "feedback": {
         "a": "Così fecero Clifford Geertz e sua moglie (1972): 'quando sei a Roma'. Corsero per la strada del villaggio, seguirono un fuggitivo nel suo cortile, e sua moglie, 'che evidentemente ci era già passata', tirò fuori tavolo, tovaglia, tre sedie e tre tazze di tè. Al poliziotto che entrò, l'ospite di cinque minuti 'balzò in nostra difesa': professori americani autorizzati, lì a bere tè tutto il pomeriggio, senza sapere nulla di galli. 'La mattina dopo il villaggio era per noi un mondo completamente diverso': tutti sapevano che eri scappato come loro, e ti prendevano in giro, 'gentilmente, affettuosamente'. 'A Bali essere presi in giro è essere accettati'. Il villaggio si aprì, e Geertz ne trasse il suo saggio: 'sono solo apparentemente galli, quelli che combattono. In realtà, sono uomini'.",
-        "b": "È ciò che gli abitanti si aspettavano da te. Il giorno dopo la fuga, racconta Geertz (1972), chiedevano: 'perché non sei rimasto lì a dire alla polizia chi eri?', 'perché non hai detto che guardavi soltanto e non scommettevi?'. Ed erano 'estremamente contenti e ancora più sorpresi' che lui non avesse 'tirato fuori i documenti' per far valere lo 'status di Visitatore Distinto', ma avesse mostrato 'solidarietà con quelli che ora erano i nostri compaesani'. Il combattimento è illegale perché l'élite lo giudica 'primitivo, arretrato, non progressista'; restare in piedi con i documenti in mano, mentre gli altri corrono, ti mette dalla parte del camion. Non ti succede nulla: resti 'una nuvola o un soffio di vento', in un villaggio 'estremamente difficile da penetrare per gli estranei'."
+        "b": "È ciò che gli abitanti si aspettavano da te. Il giorno dopo la fuga, racconta Geertz (1972), chiedevano: 'perché non sei rimasto lì a dire alla polizia chi eri?', 'perché non hai detto che guardavi soltanto e non scommettevi?'. Ed erano 'estremamente contenti e ancora più sorpresi' che lui non avesse 'tirato fuori i documenti' per far valere lo 'status di Visitatore Distinto', ma avesse mostrato 'solidarietà con quelli che ora erano i nostri compaesani'. Il combattimento è illegale, in gran parte per le 'pretese di puritanesimo' del nazionalismo radicale, e l'élite lo giudica 'primitivo, arretrato, non progressista'; restare in piedi con i documenti in mano, mentre gli altri corrono, ti mette dalla parte del camion."
       },
       "source": "Geertz, 'Deep Play: Notes on the Balinese Cockfight', Daedalus, 1972"
     },
@@ -58,9 +58,9 @@
       "deepen": [
         {
           "ref": "Geertz, 'Deep Play: Notes on the Balinese Cockfight', Daedalus 101(1), 1972, pp. 1-37",
-          "why": "Il saggio originale, ad accesso aperto su JSTOR: la retata, la struttura delle scommesse, il 'gioco profondo' di Bentham e la cultura come 'insieme di testi'",
+          "why": "Il saggio originale, ad accesso aperto sul sito di Dædalus: la retata, la struttura delle scommesse, il 'gioco profondo' di Bentham e la cultura come 'insieme di testi'",
           "access": "OA",
-          "url": "https://www.jstor.org/stable/20024056"
+          "url": "https://www.amacad.org/publication/daedalus/deep-play-notes-balinese-cockfight-1972"
         },
         {
           "ref": "Geertz, The Interpretation of Cultures, 1973, cap. 15",
@@ -69,12 +69,12 @@
         },
         {
           "ref": "Roseberry, 'Balinese Cockfights and the Seduction of Anthropology', Social Research 49(4), 1982",
-          "why": "La critica classica: leggere la cultura come testo lascia fuori la storia e il potere; ripubblicata in Anthropologies and Histories, 1989",
+          "why": "Una critica: leggere la cultura come testo lascia fuori la storia e il potere; ripubblicata in Anthropologies and Histories, 1989",
           "access": "NON-OA"
         },
         {
           "ref": "Crapanzano, 'Hermes' Dilemma: The Masking of Subversion in Ethnographic Description', in Clifford & Marcus (a cura di), Writing Culture, 1986",
-          "why": "Come Geertz costruisce la propria autorità nel racconto della retata: la lettura retorica del saggio che ha aperto il dibattito sulla scrittura etnografica",
+          "why": "Come Geertz costruisce la propria autorità nel racconto della retata: una lettura retorica di quel passo",
           "access": "NON-OA"
         }
       ]
@@ -87,6 +87,6 @@
   ],
   "happened": {
     "text": "Il giorno dopo gli abitanti si divertirono a imitare la corsa sgraziata di Geertz e della moglie e quelle che dicevano essere le loro espressioni di panico. Perfino l'anziano sacerdote brahmana, che non sarebbe mai stato coinvolto in un combattimento di galli, li fece chiamare nel suo cortile per chiedere dell'accaduto, ridacchiando contento. Geertz scrive che forse non sarebbe mai arrivato a quel sacerdote e che il loro ospite casuale divenne uno dei suoi migliori informatori.",
-    "source": "Geertz, «Deep Play: Notes on the Balinese Cockfight», Daedalus 101(1), 1972, pp. 3-4"
+    "source": "Geertz, «Deep Play: Notes on the Balinese Cockfight», Daedalus 101(1), 1972, p. 4"
   }
 }
